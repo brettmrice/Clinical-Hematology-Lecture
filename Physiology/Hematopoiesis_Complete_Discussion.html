@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hematopoiesis - Complete Discussion</title>
+    
+    <!-- GitHub Flavored Markdown CSS Baseline -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+    
+    <!-- MathJax 3 for LaTeX rendering -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    
+    <!-- SVG Pan Zoom Library for interactive diagram zoom/pan -->
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+
+    <!-- Mermaid.js for Diagrams (v11) -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            logLevel: 'error',
+            flowchart: {
+                htmlLabels: true,
+                useMaxWidth: true
+            }
+        });
+    </script>
+
+    <style>
+        :root {
+            --color-canvas-default: #ffffff;
+            --color-fg-default: #1f2328;
+            --color-border-default: #d0d7de;
+            --color-modal-header-bg: #f6f8fa;
+            --color-modal-header-fg: #1f2328;
+            --color-modal-title-fg: #57606a;
+            --color-modal-btn-bg: #f3f4f6;
+            --color-modal-btn-fg: #24292f;
+            --color-modal-btn-border: #d0d7de;
+            --color-modal-btn-hover-bg: #e5e7eb;
+            --color-modal-overlay-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-canvas-default: #0d1117;
+                --color-fg-default: #e6edf3;
+                --color-border-default: #30363d;
+                --color-modal-header-bg: #161b22;
+                --color-modal-header-fg: #f0f6fc;
+                --color-modal-title-fg: #8b949e;
+                --color-modal-btn-bg: #21262d;
+                --color-modal-btn-fg: #c9d1d9;
+                --color-modal-btn-border: #30363d;
+                --color-modal-btn-hover-bg: #30363d;
+                --color-modal-overlay-bg: rgba(13, 17, 23, 0.95);
+            }
+            body {
+                background-color: #0d1117;
+                color: #e6edf3;
+            }
+        }
+
+        body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 45px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        .markdown-body {
+            background-color: transparent !important;
+        }
+
+        /* Table responsiveness & smooth scrolling */
+        .markdown-body table {
+            display: table;
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            border-collapse: collapse;
+        }
+
+        .markdown-body table th,
+        .markdown-body table td {
+            padding: 8px 12px;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .markdown-body table tr:nth-child(2n) {
+            background-color: rgba(175, 184, 193, 0.08);
+        }
+
+        /* Mermaid diagram wrapper */
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 1.5em 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--color-border-default);
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mermaid:hover {
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+            border-color: #0969da;
+        }
+
+        .mermaid::after {
+            content: "🔍 Click to expand & pan/zoom";
+            position: absolute;
+            bottom: 6px;
+            right: 10px;
+            font-size: 11px;
+            color: #6e7781;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #d0d7de;
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .mermaid::after {
+                background: rgba(13, 17, 23, 0.85);
+                color: #8b949e;
+                border-color: #30363d;
+            }
+        }
+
+        /* GFM Alert Callout Styles */
+        .markdown-alert {
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            color: inherit;
+            border-left: .25em solid #d0d7de;
+            border-radius: 6px;
+            background-color: rgba(175, 184, 193, 0.1);
+        }
+
+        .markdown-alert .markdown-alert-title {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 16px;
+            margin: 0 0 4px 0;
+        }
+
+        .markdown-alert.markdown-alert-note { border-left-color: #0969da; }
+        .markdown-alert.markdown-alert-note .markdown-alert-title { color: #0969da; }
+        
+        .markdown-alert.markdown-alert-tip { border-left-color: #1a7f37; }
+        .markdown-alert.markdown-alert-tip .markdown-alert-title { color: #1a7f37; }
+        
+        .markdown-alert.markdown-alert-important { border-left-color: #8250df; }
+        .markdown-alert.markdown-alert-important .markdown-alert-title { color: #8250df; }
+        
+        .markdown-alert.markdown-alert-warning { border-left-color: #9a6700; }
+        .markdown-alert.markdown-alert-warning .markdown-alert-title { color: #9a6700; }
+        
+        .markdown-alert.markdown-alert-caution { border-left-color: #cf222e; }
+        .markdown-alert.markdown-alert-caution .markdown-alert-title { color: #cf222e; }
+
+        /* MathJax adjustments */
+        mjx-container {
+            margin: 0.2em 0 !important;
+        }
+
+        /* Fullscreen Mermaid Modal */
+        .mermaid-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--color-modal-overlay-bg);
+            backdrop-filter: blur(6px);
+            z-index: 999999;
+            flex-direction: column;
+        }
+
+        .mermaid-modal-overlay.active {
+            display: flex;
+        }
+
+        .mermaid-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background: var(--color-modal-header-bg);
+            color: var(--color-modal-header-fg);
+            border-bottom: 1px solid var(--color-border-default);
+            user-select: none;
+        }
+
+        .mermaid-modal-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-modal-title-fg);
+        }
+
+        .mermaid-modal-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .mermaid-modal-btn {
+            background: var(--color-modal-btn-bg);
+            color: var(--color-modal-btn-fg);
+            border: 1px solid var(--color-modal-btn-border);
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .mermaid-modal-btn:hover {
+            background: var(--color-modal-btn-hover-bg);
+            color: var(--color-fg-default);
+        }
+
+        .mermaid-modal-close {
+            background: #da3633;
+            color: #ffffff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .mermaid-modal-close:hover {
+            background: #f85149;
+        }
+
+        .mermaid-modal-body {
+            flex: 1;
+            width: 100%;
+            height: calc(100vh - 52px);
+            overflow: hidden;
+            position: relative;
+            background: var(--color-canvas-default);
+            cursor: grab;
+        }
+
+        .mermaid-modal-body:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-modal-body svg {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+        }
+    </style>
+</head>
+<body>
+    <article class="markdown-body">
+<h1 id="hematopoiesis-complete-discussion">Hematopoiesis - Complete Discussion</h1>
+<h1 id="navigation">Navigation</h1>
+<ul>
+<li><a href="#blood-composition">Blood Composition</a><ul>
+<li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
+<li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
+<li><a href="#lecture-slide-breakdowns">Lecture Slide Breakdowns</a></li>
+<li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
+</ul>
+</li>
+<li><a href="#hematopoiesis-sites">Hematopoiesis Sites</a><ul>
+<li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
+<li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
+<li><a href="#lecture-slide-breakdowns">Lecture Slide Breakdowns</a></li>
+<li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
+</ul>
+</li>
+<li><a href="#hematopoiesis">Hematopoiesis</a><ul>
+<li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
+<li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
+<li><a href="#lecture-slide-breakdowns">Lecture Slide Breakdowns</a></li>
+<li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<hr />
+<h1 id="blood-composition">Blood Composition</h1>
+<h2 id="summary-clinical-synthesis">Summary &amp; Clinical Synthesis</h2>
+<p>Peripheral blood is a dynamic fluid connective tissue that serves as the primary transport medium of the cardiovascular system. In a healthy human adult, whole blood consists of a liquid extracellular matrix known as plasma and cellular formed elements. When anticoagulated whole blood is subjected to centrifugation, it separates predictably into three distinct layers based on the specific gravity and relative density of its components: an upper liquid plasma layer (~55% of total volume), a thin intermediate buffy coat layer (&lt;1% of total volume), and a densely packed bottom layer of erythrocytes (~45% of total volume).</p>
+<p>Understanding the precise structural, functional, and quantitative distinctions between these layers is fundamental to clinical laboratory medicine. A critical distinction in specimen processing lies between plasma and serum. Plasma is the fluid portion obtained from anticoagulated blood and retains all active coagulation proteins, including fibrinogen. Consequently, plasma is the required specimen for routine clinical hematology and hemostasis/coagulation testing. Serum, conversely, is derived from fully clotted blood. During clot formation, fibrinogen and other clotting factors are consumed within the fibrin network; thus, serum completely lacks coagulation proteins and is primarily utilized for clinical chemistry evaluations.</p>
+<p>The formed cellular elements residing within the buffy coat and red cell layers are categorized into nucleated cells—comprising the five white blood cell (WBC) types—and anucleate elements, which include mature red blood cells (RBCs) and platelets (PLTs). Leukocytes are responsible for innate and adaptive defense against foreign pathogens and host tissue cellular maintenance. They are subdivided into granulocytes (segmented neutrophils, eosinophils, and basophils) and mononuclear cells (lymphocytes and monocytes).</p>
+<p>In healthy adults, segmented neutrophils dominate the differential count (50%–70%), providing immediate phagocytic defense against bacterial infections. Lymphocytes (18%–42% on slide references; 20%–40% adult standard) represent the second most abundant population, mediating viral defense and adaptive immunity. Importantly, pediatric patients demonstrate a physiological inversion of this ratio, maintaining lymphocytes as their predominant leukocyte type (50%–70%). Monocytes (2%–11%) serve dual roles in debris removal ("garbage collection") and antigen presentation to lymphocytes after migrating into tissue spaces to become macrophages. Eosinophils (1%–3%) mediate responses against parasitic helminths and allergic conditions, while basophils (0%–2%) trigger immediate hypersensitivity reactions via histamine and heparin release.</p>
+<p>Anucleate elements lack nuclei upon entering peripheral circulation. Erythrocytes ($4.00\text{--}6.00 \times 10^6/\mu\text{L}$) are biconcave discs dedicated to $\text{O}_2$ and $\text{CO}_2$ respiratory gas transport. Thrombocytes ($150\text{--}450 \times 10^3/\mu\text{L}$) are cytoplasm fragments shed from bone marrow megakaryocytes into marrow sinuses that initiate primary hemostasis and vascular endothelial repair. Accurate calculation and interpretation of both relative percentages and absolute counts of these elements are essential diagnostic skills for Medical Laboratory Scientists.</p>
+<hr />
+<h2 id="visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</h2>
+<div class="mermaid" data-original-source="flowchart TD
+        A[&quot;Centrifuged Whole Blood Specimen&quot;] --&gt; B[&quot;Plasma Layer (~55% Total Volume)&quot;]
+        A --&gt; C[&quot;Buffy Coat Layer (&amp;lt;1% Total Volume)&quot;]
+        A --&gt; D[&quot;Erythrocyte Layer (~45% Total Volume)&quot;]
+
+        B --&gt; B1[&quot;Water &amp; Electrolytes&quot;]
+        B --&gt; B2[&quot;Coagulation Proteins (Fibrinogen)&quot;]
+        B --&gt; B3[&quot;Nutrients &amp; Waste Products&quot;]
+
+        C --&gt; C1[&quot;Leukocytes (WBCs)&quot;]
+        C --&gt; C2[&quot;Thrombocytes (Platelets)&quot;]
+
+        D --&gt; D1[&quot;Packed Erythrocytes (RBCs)&quot;]" data-original-code="flowchart TD
+        A[&quot;Centrifuged Whole Blood Specimen&quot;] --&gt; B[&quot;Plasma Layer (~55% Total Volume)&quot;]
+        A --&gt; C[&quot;Buffy Coat Layer (&amp;lt;1% Total Volume)&quot;]
+        A --&gt; D[&quot;Erythrocyte Layer (~45% Total Volume)&quot;]
+
+        B --&gt; B1[&quot;Water &amp; Electrolytes&quot;]
+        B --&gt; B2[&quot;Coagulation Proteins (Fibrinogen)&quot;]
+        B --&gt; B3[&quot;Nutrients &amp; Waste Products&quot;]
+
+        C --&gt; C1[&quot;Leukocytes (WBCs)&quot;]
+        C --&gt; C2[&quot;Thrombocytes (Platelets)&quot;]
+
+        D --&gt; D1[&quot;Packed Erythrocytes (RBCs)&quot;]">
+flowchart TD
+        A["Centrifuged Whole Blood Specimen"] --> B["Plasma Layer (~55% Total Volume)"]
+        A --> C["Buffy Coat Layer (&lt;1% Total Volume)"]
+        A --> D["Erythrocyte Layer (~45% Total Volume)"]
+
+        B --> B1["Water & Electrolytes"]
+        B --> B2["Coagulation Proteins (Fibrinogen)"]
+        B --> B3["Nutrients & Waste Products"]
+
+        C --> C1["Leukocytes (WBCs)"]
+        C --> C2["Thrombocytes (Platelets)"]
+
+        D --> D1["Packed Erythrocytes (RBCs)"]
+</div>
+
+<div class="mermaid" data-original-source="flowchart TD
+        A[&quot;Peripheral Blood Cellular Elements&quot;] --&gt; B[&quot;Nucleated Elements: Leukocytes (WBCs)&quot;]
+        A --&gt; C[&quot;Anucleate Elements&quot;]
+
+        B --&gt; D[&quot;Granulocytes&quot;]
+        B --&gt; E[&quot;Mononuclear Leukocytes&quot;]
+
+        D --&gt; D1[&quot;Segmented Neutrophils (Bacterial Defense)&quot;]
+        D --&gt; D2[&quot;Eosinophils (Parasitic &amp; Allergic Response)&quot;]
+        D --&gt; D3[&quot;Basophils (Immediate Hypersensitivity)&quot;]
+
+        E --&gt; E1[&quot;Lymphocytes (Viral Defense &amp; Adaptive Immunity)&quot;]
+        E --&gt; E2[&quot;Monocytes (Phagocytosis &amp; Antigen Presentation)&quot;]
+
+        C --&gt; C1[&quot;Erythrocytes / RBCs (O2 and CO2 Transport)&quot;]
+        C --&gt; C2[&quot;Thrombocytes / PLTs (Primary Hemostasis)&quot;]" data-original-code="flowchart TD
+        A[&quot;Peripheral Blood Cellular Elements&quot;] --&gt; B[&quot;Nucleated Elements: Leukocytes (WBCs)&quot;]
+        A --&gt; C[&quot;Anucleate Elements&quot;]
+
+        B --&gt; D[&quot;Granulocytes&quot;]
+        B --&gt; E[&quot;Mononuclear Leukocytes&quot;]
+
+        D --&gt; D1[&quot;Segmented Neutrophils (Bacterial Defense)&quot;]
+        D --&gt; D2[&quot;Eosinophils (Parasitic &amp; Allergic Response)&quot;]
+        D --&gt; D3[&quot;Basophils (Immediate Hypersensitivity)&quot;]
+
+        E --&gt; E1[&quot;Lymphocytes (Viral Defense &amp; Adaptive Immunity)&quot;]
+        E --&gt; E2[&quot;Monocytes (Phagocytosis &amp; Antigen Presentation)&quot;]
+
+        C --&gt; C1[&quot;Erythrocytes / RBCs (O2 and CO2 Transport)&quot;]
+        C --&gt; C2[&quot;Thrombocytes / PLTs (Primary Hemostasis)&quot;]">
+flowchart TD
+        A["Peripheral Blood Cellular Elements"] --> B["Nucleated Elements: Leukocytes (WBCs)"]
+        A --> C["Anucleate Elements"]
+
+        B --> D["Granulocytes"]
+        B --> E["Mononuclear Leukocytes"]
+
+        D --> D1["Segmented Neutrophils (Bacterial Defense)"]
+        D --> D2["Eosinophils (Parasitic & Allergic Response)"]
+        D --> D3["Basophils (Immediate Hypersensitivity)"]
+
+        E --> E1["Lymphocytes (Viral Defense & Adaptive Immunity)"]
+        E --> E2["Monocytes (Phagocytosis & Antigen Presentation)"]
+
+        C --> C1["Erythrocytes / RBCs (O2 and CO2 Transport)"]
+        C --> C2["Thrombocytes / PLTs (Primary Hemostasis)"]
+</div>
+
+<h3 id="specimen-matrix-comparison-plasma-vs-serum">Specimen Matrix Comparison: Plasma vs. Serum</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Specimen Parameter</th>
+<th style="text-align: left;">Plasma</th>
+<th style="text-align: left;">Serum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Collection Tube Requirement</strong></td>
+<td style="text-align: left;">Anticoagulated blood tube (e.g., EDTA, Citrate, Heparin)</td>
+<td style="text-align: left;">Clot activator or plain serum separator tube (SST)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Coagulation Factors Status</strong></td>
+<td style="text-align: left;">Retained (includes active fibrinogen and clotting factors)</td>
+<td style="text-align: left;">Depleted (consumed during fibrin clot formation)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fibrinogen Content</strong></td>
+<td style="text-align: left;">Present</td>
+<td style="text-align: left;">Absent</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Laboratory Application</strong></td>
+<td style="text-align: left;">Clinical Hematology, Coagulation / Hemostasis testing</td>
+<td style="text-align: left;">Clinical Chemistry and Serology testing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="peripheral-blood-cellular-elements-reference-ranges-morphological-profiles">Peripheral Blood Cellular Elements: Reference Ranges &amp; Morphological Profiles</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Cell Type</th>
+<th style="text-align: left;">Relative Range (%)</th>
+<th style="text-align: left;">Conventional Absolute Range</th>
+<th style="text-align: left;">SI Units Absolute Range</th>
+<th style="text-align: left;">Key Morphological Features</th>
+<th style="text-align: left;">Primary Clinical Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Total WBC</strong></td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">$3.6\text{--}10.6 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$3.6\text{--}10.6 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">Nucleated blood cells</td>
+<td style="text-align: left;">Host defense against pathogens</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Segmented Neutrophil</strong></td>
+<td style="text-align: left;">50% – 70%</td>
+<td style="text-align: left;">$1.7\text{--}7.5 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.7\text{--}7.5 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">3–5 nuclear lobes; pale pink secondary granules</td>
+<td style="text-align: left;">Active phagocytosis of bacteria</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lymphocyte</strong></td>
+<td style="text-align: left;">18% – 42% <em>(Adult)</em><br>50% – 70% <em>(Pediatric)</em></td>
+<td style="text-align: left;">$1.0\text{--}3.2 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.0\text{--}3.2 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">High N:C ratio; round nucleus RBC size; pale blue agranular cytoplasm</td>
+<td style="text-align: left;">Viral defense &amp; adaptive immunity</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Monocyte</strong></td>
+<td style="text-align: left;">2% – 11%</td>
+<td style="text-align: left;">$0.1\text{--}1.3 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0.1\text{--}1.3 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">Largest WBC; folded/amoeboid nucleus; ground-glass gray-blue cytoplasm</td>
+<td style="text-align: left;">Phagocytosis ("garbage collection") &amp; antigen presentation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Eosinophil</strong></td>
+<td style="text-align: left;">1% – 3%</td>
+<td style="text-align: left;">$0.0\text{--}0.3 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0.0\text{--}0.3 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">Bilobed nucleus; coarse, reddish-orange granules</td>
+<td style="text-align: left;">Defense against helminth parasites &amp; allergic responses</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Basophil</strong></td>
+<td style="text-align: left;">0% – 2%</td>
+<td style="text-align: left;">$0.0\text{--}0.2 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0.0\text{--}0.2 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">Coarse, dark blue-purple granules obscuring nucleus</td>
+<td style="text-align: left;">Immediate hypersensitivity &amp; allergic reactions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Erythrocyte (RBC)</strong></td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">$4.00\text{--}6.00 \times 10^6/\mu\text{L}$</td>
+<td style="text-align: left;">$4.00\text{--}6.00 \times 10^{12}/\text{L}$</td>
+<td style="text-align: left;">Anucleate biconcave disc ($6\text{--}8\ \mu\text{m}$)</td>
+<td style="text-align: left;">Respiratory gas transport ($\text{O}_2$ and $\text{CO}_2$)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Thrombocyte (PLT)</strong></td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">$150\text{--}450 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$150\text{--}450 \times 10^9/\text{L}$</td>
+<td style="text-align: left;">Anucleate cytoplasmic fragment</td>
+<td style="text-align: left;">Primary hemostasis &amp; platelet plug formation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="lecture-slide-breakdowns">Lecture Slide Breakdowns</h2>
+<h3 id="physical-composition-of-blood-and-specimen-types-slides-13">Physical Composition of Blood and Specimen Types (Slides 1–3)</h3>
+<p>The opening slides establish the baseline physical stratification of un-clotted whole blood upon centrifugation. Centrifugal force separates blood components into three distinct fractions according to mass density:</p>
+<ol>
+<li><strong>Plasma (~55% total volume):</strong> The topmost fluid layer, appearing clear to translucent yellow. It comprises water, electrolytes, metabolic waste products, nutrients, albumin, and active coagulation factors.</li>
+<li><strong>Buffy Coat (&lt;1% total volume):</strong> A thin, cream-colored middle layer settling directly on top of the erythrocyte pack. It consists exclusively of leukocytes (WBCs) and thrombocytes (platelets).</li>
+<li><strong>Erythrocyte Pack (~45% total volume):</strong> The dense bottom layer containing massed red blood cells.</li>
+</ol>
+<p>A foundational distinction highlighted on Slide 3 is <strong>Plasma vs. Serum</strong>:</p>
+<ul>
+<li><strong>Plasma</strong> is obtained when blood is collected into a tube containing an anticoagulant (preventing coagulation cascade activation). Because clotting has been artificially blocked, plasma contains all intact soluble coagulation proteins, most notably fibrinogen. It serves as the standard fluid matrix for routine clinical hematology and hemostasis assays.</li>
+<li><strong>Serum</strong> is obtained after whole blood is collected without anticoagulants and allowed to clot completely. In this cascade process, soluble fibrinogen is converted to insoluble fibrin strands, consuming clotting factors. Therefore, serum is completely devoid of functional coagulation proteins and is utilized primarily in clinical chemistry testing.</li>
+</ul>
+<div class="mermaid" data-original-source="flowchart LR
+        A[&quot;Whole Blood Specimen&quot;] --&gt; B{&quot;Anticoagulant Added?&quot;}
+        B -- &quot;Yes&quot; --&gt; C[&quot;Centrifugation&quot;] --&gt; D[&quot;Plasma (Contains Fibrinogen &amp; Coagulation Proteins)&quot;]
+        B -- &quot;No (Allowed to Clot)&quot; --&gt; E[&quot;Centrifugation&quot;] --&gt; F[&quot;Serum (Lacks Fibrinogen &amp; Coagulation Proteins)&quot;]" data-original-code="flowchart LR
+        A[&quot;Whole Blood Specimen&quot;] --&gt; B{&quot;Anticoagulant Added?&quot;}
+        B -- &quot;Yes&quot; --&gt; C[&quot;Centrifugation&quot;] --&gt; D[&quot;Plasma (Contains Fibrinogen &amp; Coagulation Proteins)&quot;]
+        B -- &quot;No (Allowed to Clot)&quot; --&gt; E[&quot;Centrifugation&quot;] --&gt; F[&quot;Serum (Lacks Fibrinogen &amp; Coagulation Proteins)&quot;]">
+flowchart LR
+        A["Whole Blood Specimen"] --> B{"Anticoagulant Added?"}
+        B -- "Yes" --> C["Centrifugation"] --> D["Plasma (Contains Fibrinogen & Coagulation Proteins)"]
+        B -- "No (Allowed to Clot)" --> E["Centrifugation"] --> F["Serum (Lacks Fibrinogen & Coagulation Proteins)"]
+</div>
+
+<hr />
+<h3 id="granulocytic-leukocytes-neutrophils-eosinophils-and-basophils-slides-4-7-8">Granulocytic Leukocytes: Neutrophils, Eosinophils, and Basophils (Slides 4, 7, 8)</h3>
+<p>Granulocytes are nucleated white blood cells characterized by specific cytoplasmic granules that bind differentially to Romanowsky-type histological stains (e.g., Wright-Giemsa).</p>
+<h4 id="segmented-neutrophils-slide-4">Segmented Neutrophils (Slide 4)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Mature segmented neutrophils feature a characteristic multi-lobed nucleus containing 3 to 5 distinct nuclear lobes connected by delicate nuclear chromatin filaments. The cytoplasm is abundant, exhibiting fine, pale pink secondary (specific) granules. In physical size, a neutrophil measures roughly 3 to 4 times the diameter of a mature erythrocyte.</li>
+<li><strong>Function:</strong> Neutrophils serve as the primary cellular defense against acute bacterial infections through rapid chemotaxis and active phagocytosis.</li>
+<li>
+<p><strong>Reference Ranges &amp; Calculations:</strong></p>
+<ul>
+<li>Total WBC Reference Range: $3.6\text{--}10.6 \times 10^3/\mu\text{L}$ ($3.6\text{--}10.6 \times 10^9/\text{L}$ SI units).</li>
+<li>Relative Neutrophil Percentage: 50% – 70% (0.50 – 0.70 SI fraction).</li>
+<li>Absolute Neutrophil Count (ANC) Range: $1.7\text{--}7.5 \times 10^3/\mu\text{L}$ ($1.7\text{--}7.5 \times 10^9/\text{L}$ SI units).</li>
+<li>
+<p>Mathematical Formula:<br />
+    $$\text{Absolute Count} = \text{Total WBC Count} \times \left(\frac{\text{Relative Percentage}}{100}\right)$$</p>
+</li>
+<li>
+<p><em>Example Calculation:</em> Given a total WBC count of $10.0 \times 10^3/\mu\text{L}$ and a relative neutrophil count of 80%:<br />
+    $$\text{ANC} = 10.0 \times 10^3/\mu\text{L} \times 0.80 = 8.0 \times 10^3/\mu\text{L}$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="eosinophils-slide-7">Eosinophils (Slide 7)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Eosinophils typically exhibit a bilobed nucleus (2 to 3 lobes maximum). Their distinguishing feature is an abundance of large, spherical, coarse cytoplasmic granules that stain bright reddish-orange due to their affinity for acidic dyes (eosin).</li>
+<li><strong>Function:</strong> Eosinophils specialize in host defense against parasitic infections (specifically helminth worms) and serve as key modulators in allergic and hypersensitivity reactions.</li>
+<li><strong>Reference Ranges:</strong><ul>
+<li>Relative Eosinophil Percentage: 1% – 3% (0.01 – 0.03 SI fraction).</li>
+<li>Absolute Eosinophil Count Range: $0.0\text{--}0.3 \times 10^3/\mu\text{L}$ ($0.0\text{--}0.3 \times 10^9/\text{L}$ SI units).</li>
+</ul>
+</li>
+</ul>
+<h4 id="basophils-slide-8">Basophils (Slide 8)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Basophils are identified by large, coarse, dark blue-to-purple cytoplasmic granules that absorb basic dyes. These dense granules often overlay and physically obscure the underlying multi-lobed nucleus.</li>
+<li><strong>Function:</strong> Basophils mediate immediate hypersensitivity and systemic allergic reactions by releasing preformed chemical mediators, including histamine, heparin, and vasoactive substances.</li>
+<li><strong>Reference Ranges:</strong><ul>
+<li>Relative Basophil Percentage: 0% – 2% (0.00 – 0.02 SI fraction).</li>
+<li>Absolute Basophil Count Range: $0.0\text{--}0.2 \times 10^3/\mu\text{L}$ ($0.0\text{--}0.2 \times 10^9/\text{L}$ SI units). Basophils represent the least frequent leukocyte population in normal human blood.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="mononuclear-leukocytes-lymphocytes-and-monocytes-slides-5-6">Mononuclear Leukocytes: Lymphocytes and Monocytes (Slides 5, 6)</h3>
+<p>Mononuclear leukocytes lack prominent specific staining granules and possess non-segmented nuclei.</p>
+<h4 id="lymphocytes-slide-5">Lymphocytes (Slide 5)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Lymphocytes are relatively small mononuclear leukocytes. They possess a dense, round or slightly indented nucleus filled with condensed, heavily clumped chromatin. The nucleus is roughly the exact size of a normal red blood cell ($6\text{--}8\ \mu\text{m}$). Lymphocytes display a high nucleus-to-cytoplasm (N:C) ratio with a narrow rim of sky-blue to pale basophilic, agranular cytoplasm.</li>
+<li><strong>Diagnostic Utility:</strong> Because a standard resting lymphocyte nucleus is physically equivalent in size to a normal red blood cell, microscopic evaluators routinely utilize normal lymphocyte nuclei as internal size reference benchmarks when assessing red blood cell size (anisocytosis/microcytosis/macrocytosis) on peripheral blood smears.</li>
+<li><strong>Function:</strong> Lymphocytes mediate adaptive immunity and serve as the primary immune defense against acute viral infections.</li>
+<li><strong>Reference Ranges &amp; Pediatric Variation:</strong><ul>
+<li>Relative Lymphocyte Percentage (Adults): 18% – 42% (or 20%–40% adult standard).</li>
+<li>Absolute Lymphocyte Count Range: $1.0\text{--}3.2 \times 10^3/\mu\text{L}$ ($1.0\text{--}3.2 \times 10^9/\text{L}$ SI units).</li>
+<li><em>Pediatric Ratio Inversion:</em> A vital clinical concept is that healthy children naturally exhibit an inverted neutrophil-to-lymphocyte ratio compared to adults. In pediatric peripheral blood, lymphocytes predominate at 50% – 70%, while neutrophils are lower at 20% – 40%. This normal physiological inversion reverses as the individual matures into adulthood.</li>
+</ul>
+</li>
+</ul>
+<h4 id="monocytes-slide-6">Monocytes (Slide 6)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Monocytes are the largest leukocyte type circulating in peripheral blood. They feature an eccentric, horseshoe-shaped, folded, or lobulated (amoeboid) nucleus with relaxed, lace-like chromatin. The cytoplasm presents a classic opaque, "ground-glass" gray-blue color, frequently containing minute azurophilic granules and small phagocytic vacuoles.</li>
+<li><strong>Function:</strong> Monocytes perform two major physiological tasks:<ol>
+<li><em>Phagocytosis ("Garbage Collection"):</em> Engulfing cellular debris, dead host cells, and foreign particulate matter. Monocytes circulate temporarily before migrating into body tissues to differentiate into tissue macrophages.</li>
+<li><em>Antigen Presentation:</em> Processing foreign protein antigens and presenting processed peptide fragments to helper lymphocytes to stimulate immune cascades.</li>
+</ol>
+</li>
+<li><strong>Reference Ranges:</strong><ul>
+<li>Relative Monocyte Percentage: 2% – 11% (0.02 – 0.11 SI fraction; transcript lists 2%–10%).</li>
+<li>Absolute Monocyte Count Range: $0.1\text{--}1.3 \times 10^3/\mu\text{L}$ ($0.1\text{--}1.3 \times 10^9/\text{L}$ SI units).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="anucleate-formed-elements-erythrocytes-and-platelets-slide-9">Anucleate Formed Elements: Erythrocytes and Platelets (Slide 9)</h3>
+<p>Unlike leukocytes, mature human erythrocytes and thrombocytes lose their nuclei prior to entering active circulation.</p>
+<div class="mermaid" data-original-source="flowchart TD
+        A[&quot;Anucleate Peripheral Elements&quot;] --&gt; B[&quot;Erythrocytes (RBCs)&quot;]
+        A --&gt; C[&quot;Thrombocytes (Platelets / PLTs)&quot;]
+
+        B --&gt; B1[&quot;Shape: Biconcave Discs (6-8 um)&quot;]
+        B --&gt; B2[&quot;Function: Transport O2 and CO2&quot;]
+        B --&gt; B3[&quot;Reference: 4.00-6.00 x 10^6 / uL&quot;]
+
+        C --&gt; C1[&quot;Origin: Megakaryocyte Cytoplasmic Fragments&quot;]
+        C --&gt; C2[&quot;Function: Primary Hemostasis &amp; Plug Formation&quot;]
+        C --&gt; C3[&quot;Reference: 150-450 x 10^3 / uL&quot;]" data-original-code="flowchart TD
+        A[&quot;Anucleate Peripheral Elements&quot;] --&gt; B[&quot;Erythrocytes (RBCs)&quot;]
+        A --&gt; C[&quot;Thrombocytes (Platelets / PLTs)&quot;]
+
+        B --&gt; B1[&quot;Shape: Biconcave Discs (6-8 um)&quot;]
+        B --&gt; B2[&quot;Function: Transport O2 and CO2&quot;]
+        B --&gt; B3[&quot;Reference: 4.00-6.00 x 10^6 / uL&quot;]
+
+        C --&gt; C1[&quot;Origin: Megakaryocyte Cytoplasmic Fragments&quot;]
+        C --&gt; C2[&quot;Function: Primary Hemostasis &amp; Plug Formation&quot;]
+        C --&gt; C3[&quot;Reference: 150-450 x 10^3 / uL&quot;]">
+flowchart TD
+        A["Anucleate Peripheral Elements"] --> B["Erythrocytes (RBCs)"]
+        A --> C["Thrombocytes (Platelets / PLTs)"]
+
+        B --> B1["Shape: Biconcave Discs (6-8 um)"]
+        B --> B2["Function: Transport O2 and CO2"]
+        B --> B3["Reference: 4.00-6.00 x 10^6 / uL"]
+
+        C --> C1["Origin: Megakaryocyte Cytoplasmic Fragments"]
+        C --> C2["Function: Primary Hemostasis & Plug Formation"]
+        C --> C3["Reference: 150-450 x 10^3 / uL"]
+</div>
+
+<h4 id="erythrocytes-rbcs">Erythrocytes (RBCs)</h4>
+<ul>
+<li><strong>Morphology &amp; Identification:</strong> Mature red blood cells are anucleate, highly flexible biconcave discs measuring $6\text{--}8\ \mu\text{m}$ in diameter with a central area of pallor occupying the inner third of the cell.</li>
+<li><strong>Function:</strong> Erythrocytes contain hemoglobin dedicated to transporting oxygen ($\text{O}_2$) from lungs to metabolizing peripheral tissues and returning carbon dioxide ($\text{CO}_2$) back to lungs for exhalation.</li>
+<li><strong>Reference Ranges:</strong><ul>
+<li>Conventional Count: $4.00\text{--}6.00 \times 10^6/\mu\text{L}$.</li>
+<li>SI Units Count: $4.00\text{--}6.00 \times 10^{12}/\text{L}$.</li>
+<li><em>Scale Comparison:</em> Erythrocytes circulate in concentrations measured in <em>millions</em> per microliter ($\times 10^6/\mu\text{L}$), representing a concentration roughly 1,000-fold higher than white blood cells or platelets.</li>
+</ul>
+</li>
+</ul>
+<h4 id="thrombocytes-platelets-plts">Thrombocytes (Platelets / PLTs)</h4>
+<ul>
+<li><strong>Origin &amp; Structure:</strong> Platelets are small, anucleate, granular cytoplasmic fragments measuring approximately $2\text{--}4\ \mu\text{m}$. They are produced and shed directly into bone marrow sinusoidal blood flows by massive bone marrow progenitor cells known as <strong>megakaryocytes</strong>.</li>
+<li><strong>Function:</strong> Platelets mediate primary hemostasis. Upon vascular endothelial injury, they adhere to exposed subendothelial structures, aggregate with one another, and form the primary hemostatic platelet plug to arrest hemorrhage.</li>
+<li><strong>Reference Ranges:</strong><ul>
+<li>Conventional Count: $150\text{--}450 \times 10^3/\mu\text{L}$ ($150,000\text{--}450,000/\mu\text{L}$).</li>
+<li>SI Units Count: $150\text{--}450 \times 10^9/\text{L}$.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="key-clinical-takeaways">Key Clinical Takeaways</h2>
+<ul>
+<li><strong>Centrifuged Whole Blood Composition:</strong> Anticoagulated blood separates into plasma (~55%), buffy coat (&lt;1%), and packed erythrocytes (~45%).</li>
+<li><strong>Matrix Integrity (Plasma vs. Serum):</strong> Plasma contains functional coagulation proteins (fibrinogen) and is required for hematology and hemostasis; serum lacks coagulation factors because they are consumed during clotting.</li>
+<li><strong>Absolute Count Calculation:</strong> Always calculate absolute cell counts by multiplying the total WBC count by the relative cell percentage ($\text{Absolute Count} = \text{Total WBC} \times \text{Relative} \text{ fraction}$). Absolute counts provide true quantitative evaluations of cellular elevations or deficiencies.</li>
+<li><strong>Pediatric Relative Inversion:</strong> Normal adult differential counts are dominated by segmented neutrophils (50%–70%), whereas normal pediatric differentials show a inverted predominance of lymphocytes (50%–70%).</li>
+<li><strong>Internal Reference Standard:</strong> The nucleus of a normal, resting mature lymphocyte is approximately $6\text{--}8\ \mu\text{m}$ in diameter—the exact size of a normal mature erythrocyte—making it an ideal internal size benchmark when evaluating red cell morphology microscopically.</li>
+</ul>
+<hr />
+<h1 id="hematopoiesis-sites">Hematopoiesis Sites</h1>
+<h2 id="summary-clinical-synthesis_1">Summary &amp; Clinical Synthesis</h2>
+<p>Hematopoiesis is the highly regulated, dynamic process of blood cell production and development within tissue. It encompasses distinct developmental pathways including erythropoiesis (red blood cell production), leukopoiesis (white blood cell production), and thrombopoiesis (platelet production). Anatomically, the sites of hematopoiesis undergo precise spatio-temporal transitions throughout human development: progressing from early embryonic non-stem-cell-derived primitive erythropoiesis in the yolk sac, through the aorta-gonads-mesonephros (AGM) system, transitioning to the fetal liver and spleen during the hepatic phase, and ultimately establishing permanent medullary production within the bone marrow cavity during late gestation and post-natal life.</p>
+<p>In post-natal adults, active hematopoietic tissue (red marrow) becomes restricted to the axial skeleton (pelvis, vertebrae, sternum, and ribs), while distal long bones undergo fatty metamorphosis. Consequently, the posterior iliac crest serves as the primary anatomical collection site for diagnostic bone marrow aspirates and core biopsies. Within the bone marrow cavity—situated between the trabeculae of spongy bone—developing hematopoietic cells reside in specialized microenvironmental micro-niches supported by a complex 3D stromal cell meshwork composed of macrophages, reticular cells (fibroblasts), adipocytes, osteoblasts, and osteoclasts.</p>
+<p>The marrow microenvironment is organized into two primary functional compartments:</p>
+<ul>
+<li><strong>Vascular Compartment:</strong> Facilitates nutrient delivery, cytokine transport, and regulated cell egress driven by soluble factors such as G-CSF, GM-CSF, and chemokines into vascular sinuses.</li>
+<li><strong>Endosteal Compartment:</strong> Borders the inner bone surface, housing hematopoietic stem cells (HSCs) and bone-remodeling machinery.</li>
+</ul>
+<p>Pathological conditions perturb normal medullary hematopoiesis. Normal marrow cellularity exhibits an inverse linear relationship with age ($\text{Adipocyte Volume \%} = \text{Age} \pm 10\%$). Deviations present as either <strong>hyperplasia</strong> (excessive normal cell production triggered by acute blood loss, chronic hemolytic anemia, or leukemic transformation) or <strong>hypoplasia</strong> (depressed cell production due to toxin exposure, chemical damage, or genetic failure). When the bone marrow is compromised or unable to meet systemic physiological demands, <strong>extramedullary hematopoiesis</strong> is reactivated in secondary organs such as the liver and spleen. </p>
+<p>Secondary lymphoid tissues (thymus, spleen, and lymph nodes) play critical complementary roles:</p>
+<ul>
+<li>The <strong>thymus</strong> drives T-lymphocyte selection and maturation prior to post-pubertal involution.</li>
+<li>The <strong>spleen</strong> utilizes its reticuloendothelial system (RES) slow-transit pathway for critical blood filtration—executing red blood cell <strong>culling</strong> (destruction of senescent cells) and <strong>pitting</strong> (removal of inclusions/antibodies without cell lysis)—while storing one-third ($\frac{1}{3}$) of total platelet mass.</li>
+<li>Splenic dysfunction ranges from <strong>hypersplenism</strong> (exaggerated cell sequestration and destruction resulting in multi-lineage cytopenias) to <strong>autosplenectomy</strong> (progressive ischemic necrosis and fibrous atrophy resulting in <strong>hyposplenism</strong>, classically seen in sickle cell anemia due to vaso-occlusion in acidic, hypoxic, and hypoglycemic microenvironments).</li>
+<li><strong>Lymph nodes</strong> filter lymph fluid and defend against pathogens; their enlargement (<strong>lymphadenopathy</strong>) reflects underlying inflammation, prolonged immune stimulation, or malignant transformation.</li>
+</ul>
+<hr />
+<h2 id="visual-diagrams-comparative-data_1">Visual Diagrams &amp; Comparative Data</h2>
+<h3 id="developmental-timeline-anatomical-transitions-of-hematopoiesis">Developmental Timeline &amp; Anatomical Transitions of Hematopoiesis</h3>
+<div class="mermaid" data-original-source="flowchart TD
+        subgraph YolkSacPhase [&quot;Yolk Sac Phase (18 Days - 3 Months)&quot;]
+                direction TD
+                YS[&quot;Yolk Sac: Primitive Erythropoiesis (Non-HSC derived)&quot;]
+                AGM[&quot;AGM System: Onset of Definitive Erythropoiesis (HSC derived)&quot;]
+                YS --&gt; AGM
+        end
+
+        subgraph HepaticPhase [&quot;Hepatic Phase (3 Months - 6 Months)&quot;]
+                direction TD
+                LIV[&quot;Liver: Primary Hematopoietic Site (Erythrocytes)&quot;]
+                SEC1[&quot;Secondary Sites: Spleen, Kidneys, Thymus, Lymph Nodes&quot;]
+                LIV &lt;--&gt; SEC1
+        end
+
+        subgraph MedullaryPhase [&quot;Medullary Phase (6 Months - Birth)&quot;]
+                direction TD
+                BM_Fetal[&quot;Bone Marrow: Primary Production Site&quot;]
+                THY_Fetal[&quot;Thymus: Fetal T-cell Maturation&quot;]
+                OTH_Fetal[&quot;Spleen &amp; Lymph Nodes: B-cell Differentiation&quot;]
+                BM_Fetal &lt;--&gt; THY_Fetal --- OTH_Fetal
+        end
+
+        subgraph PostNatalPhase [&quot;Post-Natal Phase (&amp;gt; Birth)&quot;]
+                direction TD
+                BM_Adult[&quot;Bone Marrow (Axial Skeleton): Sole Primary Site for All Lines&quot;]
+                SEC_Adult[&quot;Secondary Lymphoid Organs: Thymus, Spleen, Lymph Nodes (Lymphoid Activation)&quot;]
+                BM_Adult --&gt; SEC_Adult
+        end
+
+        AGM --&gt; LIV
+        LIV --&gt; BM_Fetal
+        BM_Fetal --&gt; BM_Adult" data-original-code="flowchart TD
+        subgraph YolkSacPhase [&quot;Yolk Sac Phase (18 Days - 3 Months)&quot;]
+                direction TD
+                YS[&quot;Yolk Sac: Primitive Erythropoiesis (Non-HSC derived)&quot;]
+                AGM[&quot;AGM System: Onset of Definitive Erythropoiesis (HSC derived)&quot;]
+                YS --&gt; AGM
+        end
+
+        subgraph HepaticPhase [&quot;Hepatic Phase (3 Months - 6 Months)&quot;]
+                direction TD
+                LIV[&quot;Liver: Primary Hematopoietic Site (Erythrocytes)&quot;]
+                SEC1[&quot;Secondary Sites: Spleen, Kidneys, Thymus, Lymph Nodes&quot;]
+                LIV &lt;--&gt; SEC1
+        end
+
+        subgraph MedullaryPhase [&quot;Medullary Phase (6 Months - Birth)&quot;]
+                direction TD
+                BM_Fetal[&quot;Bone Marrow: Primary Production Site&quot;]
+                THY_Fetal[&quot;Thymus: Fetal T-cell Maturation&quot;]
+                OTH_Fetal[&quot;Spleen &amp; Lymph Nodes: B-cell Differentiation&quot;]
+                BM_Fetal &lt;--&gt; THY_Fetal --- OTH_Fetal
+        end
+
+        subgraph PostNatalPhase [&quot;Post-Natal Phase (&amp;gt; Birth)&quot;]
+                direction TD
+                BM_Adult[&quot;Bone Marrow (Axial Skeleton): Sole Primary Site for All Lines&quot;]
+                SEC_Adult[&quot;Secondary Lymphoid Organs: Thymus, Spleen, Lymph Nodes (Lymphoid Activation)&quot;]
+                BM_Adult --&gt; SEC_Adult
+        end
+
+        AGM --&gt; LIV
+        LIV --&gt; BM_Fetal
+        BM_Fetal --&gt; BM_Adult">
+flowchart TD
+        subgraph YolkSacPhase ["Yolk Sac Phase (18 Days - 3 Months)"]
+                direction TD
+                YS["Yolk Sac: Primitive Erythropoiesis (Non-HSC derived)"]
+                AGM["AGM System: Onset of Definitive Erythropoiesis (HSC derived)"]
+                YS --> AGM
+        end
+
+        subgraph HepaticPhase ["Hepatic Phase (3 Months - 6 Months)"]
+                direction TD
+                LIV["Liver: Primary Hematopoietic Site (Erythrocytes)"]
+                SEC1["Secondary Sites: Spleen, Kidneys, Thymus, Lymph Nodes"]
+                LIV <--> SEC1
+        end
+
+        subgraph MedullaryPhase ["Medullary Phase (6 Months - Birth)"]
+                direction TD
+                BM_Fetal["Bone Marrow: Primary Production Site"]
+                THY_Fetal["Thymus: Fetal T-cell Maturation"]
+                OTH_Fetal["Spleen & Lymph Nodes: B-cell Differentiation"]
+                BM_Fetal <--> THY_Fetal --- OTH_Fetal
+        end
+
+        subgraph PostNatalPhase ["Post-Natal Phase (&gt; Birth)"]
+                direction TD
+                BM_Adult["Bone Marrow (Axial Skeleton): Sole Primary Site for All Lines"]
+                SEC_Adult["Secondary Lymphoid Organs: Thymus, Spleen, Lymph Nodes (Lymphoid Activation)"]
+                BM_Adult --> SEC_Adult
+        end
+
+        AGM --> LIV
+        LIV --> BM_Fetal
+        BM_Fetal --> BM_Adult
+</div>
+
+<hr />
+<h3 id="bone-marrow-microenvironmental-compartments-niches">Bone Marrow Microenvironmental Compartments &amp; Niches</h3>
+<div class="mermaid" data-original-source="flowchart LR
+                subgraph EndostealComp [&quot;Endosteal Compartment&quot;]
+                        BoneSurf[&quot;Inner Bone Surface&quot;]
+                        Remodel[&quot;Bone Remodeling Cells&quot;]
+                        HSC_Endo[&quot;HSC Pool&quot;]
+                        BoneSurf &lt;--&gt; Remodel --- HSC_Endo
+                end
+
+                        VascStruct[&quot;Arteries, Veins &amp; Vascular Sinuses&quot;]
+                        StromalNet[&quot;3D Stromal Meshwork (Cytokines &amp; Scaffolding)&quot;]
+
+                        subgraph Niches [&quot;Hematopoietic Niches&quot;]
+                                ErythNiche[&quot;Erythroid Niche: Erythroblastic Islands (25-30% cells, near venous sinuses)&quot;]
+                                MyelNiche[&quot;Myeloid Niche: Nests near trabeculae &amp; arterioles&quot;]
+                                LymphNiche[&quot;Lymphoid Niche: Aggregates near arterioles&quot;]
+                                MegaNiche[&quot;Megakaryocytic Niche: Polyploid cells adjacent to vascular sinuses&quot;]
+                        end
+
+                        VascStruct &lt;--&gt; StromalNet
+                        StromalNet &lt;--&gt; ErythNiche
+                        StromalNet &lt;--&gt; MyelNiche
+                        StromalNet &lt;--&gt; LymphNiche
+                        StromalNet &lt;--&gt; MegaNiche" data-original-code="flowchart LR
+                subgraph EndostealComp [&quot;Endosteal Compartment&quot;]
+                        BoneSurf[&quot;Inner Bone Surface&quot;]
+                        Remodel[&quot;Bone Remodeling Cells&quot;]
+                        HSC_Endo[&quot;HSC Pool&quot;]
+                        BoneSurf &lt;--&gt; Remodel --- HSC_Endo
+                end
+
+                        VascStruct[&quot;Arteries, Veins &amp; Vascular Sinuses&quot;]
+                        StromalNet[&quot;3D Stromal Meshwork (Cytokines &amp; Scaffolding)&quot;]
+
+                        subgraph Niches [&quot;Hematopoietic Niches&quot;]
+                                ErythNiche[&quot;Erythroid Niche: Erythroblastic Islands (25-30% cells, near venous sinuses)&quot;]
+                                MyelNiche[&quot;Myeloid Niche: Nests near trabeculae &amp; arterioles&quot;]
+                                LymphNiche[&quot;Lymphoid Niche: Aggregates near arterioles&quot;]
+                                MegaNiche[&quot;Megakaryocytic Niche: Polyploid cells adjacent to vascular sinuses&quot;]
+                        end
+
+                        VascStruct &lt;--&gt; StromalNet
+                        StromalNet &lt;--&gt; ErythNiche
+                        StromalNet &lt;--&gt; MyelNiche
+                        StromalNet &lt;--&gt; LymphNiche
+                        StromalNet &lt;--&gt; MegaNiche">
+flowchart LR
+                subgraph EndostealComp ["Endosteal Compartment"]
+                        BoneSurf["Inner Bone Surface"]
+                        Remodel["Bone Remodeling Cells"]
+                        HSC_Endo["HSC Pool"]
+                        BoneSurf <--> Remodel --- HSC_Endo
+                end
+
+                        VascStruct["Arteries, Veins & Vascular Sinuses"]
+                        StromalNet["3D Stromal Meshwork (Cytokines & Scaffolding)"]
+
+                        subgraph Niches ["Hematopoietic Niches"]
+                                ErythNiche["Erythroid Niche: Erythroblastic Islands (25-30% cells, near venous sinuses)"]
+                                MyelNiche["Myeloid Niche: Nests near trabeculae & arterioles"]
+                                LymphNiche["Lymphoid Niche: Aggregates near arterioles"]
+                                MegaNiche["Megakaryocytic Niche: Polyploid cells adjacent to vascular sinuses"]
+                        end
+
+                        VascStruct <--> StromalNet
+                        StromalNet <--> ErythNiche
+                        StromalNet <--> MyelNiche
+                        StromalNet <--> LymphNiche
+                        StromalNet <--> MegaNiche
+</div>
+
+<hr />
+<h3 id="anatomical-phases-of-hematopoiesis-across-human-development">Anatomical Phases of Hematopoiesis Across Human Development</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Gestational / Developmental Phase</th>
+<th style="text-align: left;">Timeframe</th>
+<th style="text-align: left;">Primary Hematopoietic Site(s)</th>
+<th style="text-align: left;">Secondary / Minor Site(s)</th>
+<th style="text-align: left;">Key Biological Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Yolk Sac Phase</strong></td>
+<td style="text-align: left;">18 days – 3 months</td>
+<td style="text-align: left;">Yolk sac</td>
+<td style="text-align: left;">Aorta-gonads-mesonephros (AGM) region</td>
+<td style="text-align: left;">* <strong>Primitive Erythropoiesis:</strong> Produces early erythrocytes &amp; macrophages not derived from HSCs.<br><em> </em><em>AGM transition:</em>* Marks initiation of definitive erythropoiesis from HSCs.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hepatic Phase</strong></td>
+<td style="text-align: left;">3 – 6 months</td>
+<td style="text-align: left;">Liver</td>
+<td style="text-align: left;">Spleen, kidneys, thymus, lymph nodes</td>
+<td style="text-align: left;">* Liver becomes predominant site.<br>* Focuses mainly on erythrocytes; early myeloid and lymphoid development begins.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Medullary Phase</strong></td>
+<td style="text-align: left;">6 months – birth</td>
+<td style="text-align: left;">Bone marrow cavity</td>
+<td style="text-align: left;">Thymus, spleen, lymph nodes</td>
+<td style="text-align: left;">* Bone marrow assumes primary production for all cell lines.<br>* Fetal T cells mature in thymus (genetically distinct from adult T cells).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Post-Natal Phase</strong></td>
+<td style="text-align: left;">&gt; Birth</td>
+<td style="text-align: left;">Bone marrow (Axial skeleton)</td>
+<td style="text-align: left;">Thymus, spleen, lymph nodes</td>
+<td style="text-align: left;">* Marrow is the sole primary organ initiating all blood lines.<br>* Active marrow retreats from distal long bones to pelvis, vertebrae, sternum, and ribs.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="bone-marrow-stromal-microenvironmental-cell-matrix">Bone Marrow Stromal &amp; Microenvironmental Cell Matrix</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Cell Type</th>
+<th style="text-align: left;">Morphological / Visual Features</th>
+<th style="text-align: left;">Primary Microenvironmental Function</th>
+<th style="text-align: left;">Clinical &amp; Histological Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Macrophages</strong></td>
+<td style="text-align: left;">Large mononuclear phagocytes; central position in islands</td>
+<td style="text-align: left;">Phagocytosis of extruded nuclei and debris; cytokine secretion</td>
+<td style="text-align: left;">Forms the core of erythroblastic islands; derived from circulating blood monocytes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reticular Cells</strong></td>
+<td style="text-align: left;">Fibroblastic morphology with branching cytoplasmic processes</td>
+<td style="text-align: left;">Synthesize reticular fiber network providing 3D scaffolding support</td>
+<td style="text-align: left;">Maintains structural integrity of marrow matrix and holds developing cells.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Adipocytes</strong></td>
+<td style="text-align: left;">Large, clear/empty lipid-filled spaces with displaced flat nuclei</td>
+<td style="text-align: left;">Space-occupying storage; dynamic volume control of marrow space</td>
+<td style="text-align: left;">Inversely proportional to cellularity ($\text{Adipocyte \%} = \text{Age} \pm 10\%$).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Osteoblasts</strong></td>
+<td style="text-align: left;">Basophilic cytoplasm, eccentric round nucleus, distinct perinuclear halo</td>
+<td style="text-align: left;">Bone-forming cells; synthesis of collagenous bone matrix</td>
+<td style="text-align: left;">Located near endosteum; halo corresponds to a well-developed Golgi apparatus.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Osteoclasts</strong></td>
+<td style="text-align: left;">Very large, multi-nucleated giant cells</td>
+<td style="text-align: left;">Bone-resorbing cells; breakdown and recycling of bone matrix</td>
+<td style="text-align: left;">Critical for endosteal bone remodeling and maintaining marrow cavity architecture.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="functional-comparison-of-secondary-lymphoid-organs">Functional Comparison of Secondary Lymphoid Organs</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Organ</th>
+<th style="text-align: left;">Primary Physiological Function</th>
+<th style="text-align: left;">Vascular / Transit Pathways</th>
+<th style="text-align: left;">Key Clinical Pathophysiology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Thymus</strong></td>
+<td style="text-align: left;">Maturation and selection of T lymphocytes</td>
+<td style="text-align: left;">Lymphopoietic microvascular network</td>
+<td style="text-align: left;">* Highly developed at birth; undergoes progressive atrophy (involution) post-puberty.<br>* Supplies immunocompetent T cells to secondary tissues.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Spleen</strong></td>
+<td style="text-align: left;">Blood filtration, culling/pitting of RBCs, immune defense</td>
+<td style="text-align: left;">* <strong>Fast transit:</strong> Direct vascular channels.<br><em> </em><em>Slow transit (RES):</em>* Cords lined with macrophages.</td>
+<td style="text-align: left;">* <strong>Plt Storage:</strong> Sequesters $\frac{1}{3}$ total body platelet mass.<br><em> </em><em>Hypersplenism:</em><em> Exaggerated RES activity causing cytopenias.<br></em> <strong>Autosplenectomy:</strong> Sickle cell vaso-occlusion in hypoxic/acidic microenvironments causing fibrous atrophy.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lymph Nodes</strong></td>
+<td style="text-align: left;">Lymph fluid filtration; antigen presentation and defense</td>
+<td style="text-align: left;">Encapsulated lymphatic network along vessel pathways</td>
+<td style="text-align: left;">* Filters pathogens from tissue interstitial lymph.<br><em> </em><em>Lymphadenopathy:</em>* Enlargement due to inflammation, chronic immune activation, or malignancy.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="lecture-slide-breakdowns_1">Lecture Slide Breakdowns</h2>
+<h3 id="developmental-timeline-anatomical-locations-of-hematopoiesis-slides-16">Developmental Timeline &amp; Anatomical Locations of Hematopoiesis (Slides 1–6)</h3>
+<div class="mermaid" data-original-source="flowchart TD
+        subgraph SiteTransition [&quot;Anatomical Migration of Hematopoiesis&quot;]
+                direction TD
+                YS_Site[&quot;18d - 3m: Yolk Sac / AGM&quot;]
+                Hep_Site[&quot;3m - 6m: Fetal Liver&quot;]
+                Med_Site[&quot;6m - Birth: Fetal Bone Marrow&quot;]
+                Adult_Site[&quot;&amp;gt; Birth: Post-Natal Bone Marrow (Axial Skeleton)&quot;]
+
+                YS_Site --&gt; Hep_Site --&gt; Med_Site --&gt; Adult_Site
+        end" data-original-code="flowchart TD
+        subgraph SiteTransition [&quot;Anatomical Migration of Hematopoiesis&quot;]
+                direction TD
+                YS_Site[&quot;18d - 3m: Yolk Sac / AGM&quot;]
+                Hep_Site[&quot;3m - 6m: Fetal Liver&quot;]
+                Med_Site[&quot;6m - Birth: Fetal Bone Marrow&quot;]
+                Adult_Site[&quot;&amp;gt; Birth: Post-Natal Bone Marrow (Axial Skeleton)&quot;]
+
+                YS_Site --&gt; Hep_Site --&gt; Med_Site --&gt; Adult_Site
+        end">
+flowchart TD
+        subgraph SiteTransition ["Anatomical Migration of Hematopoiesis"]
+                direction TD
+                YS_Site["18d - 3m: Yolk Sac / AGM"]
+                Hep_Site["3m - 6m: Fetal Liver"]
+                Med_Site["6m - Birth: Fetal Bone Marrow"]
+                Adult_Site["&gt; Birth: Post-Natal Bone Marrow (Axial Skeleton)"]
+
+                YS_Site --> Hep_Site --> Med_Site --> Adult_Site
+        end
+</div>
+
+<h4 id="detailed-clinical-discussion">Detailed Clinical Discussion:</h4>
+<ul>
+<li><strong>Slide 1 (Title):</strong> Introduces the spatial and temporal localization of hematopoiesis within human tissue.</li>
+<li><strong>Slide 2 (Overview Timeline Graph):</strong> Illustrates the dynamic percentage cellularity curves across prenatal fetal months and postnatal age in years. The transition points demonstrate how fetal survival relies sequentially on different organs, starting with transient embryonic extra-embryonic tissue, shifting to visceral organs, and ultimately locking into the skeletal framework.</li>
+<li><strong>Slide 3 (18 Days – 3 Months / Yolk Sac Phase):</strong><ul>
+<li>Hematopoiesis initiates extra-embryonically within the yolk sac during embryonic development.</li>
+<li><em>Primitive Erythropoiesis:</em> Produces nucleated primitive erythrocytes and early tissue macrophages. These early cells do <strong>not</strong> originate from hematopoietic stem cells (HSCs).</li>
+<li><em>AGM Region:</em> Towards the end of the first trimester, blood production transitions to the intra-embryonic Aorta-Gonads-Mesonephros (AGM) region. This critical shift marks the birth of <strong>definitive erythropoiesis</strong> and the generation of true self-renewing HSCs.</li>
+</ul>
+</li>
+<li><strong>Slide 4 (3 – 6 Months / Hepatic Phase):</strong><ul>
+<li>The fetal liver becomes the dominant organ for hematopoiesis, with active cellular output dedicated predominantly to red blood cell production.</li>
+<li>Concurrently, initial myeloid and lymphoid differentiation begins.</li>
+<li>Secondary activity occurs in other visceral sites including the spleen, kidneys, thymus, and lymph nodes.</li>
+</ul>
+</li>
+<li><strong>Slide 5 (6 Months – Birth / Medullary Phase):</strong><ul>
+<li>The bone marrow cavity opens and becomes the primary medullary site of hematopoiesis, maintaining this role throughout life.</li>
+<li>The thymus matures early fetal T lymphocytes, which possess unique genetic properties distinct from adult T lymphocytes.</li>
+<li>B-lymphocyte differentiation proceeds concurrently across the bone marrow, spleen, and lymph nodes.</li>
+</ul>
+</li>
+<li><strong>Slide 6 (Post-Natal / &gt; Birth):</strong><ul>
+<li>Bone marrow becomes the sole primary organ for the origin and primary development of all cell lines.</li>
+<li>Later lymphoid expansion and antigen-dependent development continue in secondary lymphoid organs: the thymus, spleen, and lymph nodes.</li>
+<li><em>Anatomical Shift in Adults:</em> While long bones (femur and tibia) are highly active in infants and young children, their active red marrow undergoes progressive fatty replacement (yellow marrow) by early adulthood. In adults (ages 20–70+), hematopoiesis becomes concentrated in axial flat bones: the pelvis, vertebrae, sternum, and ribs. </li>
+<li><em>Diagnostic Implication:</em> Due to its accessibility and high content of active red marrow, the <strong>posterior iliac crest</strong> of the pelvis is the gold-standard anatomical target for clinical bone marrow aspirate and core biopsy procedures.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="primary-vs-secondary-hematopoietic-organs-tissue-differentiation-slide-7">Primary vs. Secondary Hematopoietic Organs &amp; Tissue Differentiation (Slide 7)</h3>
+<div class="mermaid" data-original-source="flowchart TD
+        subgraph PrimaryTissues [&quot;Primary Hematopoietic Tissues&quot;]
+                direction TD
+                BM[&quot;Bone Marrow&quot;]
+                THY[&quot;Thymus&quot;]
+        end
+
+        subgraph SecondaryTissues [&quot;Secondary Lymphoid Tissues&quot;]
+                direction TD
+                SPL[&quot;Spleen&quot;]
+                LN[&quot;Lymph Nodes&quot;]
+        end
+
+        BM --&gt; Myeloids[&quot;Myeloid Lineage&quot;]
+        BM --&gt; Erythroids[&quot;Erythroid Lineage&quot;]
+        BM --&gt; EarlyLymph[&quot;Early Lymphoid Progenitors (1st Stage)&quot;]
+
+        EarlyLymph --&gt;|&quot;Immuno-incompetent Cells&quot;| B_Cell_Path[&quot;B-Cell Maturation (BM)&quot;]
+        EarlyLymph --&gt;|&quot;Immuno-incompetent Cells&quot;| T_Cell_Path[&quot;T-Cell Maturation (Thymus - 2nd Stage)&quot;]
+
+        B_Cell_Path --&gt; SPL
+        B_Cell_Path --&gt; LN
+        T_Cell_Path --&gt; SPL
+        T_Cell_Path --&gt; LN
+
+        SPL --&gt; CompCells[&quot;Competent Effector &amp; Memory B / T Cells&quot;]
+        LN --&gt; CompCells" data-original-code="flowchart TD
+        subgraph PrimaryTissues [&quot;Primary Hematopoietic Tissues&quot;]
+                direction TD
+                BM[&quot;Bone Marrow&quot;]
+                THY[&quot;Thymus&quot;]
+        end
+
+        subgraph SecondaryTissues [&quot;Secondary Lymphoid Tissues&quot;]
+                direction TD
+                SPL[&quot;Spleen&quot;]
+                LN[&quot;Lymph Nodes&quot;]
+        end
+
+        BM --&gt; Myeloids[&quot;Myeloid Lineage&quot;]
+        BM --&gt; Erythroids[&quot;Erythroid Lineage&quot;]
+        BM --&gt; EarlyLymph[&quot;Early Lymphoid Progenitors (1st Stage)&quot;]
+
+        EarlyLymph --&gt;|&quot;Immuno-incompetent Cells&quot;| B_Cell_Path[&quot;B-Cell Maturation (BM)&quot;]
+        EarlyLymph --&gt;|&quot;Immuno-incompetent Cells&quot;| T_Cell_Path[&quot;T-Cell Maturation (Thymus - 2nd Stage)&quot;]
+
+        B_Cell_Path --&gt; SPL
+        B_Cell_Path --&gt; LN
+        T_Cell_Path --&gt; SPL
+        T_Cell_Path --&gt; LN
+
+        SPL --&gt; CompCells[&quot;Competent Effector &amp; Memory B / T Cells&quot;]
+        LN --&gt; CompCells">
+flowchart TD
+        subgraph PrimaryTissues ["Primary Hematopoietic Tissues"]
+                direction TD
+                BM["Bone Marrow"]
+                THY["Thymus"]
+        end
+
+        subgraph SecondaryTissues ["Secondary Lymphoid Tissues"]
+                direction TD
+                SPL["Spleen"]
+                LN["Lymph Nodes"]
+        end
+
+        BM --> Myeloids["Myeloid Lineage"]
+        BM --> Erythroids["Erythroid Lineage"]
+        BM --> EarlyLymph["Early Lymphoid Progenitors (1st Stage)"]
+
+        EarlyLymph -->|"Immuno-incompetent Cells"| B_Cell_Path["B-Cell Maturation (BM)"]
+        EarlyLymph -->|"Immuno-incompetent Cells"| T_Cell_Path["T-Cell Maturation (Thymus - 2nd Stage)"]
+
+        B_Cell_Path --> SPL
+        B_Cell_Path --> LN
+        T_Cell_Path --> SPL
+        T_Cell_Path --> LN
+
+        SPL --> CompCells["Competent Effector & Memory B / T Cells"]
+        LN --> CompCells
+</div>
+
+<h4 id="detailed-clinical-discussion_1">Detailed Clinical Discussion:</h4>
+<ul>
+<li><strong>Primary (Central) Tissues:</strong> Comprise the bone marrow and thymus. The bone marrow generates all early precursor lineages: myeloids, erythroids, megakaryocytes, and early uncommitted lymphoids (1st stage). These early lymphoid precursors exit the primary marrow environment as <strong>immuno-incompetent cells</strong>.</li>
+<li><strong>Stage 2 Maturation in Thymus:</strong> Early lymphoid progenitors destined for the T-cell lineage migrate to the thymus (acting as a specialized site for lymphoid maturation) where they undergo T-cell receptor maturation and selection.</li>
+<li><strong>Secondary (Peripheral) Tissues:</strong> Include the spleen and lymph nodes. Antigen-dependent proliferation and final differentiation occur here. Immuno-incompetent B and T cells migrate to these secondary sites, where interaction with presented antigens causes them to divide, differentiate, and transform into fully <strong>competent effector and memory cells</strong>.</li>
+</ul>
+<hr />
+<h3 id="structural-organization-compartmentalization-of-bone-marrow-slides-811">Structural Organization &amp; Compartmentalization of Bone Marrow (Slides 8–11)</h3>
+<div class="mermaid" data-original-source="flowchart TD
+        subgraph MarrowArchitecture [&quot;Bone Marrow Architecture&quot;]
+                direction TD
+                SpongyBone[&quot;Spongy Bone Trabeculae&quot;] --&gt; Cavity[&quot;Marrow Cavity&quot;]
+
+                Cavity --&gt; VascComp[&quot;Vascular Compartment&quot;]
+                Cavity --&gt; EndoComp[&quot;Endosteal Compartment&quot;]
+
+                VascComp --&gt; VascElements[&quot;Arteries, Veins &amp; Vascular Sinuses&quot;]
+                VascComp --&gt; StromalCells[&quot;Stromal Cell Meshwork&quot;]
+                VascComp --&gt; HSC_Vasc[&quot;HSCs&quot;]
+
+                EndoComp --&gt; EndoSurf[&quot;Inner Bone Wall&quot;]
+                EndoComp --&gt; Remodeling[&quot;Bone Remodeling Machinery&quot;]
+                EndoComp --&gt; HSC_Endo[&quot;HSCs&quot;]
+
+                StromalCells --&gt; Mac[&quot;Macrophages (Phagocytosis / Cytokines)&quot;]
+                StromalCells --&gt; Retic[&quot;Reticular Cells / Fibroblasts (3D Meshwork)&quot;]
+                StromalCells --&gt; Adipo[&quot;Adipocytes (Fat Storage / Space Regulation)&quot;]
+                StromalCells --&gt; OB[&quot;Osteoblasts (Bone Building)&quot;]
+                StromalCells --&gt; OC[&quot;Osteoclasts (Bone Resorption)&quot;]
+        end" data-original-code="flowchart TD
+        subgraph MarrowArchitecture [&quot;Bone Marrow Architecture&quot;]
+                direction TD
+                SpongyBone[&quot;Spongy Bone Trabeculae&quot;] --&gt; Cavity[&quot;Marrow Cavity&quot;]
+
+                Cavity --&gt; VascComp[&quot;Vascular Compartment&quot;]
+                Cavity --&gt; EndoComp[&quot;Endosteal Compartment&quot;]
+
+                VascComp --&gt; VascElements[&quot;Arteries, Veins &amp; Vascular Sinuses&quot;]
+                VascComp --&gt; StromalCells[&quot;Stromal Cell Meshwork&quot;]
+                VascComp --&gt; HSC_Vasc[&quot;HSCs&quot;]
+
+                EndoComp --&gt; EndoSurf[&quot;Inner Bone Wall&quot;]
+                EndoComp --&gt; Remodeling[&quot;Bone Remodeling Machinery&quot;]
+                EndoComp --&gt; HSC_Endo[&quot;HSCs&quot;]
+
+                StromalCells --&gt; Mac[&quot;Macrophages (Phagocytosis / Cytokines)&quot;]
+                StromalCells --&gt; Retic[&quot;Reticular Cells / Fibroblasts (3D Meshwork)&quot;]
+                StromalCells --&gt; Adipo[&quot;Adipocytes (Fat Storage / Space Regulation)&quot;]
+                StromalCells --&gt; OB[&quot;Osteoblasts (Bone Building)&quot;]
+                StromalCells --&gt; OC[&quot;Osteoclasts (Bone Resorption)&quot;]
+        end">
+flowchart TD
+        subgraph MarrowArchitecture ["Bone Marrow Architecture"]
+                direction TD
+                SpongyBone["Spongy Bone Trabeculae"] --> Cavity["Marrow Cavity"]
+
+                Cavity --> VascComp["Vascular Compartment"]
+                Cavity --> EndoComp["Endosteal Compartment"]
+
+                VascComp --> VascElements["Arteries, Veins & Vascular Sinuses"]
+                VascComp --> StromalCells["Stromal Cell Meshwork"]
+                VascComp --> HSC_Vasc["HSCs"]
+
+                EndoComp --> EndoSurf["Inner Bone Wall"]
+                EndoComp --> Remodeling["Bone Remodeling Machinery"]
+                EndoComp --> HSC_Endo["HSCs"]
+
+                StromalCells --> Mac["Macrophages (Phagocytosis / Cytokines)"]
+                StromalCells --> Retic["Reticular Cells / Fibroblasts (3D Meshwork)"]
+                StromalCells --> Adipo["Adipocytes (Fat Storage / Space Regulation)"]
+                StromalCells --> OB["Osteoblasts (Bone Building)"]
+                StromalCells --> OC["Osteoclasts (Bone Resorption)"]
+        end
+</div>
+
+<h4 id="detailed-clinical-discussion_2">Detailed Clinical Discussion:</h4>
+<ul>
+<li><strong>Slide 8 (Bone Marrow Structure &amp; Biopsy):</strong> The bone marrow is an intricate tissue located within the scaffolding cavities between the trabeculae of spongy bone. The accompanying clinical schematic shows the insertion of a bone marrow biopsy needle into the posterior iliac crest, where the needle penetrates through the cortical outer layer into the trabecular space to harvest aspirate fluid and intact core tissue.</li>
+<li><strong>Slide 9 (Compartmentalization):</strong><ul>
+<li><em>Vascular Compartment:</em> Formed by nutrient arteries, distributing veins, and specialized thin-walled vascular sinuses. It houses stromal support cells and hematopoietic stem cells, providing the transport network for nutrient supply, growth factor delivery, and mature cell passage into circulation.</li>
+<li><em>Endosteal Compartment:</em> The biological zone directly interfacing with the inner bone surface. It anchors a subpopulation of quiescent HSCs and contains active bone-remodeling machinery.</li>
+</ul>
+</li>
+<li><strong>Slide 10 (Stromal Meshwork Functions):</strong> Stromal cells synthesize an interactive 3D scaffolding network and continuously secrete paracrine cytokines that maintain the self-renewing HSC pool and guide lineage commitment:<ul>
+<li><em>Macrophages:</em> Engage in phagocytosis of extruded nuclei, cellular fragments, and apoptotic cells, while secreting regulatory cytokines. Monocyte-derived.</li>
+<li><em>Reticular Cells (Fibroblasts):</em> Produce reticular collagen fibers that construct the underlying structural scaffolding of the marrow space.</li>
+<li><em>Adipocytes:</em> Store neutral fat; act as dynamic space-filling cells that contract or expand to adjust available hematopoietic volume.</li>
+<li><em>Osteoblasts:</em> Bone-forming cells derived from mesenchymal precursors responsible for bone matrix synthesis.</li>
+<li><em>Osteoclasts:</em> Multinucleated cells responsible for enzymatic breakdown and recycling of mineralized bone.</li>
+</ul>
+</li>
+<li><strong>Slide 11 (Stromal Cell Histology):</strong><ul>
+<li><em>Adipocytes:</em> Appear in tissue section micrographs as large, optically clear, hexagonal or rounded empty spaces because lipid drops wash out during routine histological processing.</li>
+<li><em>Osteoblasts:</em> Display characteristic diagnostic morphology under oil immersion light microscopy: abundant deeply basophilic cytoplasm, an eccentric round nucleus, and a prominent, pale <strong>perinuclear halo</strong> (representing the actively synthesizing Golgi apparatus, highlighted by arrows on the slide image).</li>
+<li><em>Osteoclasts:</em> Morphologically identified as massive multinucleated giant cells with granular cytoplasm involved in bone matrix resorption.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="microenvironmental-niches-cell-egress-in-bone-marrow-slides-1216">Microenvironmental Niches &amp; Cell Egress in Bone Marrow (Slides 12–16)</h3>
+<div class="mermaid" data-original-source="flowchart LR
+                subgraph ErythNiche [&quot;Erythroid Niche&quot;]
+                        EI[&quot;Erythroblastic Island&quot;]
+                        Mac_C[&quot;Central Macrophage&quot;] &lt;--&gt; Precursors[&quot;Developing Nucleated RBC Precursors&quot;]
+                        Mac_C --&gt;|&quot;Cytokines &amp; Extruded Nuclei Phagocytosis&quot;| Precursors
+                end
+
+                subgraph MyelNiche [&quot;Myeloid Niche&quot;]
+                        Nests[&quot;Precursor Nests&quot;] &lt;--&gt; Loc1[&quot;Near Trabeculae &amp; Arterioles (Away from Sinuses)&quot;]
+                end
+
+                subgraph LymphNiche [&quot;Lymphoid Niche&quot;]
+                        Aggs[&quot;Lymphoid Aggregates&quot;] &lt;--&gt; Loc2[&quot;Near Arterioles&quot;]
+                        Aggs --&gt;|Progenitors| Thymus[&quot;Thymus (T Cells)&quot;]
+                        Aggs --&gt;|Progenitors| BM_B[&quot;Marrow (B Cells)&quot;]
+                        BM_B --&gt;|Activated B Cells Return| PC[&quot;Plasma Cells (Antibody Secretion)&quot;]
+                end
+
+                subgraph MegaNiche [&quot;Megakaryocytic Niche&quot;]
+                        MK[&quot;Megakaryocyte (Polyploid)&quot;] &lt;--&gt; Loc3[&quot;Adjacent to Vascular Sinus Wall&quot;]
+                        MK --&gt;|&quot;Proplatelet Fragmenting Extensions&quot;| SinusLumen[&quot;Vascular Sinus Lumen&quot;]
+                end
+
+                subgraph EgressControl [&quot;Cell Egress Factors&quot;]
+                        GCSF[&quot;G-CSF&quot;]
+                        GMCSF[&quot;GM-CSF&quot;]
+                        Chemok[&quot;Chemokines&quot;]
+                        GCSF --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                        GMCSF --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                        Chemok --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                end" data-original-code="flowchart LR
+                subgraph ErythNiche [&quot;Erythroid Niche&quot;]
+                        EI[&quot;Erythroblastic Island&quot;]
+                        Mac_C[&quot;Central Macrophage&quot;] &lt;--&gt; Precursors[&quot;Developing Nucleated RBC Precursors&quot;]
+                        Mac_C --&gt;|&quot;Cytokines &amp; Extruded Nuclei Phagocytosis&quot;| Precursors
+                end
+
+                subgraph MyelNiche [&quot;Myeloid Niche&quot;]
+                        Nests[&quot;Precursor Nests&quot;] &lt;--&gt; Loc1[&quot;Near Trabeculae &amp; Arterioles (Away from Sinuses)&quot;]
+                end
+
+                subgraph LymphNiche [&quot;Lymphoid Niche&quot;]
+                        Aggs[&quot;Lymphoid Aggregates&quot;] &lt;--&gt; Loc2[&quot;Near Arterioles&quot;]
+                        Aggs --&gt;|Progenitors| Thymus[&quot;Thymus (T Cells)&quot;]
+                        Aggs --&gt;|Progenitors| BM_B[&quot;Marrow (B Cells)&quot;]
+                        BM_B --&gt;|Activated B Cells Return| PC[&quot;Plasma Cells (Antibody Secretion)&quot;]
+                end
+
+                subgraph MegaNiche [&quot;Megakaryocytic Niche&quot;]
+                        MK[&quot;Megakaryocyte (Polyploid)&quot;] &lt;--&gt; Loc3[&quot;Adjacent to Vascular Sinus Wall&quot;]
+                        MK --&gt;|&quot;Proplatelet Fragmenting Extensions&quot;| SinusLumen[&quot;Vascular Sinus Lumen&quot;]
+                end
+
+                subgraph EgressControl [&quot;Cell Egress Factors&quot;]
+                        GCSF[&quot;G-CSF&quot;]
+                        GMCSF[&quot;GM-CSF&quot;]
+                        Chemok[&quot;Chemokines&quot;]
+                        GCSF --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                        GMCSF --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                        Chemok --&gt;|&quot;Regulates Migration Across Endothelium&quot;| SinusLumen
+                end">
+flowchart LR
+                subgraph ErythNiche ["Erythroid Niche"]
+                        EI["Erythroblastic Island"]
+                        Mac_C["Central Macrophage"] <--> Precursors["Developing Nucleated RBC Precursors"]
+                        Mac_C -->|"Cytokines & Extruded Nuclei Phagocytosis"| Precursors
+                end
+
+                subgraph MyelNiche ["Myeloid Niche"]
+                        Nests["Precursor Nests"] <--> Loc1["Near Trabeculae & Arterioles (Away from Sinuses)"]
+                end
+
+                subgraph LymphNiche ["Lymphoid Niche"]
+                        Aggs["Lymphoid Aggregates"] <--> Loc2["Near Arterioles"]
+                        Aggs -->|Progenitors| Thymus["Thymus (T Cells)"]
+                        Aggs -->|Progenitors| BM_B["Marrow (B Cells)"]
+                        BM_B -->|Activated B Cells Return| PC["Plasma Cells (Antibody Secretion)"]
+                end
+
+                subgraph MegaNiche ["Megakaryocytic Niche"]
+                        MK["Megakaryocyte (Polyploid)"] <--> Loc3["Adjacent to Vascular Sinus Wall"]
+                        MK -->|"Proplatelet Fragmenting Extensions"| SinusLumen["Vascular Sinus Lumen"]
+                end
+
+                subgraph EgressControl ["Cell Egress Factors"]
+                        GCSF["G-CSF"]
+                        GMCSF["GM-CSF"]
+                        Chemok["Chemokines"]
+                        GCSF -->|"Regulates Migration Across Endothelium"| SinusLumen
+                        GMCSF -->|"Regulates Migration Across Endothelium"| SinusLumen
+                        Chemok -->|"Regulates Migration Across Endothelium"| SinusLumen
+                end
+</div>
+
+<h4 id="detailed-clinical-discussion_3">Detailed Clinical Discussion:</h4>
+<ul>
+<li><strong>Slide 12 (Erythroid Niche):</strong><ul>
+<li>Nucleated erythroid precursors comprise <strong>25% to 30%</strong> of total nucleated bone marrow cells.</li>
+<li>Production is localized directly adjacent to venous sinuses within specialized anatomical units termed <strong>erythroblastic islands</strong>.</li>
+<li>Morphologically, an erythroblastic island consists of a central macrophage surrounded by concentric rings of maturing erythroid precursors (shown in the slide micrograph). The central macrophage supplies essential regulatory cytokines, transfers iron, and phagocytizes extruded pyknotic nuclei as red cells mature into reticulocytes.</li>
+</ul>
+</li>
+<li><strong>Slide 13 (Myeloid Niche):</strong><ul>
+<li>Granulocytic and monocytic precursors are organized into distinct "nests".</li>
+<li>These nests are anatomically situated deep within the marrow cavity, positioned close to bone trabeculae and arterioles, and kept <strong>distant from venous sinuses</strong> to prevent the premature egress of immature, non-functional precursor cells.</li>
+</ul>
+</li>
+<li><strong>Slide 14 (Lymphoid Niche):</strong><ul>
+<li>Lymphoid progenitors develop near arterioles within dense lymphoid aggregates (histological image shown).</li>
+<li>Progenitor fate diverges: some exit to the <strong>Thymus</strong> to differentiate into T lymphocytes; others remain within the <strong>Bone Marrow</strong> to mature into B lymphocytes.</li>
+<li>Peripheral antigen-activated B lymphocytes return to the bone marrow, where they settle as terminally differentiated <strong>plasma cells</strong> dedicated to high-volume antibody production.</li>
+</ul>
+</li>
+<li><strong>Slide 15 (Cell Egress):</strong><ul>
+<li>The release of mature blood cells from the stroma, across the sinusoidal endothelial barrier, and into systemic circulation is tightly regulated by specific soluble growth factors and chemotactic signals:<ul>
+<li><strong>G-CSF</strong> (Granulocyte-Colony Stimulating Factor)</li>
+<li><strong>GM-CSF</strong> (Granulocyte/Monocyte-Colony Stimulating Factor)</li>
+<li><strong>Chemokines</strong> (chemotactic signaling proteins controlling transmigration)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Slide 16 (Megakaryocytic Niche):</strong><ul>
+<li>Megakaryocytes are the largest hematopoietic cells in the marrow cavity, characterized by multi-lobed nuclei and high <strong>polyploidy</strong> (DNA replication without nuclear division).</li>
+<li>They position themselves directly against the outer surface of vascular sinusoidal walls.</li>
+<li>Platelets are formed when the megakaryocyte projects cytoplasm extensions (proplatelet processes) into the sinus lumen, where shear blood flow forces fragment the cytoplasm into functional circulating platelets.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="bone-marrow-cellularity-medullary-and-extramedullary-kinetics-slides-1718">Bone Marrow Cellularity, Medullary, and Extramedullary Kinetics (Slides 17–18)</h3>
+<div class="mermaid" data-original-source="flowchart TD
+                subgraph Formulas [&quot;Cellularity Calculations&quot;]
+                        direction TD
+                        AdiposeEq[&quot;Adipocyte Volume (%) = Age +/- 10%&quot;]
+                        CellEq[&quot;Nucleated Cell Volume (%) = 100% - (Age +/- 10%)&quot;]
+                end
+
+                subgraph Pathologies [&quot;Cellularity Pathology&quot;]
+                        direction TD
+                        Hyper[&quot;Hyperplasia: Excess Normal Cell Production&quot;]
+                        Hypo[&quot;Hypoplasia: Decreased Cell Production&quot;]
+
+                        Hyper &lt;--&gt; CauseHyper[&quot;Triggers: Acute Blood Loss, Chronic Hemolytic Anemia, Leukemia&quot;]
+                        Hypo &lt;--&gt; CauseHypo[&quot;Triggers: Chemical Exposure, Environmental Toxins, Genetics&quot;]
+                end
+
+                subgraph SiteTypes [&quot;Location Types&quot;]
+                        direction TD
+                        Med[&quot;Medullary Hematopoiesis: Normal Blood Cell Production Inside BM Cavity&quot;]
+                        ExtraMed[&quot;Extramedullary Hematopoiesis: Blood Cell Production Outside BM (Liver, Spleen)&quot;]
+
+                        ExtraMed --&gt;|Occurs When| FailBM[&quot;BM Fails to Meet Physiologic Need&quot;]
+                end" data-original-code="flowchart TD
+                subgraph Formulas [&quot;Cellularity Calculations&quot;]
+                        direction TD
+                        AdiposeEq[&quot;Adipocyte Volume (%) = Age +/- 10%&quot;]
+                        CellEq[&quot;Nucleated Cell Volume (%) = 100% - (Age +/- 10%)&quot;]
+                end
+
+                subgraph Pathologies [&quot;Cellularity Pathology&quot;]
+                        direction TD
+                        Hyper[&quot;Hyperplasia: Excess Normal Cell Production&quot;]
+                        Hypo[&quot;Hypoplasia: Decreased Cell Production&quot;]
+
+                        Hyper &lt;--&gt; CauseHyper[&quot;Triggers: Acute Blood Loss, Chronic Hemolytic Anemia, Leukemia&quot;]
+                        Hypo &lt;--&gt; CauseHypo[&quot;Triggers: Chemical Exposure, Environmental Toxins, Genetics&quot;]
+                end
+
+                subgraph SiteTypes [&quot;Location Types&quot;]
+                        direction TD
+                        Med[&quot;Medullary Hematopoiesis: Normal Blood Cell Production Inside BM Cavity&quot;]
+                        ExtraMed[&quot;Extramedullary Hematopoiesis: Blood Cell Production Outside BM (Liver, Spleen)&quot;]
+
+                        ExtraMed --&gt;|Occurs When| FailBM[&quot;BM Fails to Meet Physiologic Need&quot;]
+                end">
+flowchart TD
+                subgraph Formulas ["Cellularity Calculations"]
+                        direction TD
+                        AdiposeEq["Adipocyte Volume (%) = Age +/- 10%"]
+                        CellEq["Nucleated Cell Volume (%) = 100% - (Age +/- 10%)"]
+                end
+
+                subgraph Pathologies ["Cellularity Pathology"]
+                        direction TD
+                        Hyper["Hyperplasia: Excess Normal Cell Production"]
+                        Hypo["Hypoplasia: Decreased Cell Production"]
+
+                        Hyper <--> CauseHyper["Triggers: Acute Blood Loss, Chronic Hemolytic Anemia, Leukemia"]
+                        Hypo <--> CauseHypo["Triggers: Chemical Exposure, Environmental Toxins, Genetics"]
+                end
+
+                subgraph SiteTypes ["Location Types"]
+                        direction TD
+                        Med["Medullary Hematopoiesis: Normal Blood Cell Production Inside BM Cavity"]
+                        ExtraMed["Extramedullary Hematopoiesis: Blood Cell Production Outside BM (Liver, Spleen)"]
+
+                        ExtraMed -->|Occurs When| FailBM["BM Fails to Meet Physiologic Need"]
+                end
+</div>
+
+<h4 id="detailed-clinical-discussion_4">Detailed Clinical Discussion:</h4>
+<ul>
+<li>
+<p><strong>Slide 17 (Cell Concentration &amp; Cellularity):</strong></p>
+<ul>
+<li><strong>Marrow Cellularity Definition:</strong> The ratio of active hematopoietic (nucleated) precursor cells to inactive fat (adipocytes) within the marrow cavity.</li>
+<li>
+<p><strong>Age-Dependent Formulas:</strong><br />
+    $$\text{Adipocyte Volume (\%)} = \text{Age} \pm 10\%$$<br />
+    $$\text{Nucleated Cell Volume (\%)} = 100\% - (\text{Age} \pm 10\%)$$</p>
+</li>
+<li>
+<p><em>Clinical Examples:</em></p>
+<ul>
+<li>In a <strong>10-year-old child</strong>, expected normal cellularity is <strong>80% to 100%</strong> nucleated cells (10% $\pm$ 10% fat).</li>
+<li>In a <strong>90-year-old geriatric patient</strong>, expected normal cellularity is <strong>0% to 20%</strong> nucleated cells (90% $\pm$ 10% fat).</li>
+</ul>
+</li>
+<li><strong>Hyperplasia:</strong> An abnormal, physiological compensatory expansion or neoplastic proliferation of precursor cells relative to patient age. Caused by severe physiological stress (acute blood loss, chronic hemolytic anemia) or primary hematologic malignancies (leukemia).</li>
+<li><strong>Hypoplasia:</strong> A significant pathological depletion of nucleated cell lines replaced by fat. Caused by cytotoxic chemical exposure, environmental toxins, radiation, or genetic marrow failure syndromes.</li>
+<li><strong>Slide 18 (Medullary vs. Extramedullary Sites):</strong></li>
+<li><strong>Medullary Hematopoiesis:</strong> Refers to normal blood cell production contained within the anatomical boundaries of the bone marrow.</li>
+<li><strong>Extramedullary Hematopoiesis:</strong> Production of blood cells outside the bone marrow cavity, occurring predominantly in the <strong>liver</strong> and <strong>spleen</strong> (illustrated in slide graphics).</li>
+<li><em>Pathophysiological Trigger:</em> Extramedullary hematopoiesis is reactivated in post-natal life when medullary bone marrow becomes fibrotic, damaged, or incapable of meeting the body's physiological demand for blood cells.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="secondary-lymphoid-tissues-splenic-pathophysiology-slides-1922">Secondary Lymphoid Tissues &amp; Splenic Pathophysiology (Slides 19–22)</h3>
+<div class="mermaid" data-original-source="flowchart TD
+                subgraph ThymusOrg [&quot;Thymus&quot;]
+                        direction TD
+                        T_Mat[&quot;T-Lymphocyte Maturation &amp; Selection&quot;]
+                        Atrophy[&quot;Involutes Post-Puberty&quot;]
+                        T_Mat --&gt; Atrophy
+                end
+
+                subgraph SpleenOrg [&quot;Spleen&quot;]
+                        direction TD
+                        FastPath[&quot;Fast Transit Pathway: Direct Vascular Channels&quot;]
+                        SlowPath[&quot;Slow Transit Pathway (RES): Macrophage-Lined Cords&quot;]
+
+                        SlowPath --&gt; Cull[&quot;Culling: RBC Destruction / Removal&quot;]
+                        SlowPath --&gt; Pit[&quot;Pitting: Removal of RBC Inclusions without Lysis&quot;]
+                        SlowPath --&gt; PltStore[&quot;Platelet Storage: Holds 1/3 Body Platelet Mass&quot;]
+
+                        SlowPath --&gt; Splenomegaly[&quot;Splenomegaly (Enlargement)&quot;]
+                        Splenomegaly --&gt; Hypersplenism[&quot;Hypersplenism (Exaggerated RES)&quot;]
+                        Hypersplenism --&gt; Cytopenias[&quot;Cytopenias: Anemia, Leukopenia, Thrombocytopenia&quot;]
+
+                        SlowPath --&gt; SickleCell[&quot;Sickle Cell Disease&quot;]
+                        SickleCell --&gt; VasoOcc[&quot;Vaso-occlusion in RES&quot;]
+                        VasoOcc --&gt; MicroEnv[&quot;Acidic, Hypoxic &amp; Hypoglycemic Environment&quot;]
+                        MicroEnv --&gt; AutoSplen[&quot;Autosplenectomy leading to Hyposplenism&quot;]
+                end
+
+                subgraph LNOrg [&quot;Lymph Nodes&quot;]
+                        direction TD
+                        LNFilt[&quot;Filters Pathogens / Foreign Particles from Lymph Fluid&quot;]
+                        LNApathy[&quot;Lymphadenopathy (Node Enlargement)&quot;]
+                        LNApathy &lt;--&gt; LNCauses[&quot;Causes: Inflammation, Prolonged Immune Response, Malignancy&quot;]
+                end" data-original-code="flowchart TD
+                subgraph ThymusOrg [&quot;Thymus&quot;]
+                        direction TD
+                        T_Mat[&quot;T-Lymphocyte Maturation &amp; Selection&quot;]
+                        Atrophy[&quot;Involutes Post-Puberty&quot;]
+                        T_Mat --&gt; Atrophy
+                end
+
+                subgraph SpleenOrg [&quot;Spleen&quot;]
+                        direction TD
+                        FastPath[&quot;Fast Transit Pathway: Direct Vascular Channels&quot;]
+                        SlowPath[&quot;Slow Transit Pathway (RES): Macrophage-Lined Cords&quot;]
+
+                        SlowPath --&gt; Cull[&quot;Culling: RBC Destruction / Removal&quot;]
+                        SlowPath --&gt; Pit[&quot;Pitting: Removal of RBC Inclusions without Lysis&quot;]
+                        SlowPath --&gt; PltStore[&quot;Platelet Storage: Holds 1/3 Body Platelet Mass&quot;]
+
+                        SlowPath --&gt; Splenomegaly[&quot;Splenomegaly (Enlargement)&quot;]
+                        Splenomegaly --&gt; Hypersplenism[&quot;Hypersplenism (Exaggerated RES)&quot;]
+                        Hypersplenism --&gt; Cytopenias[&quot;Cytopenias: Anemia, Leukopenia, Thrombocytopenia&quot;]
+
+                        SlowPath --&gt; SickleCell[&quot;Sickle Cell Disease&quot;]
+                        SickleCell --&gt; VasoOcc[&quot;Vaso-occlusion in RES&quot;]
+                        VasoOcc --&gt; MicroEnv[&quot;Acidic, Hypoxic &amp; Hypoglycemic Environment&quot;]
+                        MicroEnv --&gt; AutoSplen[&quot;Autosplenectomy leading to Hyposplenism&quot;]
+                end
+
+                subgraph LNOrg [&quot;Lymph Nodes&quot;]
+                        direction TD
+                        LNFilt[&quot;Filters Pathogens / Foreign Particles from Lymph Fluid&quot;]
+                        LNApathy[&quot;Lymphadenopathy (Node Enlargement)&quot;]
+                        LNApathy &lt;--&gt; LNCauses[&quot;Causes: Inflammation, Prolonged Immune Response, Malignancy&quot;]
+                end">
+flowchart TD
+                subgraph ThymusOrg ["Thymus"]
+                        direction TD
+                        T_Mat["T-Lymphocyte Maturation & Selection"]
+                        Atrophy["Involutes Post-Puberty"]
+                        T_Mat --> Atrophy
+                end
+
+                subgraph SpleenOrg ["Spleen"]
+                        direction TD
+                        FastPath["Fast Transit Pathway: Direct Vascular Channels"]
+                        SlowPath["Slow Transit Pathway (RES): Macrophage-Lined Cords"]
+
+                        SlowPath --> Cull["Culling: RBC Destruction / Removal"]
+                        SlowPath --> Pit["Pitting: Removal of RBC Inclusions without Lysis"]
+                        SlowPath --> PltStore["Platelet Storage: Holds 1/3 Body Platelet Mass"]
+
+                        SlowPath --> Splenomegaly["Splenomegaly (Enlargement)"]
+                        Splenomegaly --> Hypersplenism["Hypersplenism (Exaggerated RES)"]
+                        Hypersplenism --> Cytopenias["Cytopenias: Anemia, Leukopenia, Thrombocytopenia"]
+
+                        SlowPath --> SickleCell["Sickle Cell Disease"]
+                        SickleCell --> VasoOcc["Vaso-occlusion in RES"]
+                        VasoOcc --> MicroEnv["Acidic, Hypoxic & Hypoglycemic Environment"]
+                        MicroEnv --> AutoSplen["Autosplenectomy leading to Hyposplenism"]
+                end
+
+                subgraph LNOrg ["Lymph Nodes"]
+                        direction TD
+                        LNFilt["Filters Pathogens / Foreign Particles from Lymph Fluid"]
+                        LNApathy["Lymphadenopathy (Node Enlargement)"]
+                        LNApathy <--> LNCauses["Causes: Inflammation, Prolonged Immune Response, Malignancy"]
+                end
+</div>
+
+<h4 id="detailed-clinical-discussion_5">Detailed Clinical Discussion:</h4>
+<ul>
+<li><strong>Slide 19 (Thymus):</strong><ul>
+<li>A primary lymphopoietic organ situated in the anterior mediastinum (highlighted in pink on slide figure).</li>
+<li>Highly developed and active at birth; undergoes progressive fatty atrophy (<strong>involution</strong>) beginning after puberty.</li>
+<li>Serves as the central site for progenitor T-lymphocyte maturation and selection, supplying functional, immunocompetent T cells to the lymph nodes, spleen, and peripheral lymphoid tissues.</li>
+</ul>
+</li>
+<li><strong>Slide 20 (Spleen Structure &amp; RES Functions):</strong><ul>
+<li>Organizes blood flow into two distinct circulatory circuits:<ul>
+<li><em>Fast Transit Pathway:</em> Blood flows rapidly through unhindered vascular channels.</li>
+<li><em>Slow Transit Pathway (Reticuloendothelial System / RES):</em> Blood slowly percolates through narrow splenic cords lined with active macrophages.</li>
+</ul>
+</li>
+<li><strong>Filtration Mechanisms:</strong><ul>
+<li><strong>Culling:</strong> Phagocytic destruction and total removal of old, senescent, or structurally damaged red blood cells.</li>
+<li><strong>Pitting:</strong> Selective excision of intracellular inclusions (e.g., Heinz bodies, Howell-Jolly bodies) or surface-bound antibodies from red cells without destroying the intact erythrocyte membrane.</li>
+</ul>
+</li>
+<li><strong>Platelet Reservoir:</strong> Stores approximately <strong>one-third ($\frac{1}{3}$)</strong> of the body's total platelet mass, which can be dynamically mobilized into systemic circulation during acute injury.</li>
+<li><strong>Immune Defense:</strong> Serves as a major secondary site for antigen presentation, initiating primary and secondary immune responses.</li>
+</ul>
+</li>
+<li><strong>Slide 21 (Splenic Pathology &amp; Surgical Considerations):</strong><ul>
+<li><strong>Splenomegaly:</strong> Physical enlargement of the spleen.</li>
+<li><strong>Hypersplenism:</strong> An exaggeration of normal splenic RES activities, often secondary to splenomegaly. Accelerated sequestration and destruction of circulating blood cells results in clinical <strong>cytopenias</strong> (anemia, leukopenia, thrombocytopenia).</li>
+<li><strong>Splenectomy:</strong> Surgical excision of the spleen. Following removal, the <strong>liver</strong> assumes primary responsibility for blood filtration and erythrocyte culling.</li>
+<li><strong>Autosplenectomy:</strong> A classic, severe complication of <strong>Sickle Cell Disease (SC)</strong>. Sickled, rigid erythrocytes become trapped in the narrow splenic microcirculation, causing recurrent vaso-occlusion and tissue infarction. The resulting localized <strong>acidic, hypoxic, and hypoglycemic microenvironment</strong> drives persistent tissue necrosis, scarring, fibrosis, and total organ atrophy—ultimately producing functional <strong>hyposplenism</strong>.</li>
+</ul>
+</li>
+<li><strong>Slide 22 (Lymph Nodes):</strong><ul>
+<li>Encapsulated, bean-shaped secondary lymphoid organs distributed along lymphatic vessels throughout the body (illustrated on skeleton graphic).</li>
+<li>Act as physical filters to clear foreign particles, cellular debris, and infectious pathogens from interstitial lymph fluid.</li>
+<li><strong>Lymphadenopathy:</strong> The clinical enlargement of one or more lymph nodes.</li>
+<li><em>Etiologies:</em> Localized or systemic inflammation, prolonged immune activation during infection, or primary/metastatic malignant transformation (e.g., lymphoma or carcinoma).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="key-clinical-takeaways_1">Key Clinical Takeaways</h2>
+<ul>
+<li><strong>Anatomical Evolution of Hematopoiesis:</strong> Human blood production shifts systematically from non-HSC primitive erythropoiesis in the yolk sac (18 days–3 months), to HSC-derived definitive erythropoiesis in the AGM system, transitioning to the fetal liver (3–6 months), and ultimately settling in the bone marrow cavity (6 months–birth). Post-natal adult marrow is restricted to the axial skeleton (pelvis, vertebrae, sternum, ribs), with the <strong>posterior iliac crest</strong> serving as the premier diagnostic collection site.</li>
+<li><strong>Age-Dependent Marrow Cellularity Calculations:</strong> Normal bone marrow cellularity varies inversely with age, calculated precisely using $\text{Adipocyte Volume \%} = \text{Age} \pm 10\%$ and $\text{Nucleated Cell Volume \%} = 100\% - (\text{Age} \pm 10\%)$. Deviations manifest as either <strong>hyperplasia</strong> (excessive cell production driven by hemorrhage, hemolysis, or leukemia) or <strong>hypoplasia</strong> (depressed cellular output caused by toxins, chemicals, or genetic failure).</li>
+<li><strong>Microenvironmental Niche Organization:</strong> Bone marrow cells develop within spatially distinct niches: <strong>erythroids</strong> form erythroblastic islands around a central macrophage (25–30% of marrow cells) near venous sinuses; <strong>myeloids</strong> reside in nests near trabeculae and arterioles; <strong>lymphoids</strong> aggregate near arterioles; and polyploid <strong>megakaryocytes</strong> rest directly along vascular sinus walls, fragmenting proplatelet processes directly into the lumen. Soluble factors (<strong>G-CSF</strong>, <strong>GM-CSF</strong>, and <strong>chemokines</strong>) govern cell egress.</li>
+<li><strong>Stromal Cell Identification:</strong> Stromal cells form a 3D structural meshwork and secrete cytokines to maintain the HSC pool. Diagnostically, <strong>osteoblasts</strong> display a characteristic basophilic cytoplasm with an eccentric nucleus and a distinct pale <strong>perinuclear halo</strong> (Golgi apparatus), whereas <strong>osteoclasts</strong> are massive, multinucleated cells responsible for bone resorption.</li>
+<li><strong>Splenic Mechanics &amp; Sickle Cell Autosplenectomy:</strong> The spleen processes blood via fast and slow (RES) pathways. RES macrophages perform red cell <strong>culling</strong> (destruction of old/damaged cells) and <strong>pitting</strong> (removal of inclusions without cell lysis), while storing $\frac{1}{3}$ of systemic platelets. In sickle cell disease, recurrent vaso-occlusion within the <strong>acidic, hypoxic, and hypoglycemic</strong> splenic microenvironment induces progressive ischemic necrosis, fibrosis, and organ atrophy, resulting in <strong>autosplenectomy</strong> and <strong>hyposplenism</strong>.</li>
+</ul>
+<hr />
+<h1 id="hematopoiesis">Hematopoiesis</h1>
+<h2 id="summary-clinical-synthesis_2">Summary &amp; Clinical Synthesis</h2>
+<p>Hematopoiesis is the continuously regulated process of blood cell production designed to maintain tissue homeostasis. To ensure an adequate number of functioning blood cells in systemic circulation, the bone marrow maintains a precise dynamic equilibrium between cell proliferation, lineage differentiation, and programmed cell death (apoptosis). This delicate biological system is controlled by soluble growth factors known as cytokines, which mediate intracellular communication through protein phosphorylation cascades.</p>
+<p>Hematopoietic development follows a strict hierarchy. It begins within a minute population of pluripotential Hematopoietic Stem Cells (HSCs) residing in specialized bone marrow niches. These primitive cells undergo asymmetric division to maintain self-renewal while generating Multipotential Progenitors (MPPs), which transition into the Hematopoietic Progenitor Cell (HPC) compartment. Lineage commitment splits precursors into two principal pathways: the Common Myeloid Progenitor (CMP) line (producing erythrocytes, megakaryocytes/platelets, neutrophils, monocytes, eosinophils, and basophils) and the Common Lymphoid Progenitor (CLP) line (producing T lymphocytes, B lymphocytes, and Natural Killer cells). </p>
+<p>As cells commit and differentiate, they enter the maturing precursor pool—which constitutes over 95% of all nucleated precursor cells in the bone marrow. The earliest morphologically recognizable stage for any lineage is the "blast" (e.g., myeloblast, lymphoblast, pronormoblast, megakaryoblast). Because primitive blasts across different lineages share identical visual characteristics under light microscopy, definitive identification requires immunophenotyping via flow cytometry using Cluster of Differentiation (CD) cell surface markers (such as CD34 for primitive precursors and CD13/CD33 for myeloid commitment). </p>
+<p>Disruptions in cytokine signaling pathways can lead to severe pathological conditions. For instance, a gain-of-function mutation in the <em>JAK2</em> gene ($JAK2\text{ V617F}$) leads to constitutive tyrosine kinase activation within the JAK-STAT pathway, resulting in Erythropoietin (EPO)-independent hyperproliferation of red blood cells in Polycythemia Vera (PV). Clinically, recombinant cytokines such as EPO, G-CSF, and GM-CSF are utilized therapeutically to treat anemias, manage granulocytopenia, and mobilize stem cells for autologous or allogeneic harvesting.</p>
+<hr />
+<h2 id="visual-diagrams-comparative-data_2">Visual Diagrams &amp; Comparative Data</h2>
+<h3 id="hematopoietic-hierarchy-and-lineage-commitment">Hematopoietic Hierarchy and Lineage Commitment</h3>
+<div class="mermaid" data-original-source="graph TD
+        HSC[&quot;Pluripotential HSC (CD34+)&quot;] --&gt; MPP[&quot;Multipotential Progenitor (MPP)&quot;]
+        MPP --&gt; CMP[&quot;Common Myeloid Progenitor (CMP)&quot;]
+        MPP --&gt; CLP[&quot;Common Lymphoid Progenitor (CLP)&quot;]
+
+        CMP --&gt; GMP[&quot;Granulocyte-Monocyte Progenitor (GMP)&quot;]
+        CMP --&gt; MEP[&quot;Megakaryocyte-Erythroid Progenitor (MEP)&quot;]
+        CMP --&gt; CFU_Eo[&quot;CFU-Eo&quot;]
+        CMP --&gt; CFU_Ba[&quot;CFU-Ba&quot;]
+
+        GMP --&gt; CFU_M[&quot;CFU-M&quot;]
+        GMP --&gt; CFU_G[&quot;CFU-G&quot;]
+
+        CFU_M --&gt; Mono[&quot;Monocytes&quot;]
+        CFU_G --&gt; Neut[&quot;Neutrophils&quot;]
+        CFU_Eo --&gt; Eos[&quot;Eosinophils&quot;]
+        CFU_Ba --&gt; Baso[&quot;Basophils&quot;]
+
+        MEP --&gt; BFU_E[&quot;BFU-E / CFU-E&quot;]
+        MEP --&gt; BFU_Mk[&quot;BFU-Mk / CFU-Mk&quot;]
+
+        BFU_E --&gt; RBC[&quot;Erythrocytes (RBCs)&quot;]
+        BFU_Mk --&gt; Plt[&quot;Platelets&quot;]
+
+        CLP --&gt; TNKP[&quot;T / NK Progenitor&quot;]
+        CLP --&gt; CFU_B[&quot;CFU-B&quot;]
+
+        TNKP --&gt; CFU_T[&quot;CFU-T&quot;]
+        TNKP --&gt; CFU_NK[&quot;CFU-NK&quot;]
+
+        CFU_B --&gt; Bcell[&quot;B Lymphocyte&quot;]
+        CFU_T --&gt; Tcell[&quot;T Lymphocyte&quot;]
+        CFU_NK --&gt; NKcell[&quot;NK Cell&quot;]
+        CLP --&gt; DC[&quot;Dendritic Cell&quot;]" data-original-code="graph TD
+        HSC[&quot;Pluripotential HSC (CD34+)&quot;] --&gt; MPP[&quot;Multipotential Progenitor (MPP)&quot;]
+        MPP --&gt; CMP[&quot;Common Myeloid Progenitor (CMP)&quot;]
+        MPP --&gt; CLP[&quot;Common Lymphoid Progenitor (CLP)&quot;]
+
+        CMP --&gt; GMP[&quot;Granulocyte-Monocyte Progenitor (GMP)&quot;]
+        CMP --&gt; MEP[&quot;Megakaryocyte-Erythroid Progenitor (MEP)&quot;]
+        CMP --&gt; CFU_Eo[&quot;CFU-Eo&quot;]
+        CMP --&gt; CFU_Ba[&quot;CFU-Ba&quot;]
+
+        GMP --&gt; CFU_M[&quot;CFU-M&quot;]
+        GMP --&gt; CFU_G[&quot;CFU-G&quot;]
+
+        CFU_M --&gt; Mono[&quot;Monocytes&quot;]
+        CFU_G --&gt; Neut[&quot;Neutrophils&quot;]
+        CFU_Eo --&gt; Eos[&quot;Eosinophils&quot;]
+        CFU_Ba --&gt; Baso[&quot;Basophils&quot;]
+
+        MEP --&gt; BFU_E[&quot;BFU-E / CFU-E&quot;]
+        MEP --&gt; BFU_Mk[&quot;BFU-Mk / CFU-Mk&quot;]
+
+        BFU_E --&gt; RBC[&quot;Erythrocytes (RBCs)&quot;]
+        BFU_Mk --&gt; Plt[&quot;Platelets&quot;]
+
+        CLP --&gt; TNKP[&quot;T / NK Progenitor&quot;]
+        CLP --&gt; CFU_B[&quot;CFU-B&quot;]
+
+        TNKP --&gt; CFU_T[&quot;CFU-T&quot;]
+        TNKP --&gt; CFU_NK[&quot;CFU-NK&quot;]
+
+        CFU_B --&gt; Bcell[&quot;B Lymphocyte&quot;]
+        CFU_T --&gt; Tcell[&quot;T Lymphocyte&quot;]
+        CFU_NK --&gt; NKcell[&quot;NK Cell&quot;]
+        CLP --&gt; DC[&quot;Dendritic Cell&quot;]">
+graph TD
+        HSC["Pluripotential HSC (CD34+)"] --> MPP["Multipotential Progenitor (MPP)"]
+        MPP --> CMP["Common Myeloid Progenitor (CMP)"]
+        MPP --> CLP["Common Lymphoid Progenitor (CLP)"]
+
+        CMP --> GMP["Granulocyte-Monocyte Progenitor (GMP)"]
+        CMP --> MEP["Megakaryocyte-Erythroid Progenitor (MEP)"]
+        CMP --> CFU_Eo["CFU-Eo"]
+        CMP --> CFU_Ba["CFU-Ba"]
+
+        GMP --> CFU_M["CFU-M"]
+        GMP --> CFU_G["CFU-G"]
+
+        CFU_M --> Mono["Monocytes"]
+        CFU_G --> Neut["Neutrophils"]
+        CFU_Eo --> Eos["Eosinophils"]
+        CFU_Ba --> Baso["Basophils"]
+
+        MEP --> BFU_E["BFU-E / CFU-E"]
+        MEP --> BFU_Mk["BFU-Mk / CFU-Mk"]
+
+        BFU_E --> RBC["Erythrocytes (RBCs)"]
+        BFU_Mk --> Plt["Platelets"]
+
+        CLP --> TNKP["T / NK Progenitor"]
+        CLP --> CFU_B["CFU-B"]
+
+        TNKP --> CFU_T["CFU-T"]
+        TNKP --> CFU_NK["CFU-NK"]
+
+        CFU_B --> Bcell["B Lymphocyte"]
+        CFU_T --> Tcell["T Lymphocyte"]
+        CFU_NK --> NKcell["NK Cell"]
+        CLP --> DC["Dendritic Cell"]
+</div>
+
+<h3 id="precursor-compartment-comparison">Precursor Compartment Comparison</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Stem Cells (HSCs)</th>
+<th style="text-align: left;">Progenitor Cells (MPPs / HPCs)</th>
+<th style="text-align: left;">Maturing Precursor Cells</th>
+<th style="text-align: left;">Peripheral Blood Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Bone Marrow Pool %</strong></td>
+<td style="text-align: left;">&lt; 0.05%</td>
+<td style="text-align: left;">Small fraction (Intermediate)</td>
+<td style="text-align: left;">&gt; 95%</td>
+<td style="text-align: left;">N/A (Circulation)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mitotic Activity</strong></td>
+<td style="text-align: left;">Low / Quiescent ($G_0$)</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">High to Moderate</td>
+<td style="text-align: left;">Incapable of mitosis (*except lymphocytes)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Morphology</strong></td>
+<td style="text-align: left;">Indistinct (resembles small lymphocytes)</td>
+<td style="text-align: left;">Indistinct</td>
+<td style="text-align: left;">Morphologically recognizable (Blasts to mature forms)</td>
+<td style="text-align: left;">Fully mature / Terminally differentiated</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary CD Markers</strong></td>
+<td style="text-align: left;">CD34+</td>
+<td style="text-align: left;">CD34+</td>
+<td style="text-align: left;">Lineage specific (e.g., CD13+, CD33+)</td>
+<td style="text-align: left;">Mature cell markers</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Biological Fates</strong></td>
+<td style="text-align: left;">Quiescence, Self-renewal, Commitment, Apoptosis</td>
+<td style="text-align: left;">Restricted differentiation, Proliferation</td>
+<td style="text-align: left;">Lineage maturation, Release into blood</td>
+<td style="text-align: left;">Terminally differentiated function</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cytokine-promoter-classification">Cytokine Promoter Classification</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Target Cell Stage</th>
+<th style="text-align: left;">Primary Biological Effect</th>
+<th style="text-align: left;">Key Cytokines Involved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Early-Acting Promoters</strong></td>
+<td style="text-align: left;">HSCs and Multipotential Progenitors (MPPs)</td>
+<td style="text-align: left;">Stimulate self-renewal, proliferation, and initial multilineage differentiation</td>
+<td style="text-align: left;">Stem Cell Factor (SCF), Flt3 Ligand (FL), GM-CSF, IL-3, IL-6, IL-11</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Late-Acting Promoters</strong></td>
+<td style="text-align: left;">Committed Progenitors and Maturing Precursors</td>
+<td style="text-align: left;">Direct lineage-restricted maturation and functional activation</td>
+<td style="text-align: left;">G-CSF, M-CSF, Erythropoietin (EPO), Thrombopoietin (TPO), IL-5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="immunophenotypic-cd-marker-profiles">Immunophenotypic CD Marker Profiles</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Antigen Marker</th>
+<th style="text-align: left;">Lineage / Cellular Distribution</th>
+<th style="text-align: left;">Clinical / Diagnostic Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CD34</strong></td>
+<td style="text-align: left;">Primitive Stem Cells, MPPs, Uncommitted Blasts</td>
+<td style="text-align: left;">Universal marker for primitive hematopoietic precursor pool</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CD13, CD33</strong></td>
+<td style="text-align: left;">Myeloid Precursors (CMP, Myeloblasts, Monoblasts)</td>
+<td style="text-align: left;">Confirms commitment to the myeloid cell lineage</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CD19, CD20, CD10</strong></td>
+<td style="text-align: left;">B-Cell Lymphoid Precursors</td>
+<td style="text-align: left;">Confirms commitment to the B-lymphocyte lineage</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CD2, CD3, CD7</strong></td>
+<td style="text-align: left;">T-Cell Lymphoid Precursors</td>
+<td style="text-align: left;">Confirms commitment to the T-lymphocyte lineage</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="lecture-slide-breakdowns_2">Lecture Slide Breakdowns</h2>
+<h3 id="principles-of-hematopoiesis-cellular-hierarchy-slides-13">Principles of Hematopoiesis &amp; Cellular Hierarchy (Slides 1–3)</h3>
+<p>Hematopoiesis is defined as the physiological process responsible for the formation and development of all blood cells. The fundamental goal of hematopoiesis is maintaining tissue homeostasis, which requires a precise steady-state numerical balance of circulating blood cells. Homeostasis is governed by cytokines that regulate three interconnected cellular mechanisms: proliferation (cell division), differentiation (specialization into specific lineages), and apoptosis (programmed cell death of damaged or aged cells).</p>
+<p>Hematopoietic development follows a distinct anatomical and hierarchical organization, moving from primitive precursors in the bone marrow to terminally differentiated end-stage cells in the peripheral blood.</p>
+<div class="mermaid" data-original-source="graph LR
+        BM_Stem[&quot;Stem Cells&quot;] --&gt; BM_Prog[&quot;Progenitor Cells&quot;]
+        BM_Prog --&gt; BM_Mat[&quot;Maturing Cells&quot;]
+        BM_Mat --&gt; PB_Cells[&quot;Peripheral Blood Cells&quot;]" data-original-code="graph LR
+        BM_Stem[&quot;Stem Cells&quot;] --&gt; BM_Prog[&quot;Progenitor Cells&quot;]
+        BM_Prog --&gt; BM_Mat[&quot;Maturing Cells&quot;]
+        BM_Mat --&gt; PB_Cells[&quot;Peripheral Blood Cells&quot;]">
+graph LR
+        BM_Stem["Stem Cells"] --> BM_Prog["Progenitor Cells"]
+        BM_Prog --> BM_Mat["Maturing Cells"]
+        BM_Mat --> PB_Cells["Peripheral Blood Cells"]
+</div>
+
+<ul>
+<li><strong>Bone Marrow Precursor Compartment:</strong> Contains precursor cells structured hierarchically as stem cells, progenitor cells, and morphologically recognizable maturing cells.</li>
+<li><strong>Peripheral Blood Compartment:</strong> Contains mature, terminally differentiated cells. In healthy individuals, mature peripheral blood cells are completely incapable of mitosis, with the sole exception of functional lymphocytes, which retain the ability to undergo proliferation upon activation.</li>
+</ul>
+<h3 id="precursor-compartments-stem-cell-fates-slides-47">Precursor Compartments &amp; Stem Cell Fates (Slides 4–7)</h3>
+<p>The hematopoietic precursor pool within the bone marrow is divided into three functional stages:</p>
+<div class="mermaid" data-original-source="graph TD
+        HSC_Fate[&quot;HSC Asymmetric Division&quot;] --&gt; Quiescence[&quot;1. Quiescence (G0 State)&quot;]
+        HSC_Fate --&gt; SelfRenew[&quot;2. Self-Renewal (LTR / STR)&quot;]
+        HSC_Fate --&gt; Commit[&quot;3. Commitment (CMP or CLP)&quot;]
+        HSC_Fate --&gt; Apopt[&quot;4. Apoptosis&quot;]" data-original-code="graph TD
+        HSC_Fate[&quot;HSC Asymmetric Division&quot;] --&gt; Quiescence[&quot;1. Quiescence (G0 State)&quot;]
+        HSC_Fate --&gt; SelfRenew[&quot;2. Self-Renewal (LTR / STR)&quot;]
+        HSC_Fate --&gt; Commit[&quot;3. Commitment (CMP or CLP)&quot;]
+        HSC_Fate --&gt; Apopt[&quot;4. Apoptosis&quot;]">
+graph TD
+        HSC_Fate["HSC Asymmetric Division"] --> Quiescence["1. Quiescence (G0 State)"]
+        HSC_Fate --> SelfRenew["2. Self-Renewal (LTR / STR)"]
+        HSC_Fate --> Commit["3. Commitment (CMP or CLP)"]
+        HSC_Fate --> Apopt["4. Apoptosis"]
+</div>
+
+<ul>
+<li><strong>Pluripotential Hematopoietic Stem Cells (HSCs):</strong> Account for less than 0.05% of the total bone marrow precursor pool. HSCs are undifferentiated, morphologically non-descript cells capable of continuous self-renewal (divided into Long-Term Self-Renewing [LTR] and Short-Term Self-Renewing [STR] stem cells). They possess four potential fates governed by the bone marrow niche microenvironment: quiescence, self-renewal, lineage commitment, or apoptosis.</li>
+<li><strong>Progenitor Cells:</strong> Transition from HSCs as Multipotential Progenitor Cells (MPPs) into the Hematopoietic Progenitor Cell (HPC) compartment. This stage is marked genetically by the downregulation of stem cell genes and upregulation of lineage-specific genes. Progenitor cells are mitotically far more active than HSCs, but their differential potential becomes progressively restricted.</li>
+<li><strong>Maturing Precursor Cells:</strong> Comprise more than 95% of the total hematopoietic precursor pool in the bone marrow. These are committed cell populations that are morphologically recognizable under light microscopy via distinct nuclear and cytoplasmic traits. The earliest morphologically identifiable cell stage in any lineage is designated as a <strong>blast</strong> (e.g., lymphoblast, myeloblast, pronormoblast, megakaryoblast). Visual inspection under light microscopy cannot reliably differentiate primitive blasts of different lineages; immunophenotypic analysis is strictly required.</li>
+</ul>
+<h3 id="cytokine-actions-classification-earlylate-promoters-slides-818">Cytokine Actions, Classification &amp; Early/Late Promoters (Slides 8–18)</h3>
+<p>Cytokines (growth factors) are soluble signaling proteins responsible for cell-to-cell communication. They govern precursor cell survival, self-renewal, proliferation, and differentiation.</p>
+<ul>
+<li><strong>Nomenclature &amp; Production:</strong> Historically referred to as Colony-Stimulating Factors (CSFs), modern nomenclature classifies most cytokines as Interleukins (ILs). The vast majority of cytokines are synthesized locally by bone marrow stromal cells (fibroblasts, endothelial cells, macrophages). The notable exception is Erythropoietin (EPO), which is synthesized and secreted by the kidneys.</li>
+<li><strong>Functional Properties:</strong> Cytokines demonstrate <strong>redundancy</strong> (multiple distinct cytokines perform overlapping biological functions on the same target cell) and <strong>pleiotropy</strong> (a single cytokine exerts different biological actions across multiple cell types).</li>
+<li><strong>Early-Acting Cytokine Promoters:</strong> Act on primitive multipotential precursor cells (HSCs and MPPs) to drive survival, proliferation, and early differentiation. Key early-acting factors include Stem Cell Factor (SCF), Flt3 Ligand (FL), Granulocyte-Macrophage Colony-Stimulating Factor (GM-CSF), IL-3, IL-6, and IL-11.</li>
+<li><strong>Late-Acting Cytokine Promoters:</strong> Act on committed progenitor and maturing cells to direct lineage-restricted maturation. Key late-acting factors include:<ul>
+<li><strong>Granulocyte Colony-Stimulating Factor (G-CSF):</strong> Directs neutrophil lineage maturation (CFU-G to Neutrophils).</li>
+<li><strong>Macrophage Colony-Stimulating Factor (M-CSF):</strong> Directs monocyte lineage maturation (CFU-M to Monocytes).</li>
+<li><strong>Erythropoietin (EPO):</strong> Directs erythroid maturation (BFU-E to CFU-E to RBCs).</li>
+<li><strong>Thrombopoietin (TPO):</strong> Directs megakaryocyte and platelet maturation (BFU-Mk to CFU-Mk to Platelets).</li>
+<li><strong>Interleukin-5 (IL-5):</strong> Directs eosinophil lineage differentiation and activation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="regulation-intracellular-signaling-pathways-clinical-applications-slides-1921">Regulation, Intracellular Signaling Pathways &amp; Clinical Applications (Slides 19–21)</h3>
+<p>To prevent overproduction or underproduction of blood cells, hematopoiesis is regulated by inhibitory cytokines and cellular mechanisms:</p>
+<ul>
+<li><strong>Inhibitory Regulation:</strong> Hematopoiesis is downregulated by decreasing the synthesis of cytokine promoters and increasing inhibitory factors (such as TGF-$\beta$, TNF-$\alpha$, and IFN-$\gamma$). Additionally, active T lymphocytes and Natural Killer (NK) cells directly suppress precursor production or induce apoptosis.</li>
+<li><strong>Intracellular Communication &amp; JAK2 Pathophysiology:</strong> Cytokine signal transduction operates primarily via receptor-mediated protein phosphorylation cascades. Receptors such as the EPO receptor utilize the Janus Kinase / Signal Transducer and Activator of Transcription (JAK-STAT) pathway. A somatic gain-of-function mutation in the <em>JAK2</em> gene ($JAK2\text{ V617F}$) leads to constitutive kinase phosphorylation. In Polycythemia Vera (PV), this causes erythroid precursors to proliferate independently or become hypersensitive to EPO, resulting in excessive red blood cell production.</li>
+</ul>
+<div class="mermaid" data-original-source="graph TD
+        EPO_Bind[&quot;EPO Binding to Receptor&quot;] --&gt; JAK2_Act[&quot;JAK2 Activation &amp; Phosphorylation&quot;]
+        JAK2_Act --&gt; STAT5_P[&quot;STAT5 Phosphorylation &amp; Dimerization&quot;]
+        STAT5_P --&gt; Transloc[&quot;Translocation to Nucleus&quot;]
+        Transloc --&gt; GeneExpr[&quot;Transcription of Proliferation/Survival Genes&quot;]
+
+        JAK2_Mut[&quot;JAK2 V617F Mutation&quot;] -. &quot;Constitutive Activation (EPO-Independent)&quot; .-&gt; STAT5_P" data-original-code="graph TD
+        EPO_Bind[&quot;EPO Binding to Receptor&quot;] --&gt; JAK2_Act[&quot;JAK2 Activation &amp; Phosphorylation&quot;]
+        JAK2_Act --&gt; STAT5_P[&quot;STAT5 Phosphorylation &amp; Dimerization&quot;]
+        STAT5_P --&gt; Transloc[&quot;Translocation to Nucleus&quot;]
+        Transloc --&gt; GeneExpr[&quot;Transcription of Proliferation/Survival Genes&quot;]
+
+        JAK2_Mut[&quot;JAK2 V617F Mutation&quot;] -. &quot;Constitutive Activation (EPO-Independent)&quot; .-&gt; STAT5_P">
+graph TD
+        EPO_Bind["EPO Binding to Receptor"] --> JAK2_Act["JAK2 Activation & Phosphorylation"]
+        JAK2_Act --> STAT5_P["STAT5 Phosphorylation & Dimerization"]
+        STAT5_P --> Transloc["Translocation to Nucleus"]
+        Transloc --> GeneExpr["Transcription of Proliferation/Survival Genes"]
+
+        JAK2_Mut["JAK2 V617F Mutation"] -. "Constitutive Activation (EPO-Independent)" .-> STAT5_P
+</div>
+
+<ul>
+<li><strong>Clinical Applications of Recombinant Cytokines:</strong><ul>
+<li><strong>Recombinant EPO (Epoetin alfa / Darbepoetin alfa):</strong> Administered to treat anemias, particularly those secondary to chronic kidney disease or chemotherapy.</li>
+<li><strong>Recombinant G-CSF (Filgrastim) &amp; GM-CSF (Sargramostim):</strong> Administered to treat severe granulocytopenia/neutropenia and to mobilize hematopoietic stem cells into peripheral blood for autologous or allogeneic stem cell collections.</li>
+</ul>
+</li>
+</ul>
+<h3 id="cell-surface-proteins-cluster-of-differentiation-cd-immunophenotyping-slide-22">Cell Surface Proteins &amp; Cluster of Differentiation (CD) Immunophenotyping (Slide 22)</h3>
+<p>Because early precursor blasts of different cell lines are morphologically identical under light microscopy, diagnostic differentiation relies on immunophenotyping via flow cytometry using fluorochrome-conjugated antibodies against Cluster of Differentiation (CD) cell surface proteins.</p>
+<div class="mermaid" data-original-source="graph TD
+        Stem_Prog[&quot;Primitive Blast Pool (CD34+)&quot;] --&gt; Myeloid_Branch[&quot;Myeloid Commitment (CD34+, CD13+, CD33+)&quot;]
+        Stem_Prog --&gt; B_Branch[&quot;B-Cell Commitment (CD19+, CD20+, CD10+)&quot;]
+        Stem_Prog --&gt; T_Branch[&quot;T-Cell Commitment (CD2+, CD3+, CD7+)&quot;]
+
+        Myeloid_Branch --&gt; GMP_Stage[&quot;GMP Progenitor (CD13+, CD33+)&quot;]
+        Myeloid_Branch --&gt; MEP_Stage[&quot;MEP Progenitor (CD34-, CD13-, CD33-)&quot;]
+
+        MEP_Stage --&gt; RBC_Plt[&quot;Erythrocytes &amp; Platelets&quot;]" data-original-code="graph TD
+        Stem_Prog[&quot;Primitive Blast Pool (CD34+)&quot;] --&gt; Myeloid_Branch[&quot;Myeloid Commitment (CD34+, CD13+, CD33+)&quot;]
+        Stem_Prog --&gt; B_Branch[&quot;B-Cell Commitment (CD19+, CD20+, CD10+)&quot;]
+        Stem_Prog --&gt; T_Branch[&quot;T-Cell Commitment (CD2+, CD3+, CD7+)&quot;]
+
+        Myeloid_Branch --&gt; GMP_Stage[&quot;GMP Progenitor (CD13+, CD33+)&quot;]
+        Myeloid_Branch --&gt; MEP_Stage[&quot;MEP Progenitor (CD34-, CD13-, CD33-)&quot;]
+
+        MEP_Stage --&gt; RBC_Plt[&quot;Erythrocytes &amp; Platelets&quot;]">
+graph TD
+        Stem_Prog["Primitive Blast Pool (CD34+)"] --> Myeloid_Branch["Myeloid Commitment (CD34+, CD13+, CD33+)"]
+        Stem_Prog --> B_Branch["B-Cell Commitment (CD19+, CD20+, CD10+)"]
+        Stem_Prog --> T_Branch["T-Cell Commitment (CD2+, CD3+, CD7+)"]
+
+        Myeloid_Branch --> GMP_Stage["GMP Progenitor (CD13+, CD33+)"]
+        Myeloid_Branch --> MEP_Stage["MEP Progenitor (CD34-, CD13-, CD33-)"]
+
+        MEP_Stage --> RBC_Plt["Erythrocytes & Platelets"]
+</div>
+
+<ul>
+<li><strong>CD34:</strong> A marker expressed on primitive stem cells, multipotential progenitors, and uncommitted blasts. Expressions of CD34 are lost as cells mature.</li>
+<li><strong>CD13 &amp; CD33:</strong> Antigens expressed on precursor cells committed to the myeloid lineage (e.g., CMPs, GMPs, myeloblasts, monoblasts).</li>
+<li><strong>Lymphoid Lineage Markers:</strong> CD19, CD20, and CD10 confirm B-cell lymphoid lineage commitment, whereas CD2, CD3, and CD7 confirm T-cell lineage commitment.</li>
+<li><strong>MEP Lineage Downregulation:</strong> As cells commit to the Megakaryocyte-Erythroid Progenitor (MEP) pathway, they become negative for primitive and myeloid markers ($\text{CD34}^-$, $\text{CD13}^-$, $\text{CD33}^-$).</li>
+</ul>
+<hr />
+<h2 id="key-clinical-takeaways_2">Key Clinical Takeaways</h2>
+<ul>
+<li><strong>Homeostatic Triad:</strong> Hematopoiesis maintains tissue homeostasis by balancing proliferation, differentiation, and apoptosis via cytokine signaling.</li>
+<li><strong>Precursor Pool Proportions:</strong> Stem cells comprise &lt;0.05% of the bone marrow precursor pool and exhibit asymmetric division (quiescence, self-renewal, commitment, apoptosis), whereas maturing cells comprise &gt;95% of the pool.</li>
+<li><strong>Mitotic Capacity:</strong> Mature cells in peripheral blood are terminally differentiated and incapable of mitosis, with the sole exception of functional lymphocytes.</li>
+<li><strong>Erythropoietin (EPO) Origin:</strong> Unlike most cytokines synthesized by bone marrow stromal cells, EPO is produced primarily by the kidneys.</li>
+<li><strong>JAK2 Mutation Pathology:</strong> The gain-of-function $JAK2\text{ V617F}$ mutation causes constitutive tyrosine kinase phosphorylation in the JAK-STAT pathway, driving EPO-independent erythroid proliferation in Polycythemia Vera.</li>
+<li><strong>Immunophenotypic Differentiation:</strong> Light microscopy cannot reliably distinguish between blasts of different lineages; CD34 identifies primitive blasts, while CD13 and CD33 confirm myeloid commitment via flow cytometry.</li>
+</ul>
+<hr />
+    </article>
+
+    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+    <div id="mermaid-modal" class="mermaid-modal-overlay">
+        <div class="mermaid-modal-header">
+            <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
+            <div class="mermaid-modal-controls">
+                <button id="mermaid-modal-reset" class="mermaid-modal-btn">Reset Zoom</button>
+                <button id="mermaid-modal-close" class="mermaid-modal-close">✕ Close</button>
+            </div>
+        </div>
+        <div id="mermaid-modal-body" class="mermaid-modal-body"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let panZoomInstance = null;
+            const modal = document.getElementById('mermaid-modal');
+            const modalBody = document.getElementById('mermaid-modal-body');
+            const closeBtn = document.getElementById('mermaid-modal-close');
+            const resetBtn = document.getElementById('mermaid-modal-reset');
+
+            function closeModal() {
+                modal.classList.remove('active');
+                if (panZoomInstance) {
+                    panZoomInstance.destroy();
+                    panZoomInstance = null;
+                }
+                modalBody.innerHTML = '';
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            resetBtn.addEventListener('click', () => {
+                if (panZoomInstance) {
+                    panZoomInstance.reset();
+                    panZoomInstance.fit();
+                    panZoomInstance.zoom(panZoomInstance.getZoom() * 0.95);
+                    panZoomInstance.center();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal || e.target === modalBody) {
+                    closeModal();
+                }
+            });
+
+            function attachMermaidModalHandlers() {
+                document.querySelectorAll('.mermaid').forEach((container) => {
+                    container.addEventListener('click', (e) => {
+                        const svg = container.querySelector('svg');
+                        if (!svg || svg.getAttribute('aria-roledescription') === 'error' || container.querySelector('.error-text')) {
+                            console.warn("Diagram contains syntax errors; modal expansion disabled.");
+                            return;
+                        }
+
+                        modalBody.innerHTML = '';
+                        const clonedSvg = svg.cloneNode(true);
+                        
+                        // Clear hardcoded widths/heights so SVG scales to viewport
+                        clonedSvg.removeAttribute('width');
+                        clonedSvg.removeAttribute('height');
+                        clonedSvg.style.width = '100%';
+                        clonedSvg.style.height = '100%';
+
+                        modalBody.appendChild(clonedSvg);
+                        modal.classList.add('active');
+
+                        // Initialize SVG Pan Zoom
+                        panZoomInstance = svgPanZoom(clonedSvg, {
+                            zoomEnabled: true,
+                            controlIconsEnabled: true,
+                            fit: true,
+                            center: true,
+                            minZoom: 0.2,
+                            maxZoom: 20,
+                            zoomScaleSensitivity: 0.2,
+                            dblClickZoomEnabled: true
+                        });
+                        panZoomInstance.zoom(panZoomInstance.getZoom() * 0.95);
+                        panZoomInstance.center();
+                    });
+                });
+            }
+
+            // Wait for Mermaid SVGs to finish rendering
+            const observer = new MutationObserver(() => {
+                const renderedSvgs = document.querySelectorAll('.mermaid svg');
+                if (renderedSvgs.length > 0) {
+                    attachMermaidModalHandlers();
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+            
+            // Fallback timeout trigger
+            setTimeout(attachMermaidModalHandlers, 1500);
+        });
+    </script>
+</body>
+</html>
