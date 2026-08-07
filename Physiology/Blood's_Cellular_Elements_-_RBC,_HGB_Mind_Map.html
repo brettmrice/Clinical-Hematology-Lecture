@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hematopoiesis - Interactive Mind Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7f9fc;
+      color: #2d3748;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Floating Glassmorphism Panels */
+    .floating-panel {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+      position: absolute;
+    }
+
+    /* Top Left Title Card */
+    .top-title-card {
+      top: 20px;
+      left: 24px;
+      padding: 10px 18px;
+    }
+
+    .top-title-card h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a202c;
+      white-space: nowrap;
+    }
+
+    /* Bottom Left Search Card */
+    .bottom-search-card {
+      bottom: 24px;
+      left: 24px;
+      padding: 6px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      padding: 8px 14px 8px 36px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-size: 13.5px;
+      width: 290px;
+      outline: none;
+      transition: all 0.25s ease;
+      background: transparent;
+    }
+
+    .search-box input:focus {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      width: 350px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    /* Top Right Floating Cards */
+    .top-collapse-card {
+      top: 20px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-expand-card {
+      top: 68px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-collapse-card:hover, .top-expand-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Main Canvas & SVG Area */
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      cursor: grab;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #viewport:active {
+      cursor: grabbing;
+    }
+
+    #mindmap-svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    #nodes-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+    }
+
+    /* Smooth animated transitions for pan & zoom */
+    .animated-transform {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* Node Styles - High contrast crisp typography */
+    .node {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transform: translateY(-50%);
+      pointer-events: auto;
+      border: 1.5px solid transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .node:hover {
+      transform: translateY(-50%) scale(1.04);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+      z-index: 5;
+    }
+
+    /* Indicator: '+' if collapsed, '-' if expanded, none if no children */
+    .node.has-children.collapsed::after {
+      content: '+';
+      display: inline-block;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    .node.has-children:not(.collapsed)::after {
+      content: '−';
+      display: inline-block;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    /* Exact Node Match Highlight */
+    .node.highlighted {
+      animation: pulseHighlight 1.5s infinite alternate;
+    }
+
+    /* Collapsed Parent contains matching children highlight */
+    .node.parent-match-highlighted {
+      animation: pulseParentHighlight 1.5s infinite alternate;
+      border-color: #d97706 !important;
+    }
+
+    @keyframes pulseHighlight {
+      0% { box-shadow: 0 0 0 2px #d97706; }
+      100% { box-shadow: 0 0 0 8px rgba(217, 119, 6, 0); }
+    }
+
+    @keyframes pulseParentHighlight {
+      0% { box-shadow: 0 0 0 3px #d97706, 0 0 12px rgba(217, 119, 6, 0.4); }
+      100% { box-shadow: 0 0 0 7px rgba(217, 119, 6, 0.2), 0 0 4px rgba(217, 119, 6, 0.1); }
+    }
+
+    /* Level Color Schemes matching NotebookLM PNG with darker high contrast text */
+    .node-level-0 {
+      background-color: #b4acf0;
+      color: #1e1945;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 24px;
+    }
+
+    .node-level-1 {
+      background-color: #aebdf5;
+      color: #111a45;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .node-level-2 {
+      background-color: #9fd4cb;
+      color: #082d28;
+      font-weight: 600;
+    }
+
+    .node-level-3 {
+      background-color: #aaeec0;
+      color: #09381b;
+      font-weight: 600;
+    }
+
+    .node-level-4 {
+      background-color: #c9f88c;
+      color: #1b3602;
+      font-weight: 600;
+    }
+
+    .node-level-5 {
+      background-color: #fde047;
+      color: #713f12;
+      font-weight: 600;
+    }
+
+    .node-level-6 {
+      background-color: #fdba74;
+      color: #7c2d12;
+      font-weight: 600;
+    }
+
+    .node-level-7 {
+      background-color: #fca5a5;
+      color: #7f1d1d;
+      font-weight: 600;
+    }
+
+    .node-level-8 {
+      background-color: #f472b6;
+      color: #831843;
+      font-weight: 600;
+    }
+
+    .node-level-9 {
+      background-color: #e879f9;
+      color: #701a75;
+      font-weight: 600;
+    }
+
+    .node-level-10 {
+      background-color: #c084fc;
+      color: #581c87;
+      font-weight: 600;
+    }
+
+    /* SVG Connecting Lines */
+    .connection-line {
+      fill: none;
+      stroke: #8094ae;
+      stroke-width: 2px;
+    }
+
+    /* Bottom Right Zoom Cards */
+    .zoom-card {
+      width: 38px;
+      height: 38px;
+      right: 24px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #download-png-btn { bottom: 24px; }
+    #zoom-reset       { bottom: 70px; }
+    #zoom-fit-btn     { bottom: 116px; }
+    #zoom-out         { bottom: 162px; }
+    #zoom-in          { bottom: 208px; }
+
+    .zoom-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Element 1: Title Card -->
+  <div class="floating-panel top-title-card">
+    <h1 id="topic-title">Hematopoiesis</h1>
+  </div>
+
+  <!-- Bottom Left Floating Element 2: Search Box Card -->
+  <div class="floating-panel bottom-search-card">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search Mind Map concepts...">
+    </div>
+  </div>
+
+  <!-- Top Floating Element 3: Collapse All Card -->
+  <div class="floating-panel top-collapse-card" id="btn-collapse-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
+    Collapse All
+  </div>
+
+  <!-- Top Floating Element 4: Expand All Card -->
+  <div class="floating-panel top-expand-card" id="btn-expand-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    Expand All
+  </div>
+
+  <!-- Canvas Viewport -->
+  <div id="viewport">
+    <svg id="mindmap-svg">
+      <g id="svg-paths-group"></g>
+    </svg>
+    <div id="nodes-container"></div>
+  </div>
+
+  <!-- Bottom Right Zoom Controls -->
+  <div class="floating-panel zoom-card" id="zoom-in" title="Zoom In">+</div>
+  <div class="floating-panel zoom-card" id="zoom-out" title="Zoom Out">−</div>
+  <div class="floating-panel zoom-card" id="zoom-fit-btn" title="Fit to Window">⛶</div>
+  <div class="floating-panel zoom-card" id="zoom-reset" title="Reset Zoom">⟲</div>
+  <div class="floating-panel zoom-card" id="download-png-btn" title="Download PNG Screenshot">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  </div>
+
+  <script>
+    // --- MIND MAP DATA STRUCTURE ---
+    const mindMapData = {
+  "id": "root",
+  "text": "Blood's Cellular Elements - RBC, HGB",
+  "level": 0,
+  "children": [
+    {
+      "id": "sec-erythrocyte",
+      "text": "Erythrocyte Physiology & Structure",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-rbc-overview",
+          "text": "Overview & Homeostatic Regulation",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-rbc-role",
+              "text": "Primary Physiological Role",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-o2-transport",
+                  "text": "Oxygen Transport to Tissues",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-co2-transport",
+                  "text": "CO2 Return to Lungs",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-epo-control",
+              "text": "Erythropoietin (EPO) Regulation",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-epo-site",
+                  "text": "Renal Peritubular Interstitial Synthesis",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-epo-trigger",
+                  "text": "Tissue Hypoxia Stimulus",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-rbc-pathology",
+              "text": "Pathological RBC Deviations",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-anemia",
+                  "text": "Anemia (Decreased RBC Mass)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-erythrocytosis",
+                  "text": "Erythrocytosis Types",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-rel-erythrocytosis",
+                      "text": "Relative: Plasma Volume Contraction",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "node-abs-erythrocytosis",
+                      "text": "Absolute: True RBC Increase",
+                      "level": 5,
+                      "children": [
+                        {
+                          "id": "leaf-pv-jak2",
+                          "text": "Polycythemia Vera (JAK2 V617F Mutation)",
+                          "level": 6,
+                          "children": []
+                        },
+                        {
+                          "id": "leaf-sec-hypoxia",
+                          "text": "Secondary: Chronic Arterial Hypoxia",
+                          "level": 6,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-erythropoiesis",
+          "text": "Erythropoiesis & Maturation Stages",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-maturation-trends",
+              "text": "Morphological Maturation Trends",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-trend-size",
+                  "text": "Decreasing Overall Cell Diameter",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-nc",
+                  "text": "Decreasing N:C Ratio",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-chromatin",
+                  "text": "Chromatin Condensation to Pyknotic",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-color",
+                  "text": "Tinctorial Shift (Deep Blue to Pink)",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-precursor-stages",
+              "text": "Sequential Erythroid Precursor Stages",
+              "level": 3,
+              "children": [
+                {
+                  "id": "stage-pronormoblast",
+                  "text": "Pronormoblast (Rubriblast)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-prono-nc",
+                      "text": "High N:C Ratio",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-prono-chromatin",
+                      "text": "Fine Lacy Chromatin & 1-3 Nucleoli",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-prono-cyto",
+                      "text": "Deep Basophilia & Golgi Zone",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-basophilic",
+                  "text": "Basophilic Normoblast (Prorubricyte)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-baso-chromatin",
+                      "text": "Coarse Wheel-Spoke Chromatin Pattern",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-baso-halo",
+                      "text": "Perinuclear Halo (Mitochondria)",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-polychromatic",
+                  "text": "Polychromatic Normoblast (Rubricyte)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-poly-mitosis",
+                      "text": "Final Stage Capable of Mitosis",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-poly-cyto",
+                      "text": "Gray-Blue Cytoplasm (Hb Accumulation)",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-orthochromic",
+                  "text": "Orthochromic Normoblast (Metarubricyte)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-ortho-nuc",
+                      "text": "Dense Pyknotic Eccentric Nucleus",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-ortho-cyto",
+                      "text": "Pink-Salmon Cytoplasm",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-reticulocyte",
+                  "text": "Reticulocyte (Anucleate Precursor)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-retic-wright",
+                      "text": "Wright-Giemsa: Polychromasia",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-retic-supravital",
+                      "text": "Supravital Stains (New Methylene Blue)",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-retic-rna",
+                      "text": "Precipitates Residual Ribosomal RNA",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-mature-discocyte",
+                  "text": "Mature Erythrocyte (Discocyte)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-disc-shape",
+                      "text": "7.5 um Biconcave Disc",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-disc-span",
+                      "text": "100-120 Day Circulation Lifespan",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-rbc-membrane",
+          "text": "Membrane Composition & Morphology",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-mem-ratio",
+              "text": "Overall Chemical Composition",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-comp-protein",
+                  "text": "52% Protein",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-comp-lipid",
+                  "text": "40% Lipid",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-comp-carbs",
+                  "text": "8% Carbohydrate",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mem-proteins",
+              "text": "Membrane Protein Classes",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-integral-proteins",
+                  "text": "Integral Transmembrane Proteins",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-zeta-potential",
+                      "text": "Negative Charge creates Zeta Potential",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-band-3",
+                      "text": "Band 3: Cl-/HCO3- Exchange Channel",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-peripheral-proteins",
+                  "text": "Peripheral Cytoskeletal Proteins",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-spectrin",
+                      "text": "Spectrin: Helical Elasticity Network",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-ankyrin",
+                      "text": "Ankyrin: Anchors Spectrin to Band 3",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-lipid-patho",
+              "text": "Lipid Dynamics & Pathomorphology",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-lipid-ratio",
+                  "text": "1:1 Unesterified Cholesterol to Phospholipid",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-macrocodocyte",
+                  "text": "Target Cell: Proportional Increase (\u2191CH:\u2191PL)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-acanthocyte",
+                  "text": "Acanthocyte: Elevated Ratio (\u2191CH:\u2193PL)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-echinocyte",
+                  "text": "Echinocyte: Outer Leaflet Expansion",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-stomatocyte",
+                  "text": "Stomatocyte: Inner Leaflet Expansion",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-rbc-transport-metab",
+          "text": "Cation Transport & Metabolism",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-cation-pumps",
+              "text": "ATP-Dependent Active Cation Pumps",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-nak-pump",
+                  "text": "Na+/K+ ATPase Pump",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-nak-action",
+                      "text": "Extrudes 3 Na+ / Imports 2 K+",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-nak-concentrations",
+                      "text": "Maintains High K+ Low Na+",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-nak-in vitro",
+                      "text": "In Vitro Hemolysis False K+ Elevation",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-ca-pump",
+                  "text": "Ca2+ ATPase Pump",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-ca-action",
+                      "text": "Extrudes Free Intracellular Ca2+",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-ca-flexibility",
+                      "text": "Prevents Rigidifying Protein Cross-linking",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-anaerobic-pathways",
+              "text": "4 Anaerobic Metabolic Pathways",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-embden-meyerhof",
+                  "text": "Embden-Meyerhof Pathway (90-95%)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-em-atp",
+                      "text": "Generates Net ATP for Pumps",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-hmp-shunt",
+                  "text": "Hexose Monophosphate (HMP) Shunt (5-10%)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-g6pd-nadph",
+                      "text": "G6PD Engine Generates NADPH",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-heinz-bodies",
+                      "text": "Deficiency Forms Heinz Bodies & Bite Cells",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-met-reductase",
+                  "text": "Methemoglobin Reductase Pathway",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-met-nadh",
+                      "text": "NADH Reduces Fe3+ to Fe2+",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-rapoport-luebering",
+                  "text": "Rapoport-Luebering Shunt",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-23bpg-synth",
+                      "text": "Synthesizes 2,3-BPG (Lowers O2 Affinity)",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-rbc-lysis",
+          "text": "Mechanisms of RBC Destruction",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-extravascular-lysis",
+              "text": "Extravascular Hemolysis (~90%)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-res-site",
+                  "text": "RES Macrophages in Spleen & Liver",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-iron-recycle",
+                  "text": "Iron: Stored as Ferritin or Transferrin",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-globin-recycle",
+                  "text": "Globin: Proteolysis to Amino Acids",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-heme-catabolism",
+                  "text": "Heme: Cleaved to CO & Bilirubin",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-intravascular-lysis",
+              "text": "Intravascular Hemolysis (~10%)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-vascular-trauma",
+                  "text": "Direct Vessel Lysis & Free Hb",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-haptoglobin",
+                  "text": "Haptoglobin Depletion Diagnostic Marker",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hemopexin",
+                  "text": "Hemopexin Binds Free Heme",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hemosiderinuria",
+                  "text": "Hemosiderinuria (Prussian Blue Positive)",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-hemoglobin",
+      "text": "Hemoglobin Biochemistry & Dynamics",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-hgb-indices",
+          "text": "CBC Quantitative Hemoglobin Indices",
+          "level": 2,
+          "children": [
+            {
+              "id": "leaf-total-hgb",
+              "text": "Total Hemoglobin: 12 - 17 g/dL",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "leaf-mch",
+              "text": "Mean Corpuscular Hemoglobin: 28 - 34 pg",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "leaf-mchc",
+              "text": "MCHC: 32 - 36 g/dL",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-hgb-structure",
+          "text": "Molecular Structure & Biosynthesis",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-tetramer-structure",
+              "text": "Tetrameric Protein Architecture",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-alpha-chains",
+                  "text": "2 Alpha-like Chains (Chr 16)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-nonalpha-chains",
+                  "text": "2 Non-alpha Chains (Chr 11)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-heme-pockets",
+                  "text": "4 Hydrophobic Pockets with Ferrous Fe2+",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-heme-synthesis",
+              "text": "Heme Biosynthesis Steps",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-mito-initiation",
+                  "text": "Mitochondria: Glycine + Succinyl-CoA to delta-ALA",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-rate-limiting",
+                  "text": "Fe2+ Availability Rate-Limiting Control",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-cyto-intermediates",
+                  "text": "Cytoplasm: Coproporphyrinogen III",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-mito-ferrochelatase",
+                  "text": "Mitochondria: Ferrochelatase Inserts Fe2+",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-globin-regulation",
+              "text": "Globin Translation Control",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-polyribosomes",
+                  "text": "Translation on Cytoplasmic Polyribosomes",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-heme-inactivation",
+                  "text": "Heme Inactivates Translational Inhibitor",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-stoichiometry",
+                  "text": "Maintains 1:1:1 Subunit Equilibrium",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-hgb-development",
+          "text": "Developmental Hemoglobin Variants",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-embryonic-hgb",
+              "text": "Embryonic Hemoglobins (1st Trimester)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-gower1",
+                  "text": "Gower I (zeta2 epsilon2)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-gower2",
+                  "text": "Gower II (alpha2 epsilon2)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-portland",
+                  "text": "Portland (zeta2 gamma2)",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-fetal-hgb",
+              "text": "Fetal Hemoglobin (HbF)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-hbf-comp",
+                  "text": "HbF Structure (alpha2 gamma2)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hbf-affinity",
+                  "text": "High O2 Affinity for Placental Extraction",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-adult-hgb",
+              "text": "Adult Hemoglobins (>6 Months Postnatal)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-hba",
+                  "text": "HbA (alpha2 beta2) >95%",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hba2",
+                  "text": "HbA2 (alpha2 delta2) 1.5 - 3.5%",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hbf-adult",
+                  "text": "Residual HbF <2%",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-oxygen-dynamics",
+          "text": "Oxygen Kinetics & Allosteric States",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-quaternary-states",
+              "text": "Quaternary Allosteric Configurations",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-tense-state",
+                  "text": "Tense (T) State: Low O2 Affinity",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-relaxed-state",
+                  "text": "Relaxed (R) State: High O2 Affinity",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-p50-curve",
+              "text": "Oxygen Dissociation Curve & P50",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-p50-val",
+                  "text": "Normal P50 = 26 mmHg",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-right-shift",
+                  "text": "Right Shift (Decreased O2 Affinity)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-right-triggers",
+                      "text": "Triggered by: \u2191Temp, Acidosis, \u2191CO2, \u21912,3-BPG",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-left-shift",
+                  "text": "Left Shift (Increased O2 Affinity)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-left-triggers",
+                      "text": "Triggered by: \u2193Temp, Alkalosis, \u2193CO2, HbF",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-23bpg-mech",
+              "text": "2,3-BPG Allosteric Mechanism",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-23bpg-bind",
+                  "text": "Binds T-state Cavity 1:1",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-23bpg-expel",
+                  "text": "Expelled Upon 3rd O2 Binding",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-co2-transport",
+          "text": "Carbon Dioxide Transport Mechanisms",
+          "level": 2,
+          "children": [
+            {
+              "id": "leaf-bicarbonate-path",
+              "text": "Bicarbonate Pathway (~70% via Chloride Shift)",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "leaf-carbamino-path",
+              "text": "Carbaminohemoglobin (~23% Bound to N-Terminals)",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "leaf-dissolved-co2",
+              "text": "Dissolved Plasma CO2 (~7%)",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-acquired-variants",
+          "text": "Acquired Nonfunctional Hemoglobins",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-methemoglobin",
+              "text": "Methemoglobin (MetHgb)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-methgb-iron",
+                  "text": "Oxidized Ferric Fe3+ Iron State",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-methgb-color",
+                  "text": "Chocolate Brown Blood Appearance",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-methgb-clin",
+                  "text": "Cyanosis Unresponsive to Supplemental O2",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-sulfhemoglobin",
+              "text": "Sulfhemoglobin",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-sulf-mech",
+                  "text": "Irreversible Sulfur Atom Insertion",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-sulf-span",
+                  "text": "Persists for Full 120-Day Lifespan",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-carboxyhemoglobin",
+              "text": "Carboxyhemoglobin",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-carboxy-affinity",
+                  "text": "200-Fold Higher Affinity for CO",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-carboxy-color",
+                  "text": "Cherry Red Blood & Skin",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+    // State Variables
+    let scale = 1.0;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX, startY;
+    
+    let collapsedNodes = new Set();
+    function setInitialCollapsedState(node) {
+      if (node.level >= 1 && node.children && node.children.length > 0) {
+        collapsedNodes.add(node.id);
+      }
+      if (node.children) {
+        node.children.forEach(setInitialCollapsedState);
+      }
+    }
+    setInitialCollapsedState(mindMapData);
+
+    const LEVEL_X_GAP = 320;
+    const NODE_Y_GAP = 54;
+
+    const viewport = document.getElementById('viewport');
+    const nodesContainer = document.getElementById('nodes-container');
+    const svgPathsGroup = document.getElementById('svg-paths-group');
+
+    // --- LAYOUT ENGINE ---
+    function computeVerticalLayout(node, depth = 0, yOffset = { val: 0 }) {
+      node.depth = depth;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+
+      if (visibleChildren.length === 0) {
+        node.y = yOffset.val;
+        yOffset.val += NODE_Y_GAP;
+      } else {
+        const childYs = [];
+        visibleChildren.forEach(child => {
+          computeVerticalLayout(child, depth + 1, yOffset);
+          childYs.push(child.y);
+        });
+        node.y = (childYs[0] + childYs[childYs.length - 1]) / 2;
+      }
+    }
+
+    function computeHorizontalLayout(node, currentX = 0) {
+      node.x = currentX;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+
+      if (visibleChildren.length > 0) {
+        const nodeWidth = node.domEl ? (node.domEl.getBoundingClientRect().width / scale) : 220;
+        const nextX = currentX + Math.max(LEVEL_X_GAP, nodeWidth + 60);
+        visibleChildren.forEach(child => {
+          computeHorizontalLayout(child, nextX);
+        });
+      }
+    }
+
+    function flattenNodes(node, list = []) {
+      list.push(node);
+      const isCollapsed = collapsedNodes.has(node.id);
+      if (!isCollapsed && node.children) {
+        node.children.forEach(child => flattenNodes(child, list));
+      }
+      return list;
+    }
+
+    let isInitialLoad = true;
+
+    function renderMindMap() {
+      // 1. Compute Y positions
+      const yOffset = { val: 0 };
+      computeVerticalLayout(mindMapData, 0, yOffset);
+
+      // Center layout vertically relative to origin
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length > 0) {
+        const minY = Math.min(...allVisible.map(n => n.y));
+        const maxY = Math.max(...allVisible.map(n => n.y));
+        const midY = (minY + maxY) / 2;
+        allVisible.forEach(n => n.y -= midY);
+      }
+
+      // 2. Initial pass node rendering (positioned vertically, temporary X=0)
+      nodesContainer.innerHTML = '';
+      svgPathsGroup.innerHTML = '';
+
+      allVisible.forEach(node => {
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+
+        const el = document.createElement('div');
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        
+        el.style.left = `0px`;
+        el.style.top = `${node.y}px`;
+        el.dataset.id = node.id;
+        el.innerText = node.text;
+
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (hasChildren) {
+            const wasCollapsed = collapsedNodes.has(node.id);
+            if (wasCollapsed) {
+              collapsedNodes.delete(node.id);
+            } else {
+              collapsedNodes.add(node.id);
+            }
+            renderMindMap();
+
+            if (wasCollapsed) {
+              panAndZoomToNodeBranchSmooth(node);
+            } else {
+              panAndZoomOnCollapseSmooth(node);
+            }
+          }
+        });
+
+        nodesContainer.appendChild(el);
+        node.domEl = el;
+      });
+
+      // 3. Compute dynamic X positions based on measured DOM widths & position nodes/curves
+      requestAnimationFrame(() => {
+        computeHorizontalLayout(mindMapData, 0);
+
+        allVisible.forEach(node => {
+          if (node.domEl) {
+            node.domEl.style.left = `${node.x}px`;
+          }
+        });
+
+        allVisible.forEach(node => {
+          const isCollapsed = collapsedNodes.has(node.id);
+          if (!isCollapsed && node.children) {
+            node.children.forEach(child => {
+              if (allVisible.includes(child)) {
+                drawCurvePath(node, child);
+              }
+            });
+          }
+        });
+
+        if (isInitialLoad) {
+          isInitialLoad = false;
+          centerInitialView();
+        }
+
+        performSearchHighlight();
+      });
+
+      updateTransform();
+    }
+
+    function drawCurvePath(parent, child) {
+      if (!parent.domEl || !child.domEl) return;
+
+      const parentRect = parent.domEl.getBoundingClientRect();
+
+      const startX = parent.x + (parentRect.width / scale);
+      const startY = parent.y;
+      
+      const endX = child.x;
+      const endY = child.y;
+
+      const controlDist = Math.max(30, (endX - startX) * 0.5);
+
+      const pathD = `M ${startX} ${startY} C ${startX + controlDist} ${startY}, ${endX - controlDist} ${endY}, ${endX} ${endY}`;
+      
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('class', 'connection-line');
+
+      svgPathsGroup.appendChild(path);
+    }
+
+    function updateTransform(animated = false) {
+      if (animated) {
+        nodesContainer.classList.add('animated-transform');
+        svgPathsGroup.classList.add('animated-transform');
+        setTimeout(() => {
+          nodesContainer.classList.remove('animated-transform');
+          svgPathsGroup.classList.remove('animated-transform');
+        }, 450);
+      }
+      
+      nodesContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      svgPathsGroup.setAttribute('transform', `translate(${translateX}, ${translateY}) scale(${scale})`);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom when expanding a node branch
+    function panAndZoomToNodeBranchSmooth(node) {
+      setTimeout(() => {
+        const branchNodes = flattenNodes(node);
+        if (branchNodes.length <= 1) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        branchNodes.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        if (node.x < minX) minX = node.x;
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const branchW = maxX - minX;
+        const branchH = maxY - minY;
+
+        let neededScale = scale;
+        if (branchW * scale > availW || branchH * scale > availH) {
+          const scaleX = availW / branchW;
+          const scaleY = availH / branchH;
+          neededScale = Math.min(scaleX, scaleY);
+          neededScale = Math.max(0.2, Math.min(neededScale, scale));
+        }
+
+        scale = neededScale;
+
+        const targetMidX = (minX + maxX) / 2;
+        const targetMidY = (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetMidX * scale);
+        translateY = (window.innerHeight / 2) - (targetMidY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom Correction when COLLAPSING a node branch
+    function panAndZoomOnCollapseSmooth(collapsedNode) {
+      setTimeout(() => {
+        const allVisible = flattenNodes(mindMapData);
+        if (allVisible.length === 0) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        allVisible.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const contentW = maxX - minX;
+        const contentH = maxY - minY;
+
+        let newScale = scale;
+        if (contentW * scale < availW * 0.5 && contentH * scale < availH * 0.5 && scale < 1.0) {
+          const scaleX = availW * 0.75 / contentW;
+          const scaleY = availH * 0.75 / contentH;
+          newScale = Math.min(Math.min(scaleX, scaleY), 1.0);
+        }
+
+        scale = newScale;
+
+        const targetX = collapsedNode ? collapsedNode.x : (minX + maxX) / 2;
+        const targetY = collapsedNode ? collapsedNode.y : (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetX * scale);
+        translateY = (window.innerHeight / 2) - (targetY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // --- VIEW CALCULATIONS & CENTERING ---
+    function centerInitialView(animated = false) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y < minY) minY = n.y;
+        if (n.y > maxY) maxY = n.y;
+      });
+
+      const viewW = window.innerWidth;
+      const viewH = window.innerHeight;
+
+      const contentW = maxX - minX;
+
+      scale = 1.0;
+      translateX = (viewW - contentW) / 2 - minX;
+      translateY = viewH / 2;
+
+      updateTransform(animated);
+    }
+
+    // Fit to window scales to fit the ENTIRE diagram in the window with no cutoff
+    function fitToWindow(animated = true) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        const h = 40;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 80;
+      const availableW = window.innerWidth - (padding * 2);
+      const availableH = window.innerHeight - (padding * 2);
+
+      const contentW = maxX - minX;
+      const contentH = maxY - minY;
+
+      const scaleX = availableW / contentW;
+      const scaleY = availableH / contentH;
+
+      scale = Math.min(scaleX, scaleY);
+
+      const midX = (minX + maxX) / 2;
+      const midY = (minY + maxY) / 2;
+
+      translateX = (window.innerWidth / 2) - (targetMidX = midX) * scale;
+      translateX = (window.innerWidth / 2) - (midX * scale);
+      translateY = (window.innerHeight / 2) - (midY * scale);
+
+      updateTransform(animated);
+    }
+
+    function resetZoomToInitial() {
+      collapsedNodes.clear();
+      setInitialCollapsedState(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    }
+
+    // --- ULTRA-HIGH RESOLUTION PNG EXPORT (4X Crystal-Clear Vector Rendering) ---
+    function downloadMindMapPNG() {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      // Calculate absolute bounds of all visible nodes
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 200;
+        const h = 46;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 100;
+      const unscaledW = (maxX - minX) + (padding * 2);
+      const unscaledH = (maxY - minY) + (padding * 2);
+
+      // Render canvas at 4x resolution scale (dpr = 4) for vector-grade crispness
+      const dpr = 4;
+      const canvasW = Math.ceil(unscaledW * dpr);
+      const canvasH = Math.ceil(unscaledH * dpr);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = canvasW;
+      canvas.height = canvasH;
+      const ctx = canvas.getContext('2d');
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // 1. Draw clean background
+      ctx.fillStyle = '#f7f9fc';
+      ctx.fillRect(0, 0, canvasW, canvasH);
+
+      // Scale canvas context to 4x supersampling
+      ctx.scale(dpr, dpr);
+
+      const offsetX = padding - minX;
+      const offsetY = padding - minY;
+
+      // 2. Draw SVG Connecting Lines onto Canvas
+      allVisible.forEach(node => {
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (!isCollapsed && node.children) {
+          node.children.forEach(child => {
+            if (allVisible.includes(child) && node.domEl && child.domEl) {
+              const nodeWidth = node.domEl.getBoundingClientRect().width / scale;
+              const sx = node.x + nodeWidth + offsetX;
+              const sy = node.y + offsetY;
+              const ex = child.x + offsetX;
+              const ey = child.y + offsetY;
+              const ctrl = Math.max(30, (ex - sx) * 0.5);
+
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.bezierCurveTo(sx + ctrl, sy, ex - ctrl, ey, ex, ey);
+              ctx.strokeStyle = '#8094ae';
+              ctx.lineWidth = 2;
+              ctx.stroke();
+            }
+          });
+        }
+      });
+
+      // High contrast level color palette up to Level 10
+      const levelColors = {
+        0: { bg: '#b4acf0', text: '#1e1945', weight: '800', size: 15 },
+        1: { bg: '#aebdf5', text: '#111a45', weight: '700', size: 14 },
+        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13.5 },
+        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13.5 },
+        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13.5 },
+        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13.5 },
+        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13.5 },
+        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13.5 },
+        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13.5 },
+        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13.5 },
+        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13.5 }
+      };
+
+      // 3. Draw Pill Nodes onto 4x Canvas
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        const rect = node.domEl.getBoundingClientRect();
+        const w = rect.width / scale;
+        const h = rect.height / scale;
+        const nx = node.x + offsetX;
+        const ny = (node.y - (h / 2)) + offsetY;
+
+        const styleConfig = levelColors[Math.min(node.level, 10)] || levelColors[10];
+
+        // Draw pill background
+        const radius = h / 2;
+        ctx.beginPath();
+        ctx.roundRect(nx, ny, w, h, radius);
+        ctx.fillStyle = styleConfig.bg;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.08)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+
+        // Format pill text with indicators
+        let displayText = node.text;
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (hasChildren) {
+          displayText += isCollapsed ? '  +' : '  −';
+        }
+
+        // Draw crystal-clear text on 4x supersampled canvas
+        ctx.fillStyle = styleConfig.text;
+        ctx.font = `${styleConfig.weight} ${styleConfig.size}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(displayText, nx + 18, ny + (h / 2));
+      });
+
+      // Format download filename as "Mind_Map_[topic].png"
+      const rawTopic = document.getElementById('topic-title')?.innerText || mindMapData.text || 'Topic';
+      const formattedTopic = rawTopic.trim().replace(/\s+/g, '_');
+      const filename = `Mind_Map_${formattedTopic}.png`;
+
+      // Trigger ultra-high resolution PNG download with formatted filename
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+    }
+
+    // --- PAN & ZOOM TOWARDS POINTER ---
+    viewport.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform(false);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Double-click in blank canvas space triggers Fit to Window
+    viewport.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      fitToWindow(true);
+    });
+
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      const newScale = Math.min(Math.max(0.1, scale * zoomFactor), 2.5);
+
+      translateX = mouseX - (mouseX - translateX) * (newScale / scale);
+      translateY = mouseY - (mouseY - translateY) * (newScale / scale);
+
+      scale = newScale;
+      updateTransform(false);
+    }, { passive: false });
+
+    // --- BUTTON HANDLERS ---
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+      collapsedNodes.clear();
+      renderMindMap();
+      setTimeout(() => fitToWindow(true), 50);
+    });
+
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+      function collapseAll(node) {
+        if (node.children && node.children.length > 0) {
+          collapsedNodes.add(node.id);
+          node.children.forEach(collapseAll);
+        }
+      }
+      collapseAll(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    });
+
+    document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
+    document.getElementById('zoom-reset').addEventListener('click', resetZoomToInitial);
+    document.getElementById('download-png-btn').addEventListener('click', downloadMindMapPNG);
+
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.min(2.5, scale * 1.15);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.max(0.1, scale * 0.85);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    // Recursively check if descendant node text matches search query
+    function hasMatchingDescendant(node, query) {
+      if (!node.children || node.children.length === 0) return false;
+      for (let child of node.children) {
+        if (child.text.toLowerCase().includes(query)) return true;
+        if (hasMatchingDescendant(child, query)) return true;
+      }
+      return false;
+    }
+
+    // Perform Search & Highlight logic
+    function performSearchHighlight() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const allVisible = flattenNodes(mindMapData);
+
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        node.domEl.classList.remove('highlighted', 'parent-match-highlighted');
+
+        if (!query) return;
+
+        const isExactMatch = node.text.toLowerCase().includes(query);
+        const isCollapsed = collapsedNodes.has(node.id);
+        const hasHiddenMatch = isCollapsed && hasMatchingDescendant(node, query);
+
+        if (isExactMatch) {
+          node.domEl.classList.add('highlighted');
+        } else if (hasHiddenMatch) {
+          node.domEl.classList.add('parent-match-highlighted');
+        }
+      });
+    }
+
+    document.getElementById('search-input').addEventListener('input', performSearchHighlight);
+
+    // Initial Render & Dynamic Title Sync
+    const titleEl = document.getElementById('topic-title');
+    if (titleEl && mindMapData && mindMapData.text) {
+      titleEl.textContent = mindMapData.text;
+    }
+    renderMindMap();
+  </script>
+</body>
+</html>
