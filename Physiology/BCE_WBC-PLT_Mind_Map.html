@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hematopoiesis - Interactive Mind Map</title>
+  <title>Leukocytes & Platelets - Interactive Mind Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -342,7 +342,7 @@
 
   <!-- Top Floating Element 1: Title Card -->
   <div class="floating-panel top-title-card">
-    <h1 id="topic-title">Hematopoiesis</h1>
+    <h1 id="topic-title">Leukocytes & Platelets</h1>
   </div>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
@@ -389,148 +389,84 @@
     // --- MIND MAP DATA STRUCTURE ---
     const mindMapData = {
   "id": "root",
-  "text": "Hematopoiesis",
+  "text": "Leukocytes & Platelets",
   "level": 0,
   "children": [
     {
       "id": "sec-1",
-      "text": "Blood Composition",
+      "text": "Granulocytes",
       "level": 1,
       "children": [
         {
           "id": "sub-1-1",
-          "text": "Centrifuged Specimen Layers",
+          "text": "Overview & Reference Values",
           "level": 2,
           "children": [
             {
               "id": "node-1-1-1",
-              "text": "Plasma Layer",
+              "text": "Adult Total WBC: 4.0-11.0x10^3/uL",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-1-1-1-1",
-                  "text": "Volume Fraction",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-1-1",
-                      "text": "Approximately 55 Percent",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-1-1-2",
-                  "text": "Coagulation Proteins",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-2-1",
-                      "text": "Fibrinogen Retained",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-1-1-3",
-                  "text": "Primary Application",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-3-1",
-                      "text": "Hematology and Coagulation Testing",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-1-1-2",
-              "text": "Serum Matrix",
+              "text": "Relative & Absolute Differential Counts",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-1-2-1",
-                  "text": "Clotting Factor Status",
+                  "text": "Segmented Neutrophils: 40-80%, 1.8-7.0x10^3/uL",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-2-1-1",
-                      "text": "Fibrinogen Consumed in Clot",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-1-2-2",
-                  "text": "Primary Application",
+                  "text": "Lymphocytes: 25-35%, 1.0-4.8x10^3/uL",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-2-2-1",
-                      "text": "Clinical Chemistry and Serology",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-2-3",
+                  "text": "Monocytes: 2-10%, 0.1-0.8x10^3/uL",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-2-4",
+                  "text": "Eosinophils: 0-5%, 0.0-0.4x10^3/uL",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-2-5",
+                  "text": "Basophils: 0-1%, 0.0-0.2x10^3/uL",
+                  "level": 4,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-1-1-3",
-              "text": "Buffy Coat Layer",
+              "text": "Pediatric Reversed Differential Pattern",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-1-1-3-1",
-                  "text": "Volume Fraction",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-3-1-1",
-                      "text": "Less Than 1 Percent",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-1-3-2",
-                  "text": "Cellular Components",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-3-2-1",
-                      "text": "Leukocytes and Thrombocytes",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-1-1-4",
-              "text": "Erythrocyte Pack Layer",
+              "text": "Immune Defense Arms",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-1-4-1",
-                  "text": "Volume Fraction",
+                  "text": "Innate System: Rapid, PAMPs/DAMPs, Phagocytes",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-4-1-1",
-                      "text": "Approximately 45 Percent",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-4-2",
+                  "text": "Adaptive System: Specific, Memory, Lymphocytes",
+                  "level": 4,
+                  "children": []
                 }
               ]
             }
@@ -538,180 +474,138 @@
         },
         {
           "id": "sub-1-2",
-          "text": "Granulocytic Leukocytes",
+          "text": "Neutrophil Maturation Pathway",
           "level": 2,
           "children": [
             {
               "id": "node-1-2-1",
-              "text": "Segmented Neutrophils",
+              "text": "Myeloblast",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-2-1-1",
-                  "text": "Morphology",
+                  "text": "Size & Nucleus: 14-20 um, 1-5 Nucleoli",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-1-1-1",
-                      "text": "3 to 5 Lobes",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-1-1-2",
-                      "text": "Pale Pink Secondary Granules",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-1-2",
-                  "text": "Reference Values",
+                  "text": "Cytoplasm: Scant, <20 Primary Granules",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-1-2-1",
-                      "text": "Relative: 50 to 70 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-1-2-2",
-                      "text": "Absolute: 1.7 to 7.5 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-1-3",
-                  "text": "Primary Function",
+                  "text": "Stain & Markers: MPO+, CD45+, CD34+, CD33+, CD13+",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-1-3-1",
-                      "text": "Acute Bacterial Phagocytosis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-1-2-2",
-              "text": "Eosinophils",
+              "text": "Promyelocyte",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-2-2-1",
-                  "text": "Morphology",
+                  "text": "Size & Nucleus: 15-21 um, Fading Nucleoli",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-2-1-1",
-                      "text": "Bilobed Nucleus",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-2-1-2",
-                      "text": "Coarse Red-Orange Granules",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-2-2",
-                  "text": "Reference Values",
+                  "text": "Cytoplasm: >=20 Azurophilic Granules, MPO++",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-2-2-1",
-                      "text": "Relative: 1 to 3 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-2-2-2",
-                      "text": "Absolute: 0.0 to 0.3 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-2-3",
-                  "text": "Primary Function",
+                  "text": "Markers: CD45+, CD33+, CD13+, CD34-",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-2-3-1",
-                      "text": "Helminth Defense and Allergy Modulation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-1-2-3",
-              "text": "Basophils",
+              "text": "Myelocyte",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-2-3-1",
-                  "text": "Morphology",
+                  "text": "Size & Nucleus: 12-18 um, No Nucleoli",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-3-1-1",
-                      "text": "Dark Blue-Purple Granules",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-3-1-2",
-                      "text": "Granules Obscure Nucleus",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-3-2",
-                  "text": "Reference Values",
+                  "text": "Cytoplasm: Secondary Pink Granules, MPO-",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-3-2-1",
-                      "text": "Relative: 0 to 2 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-3-2-2",
-                      "text": "Absolute: 0.0 to 0.2 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-2-3-3",
-                  "text": "Primary Function",
+                  "text": "Key Milestone: Last Mitotic Stage",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-3-3-1",
-                      "text": "Histamine and Heparin Release",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-2-4",
+              "text": "Metamyelocyte",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-1-2-4-1",
+                  "text": "Size & Nucleus: 10-18 um, Indentation <1/2",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-2-4-2",
+                  "text": "Cytoplasm: Post-Mitotic, Neutral Pink",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-2-5",
+              "text": "Band Neutrophil",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-1-2-5-1",
+                  "text": "Size & Nucleus: 9-15 um, Indentation >1/2",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-2-5-2",
+                  "text": "Cytoplasm: Pink-Tan, Condensed End Chromatin",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-2-6",
+              "text": "Segmented Neutrophil",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-1-2-6-1",
+                  "text": "Size & Nucleus: 9-15 um, 3-5 Lobes",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-2-6-2",
+                  "text": "Cytoplasm: Pink-Tan, Secretory Vesicles",
+                  "level": 4,
+                  "children": []
                 }
               ]
             }
@@ -719,114 +613,75 @@
         },
         {
           "id": "sub-1-3",
-          "text": "Mononuclear Leukocytes",
+          "text": "Neutrophil Pools & Kinetics",
           "level": 2,
           "children": [
             {
               "id": "node-1-3-1",
-              "text": "Lymphocytes",
+              "text": "Bone Marrow Reserve Pool (~3x PB)",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-3-1-1",
-                  "text": "Morphology & Size Standard",
+                  "text": "Mitotic Pool: Blasts, Promyelocytes, Myelocytes",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-1-1-1",
-                      "text": "High NC Ratio",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-1-2",
-                      "text": "Nucleus Diameter 6 to 8um",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-1-3",
-                      "text": "Internal RBC Size Reference Benchmark",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-3-1-2",
-                  "text": "Reference Values & Inversion",
+                  "text": "Post-Mitotic Reserve: Metamyelocytes, Bands, Segs",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-1-2-1",
-                      "text": "Adult Relative: 18 to 42 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-2-2",
-                      "text": "Pediatric Inversion: 50 to 70 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-2-3",
-                      "text": "Absolute: 1.0 to 3.2 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-1-3-2",
-              "text": "Monocytes",
+              "text": "Peripheral Blood Kinetics (~8 Hour Lifespan)",
               "level": 3,
               "children": [
                 {
                   "id": "node-1-3-2-1",
-                  "text": "Morphology",
+                  "text": "Circulating Pool (CGP): 50% Freely Flowing",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-2-1-1",
-                      "text": "Folded Amoeboid Nucleus",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-1-2",
-                      "text": "Ground-Glass Gray-Blue Cytoplasm",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-1-3-2-2",
-                  "text": "Functions",
+                  "text": "Marginating Pool (MGP): 50% Endothelial Attached",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-2-2-1",
-                      "text": "Phagocytosis Garbage Collection",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-2-2",
-                      "text": "Antigen Presentation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-2-3",
-                      "text": "Tissue Macrophage Precursor",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-3-3",
+              "text": "Clinical Pathology Thresholds",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-1-3-3-1",
+                  "text": "Neutrophilia: >7.0x10^3/uL",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-2",
+                  "text": "Neutropenia: <1.8x10^9/L",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-3",
+                  "text": "Granulocytopenia: <2.0x10^9/L",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-4",
+                  "text": "Agranulocytosis: <0.5x10^9/L",
+                  "level": 4,
+                  "children": []
                 }
               ]
             }
@@ -834,98 +689,87 @@
         },
         {
           "id": "sub-1-4",
-          "text": "Anucleate Formed Elements",
+          "text": "Neutrophil Function & Microbicidal Action",
           "level": 2,
           "children": [
             {
               "id": "node-1-4-1",
-              "text": "Erythrocytes RBCs",
+              "text": "Functional Sequence: Adherence, Chemotaxis, Phagocytosis",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-1-4-2",
+              "text": "Oxygen-Dependent Killing: MPO Respiratory Burst",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-1-4-3",
+              "text": "Toxic Granulation: Persistent MPO Granules",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-1-5",
+          "text": "Eosinophil & Basophil Lineages",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-1-5-1",
+              "text": "Eosinophils",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-4-1-1",
-                  "text": "Morphology",
+                  "id": "node-1-5-1-1",
+                  "text": "Morphology: 12-15 um, 2-3 Lobes",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-1-1",
-                      "text": "Biconcave Disc 6 to 8um",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-1-2",
-                  "text": "Reference Range",
+                  "id": "node-1-5-1-2",
+                  "text": "Granules: Red-Orange, Charcot-Leyden Proteins",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-2-1",
-                      "text": "4.00 to 6.00 x10^6/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-1-3",
-                  "text": "Function",
+                  "id": "node-1-5-1-3",
+                  "text": "Kinetics: ~18 Hours, Morning Peak",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-3-1",
-                      "text": "Respiratory Gas Transport",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "node-1-5-1-4",
+                  "text": "Eosinophilia: >0.4x10^3/uL, Parasitic & Allergic",
+                  "level": 4,
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-1-4-2",
-              "text": "Thrombocytes Platelets",
+              "id": "node-1-5-2",
+              "text": "Basophils",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-4-2-1",
-                  "text": "Origin",
+                  "id": "node-1-5-2-1",
+                  "text": "Morphology: 10-15 um, Obscured Nucleus",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-1-1",
-                      "text": "Megakaryocyte Cytoplasm Shedding",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-2-2",
-                  "text": "Reference Range",
+                  "id": "node-1-5-2-2",
+                  "text": "Granules: Dark Purple-Black, Histamine, Heparin",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-2-1",
-                      "text": "150 to 450 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-2-3",
-                  "text": "Function",
+                  "id": "node-1-5-2-3",
+                  "text": "Function: Type I Immediate Hypersensitivity",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-3-1",
-                      "text": "Primary Hemostasis Plug Formation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -935,93 +779,40 @@
     },
     {
       "id": "sec-2",
-      "text": "Anatomical Sites & Microenvironment",
+      "text": "Lymphocytes",
       "level": 1,
       "children": [
         {
           "id": "sub-2-1",
-          "text": "Developmental Timeline",
+          "text": "Maturation & Precursor Criteria",
           "level": 2,
           "children": [
             {
               "id": "node-2-1-1",
-              "text": "Yolk Sac Phase",
+              "text": "Differential Share: 20-40% Adult WBC",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-1-1",
-                  "text": "Timeframe: 18 Days to 3 Months",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-2-1-1-2",
-                  "text": "Primitive Erythropoiesis",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-1-2-1",
-                      "text": "Non HSC Derived Precursors",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-1-1-3",
-                  "text": "AGM System Transition",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-1-3-1",
-                      "text": "Onset of Definitive Erythropoiesis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-2-1-2",
-              "text": "Hepatic Phase",
+              "text": "Precursor Cytochemistry: PAS+, TdT+, MPO-",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-2-1",
-                  "text": "Timeframe: 3 to 6 Months",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-2-1-2-2",
-                  "text": "Liver Dominant Site",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-2-2-1",
-                      "text": "Secondary Spleen and Kidney Activity",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-2-1-3",
-              "text": "Medullary Phase",
+              "text": "Lymphoblast",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-1-3-1",
-                  "text": "Timeframe: 6 Months to Birth",
+                  "text": "Morphology: 10-18 um, Lacy Chromatin",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-2-1-3-2",
-                  "text": "Bone Marrow Cavity Opening",
+                  "text": "Markers: CD34+, CD45+, PAS+, TdT+",
                   "level": 4,
                   "children": []
                 }
@@ -1029,34 +820,33 @@
             },
             {
               "id": "node-2-1-4",
-              "text": "Post-Natal Phase",
+              "text": "Prolymphocyte",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-1-4-1",
-                  "text": "Axial Skeleton Restriction",
+                  "text": "Morphology: Early Clumping, 1 Nucleolus",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-1-1",
-                      "text": "Pelvis Vertebrae Sternum Ribs",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-1-5",
+              "text": "Mature Small Lymphocyte",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-2-1-5-1",
+                  "text": "Morphology: 7-10 um, N:C ~90%",
+                  "level": 4,
+                  "children": []
                 },
                 {
-                  "id": "node-2-1-4-2",
-                  "text": "Diagnostic Target",
+                  "id": "node-2-1-5-2",
+                  "text": "Diagnostic Standard: Nucleus RBC Size (7-8 um)",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-2-1",
-                      "text": "Posterior Iliac Crest Biopsy",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -1064,49 +854,42 @@
         },
         {
           "id": "sub-2-2",
-          "text": "Bone Marrow Compartments and Niches",
+          "text": "Morphological Variants",
           "level": 2,
           "children": [
             {
               "id": "node-2-2-1",
-              "text": "Vascular Compartment",
+              "text": "Large Granular Lymphocyte (LGL)",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-2-1-1",
-                  "text": "Sinusoidal Endothelium Network",
+                  "text": "Features: T/NK Lineage, Coarse Granules",
                   "level": 4,
                   "children": []
-                },
-                {
-                  "id": "node-2-2-1-2",
-                  "text": "Soluble Egress Factors",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-1-2-1",
-                      "text": "G-CSF GM-CSF Chemokines",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
                 }
               ]
             },
             {
               "id": "node-2-2-2",
-              "text": "Endosteal Compartment",
+              "text": "Reactive Lymphocyte (Atypical)",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-2-2-1",
-                  "text": "Inner Bone Surface Interface",
+                  "text": "Morphology: 16-30 um, Amoeboid, RBC-Hugging",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-2-2-2-2",
-                  "text": "Anchors Quiescent HSC Pool",
+                  "text": "Cytoplasm: Peripheral Basophilia, Vacuoles",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-2-3",
+                  "text": "Etiology: Viral Infections, EBV",
                   "level": 4,
                   "children": []
                 }
@@ -1114,59 +897,26 @@
             },
             {
               "id": "node-2-2-3",
-              "text": "Specific Microenvironmental Niches",
+              "text": "Plasma Cell Subtypes",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-2-3-1",
-                  "text": "Erythroid Niche",
+                  "text": "Plasma Cell: Eccentric Cartwheel Nucleus, Golgi Halo",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-1-1",
-                      "text": "Erythroblastic Islands 25 to 30%",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-2-3-1-2",
-                      "text": "Central Macrophage Phagocytizes Nuclei",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-2-2-3-2",
-                  "text": "Myeloid Niche",
+                  "text": "Flame Cell: Fiery Red-Purple Cytoplasm, IgA",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-2-1",
-                      "text": "Deep Nests Away From Sinuses",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-2-2-3-3",
-                  "text": "Megakaryocytic Niche",
+                  "text": "Mott Cell: Russell Bodies, Ig Globules",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-3-1",
-                      "text": "Polyploid Cells Along Sinus Walls",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-2-3-3-2",
-                      "text": "Proplatelet Cytoplasmic Shedding",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -1174,17 +924,23 @@
         },
         {
           "id": "sub-2-3",
-          "text": "Stromal Matrix Components",
+          "text": "Kinetics & Body Pools",
           "level": 2,
           "children": [
             {
               "id": "node-2-3-1",
-              "text": "Macrophages",
+              "text": "Distribution Pools",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-3-1-1",
-                  "text": "Phagocytosis and Cytokine Secretion",
+                  "text": "Peripheral Blood Pool: ~5%",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-1-2",
+                  "text": "Extravascular Pool: ~95%",
                   "level": 4,
                   "children": []
                 }
@@ -1192,12 +948,18 @@
             },
             {
               "id": "node-2-3-2",
-              "text": "Reticular Cells Fibroblasts",
+              "text": "Circulating Lifespans",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-3-2-1",
-                  "text": "Synthesize 3D Reticular Fiber Meshwork",
+                  "text": "Long-Lived Memory: ~80%, Months-Years",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-2-2",
+                  "text": "Short-Lived Effector: ~20%, Hours-5 Days",
                   "level": 4,
                   "children": []
                 }
@@ -1205,44 +967,18 @@
             },
             {
               "id": "node-2-3-3",
-              "text": "Adipocytes",
+              "text": "Diagnostic Thresholds",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-3-3-1",
-                  "text": "Space Occupying Volume Control",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-3-4",
-              "text": "Osteoblasts",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-4-1",
-                  "text": "Bone Forming Matrix Synthesis",
+                  "text": "Lymphocytosis: >4.8x10^3/uL",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-3-4-2",
-                  "text": "Diagnostic Perinuclear Halo Golgi",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-3-5",
-              "text": "Osteoclasts",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-5-1",
-                  "text": "Multinucleated Bone Resorbing Cells",
+                  "id": "node-2-3-3-2",
+                  "text": "Lymphocytopenia: <1.0x10^3/uL",
                   "level": 4,
                   "children": []
                 }
@@ -1252,23 +988,23 @@
         },
         {
           "id": "sub-2-4",
-          "text": "Cellularity and Pathophysiology",
+          "text": "Functional Subsets",
           "level": 2,
           "children": [
             {
               "id": "node-2-4-1",
-              "text": "Cellularity Calculations",
+              "text": "B Lymphocytes (Humoral)",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-4-1-1",
-                  "text": "Adipocyte Percent = Age +/- 10%",
+                  "text": "Proportion & Markers: 15-30%, CD10+, CD19+, CD20+",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-2-4-1-2",
-                  "text": "Nucleated Cell Percent = 100 - Adipocyte%",
+                  "text": "Antibody Response: Primary IgM, Secondary IgG",
                   "level": 4,
                   "children": []
                 }
@@ -1276,138 +1012,45 @@
             },
             {
               "id": "node-2-4-2",
-              "text": "Cellularity Pathologies",
+              "text": "T Lymphocytes (Cell-Mediated)",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-4-2-1",
-                  "text": "Hyperplasia",
+                  "text": "Universal Marker: 60-80%, CD3+",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-4-2-1-1",
-                      "text": "Hemorrhage Hemolysis or Leukemia",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
                   "id": "node-2-4-2-2",
-                  "text": "Hypoplasia",
+                  "text": "CD4+ T Helper: CD3+/CD4+/CD8-, MHC Class II",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-4-2-2-1",
-                      "text": "Toxins Radiation or Genetic Failure",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-2-3",
+                  "text": "CD8+ T Cytotoxic: CD3+/CD8+/CD4-, MHC Class I",
+                  "level": 4,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-4-3",
-              "text": "Extramedullary Hematopoiesis",
+              "text": "NK Cells (Innate)",
               "level": 3,
               "children": [
                 {
                   "id": "node-2-4-3-1",
-                  "text": "Reactivation in Liver and Spleen",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-2-5",
-          "text": "Secondary Lymphoid Organs",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-2-5-1",
-              "text": "Spleen Mechanics",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-5-1-1",
-                  "text": "Slow Transit RES Pathway",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-1-1-1",
-                      "text": "Culling Senescent Cell Destruction",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-5-1-1-2",
-                      "text": "Pitting Removal of Inclusions",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-5-1-2",
-                  "text": "Platelet Reservoir",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-1-2-1",
-                      "text": "Stores One-Third Platelet Mass",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-5-1-3",
-                  "text": "Sickle Cell Autosplenectomy",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-1-3-1",
-                      "text": "Hypoxic Acidic Microenvironment Trapping",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-5-1-3-2",
-                      "text": "Ischemic Fibrosis and Atrophy",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-2-5-2",
-              "text": "Lymph Nodes",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-5-2-1",
-                  "text": "Lymph Fluid Pathogen Filtration",
+                  "text": "Proportion & Markers: 5-15%, CD16+, CD56+, CD3-",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-5-2-2",
-                  "text": "Lymphadenopathy Etiologies",
+                  "id": "node-2-4-3-2",
+                  "text": "Function: Rapid Innate Cytolysis",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-2-2-1",
-                      "text": "Inflammation Infection or Malignancy",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -1417,111 +1060,46 @@
     },
     {
       "id": "sec-3",
-      "text": "Hematopoietic Hierarchy & Regulation",
+      "text": "Monocytes-Platelets",
       "level": 1,
       "children": [
         {
           "id": "sub-3-1",
-          "text": "Precursor Hierarchy",
+          "text": "Monocyte Maturation Lineage",
           "level": 2,
           "children": [
             {
               "id": "node-3-1-1",
-              "text": "Pluripotential HSCs",
+              "text": "Monoblast: 12-20 um, High N:C, Agranular",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-1-1",
-                  "text": "Frequency: Less Than 0.05 Percent",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-3-1-1-2",
-                  "text": "Four Primary Fates",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-1-2-1",
-                      "text": "Quiescence G0 State",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-2",
-                      "text": "Self-Renewal LTR and STR",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-3",
-                      "text": "Lineage Commitment",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-4",
-                      "text": "Programmed Apoptosis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-3-1-2",
-              "text": "Progenitor Compartment MPPs HPCs",
+              "text": "Promonocyte: 12-20 um, Folded Nucleus, Granules",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-2-1",
-                  "text": "Common Myeloid Progenitor CMP",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-1-1",
-                      "text": "GMP Granulocyte Monocyte Pathway",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-2-1-2",
-                      "text": "MEP Megakaryocyte Erythroid Pathway",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-1-2-2",
-                  "text": "Common Lymphoid Progenitor CLP",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-2-1",
-                      "text": "T NK and B Progenitors",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-3-1-3",
-              "text": "Maturing Precursor Pool",
+              "text": "Mature Monocyte",
               "level": 3,
               "children": [
                 {
                   "id": "node-3-1-3-1",
-                  "text": "Frequency: Greater Than 95 Percent",
+                  "text": "Morphology: 12-20 um, Horseshoe Nucleus",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-3-1-3-2",
-                  "text": "Recognizable Morphological Blasts",
+                  "text": "Cytoplasm: Blue-Gray, Ground Glass, Vacuoles",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-3-1-3-3",
+                  "text": "Markers: CD14+, NSE+",
                   "level": 4,
                   "children": []
                 }
@@ -1531,91 +1109,55 @@
         },
         {
           "id": "sub-3-2",
-          "text": "CD Immunophenotyping Profiles",
+          "text": "Tissue Macrophages & Kinetics",
           "level": 2,
           "children": [
             {
               "id": "node-3-2-1",
-              "text": "Flow Cytometry Analysis",
+              "text": "Vascular Kinetics: ~8 Hours PB Lifespan",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-2-1-1",
-                  "text": "Distinguishes Identical Precursor Blasts",
-                  "level": 4,
-                  "children": []
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-3-2-2",
-              "text": "Lineage Specific Markers",
+              "text": "Vascular Pools: MGP ~3x CGP",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-2-3",
+              "text": "Anatomical Tissue Macrophages (15-80 um)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-3-2-2-1",
-                  "text": "CD34 Marker",
+                  "id": "node-3-2-3-1",
+                  "text": "Connective Tissue: Histiocytes",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-1-1",
-                      "text": "Primitive HSCs and Blasts",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-3-2-2-2",
-                  "text": "CD13 and CD33 Markers",
+                  "id": "node-3-2-3-2",
+                  "text": "Liver: Kupffer Cells",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-2-1",
-                      "text": "Myeloid Lineage Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-3-2-2-3",
-                  "text": "CD19 CD20 and CD10",
+                  "id": "node-3-2-3-3",
+                  "text": "Lungs: Alveolar Macrophages",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-3-1",
-                      "text": "B Lymphoid Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-3-2-2-4",
-                  "text": "CD2 CD3 and CD7",
+                  "id": "node-3-2-3-4",
+                  "text": "Skin: Langerhans Cells",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-4-1",
-                      "text": "T Lymphoid Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-3-2-2-5",
-                  "text": "MEP Marker Downregulation",
+                  "id": "node-3-2-3-5",
+                  "text": "Brain: Microglial Cells",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-5-1",
-                      "text": "CD34 Negative CD13 Negative",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -1623,125 +1165,114 @@
         },
         {
           "id": "sub-3-3",
-          "text": "Cytokine Signaling & Therapeutics",
+          "text": "Platelet Kinetics & Morphology",
           "level": 2,
           "children": [
             {
               "id": "node-3-3-1",
-              "text": "Early Acting Promoters",
+              "text": "Reference Values",
               "level": 3,
               "children": [
                 {
                   "id": "node-3-3-1-1",
-                  "text": "Target Multi-Lineage Progenitors",
+                  "text": "Count: 150-450x10^3/uL",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-1-1-1",
-                      "text": "SCF Flt3 Ligand IL3 IL6",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "node-3-3-1-2",
+                  "text": "Lifespan: 7-10 Days",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-3-3-1-3",
+                  "text": "Distribution: 2/3 Circulating, 1/3 Splenic",
+                  "level": 4,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-3-3-2",
-              "text": "Late Acting Promoters",
+              "text": "Reticulated Platelets: 5-10%, Residual RNA",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-3-2-1",
-                  "text": "Erythropoietin EPO",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-1-1",
-                      "text": "Renal Synthesis Drives Erythropoiesis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-3-2-2",
-                  "text": "G-CSF and M-CSF",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-2-1",
-                      "text": "Direct Neutrophil and Monocyte Maturation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-3-2-3",
-                  "text": "Thrombopoietin TPO",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-3-1",
-                      "text": "Directs Megakaryocyte Platelet Maturation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
               "id": "node-3-3-3",
-              "text": "JAK-STAT Signaling Pathophysiology",
+              "text": "Morphology & Giant Forms",
               "level": 3,
               "children": [
                 {
                   "id": "node-3-3-3-1",
-                  "text": "Receptor Tyrosine Kinase Phosphorylation",
+                  "text": "Normal: 2-3 um, Anucleated",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-3-3-3-2",
-                  "text": "JAK2 V617F Mutation",
+                  "text": "Giant Platelets: >5 um, MPNs, Recovery",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-3-2-1",
-                      "text": "Constitutive Tyrosine Kinase Activation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-3-3-2-2",
-                      "text": "Polycythemia Vera EPO Independent Hyperproliferation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-3-3-4",
-              "text": "Recombinant Clinical Applications",
+              "text": "EDTA In Vitro Artifacts",
               "level": 3,
               "children": [
                 {
                   "id": "node-3-3-4-1",
-                  "text": "Epoetin Alfa Treatment for Anemia",
+                  "text": "Platelet Satellitism: Neutrophil Adherence",
                   "level": 4,
                   "children": []
                 },
                 {
                   "id": "node-3-3-4-2",
-                  "text": "Filgrastim Stem Cell Mobilization",
+                  "text": "Platelet Clumping: In Vitro Aggregation",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-3-3-4-3",
+                  "text": "Diagnostic Result: Pseudothrombocytopenia",
                   "level": 4,
                   "children": []
                 }
               ]
+            }
+          ]
+        },
+        {
+          "id": "sub-3-4",
+          "text": "Primary Hemostasis Stages",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-3-4-1",
+              "text": "1. Adhesion: vWF Binds Collagen, GPIb Binds vWF",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-4-2",
+              "text": "2. Shape Change: Cellular Contraction & Pseudopods",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-4-3",
+              "text": "3. Secretion: Release Dense & Alpha Granules",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-4-4",
+              "text": "4. Aggregation: Fibrinogen Bridges Activated GPIIb/IIIa",
+              "level": 3,
+              "children": []
             }
           ]
         }
@@ -2350,7 +1881,9 @@
 
     // Initial Render & Dynamic Title Sync
     const titleEl = document.getElementById('topic-title');
-    if (titleEl && (!titleEl.textContent || !titleEl.textContent.trim()) && mindMapData && mindMapData.text) { titleEl.textContent = mindMapData.text; }
+    if (titleEl && mindMapData && mindMapData.text) {
+      titleEl.textContent = mindMapData.text;
+    }
     renderMindMap();
   </script>
 </body>

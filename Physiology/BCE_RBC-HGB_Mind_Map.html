@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hematopoiesis - Interactive Mind Map</title>
+  <title>Erythrocytes & Hemoglobin - Interactive Mind Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -342,7 +342,7 @@
 
   <!-- Top Floating Element 1: Title Card -->
   <div class="floating-panel top-title-card">
-    <h1 id="topic-title">Hematopoiesis</h1>
+    <h1 id="topic-title">Erythrocytes & Hemoglobin</h1>
   </div>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
@@ -389,144 +389,266 @@
     // --- MIND MAP DATA STRUCTURE ---
     const mindMapData = {
   "id": "root",
-  "text": "Hematopoiesis",
+  "text": "Erythrocytes & Hemoglobin",
   "level": 0,
   "children": [
     {
-      "id": "sec-1",
-      "text": "Blood Composition",
+      "id": "sec-erythrocyte",
+      "text": "Erythrocyte Physiology & Structure",
       "level": 1,
       "children": [
         {
-          "id": "sub-1-1",
-          "text": "Centrifuged Specimen Layers",
+          "id": "sub-rbc-overview",
+          "text": "Overview & Homeostatic Regulation",
           "level": 2,
           "children": [
             {
-              "id": "node-1-1-1",
-              "text": "Plasma Layer",
+              "id": "node-rbc-role",
+              "text": "Primary Physiological Role",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-1-1-1",
-                  "text": "Volume Fraction",
+                  "id": "leaf-o2-transport",
+                  "text": "Oxygen Transport to Tissues",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-1-1",
-                      "text": "Approximately 55 Percent",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-1-1-2",
-                  "text": "Coagulation Proteins",
+                  "id": "leaf-co2-transport",
+                  "text": "CO2 Return to Lungs",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-2-1",
-                      "text": "Fibrinogen Retained",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-1-1-3",
-                  "text": "Primary Application",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-3-1",
-                      "text": "Hematology and Coagulation Testing",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-1-1-2",
-              "text": "Serum Matrix",
+              "id": "node-epo-control",
+              "text": "Erythropoietin (EPO) Regulation",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-1-2-1",
-                  "text": "Clotting Factor Status",
+                  "id": "leaf-epo-site",
+                  "text": "Renal Peritubular Interstitial Synthesis",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-epo-trigger",
+                  "text": "Tissue Hypoxia Stimulus",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-rbc-pathology",
+              "text": "Pathological RBC Deviations",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-anemia",
+                  "text": "Anemia (Decreased RBC Mass)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-erythrocytosis",
+                  "text": "Erythrocytosis Types",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-1-2-1-1",
-                      "text": "Fibrinogen Consumed in Clot",
+                      "id": "leaf-rel-erythrocytosis",
+                      "text": "Relative: Plasma Volume Contraction",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "node-abs-erythrocytosis",
+                      "text": "Absolute: True RBC Increase",
+                      "level": 5,
+                      "children": [
+                        {
+                          "id": "leaf-pv-jak2",
+                          "text": "Polycythemia Vera (JAK2 V617F Mutation)",
+                          "level": 6,
+                          "children": []
+                        },
+                        {
+                          "id": "leaf-sec-hypoxia",
+                          "text": "Secondary: Chronic Arterial Hypoxia",
+                          "level": 6,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-erythropoiesis",
+          "text": "Erythropoiesis & Maturation Stages",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-maturation-trends",
+              "text": "Morphological Maturation Trends",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-trend-size",
+                  "text": "Decreasing Overall Cell Diameter",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-nc",
+                  "text": "Decreasing N:C Ratio",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-chromatin",
+                  "text": "Chromatin Condensation to Pyknotic",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-trend-color",
+                  "text": "Tinctorial Shift (Deep Blue to Pink)",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-precursor-stages",
+              "text": "Sequential Erythroid Precursor Stages",
+              "level": 3,
+              "children": [
+                {
+                  "id": "stage-pronormoblast",
+                  "text": "Pronormoblast (Rubriblast)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-prono-nc",
+                      "text": "High N:C Ratio",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-prono-chromatin",
+                      "text": "Fine Lacy Chromatin & 1-3 Nucleoli",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-prono-cyto",
+                      "text": "Deep Basophilia & Golgi Zone",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-1-2-2",
-                  "text": "Primary Application",
+                  "id": "stage-basophilic",
+                  "text": "Basophilic Normoblast (Prorubricyte)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-1-2-2-1",
-                      "text": "Clinical Chemistry and Serology",
+                      "id": "leaf-baso-chromatin",
+                      "text": "Coarse Wheel-Spoke Chromatin Pattern",
                       "level": 5,
                       "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-1-1-3",
-              "text": "Buffy Coat Layer",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-1-1-3-1",
-                  "text": "Volume Fraction",
-                  "level": 4,
-                  "children": [
+                    },
                     {
-                      "id": "node-1-1-3-1-1",
-                      "text": "Less Than 1 Percent",
+                      "id": "leaf-baso-halo",
+                      "text": "Perinuclear Halo (Mitochondria)",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-1-3-2",
-                  "text": "Cellular Components",
+                  "id": "stage-polychromatic",
+                  "text": "Polychromatic Normoblast (Rubricyte)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-1-3-2-1",
-                      "text": "Leukocytes and Thrombocytes",
+                      "id": "leaf-poly-mitosis",
+                      "text": "Final Stage Capable of Mitosis",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-poly-cyto",
+                      "text": "Gray-Blue Cytoplasm (Hb Accumulation)",
                       "level": 5,
                       "children": []
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "node-1-1-4",
-              "text": "Erythrocyte Pack Layer",
-              "level": 3,
-              "children": [
+                },
                 {
-                  "id": "node-1-1-4-1",
-                  "text": "Volume Fraction",
+                  "id": "stage-orthochromic",
+                  "text": "Orthochromic Normoblast (Metarubricyte)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-1-4-1-1",
-                      "text": "Approximately 45 Percent",
+                      "id": "leaf-ortho-nuc",
+                      "text": "Dense Pyknotic Eccentric Nucleus",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-ortho-cyto",
+                      "text": "Pink-Salmon Cytoplasm",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-reticulocyte",
+                  "text": "Reticulocyte (Anucleate Precursor)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-retic-wright",
+                      "text": "Wright-Giemsa: Polychromasia",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-retic-supravital",
+                      "text": "Supravital Stains (New Methylene Blue)",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-retic-rna",
+                      "text": "Precipitates Residual Ribosomal RNA",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "stage-mature-discocyte",
+                  "text": "Mature Erythrocyte (Discocyte)",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-disc-shape",
+                      "text": "7.5 um Biconcave Disc",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-disc-span",
+                      "text": "100-120 Day Circulation Lifespan",
                       "level": 5,
                       "children": []
                     }
@@ -537,61 +659,73 @@
           ]
         },
         {
-          "id": "sub-1-2",
-          "text": "Granulocytic Leukocytes",
+          "id": "sub-rbc-membrane",
+          "text": "Membrane Composition & Morphology",
           "level": 2,
           "children": [
             {
-              "id": "node-1-2-1",
-              "text": "Segmented Neutrophils",
+              "id": "node-mem-ratio",
+              "text": "Overall Chemical Composition",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-2-1-1",
-                  "text": "Morphology",
+                  "id": "leaf-comp-protein",
+                  "text": "52% Protein",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-comp-lipid",
+                  "text": "40% Lipid",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-comp-carbs",
+                  "text": "8% Carbohydrate",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mem-proteins",
+              "text": "Membrane Protein Classes",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-integral-proteins",
+                  "text": "Integral Transmembrane Proteins",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-1-1-1",
-                      "text": "3 to 5 Lobes",
+                      "id": "leaf-zeta-potential",
+                      "text": "Negative Charge creates Zeta Potential",
                       "level": 5,
                       "children": []
                     },
                     {
-                      "id": "node-1-2-1-1-2",
-                      "text": "Pale Pink Secondary Granules",
+                      "id": "leaf-band-3",
+                      "text": "Band 3: Cl-/HCO3- Exchange Channel",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-2-1-2",
-                  "text": "Reference Values",
+                  "id": "node-peripheral-proteins",
+                  "text": "Peripheral Cytoskeletal Proteins",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-1-2-1",
-                      "text": "Relative: 50 to 70 Percent",
+                      "id": "leaf-spectrin",
+                      "text": "Spectrin: Helical Elasticity Network",
                       "level": 5,
                       "children": []
                     },
                     {
-                      "id": "node-1-2-1-2-2",
-                      "text": "Absolute: 1.7 to 7.5 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-2-1-3",
-                  "text": "Primary Function",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-1-3-1",
-                      "text": "Acute Bacterial Phagocytosis",
+                      "id": "leaf-ankyrin",
+                      "text": "Ankyrin: Anchors Spectrin to Band 3",
                       "level": 5,
                       "children": []
                     }
@@ -600,56 +734,93 @@
               ]
             },
             {
-              "id": "node-1-2-2",
-              "text": "Eosinophils",
+              "id": "node-lipid-patho",
+              "text": "Lipid Dynamics & Pathomorphology",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-2-2-1",
-                  "text": "Morphology",
+                  "id": "leaf-lipid-ratio",
+                  "text": "1:1 Unesterified Cholesterol to Phospholipid",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-macrocodocyte",
+                  "text": "Target Cell: Proportional Increase (\u2191CH:\u2191PL)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-acanthocyte",
+                  "text": "Acanthocyte: Elevated Ratio (\u2191CH:\u2193PL)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-echinocyte",
+                  "text": "Echinocyte: Outer Leaflet Expansion",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-stomatocyte",
+                  "text": "Stomatocyte: Inner Leaflet Expansion",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-rbc-transport-metab",
+          "text": "Cation Transport & Metabolism",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-cation-pumps",
+              "text": "ATP-Dependent Active Cation Pumps",
+              "level": 3,
+              "children": [
+                {
+                  "id": "node-nak-pump",
+                  "text": "Na+/K+ ATPase Pump",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-2-1-1",
-                      "text": "Bilobed Nucleus",
+                      "id": "leaf-nak-action",
+                      "text": "Extrudes 3 Na+ / Imports 2 K+",
                       "level": 5,
                       "children": []
                     },
                     {
-                      "id": "node-1-2-2-1-2",
-                      "text": "Coarse Red-Orange Granules",
+                      "id": "leaf-nak-concentrations",
+                      "text": "Maintains High K+ Low Na+",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "leaf-nak-in vitro",
+                      "text": "In Vitro Hemolysis False K+ Elevation",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-2-2-2",
-                  "text": "Reference Values",
+                  "id": "node-ca-pump",
+                  "text": "Ca2+ ATPase Pump",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-2-2-1",
-                      "text": "Relative: 1 to 3 Percent",
+                      "id": "leaf-ca-action",
+                      "text": "Extrudes Free Intracellular Ca2+",
                       "level": 5,
                       "children": []
                     },
                     {
-                      "id": "node-1-2-2-2-2",
-                      "text": "Absolute: 0.0 to 0.3 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-2-2-3",
-                  "text": "Primary Function",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-2-3-1",
-                      "text": "Helminth Defense and Allergy Modulation",
+                      "id": "leaf-ca-flexibility",
+                      "text": "Prevents Rigidifying Protein Cross-linking",
                       "level": 5,
                       "children": []
                     }
@@ -658,56 +829,63 @@
               ]
             },
             {
-              "id": "node-1-2-3",
-              "text": "Basophils",
+              "id": "node-anaerobic-pathways",
+              "text": "4 Anaerobic Metabolic Pathways",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-2-3-1",
-                  "text": "Morphology",
+                  "id": "node-embden-meyerhof",
+                  "text": "Embden-Meyerhof Pathway (90-95%)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-3-1-1",
-                      "text": "Dark Blue-Purple Granules",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-2-3-1-2",
-                      "text": "Granules Obscure Nucleus",
+                      "id": "leaf-em-atp",
+                      "text": "Generates Net ATP for Pumps",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-2-3-2",
-                  "text": "Reference Values",
+                  "id": "node-hmp-shunt",
+                  "text": "Hexose Monophosphate (HMP) Shunt (5-10%)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-3-2-1",
-                      "text": "Relative: 0 to 2 Percent",
+                      "id": "leaf-g6pd-nadph",
+                      "text": "G6PD Engine Generates NADPH",
                       "level": 5,
                       "children": []
                     },
                     {
-                      "id": "node-1-2-3-2-2",
-                      "text": "Absolute: 0.0 to 0.2 x10^3/uL",
+                      "id": "leaf-heinz-bodies",
+                      "text": "Deficiency Forms Heinz Bodies & Bite Cells",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-1-2-3-3",
-                  "text": "Primary Function",
+                  "id": "node-met-reductase",
+                  "text": "Methemoglobin Reductase Pathway",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-1-2-3-3-1",
-                      "text": "Histamine and Heparin Release",
+                      "id": "leaf-met-nadh",
+                      "text": "NADH Reduces Fe3+ to Fe2+",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-rapoport-luebering",
+                  "text": "Rapoport-Luebering Shunt",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "leaf-23bpg-synth",
+                      "text": "Synthesizes 2,3-BPG (Lowers O2 Affinity)",
                       "level": 5,
                       "children": []
                     }
@@ -718,214 +896,69 @@
           ]
         },
         {
-          "id": "sub-1-3",
-          "text": "Mononuclear Leukocytes",
+          "id": "sub-rbc-lysis",
+          "text": "Mechanisms of RBC Destruction",
           "level": 2,
           "children": [
             {
-              "id": "node-1-3-1",
-              "text": "Lymphocytes",
+              "id": "node-extravascular-lysis",
+              "text": "Extravascular Hemolysis (~90%)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-3-1-1",
-                  "text": "Morphology & Size Standard",
+                  "id": "leaf-res-site",
+                  "text": "RES Macrophages in Spleen & Liver",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-1-1-1",
-                      "text": "High NC Ratio",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-1-2",
-                      "text": "Nucleus Diameter 6 to 8um",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-1-3",
-                      "text": "Internal RBC Size Reference Benchmark",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-3-1-2",
-                  "text": "Reference Values & Inversion",
+                  "id": "leaf-iron-recycle",
+                  "text": "Iron: Stored as Ferritin or Transferrin",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-1-2-1",
-                      "text": "Adult Relative: 18 to 42 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-2-2",
-                      "text": "Pediatric Inversion: 50 to 70 Percent",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-1-2-3",
-                      "text": "Absolute: 1.0 to 3.2 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
+                },
+                {
+                  "id": "leaf-globin-recycle",
+                  "text": "Globin: Proteolysis to Amino Acids",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-heme-catabolism",
+                  "text": "Heme: Cleaved to CO & Bilirubin",
+                  "level": 4,
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-1-3-2",
-              "text": "Monocytes",
+              "id": "node-intravascular-lysis",
+              "text": "Intravascular Hemolysis (~10%)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-1-3-2-1",
-                  "text": "Morphology",
+                  "id": "leaf-vascular-trauma",
+                  "text": "Direct Vessel Lysis & Free Hb",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-2-1-1",
-                      "text": "Folded Amoeboid Nucleus",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-1-2",
-                      "text": "Ground-Glass Gray-Blue Cytoplasm",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-3-2-2",
-                  "text": "Functions",
+                  "id": "leaf-haptoglobin",
+                  "text": "Haptoglobin Depletion Diagnostic Marker",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-2-2-1",
-                      "text": "Phagocytosis Garbage Collection",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-2-2",
-                      "text": "Antigen Presentation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-1-3-2-2-3",
-                      "text": "Tissue Macrophage Precursor",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-1-4",
-          "text": "Anucleate Formed Elements",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-1-4-1",
-              "text": "Erythrocytes RBCs",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-1-4-1-1",
-                  "text": "Morphology",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-1-1",
-                      "text": "Biconcave Disc 6 to 8um",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-1-2",
-                  "text": "Reference Range",
+                  "id": "leaf-hemopexin",
+                  "text": "Hemopexin Binds Free Heme",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-2-1",
-                      "text": "4.00 to 6.00 x10^6/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-1-4-1-3",
-                  "text": "Function",
+                  "id": "leaf-hemosiderinuria",
+                  "text": "Hemosiderinuria (Prussian Blue Positive)",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-1-3-1",
-                      "text": "Respiratory Gas Transport",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-1-4-2",
-              "text": "Thrombocytes Platelets",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-1-4-2-1",
-                  "text": "Origin",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-1-1",
-                      "text": "Megakaryocyte Cytoplasm Shedding",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-4-2-2",
-                  "text": "Reference Range",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-2-1",
-                      "text": "150 to 450 x10^3/uL",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-1-4-2-3",
-                  "text": "Function",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-4-2-3-1",
-                      "text": "Primary Hemostasis Plug Formation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             }
@@ -934,315 +967,116 @@
       ]
     },
     {
-      "id": "sec-2",
-      "text": "Anatomical Sites & Microenvironment",
+      "id": "sec-hemoglobin",
+      "text": "Hemoglobin Biochemistry & Dynamics",
       "level": 1,
       "children": [
         {
-          "id": "sub-2-1",
-          "text": "Developmental Timeline",
+          "id": "sub-hgb-indices",
+          "text": "CBC Quantitative Hemoglobin Indices",
           "level": 2,
           "children": [
             {
-              "id": "node-2-1-1",
-              "text": "Yolk Sac Phase",
+              "id": "leaf-total-hgb",
+              "text": "Total Hemoglobin: 12 - 17 g/dL",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-1-1",
-                  "text": "Timeframe: 18 Days to 3 Months",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-2-1-1-2",
-                  "text": "Primitive Erythropoiesis",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-1-2-1",
-                      "text": "Non HSC Derived Precursors",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-1-1-3",
-                  "text": "AGM System Transition",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-1-3-1",
-                      "text": "Onset of Definitive Erythropoiesis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
-              "id": "node-2-1-2",
-              "text": "Hepatic Phase",
+              "id": "leaf-mch",
+              "text": "Mean Corpuscular Hemoglobin: 28 - 34 pg",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-2-1",
-                  "text": "Timeframe: 3 to 6 Months",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-2-1-2-2",
-                  "text": "Liver Dominant Site",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-2-2-1",
-                      "text": "Secondary Spleen and Kidney Activity",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             },
             {
-              "id": "node-2-1-3",
-              "text": "Medullary Phase",
+              "id": "leaf-mchc",
+              "text": "MCHC: 32 - 36 g/dL",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-3-1",
-                  "text": "Timeframe: 6 Months to Birth",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-2-1-3-2",
-                  "text": "Bone Marrow Cavity Opening",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-1-4",
-              "text": "Post-Natal Phase",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-1-4-1",
-                  "text": "Axial Skeleton Restriction",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-1-1",
-                      "text": "Pelvis Vertebrae Sternum Ribs",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-1-4-2",
-                  "text": "Diagnostic Target",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-2-1",
-                      "text": "Posterior Iliac Crest Biopsy",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
             }
           ]
         },
         {
-          "id": "sub-2-2",
-          "text": "Bone Marrow Compartments and Niches",
+          "id": "sub-hgb-structure",
+          "text": "Molecular Structure & Biosynthesis",
           "level": 2,
           "children": [
             {
-              "id": "node-2-2-1",
-              "text": "Vascular Compartment",
+              "id": "node-tetramer-structure",
+              "text": "Tetrameric Protein Architecture",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-2-1-1",
-                  "text": "Sinusoidal Endothelium Network",
+                  "id": "leaf-alpha-chains",
+                  "text": "2 Alpha-like Chains (Chr 16)",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-2-1-2",
-                  "text": "Soluble Egress Factors",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-1-2-1",
-                      "text": "G-CSF GM-CSF Chemokines",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-2-2-2",
-              "text": "Endosteal Compartment",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-2-2-1",
-                  "text": "Inner Bone Surface Interface",
+                  "id": "leaf-nonalpha-chains",
+                  "text": "2 Non-alpha Chains (Chr 11)",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-2-2-2",
-                  "text": "Anchors Quiescent HSC Pool",
+                  "id": "leaf-heme-pockets",
+                  "text": "4 Hydrophobic Pockets with Ferrous Fe2+",
                   "level": 4,
                   "children": []
                 }
               ]
             },
             {
-              "id": "node-2-2-3",
-              "text": "Specific Microenvironmental Niches",
+              "id": "node-heme-synthesis",
+              "text": "Heme Biosynthesis Steps",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-2-3-1",
-                  "text": "Erythroid Niche",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-1-1",
-                      "text": "Erythroblastic Islands 25 to 30%",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-2-3-1-2",
-                      "text": "Central Macrophage Phagocytizes Nuclei",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-2-3-2",
-                  "text": "Myeloid Niche",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-2-1",
-                      "text": "Deep Nests Away From Sinuses",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-2-3-3",
-                  "text": "Megakaryocytic Niche",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-3-3-1",
-                      "text": "Polyploid Cells Along Sinus Walls",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-2-3-3-2",
-                      "text": "Proplatelet Cytoplasmic Shedding",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-2-3",
-          "text": "Stromal Matrix Components",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-2-3-1",
-              "text": "Macrophages",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-1-1",
-                  "text": "Phagocytosis and Cytokine Secretion",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-3-2",
-              "text": "Reticular Cells Fibroblasts",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-2-1",
-                  "text": "Synthesize 3D Reticular Fiber Meshwork",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-3-3",
-              "text": "Adipocytes",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-3-1",
-                  "text": "Space Occupying Volume Control",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-2-3-4",
-              "text": "Osteoblasts",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-2-3-4-1",
-                  "text": "Bone Forming Matrix Synthesis",
+                  "id": "leaf-mito-initiation",
+                  "text": "Mitochondria: Glycine + Succinyl-CoA to delta-ALA",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-3-4-2",
-                  "text": "Diagnostic Perinuclear Halo Golgi",
+                  "id": "leaf-rate-limiting",
+                  "text": "Fe2+ Availability Rate-Limiting Control",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-cyto-intermediates",
+                  "text": "Cytoplasm: Coproporphyrinogen III",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-mito-ferrochelatase",
+                  "text": "Mitochondria: Ferrochelatase Inserts Fe2+",
                   "level": 4,
                   "children": []
                 }
               ]
             },
             {
-              "id": "node-2-3-5",
-              "text": "Osteoclasts",
+              "id": "node-globin-regulation",
+              "text": "Globin Translation Control",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-3-5-1",
-                  "text": "Multinucleated Bone Resorbing Cells",
+                  "id": "leaf-polyribosomes",
+                  "text": "Translation on Cytoplasmic Polyribosomes",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-heme-inactivation",
+                  "text": "Heme Inactivates Translational Inhibitor",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-stoichiometry",
+                  "text": "Maintains 1:1:1 Subunit Equilibrium",
                   "level": 4,
                   "children": []
                 }
@@ -1251,70 +1085,74 @@
           ]
         },
         {
-          "id": "sub-2-4",
-          "text": "Cellularity and Pathophysiology",
+          "id": "sub-hgb-development",
+          "text": "Developmental Hemoglobin Variants",
           "level": 2,
           "children": [
             {
-              "id": "node-2-4-1",
-              "text": "Cellularity Calculations",
+              "id": "node-embryonic-hgb",
+              "text": "Embryonic Hemoglobins (1st Trimester)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-4-1-1",
-                  "text": "Adipocyte Percent = Age +/- 10%",
+                  "id": "leaf-gower1",
+                  "text": "Gower I (zeta2 epsilon2)",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-4-1-2",
-                  "text": "Nucleated Cell Percent = 100 - Adipocyte%",
+                  "id": "leaf-gower2",
+                  "text": "Gower II (alpha2 epsilon2)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-portland",
+                  "text": "Portland (zeta2 gamma2)",
                   "level": 4,
                   "children": []
                 }
               ]
             },
             {
-              "id": "node-2-4-2",
-              "text": "Cellularity Pathologies",
+              "id": "node-fetal-hgb",
+              "text": "Fetal Hemoglobin (HbF)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-4-2-1",
-                  "text": "Hyperplasia",
+                  "id": "leaf-hbf-comp",
+                  "text": "HbF Structure (alpha2 gamma2)",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-4-2-1-1",
-                      "text": "Hemorrhage Hemolysis or Leukemia",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 },
                 {
-                  "id": "node-2-4-2-2",
-                  "text": "Hypoplasia",
+                  "id": "leaf-hbf-affinity",
+                  "text": "High O2 Affinity for Placental Extraction",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-4-2-2-1",
-                      "text": "Toxins Radiation or Genetic Failure",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-2-4-3",
-              "text": "Extramedullary Hematopoiesis",
+              "id": "node-adult-hgb",
+              "text": "Adult Hemoglobins (>6 Months Postnatal)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-4-3-1",
-                  "text": "Reactivation in Liver and Spleen",
+                  "id": "leaf-hba",
+                  "text": "HbA (alpha2 beta2) >95%",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hba2",
+                  "text": "HbA2 (alpha2 delta2) 1.5 - 3.5%",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-hbf-adult",
+                  "text": "Residual HbF <2%",
                   "level": 4,
                   "children": []
                 }
@@ -1323,61 +1161,61 @@
           ]
         },
         {
-          "id": "sub-2-5",
-          "text": "Secondary Lymphoid Organs",
+          "id": "sub-oxygen-dynamics",
+          "text": "Oxygen Kinetics & Allosteric States",
           "level": 2,
           "children": [
             {
-              "id": "node-2-5-1",
-              "text": "Spleen Mechanics",
+              "id": "node-quaternary-states",
+              "text": "Quaternary Allosteric Configurations",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-5-1-1",
-                  "text": "Slow Transit RES Pathway",
+                  "id": "leaf-tense-state",
+                  "text": "Tense (T) State: Low O2 Affinity",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-relaxed-state",
+                  "text": "Relaxed (R) State: High O2 Affinity",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-p50-curve",
+              "text": "Oxygen Dissociation Curve & P50",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-p50-val",
+                  "text": "Normal P50 = 26 mmHg",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "node-right-shift",
+                  "text": "Right Shift (Decreased O2 Affinity)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-2-5-1-1-1",
-                      "text": "Culling Senescent Cell Destruction",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-5-1-1-2",
-                      "text": "Pitting Removal of Inclusions",
+                      "id": "leaf-right-triggers",
+                      "text": "Triggered by: \u2191Temp, Acidosis, \u2191CO2, \u21912,3-BPG",
                       "level": 5,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-2-5-1-2",
-                  "text": "Platelet Reservoir",
+                  "id": "node-left-shift",
+                  "text": "Left Shift (Increased O2 Affinity)",
                   "level": 4,
                   "children": [
                     {
-                      "id": "node-2-5-1-2-1",
-                      "text": "Stores One-Third Platelet Mass",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-2-5-1-3",
-                  "text": "Sickle Cell Autosplenectomy",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-1-3-1",
-                      "text": "Hypoxic Acidic Microenvironment Trapping",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-2-5-1-3-2",
-                      "text": "Ischemic Fibrosis and Atrophy",
+                      "id": "leaf-left-triggers",
+                      "text": "Triggered by: \u2193Temp, Alkalosis, \u2193CO2, HbF",
                       "level": 5,
                       "children": []
                     }
@@ -1386,142 +1224,19 @@
               ]
             },
             {
-              "id": "node-2-5-2",
-              "text": "Lymph Nodes",
+              "id": "node-23bpg-mech",
+              "text": "2,3-BPG Allosteric Mechanism",
               "level": 3,
               "children": [
                 {
-                  "id": "node-2-5-2-1",
-                  "text": "Lymph Fluid Pathogen Filtration",
+                  "id": "leaf-23bpg-bind",
+                  "text": "Binds T-state Cavity 1:1",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-2-5-2-2",
-                  "text": "Lymphadenopathy Etiologies",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-5-2-2-1",
-                      "text": "Inflammation Infection or Malignancy",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-3",
-      "text": "Hematopoietic Hierarchy & Regulation",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-3-1",
-          "text": "Precursor Hierarchy",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-3-1-1",
-              "text": "Pluripotential HSCs",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-1-1",
-                  "text": "Frequency: Less Than 0.05 Percent",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-3-1-1-2",
-                  "text": "Four Primary Fates",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-1-2-1",
-                      "text": "Quiescence G0 State",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-2",
-                      "text": "Self-Renewal LTR and STR",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-3",
-                      "text": "Lineage Commitment",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-1-2-4",
-                      "text": "Programmed Apoptosis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-1-2",
-              "text": "Progenitor Compartment MPPs HPCs",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-2-1",
-                  "text": "Common Myeloid Progenitor CMP",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-1-1",
-                      "text": "GMP Granulocyte Monocyte Pathway",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-1-2-1-2",
-                      "text": "MEP Megakaryocyte Erythroid Pathway",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-1-2-2",
-                  "text": "Common Lymphoid Progenitor CLP",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-2-1",
-                      "text": "T NK and B Progenitors",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-1-3",
-              "text": "Maturing Precursor Pool",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-3-1",
-                  "text": "Frequency: Greater Than 95 Percent",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-3-1-3-2",
-                  "text": "Recognizable Morphological Blasts",
+                  "id": "leaf-23bpg-expel",
+                  "text": "Expelled Upon 3rd O2 Binding",
                   "level": 4,
                   "children": []
                 }
@@ -1530,214 +1245,93 @@
           ]
         },
         {
-          "id": "sub-3-2",
-          "text": "CD Immunophenotyping Profiles",
+          "id": "sub-co2-transport",
+          "text": "Carbon Dioxide Transport Mechanisms",
           "level": 2,
           "children": [
             {
-              "id": "node-3-2-1",
-              "text": "Flow Cytometry Analysis",
+              "id": "leaf-bicarbonate-path",
+              "text": "Bicarbonate Pathway (~70% via Chloride Shift)",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-2-1-1",
-                  "text": "Distinguishes Identical Precursor Blasts",
-                  "level": 4,
-                  "children": []
-                }
-              ]
+              "children": []
             },
             {
-              "id": "node-3-2-2",
-              "text": "Lineage Specific Markers",
+              "id": "leaf-carbamino-path",
+              "text": "Carbaminohemoglobin (~23% Bound to N-Terminals)",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-3-2-2-1",
-                  "text": "CD34 Marker",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-1-1",
-                      "text": "Primitive HSCs and Blasts",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-2-2-2",
-                  "text": "CD13 and CD33 Markers",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-2-1",
-                      "text": "Myeloid Lineage Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-2-2-3",
-                  "text": "CD19 CD20 and CD10",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-3-1",
-                      "text": "B Lymphoid Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-2-2-4",
-                  "text": "CD2 CD3 and CD7",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-4-1",
-                      "text": "T Lymphoid Commitment",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-2-2-5",
-                  "text": "MEP Marker Downregulation",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-2-2-5-1",
-                      "text": "CD34 Negative CD13 Negative",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "children": []
+            },
+            {
+              "id": "leaf-dissolved-co2",
+              "text": "Dissolved Plasma CO2 (~7%)",
+              "level": 3,
+              "children": []
             }
           ]
         },
         {
-          "id": "sub-3-3",
-          "text": "Cytokine Signaling & Therapeutics",
+          "id": "sub-acquired-variants",
+          "text": "Acquired Nonfunctional Hemoglobins",
           "level": 2,
           "children": [
             {
-              "id": "node-3-3-1",
-              "text": "Early Acting Promoters",
+              "id": "node-methemoglobin",
+              "text": "Methemoglobin (MetHgb)",
               "level": 3,
               "children": [
                 {
-                  "id": "node-3-3-1-1",
-                  "text": "Target Multi-Lineage Progenitors",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-1-1-1",
-                      "text": "SCF Flt3 Ligand IL3 IL6",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-3-2",
-              "text": "Late Acting Promoters",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-3-2-1",
-                  "text": "Erythropoietin EPO",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-1-1",
-                      "text": "Renal Synthesis Drives Erythropoiesis",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-3-2-2",
-                  "text": "G-CSF and M-CSF",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-2-1",
-                      "text": "Direct Neutrophil and Monocyte Maturation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-3-3-2-3",
-                  "text": "Thrombopoietin TPO",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-2-3-1",
-                      "text": "Directs Megakaryocyte Platelet Maturation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-3-3",
-              "text": "JAK-STAT Signaling Pathophysiology",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-3-3-1",
-                  "text": "Receptor Tyrosine Kinase Phosphorylation",
+                  "id": "leaf-methgb-iron",
+                  "text": "Oxidized Ferric Fe3+ Iron State",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-3-3-3-2",
-                  "text": "JAK2 V617F Mutation",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-3-3-2-1",
-                      "text": "Constitutive Tyrosine Kinase Activation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-3-3-3-2-2",
-                      "text": "Polycythemia Vera EPO Independent Hyperproliferation",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-3-4",
-              "text": "Recombinant Clinical Applications",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-3-4-1",
-                  "text": "Epoetin Alfa Treatment for Anemia",
+                  "id": "leaf-methgb-color",
+                  "text": "Chocolate Brown Blood Appearance",
                   "level": 4,
                   "children": []
                 },
                 {
-                  "id": "node-3-3-4-2",
-                  "text": "Filgrastim Stem Cell Mobilization",
+                  "id": "leaf-methgb-clin",
+                  "text": "Cyanosis Unresponsive to Supplemental O2",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-sulfhemoglobin",
+              "text": "Sulfhemoglobin",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-sulf-mech",
+                  "text": "Irreversible Sulfur Atom Insertion",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-sulf-span",
+                  "text": "Persists for Full 120-Day Lifespan",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-carboxyhemoglobin",
+              "text": "Carboxyhemoglobin",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-carboxy-affinity",
+                  "text": "200-Fold Higher Affinity for CO",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-carboxy-color",
+                  "text": "Cherry Red Blood & Skin",
                   "level": 4,
                   "children": []
                 }
@@ -2350,7 +1944,9 @@
 
     // Initial Render & Dynamic Title Sync
     const titleEl = document.getElementById('topic-title');
-    if (titleEl && (!titleEl.textContent || !titleEl.textContent.trim()) && mindMapData && mindMapData.text) { titleEl.textContent = mindMapData.text; }
+    if (titleEl && mindMapData && mindMapData.text) {
+      titleEl.textContent = mindMapData.text;
+    }
     renderMindMap();
   </script>
 </body>

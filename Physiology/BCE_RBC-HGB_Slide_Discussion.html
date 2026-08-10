@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood's Cellular Elements - RBC, HGB - Complete Discussion</title>
+    <title>Hematopoiesis - Complete Discussion</title>
     
     <!-- GitHub Flavored Markdown CSS Baseline -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
@@ -48,6 +48,14 @@
             --color-canvas-default: #ffffff;
             --color-fg-default: #1f2328;
             --color-border-default: #d0d7de;
+            --color-modal-header-bg: #f6f8fa;
+            --color-modal-header-fg: #1f2328;
+            --color-modal-title-fg: #57606a;
+            --color-modal-btn-bg: #f3f4f6;
+            --color-modal-btn-fg: #24292f;
+            --color-modal-btn-border: #d0d7de;
+            --color-modal-btn-hover-bg: #e5e7eb;
+            --color-modal-overlay-bg: rgba(255, 255, 255, 0.95);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -55,6 +63,14 @@
                 --color-canvas-default: #0d1117;
                 --color-fg-default: #e6edf3;
                 --color-border-default: #30363d;
+                --color-modal-header-bg: #161b22;
+                --color-modal-header-fg: #f0f6fc;
+                --color-modal-title-fg: #8b949e;
+                --color-modal-btn-bg: #21262d;
+                --color-modal-btn-fg: #c9d1d9;
+                --color-modal-btn-border: #30363d;
+                --color-modal-btn-hover-bg: #30363d;
+                --color-modal-overlay-bg: rgba(13, 17, 23, 0.95);
             }
             body {
                 background-color: #0d1117;
@@ -184,7 +200,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(13, 17, 23, 0.92);
+            background-color: var(--color-modal-overlay-bg);
             backdrop-filter: blur(6px);
             z-index: 999999;
             flex-direction: column;
@@ -199,16 +215,16 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 24px;
-            background: #161b22;
-            color: #f0f6fc;
-            border-bottom: 1px solid #30363d;
+            background: var(--color-modal-header-bg);
+            color: var(--color-modal-header-fg);
+            border-bottom: 1px solid var(--color-border-default);
             user-select: none;
         }
 
         .mermaid-modal-title {
             font-size: 14px;
             font-weight: 500;
-            color: #8b949e;
+            color: var(--color-modal-title-fg);
         }
 
         .mermaid-modal-controls {
@@ -218,9 +234,9 @@
         }
 
         .mermaid-modal-btn {
-            background: #21262d;
-            color: #c9d1d9;
-            border: 1px solid #30363d;
+            background: var(--color-modal-btn-bg);
+            color: var(--color-modal-btn-fg);
+            border: 1px solid var(--color-modal-btn-border);
             padding: 5px 12px;
             border-radius: 6px;
             cursor: pointer;
@@ -230,8 +246,8 @@
         }
 
         .mermaid-modal-btn:hover {
-            background: #30363d;
-            color: #ffffff;
+            background: var(--color-modal-btn-hover-bg);
+            color: var(--color-fg-default);
         }
 
         .mermaid-modal-close {
@@ -256,7 +272,7 @@
             height: calc(100vh - 52px);
             overflow: hidden;
             position: relative;
-            background: #0d1117;
+            background: var(--color-canvas-default);
             cursor: grab;
         }
 
@@ -273,7 +289,7 @@
 </head>
 <body>
     <article class="markdown-body">
-<h1 id="bloods-cellular-elements-rbc-hgb-complete-discussion">Blood's Cellular Elements - RBC, HGB - Complete Discussion</h1>
+<h1 id="hematopoiesis---complete-discussion">Hematopoiesis - Complete Discussion</h1>
 <h1 id="navigation">Navigation</h1>
 <ul>
 <li><a href="#bloods-cellular-elements-rbc-hgb-erythrocyte">Blood's Cellular Elements - RBC, HGB | Erythrocyte</a><ul>
@@ -478,7 +494,7 @@ graph TD
 </table>
 <hr />
 <h2 id="lecture-slide-breakdowns">Lecture Slide Breakdowns</h2>
-<h3 id="erythrocyte-functions-life-cycle-regulatory-factors-slides-13">Erythrocyte Functions, Life Cycle, &amp; Regulatory Factors (Slides 1–3)</h3>
+<h3 id="erythrocyte-functions-life-cycle-regulatory-factors">Erythrocyte Functions, Life Cycle, &amp; Regulatory Factors</h3>
 <div class="mermaid" data-original-source="graph LR
         A[&quot;Renal Hypoxia&quot;] --&gt; B[&quot;Kidneys Synthesize Erythropoietin (EPO)&quot;]
         B --&gt; C[&quot;Bone Marrow Erythropoiesis&quot;]
@@ -522,7 +538,7 @@ graph LR
 <li><strong>Senescent Stage</strong>: As RBCs age, metabolic enzyme systems degrade, ATP synthesis decreases, and membrane deformability declines. Senescent, non-deformable cells are identified and phagocytosed by reticuloendothelial system (RES) macrophages. The primary organ responsible for culling senescent cells is the spleen (specifically the endothelial slits and cords of the red pulp). The liver and bone marrow function as secondary sites; following a splenectomy or in severe splenic atrophy, the liver assumes the primary culling role.</li>
 </ul>
 <hr />
-<h3 id="erythrocyte-maturation-progression-identification-slides-48">Erythrocyte Maturation Progression &amp; Identification (Slides 4–8)</h3>
+<h3 id="erythrocyte-maturation-progression-identification">Erythrocyte Maturation Progression &amp; Identification</h3>
 <div class="mermaid" data-original-source="graph TD
         A[&quot;Morphological Maturation Trends&quot;] --&gt; B[&quot;Decreasing Overall Cell Size&quot;]
         A --&gt; C[&quot;Decreasing Nuclear-to-Cytoplasmic (N:C) Ratio&quot;]
@@ -555,7 +571,7 @@ graph TD
 <li><strong>Orthochromic Normoblast (Metarubricyte) [Slide 8]</strong>: Displays a low N:C ratio ($\downarrow$). The cytoplasm is predominantly pink/salmon-pink, signaling near-complete hemoglobinization. The nucleus is completely pyknotic (condensed and non-functional) and assumes an eccentric location prior to active extrusion from the cell.</li>
 </ul>
 <hr />
-<h3 id="reticulocytes-mature-erythrocyte-architecture-slides-910">Reticulocytes &amp; Mature Erythrocyte Architecture (Slides 9–10)</h3>
+<h3 id="reticulocytes-mature-erythrocyte-architecture">Reticulocytes &amp; Mature Erythrocyte Architecture</h3>
 <div class="mermaid" data-original-source="graph LR
         A[&quot;Extrusion of Pyknotic Nucleus&quot;] --&gt; B[&quot;Reticulocyte Entry into Peripheral Blood&quot;]
         B --&gt; C[&quot;Wright-Giemsa Stain: Polychromasia (Bluish Tinge)&quot;]
@@ -580,7 +596,7 @@ graph LR
 </ul>
 <p>Slide 10 details the structural features of the mature erythrocyte (discocyte). Mature RBCs are biconcave discs with a mean diameter of approximately $7.5 \text{ }\mu\text{m}$ and a central area of pallor occupying the inner one-third of the cell. The absence of a nucleus, mitochondria, and intracellular organelles maximizes cytoplasmic volume for hemoglobin packing while reducing internal metabolic consumption. However, this loss of organelles prevents mature erythrocytes from synthesizing new lipids or structural proteins. As a result, membrane damage accumulated during circulation cannot be repaired; damaged or rigid RBCs are selectively pitted or culled by splenic macrophages.</p>
 <hr />
-<h3 id="membrane-composition-integral-peripheral-proteins-slides-1113">Membrane Composition: Integral &amp; Peripheral Proteins (Slides 11–13)</h3>
+<h3 id="membrane-composition-integral-peripheral-proteins">Membrane Composition: Integral &amp; Peripheral Proteins</h3>
 <div class="mermaid" data-original-source="graph TD
         A[&quot;Erythrocyte Membrane Architecture - 52% Protein | 40% Lipid | 8% Carbohydrate&quot;] --&gt; B[&quot;Integral Proteins (Transmembrane)&quot;]
         A --&gt; C[&quot;Peripheral Proteins (Cytoskeletal)&quot;]
@@ -626,7 +642,7 @@ graph TD
 </li>
 </ul>
 <hr />
-<h3 id="lipid-dynamics-morphological-pathophysiology-slides-1415">Lipid Dynamics &amp; Morphological Pathophysiology (Slides 14–15)</h3>
+<h3 id="lipid-dynamics-morphological-pathophysiology">Lipid Dynamics &amp; Morphological Pathophysiology</h3>
 <div class="mermaid" data-original-source="graph TD
         A[&quot;Disturbances in Plasma Lipid Exchange or Leaflet Distribution&quot;] --&gt; B[&quot;↑ Cholesterol &amp; ↑ Phospholipid (1:1 Ratio Maintained)&quot;]
         A --&gt; C[&quot;↑ Cholesterol : ↓ Phospholipid Ratio&quot;]
@@ -668,7 +684,7 @@ graph TD
 <li><strong>Stomatocyte</strong>: Caused by expansion of the inner membrane leaflet relative to the outer leaflet ($\downarrow \text{OM} : \uparrow \text{IM}$). The inward bending of the membrane alters the central zone of pallor into a mouth-like slit.</li>
 </ul>
 <hr />
-<h3 id="membrane-permeability-cytoskeleton-deformability-cation-pumps-slides-1618">Membrane Permeability, Cytoskeleton Deformability, &amp; Cation Pumps (Slides 16–18)</h3>
+<h3 id="membrane-permeability-cytoskeleton-deformability-cation-pumps">Membrane Permeability, Cytoskeleton Deformability, &amp; Cation Pumps</h3>
 <div class="mermaid" data-original-source="graph LR
         A[&quot;ATP-Driven Cation Transporters&quot;] --&gt; B[&quot;Na+/K+ ATPase Pump&quot;]
         A --&gt; C[&quot;Ca2+ ATPase Pump&quot;]
@@ -731,7 +747,7 @@ graph LR
 <li><strong>$\text{Ca}^{2+}$ ATPase Pump</strong>: Actively extrudes excess free intracellular calcium, preventing protein cross-linking and preserving cell flexibility.</li>
 </ul>
 <hr />
-<h3 id="intracellular-metabolic-pathways-slides-1920">Intracellular Metabolic Pathways (Slides 19–20)</h3>
+<h3 id="intracellular-metabolic-pathways">Intracellular Metabolic Pathways</h3>
 <div class="mermaid" data-original-source="graph TD
         A[&quot;Erythrocyte Anaerobic Glucose Metabolism&quot;] --&gt; B[&quot;Embden-Meyerhof Pathway (90-95%)&quot;]
         A --&gt; C[&quot;Hexose Monophosphate Shunt (5-10%)&quot;]
@@ -795,7 +811,7 @@ graph TD
 <h4 id="4-rapoport-luebering-shunt">4. Rapoport-Luebering Shunt</h4>
 <p>A specialized side branch of anaerobic glycolysis that synthesizes <strong>2,3-bisphosphoglycerate (2,3-BPG)</strong>. 2,3-BPG binds to the central cavity of the hemoglobin tetramer, stabilizing the deoxygenated state, lowering oxygen affinity, and promoting oxygen release to hypoxic tissues.</p>
 <hr />
-<h3 id="mechanisms-of-erythrocyte-destruction-slide-21">Mechanisms of Erythrocyte Destruction (Slide 21)</h3>
+<h3 id="mechanisms-of-erythrocyte-destruction">Mechanisms of Erythrocyte Destruction</h3>
 <div class="mermaid" data-original-source="graph TD
         A[&quot;Erythrocyte Destruction Pathways&quot;] --&gt; B[&quot;Extravascular Hemolysis (~90%)&quot;]
         A --&gt; C[&quot;Intravascular Hemolysis (~10%)&quot;]
@@ -1251,7 +1267,7 @@ graph TD
 </table>
 <hr />
 <h2 id="lecture-slide-breakdowns_1">Lecture Slide Breakdowns</h2>
-<h3 id="overview-and-quantitative-hemoglobin-indices-slides-12">Overview and Quantitative Hemoglobin Indices (Slides 1–2)</h3>
+<h3 id="overview-and-quantitative-hemoglobin-indices">Overview and Quantitative Hemoglobin Indices</h3>
 <p>Hemoglobin serves as the specialized respiratory macromolecule within the red blood cell cytoplasm. Its dual functional role consists of binding oxygen ($\text{O}_2$) in pulmonary capillaries for delivery to systemic peripheral tissues and participating in the reverse delivery of carbon dioxide ($\text{CO}_2$) waste from metabolic tissues back to the lungs.</p>
 <p>Physically, hemoglobin occupies approximately 33% of the total internal volume of an erythrocyte. When erythrocytes are dehydrated, hemoglobin accounts for approximately 90% of the cell's total dry weight, reflecting its structural dominance inside the red cell cytoplasm.</p>
 <p>To quantify hemoglobin concentration and distribution across red blood cell populations, standard automated complete blood counts (CBC) report three key indices:</p>
@@ -1261,7 +1277,7 @@ graph TD
 <li><strong>Mean Corpuscular Hemoglobin Concentration (MCHC):</strong> Calculates the average concentration of hemoglobin relative to the physical volume of the red blood cell, maintaining a reference interval of <strong>32 – 36 g/dL</strong>. MCHC serves as the definitive laboratory index for categorizing cellular chromicity (e.g., normochromic vs. hypochromic states).</li>
 </ul>
 <hr />
-<h3 id="hemoglobin-molecular-structure-slide-3">Hemoglobin Molecular Structure (Slide 3)</h3>
+<h3 id="hemoglobin-molecular-structure">Hemoglobin Molecular Structure</h3>
 <p>The functional hemoglobin molecule is a symmetrical tetrameric protein structure composed of two distinct components: globular protein chains (globin) and iron-bound porphyrin complexes (heme).</p>
 <p>Each complete hemoglobin tetramer contains <strong>four globular protein chains</strong> categorized into two matching pairs:</p>
 <ul>
@@ -1271,7 +1287,7 @@ graph TD
 <p>Nested within each globin subunit is a specific hydrophobic crevice that houses a single <strong>heme subunit</strong>, yielding <strong>four heme groups per tetramer</strong>. Heme consists of a protoporphyrin IX ring with a centrally chelated iron atom. </p>
 <p>In functional hemoglobin, the iron atom must remain in the reduced ferrous state ($\text{Fe}^{2+}$). Each ferrous iron atom reversibly binds one molecule of $\text{O}_2$. Consequently, a single intact tetrameric hemoglobin molecule can transport up to four oxygen molecules ($\text{O}_2$) simultaneously.</p>
 <hr />
-<h3 id="heme-and-globin-biosynthesis-pathways-slides-45">Heme and Globin Biosynthesis Pathways (Slides 4–5)</h3>
+<h3 id="heme-and-globin-biosynthesis-pathways">Heme and Globin Biosynthesis Pathways</h3>
 <p>Heme biosynthesis requires coordination across two cellular compartments—the mitochondria and the cytoplasm—within nucleated erythroid precursors and reticulocytes possessing functional mitochondria and ribosomes.</p>
 <p>The pathway proceeds through four sequential phases:</p>
 <ol>
@@ -1287,7 +1303,7 @@ graph TD
 </ul>
 <p>$\zeta$ and $\epsilon$ chains are restricted exclusively to early embryonic development. Following birth, $\alpha$- and $\beta$-chain production dominates, synthesizing the primary adult hemoglobin tetramer ($\alpha_2\beta_2$), which constitutes ~97% of adult hemoglobin. Upon release from polyribosomes, individual globin monomers rapidly incorporate heme into their hydrophobic pockets, pair into $\alpha\beta$ dimers, and combine to form intact, soluble tetramers.</p>
 <hr />
-<h3 id="regulation-of-hemoglobin-synthesis-slide-6">Regulation of Hemoglobin Synthesis (Slide 6)</h3>
+<h3 id="regulation-of-hemoglobin-synthesis">Regulation of Hemoglobin Synthesis</h3>
 <p>Under physiological conditions, red blood cell precursors maintain a strict 1:1:1 stoichiometric equilibrium between $\alpha$-globin chains, non-$\alpha$-globin chains, and heme groups to prevent toxic intracellular subunit precipitation.</p>
 <p>Systemic regulation depends on three mechanisms:</p>
 <ul>
@@ -1296,7 +1312,7 @@ graph TD
 <li><strong>Translational Control (DNA-to-mRNA Translation Rate):</strong> Globin chain translation on cytoplasmic polyribosomes is directly regulated by free intracellular heme levels. When intracellular heme concentration rises, it actively inactivates a specific translational inhibitor protein. Inactivating this inhibitor permits mRNA translation to proceed, stimulating globin chain production to pair with available heme. Conversely, when heme levels drop, the inhibitor remains active, halting excess globin synthesis.</li>
 </ul>
 <hr />
-<h3 id="developmental-hemoglobin-types-slide-7">Developmental Hemoglobin Types (Slide 7)</h3>
+<h3 id="developmental-hemoglobin-types">Developmental Hemoglobin Types</h3>
 <p>Human globin gene expression follows a defined developmental timeline from early gestation through postnatal maturation:</p>
 <pre class="highlight"><code>Developmental Timeline of Hemoglobin Expression:
 
@@ -1326,7 +1342,7 @@ Portland (ζ2γ2)                                                               
 <li><strong>Hemoglobin F (HbF):</strong> $\alpha_2 \gamma_2$; persists as a minor population at <strong>&lt; 2%</strong> in normal adults.</li>
 </ul>
 <hr />
-<h3 id="oxygen-transport-allosteric-dynamics-and-the-dissociation-curve-slides-89">Oxygen Transport, Allosteric Dynamics, and the Dissociation Curve (Slides 8–9)</h3>
+<h3 id="oxygen-transport-allosteric-dynamics-and-the-dissociation-curve">Oxygen Transport, Allosteric Dynamics, and the Dissociation Curve</h3>
 <p>Hemoglobin functions as an allosteric protein, undergoing structural transitions between two quaternary states based on oxygen binding:</p>
 <ul>
 <li><strong>Deoxyhemoglobin (Tense / T state):</strong> Unbound state characterized by low oxygen affinity, stabilized by inter-subunit salt bridges.</li>
@@ -1347,7 +1363,7 @@ Portland (ζ2γ2)                                                               
 <li>In high-$\text{PO}_2$ environments (such as lungs), binding of the <strong>3rd $\text{O}_2$ molecule</strong> triggers a conformational transition to the Relaxed (R) state, expelling the 2,3-BPG molecule and restoring high oxygen affinity.</li>
 </ul>
 <hr />
-<h3 id="carbon-dioxide-transport-slide-10">Carbon Dioxide Transport (Slide 10)</h3>
+<h3 id="carbon-dioxide-transport">Carbon Dioxide Transport</h3>
 <p>Metabolic carbon dioxide ($\text{CO}_2$) generated in peripheral tissues is transported to the lungs via three primary mechanisms:</p>
 <ol>
 <li><strong>Carbonic Acid / Bicarbonate Pathway (~70%):</strong> The majority of $\text{CO}_2$ diffuses into erythrocytes and is rapidly converted by carbonic anhydrase into carbonic acid ($\text{H}_2\text{CO}_3$), which dissociates into bicarbonate ($\text{HCO}_3^-$) and hydrogen ions ($\text{H}^+$). Bicarbonate diffuses into plasma in exchange for chloride ($\text{Cl}^-$) (chloride shift).</li>
@@ -1355,7 +1371,7 @@ Portland (ζ2γ2)                                                               
 <li><strong>Dissolved in Plasma (~7%):</strong> A minor fraction of $\text{CO}_2$ travels dissolved directly in blood plasma.</li>
 </ol>
 <hr />
-<h3 id="hemoglobin-degradation-and-catabolism-pathways-slides-1112">Hemoglobin Degradation and Catabolism Pathways (Slides 11–12)</h3>
+<h3 id="hemoglobin-degradation-and-catabolism-pathways">Hemoglobin Degradation and Catabolism Pathways</h3>
 <p>When erythrocytes complete their ~120-day lifespan, hemoglobin destruction occurs via two distinct anatomical pathways:</p>
 <h4 id="extravascular-destruction-90-of-normal-clearance">Extravascular Destruction (~90% of normal clearance)</h4>
 <p>The primary and most efficient pathway, occurring within macrophages of the reticuloendothelial system (RES) in the <strong>spleen</strong>, liver, and bone marrow. RBC components are efficiently recycled:</p>
@@ -1373,7 +1389,7 @@ Portland (ζ2γ2)                                                               
 <li><strong>Hemosiderinuria:</strong> When tubular reabsorptive capacity is exceeded, iron accumulates in shed tubular cells and precipitates into the urine, producing <strong>hemosiderinuria</strong>.</li>
 </ul>
 <hr />
-<h3 id="acquired-nonfunctional-hemoglobins-slide-13">Acquired Nonfunctional Hemoglobins (Slide 13)</h3>
+<h3 id="acquired-nonfunctional-hemoglobins">Acquired Nonfunctional Hemoglobins</h3>
 <p>Acquired modifications to the heme ring can render hemoglobin incapable of oxygen transport, causing tissue hypoxia and clinical cyanosis:</p>
 <ul>
 <li><strong>Methemoglobin (MetHgb):</strong> Occurs when heme iron is oxidized from the functional ferrous state ($\text{Fe}^{2+}$) to the nonfunctional ferric state (<strong>$\text{Fe}^{3+}$</strong>). Ferric iron cannot bind oxygen. Blood containing high MetHgb levels displays a characteristic <strong>chocolate brown</strong> color. Patients present with cyanosis unresponsive to oxygen administration.</li>
@@ -1427,6 +1443,7 @@ Portland (ζ2γ2)                                                               
                 if (panZoomInstance) {
                     panZoomInstance.reset();
                     panZoomInstance.fit();
+                    panZoomInstance.zoom(panZoomInstance.getZoom() * 0.95);
                     panZoomInstance.center();
                 }
             });
@@ -1475,6 +1492,8 @@ Portland (ζ2γ2)                                                               
                             zoomScaleSensitivity: 0.2,
                             dblClickZoomEnabled: true
                         });
+                        panZoomInstance.zoom(panZoomInstance.getZoom() * 0.95);
+                        panZoomInstance.center();
                     });
                 });
             }
