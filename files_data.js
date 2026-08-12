@@ -8,7 +8,7 @@ window.FILES_DATA = [
     "extension": "js",
     "type": "Document",
     "category": "General",
-    "mtime": 1786549970.3840716
+    "mtime": 1786550284.1381032
   },
   {
     "name": "L1_Hematopoiesis_S0_Discussion.html",
@@ -56,6 +56,18 @@ window.FILES_DATA = [
     "mtime": 1786019744.3427837
   },
   {
+    "name": "L1_Hematopoiesis_S2_Hematopoiesis_Sites_Video",
+    "title": "Hematopoiesis Sites",
+    "path": "https://youtu.be/-tAUTqSBBV8",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Lecture / Physiology",
+    "youtubeUrl": "https://youtu.be/-tAUTqSBBV8",
+    "mtime": 1786019744.3427837
+  },
+  {
     "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
     "title": "Hematopoiesis Process",
     "path": "Lecture/Physiology/L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
@@ -64,6 +76,18 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
+    "mtime": 1786019852.095094
+  },
+  {
+    "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process_Video",
+    "title": "Hematopoiesis Process",
+    "path": "https://youtu.be/F6M8pZDxGdw",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Lecture / Physiology",
+    "youtubeUrl": "https://youtu.be/F6M8pZDxGdw",
     "mtime": 1786019852.095094
   },
   {
