@@ -18,10 +18,10 @@
   --shadow-md: 0 6px 18px rgba(54, 57, 69, 0.1);
   --shadow-hover: 0 10px 28px rgba(54, 57, 69, 0.16);
 
-  --accent-pdf: #DC2626;
+  --accent-pdf: #D97706;
   --accent-map: #059669;
   --accent-doc: #2563EB;
-  --accent-bg-pdf: #FEF2F2;
+  --accent-bg-pdf: #FFFBEB;
   --accent-bg-map: #ECFDF5;
   --accent-bg-doc: #EFF6FF;
   
@@ -45,7 +45,7 @@
   --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.5);
 
-  --accent-bg-pdf: rgba(220, 38, 38, 0.15);
+  --accent-bg-pdf: rgba(217, 119, 6, 0.15);
   --accent-bg-map: rgba(5, 150, 105, 0.15);
   --accent-bg-doc: rgba(37, 99, 235, 0.15);
 }
@@ -306,16 +306,15 @@ main {
   margin-bottom: 16px;
 }
 
-/* Card Grid View */
 .section-group {
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .section-title {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--theme-first-color-light);
   display: flex;
@@ -324,15 +323,18 @@ main {
   letter-spacing: -0.2px;
 }
 
+/* Indent card sub-rows for clear hierarchy under L# topic titles */
 .subrow-group {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  padding-left: 20px;
+  border-left: 3px solid var(--theme-first-color-light);
 }
 
 .subrow-title {
   font-size: 0.825rem;
   font-weight: 700;
   color: var(--text-secondary);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -419,6 +421,11 @@ main {
 .badge-pdf {
   background-color: var(--accent-bg-pdf);
   color: var(--accent-pdf);
+}
+
+.badge-video {
+  background-color: #FEF2F2;
+  color: #DC2626;
 }
 
 .badge-map {
