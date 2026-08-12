@@ -139,7 +139,7 @@ function updateCategoryCounts() {
     const countAll = filesData.length;
     const countMaps = filesData.filter(f => f.type === 'Mind Map').length;
     const countDisc = filesData.filter(f => f.type === 'Discussion').length;
-    const countPdf = filesData.filter(f => f.type === 'PDF Slide').length;
+    const countPdf = filesData.filter(f => f.type === 'Slide Deck').length;
 
     document.getElementById('countAll').textContent = countAll;
     document.getElementById('countMaps').textContent = countMaps;
@@ -149,22 +149,26 @@ function updateCategoryCounts() {
 
 // Filter logic
 function getFilteredFiles() {
-    return filesData.filter(file => {
+    const filtered = filesData.filter(file => {
         // Filter chip
         if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
         if (currentFilter === 'discussion' && file.type !== 'Discussion') return false;
-        if (currentFilter === 'pdf' && file.type !== 'PDF Slide') return false;
+        if (currentFilter === 'pdf' && file.type !== 'Slide Deck') return false;
 
         // Search text
         if (currentSearch) {
             const matchName = file.name.toLowerCase().includes(currentSearch);
+            const matchTitle = (file.title || '').toLowerCase().includes(currentSearch);
             const matchCat = file.category.toLowerCase().includes(currentSearch);
             const matchType = file.type.toLowerCase().includes(currentSearch);
-            return matchName || matchCat || matchType;
+            return matchName || matchTitle || matchCat || matchType;
         }
 
         return true;
     });
+
+    // Sort cards in the exact same order as original file names
+    return filtered.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
 }
 
 // Main Render Function
@@ -196,47 +200,114 @@ function render() {
 
 // Render Card Grid
 function renderCardGrid(container, files) {
-    let html = `<div class="grid-view">`;
+    // 1. Group files by L# prefix
+    const topicGroups = {};
     files.forEach(file => {
-        let badgeClass = 'badge-doc';
-        if (file.type === 'PDF Slide') badgeClass = 'badge-pdf';
-        if (file.type === 'Mind Map') badgeClass = 'badge-map';
+        const match = file.name.match(/^(L\d+)/i);
+        const groupKey = match ? match[1].toUpperCase() : 'Other';
+        if (!topicGroups[groupKey]) topicGroups[groupKey] = [];
+        topicGroups[groupKey].push(file);
+    });
 
-        const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+    const topicTitles = {
+        'L1': 'Hematopoiesis',
+        'L2': 'Erythrocytes & Hemoglobin',
+        'L3': 'Leukocytes & Platelets',
+        'L4': 'RBC Analysis'
+    };
+
+    let html = '';
+    for (const groupKey in topicGroups) {
+        const topicFiles = topicGroups[groupKey];
+        const sectionTitle = topicTitles[groupKey] || 'General Resources';
+
+        // 2. Separate topicFiles into sub-rows by type (Discussion, Slide Deck, Mind Map)
+        const typeSubgroups = {
+            'Discussion': [],
+            'Slide Deck': [],
+            'Mind Map': []
+        };
+
+        topicFiles.forEach(file => {
+            if (typeSubgroups[file.type]) {
+                typeSubgroups[file.type].push(file);
+            } else {
+                if (!typeSubgroups['Other']) typeSubgroups['Other'] = [];
+                typeSubgroups['Other'].push(file);
+            }
+        });
 
         html += `
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <span class="card-badge ${badgeClass}">${file.type}</span>
-                        <span class="card-category">${file.category}</span>
-                    </div>
-                    <div class="card-title">${escapeHtml(cleanTitle)}</div>
-                    <div class="card-meta">
-                        <span>📁 ${escapeHtml(file.name)}</span>
-                        <span>•</span>
-                        <span>${file.sizeFormatted}</span>
-                    </div>
+            <div class="section-group">
+                <div class="section-title">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                    ${escapeHtml(sectionTitle)} (${topicFiles.length})
                 </div>
-                <div class="card-actions">
-                    <button class="btn btn-primary" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(cleanTitle)}')">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                        </svg>
-                        Preview
-                    </button>
-                    <a class="btn" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" title="Open in new tab">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                        </svg>
-                        Open
-                    </a>
-                </div>
-            </div>
         `;
-    });
-    html += `</div>`;
+
+        const typeOrder = ['Discussion', 'Slide Deck', 'Mind Map', 'Other'];
+        typeOrder.forEach(typeKey => {
+            const subFiles = typeSubgroups[typeKey];
+            if (!subFiles || subFiles.length === 0) return;
+
+            let typeLabel = typeKey;
+            if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
+            if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
+            if (typeKey === 'Discussion') typeLabel = 'Discussions';
+
+            html += `
+                <div class="subrow-group">
+                    <div class="subrow-title">
+                        ${escapeHtml(typeLabel)} (${subFiles.length})
+                    </div>
+                    <div class="grid-view">
+            `;
+
+            subFiles.forEach(file => {
+                let badgeClass = 'badge-doc';
+                if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
+                if (file.type === 'Mind Map') badgeClass = 'badge-map';
+
+                const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+
+                html += `
+                    <div class="card" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
+                        <div>
+                            <div class="card-header">
+                                <span class="card-badge ${badgeClass}">${file.type}</span>
+                                <span class="card-category">${file.category}</span>
+                            </div>
+                            <div class="card-title">${escapeHtml(displayTitle)}</div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-preview" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                Preview
+                            </button>
+                            <a class="btn btn-open" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" title="Open in new tab" onclick="event.stopPropagation();">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                </svg>
+                                Open
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+    }
     container.innerHTML = html;
 }
 
@@ -263,16 +334,21 @@ function renderTree(container, files) {
         `;
 
         grouped[category].forEach(file => {
-            const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+            let badgeClass = 'badge-doc';
+            if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
+            if (file.type === 'Mind Map') badgeClass = 'badge-map';
+
+            const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+
             html += `
-                <div class="tree-item">
+                <div class="tree-item" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                     <div class="tree-item-left">
-                        <span class="tree-item-name">${escapeHtml(cleanTitle)}</span>
-                        <span style="font-size: 0.75rem; color: var(--text-secondary);">(${file.type} • ${file.sizeFormatted})</span>
+                        <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${file.type}</span>
+                        <span class="tree-item-name">${escapeHtml(displayTitle)}</span>
                     </div>
                     <div class="tree-item-actions">
-                        <button class="btn btn-primary" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(cleanTitle)}')">Preview</button>
-                        <a class="btn" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener">Open ↗</a>
+                        <button class="btn btn-preview" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">Preview</button>
+                        <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Open ↗</a>
                     </div>
                 </div>
             `;
@@ -292,12 +368,24 @@ function openPreview(encodedPath, title) {
     const path = decodeURIComponent(encodedPath);
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalTitle = document.getElementById('modalTitle');
-    const modalIframe = document.getElementById('modalIframe');
+    const modalBody = document.querySelector('.modal-body');
     const modalExternalLink = document.getElementById('modalExternalLink');
 
     modalTitle.textContent = title;
-    modalIframe.src = path;
     modalExternalLink.href = path;
+
+    // Embedded viewing for PDF slide decks and HTML documents
+    if (path.toLowerCase().endsWith('.pdf')) {
+        modalBody.innerHTML = `
+            <object data="${path}#toolbar=0&navpanes=0&view=FitH" type="application/pdf" width="100%" height="100%">
+                <iframe src="${path}" width="100%" height="100%" frameborder="0">
+                    <p>Your browser does not support inline PDF preview. <a href="${path}" target="_blank">Click here to open PDF</a>.</p>
+                </iframe>
+            </object>
+        `;
+    } else {
+        modalBody.innerHTML = `<iframe id="modalIframe" src="${path}" width="100%" height="100%" frameborder="0" title="Resource Preview"></iframe>`;
+    }
 
     modalBackdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -305,10 +393,10 @@ function openPreview(encodedPath, title) {
 
 function closeModal() {
     const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalIframe = document.getElementById('modalIframe');
+    const modalBody = document.querySelector('.modal-body');
 
     modalBackdrop.classList.remove('active');
-    modalIframe.src = 'about:blank';
+    modalBody.innerHTML = '';
     document.body.style.overflow = '';
 }
 

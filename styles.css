@@ -307,6 +307,39 @@ main {
 }
 
 /* Card Grid View */
+.section-group {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--theme-first-color-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.2px;
+}
+
+.subrow-group {
+  margin-bottom: 24px;
+}
+
+.subrow-title {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
 .grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -326,6 +359,7 @@ main {
   animation: appear 0.4s ease-in forwards;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 @keyframes appear {
@@ -343,6 +377,26 @@ main {
   transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
   border-color: var(--theme-first-color);
+}
+
+/* Hovering over card or tree-item highlights preview button */
+.card:hover .btn-preview,
+.tree-item:hover .btn-preview {
+  background-color: var(--theme-first-color-light);
+  border-color: var(--theme-first-color-muted);
+}
+
+/* When directly hovering over the open button, reset preview button to non-hover state */
+.card:has(.btn-open:hover) .btn-preview,
+.tree-item:has(.btn-open:hover) .btn-preview {
+  background-color: var(--bg-surface);
+  border-color: var(--border-color);
+}
+
+/* Direct hover over open button */
+.btn-open:hover {
+  background-color: var(--theme-first-color-light) !important;
+  border-color: var(--theme-first-color-muted) !important;
 }
 
 .card-header {
@@ -453,6 +507,7 @@ main {
   text-decoration: none;
   color: var(--text-primary);
   border-bottom: 1px dashed var(--border-color);
+  cursor: pointer;
 }
 
 .tree-item:last-child {
