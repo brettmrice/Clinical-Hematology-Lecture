@@ -502,6 +502,32 @@ function checkUrlHashTarget() {
     if (!hash || !hash.startsWith('#card-')) return;
     const cleanId = hash.substring(1); // remove '#'
     
+    // Ensure targeted card is rendered by resetting filter & search if needed
+    if (filesData && Array.isArray(filesData)) {
+        const targetFile = filesData.find(f => ('card-' + f.name.replace(/[^a-zA-Z0-9_-]/g, '_')) === cleanId);
+        if (targetFile) {
+            let needReRender = false;
+            if (currentFilter !== 'all') {
+                currentFilter = 'all';
+                const chips = document.querySelectorAll('.chip');
+                chips.forEach(c => {
+                    if (c.getAttribute('data-filter') === 'all') c.classList.add('active');
+                    else c.classList.remove('active');
+                });
+                needReRender = true;
+            }
+            if (currentSearch) {
+                currentSearch = '';
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) searchInput.value = '';
+                needReRender = true;
+            }
+            if (needReRender) {
+                render();
+            }
+        }
+    }
+
     const delay = isInitialHashCheck ? 650 : 150;
     
     if (isInitialHashCheck) {

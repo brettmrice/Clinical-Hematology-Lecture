@@ -137,7 +137,7 @@ def scan_dir():
                 v_title = v_info.get("title", f"{display_title} Overview")
                 
                 # Derive sort key to keep video placed directly after its corresponding slide deck
-                v_sort_name = file.replace(".pdf", "_Video.pdf")
+                v_sort_name = file.replace(".pdf", "_Video")
 
                 results.append({
                     "name": v_sort_name,
