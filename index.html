@@ -13,6 +13,16 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Prevent automatic browser anchor scrolling on initial load -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        if (window.location.hash) {
+            window.scrollTo(0, 0);
+        }
+    </script>
 </head>
 <body>
 

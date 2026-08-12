@@ -46,6 +46,11 @@ function updateThemeIcon(theme) {
 
 // Fetch / Load Files Data
 async function loadFilesIndex() {
+    if (window.location.hash && 'scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+    }
+
     try {
         // Priority 1: Check if window.FILES_DATA is loaded (works seamlessly on file:// protocol without CORS restriction)
         if (window.FILES_DATA && Array.isArray(window.FILES_DATA) && window.FILES_DATA.length > 0) {
@@ -486,21 +491,63 @@ function showToast(msg) {
     }, 3100);
 }
 
+let isInitialHashCheck = true;
+
+let highlightTimeout = null;
+let pulseCleanTimeout = null;
+
 // Smooth scroll & pulse highlight when hash URL is visited
 function checkUrlHashTarget() {
     const hash = window.location.hash;
     if (!hash || !hash.startsWith('#card-')) return;
     const cleanId = hash.substring(1); // remove '#'
     
+    const delay = isInitialHashCheck ? 650 : 150;
+    
+    if (isInitialHashCheck) {
+        // Ensure browser starts at very top on initial load
+        window.scrollTo(0, 0);
+    }
+
     setTimeout(() => {
         const targetEl = document.getElementById(cleanId);
-        if (targetEl) {
+        const container = document.getElementById('contentContainer');
+
+        if (targetEl && container) {
+            if (highlightTimeout) clearTimeout(highlightTimeout);
+
+            // Remove any previous persistent highlight
+            document.querySelectorAll('.card-persistent-highlight').forEach(el => {
+                el.classList.remove('card-persistent-highlight');
+            });
+
+            // Dim all non-selected cards
+            document.body.classList.add('has-card-highlight');
+            container.classList.add('has-card-highlight');
+
             targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            targetEl.classList.remove('card-highlight-pulse');
-            void targetEl.offsetWidth; // force reflow
-            targetEl.classList.add('card-highlight-pulse');
+            targetEl.classList.add('card-persistent-highlight');
+
+            // Non-selected cards start 3.0s smooth fade-back at 1500ms (reaching 100% opacity at 4.5s)
+            highlightTimeout = setTimeout(() => {
+                document.body.classList.remove('has-card-highlight');
+                container.classList.remove('has-card-highlight');
+            }, 1500);
+
+            // Clear persistent highlight when user hovers over or clicks the targeted card
+            const clearHighlight = () => {
+                targetEl.classList.remove('card-persistent-highlight');
+                document.body.classList.remove('has-card-highlight');
+                container.classList.remove('has-card-highlight');
+                targetEl.removeEventListener('mouseenter', clearHighlight);
+                targetEl.removeEventListener('click', clearHighlight);
+            };
+
+            targetEl.addEventListener('mouseenter', clearHighlight, { once: true });
+            targetEl.addEventListener('click', clearHighlight, { once: true });
         }
-    }, 250);
+        isInitialHashCheck = false;
+    }, delay);
 }
 
 // Helper: Extract YouTube Video ID

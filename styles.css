@@ -357,50 +357,35 @@ main {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  animation: appear 0.4s ease-in forwards;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
 
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Persistent Highlight Effect on Targeted Card */
+.card-persistent-highlight {
+  box-shadow: 0 0 0 4px var(--theme-second-color), 0 0 24px rgba(217, 119, 6, 0.45) !important;
+  border-color: #D97706 !important;
+  z-index: 10 !important;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-@keyframes highlightPulse {
-  0% {
-    box-shadow: 0 0 0 0px var(--theme-second-color), 0 0 0px rgba(217, 119, 6, 0);
-    transform: scale(1);
-    border-color: var(--theme-first-color);
-  }
-  25% {
-    box-shadow: 0 0 0 6px var(--theme-second-color), 0 0 28px rgba(217, 119, 6, 0.55);
-    transform: scale(1.03);
-    border-color: #D97706;
-  }
-  50% {
-    box-shadow: 0 0 0 4px var(--theme-second-color), 0 0 20px rgba(217, 119, 6, 0.4);
-    transform: scale(1.01);
-    border-color: #D97706;
-  }
-  100% {
-    box-shadow: var(--shadow-sm);
-    transform: scale(1);
-    border-color: var(--border-color);
-  }
+/* Dim all non-targeted cards when a card is selected/highlighted */
+body.has-card-highlight .card:not(.card-persistent-highlight),
+body.has-card-highlight .tree-item:not(.card-persistent-highlight),
+.has-card-highlight .card:not(.card-persistent-highlight),
+.has-card-highlight .tree-item:not(.card-persistent-highlight) {
+  opacity: 0.25 !important;
+  transition: opacity 0.4s ease !important;
 }
 
-.card-highlight-pulse {
-  animation: highlightPulse 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
-  z-index: 10;
+body.has-card-highlight .card.card-persistent-highlight,
+body.has-card-highlight .tree-item.card-persistent-highlight,
+.has-card-highlight .card.card-persistent-highlight,
+.has-card-highlight .tree-item.card-persistent-highlight {
+  opacity: 1 !important;
+  z-index: 10 !important;
 }
 
 /* Toast Container & Notification */
@@ -609,7 +594,7 @@ main {
   justify-content: space-between;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: var(--text-primary);
   border-bottom: 1px dashed var(--border-color);
