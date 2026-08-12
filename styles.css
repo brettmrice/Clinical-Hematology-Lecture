@@ -375,6 +375,70 @@ main {
   }
 }
 
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0px var(--theme-second-color), 0 0 0px rgba(217, 119, 6, 0);
+    transform: scale(1);
+    border-color: var(--theme-first-color);
+  }
+  25% {
+    box-shadow: 0 0 0 6px var(--theme-second-color), 0 0 28px rgba(217, 119, 6, 0.55);
+    transform: scale(1.03);
+    border-color: #D97706;
+  }
+  50% {
+    box-shadow: 0 0 0 4px var(--theme-second-color), 0 0 20px rgba(217, 119, 6, 0.4);
+    transform: scale(1.01);
+    border-color: #D97706;
+  }
+  100% {
+    box-shadow: var(--shadow-sm);
+    transform: scale(1);
+    border-color: var(--border-color);
+  }
+}
+
+.card-highlight-pulse {
+  animation: highlightPulse 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  z-index: 10;
+}
+
+/* Toast Container & Notification */
+.toast-container {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast-notification {
+  background-color: var(--theme-first-color);
+  color: var(--theme-second-color);
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: toastFadeInOut 3s ease forwards;
+}
+
+@keyframes toastFadeInOut {
+  0% { opacity: 0; transform: translateY(12px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
 .card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
@@ -468,14 +532,49 @@ main {
 .card-actions {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--border-color);
+  width: 100%;
 }
 
-.card-actions .btn {
-  flex: 1;
+.card-actions .btn-preview,
+.card-actions .btn-open {
+  flex: 1 1 0px;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.card-actions .btn-share {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.btn-share:hover {
+  background-color: var(--theme-first-color-light) !important;
+  border-color: var(--theme-first-color-muted) !important;
+}
+
+/* Reset preview hover state when hovering open or share buttons */
+.card:has(.btn-open:hover) .btn-preview,
+.card:has(.btn-share:hover) .btn-preview,
+.tree-item:has(.btn-open:hover) .btn-preview,
+.tree-item:has(.btn-share:hover) .btn-preview {
+  background-color: var(--bg-surface);
+  border-color: var(--border-color);
 }
 
 /* Tree View */

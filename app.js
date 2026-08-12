@@ -132,6 +132,9 @@ function setupEventListeners() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
     });
+
+    // Hash change for shareable link targeting
+    window.addEventListener('hashchange', checkUrlHashTarget);
 }
 
 // Count items for chips
@@ -201,6 +204,8 @@ function render() {
     } else {
         renderTree(container, filtered);
     }
+
+    setTimeout(checkUrlHashTarget, 200);
 }
 
 // Render Card Grid
@@ -280,9 +285,10 @@ function renderCardGrid(container, files) {
                 if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
                 const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
 
                 html += `
-                    <div class="card" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
+                    <div class="card" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                         <div>
                             <div class="card-header">
                                 <span class="card-badge ${badgeClass}">${file.type}</span>
@@ -304,6 +310,11 @@ function renderCardGrid(container, files) {
                                 </svg>
                                 Open
                             </a>
+                            <button class="btn btn-share btn-icon-only" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
+                                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 `;
@@ -396,9 +407,10 @@ function renderTree(container, files) {
                 if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
                 const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
 
                 html += `
-                    <div class="tree-item" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
+                    <div class="tree-item" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                         <div class="tree-item-left">
                             <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${file.type}</span>
                             <span class="tree-item-name">${escapeHtml(displayTitle)}</span>
@@ -406,6 +418,11 @@ function renderTree(container, files) {
                         <div class="tree-item-actions">
                             <button class="btn btn-preview" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">Preview</button>
                             <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Open ↗</a>
+                            <button class="btn btn-share btn-icon-only" style="padding: 4px; width: 28px; height: 28px;" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
+                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 `;
@@ -419,6 +436,71 @@ function renderTree(container, files) {
     }
     html += `</div>`;
     container.innerHTML = html;
+}
+
+// Copy Shareable Link Helper
+function copyShareLink(filename) {
+    const cleanId = 'card-' + filename.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const shareUrl = window.location.origin + window.location.pathname + '#' + cleanId;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            showToast('Shareable link copied to clipboard!');
+        }).catch(() => {
+            fallbackCopyText(shareUrl);
+        });
+    } else {
+        fallbackCopyText(shareUrl);
+    }
+}
+
+function fallbackCopyText(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        showToast('Shareable link copied to clipboard!');
+    } catch (err) {
+        console.error('Copy fallback failed:', err);
+    }
+    document.body.removeChild(textArea);
+}
+
+// Toast notification helper
+function showToast(msg) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `
+        <svg width="18" height="18" fill="none" stroke="#EFE1CE" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span>${escapeHtml(msg)}</span>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 3100);
+}
+
+// Smooth scroll & pulse highlight when hash URL is visited
+function checkUrlHashTarget() {
+    const hash = window.location.hash;
+    if (!hash || !hash.startsWith('#card-')) return;
+    const cleanId = hash.substring(1); // remove '#'
+    
+    setTimeout(() => {
+        const targetEl = document.getElementById(cleanId);
+        if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetEl.classList.remove('card-highlight-pulse');
+            void targetEl.offsetWidth; // force reflow
+            targetEl.classList.add('card-highlight-pulse');
+        }
+    }, 250);
 }
 
 // Helper: Extract YouTube Video ID
