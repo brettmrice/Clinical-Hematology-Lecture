@@ -247,6 +247,50 @@ header {
   color: var(--theme-second-color);
 }
 
+/* Section / Domain Selector Tabs */
+.sections-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+}
+
+.section-tab {
+  padding: 7px 16px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-tab:hover {
+  border-color: var(--theme-first-color);
+  color: var(--text-primary);
+  background-color: var(--theme-first-color-light);
+}
+
+.section-tab.active {
+  background-color: var(--theme-first-color);
+  color: var(--theme-second-color);
+  border-color: var(--theme-first-color);
+  font-weight: 600;
+}
+
+.section-tab.active .chip-count {
+  background: rgba(239, 225, 206, 0.2);
+  color: var(--theme-second-color);
+}
+
 /* Filter Chips */
 .chips-row {
   display: flex;
@@ -306,35 +350,78 @@ main {
   margin-bottom: 16px;
 }
 
-.section-group {
-  margin-bottom: 40px;
+/* Domain Section */
+.domain-section {
+  margin-bottom: 44px;
 }
 
-.section-title {
-  font-size: 1.2rem;
+.domain-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--theme-first-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.domain-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--theme-first-color-light);
   display: flex;
   align-items: center;
   gap: 10px;
   letter-spacing: -0.2px;
 }
 
-/* Indent card sub-rows for clear hierarchy under L# topic titles */
-.subrow-group {
+.domain-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--theme-first-color-light);
+  color: var(--theme-first-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .domain-badge {
+  color: var(--theme-second-color);
+  background: rgba(239, 225, 206, 0.15);
+}
+
+.topic-group {
   margin-bottom: 28px;
-  padding-left: 20px;
+}
+
+.topic-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--theme-first-color-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Indent card sub-rows for clear hierarchy under topic titles */
+.subrow-group {
+  margin-bottom: 20px;
+  padding-left: 18px;
   border-left: 3px solid var(--theme-first-color-light);
 }
 
 .subrow-title {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-secondary);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -475,6 +562,16 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
 .badge-video {
   background-color: #FEF2F2;
   color: #DC2626;
+}
+
+.badge-demo {
+  background-color: #F5F3FF;
+  color: #7C3AED;
+}
+
+[data-theme="dark"] .badge-demo {
+  background-color: rgba(124, 58, 237, 0.18);
+  color: #C4B5FD;
 }
 
 .badge-map {

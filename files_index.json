@@ -1,14 +1,80 @@
 [
   {
-    "name": "video_links.js",
-    "title": "video links",
-    "path": "video_links.js",
-    "size": 1774,
-    "sizeFormatted": "1.7 KB",
-    "extension": "js",
-    "type": "Document",
-    "category": "General",
-    "mtime": 1786550284.1381032
+    "name": "L1_Manual_Counts_S0__Discussion.html",
+    "title": "Manual Counts",
+    "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S0__Discussion.html",
+    "size": 100396,
+    "sizeFormatted": "98.0 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922700.080285
+  },
+  {
+    "name": "L1_Manual_Counts_S1_Hemocytometer.pdf",
+    "title": "Hemocytometer",
+    "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S1_Hemocytometer.pdf",
+    "size": 851661,
+    "sizeFormatted": "831.7 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922744.7424567
+  },
+  {
+    "name": "L1_Manual_Counts_S2_Hematocrit.pdf",
+    "title": "Hematocrit",
+    "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S2_Hematocrit.pdf",
+    "size": 517492,
+    "sizeFormatted": "505.4 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922761.2596922
+  },
+  {
+    "name": "L1_Manual_Counts_S3_Mind_Map.html",
+    "title": "Manual Counts",
+    "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S3_Mind_Map.html",
+    "size": 65556,
+    "sizeFormatted": "64.0 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922700.0812843
+  },
+  {
+    "name": "L2_Slide_Evaluation_S0_Discussion.html",
+    "title": "Slide Preparation",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S0_Discussion.html",
+    "size": 73716,
+    "sizeFormatted": "72.0 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922632.6278253
+  },
+  {
+    "name": "L2_Slide_Evaluation_S1_PBS_Preparation.pdf",
+    "title": "PBS Preparation",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S1_PBS_Preparation.pdf",
+    "size": 1976752,
+    "sizeFormatted": "1.9 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922775.2107549
+  },
+  {
+    "name": "L2_Slide_Evaluation_S2_PBS_Preparation_Mind_Map.html",
+    "title": "Slide Preparation",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S2_PBS_Preparation_Mind_Map.html",
+    "size": 69480,
+    "sizeFormatted": "67.9 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922632.6268237
   },
   {
     "name": "L1_Hematopoiesis_S0_Discussion.html",
@@ -19,7 +85,7 @@
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1786327625.0
+    "mtime": 1786327625.0822537
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition.pdf",
@@ -30,7 +96,194 @@
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786019666.959365
+    "mtime": 1786019666.0
+  },
+  {
+    "name": "L1_Hematopoiesis_S2_Hematopoiesis_Sites.pdf",
+    "title": "Hematopoiesis Sites",
+    "path": "Lecture/Physiology/L1_Hematopoiesis_S2_Hematopoiesis_Sites.pdf",
+    "size": 1318259,
+    "sizeFormatted": "1.3 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786019744.0
+  },
+  {
+    "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
+    "title": "Hematopoiesis Process",
+    "path": "Lecture/Physiology/L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
+    "size": 1111963,
+    "sizeFormatted": "1.1 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786019852.0
+  },
+  {
+    "name": "L1_Hematopoiesis_S4_Mind_Map.html",
+    "title": "Hematopoiesis",
+    "path": "Lecture/Physiology/L1_Hematopoiesis_S4_Mind_Map.html",
+    "size": 76228,
+    "sizeFormatted": "74.4 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Lecture / Physiology",
+    "mtime": 1786327625.0772445
+  },
+  {
+    "name": "L2_BCE_RBC-HGB_S0_Discussion.html",
+    "title": "Erythrocytes & Hemoglobin",
+    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S0_Discussion.html",
+    "size": 96574,
+    "sizeFormatted": "94.3 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Lecture / Physiology",
+    "mtime": 1786544039.0
+  },
+  {
+    "name": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
+    "title": "Erythrocyte",
+    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
+    "size": 1418003,
+    "sizeFormatted": "1.4 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786114769.0
+  },
+  {
+    "name": "L2_BCE_RBC-HGB_S2_Hemoglobin.pdf",
+    "title": "Hemoglobin",
+    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S2_Hemoglobin.pdf",
+    "size": 840386,
+    "sizeFormatted": "820.7 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786114815.0
+  },
+  {
+    "name": "L2_BCE_RBC-HGB_S3_Mind_Map.html",
+    "title": "Erythrocytes & Hemoglobin",
+    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S3_Mind_Map.html",
+    "size": 64621,
+    "sizeFormatted": "63.1 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Lecture / Physiology",
+    "mtime": 1786327625.0832534
+  },
+  {
+    "name": "L3_BCE_WBC-PLT_S0_Discussion.html",
+    "title": "Leukocytes & Platelets",
+    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S0_Discussion.html",
+    "size": 112813,
+    "sizeFormatted": "110.2 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Lecture / Physiology",
+    "mtime": 1786467301.0
+  },
+  {
+    "name": "L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
+    "title": "Granulocytes",
+    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
+    "size": 534379,
+    "sizeFormatted": "521.9 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786538835.0
+  },
+  {
+    "name": "L3_BCE_WBC-PLT_S2_Lymphocytes.pdf",
+    "title": "Lymphocytes",
+    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S2_Lymphocytes.pdf",
+    "size": 458102,
+    "sizeFormatted": "447.4 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786538871.0
+  },
+  {
+    "name": "L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
+    "title": "Monocytes & Platelets",
+    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
+    "size": 351447,
+    "sizeFormatted": "343.2 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786538884.0
+  },
+  {
+    "name": "L3_BCE_WBC-PLT_S4_Mind_Map.html",
+    "title": "Leukocytes & Platelets",
+    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S4_Mind_Map.html",
+    "size": 60396,
+    "sizeFormatted": "59.0 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Lecture / Physiology",
+    "mtime": 1786467301.0
+  },
+  {
+    "name": "L4_RBC_Analysis_S0_Discussion.html",
+    "title": "RBC Analysis",
+    "path": "Lecture/Physiology/L4_RBC_Analysis_S0_Discussion.html",
+    "size": 91018,
+    "sizeFormatted": "88.9 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Lecture / Physiology",
+    "mtime": 1786467301.0
+  },
+  {
+    "name": "L4_RBC_Analysis_S1_RBC_Indices.pdf",
+    "title": "RBC Indices",
+    "path": "Lecture/Physiology/L4_RBC_Analysis_S1_RBC_Indices.pdf",
+    "size": 683427,
+    "sizeFormatted": "667.4 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786539106.0
+  },
+  {
+    "name": "L4_RBC_Analysis_S2_RBC_Poikilocytes.pdf",
+    "title": "RBC Poikilocytes",
+    "path": "Lecture/Physiology/L4_RBC_Analysis_S2_RBC_Poikilocytes.pdf",
+    "size": 1156067,
+    "sizeFormatted": "1.1 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786539118.0
+  },
+  {
+    "name": "L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
+    "title": "RBC Inclusions",
+    "path": "Lecture/Physiology/L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
+    "size": 1048420,
+    "sizeFormatted": "1023.8 KB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Lecture / Physiology",
+    "mtime": 1786539130.0
+  },
+  {
+    "name": "L4_RBC_Analysis_S4_Mind_Map.html",
+    "title": "RBC Analysis",
+    "path": "Lecture/Physiology/L4_RBC_Analysis_S4_Mind_Map.html",
+    "size": 62153,
+    "sizeFormatted": "60.7 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Lecture / Physiology",
+    "mtime": 1786467301.0
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition_Video",
@@ -42,18 +295,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/jG0gyuxHCss",
-    "mtime": 1786019666.959365
-  },
-  {
-    "name": "L1_Hematopoiesis_S2_Hematopoiesis_Sites.pdf",
-    "title": "Hematopoiesis Sites",
-    "path": "Lecture/Physiology/L1_Hematopoiesis_S2_Hematopoiesis_Sites.pdf",
-    "size": 1318259,
-    "sizeFormatted": "1.3 MB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786019744.3427837
+    "mtime": 0
   },
   {
     "name": "L1_Hematopoiesis_S2_Hematopoiesis_Sites_Video",
@@ -65,18 +307,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/-tAUTqSBBV8",
-    "mtime": 1786019744.3427837
-  },
-  {
-    "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
-    "title": "Hematopoiesis Process",
-    "path": "Lecture/Physiology/L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
-    "size": 1111963,
-    "sizeFormatted": "1.1 MB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786019852.095094
+    "mtime": 0
   },
   {
     "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process_Video",
@@ -88,40 +319,91 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/F6M8pZDxGdw",
-    "mtime": 1786019852.095094
+    "mtime": 0
   },
   {
-    "name": "L1_Hematopoiesis_S4_Mind_Map.html",
-    "title": "Hematopoiesis",
-    "path": "Lecture/Physiology/L1_Hematopoiesis_S4_Mind_Map.html",
-    "size": 76228,
-    "sizeFormatted": "74.4 KB",
-    "extension": "html",
-    "type": "Mind Map",
-    "category": "Lecture / Physiology",
-    "mtime": 1786327625.0
+    "name": "L1_Manual_Counts_S1_Hemocytometer_Video",
+    "title": "Hemocytometer",
+    "path": "https://youtu.be/GEtNXeqoKlo",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/GEtNXeqoKlo",
+    "mtime": 0
   },
   {
-    "name": "L2_BCE_RBC-HGB_S0_Discussion.html",
-    "title": "Erythrocytes & Hemoglobin",
-    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S0_Discussion.html",
-    "size": 96574,
-    "sizeFormatted": "94.3 KB",
-    "extension": "html",
-    "type": "Discussion",
-    "category": "Lecture / Physiology",
-    "mtime": 1786544039.1485226
+    "name": "L1_Manual_Counts_Demo_1_Hemocytometer_Thrombo_TIC_Setup",
+    "title": "Hemocytometer Thrombo-TIC Setup",
+    "path": "https://youtu.be/QTzEcoxlkoI",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/QTzEcoxlkoI",
+    "mtime": 0
   },
   {
-    "name": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
-    "title": "Erythrocyte",
-    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
-    "size": 1418003,
-    "sizeFormatted": "1.4 MB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786114769.6414576
+    "name": "L1_Manual_Counts_Demo_2_Hemocytometer_Charging",
+    "title": "Hemocytometer Charging",
+    "path": "https://youtu.be/m-EP2Vj_CQo",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/m-EP2Vj_CQo",
+    "mtime": 0
+  },
+  {
+    "name": "L1_Manual_Counts_Demo_3_Hemocytometer_Read",
+    "title": "Hemocytometer Read",
+    "path": "https://youtu.be/IdD9H5buUrA",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/IdD9H5buUrA",
+    "mtime": 0
+  },
+  {
+    "name": "L1_Manual_Counts_S2_Hematocrit_Video",
+    "title": "Hematocrit",
+    "path": "https://youtu.be/lojI06C6A5Q",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/lojI06C6A5Q",
+    "mtime": 0
+  },
+  {
+    "name": "L1_Manual_Counts_Demo_4_Hematocrit_Setup",
+    "title": "Hematocrit Setup",
+    "path": "https://youtu.be/4W0XvRYXTJw",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/4W0XvRYXTJw",
+    "mtime": 0
+  },
+  {
+    "name": "L1_Manual_Counts_Demo_5_Hematocrit_Centrifuge_Read",
+    "title": "Hematocrit Centrifuge & Read",
+    "path": "https://youtu.be/0_Id8VUFsQ4",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/0_Id8VUFsQ4",
+    "mtime": 0
   },
   {
     "name": "L2_BCE_RBC-HGB_S1_Erythrocyte_Video",
@@ -133,18 +415,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/LcgQgGLCt5I",
-    "mtime": 1786114769.6414576
-  },
-  {
-    "name": "L2_BCE_RBC-HGB_S2_Hemoglobin.pdf",
-    "title": "Hemoglobin",
-    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S2_Hemoglobin.pdf",
-    "size": 840386,
-    "sizeFormatted": "820.7 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786114815.6109788
+    "mtime": 0
   },
   {
     "name": "L2_BCE_RBC-HGB_S2_Hemoglobin_Video",
@@ -156,40 +427,43 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/Bn2MnwjD51w",
-    "mtime": 1786114815.6109788
+    "mtime": 0
   },
   {
-    "name": "L2_BCE_RBC-HGB_S3_Mind_Map.html",
-    "title": "Erythrocytes & Hemoglobin",
-    "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S3_Mind_Map.html",
-    "size": 64621,
-    "sizeFormatted": "63.1 KB",
-    "extension": "html",
-    "type": "Mind Map",
-    "category": "Lecture / Physiology",
-    "mtime": 1786327625.0
+    "name": "L2_Slide_Evaluation_S1_PBS_Preparation_Video",
+    "title": "PBS Preparation",
+    "path": "https://youtu.be/Mn4t2B3R_UY",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/Mn4t2B3R_UY",
+    "mtime": 0
   },
   {
-    "name": "L3_BCE_WBC-PLT_S0_Discussion.html",
-    "title": "Leukocytes & Platelets",
-    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S0_Discussion.html",
-    "size": 112813,
-    "sizeFormatted": "110.2 KB",
-    "extension": "html",
-    "type": "Discussion",
-    "category": "Lecture / Physiology",
-    "mtime": 1786467301.6043012
+    "name": "L2_Slide_Evaluation_Demo_6_Slide_Prep_Microcapillary_Tube",
+    "title": "Slide Prep Microcapillary Tube",
+    "path": "https://youtu.be/_J5hAGrS650",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/_J5hAGrS650",
+    "mtime": 0
   },
   {
-    "name": "L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
-    "title": "Granulocytes",
-    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
-    "size": 534379,
-    "sizeFormatted": "521.9 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786538835.200541
+    "name": "L2_Slide_Evaluation_Demo_7_Slide_Prep_Applicator_Stick",
+    "title": "Slide Prep Applicator Stick",
+    "path": "https://youtu.be/cjWf9c6Uqdw",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/cjWf9c6Uqdw",
+    "mtime": 0
   },
   {
     "name": "L3_BCE_WBC-PLT_S1_Granulocytes_Video",
@@ -201,18 +475,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/h-lqd3K_byM",
-    "mtime": 1786538835.200541
-  },
-  {
-    "name": "L3_BCE_WBC-PLT_S2_Lymphocytes.pdf",
-    "title": "Lymphocytes",
-    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S2_Lymphocytes.pdf",
-    "size": 458102,
-    "sizeFormatted": "447.4 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786538871.2935693
+    "mtime": 0
   },
   {
     "name": "L3_BCE_WBC-PLT_S2_Lymphocytes_Video",
@@ -224,18 +487,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/dQ7j6_6IZig",
-    "mtime": 1786538871.2935693
-  },
-  {
-    "name": "L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
-    "title": "Monocytes & Platelets",
-    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
-    "size": 351447,
-    "sizeFormatted": "343.2 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786538884.493021
+    "mtime": 0
   },
   {
     "name": "L3_BCE_WBC-PLT_S3_Monocytes-Platelets_Video",
@@ -247,40 +499,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/S5z8BRAl9f4",
-    "mtime": 1786538884.493021
-  },
-  {
-    "name": "L3_BCE_WBC-PLT_S4_Mind_Map.html",
-    "title": "Leukocytes & Platelets",
-    "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S4_Mind_Map.html",
-    "size": 60396,
-    "sizeFormatted": "59.0 KB",
-    "extension": "html",
-    "type": "Mind Map",
-    "category": "Lecture / Physiology",
-    "mtime": 1786467301.600786
-  },
-  {
-    "name": "L4_RBC_Analysis_S0_Discussion.html",
-    "title": "RBC Analysis",
-    "path": "Lecture/Physiology/L4_RBC_Analysis_S0_Discussion.html",
-    "size": 91018,
-    "sizeFormatted": "88.9 KB",
-    "extension": "html",
-    "type": "Discussion",
-    "category": "Lecture / Physiology",
-    "mtime": 1786467301.644196
-  },
-  {
-    "name": "L4_RBC_Analysis_S1_RBC_Indices.pdf",
-    "title": "RBC Indices",
-    "path": "Lecture/Physiology/L4_RBC_Analysis_S1_RBC_Indices.pdf",
-    "size": 683427,
-    "sizeFormatted": "667.4 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786539106.8968942
+    "mtime": 0
   },
   {
     "name": "L4_RBC_Analysis_S1_RBC_Indices_Video",
@@ -292,18 +511,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/12lDKTSlcg0",
-    "mtime": 1786539106.8968942
-  },
-  {
-    "name": "L4_RBC_Analysis_S2_RBC_Poikilocytes.pdf",
-    "title": "RBC Poikilocytes",
-    "path": "Lecture/Physiology/L4_RBC_Analysis_S2_RBC_Poikilocytes.pdf",
-    "size": 1156067,
-    "sizeFormatted": "1.1 MB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786539118.833287
+    "mtime": 0
   },
   {
     "name": "L4_RBC_Analysis_S2_RBC_Poikilocytes_Video",
@@ -315,18 +523,7 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/3-FpS1rfeuA",
-    "mtime": 1786539118.833287
-  },
-  {
-    "name": "L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
-    "title": "RBC Inclusions",
-    "path": "Lecture/Physiology/L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
-    "size": 1048420,
-    "sizeFormatted": "1023.8 KB",
-    "extension": "pdf",
-    "type": "Slide Deck",
-    "category": "Lecture / Physiology",
-    "mtime": 1786539130.5396225
+    "mtime": 0
   },
   {
     "name": "L4_RBC_Analysis_S3_RBC_Inclusions_Video",
@@ -338,17 +535,6 @@
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/6JfUtpf2mvc",
-    "mtime": 1786539130.5396225
-  },
-  {
-    "name": "L4_RBC_Analysis_S4_Mind_Map.html",
-    "title": "RBC Analysis",
-    "path": "Lecture/Physiology/L4_RBC_Analysis_S4_Mind_Map.html",
-    "size": 62153,
-    "sizeFormatted": "60.7 KB",
-    "extension": "html",
-    "type": "Mind Map",
-    "category": "Lecture / Physiology",
-    "mtime": 1786467301.6043012
+    "mtime": 0
   }
 ]

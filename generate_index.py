@@ -15,6 +15,7 @@ EXCLUDED_FILES = {
     "files_index.json",
     "files_data.js",
     "video_links.json",
+    "video_links.js",
     "package.json",
     "package-lock.json",
     ".gitignore",
@@ -27,7 +28,9 @@ TOPIC_TITLE_MAP = {
     "L1_Hematopoiesis": "Hematopoiesis",
     "L2_BCE_RBC-HGB": "Erythrocytes & Hemoglobin",
     "L3_BCE_WBC-PLT": "Leukocytes & Platelets",
-    "L4_RBC_Analysis": "RBC Analysis"
+    "L4_RBC_Analysis": "RBC Analysis",
+    "L1_Manual_Counts": "Manual Counts",
+    "L2_Slide_Evaluation": "Slide Evaluation & Preparation"
 }
 
 def get_file_type(filename):
@@ -69,12 +72,12 @@ def extract_display_title(full_path, filename, file_type):
         if filename.startswith(prefix):
             if file_type in ["Discussion", "Mind Map"]:
                 return topic
-            m = re.search(r"_S\d+_(.*)\.pdf$", filename, re.IGNORECASE)
+            m = re.search(r"_S\d+_+(.*)\.pdf$", filename, re.IGNORECASE)
             if m:
                 return m.group(1).replace("_", " ").replace("-", " & ").strip()
 
     clean = os.path.splitext(filename)[0]
-    clean = re.sub(r"^L\d+_[A-Za-z0-9-]+_S\d+_", "", clean)
+    clean = re.sub(r"^L\d+_[A-Za-z0-9_-]+?_S\d+_?", "", clean)
     return clean.replace("_", " ").strip()
 
 def format_bytes(size):
@@ -90,15 +93,53 @@ def load_video_config():
     if os.path.exists(VIDEO_CONFIG_FILE):
         try:
             with open(VIDEO_CONFIG_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
+                data = json.load(f)
+                if isinstance(data, list):
+                    return data
         except Exception as e:
             print("Error loading video_links.json:", e)
     return []
 
+def sync_video_configs(scanned_slide_decks):
+    """
+    Ensures 1:1 mapping between slide decks and video entries in video_links.json.
+    Preserves all existing entries (including manual demonstrations) in their authored order,
+    and appends any newly discovered slide decks.
+    """
+    existing_configs = load_video_config()
+    existing_by_deck = {item["slide_deck_file"]: item for item in existing_configs if item.get("slide_deck_file")}
+    
+    missing_decks = [deck for deck in scanned_slide_decks if deck["name"] not in existing_by_deck]
+
+    if not existing_configs:
+        updated_configs = []
+        for deck in scanned_slide_decks:
+            updated_configs.append({
+                "slide_deck_file": deck["name"],
+                "title": deck["title"],
+                "youtube_url": "https://youtu.be/PLACEHOLDER"
+            })
+    else:
+        updated_configs = list(existing_configs)
+        for deck in missing_decks:
+            updated_configs.append({
+                "slide_deck_file": deck["name"],
+                "title": deck["title"],
+                "youtube_url": "https://youtu.be/PLACEHOLDER"
+            })
+
+    try:
+        with open(VIDEO_CONFIG_FILE, "w", encoding="utf-8") as f:
+            json.dump(updated_configs, f, indent=2)
+    except Exception as e:
+        print("Error saving updated video_links.json:", e)
+
+    return updated_configs
+
 def scan_dir():
-    results = []
-    video_configs = load_video_config()
-    video_map = {item.get("slide_deck_file"): item for item in video_configs if item.get("slide_deck_file")}
+    raw_files = []
+    scanned_slide_decks = []
+    deck_category_map = {}
 
     for root, dirs, files in os.walk(ROOT_DIR):
         dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
@@ -116,6 +157,7 @@ def scan_dir():
             stat = os.stat(full_path)
             file_type = get_file_type(file)
             display_title = extract_display_title(full_path, file, file_type)
+            cat = get_category(rel_path)
             
             item_entry = {
                 "name": file,
@@ -125,38 +167,75 @@ def scan_dir():
                 "sizeFormatted": format_bytes(stat.st_size),
                 "extension": os.path.splitext(file)[1].lower().replace(".", ""),
                 "type": file_type,
-                "category": get_category(rel_path),
+                "category": cat,
                 "mtime": stat.st_mtime
             }
-            results.append(item_entry)
+            raw_files.append(item_entry)
 
-            # If this file is a Slide Deck and has a video config, generate the associated Video card
-            if file in video_map:
-                v_info = video_map[file]
-                yt_url = v_info.get("youtube_url", "https://www.youtube.com/watch?v=PLACEHOLDER")
-                v_title = v_info.get("title", f"{display_title} Overview")
-                
-                # Derive sort key to keep video placed directly after its corresponding slide deck
-                v_sort_name = file.replace(".pdf", "_Video")
+            if file_type == "Slide Deck" or file.lower().endswith(".pdf"):
+                scanned_slide_decks.append(item_entry)
+                deck_category_map[file] = cat
 
-                results.append({
-                    "name": v_sort_name,
-                    "title": v_title,
-                    "path": yt_url,
-                    "size": 0,
-                    "sizeFormatted": "YouTube",
-                    "extension": "youtube",
-                    "type": "Video",
-                    "category": get_category(rel_path),
-                    "youtubeUrl": yt_url,
-                    "mtime": stat.st_mtime
-                })
+    # Sort slide decks naturally
+    scanned_slide_decks.sort(key=lambda x: x["name"])
 
-    return results
+    # Update and sync video_links.json
+    video_configs = sync_video_configs(scanned_slide_decks)
+
+    results = list(raw_files)
+    
+    current_cat = "General"
+    current_deck_prefix = ""
+    demo_counter = 0
+
+    for item in video_configs:
+        deck_file = item.get("slide_deck_file")
+        yt_url = item.get("youtube_url", "https://youtu.be/PLACEHOLDER")
+        v_title = item.get("title", "Video")
+
+        if deck_file:
+            current_cat = deck_category_map.get(deck_file, "General")
+            m = re.match(r"^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|$)", deck_file)
+            current_deck_prefix = m.group(1) if m else os.path.splitext(deck_file)[0]
+            
+            v_sort_name = deck_file.replace(".pdf", "_Video")
+            results.append({
+                "name": v_sort_name,
+                "title": v_title,
+                "path": yt_url,
+                "size": 0,
+                "sizeFormatted": "YouTube",
+                "extension": "youtube",
+                "type": "Video",
+                "category": current_cat,
+                "youtubeUrl": yt_url,
+                "mtime": 0
+            })
+        else:
+            # Manual Demonstration entry
+            demo_counter += 1
+            cat = item.get("category", current_cat)
+            clean_title_slug = re.sub(r"[^a-zA-Z0-9_]+", "_", v_title).strip("_")
+            prefix = current_deck_prefix if current_deck_prefix else "Demonstration"
+            demo_name = f"{prefix}_Demo_{demo_counter}_{clean_title_slug}"
+
+            results.append({
+                "name": demo_name,
+                "title": v_title,
+                "path": yt_url,
+                "size": 0,
+                "sizeFormatted": "YouTube",
+                "extension": "youtube",
+                "type": "Demonstration",
+                "category": cat,
+                "youtubeUrl": yt_url,
+                "mtime": 0
+            })
+
+    return results, video_configs
 
 if __name__ == "__main__":
-    files_data = scan_dir()
-    video_configs = load_video_config()
+    files_data, video_configs = scan_dir()
     
     with open(JSON_FILE, "w", encoding="utf-8") as f:
         json.dump(files_data, f, indent=2)
@@ -168,4 +247,4 @@ if __name__ == "__main__":
     with open(video_js_file, "w", encoding="utf-8") as f:
         f.write("window.VIDEO_LINKS = " + json.dumps(video_configs, indent=2) + ";\n")
         
-    print(f"Successfully indexed {len(files_data)} files and video entries to files_index.json, files_data.js, and video_links.js")
+    print(f"Successfully synced video_links.json ({len(video_configs)} entries) and indexed {len(files_data)} files to files_index.json, files_data.js, and video_links.js")

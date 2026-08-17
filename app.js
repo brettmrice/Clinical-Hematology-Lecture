@@ -1,7 +1,17 @@
 let filesData = [];
-let currentFilter = 'all';
+let currentSection = 'all'; // 'all', 'lecture', or 'laboratory'
+let currentFilter = 'all';   // 'all', 'discussion', 'pdf', 'video', or 'mindmap'
 let currentSearch = '';
-let currentView = 'grid'; // 'grid' or 'tree'
+let currentView = 'grid';   // 'grid' or 'tree'
+
+const TOPIC_CONFIG = {
+    'L1_Hematopoiesis': { title: 'L1 · Hematopoiesis', domain: 'lecture' },
+    'L2_BCE_RBC-HGB': { title: 'L2 · Erythrocytes & Hemoglobin', domain: 'lecture' },
+    'L3_BCE_WBC-PLT': { title: 'L3 · Leukocytes & Platelets', domain: 'lecture' },
+    'L4_RBC_Analysis': { title: 'L4 · RBC Analysis', domain: 'lecture' },
+    'L1_Manual_Counts': { title: 'L1 · Manual Counts', domain: 'laboratory' },
+    'L2_Slide_Evaluation': { title: 'L2 · Slide Evaluation & Preparation', domain: 'laboratory' }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
@@ -76,6 +86,52 @@ async function loadFilesIndex() {
     }
 }
 
+// Topic & Category Helpers
+function getTopicInfo(file) {
+    for (const [prefix, conf] of Object.entries(TOPIC_CONFIG)) {
+        if (file.name.startsWith(prefix)) {
+            return {
+                key: prefix,
+                title: conf.title,
+                domain: conf.domain
+            };
+        }
+    }
+
+    const match = file.name.match(/^(L\d+)_([A-Za-z0-9_-]+?)(?:_S\d+|$)/i);
+    if (match) {
+        const unitNum = match[1].toUpperCase();
+        const topicRaw = match[2].replace(/_/g, ' ').replace(/-/g, ' & ');
+        const isLab = (file.category || '').toLowerCase().includes('laboratory') || (file.category || '').toLowerCase().includes('lab');
+        return {
+            key: `${unitNum}_${match[2]}`,
+            title: `${unitNum} · ${topicRaw}`,
+            domain: isLab ? 'laboratory' : 'lecture'
+        };
+    }
+
+    const isLab = (file.category || '').toLowerCase().includes('laboratory') || (file.category || '').toLowerCase().includes('lab');
+    return {
+        key: 'Other',
+        title: 'General Resources',
+        domain: isLab ? 'laboratory' : 'lecture'
+    };
+}
+
+function formatCategory(cat) {
+    if (!cat) return 'General';
+    return cat
+        .replace(/CBC_PBS/gi, 'CBC & PBS')
+        .replace(/\s*\/\s*/g, ' · ')
+        .trim();
+}
+
+function getDomainKey(file) {
+    const cat = (file.category || '').toLowerCase();
+    if (cat.includes('laboratory') || cat.includes('lab')) return 'laboratory';
+    return 'lecture';
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
     // Search input
@@ -92,6 +148,18 @@ function setupEventListeners() {
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
     }
+
+    // Section Selector Tabs (All, Lecture, Laboratory)
+    const sectionTabs = document.querySelectorAll('.section-tab');
+    sectionTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            sectionTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentSection = tab.getAttribute('data-section');
+            updateCategoryCounts();
+            render();
+        });
+    });
 
     // Filter Chips
     const chips = document.querySelectorAll('.chip');
@@ -142,45 +210,76 @@ function setupEventListeners() {
     window.addEventListener('hashchange', checkUrlHashTarget);
 }
 
-// Count items for chips
+// Count items for section tabs and chips
 function updateCategoryCounts() {
-    const countAll = filesData.length;
-    const countDisc = filesData.filter(f => f.type === 'Discussion').length;
-    const countPdf = filesData.filter(f => f.type === 'Slide Deck').length;
-    const countVideo = filesData.filter(f => f.type === 'Video').length;
-    const countMaps = filesData.filter(f => f.type === 'Mind Map').length;
+    const countSectionAll = filesData.length;
+    const countSectionLecture = filesData.filter(f => getDomainKey(f) === 'lecture').length;
+    const countSectionLab = filesData.filter(f => getDomainKey(f) === 'laboratory').length;
 
-    document.getElementById('countAll').textContent = countAll;
-    document.getElementById('countDisc').textContent = countDisc;
-    document.getElementById('countPdf').textContent = countPdf;
-    if (document.getElementById('countVideo')) {
-        document.getElementById('countVideo').textContent = countVideo;
-    }
-    document.getElementById('countMaps').textContent = countMaps;
+    const elSecAll = document.getElementById('countSectionAll');
+    const elSecLec = document.getElementById('countSectionLecture');
+    const elSecLab = document.getElementById('countSectionLab');
+    if (elSecAll) elSecAll.textContent = countSectionAll;
+    if (elSecLec) elSecLec.textContent = countSectionLecture;
+    if (elSecLab) elSecLab.textContent = countSectionLab;
+
+    // Files scoped to the active section for the chip counts
+    const scopedFiles = currentSection === 'all'
+        ? filesData
+        : filesData.filter(f => getDomainKey(f) === currentSection);
+
+    const countAll = scopedFiles.length;
+    const countDisc = scopedFiles.filter(f => f.type === 'Discussion').length;
+    const countPdf = scopedFiles.filter(f => f.type === 'Slide Deck').length;
+    const countVideo = scopedFiles.filter(f => f.type === 'Video').length;
+    const countDemo = scopedFiles.filter(f => f.type === 'Demonstration').length;
+    const countMaps = scopedFiles.filter(f => f.type === 'Mind Map').length;
+
+    const elAll = document.getElementById('countAll');
+    const elDisc = document.getElementById('countDisc');
+    const elPdf = document.getElementById('countPdf');
+    const elVideo = document.getElementById('countVideo');
+    const elDemo = document.getElementById('countDemo');
+    const elMaps = document.getElementById('countMaps');
+
+    if (elAll) elAll.textContent = countAll;
+    if (elDisc) elDisc.textContent = countDisc;
+    if (elPdf) elPdf.textContent = countPdf;
+    if (elVideo) elVideo.textContent = countVideo;
+    if (elDemo) elDemo.textContent = countDemo;
+    if (elMaps) elMaps.textContent = countMaps;
 }
 
 // Filter logic
 function getFilteredFiles() {
     const filtered = filesData.filter(file => {
-        // Filter chip
+        // 1. Section tab filter (All, Lecture, Laboratory)
+        const domain = getDomainKey(file);
+        if (currentSection === 'lecture' && domain !== 'lecture') return false;
+        if (currentSection === 'laboratory' && domain !== 'laboratory') return false;
+
+        // 2. Resource type filter chip
         if (currentFilter === 'discussion' && file.type !== 'Discussion') return false;
         if (currentFilter === 'pdf' && file.type !== 'Slide Deck') return false;
         if (currentFilter === 'video' && file.type !== 'Video') return false;
+        if (currentFilter === 'demonstration' && file.type !== 'Demonstration') return false;
         if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
 
-        // Search text
+        // 3. Search text query
         if (currentSearch) {
+            const topicInfo = getTopicInfo(file);
             const matchName = file.name.toLowerCase().includes(currentSearch);
             const matchTitle = (file.title || '').toLowerCase().includes(currentSearch);
-            const matchCat = file.category.toLowerCase().includes(currentSearch);
-            const matchType = file.type.toLowerCase().includes(currentSearch);
-            return matchName || matchTitle || matchCat || matchType;
+            const matchCat = (file.category || '').toLowerCase().includes(currentSearch);
+            const matchType = (file.type || '').toLowerCase().includes(currentSearch);
+            const matchTopic = topicInfo.title.toLowerCase().includes(currentSearch);
+            return matchName || matchTitle || matchCat || matchType || matchTopic;
         }
 
         return true;
     });
 
-    // Sort cards in the exact same order as original file names
+    // Sort cards in natural deterministic order
     return filtered.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
 }
 
@@ -189,7 +288,10 @@ function render() {
     const container = document.getElementById('contentContainer');
     const filtered = getFilteredFiles();
 
-    document.getElementById('resultsStats').textContent = `Showing ${filtered.length} of ${filesData.length} files`;
+    const statsEl = document.getElementById('resultsStats');
+    if (statsEl) {
+        statsEl.textContent = `Showing ${filtered.length} of ${filesData.length} files`;
+    }
 
     if (filtered.length === 0) {
         container.innerHTML = `
@@ -198,7 +300,7 @@ function render() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h3>No matching files found</h3>
-                <p>Try adjusting your search terms or filter criteria.</p>
+                <p>Try adjusting your search terms, section tab, or filter criteria.</p>
             </div>
         `;
         return;
@@ -213,232 +315,317 @@ function render() {
     setTimeout(checkUrlHashTarget, 200);
 }
 
-// Render Card Grid
-function renderCardGrid(container, files) {
-    // 1. Group files by L# prefix
-    const topicGroups = {};
-    files.forEach(file => {
-        const match = file.name.match(/^(L\d+)/i);
-        const groupKey = match ? match[1].toUpperCase() : 'Other';
-        if (!topicGroups[groupKey]) topicGroups[groupKey] = [];
-        topicGroups[groupKey].push(file);
-    });
-
-    const topicTitles = {
-        'L1': 'Hematopoiesis',
-        'L2': 'Erythrocytes & Hemoglobin',
-        'L3': 'Leukocytes & Platelets',
-        'L4': 'RBC Analysis'
+// Helper: Group files into Domain -> Category -> Topics -> Types hierarchy
+function buildHierarchy(files) {
+    const domains = {
+        'lecture': { title: 'Lecture Modules', badge: 'Lecture', icon: 'lecture', categories: {} },
+        'laboratory': { title: 'Laboratory Modules', badge: 'Laboratory', icon: 'lab', categories: {} }
     };
 
+    files.forEach(file => {
+        const dKey = getDomainKey(file);
+        const catKey = file.category || 'General';
+        const topicInfo = getTopicInfo(file);
+
+        if (!domains[dKey]) {
+            domains[dKey] = { title: `${dKey.toUpperCase()} Modules`, badge: dKey, icon: 'lecture', categories: {} };
+        }
+
+        if (!domains[dKey].categories[catKey]) {
+            domains[dKey].categories[catKey] = {
+                categoryName: catKey,
+                formattedName: formatCategory(catKey),
+                topics: {}
+            };
+        }
+
+        const catObj = domains[dKey].categories[catKey];
+        if (!catObj.topics[topicInfo.key]) {
+            catObj.topics[topicInfo.key] = {
+                key: topicInfo.key,
+                title: topicInfo.title,
+                files: []
+            };
+        }
+
+        catObj.topics[topicInfo.key].files.push(file);
+    });
+
+    return domains;
+}
+
+// Render Card Grid
+function renderCardGrid(container, files) {
+    const hierarchy = buildHierarchy(files);
     let html = '';
-    for (const groupKey in topicGroups) {
-        if (!topicTitles[groupKey]) continue; // Skip General Resources / untagged sections
-        const topicFiles = topicGroups[groupKey];
-        const sectionTitle = topicTitles[groupKey];
 
-        // 2. Separate topicFiles into sub-rows by type
-        const typeSubgroups = {
-            'Discussion': [],
-            'Slide Deck': [],
-            'Video': [],
-            'Mind Map': []
-        };
+    const domainKeys = ['lecture', 'laboratory'];
 
-        topicFiles.forEach(file => {
-            if (typeSubgroups[file.type]) {
-                typeSubgroups[file.type].push(file);
-            } else {
-                if (!typeSubgroups['Other']) typeSubgroups['Other'] = [];
-                typeSubgroups['Other'].push(file);
-            }
+    domainKeys.forEach(dKey => {
+        const domain = hierarchy[dKey];
+        if (!domain) return;
+
+        const categories = domain.categories;
+        const catKeys = Object.keys(categories);
+        if (catKeys.length === 0) return;
+
+        // Calculate total files in this domain
+        let domainFileCount = 0;
+        catKeys.forEach(ck => {
+            Object.values(categories[ck].topics).forEach(t => {
+                domainFileCount += t.files.length;
+            });
         });
 
+        if (domainFileCount === 0) return;
+
+        const domainIconSvg = dKey === 'laboratory' ? `
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+        ` : `
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+        `;
+
         html += `
-            <div class="section-group">
-                <div class="section-title">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                    </svg>
-                    ${escapeHtml(sectionTitle)} (${topicFiles.length})
+            <div class="domain-section">
+                <div class="domain-header">
+                    <div class="domain-title">
+                        ${domainIconSvg}
+                        <span>${escapeHtml(domain.title)}</span>
+                    </div>
+                    <span class="domain-badge">${escapeHtml(domain.badge)} · ${domainFileCount} items</span>
                 </div>
         `;
 
-        const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Mind Map', 'Other'];
-        typeOrder.forEach(typeKey => {
-            const subFiles = typeSubgroups[typeKey];
-            if (!subFiles || subFiles.length === 0) return;
+        catKeys.forEach(ck => {
+            const cat = categories[ck];
+            const topicKeys = Object.keys(cat.topics);
 
-            let typeLabel = typeKey;
-            if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
-            if (typeKey === 'Video') typeLabel = 'Videos';
-            if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
-            if (typeKey === 'Discussion') typeLabel = 'Discussions';
+            topicKeys.forEach(tKey => {
+                const topic = cat.topics[tKey];
+                const topicFiles = topic.files;
+                if (topicFiles.length === 0) return;
 
-            html += `
-                <div class="subrow-group">
-                    <div class="subrow-title">
-                        ${escapeHtml(typeLabel)} (${subFiles.length})
-                    </div>
-                    <div class="grid-view">
-            `;
+                // Group files within topic into type sub-rows
+                const typeSubgroups = {
+                    'Discussion': [],
+                    'Slide Deck': [],
+                    'Video': [],
+                    'Demonstration': [],
+                    'Mind Map': [],
+                    'Other': []
+                };
 
-            subFiles.forEach(file => {
-                let badgeClass = 'badge-doc';
-                if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
-                if (file.type === 'Video') badgeClass = 'badge-video';
-                if (file.type === 'Mind Map') badgeClass = 'badge-map';
-
-                const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
-                const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+                topicFiles.forEach(file => {
+                    if (typeSubgroups[file.type]) {
+                        typeSubgroups[file.type].push(file);
+                    } else {
+                        typeSubgroups['Other'].push(file);
+                    }
+                });
 
                 html += `
-                    <div class="card" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
-                        <div>
-                            <div class="card-header">
-                                <span class="card-badge ${badgeClass}">${file.type}</span>
-                                <span class="card-category">${file.category}</span>
-                            </div>
-                            <div class="card-title">${escapeHtml(displayTitle)}</div>
+                    <div class="topic-group">
+                        <div class="topic-title">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                            ${escapeHtml(topic.title)} (${topicFiles.length})
                         </div>
-                        <div class="card-actions">
-                            <button class="btn btn-preview" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                </svg>
-                                Preview
-                            </button>
-                            <a class="btn btn-open" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" title="Open in new tab" onclick="event.stopPropagation();">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                </svg>
-                                Open
-                            </a>
-                            <button class="btn btn-share btn-icon-only" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
-                                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
                 `;
-            });
 
-            html += `
-                    </div>
-                </div>
-            `;
+                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Mind Map', 'Other'];
+                typeOrder.forEach(typeKey => {
+                    const subFiles = typeSubgroups[typeKey];
+                    if (!subFiles || subFiles.length === 0) return;
+
+                    let typeLabel = typeKey;
+                    if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
+                    if (typeKey === 'Video') typeLabel = 'Videos';
+                    if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
+                    if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
+                    if (typeKey === 'Discussion') typeLabel = 'Discussions';
+
+                    html += `
+                        <div class="subrow-group">
+                            <div class="subrow-title">
+                                ${escapeHtml(typeLabel)} (${subFiles.length})
+                            </div>
+                            <div class="grid-view">
+                    `;
+
+                    subFiles.forEach(file => {
+                        let badgeClass = 'badge-doc';
+                        if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
+                        if (file.type === 'Video') badgeClass = 'badge-video';
+                        if (file.type === 'Demonstration') badgeClass = 'badge-demo';
+                        if (file.type === 'Mind Map') badgeClass = 'badge-map';
+
+                        const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                        const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+                        const catFormatted = formatCategory(file.category);
+
+                        html += `
+                            <div class="card" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
+                                <div>
+                                    <div class="card-header">
+                                        <span class="card-badge ${badgeClass}">${file.type}</span>
+                                        <span class="card-category">${escapeHtml(catFormatted)}</span>
+                                    </div>
+                                    <div class="card-title">${escapeHtml(displayTitle)}</div>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="btn btn-preview" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">
+                                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        Preview
+                                    </button>
+                                    <a class="btn btn-open" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" title="Open in new tab" onclick="event.stopPropagation();">
+                                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                        </svg>
+                                        Open
+                                    </a>
+                                    <button class="btn btn-share btn-icon-only" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
+                                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`; // end topic-group
+            });
         });
 
-        html += `</div>`;
-    }
+        html += `</div>`; // end domain-section
+    });
+
     container.innerHTML = html;
 }
 
 // Render Directory Tree
 function renderTree(container, files) {
-    // 1. Group files by L# prefix
-    const topicGroups = {};
-    files.forEach(file => {
-        const match = file.name.match(/^(L\d+)/i);
-        const groupKey = match ? match[1].toUpperCase() : 'Other';
-        if (!topicGroups[groupKey]) topicGroups[groupKey] = [];
-        topicGroups[groupKey].push(file);
-    });
-
-    const topicTitles = {
-        'L1': 'Hematopoiesis',
-        'L2': 'Erythrocytes & Hemoglobin',
-        'L3': 'Leukocytes & Platelets',
-        'L4': 'RBC Analysis'
-    };
-
+    const hierarchy = buildHierarchy(files);
     let html = `<div class="tree-view">`;
-    for (const groupKey in topicGroups) {
-        if (!topicTitles[groupKey]) continue; // Skip General Resources / untagged sections
-        const topicFiles = topicGroups[groupKey];
-        const sectionTitle = topicTitles[groupKey];
 
-        // 2. Separate into type subgroups
-        const typeSubgroups = {
-            'Discussion': [],
-            'Slide Deck': [],
-            'Video': [],
-            'Mind Map': []
-        };
+    const domainKeys = ['lecture', 'laboratory'];
 
-        topicFiles.forEach(file => {
-            if (typeSubgroups[file.type]) {
-                typeSubgroups[file.type].push(file);
-            } else {
-                if (!typeSubgroups['Other']) typeSubgroups['Other'] = [];
-                typeSubgroups['Other'].push(file);
-            }
-        });
+    domainKeys.forEach(dKey => {
+        const domain = hierarchy[dKey];
+        if (!domain) return;
 
-        html += `
-            <div class="tree-folder" style="margin-bottom: 24px;">
-                <div class="tree-folder-title">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
-                    </svg>
-                    ${escapeHtml(sectionTitle)} (${topicFiles.length})
-                </div>
-                <div class="tree-folder-items" style="padding-left: 8px;">
-        `;
+        const categories = domain.categories;
+        const catKeys = Object.keys(categories);
+        if (catKeys.length === 0) return;
 
-        const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Mind Map', 'Other'];
-        typeOrder.forEach(typeKey => {
-            const subFiles = typeSubgroups[typeKey];
-            if (!subFiles || subFiles.length === 0) return;
+        catKeys.forEach(ck => {
+            const cat = categories[ck];
+            const topicKeys = Object.keys(cat.topics);
 
-            let typeLabel = typeKey;
-            if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
-            if (typeKey === 'Video') typeLabel = 'Videos';
-            if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
-            if (typeKey === 'Discussion') typeLabel = 'Discussions';
+            topicKeys.forEach(tKey => {
+                const topic = cat.topics[tKey];
+                const topicFiles = topic.files;
+                if (topicFiles.length === 0) return;
 
-            html += `
-                <div style="margin-top: 10px; margin-bottom: 6px; font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; padding-left: 6px;">
-                    ${escapeHtml(typeLabel)} (${subFiles.length})
-                </div>
-            `;
+                const typeSubgroups = {
+                    'Discussion': [],
+                    'Slide Deck': [],
+                    'Video': [],
+                    'Demonstration': [],
+                    'Mind Map': [],
+                    'Other': []
+                };
 
-            subFiles.forEach(file => {
-                let badgeClass = 'badge-doc';
-                if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
-                if (file.type === 'Video') badgeClass = 'badge-video';
-                if (file.type === 'Mind Map') badgeClass = 'badge-map';
-
-                const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
-                const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+                topicFiles.forEach(file => {
+                    if (typeSubgroups[file.type]) {
+                        typeSubgroups[file.type].push(file);
+                    } else {
+                        typeSubgroups['Other'].push(file);
+                    }
+                });
 
                 html += `
-                    <div class="tree-item" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
-                        <div class="tree-item-left">
-                            <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${file.type}</span>
-                            <span class="tree-item-name">${escapeHtml(displayTitle)}</span>
+                    <div class="tree-folder" style="margin-bottom: 24px;">
+                        <div class="tree-folder-title">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                            </svg>
+                            <span>${escapeHtml(domain.badge)} · ${escapeHtml(topic.title)}</span>
+                            <span style="font-size:0.75rem; font-weight: normal; margin-left: auto; opacity: 0.8;">${topicFiles.length} items</span>
                         </div>
-                        <div class="tree-item-actions">
-                            <button class="btn btn-preview" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">Preview</button>
-                            <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Open ↗</a>
-                            <button class="btn btn-share btn-icon-only" style="padding: 4px; width: 28px; height: 28px;" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-                                </svg>
-                            </button>
+                        <div class="tree-folder-items" style="padding-left: 8px;">
+                `;
+
+                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Mind Map', 'Other'];
+                typeOrder.forEach(typeKey => {
+                    const subFiles = typeSubgroups[typeKey];
+                    if (!subFiles || subFiles.length === 0) return;
+
+                    let typeLabel = typeKey;
+                    if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
+                    if (typeKey === 'Video') typeLabel = 'Videos';
+                    if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
+                    if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
+                    if (typeKey === 'Discussion') typeLabel = 'Discussions';
+
+                    html += `
+                        <div style="margin-top: 10px; margin-bottom: 6px; font-size: 0.775rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; padding-left: 6px;">
+                            ${escapeHtml(typeLabel)} (${subFiles.length})
+                        </div>
+                    `;
+
+                    subFiles.forEach(file => {
+                        let badgeClass = 'badge-doc';
+                        if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
+                        if (file.type === 'Video') badgeClass = 'badge-video';
+                        if (file.type === 'Demonstration') badgeClass = 'badge-demo';
+                        if (file.type === 'Mind Map') badgeClass = 'badge-map';
+
+                        const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                        const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+
+                        html += `
+                            <div class="tree-item" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
+                                <div class="tree-item-left">
+                                    <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${file.type}</span>
+                                    <span class="tree-item-name">${escapeHtml(displayTitle)}</span>
+                                </div>
+                                <div class="tree-item-actions">
+                                    <button class="btn btn-preview" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">Preview</button>
+                                    <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Open ↗</a>
+                                    <button class="btn btn-share btn-icon-only" style="padding: 4px; width: 28px; height: 28px;" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
+                                        <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                });
+
+                html += `
                         </div>
                     </div>
                 `;
             });
         });
+    });
 
-        html += `
-                </div>
-            </div>
-        `;
-    }
     html += `</div>`;
     container.innerHTML = html;
 }
@@ -492,9 +679,7 @@ function showToast(msg) {
 }
 
 let isInitialHashCheck = true;
-
 let highlightTimeout = null;
-let pulseCleanTimeout = null;
 
 // Smooth scroll & pulse highlight when hash URL is visited
 function checkUrlHashTarget() {
@@ -502,11 +687,23 @@ function checkUrlHashTarget() {
     if (!hash || !hash.startsWith('#card-')) return;
     const cleanId = hash.substring(1); // remove '#'
     
-    // Ensure targeted card is rendered by resetting filter & search if needed
+    // Ensure targeted card is rendered by resetting filter, section & search if needed
     if (filesData && Array.isArray(filesData)) {
         const targetFile = filesData.find(f => ('card-' + f.name.replace(/[^a-zA-Z0-9_-]/g, '_')) === cleanId);
         if (targetFile) {
             let needReRender = false;
+            const targetDomain = getDomainKey(targetFile);
+
+            if (currentSection !== 'all' && currentSection !== targetDomain) {
+                currentSection = 'all';
+                const sectionTabs = document.querySelectorAll('.section-tab');
+                sectionTabs.forEach(t => {
+                    if (t.getAttribute('data-section') === 'all') t.classList.add('active');
+                    else t.classList.remove('active');
+                });
+                needReRender = true;
+            }
+
             if (currentFilter !== 'all') {
                 currentFilter = 'all';
                 const chips = document.querySelectorAll('.chip');
@@ -516,13 +713,16 @@ function checkUrlHashTarget() {
                 });
                 needReRender = true;
             }
+
             if (currentSearch) {
                 currentSearch = '';
                 const searchInput = document.getElementById('searchInput');
                 if (searchInput) searchInput.value = '';
                 needReRender = true;
             }
+
             if (needReRender) {
+                updateCategoryCounts();
                 render();
             }
         }
@@ -531,7 +731,6 @@ function checkUrlHashTarget() {
     const delay = isInitialHashCheck ? 650 : 150;
     
     if (isInitialHashCheck) {
-        // Ensure browser starts at very top on initial load
         window.scrollTo(0, 0);
     }
 
@@ -554,13 +753,11 @@ function checkUrlHashTarget() {
             targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
             targetEl.classList.add('card-persistent-highlight');
 
-            // Non-selected cards start 3.0s smooth fade-back at 1500ms (reaching 100% opacity at 4.5s)
             highlightTimeout = setTimeout(() => {
                 document.body.classList.remove('has-card-highlight');
                 container.classList.remove('has-card-highlight');
             }, 1500);
 
-            // Clear persistent highlight when user hovers over or clicks the targeted card
             const clearHighlight = () => {
                 targetEl.classList.remove('card-persistent-highlight');
                 document.body.classList.remove('has-card-highlight');
@@ -653,9 +850,11 @@ function closeModal() {
 
 // Helper utilities
 function escapeHtml(str) {
-    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    if (!str) return '';
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 function escapeJsString(str) {
-    return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+    if (!str) return '';
+    return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
 }

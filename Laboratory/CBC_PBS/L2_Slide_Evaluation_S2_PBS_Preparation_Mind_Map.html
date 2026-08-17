@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slide Preparation - Interactive Mind Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7f9fc;
+      color: #2d3748;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Floating Glassmorphism Panels */
+    .floating-panel {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+      position: absolute;
+    }
+
+    /* Top Left Title Card */
+    .top-title-card {
+      top: 20px;
+      left: 24px;
+      padding: 10px 18px;
+    }
+
+    .top-title-card h1 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a202c;
+      white-space: nowrap;
+    }
+
+    /* Bottom Left Search Card */
+    .bottom-search-card {
+      bottom: 24px;
+      left: 24px;
+      padding: 6px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      padding: 8px 14px 8px 36px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-size: 13.5px;
+      width: 290px;
+      outline: none;
+      transition: all 0.25s ease;
+      background: transparent;
+    }
+
+    .search-box input:focus {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      width: 350px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    /* Top Right Floating Cards */
+    .top-collapse-card {
+      top: 20px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-expand-card {
+      top: 68px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-collapse-card:hover, .top-expand-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Main Canvas & SVG Area */
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      cursor: grab;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #viewport:active {
+      cursor: grabbing;
+    }
+
+    #mindmap-svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    #nodes-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+    }
+
+    /* Smooth animated transitions for pan & zoom */
+    .animated-transform {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* Node Styles - High contrast crisp typography */
+    .node {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transform: translateY(-50%);
+      pointer-events: auto;
+      border: 1.5px solid transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .node:hover {
+      transform: translateY(-50%) scale(1.04);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+      z-index: 5;
+    }
+
+    /* Indicator: '+' if collapsed, '-' if expanded, none if no children */
+    .node.has-children.collapsed::after {
+      content: '+';
+      display: inline-block;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    .node.has-children:not(.collapsed)::after {
+      content: '−';
+      display: inline-block;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    /* Exact Node Match Highlight */
+    .node.highlighted {
+      animation: pulseHighlight 1.5s infinite alternate;
+    }
+
+    /* Collapsed Parent contains matching children highlight */
+    .node.parent-match-highlighted {
+      animation: pulseParentHighlight 1.5s infinite alternate;
+      border-color: #d97706 !important;
+    }
+
+    @keyframes pulseHighlight {
+      0% { box-shadow: 0 0 0 2px #d97706; }
+      100% { box-shadow: 0 0 0 8px rgba(217, 119, 6, 0); }
+    }
+
+    @keyframes pulseParentHighlight {
+      0% { box-shadow: 0 0 0 3px #d97706, 0 0 12px rgba(217, 119, 6, 0.4); }
+      100% { box-shadow: 0 0 0 7px rgba(217, 119, 6, 0.2), 0 0 4px rgba(217, 119, 6, 0.1); }
+    }
+
+    /* Level Color Schemes matching NotebookLM PNG with darker high contrast text */
+    .node-level-0 {
+      background-color: #b4acf0;
+      color: #1e1945;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 24px;
+    }
+
+    .node-level-1 {
+      background-color: #aebdf5;
+      color: #111a45;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .node-level-2 {
+      background-color: #9fd4cb;
+      color: #082d28;
+      font-weight: 600;
+    }
+
+    .node-level-3 {
+      background-color: #aaeec0;
+      color: #09381b;
+      font-weight: 600;
+    }
+
+    .node-level-4 {
+      background-color: #c9f88c;
+      color: #1b3602;
+      font-weight: 600;
+    }
+
+    .node-level-5 {
+      background-color: #fde047;
+      color: #713f12;
+      font-weight: 600;
+    }
+
+    .node-level-6 {
+      background-color: #fdba74;
+      color: #7c2d12;
+      font-weight: 600;
+    }
+
+    .node-level-7 {
+      background-color: #fca5a5;
+      color: #7f1d1d;
+      font-weight: 600;
+    }
+
+    .node-level-8 {
+      background-color: #f472b6;
+      color: #831843;
+      font-weight: 600;
+    }
+
+    .node-level-9 {
+      background-color: #e879f9;
+      color: #701a75;
+      font-weight: 600;
+    }
+
+    .node-level-10 {
+      background-color: #c084fc;
+      color: #581c87;
+      font-weight: 600;
+    }
+
+    /* SVG Connecting Lines */
+    .connection-line {
+      fill: none;
+      stroke: #8094ae;
+      stroke-width: 2px;
+    }
+
+    /* Bottom Right Zoom Cards */
+    .zoom-card {
+      width: 38px;
+      height: 38px;
+      right: 24px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #download-png-btn { bottom: 24px; }
+    #zoom-reset       { bottom: 70px; }
+    #zoom-fit-btn     { bottom: 116px; }
+    #zoom-out         { bottom: 162px; }
+    #zoom-in          { bottom: 208px; }
+
+    .zoom-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Element 1: Title Card -->
+  <div class="floating-panel top-title-card">
+    <h1 id="topic-title">Slide Preparation</h1>
+  </div>
+
+  <!-- Bottom Left Floating Element 2: Search Box Card -->
+  <div class="floating-panel bottom-search-card">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search Mind Map concepts...">
+    </div>
+  </div>
+
+  <!-- Top Floating Element 3: Collapse All Card -->
+  <div class="floating-panel top-collapse-card" id="btn-collapse-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
+    Collapse All
+  </div>
+
+  <!-- Top Floating Element 4: Expand All Card -->
+  <div class="floating-panel top-expand-card" id="btn-expand-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    Expand All
+  </div>
+
+  <!-- Canvas Viewport -->
+  <div id="viewport">
+    <svg id="mindmap-svg">
+      <g id="svg-paths-group"></g>
+    </svg>
+    <div id="nodes-container"></div>
+  </div>
+
+  <!-- Bottom Right Zoom Controls -->
+  <div class="floating-panel zoom-card" id="zoom-in" title="Zoom In">+</div>
+  <div class="floating-panel zoom-card" id="zoom-out" title="Zoom Out">−</div>
+  <div class="floating-panel zoom-card" id="zoom-fit-btn" title="Fit to Window">⛶</div>
+  <div class="floating-panel zoom-card" id="zoom-reset" title="Reset Zoom">⟲</div>
+  <div class="floating-panel zoom-card" id="download-png-btn" title="Download PNG Screenshot">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  </div>
+
+  <script>
+    // --- MIND MAP DATA STRUCTURE ---
+    const mindMapData = {
+  "id": "root",
+  "text": "Slide Preparation",
+  "level": 0,
+  "children": [
+    {
+      "id": "sec-1",
+      "text": "Pre-Analytical Specimen Handling",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-1-1",
+          "text": "Specimen Collection & Storage",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-1-1-1",
+              "text": "K2EDTA Anticoagulant Requirement",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-1-1-1",
+                  "text": "Preserves cellular morphology",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-1-1-2",
+                  "text": "Prevents platelet clumping",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-1-2",
+              "text": "Optimal Window: 0-3 hrs",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-1-2-1",
+                  "text": "Controlled temperature: 18-25\u00b0C",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-1-3",
+              "text": "Tube Fill Volume: >= 50%",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-1-2",
+          "text": "Extended Storage Artifacts (> 3 hrs)",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-1-2-1",
+              "text": "Platelet Swelling & Disintegration",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-2-1-1",
+                  "text": "Artifactual micro-debris formation",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-2-1-2",
+                  "text": "Causes pseudo-thrombocytopenia",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-2-2",
+              "text": "Leukocyte Nuclear Degeneration",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-2-2-1",
+                  "text": "Neutrophil pyknosis, detached lobes",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-2-2-2",
+                  "text": "Lymphocyte nuclear clefting",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-2-2-3",
+                  "text": "Monocyte clover-leaf lobulation",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-2-3",
+              "text": "Erythrocyte Crenation",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-2-3-1",
+                  "text": "ATP depletion & membrane shifts",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-2-3-2",
+                  "text": "Echinocyte formation",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-1-3",
+          "text": "Underfilling Tube Artifacts (< 50%)",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-1-3-1",
+              "text": "Excess Liquid/Spray EDTA",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-3-1-1",
+                  "text": "Hypertonic plasma environment",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-3-1-2",
+                  "text": "RBC water loss & shrinkage",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-3-2",
+              "text": "Analyzer Index Distortion",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-1-3-2-1",
+                  "text": "Falsely decreased MCV",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-1-3-2-2",
+                  "text": "Falsely elevated MCHC",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-2",
+      "text": "Push-Wedge Smear Mechanics",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-2-1",
+          "text": "Equipment & Materials",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-2-1-1",
+              "text": "1.0 mm beveled glass slides",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-1-2",
+              "text": "Smooth, unchipped spreader slide",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-1-3",
+              "text": "5-10 uL blood drop",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-1-4",
+              "text": "Graphite pencil labeling",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-2-2",
+          "text": "Push-Wedge Protocol Steps",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-2-2-1",
+              "text": "Invert EDTA tube 8-10 times",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-2-2",
+              "text": "Place drop 1/2 inch from end",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-2-3",
+              "text": "Spreader at 30-45\u00b0 angle",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-2-4",
+              "text": "Pull back to spread 80% width",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-2-5",
+              "text": "Push forward smoothly & continuously",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-2-3",
+          "text": "Ideal Smear Morphology",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-2-3-1",
+              "text": "Length: 2/3-3/4 slide length",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-3-2",
+              "text": "Clear 1-2 mm lateral margins",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-3-3",
+              "text": "Smooth bullet / thumbprint shape",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-3-4",
+              "text": "Straight, square feathered edge",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-2-3-5",
+              "text": "Translucent pink-purple sheen",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-2-4",
+          "text": "Hematocrit Adjustments",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-2-4-1",
+              "text": "Severe Anemia (< 30% Hct)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-4-1-1",
+                  "text": "Low viscosity blood dynamics",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-1-2",
+                  "text": "Steep angle: > 45\u00b0",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-1-3",
+                  "text": "Rapid push speed",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-1-4",
+                  "text": "Prevents excessively thin film",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-4-2",
+              "text": "Normal Blood (36-50% Hct)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-4-2-1",
+                  "text": "Standard angle: 30-45\u00b0",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-2-2",
+                  "text": "Moderate push speed",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-4-3",
+              "text": "Polycythemia / Neonates (> 55% Hct)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-4-3-1",
+                  "text": "High viscosity blood dynamics",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-3-2",
+                  "text": "Flat angle: < 30\u00b0",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-3-3",
+                  "text": "Slow push speed",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-4-3-4",
+                  "text": "Allows single-cell separation",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-2-5",
+          "text": "Technical Defect Troubleshooting",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-2-5-1",
+              "text": "Washboard Ridges",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-1-1",
+                  "text": "Hesitation or jerky motion",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-2",
+              "text": "Longitudinal Streaks / Tails",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-2-1",
+                  "text": "Chipped spreader edge",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-2-5-2-2",
+                  "text": "Drags monocytes & neutrophils",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-3",
+              "text": "No Monolayer Zone",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-3-1",
+                  "text": "Drop too large: > 10 uL",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-4",
+              "text": "Smear Too Short",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-4-1",
+                  "text": "Drop too small: < 5 uL",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-5",
+              "text": "Tail Clumping / Rouleaux",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-5-1",
+                  "text": "Delay in spreading drop",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-6",
+              "text": "Smudge / Basket Cells",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-2-5-6-1",
+                  "text": "Excessive downward pressure",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-3",
+      "text": "Buffy Coat Smear Preparation",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-3-1",
+          "text": "Clinical Indication",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-3-1-1",
+              "text": "Severe leukopenia: WBC < 2.0x10^3/uL",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-1-2",
+              "text": "Rare circulating blasts detection",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-3-2",
+          "text": "Preparation Protocol",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-3-2-1",
+              "text": "Wintrobe tube centrifugation",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-3-2-1-1",
+                  "text": "2000 RPM (800-1000 x g)",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-3-2-1-2",
+                  "text": "Spin duration: 5-10 min",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-3-2-2",
+              "text": "Plasma aspiration to 1 mm above buffy",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-2-3",
+              "text": "Harvest leukocyte/platelet layer",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-2-4",
+              "text": "Push-wedge smear, fix, & stain",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-3-3",
+          "text": "Diagnostic Caveats",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-3-3-1",
+              "text": "WBC differential strictly qualitative",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-3-3-2",
+              "text": "NEVER report RBC morphology",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-3-3-2-1",
+                  "text": "Severe packing & distortion artifacts",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-4",
+      "text": "Romanowsky Staining Chemistry",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-4-1",
+          "text": "Reagent Chemistry & Targets",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-4-1-1",
+              "text": "Methanol Base (>= 99.8%)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-1-1-1",
+                  "text": "Anhydrous chemical fixative",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-1-1-2",
+                  "text": "Dehydrates & preserves cellular proteins",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-1-2",
+              "text": "Methylene Blue / Azures (Dye+)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-1-2-1",
+                  "text": "Basic cationic dye",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-1-2-2",
+                  "text": "Binds acidic polyanions",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "subleaf-4-1-2-2-1",
+                      "text": "DNA phosphate backbones",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "subleaf-4-1-2-2-2",
+                      "text": "Ribosomal & nucleolar RNA",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "subleaf-4-1-2-2-3",
+                      "text": "Basophil heparin mucopolysaccharides",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "leaf-4-1-2-3",
+                  "text": "Stains deep blue / purple",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-1-3",
+              "text": "Eosin Y / B (Dye-)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-1-3-1",
+                  "text": "Acidic anionic dye",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-1-3-2",
+                  "text": "Binds basic polycations",
+                  "level": 4,
+                  "children": [
+                    {
+                      "id": "subleaf-4-1-3-2-1",
+                      "text": "Hemoglobin amine groups",
+                      "level": 5,
+                      "children": []
+                    },
+                    {
+                      "id": "subleaf-4-1-3-2-2",
+                      "text": "Eosinophil major basic protein",
+                      "level": 5,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "leaf-4-1-3-3",
+                  "text": "Stains pink to red-orange",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-1-4",
+              "text": "Undissociated Dye Complexes",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-1-4-1",
+                  "text": "Binds neutral protein matrices",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-1-4-2",
+                  "text": "Stains pale lilac / pink",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-4-2",
+          "text": "Phosphate Buffer Dynamics",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-4-2-1",
+              "text": "Optimal Buffer: pH 6.4-6.7",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-2-1-1",
+                  "text": "Target setpoint: pH 6.60",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-1-2",
+                  "text": "Controls dye ionization equilibrium",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-2-2",
+              "text": "Acidic Shift (pH < 6.4)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-2-2-1",
+                  "text": "Excess H+ ion concentration",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-2-2",
+                  "text": "Accelerated Eosin binding",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-2-3",
+                  "text": "Bright red/orange RBCs",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-2-4",
+                  "text": "Pale washed-out nuclei",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-2-5",
+                  "text": "Causes: Formic acid, over-washing",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-2-3",
+              "text": "Alkaline Shift (pH > 6.8)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-2-3-1",
+                  "text": "Excess OH- ion concentration",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-3-2",
+                  "text": "Accelerated Methylene Blue binding",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-3-3",
+                  "text": "Slate-blue / gray RBCs",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-3-4",
+                  "text": "Dark purple-black nuclei",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-2-3-5",
+                  "text": "Causes: High pH, unaged Wright stain",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-4-3",
+          "text": "Staining Artifact Troubleshooting",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-4-3-1",
+              "text": "Water Artifact (Refractile Rings)",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-3-1-1",
+                  "text": "Glassy ring inside RBCs",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-3-1-2",
+                  "text": "Causes: High humidity, breath blowing",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-3-1-3",
+                  "text": "Fix: Fan dry, anhydrous methanol",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-4-3-2",
+              "text": "Stain Precipitate",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-4-3-2-1",
+                  "text": "Dark particulate grit on smear",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-3-2-2",
+                  "text": "Causes: Unfiltered stain, slide drying",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-4-3-2-3",
+                  "text": "Fix: Daily filter, flooded slides",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-5",
+      "text": "Microscopic Smear Evaluation",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-5-1",
+          "text": "Zone of Optimum Morphology",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-5-1-1",
+              "text": "Located behind feathered edge",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-5-1-2",
+              "text": "RBC monolayer criteria",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-5-1-2-1",
+                  "text": "Single layer, touching edge-to-edge",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-1-2-2",
+                  "text": "No overlapping or rouleaux",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-1-2-3",
+                  "text": "Central pallor = 1/3 cell diameter",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-5-1-3",
+              "text": "Leukocyte & Platelet Quality",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-5-1-3-1",
+                  "text": "Crisp chromatin & granules",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-1-3-2",
+                  "text": "Even platelet distribution",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-5-1-4",
+              "text": "Non-Evaluable Slide Regions",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-5-1-4-1",
+                  "text": "Thick body: Overlapping stacked cells",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-1-4-2",
+                  "text": "Feathered edge: Lost central pallor",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-5-2",
+          "text": "Microscopic Color Reference Matrix",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-5-2-1",
+              "text": "Erythrocytes: Salmon-pink / buff",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-5-2-2",
+              "text": "Neutrophils",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-5-2-2-1",
+                  "text": "Nuclei: Deep purple-violet",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-2-2-2",
+                  "text": "Cytoplasm: Pale pink/lilac with granules",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-5-2-3",
+              "text": "Lymphocytes",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-5-2-3-1",
+                  "text": "Nuclei: Rich dark purple",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-5-2-3-2",
+                  "text": "Cytoplasm: Robin's egg blue",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-5-2-4",
+              "text": "Eosinophils: Bright red-orange granules",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-5-2-5",
+              "text": "Basophils: Dark purple-black granules",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-5-2-6",
+              "text": "Platelets: Violet-purple chromomere",
+              "level": 3,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-6",
+      "text": "Confirmatory Stains for RBC Inclusions",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-6-1",
+          "text": "Pappenheimer Bodies",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-6-1-1",
+              "text": "Composition: Ferric iron (Fe3+)",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-1-2",
+              "text": "Wright's: Pale blue-purple dots",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-1-3",
+              "text": "Prussian Blue Stain: POSITIVE",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-6-1-3-1",
+                  "text": "Forms bright blue siderotic granules",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-6-1-3-2",
+                  "text": "Perls' acid ferrocyanide reaction",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-6-2",
+          "text": "Howell-Jolly Bodies",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-6-2-1",
+              "text": "Composition: DNA fragments",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-2-2",
+              "text": "Wright's: Round, dark-purple dot",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-2-3",
+              "text": "Prussian Blue Stain: NEGATIVE",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-6-3",
+          "text": "Basophilic Stippling",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-6-3-1",
+              "text": "Composition: Ribosomal RNA aggregates",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-3-2",
+              "text": "Wright's: Diffuse blue stippling",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-3-3",
+              "text": "Prussian Blue Stain: NEGATIVE",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-6-4",
+          "text": "Heinz Bodies",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-6-4-1",
+              "text": "Composition: Precipitated hemoglobin",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-4-2",
+              "text": "Wright's Stain: INVISIBLE",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-6-4-2-1",
+                  "text": "Methanol dissolves denatured Hb",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-6-4-3",
+              "text": "Prussian Blue Stain: NEGATIVE",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-6-4-4",
+              "text": "Supravital Stain (NMB): POSITIVE",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-6-4-4-1",
+                  "text": "Non-acidified live dye precipitates Hb",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-7",
+      "text": "Quality Control & Biosafety",
+      "level": 1,
+      "children": [
+        {
+          "id": "sub-7-1",
+          "text": "Daily Quality Control Protocol",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-7-1-1",
+              "text": "Stain normal control slide daily",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-7-1-2",
+              "text": "Evaluate monolayer & pallor criteria",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "node-7-1-3",
+              "text": "Verify buffer pH at 6.60",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "sub-7-2",
+          "text": "Laboratory Biosafety & Hazards",
+          "level": 2,
+          "children": [
+            {
+              "id": "node-7-2-1",
+              "text": "Universal PPE Precautions",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-7-2-1-1",
+                  "text": "Gloves, lab coat, eye protection",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-7-2-1-2",
+                  "text": "Protection against HBV, HCV, HIV",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-7-2-2",
+              "text": "Chemical Hazard Controls",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-7-2-2-1",
+                  "text": "Methanol flammability & toxicity",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-7-2-2-2",
+                  "text": "Handle in ventilated fume area",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-7-2-3",
+              "text": "Rigid Sharps Waste Disposal",
+              "level": 3,
+              "children": [
+                {
+                  "id": "leaf-7-2-3-1",
+                  "text": "Glass slides into puncture-proof bins",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "leaf-7-2-3-2",
+                  "text": "Never dispose glass in bags",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+    // State Variables
+    let scale = 1.0;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX, startY;
+    
+    let collapsedNodes = new Set();
+    function setInitialCollapsedState(node) {
+      if (node.level >= 1 && node.children && node.children.length > 0) {
+        collapsedNodes.add(node.id);
+      }
+      if (node.children) {
+        node.children.forEach(setInitialCollapsedState);
+      }
+    }
+    setInitialCollapsedState(mindMapData);
+
+    const LEVEL_X_GAP = 320;
+    const NODE_Y_GAP = 54;
+
+    const viewport = document.getElementById('viewport');
+    const nodesContainer = document.getElementById('nodes-container');
+    const svgPathsGroup = document.getElementById('svg-paths-group');
+
+    // --- LAYOUT ENGINE ---
+    function computeVerticalLayout(node, depth = 0, yOffset = { val: 0 }) {
+      node.depth = depth;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+
+      if (visibleChildren.length === 0) {
+        node.y = yOffset.val;
+        yOffset.val += NODE_Y_GAP;
+      } else {
+        const childYs = [];
+        visibleChildren.forEach(child => {
+          computeVerticalLayout(child, depth + 1, yOffset);
+          childYs.push(child.y);
+        });
+        node.y = (childYs[0] + childYs[childYs.length - 1]) / 2;
+      }
+    }
+
+    function computeHorizontalLayout(node, currentX = 0) {
+      node.x = currentX;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+
+      if (visibleChildren.length > 0) {
+        const nodeWidth = node.domEl ? (node.domEl.getBoundingClientRect().width / scale) : 220;
+        const nextX = currentX + Math.max(LEVEL_X_GAP, nodeWidth + 60);
+        visibleChildren.forEach(child => {
+          computeHorizontalLayout(child, nextX);
+        });
+      }
+    }
+
+    function flattenNodes(node, list = []) {
+      list.push(node);
+      const isCollapsed = collapsedNodes.has(node.id);
+      if (!isCollapsed && node.children) {
+        node.children.forEach(child => flattenNodes(child, list));
+      }
+      return list;
+    }
+
+    let isInitialLoad = true;
+
+    function renderMindMap() {
+      // 1. Compute Y positions
+      const yOffset = { val: 0 };
+      computeVerticalLayout(mindMapData, 0, yOffset);
+
+      // Center layout vertically relative to origin
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length > 0) {
+        const minY = Math.min(...allVisible.map(n => n.y));
+        const maxY = Math.max(...allVisible.map(n => n.y));
+        const midY = (minY + maxY) / 2;
+        allVisible.forEach(n => n.y -= midY);
+      }
+
+      // 2. Initial pass node rendering (positioned vertically, temporary X=0)
+      nodesContainer.innerHTML = '';
+      svgPathsGroup.innerHTML = '';
+
+      allVisible.forEach(node => {
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+
+        const el = document.createElement('div');
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        
+        el.style.left = `0px`;
+        el.style.top = `${node.y}px`;
+        el.dataset.id = node.id;
+        el.innerText = node.text;
+
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (hasChildren) {
+            const wasCollapsed = collapsedNodes.has(node.id);
+            if (wasCollapsed) {
+              collapsedNodes.delete(node.id);
+            } else {
+              collapsedNodes.add(node.id);
+            }
+            renderMindMap();
+
+            if (wasCollapsed) {
+              panAndZoomToNodeBranchSmooth(node);
+            } else {
+              panAndZoomOnCollapseSmooth(node);
+            }
+          }
+        });
+
+        nodesContainer.appendChild(el);
+        node.domEl = el;
+      });
+
+      // 3. Compute dynamic X positions based on measured DOM widths & position nodes/curves
+      requestAnimationFrame(() => {
+        computeHorizontalLayout(mindMapData, 0);
+
+        allVisible.forEach(node => {
+          if (node.domEl) {
+            node.domEl.style.left = `${node.x}px`;
+          }
+        });
+
+        allVisible.forEach(node => {
+          const isCollapsed = collapsedNodes.has(node.id);
+          if (!isCollapsed && node.children) {
+            node.children.forEach(child => {
+              if (allVisible.includes(child)) {
+                drawCurvePath(node, child);
+              }
+            });
+          }
+        });
+
+        if (isInitialLoad) {
+          isInitialLoad = false;
+          centerInitialView();
+        }
+
+        performSearchHighlight();
+      });
+
+      updateTransform();
+    }
+
+    function drawCurvePath(parent, child) {
+      if (!parent.domEl || !child.domEl) return;
+
+      const parentRect = parent.domEl.getBoundingClientRect();
+
+      const startX = parent.x + (parentRect.width / scale);
+      const startY = parent.y;
+      
+      const endX = child.x;
+      const endY = child.y;
+
+      const controlDist = Math.max(30, (endX - startX) * 0.5);
+
+      const pathD = `M ${startX} ${startY} C ${startX + controlDist} ${startY}, ${endX - controlDist} ${endY}, ${endX} ${endY}`;
+      
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('class', 'connection-line');
+
+      svgPathsGroup.appendChild(path);
+    }
+
+    function updateTransform(animated = false) {
+      if (animated) {
+        nodesContainer.classList.add('animated-transform');
+        svgPathsGroup.classList.add('animated-transform');
+        setTimeout(() => {
+          nodesContainer.classList.remove('animated-transform');
+          svgPathsGroup.classList.remove('animated-transform');
+        }, 450);
+      }
+      
+      nodesContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      svgPathsGroup.setAttribute('transform', `translate(${translateX}, ${translateY}) scale(${scale})`);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom when expanding a node branch
+    function panAndZoomToNodeBranchSmooth(node) {
+      setTimeout(() => {
+        const branchNodes = flattenNodes(node);
+        if (branchNodes.length <= 1) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        branchNodes.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        if (node.x < minX) minX = node.x;
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const branchW = maxX - minX;
+        const branchH = maxY - minY;
+
+        let neededScale = scale;
+        if (branchW * scale > availW || branchH * scale > availH) {
+          const scaleX = availW / branchW;
+          const scaleY = availH / branchH;
+          neededScale = Math.min(scaleX, scaleY);
+          neededScale = Math.max(0.2, Math.min(neededScale, scale));
+        }
+
+        scale = neededScale;
+
+        const targetMidX = (minX + maxX) / 2;
+        const targetMidY = (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetMidX * scale);
+        translateY = (window.innerHeight / 2) - (targetMidY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom Correction when COLLAPSING a node branch
+    function panAndZoomOnCollapseSmooth(collapsedNode) {
+      setTimeout(() => {
+        const allVisible = flattenNodes(mindMapData);
+        if (allVisible.length === 0) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        allVisible.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const contentW = maxX - minX;
+        const contentH = maxY - minY;
+
+        let newScale = scale;
+        if (contentW * scale < availW * 0.5 && contentH * scale < availH * 0.5 && scale < 1.0) {
+          const scaleX = availW * 0.75 / contentW;
+          const scaleY = availH * 0.75 / contentH;
+          newScale = Math.min(Math.min(scaleX, scaleY), 1.0);
+        }
+
+        scale = newScale;
+
+        const targetX = collapsedNode ? collapsedNode.x : (minX + maxX) / 2;
+        const targetY = collapsedNode ? collapsedNode.y : (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetX * scale);
+        translateY = (window.innerHeight / 2) - (targetY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // --- VIEW CALCULATIONS & CENTERING ---
+    function centerInitialView(animated = false) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y < minY) minY = n.y;
+        if (n.y > maxY) maxY = n.y;
+      });
+
+      const viewW = window.innerWidth;
+      const viewH = window.innerHeight;
+
+      const contentW = maxX - minX;
+
+      scale = 1.0;
+      translateX = (viewW - contentW) / 2 - minX;
+      translateY = viewH / 2;
+
+      updateTransform(animated);
+    }
+
+    // Fit to window scales to fit the ENTIRE diagram in the window with no cutoff
+    function fitToWindow(animated = true) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        const h = 40;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 80;
+      const availableW = window.innerWidth - (padding * 2);
+      const availableH = window.innerHeight - (padding * 2);
+
+      const contentW = maxX - minX;
+      const contentH = maxY - minY;
+
+      const scaleX = availableW / contentW;
+      const scaleY = availableH / contentH;
+
+      scale = Math.min(scaleX, scaleY);
+
+      const midX = (minX + maxX) / 2;
+      const midY = (minY + maxY) / 2;
+
+      translateX = (window.innerWidth / 2) - (targetMidX = midX) * scale;
+      translateX = (window.innerWidth / 2) - (midX * scale);
+      translateY = (window.innerHeight / 2) - (midY * scale);
+
+      updateTransform(animated);
+    }
+
+    function resetZoomToInitial() {
+      collapsedNodes.clear();
+      setInitialCollapsedState(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    }
+
+    // --- ULTRA-HIGH RESOLUTION PNG EXPORT (4X Crystal-Clear Vector Rendering) ---
+    function downloadMindMapPNG() {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      // Calculate absolute bounds of all visible nodes
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 200;
+        const h = 46;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 100;
+      const unscaledW = (maxX - minX) + (padding * 2);
+      const unscaledH = (maxY - minY) + (padding * 2);
+
+      // Render canvas at 4x resolution scale (dpr = 4) for vector-grade crispness
+      const dpr = 4;
+      const canvasW = Math.ceil(unscaledW * dpr);
+      const canvasH = Math.ceil(unscaledH * dpr);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = canvasW;
+      canvas.height = canvasH;
+      const ctx = canvas.getContext('2d');
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // 1. Draw clean background
+      ctx.fillStyle = '#f7f9fc';
+      ctx.fillRect(0, 0, canvasW, canvasH);
+
+      // Scale canvas context to 4x supersampling
+      ctx.scale(dpr, dpr);
+
+      const offsetX = padding - minX;
+      const offsetY = padding - minY;
+
+      // 2. Draw SVG Connecting Lines onto Canvas
+      allVisible.forEach(node => {
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (!isCollapsed && node.children) {
+          node.children.forEach(child => {
+            if (allVisible.includes(child) && node.domEl && child.domEl) {
+              const nodeWidth = node.domEl.getBoundingClientRect().width / scale;
+              const sx = node.x + nodeWidth + offsetX;
+              const sy = node.y + offsetY;
+              const ex = child.x + offsetX;
+              const ey = child.y + offsetY;
+              const ctrl = Math.max(30, (ex - sx) * 0.5);
+
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.bezierCurveTo(sx + ctrl, sy, ex - ctrl, ey, ex, ey);
+              ctx.strokeStyle = '#8094ae';
+              ctx.lineWidth = 2;
+              ctx.stroke();
+            }
+          });
+        }
+      });
+
+      // High contrast level color palette up to Level 10
+      const levelColors = {
+        0: { bg: '#b4acf0', text: '#1e1945', weight: '800', size: 15 },
+        1: { bg: '#aebdf5', text: '#111a45', weight: '700', size: 14 },
+        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13.5 },
+        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13.5 },
+        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13.5 },
+        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13.5 },
+        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13.5 },
+        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13.5 },
+        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13.5 },
+        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13.5 },
+        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13.5 }
+      };
+
+      // 3. Draw Pill Nodes onto 4x Canvas
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        const rect = node.domEl.getBoundingClientRect();
+        const w = rect.width / scale;
+        const h = rect.height / scale;
+        const nx = node.x + offsetX;
+        const ny = (node.y - (h / 2)) + offsetY;
+
+        const styleConfig = levelColors[Math.min(node.level, 10)] || levelColors[10];
+
+        // Draw pill background
+        const radius = h / 2;
+        ctx.beginPath();
+        ctx.roundRect(nx, ny, w, h, radius);
+        ctx.fillStyle = styleConfig.bg;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.08)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+
+        // Format pill text with indicators
+        let displayText = node.text;
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (hasChildren) {
+          displayText += isCollapsed ? '  +' : '  −';
+        }
+
+        // Draw crystal-clear text on 4x supersampled canvas
+        ctx.fillStyle = styleConfig.text;
+        ctx.font = `${styleConfig.weight} ${styleConfig.size}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(displayText, nx + 18, ny + (h / 2));
+      });
+
+      // Format download filename as "Mind_Map_[topic].png"
+      const rawTopic = document.getElementById('topic-title')?.innerText || mindMapData.text || 'Topic';
+      const formattedTopic = rawTopic.trim().replace(/\s+/g, '_');
+      const filename = `Mind_Map_${formattedTopic}.png`;
+
+      // Trigger ultra-high resolution PNG download with formatted filename
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+    }
+
+    // --- PAN & ZOOM TOWARDS POINTER ---
+    viewport.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform(false);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Double-click in blank canvas space triggers Fit to Window
+    viewport.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      fitToWindow(true);
+    });
+
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      const newScale = Math.min(Math.max(0.1, scale * zoomFactor), 2.5);
+
+      translateX = mouseX - (mouseX - translateX) * (newScale / scale);
+      translateY = mouseY - (mouseY - translateY) * (newScale / scale);
+
+      scale = newScale;
+      updateTransform(false);
+    }, { passive: false });
+
+    // --- BUTTON HANDLERS ---
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+      collapsedNodes.clear();
+      renderMindMap();
+      setTimeout(() => fitToWindow(true), 50);
+    });
+
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+      function collapseAll(node) {
+        if (node.children && node.children.length > 0) {
+          collapsedNodes.add(node.id);
+          node.children.forEach(collapseAll);
+        }
+      }
+      collapseAll(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    });
+
+    document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
+    document.getElementById('zoom-reset').addEventListener('click', resetZoomToInitial);
+    document.getElementById('download-png-btn').addEventListener('click', downloadMindMapPNG);
+
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.min(2.5, scale * 1.15);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.max(0.1, scale * 0.85);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    // Recursively check if descendant node text matches search query
+    function hasMatchingDescendant(node, query) {
+      if (!node.children || node.children.length === 0) return false;
+      for (let child of node.children) {
+        if (child.text.toLowerCase().includes(query)) return true;
+        if (hasMatchingDescendant(child, query)) return true;
+      }
+      return false;
+    }
+
+    // Perform Search & Highlight logic
+    function performSearchHighlight() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const allVisible = flattenNodes(mindMapData);
+
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        node.domEl.classList.remove('highlighted', 'parent-match-highlighted');
+
+        if (!query) return;
+
+        const isExactMatch = node.text.toLowerCase().includes(query);
+        const isCollapsed = collapsedNodes.has(node.id);
+        const hasHiddenMatch = isCollapsed && hasMatchingDescendant(node, query);
+
+        if (isExactMatch) {
+          node.domEl.classList.add('highlighted');
+        } else if (hasHiddenMatch) {
+          node.domEl.classList.add('parent-match-highlighted');
+        }
+      });
+    }
+
+    document.getElementById('search-input').addEventListener('input', performSearchHighlight);
+
+    // Initial Render & Dynamic Title Sync
+    const titleEl = document.getElementById('topic-title');
+    if (titleEl && mindMapData && mindMapData.text) {
+      titleEl.textContent = mindMapData.text;
+    }
+    renderMindMap();
+  </script>
+</body>
+</html>
