@@ -8,7 +8,7 @@ JSON_FILE = os.path.join(ROOT_DIR, "files_index.json")
 JS_FILE = os.path.join(ROOT_DIR, "files_data.js")
 VIDEO_CONFIG_FILE = os.path.join(ROOT_DIR, "video_links.json")
 
-EXCLUDED_DIRS = {".git", ".gemini", "node_modules", "__pycache__"}
+EXCLUDED_DIRS = {".git", ".gemini", "node_modules", "__pycache__", "scratch"}
 EXCLUDED_FILES = {
     "generate_index.py",
     "generate_index.js",
@@ -30,7 +30,8 @@ TOPIC_TITLE_MAP = {
     "L3_BCE_WBC-PLT": "Leukocytes & Platelets",
     "L4_RBC_Analysis": "RBC Analysis",
     "L1_Manual_Counts": "Manual Counts",
-    "L2_Slide_Evaluation": "Slide Evaluation & Preparation"
+    "L2_Slide_Preparation": "Slide Preparation",
+    "L3_Slide_Evaluation": "Slide Evaluation"
 }
 
 def get_file_type(filename):
@@ -141,40 +142,47 @@ def scan_dir():
     scanned_slide_decks = []
     deck_category_map = {}
 
-    for root, dirs, files in os.walk(ROOT_DIR):
-        dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
-        
-        for file in files:
-            if file in EXCLUDED_FILES:
-                continue
-            
-            full_path = os.path.join(root, file)
-            rel_path = os.path.relpath(full_path, ROOT_DIR)
-            
-            if rel_path in EXCLUDED_FILES:
-                continue
-                
-            stat = os.stat(full_path)
-            file_type = get_file_type(file)
-            display_title = extract_display_title(full_path, file, file_type)
-            cat = get_category(rel_path)
-            
-            item_entry = {
-                "name": file,
-                "title": display_title,
-                "path": rel_path.replace("\\", "/"),
-                "size": stat.st_size,
-                "sizeFormatted": format_bytes(stat.st_size),
-                "extension": os.path.splitext(file)[1].lower().replace(".", ""),
-                "type": file_type,
-                "category": cat,
-                "mtime": stat.st_mtime
-            }
-            raw_files.append(item_entry)
+    target_dirs = ["Laboratory", "Lecture"]
 
-            if file_type == "Slide Deck" or file.lower().endswith(".pdf"):
-                scanned_slide_decks.append(item_entry)
-                deck_category_map[file] = cat
+    for target in target_dirs:
+        target_path = os.path.join(ROOT_DIR, target)
+        if not os.path.exists(target_path):
+            continue
+
+        for root, dirs, files in os.walk(target_path):
+            dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
+            
+            for file in files:
+                if file in EXCLUDED_FILES:
+                    continue
+                
+                full_path = os.path.join(root, file)
+                rel_path = os.path.relpath(full_path, ROOT_DIR)
+                
+                if rel_path in EXCLUDED_FILES:
+                    continue
+                
+                stat = os.stat(full_path)
+                file_type = get_file_type(file)
+                display_title = extract_display_title(full_path, file, file_type)
+                cat = get_category(rel_path)
+                
+                item_entry = {
+                    "name": file,
+                    "title": display_title,
+                    "path": rel_path.replace("\\", "/"),
+                    "size": stat.st_size,
+                    "sizeFormatted": format_bytes(stat.st_size),
+                    "extension": os.path.splitext(file)[1].lower().replace(".", ""),
+                    "type": file_type,
+                    "category": cat,
+                    "mtime": stat.st_mtime
+                }
+                raw_files.append(item_entry)
+
+                if file_type == "Slide Deck" or file.lower().endswith(".pdf"):
+                    scanned_slide_decks.append(item_entry)
+                    deck_category_map[file] = cat
 
     # Sort slide decks naturally
     scanned_slide_decks.sort(key=lambda x: x["name"])
@@ -187,10 +195,11 @@ def scan_dir():
     current_cat = "General"
     current_deck_prefix = ""
     demo_counter = 0
+    tool_counter = 0
 
     for item in video_configs:
         deck_file = item.get("slide_deck_file")
-        yt_url = item.get("youtube_url", "https://youtu.be/PLACEHOLDER")
+        target_url = item.get("url") or item.get("youtube_url") or "https://youtu.be/PLACEHOLDER"
         v_title = item.get("title", "Video")
 
         if deck_file:
@@ -202,33 +211,65 @@ def scan_dir():
             results.append({
                 "name": v_sort_name,
                 "title": v_title,
-                "path": yt_url,
+                "path": target_url,
                 "size": 0,
-                "sizeFormatted": "YouTube",
-                "extension": "youtube",
+                "sizeFormatted": "YouTube" if "youtu" in target_url else "Web",
+                "extension": "youtube" if "youtu" in target_url else "url",
                 "type": "Video",
                 "category": current_cat,
-                "youtubeUrl": yt_url,
+                "youtubeUrl": target_url,
+                "mtime": 0
+            })
+        elif "tool" in item:
+            # Tool entry
+            tool_counter += 1
+            descriptor = item["tool"]
+            m = re.match(r"^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)", descriptor)
+            prefix = m.group(1) if m else (current_deck_prefix if current_deck_prefix else "Tool")
+            clean_title_slug = re.sub(r"[^a-zA-Z0-9_]+", "_", v_title).strip("_")
+            tool_name = f"{descriptor}_Tool_{clean_title_slug}"
+
+            cat = item.get("category")
+            if not cat:
+                is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
+                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
+
+            results.append({
+                "name": tool_name,
+                "title": v_title,
+                "path": target_url,
+                "size": 0,
+                "sizeFormatted": "Web Tool",
+                "extension": "url",
+                "type": "Tool",
+                "category": cat,
+                "youtubeUrl": target_url,
                 "mtime": 0
             })
         else:
-            # Manual Demonstration entry
+            # Demonstration entry
             demo_counter += 1
-            cat = item.get("category", current_cat)
+            descriptor = item.get("demo", f"Demo_{demo_counter}")
+            m = re.match(r"^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)", str(descriptor))
+            prefix = m.group(1) if m else (current_deck_prefix if current_deck_prefix else "Demonstration")
             clean_title_slug = re.sub(r"[^a-zA-Z0-9_]+", "_", v_title).strip("_")
-            prefix = current_deck_prefix if current_deck_prefix else "Demonstration"
-            demo_name = f"{prefix}_Demo_{demo_counter}_{clean_title_slug}"
+            demo_name = f"{descriptor}_Demo_{clean_title_slug}"
+
+            cat = item.get("category")
+            if not cat:
+                is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
+                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
 
             results.append({
                 "name": demo_name,
                 "title": v_title,
-                "path": yt_url,
+                "path": target_url,
                 "size": 0,
-                "sizeFormatted": "YouTube",
-                "extension": "youtube",
+                "sizeFormatted": "YouTube" if "youtu" in target_url else "Web",
+                "extension": "youtube" if "youtu" in target_url else "url",
                 "type": "Demonstration",
                 "category": cat,
-                "youtubeUrl": yt_url,
+                "youtubeUrl": target_url,
                 "mtime": 0
             })
 

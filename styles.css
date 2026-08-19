@@ -574,6 +574,16 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
   color: #C4B5FD;
 }
 
+.badge-tool {
+  background-color: #ECFEFF;
+  color: #0891B2;
+}
+
+[data-theme="dark"] .badge-tool {
+  background-color: rgba(8, 145, 178, 0.18);
+  color: #67E8F9;
+}
+
 .badge-map {
   background-color: var(--accent-bg-map);
   color: var(--accent-map);

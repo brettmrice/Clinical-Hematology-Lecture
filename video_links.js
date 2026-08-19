@@ -20,16 +20,24 @@ window.VIDEO_LINKS = [
     "youtube_url": "https://youtu.be/GEtNXeqoKlo"
   },
   {
+    "demo": "L1_Manual_Counts_S1_1",
     "title": "Hemocytometer Thrombo-TIC Setup",
     "youtube_url": "https://youtu.be/QTzEcoxlkoI"
   },
   {
+    "demo": "L1_Manual_Counts_S1_2",
     "title": "Hemocytometer Charging",
     "youtube_url": "https://youtu.be/m-EP2Vj_CQo"
   },
   {
+    "demo": "L1_Manual_Counts_S1_3",
     "title": "Hemocytometer Read",
     "youtube_url": "https://youtu.be/IdD9H5buUrA"
+  },
+  {
+    "tool": "L1_Manual_Counts_S1_1",
+    "title": "Week 2 Hemocytometer",
+    "youtube_url": "https://teach.brettmrice.com/#week-2"
   },
   {
     "slide_deck_file": "L1_Manual_Counts_S2_Hematocrit.pdf",
@@ -37,10 +45,12 @@ window.VIDEO_LINKS = [
     "youtube_url": "https://youtu.be/lojI06C6A5Q"
   },
   {
+    "demo": "L1_Manual_Counts_S2_1",
     "title": "Hematocrit Setup",
     "youtube_url": "https://youtu.be/4W0XvRYXTJw"
   },
   {
+    "demo": "L1_Manual_Counts_S2_2",
     "title": "Hematocrit Centrifuge & Read",
     "youtube_url": "https://youtu.be/0_Id8VUFsQ4"
   },
@@ -55,15 +65,17 @@ window.VIDEO_LINKS = [
     "youtube_url": "https://youtu.be/Bn2MnwjD51w"
   },
   {
-    "slide_deck_file": "L2_Slide_Evaluation_S1_PBS_Preparation.pdf",
+    "slide_deck_file": "L2_Slide_Preparation_S1_PBS_Preparation.pdf",
     "title": "PBS Preparation",
     "youtube_url": "https://youtu.be/Mn4t2B3R_UY"
   },
   {
+    "demo": "L2_Slide_Preparation_S1_1",
     "title": "Slide Prep Microcapillary Tube",
     "youtube_url": "https://youtu.be/_J5hAGrS650"
   },
   {
+    "demo": "L2_Slide_Preparation_S1_2",
     "title": "Slide Prep Applicator Stick",
     "youtube_url": "https://youtu.be/cjWf9c6Uqdw"
   },
@@ -81,6 +93,31 @@ window.VIDEO_LINKS = [
     "slide_deck_file": "L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
     "title": "Monocytes & Platelets",
     "youtube_url": "https://youtu.be/S5z8BRAl9f4"
+  },
+  {
+    "slide_deck_file": "L3_Slide_Evaluation_S1_PBS_Evaluation.pdf",
+    "title": "PBS Evaluation",
+    "youtube_url": "https://youtu.be/_RkPRVrStLM"
+  },
+  {
+    "slide_deck_file": "L3_Slide_Evaluation_S2_PBS_Morphologies.pdf",
+    "title": "PBS Morphologies",
+    "youtube_url": "https://youtu.be/8Q7muZftcao"
+  },
+  {
+    "demo": "L3_Slide_Evaluation_S2_1",
+    "title": "CPS Tutorial",
+    "youtube_url": "https://www.youtube.com/watch?v=0m0JuzliCN4"
+  },
+  {
+    "tool": "L3_Slide_Evaluation_S2_1",
+    "title": "Week 3 Slides",
+    "youtube_url": "https://teach.brettmrice.com/#week-3"
+  },
+  {
+    "tool": "L3_Slide_Evaluation_S2_2",
+    "title": "Blood Cell ID",
+    "youtube_url": "https://bloodcellid.com/"
   },
   {
     "slide_deck_file": "L4_RBC_Analysis_S1_RBC_Indices.pdf",

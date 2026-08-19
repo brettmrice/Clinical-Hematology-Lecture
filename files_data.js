@@ -8,7 +8,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922700.080285
+    "mtime": 1786922700.0
   },
   {
     "name": "L1_Manual_Counts_S1_Hemocytometer.pdf",
@@ -19,7 +19,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922744.7424567
+    "mtime": 1786922744.0
   },
   {
     "name": "L1_Manual_Counts_S2_Hematocrit.pdf",
@@ -30,7 +30,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922761.2596922
+    "mtime": 1786922761.0
   },
   {
     "name": "L1_Manual_Counts_S3_Mind_Map.html",
@@ -41,40 +41,84 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922700.0812843
+    "mtime": 1786922700.0
   },
   {
-    "name": "L2_Slide_Evaluation_S0_Discussion.html",
+    "name": "L2_Slide_Preparation_S0_Discussion.html",
     "title": "Slide Preparation",
-    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S0_Discussion.html",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Preparation_S0_Discussion.html",
     "size": 73716,
     "sizeFormatted": "72.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922632.6278253
+    "mtime": 1786922632.0
   },
   {
-    "name": "L2_Slide_Evaluation_S1_PBS_Preparation.pdf",
+    "name": "L2_Slide_Preparation_S1_PBS_Preparation.pdf",
     "title": "PBS Preparation",
-    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S1_PBS_Preparation.pdf",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Preparation_S1_PBS_Preparation.pdf",
     "size": 1976752,
     "sizeFormatted": "1.9 MB",
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922775.2107549
+    "mtime": 1786922775.0
   },
   {
-    "name": "L2_Slide_Evaluation_S2_PBS_Preparation_Mind_Map.html",
+    "name": "L2_Slide_Preparation_S2_Mind_Map.html",
     "title": "Slide Preparation",
-    "path": "Laboratory/CBC_PBS/L2_Slide_Evaluation_S2_PBS_Preparation_Mind_Map.html",
+    "path": "Laboratory/CBC_PBS/L2_Slide_Preparation_S2_Mind_Map.html",
     "size": 69480,
     "sizeFormatted": "67.9 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1786922632.6268237
+    "mtime": 1786922632.0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S0_Discussion.html",
+    "title": "Slide Evaluation",
+    "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S0_Discussion.html",
+    "size": 148285,
+    "sizeFormatted": "144.8 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786982295.5847378
+  },
+  {
+    "name": "L3_Slide_Evaluation_S1_PBS_Evaluation.pdf",
+    "title": "PBS Evaluation",
+    "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S1_PBS_Evaluation.pdf",
+    "size": 1673183,
+    "sizeFormatted": "1.6 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786992156.773414
+  },
+  {
+    "name": "L3_Slide_Evaluation_S2_PBS_Morphologies.pdf",
+    "title": "PBS Morphologies",
+    "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S2_PBS_Morphologies.pdf",
+    "size": 1499745,
+    "sizeFormatted": "1.4 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786992172.980619
+  },
+  {
+    "name": "L3_Slide_Evaluation_S3_Mind_Map.html",
+    "title": "Slide Evaluation",
+    "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S3_Mind_Map.html",
+    "size": 60210,
+    "sizeFormatted": "58.8 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1786922685.0
   },
   {
     "name": "L1_Hematopoiesis_S0_Discussion.html",
@@ -85,7 +129,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1786327625.0822537
+    "mtime": 1786327625.0
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition.pdf",
@@ -96,7 +140,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786019666.0
+    "mtime": 1786019666.959365
   },
   {
     "name": "L1_Hematopoiesis_S2_Hematopoiesis_Sites.pdf",
@@ -107,7 +151,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786019744.0
+    "mtime": 1786019744.3427837
   },
   {
     "name": "L1_Hematopoiesis_S3_Hematopoiesis_Process.pdf",
@@ -118,7 +162,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786019852.0
+    "mtime": 1786019852.095094
   },
   {
     "name": "L1_Hematopoiesis_S4_Mind_Map.html",
@@ -129,7 +173,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1786327625.0772445
+    "mtime": 1786327625.0
   },
   {
     "name": "L2_BCE_RBC-HGB_S0_Discussion.html",
@@ -140,7 +184,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1786544039.0
+    "mtime": 1786544039.1485226
   },
   {
     "name": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
@@ -151,7 +195,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786114769.0
+    "mtime": 1786114769.6414576
   },
   {
     "name": "L2_BCE_RBC-HGB_S2_Hemoglobin.pdf",
@@ -162,7 +206,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786114815.0
+    "mtime": 1786114815.6109788
   },
   {
     "name": "L2_BCE_RBC-HGB_S3_Mind_Map.html",
@@ -173,7 +217,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1786327625.0832534
+    "mtime": 1786327625.0
   },
   {
     "name": "L3_BCE_WBC-PLT_S0_Discussion.html",
@@ -184,7 +228,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1786467301.0
+    "mtime": 1786467301.6043012
   },
   {
     "name": "L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
@@ -195,7 +239,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786538835.0
+    "mtime": 1786538835.200541
   },
   {
     "name": "L3_BCE_WBC-PLT_S2_Lymphocytes.pdf",
@@ -206,7 +250,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786538871.0
+    "mtime": 1786538871.2935693
   },
   {
     "name": "L3_BCE_WBC-PLT_S3_Monocytes-Platelets.pdf",
@@ -217,7 +261,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786538884.0
+    "mtime": 1786538884.493021
   },
   {
     "name": "L3_BCE_WBC-PLT_S4_Mind_Map.html",
@@ -228,7 +272,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1786467301.0
+    "mtime": 1786467301.600786
   },
   {
     "name": "L4_RBC_Analysis_S0_Discussion.html",
@@ -239,7 +283,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1786467301.0
+    "mtime": 1786467301.644196
   },
   {
     "name": "L4_RBC_Analysis_S1_RBC_Indices.pdf",
@@ -250,7 +294,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786539106.0
+    "mtime": 1786539106.8968942
   },
   {
     "name": "L4_RBC_Analysis_S2_RBC_Poikilocytes.pdf",
@@ -261,7 +305,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786539118.0
+    "mtime": 1786539118.833287
   },
   {
     "name": "L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
@@ -272,7 +316,7 @@ window.FILES_DATA = [
     "extension": "pdf",
     "type": "Slide Deck",
     "category": "Lecture / Physiology",
-    "mtime": 1786539130.0
+    "mtime": 1786539130.5396225
   },
   {
     "name": "L4_RBC_Analysis_S4_Mind_Map.html",
@@ -283,7 +327,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1786467301.0
+    "mtime": 1786467301.6043012
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition_Video",
@@ -334,7 +378,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L1_Manual_Counts_Demo_1_Hemocytometer_Thrombo_TIC_Setup",
+    "name": "L1_Manual_Counts_S1_1_Demo_Hemocytometer_Thrombo_TIC_Setup",
     "title": "Hemocytometer Thrombo-TIC Setup",
     "path": "https://youtu.be/QTzEcoxlkoI",
     "size": 0,
@@ -346,7 +390,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L1_Manual_Counts_Demo_2_Hemocytometer_Charging",
+    "name": "L1_Manual_Counts_S1_2_Demo_Hemocytometer_Charging",
     "title": "Hemocytometer Charging",
     "path": "https://youtu.be/m-EP2Vj_CQo",
     "size": 0,
@@ -358,7 +402,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L1_Manual_Counts_Demo_3_Hemocytometer_Read",
+    "name": "L1_Manual_Counts_S1_3_Demo_Hemocytometer_Read",
     "title": "Hemocytometer Read",
     "path": "https://youtu.be/IdD9H5buUrA",
     "size": 0,
@@ -367,6 +411,18 @@ window.FILES_DATA = [
     "type": "Demonstration",
     "category": "Laboratory / CBC_PBS",
     "youtubeUrl": "https://youtu.be/IdD9H5buUrA",
+    "mtime": 0
+  },
+  {
+    "name": "L1_Manual_Counts_S1_1_Tool_Week_2_Hemocytometer",
+    "title": "Week 2 Hemocytometer",
+    "path": "https://teach.brettmrice.com/#week-2",
+    "size": 0,
+    "sizeFormatted": "Web Tool",
+    "extension": "url",
+    "type": "Tool",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://teach.brettmrice.com/#week-2",
     "mtime": 0
   },
   {
@@ -382,7 +438,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L1_Manual_Counts_Demo_4_Hematocrit_Setup",
+    "name": "L1_Manual_Counts_S2_1_Demo_Hematocrit_Setup",
     "title": "Hematocrit Setup",
     "path": "https://youtu.be/4W0XvRYXTJw",
     "size": 0,
@@ -394,7 +450,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L1_Manual_Counts_Demo_5_Hematocrit_Centrifuge_Read",
+    "name": "L1_Manual_Counts_S2_2_Demo_Hematocrit_Centrifuge_Read",
     "title": "Hematocrit Centrifuge & Read",
     "path": "https://youtu.be/0_Id8VUFsQ4",
     "size": 0,
@@ -430,7 +486,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L2_Slide_Evaluation_S1_PBS_Preparation_Video",
+    "name": "L2_Slide_Preparation_S1_PBS_Preparation_Video",
     "title": "PBS Preparation",
     "path": "https://youtu.be/Mn4t2B3R_UY",
     "size": 0,
@@ -442,7 +498,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L2_Slide_Evaluation_Demo_6_Slide_Prep_Microcapillary_Tube",
+    "name": "L2_Slide_Preparation_S1_1_Demo_Slide_Prep_Microcapillary_Tube",
     "title": "Slide Prep Microcapillary Tube",
     "path": "https://youtu.be/_J5hAGrS650",
     "size": 0,
@@ -454,7 +510,7 @@ window.FILES_DATA = [
     "mtime": 0
   },
   {
-    "name": "L2_Slide_Evaluation_Demo_7_Slide_Prep_Applicator_Stick",
+    "name": "L2_Slide_Preparation_S1_2_Demo_Slide_Prep_Applicator_Stick",
     "title": "Slide Prep Applicator Stick",
     "path": "https://youtu.be/cjWf9c6Uqdw",
     "size": 0,
@@ -499,6 +555,66 @@ window.FILES_DATA = [
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/S5z8BRAl9f4",
+    "mtime": 0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S1_PBS_Evaluation_Video",
+    "title": "PBS Evaluation",
+    "path": "https://youtu.be/_RkPRVrStLM",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/_RkPRVrStLM",
+    "mtime": 0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S2_PBS_Morphologies_Video",
+    "title": "PBS Morphologies",
+    "path": "https://youtu.be/8Q7muZftcao",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/8Q7muZftcao",
+    "mtime": 0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S2_1_Demo_CPS_Tutorial",
+    "title": "CPS Tutorial",
+    "path": "https://www.youtube.com/watch?v=0m0JuzliCN4",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Demonstration",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://www.youtube.com/watch?v=0m0JuzliCN4",
+    "mtime": 0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S2_1_Tool_Week_3_Slides",
+    "title": "Week 3 Slides",
+    "path": "https://teach.brettmrice.com/#week-3",
+    "size": 0,
+    "sizeFormatted": "Web Tool",
+    "extension": "url",
+    "type": "Tool",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://teach.brettmrice.com/#week-3",
+    "mtime": 0
+  },
+  {
+    "name": "L3_Slide_Evaluation_S2_2_Tool_Blood_Cell_ID",
+    "title": "Blood Cell ID",
+    "path": "https://bloodcellid.com/",
+    "size": 0,
+    "sizeFormatted": "Web Tool",
+    "extension": "url",
+    "type": "Tool",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://bloodcellid.com/",
     "mtime": 0
   },
   {

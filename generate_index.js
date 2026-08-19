@@ -7,7 +7,7 @@ const jsFilePath = path.join(rootDir, 'files_data.js');
 const videoConfigFile = path.join(rootDir, 'video_links.json');
 const videoJsFile = path.join(rootDir, 'video_links.js');
 
-const EXCLUDED_DIRS = ['.git', '.gemini', 'node_modules', '__pycache__'];
+const EXCLUDED_DIRS = ['.git', '.gemini', 'node_modules', '__pycache__', 'scratch'];
 const EXCLUDED_FILES = [
     'generate_index.py',
     'generate_index.js',
@@ -29,7 +29,8 @@ const TOPIC_TITLE_MAP = {
     'L3_BCE_WBC-PLT': 'Leukocytes & Platelets',
     'L4_RBC_Analysis': 'RBC Analysis',
     'L1_Manual_Counts': 'Manual Counts',
-    'L2_Slide_Evaluation': 'Slide Evaluation & Preparation'
+    'L2_Slide_Preparation': 'Slide Preparation',
+    'L3_Slide_Evaluation': 'Slide Evaluation'
 };
 
 function getFileType(filename) {
@@ -189,7 +190,13 @@ function scanDir() {
         }
     }
 
-    walk(rootDir);
+    const targetDirs = ['Laboratory', 'Lecture'];
+    for (const target of targetDirs) {
+        const targetPath = path.join(rootDir, target);
+        if (fs.existsSync(targetPath)) {
+            walk(targetPath, target);
+        }
+    }
 
     scannedSlideDecks.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base', numeric: true }));
 
@@ -199,10 +206,11 @@ function scanDir() {
     let currentCat = 'General';
     let currentDeckPrefix = '';
     let demoCounter = 0;
+    let toolCounter = 0;
 
     for (const item of videoConfigs) {
         const deckFile = item.slide_deck_file;
-        const ytUrl = item.youtube_url || 'https://youtu.be/PLACEHOLDER';
+        const targetUrl = item.url || item.youtube_url || 'https://youtu.be/PLACEHOLDER';
         const vTitle = item.title || 'Video';
 
         if (deckFile) {
@@ -214,33 +222,67 @@ function scanDir() {
             results.push({
                 name: vSortName,
                 title: vTitle,
-                path: ytUrl,
+                path: targetUrl,
                 size: 0,
-                sizeFormatted: 'YouTube',
-                extension: 'youtube',
+                sizeFormatted: targetUrl.includes('youtu') ? 'YouTube' : 'Web',
+                extension: targetUrl.includes('youtu') ? 'youtube' : 'url',
                 type: 'Video',
                 category: currentCat,
-                youtubeUrl: ytUrl,
+                youtubeUrl: targetUrl,
+                mtime: 0
+            });
+        } else if (item.tool) {
+            // Tool entry
+            toolCounter++;
+            const descriptor = item.tool;
+            const prefixMatch = descriptor.match(/^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)/);
+            const prefix = prefixMatch ? prefixMatch[1] : (currentDeckPrefix || 'Tool');
+            const cleanTitleSlug = vTitle.replace(/[^a-zA-Z0-9_]+/g, '_').replace(/^_+|_+$/g, '');
+            const toolName = `${descriptor}_Tool_${cleanTitleSlug}`;
+
+            let cat = item.category;
+            if (!cat) {
+                const isLab = prefix.startsWith('L') && (prefix.includes('Manual_Counts') || prefix.includes('Slide_Prep') || prefix.includes('Slide_Eval'));
+                cat = isLab ? 'Laboratory / CBC_PBS' : currentCat;
+            }
+
+            results.push({
+                name: toolName,
+                title: vTitle,
+                path: targetUrl,
+                size: 0,
+                sizeFormatted: 'Web Tool',
+                extension: 'url',
+                type: 'Tool',
+                category: cat,
+                youtubeUrl: targetUrl,
                 mtime: 0
             });
         } else {
-            // Manual Demonstration entry
+            // Demonstration entry (has item.demo or fallback)
             demoCounter++;
-            const cat = item.category || currentCat;
+            const descriptor = item.demo || `Demo_${demoCounter}`;
+            const prefixMatch = descriptor.match(/^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)/);
+            const prefix = prefixMatch ? prefixMatch[1] : (currentDeckPrefix || 'Demonstration');
             const cleanTitleSlug = vTitle.replace(/[^a-zA-Z0-9_]+/g, '_').replace(/^_+|_+$/g, '');
-            const prefix = currentDeckPrefix || 'Demonstration';
-            const demoName = `${prefix}_Demo_${demoCounter}_${cleanTitleSlug}`;
+            const demoName = `${descriptor}_Demo_${cleanTitleSlug}`;
+
+            let cat = item.category;
+            if (!cat) {
+                const isLab = prefix.startsWith('L') && (prefix.includes('Manual_Counts') || prefix.includes('Slide_Prep') || prefix.includes('Slide_Eval'));
+                cat = isLab ? 'Laboratory / CBC_PBS' : currentCat;
+            }
 
             results.push({
                 name: demoName,
                 title: vTitle,
-                path: ytUrl,
+                path: targetUrl,
                 size: 0,
-                sizeFormatted: 'YouTube',
-                extension: 'youtube',
+                sizeFormatted: targetUrl.includes('youtu') ? 'YouTube' : 'Web',
+                extension: targetUrl.includes('youtu') ? 'youtube' : 'url',
                 type: 'Demonstration',
                 category: cat,
-                youtubeUrl: ytUrl,
+                youtubeUrl: targetUrl,
                 mtime: 0
             });
         }
