@@ -133,5 +133,15 @@ window.VIDEO_LINKS = [
     "slide_deck_file": "L4_RBC_Analysis_S3_RBC_Inclusions.pdf",
     "title": "RBC Inclusions",
     "youtube_url": "https://youtu.be/6JfUtpf2mvc"
+  },
+  {
+    "slide_deck_file": "L4_CBC_Analysis_S1_Principles.pdf",
+    "title": "Principles",
+    "youtube_url": "https://youtu.be/UIS-zmZTZeU"
+  },
+  {
+    "slide_deck_file": "L4_CBC_Analysis_S2_Parameters.pdf",
+    "title": "Parameters",
+    "youtube_url": "https://youtu.be/113lBFF1Iuw"
   }
 ];

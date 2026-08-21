@@ -121,6 +121,50 @@ window.FILES_DATA = [
     "mtime": 1786922685.0
   },
   {
+    "name": "L4_CBC_Analysis_S0_Discussion.html",
+    "title": "CBC Analysis",
+    "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S0_Discussion.html",
+    "size": 121889,
+    "sizeFormatted": "119.0 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1787170251.0
+  },
+  {
+    "name": "L4_CBC_Analysis_S1_Principles.pdf",
+    "title": "Principles",
+    "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S1_Principles.pdf",
+    "size": 1167754,
+    "sizeFormatted": "1.1 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1787237822.047484
+  },
+  {
+    "name": "L4_CBC_Analysis_S2_Parameters.pdf",
+    "title": "Parameters",
+    "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S2_Parameters.pdf",
+    "size": 1278033,
+    "sizeFormatted": "1.2 MB",
+    "extension": "pdf",
+    "type": "Slide Deck",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1787268744.0
+  },
+  {
+    "name": "L4_CBC_Analysis_S3_Mind_Map.html",
+    "title": "CBC Analysis",
+    "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S3_Mind_Map.html",
+    "size": 76391,
+    "sizeFormatted": "74.6 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Laboratory / CBC_PBS",
+    "mtime": 1787320765.947213
+  },
+  {
     "name": "L1_Hematopoiesis_S0_Discussion.html",
     "title": "Hematopoiesis",
     "path": "Lecture/Physiology/L1_Hematopoiesis_S0_Discussion.html",
@@ -651,6 +695,30 @@ window.FILES_DATA = [
     "type": "Video",
     "category": "Lecture / Physiology",
     "youtubeUrl": "https://youtu.be/6JfUtpf2mvc",
+    "mtime": 0
+  },
+  {
+    "name": "L4_CBC_Analysis_S1_Principles_Video",
+    "title": "Principles",
+    "path": "https://youtu.be/UIS-zmZTZeU",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/UIS-zmZTZeU",
+    "mtime": 0
+  },
+  {
+    "name": "L4_CBC_Analysis_S2_Parameters_Video",
+    "title": "Parameters",
+    "path": "https://youtu.be/113lBFF1Iuw",
+    "size": 0,
+    "sizeFormatted": "YouTube",
+    "extension": "youtube",
+    "type": "Video",
+    "category": "Laboratory / CBC_PBS",
+    "youtubeUrl": "https://youtu.be/113lBFF1Iuw",
     "mtime": 0
   }
 ];

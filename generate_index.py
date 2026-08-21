@@ -31,7 +31,8 @@ TOPIC_TITLE_MAP = {
     "L4_RBC_Analysis": "RBC Analysis",
     "L1_Manual_Counts": "Manual Counts",
     "L2_Slide_Preparation": "Slide Preparation",
-    "L3_Slide_Evaluation": "Slide Evaluation"
+    "L3_Slide_Evaluation": "Slide Evaluation",
+    "L4_CBC_Analysis": "CBC Analysis"
 }
 
 def get_file_type(filename):
