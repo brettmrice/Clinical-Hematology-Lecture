@@ -55,6 +55,11 @@ window.VIDEO_LINKS = [
     "youtube_url": "https://youtu.be/0_Id8VUFsQ4"
   },
   {
+    "trainer": "L1_Manual_Counts_S1_1",
+    "title": "Hematocrit Reader",
+    "youtube_url": "https://www.brettmrice.com/Hematocrit-Trainer/"
+  },
+  {
     "slide_deck_file": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
     "title": "Erythrocyte",
     "youtube_url": "https://youtu.be/LcgQgGLCt5I"

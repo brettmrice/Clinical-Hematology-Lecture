@@ -197,6 +197,7 @@ def scan_dir():
     current_deck_prefix = ""
     demo_counter = 0
     tool_counter = 0
+    trainer_counter = 0
 
     for item in video_configs:
         deck_file = item.get("slide_deck_file")
@@ -243,6 +244,32 @@ def scan_dir():
                 "sizeFormatted": "Web Tool",
                 "extension": "url",
                 "type": "Tool",
+                "category": cat,
+                "youtubeUrl": target_url,
+                "mtime": 0
+            })
+        elif "trainer" in item:
+            # Trainer entry
+            trainer_counter += 1
+            descriptor = item["trainer"]
+            m = re.match(r"^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)", str(descriptor))
+            prefix = m.group(1) if m else (current_deck_prefix if current_deck_prefix else "Trainer")
+            clean_title_slug = re.sub(r"[^a-zA-Z0-9_]+", "_", v_title).strip("_")
+            trainer_name = f"{descriptor}_Trainer_{clean_title_slug}"
+
+            cat = item.get("category")
+            if not cat:
+                is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
+                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
+
+            results.append({
+                "name": trainer_name,
+                "title": v_title,
+                "path": target_url,
+                "size": 0,
+                "sizeFormatted": "Interactive Trainer",
+                "extension": "url",
+                "type": "Trainer",
                 "category": cat,
                 "youtubeUrl": target_url,
                 "mtime": 0

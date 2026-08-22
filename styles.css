@@ -24,6 +24,7 @@
   --accent-video: #DC2626;
   --accent-demo: #7C3AED;
   --accent-tool: #0891B2;
+  --accent-trainer: #D946EF;
 
   --accent-bg-pdf: #FFFBEB;
   --accent-bg-map: #ECFDF5;
@@ -31,6 +32,7 @@
   --accent-bg-video: #FEF2F2;
   --accent-bg-demo: #F5F3FF;
   --accent-bg-tool: #ECFEFF;
+  --accent-bg-trainer: #FDF4FF;
   
   --radius-lg: 12px;
   --radius-md: 8px;
@@ -57,12 +59,14 @@
 
   --accent-demo: #C4B5FD;
   --accent-tool: #67E8F9;
+  --accent-trainer: #F0ABFC;
   --accent-bg-pdf: rgba(217, 119, 6, 0.15);
   --accent-bg-map: rgba(5, 150, 105, 0.15);
   --accent-bg-doc: rgba(37, 99, 235, 0.15);
   --accent-bg-video: rgba(220, 38, 38, 0.15);
   --accent-bg-demo: rgba(124, 58, 237, 0.18);
   --accent-bg-tool: rgba(8, 145, 178, 0.18);
+  --accent-bg-trainer: rgba(217, 70, 239, 0.18);
 }
 
 * {
@@ -574,6 +578,11 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
   border-color: var(--accent-tool);
 }
 
+.card:hover:has(.badge-trainer),
+.card:has(.badge-trainer):hover {
+  border-color: var(--accent-trainer);
+}
+
 .card:hover:has(.badge-map),
 .card:has(.badge-map):hover {
   border-color: var(--accent-map);
@@ -647,6 +656,15 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
 
 [data-theme="dark"] .badge-tool {
   color: #67E8F9;
+}
+
+.badge-trainer {
+  background-color: var(--accent-bg-trainer);
+  color: var(--accent-trainer);
+}
+
+[data-theme="dark"] .badge-trainer {
+  color: #F0ABFC;
 }
 
 .badge-map {

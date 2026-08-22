@@ -208,6 +208,7 @@ function scanDir() {
     let currentDeckPrefix = '';
     let demoCounter = 0;
     let toolCounter = 0;
+    let trainerCounter = 0;
 
     for (const item of videoConfigs) {
         const deckFile = item.slide_deck_file;
@@ -255,6 +256,33 @@ function scanDir() {
                 sizeFormatted: 'Web Tool',
                 extension: 'url',
                 type: 'Tool',
+                category: cat,
+                youtubeUrl: targetUrl,
+                mtime: 0
+            });
+        } else if (item.trainer) {
+            // Trainer entry
+            trainerCounter++;
+            const descriptor = item.trainer;
+            const prefixMatch = descriptor.match(/^(L\d+_[A-Za-z0-9_-]+?)(?:_S\d+|_|$)/);
+            const prefix = prefixMatch ? prefixMatch[1] : (currentDeckPrefix || 'Trainer');
+            const cleanTitleSlug = vTitle.replace(/[^a-zA-Z0-9_]+/g, '_').replace(/^_+|_+$/g, '');
+            const trainerName = `${descriptor}_Trainer_${cleanTitleSlug}`;
+
+            let cat = item.category;
+            if (!cat) {
+                const isLab = prefix.startsWith('L') && (prefix.includes('Manual_Counts') || prefix.includes('Slide_Prep') || prefix.includes('Slide_Eval'));
+                cat = isLab ? 'Laboratory / CBC_PBS' : currentCat;
+            }
+
+            results.push({
+                name: trainerName,
+                title: vTitle,
+                path: targetUrl,
+                size: 0,
+                sizeFormatted: 'Interactive Trainer',
+                extension: 'url',
+                type: 'Trainer',
                 category: cat,
                 youtubeUrl: targetUrl,
                 mtime: 0

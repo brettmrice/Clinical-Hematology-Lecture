@@ -235,6 +235,7 @@ function updateCategoryCounts() {
     const countVideo = scopedFiles.filter(f => f.type === 'Video').length;
     const countDemo = scopedFiles.filter(f => f.type === 'Demonstration').length;
     const countTool = scopedFiles.filter(f => f.type === 'Tool').length;
+    const countTrainer = scopedFiles.filter(f => f.type === 'Trainer').length;
     const countMaps = scopedFiles.filter(f => f.type === 'Mind Map').length;
 
     const elAll = document.getElementById('countAll');
@@ -243,6 +244,7 @@ function updateCategoryCounts() {
     const elVideo = document.getElementById('countVideo');
     const elDemo = document.getElementById('countDemo');
     const elTool = document.getElementById('countTool');
+    const elTrainer = document.getElementById('countTrainer');
     const elMaps = document.getElementById('countMaps');
 
     if (elAll) elAll.textContent = countAll;
@@ -251,6 +253,7 @@ function updateCategoryCounts() {
     if (elVideo) elVideo.textContent = countVideo;
     if (elDemo) elDemo.textContent = countDemo;
     if (elTool) elTool.textContent = countTool;
+    if (elTrainer) elTrainer.textContent = countTrainer;
     if (elMaps) elMaps.textContent = countMaps;
 }
 
@@ -268,6 +271,7 @@ function getFilteredFiles() {
         if (currentFilter === 'video' && file.type !== 'Video') return false;
         if (currentFilter === 'demonstration' && file.type !== 'Demonstration') return false;
         if (currentFilter === 'tool' && file.type !== 'Tool') return false;
+        if (currentFilter === 'trainer' && file.type !== 'Trainer') return false;
         if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
 
         // 3. Search text query
@@ -421,6 +425,7 @@ function renderCardGrid(container, files) {
                     'Video': [],
                     'Demonstration': [],
                     'Tool': [],
+                    'Trainer': [],
                     'Mind Map': [],
                     'Other': []
                 };
@@ -443,7 +448,7 @@ function renderCardGrid(container, files) {
                         </div>
                 `;
 
-                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Mind Map', 'Other'];
+                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
                 typeOrder.forEach(typeKey => {
                     const subFiles = typeSubgroups[typeKey];
                     if (!subFiles || subFiles.length === 0) return;
@@ -453,6 +458,7 @@ function renderCardGrid(container, files) {
                     if (typeKey === 'Video') typeLabel = 'Videos';
                     if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
                     if (typeKey === 'Tool') typeLabel = 'Interactive Tools';
+                    if (typeKey === 'Trainer') typeLabel = 'Trainers';
                     if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
                     if (typeKey === 'Discussion') typeLabel = 'Discussions';
 
@@ -470,6 +476,7 @@ function renderCardGrid(container, files) {
                         if (file.type === 'Video') badgeClass = 'badge-video';
                         if (file.type === 'Demonstration') badgeClass = 'badge-demo';
                         if (file.type === 'Tool') badgeClass = 'badge-tool';
+                        if (file.type === 'Trainer') badgeClass = 'badge-trainer';
                         if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
                         const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
@@ -555,6 +562,7 @@ function renderTree(container, files) {
                     'Video': [],
                     'Demonstration': [],
                     'Tool': [],
+                    'Trainer': [],
                     'Mind Map': [],
                     'Other': []
                 };
@@ -579,7 +587,7 @@ function renderTree(container, files) {
                         <div class="tree-folder-items" style="padding-left: 8px;">
                 `;
 
-                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Mind Map', 'Other'];
+                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
                 typeOrder.forEach(typeKey => {
                     const subFiles = typeSubgroups[typeKey];
                     if (!subFiles || subFiles.length === 0) return;
@@ -589,6 +597,7 @@ function renderTree(container, files) {
                     if (typeKey === 'Video') typeLabel = 'Videos';
                     if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
                     if (typeKey === 'Tool') typeLabel = 'Interactive Tools';
+                    if (typeKey === 'Trainer') typeLabel = 'Trainers';
                     if (typeKey === 'Mind Map') typeLabel = 'Mind Maps';
                     if (typeKey === 'Discussion') typeLabel = 'Discussions';
 
@@ -604,6 +613,7 @@ function renderTree(container, files) {
                         if (file.type === 'Video') badgeClass = 'badge-video';
                         if (file.type === 'Demonstration') badgeClass = 'badge-demo';
                         if (file.type === 'Tool') badgeClass = 'badge-tool';
+                        if (file.type === 'Trainer') badgeClass = 'badge-trainer';
                         if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
                         const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
