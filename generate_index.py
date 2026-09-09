@@ -29,10 +29,18 @@ TOPIC_TITLE_MAP = {
     "L2_BCE_RBC-HGB": "Erythrocytes & Hemoglobin",
     "L3_BCE_WBC-PLT": "Leukocytes & Platelets",
     "L4_RBC_Analysis": "RBC Analysis",
+    "L5_Iron_and_Heme": "Iron & Heme",
+    "L6_Hemoglobinopathies": "Hemoglobinopathy & Thalassemia",
+    "L7_Macros_Hypos": "Macrocytic & Hypoproliferative",
+    "L8_Hemolytic": "Hemolytic",
     "L1_Manual_Counts": "Manual Counts",
     "L2_Slide_Preparation": "Slide Preparation",
     "L3_Slide_Evaluation": "Slide Evaluation",
-    "L4_CBC_Analysis": "CBC Analysis"
+    "L4_CBC_Analysis": "CBC Analysis",
+    "L5_Microcytic": "Microcytic Anemias",
+    "L6_Hemoglobinopathy": "Hemoglobinopathy",
+    "L7_Macrocytic": "Macrocytic",
+    "L8_Normocytic": "Normocytic"
 }
 
 def get_file_type(filename):
@@ -42,7 +50,7 @@ def get_file_type(filename):
         return "Slide Deck"
     if "mind_map" in lower_name:
         return "Mind Map"
-    if "discussion" in lower_name:
+    if "discussion" in lower_name or "laboratory_investigation" in lower_name or "investigation" in lower_name:
         return "Discussion"
     if ext in [".html", ".htm"]:
         return "HTML Note"
@@ -64,7 +72,7 @@ def extract_display_title(full_path, filename, file_type):
                 match = re.search(r"<title>(.*?)</title>", content, re.IGNORECASE)
                 if match:
                     raw_title = match.group(1).strip()
-                    clean = re.sub(r"\s*-\s*(Complete Discussion|Interactive Mind Map|Discussion|Mind Map)$", "", raw_title, flags=re.IGNORECASE).strip()
+                    clean = re.sub(r"\s*[\-\|]\s*(Complete Discussion|Laboratory Investigation|Interactive Mind Map|Discussion|Mind Map|Investigation)\s*$", "", raw_title, flags=re.IGNORECASE).strip()
                     if clean:
                         return clean
         except Exception:

@@ -28,10 +28,18 @@ const TOPIC_TITLE_MAP = {
     'L2_BCE_RBC-HGB': 'Erythrocytes & Hemoglobin',
     'L3_BCE_WBC-PLT': 'Leukocytes & Platelets',
     'L4_RBC_Analysis': 'RBC Analysis',
+    'L5_Iron_and_Heme': 'Iron & Heme',
+    'L6_Hemoglobinopathies': 'Hemoglobinopathy & Thalassemia',
+    'L7_Macros_Hypos': 'Macrocytic & Hypoproliferative',
+    'L8_Hemolytic': 'Hemolytic',
     'L1_Manual_Counts': 'Manual Counts',
     'L2_Slide_Preparation': 'Slide Preparation',
     'L3_Slide_Evaluation': 'Slide Evaluation',
-    'L4_CBC_Analysis': 'CBC Analysis'
+    'L4_CBC_Analysis': 'CBC Analysis',
+    'L5_Microcytic': 'Microcytic Anemias',
+    'L6_Hemoglobinopathy': 'Hemoglobinopathy',
+    'L7_Macrocytic': 'Macrocytic',
+    'L8_Normocytic': 'Normocytic'
 };
 
 function getFileType(filename) {
@@ -39,7 +47,7 @@ function getFileType(filename) {
     const lowerName = filename.toLowerCase();
     if (ext === '.pdf') return 'Slide Deck';
     if (lowerName.includes('mind_map')) return 'Mind Map';
-    if (lowerName.includes('discussion')) return 'Discussion';
+    if (lowerName.includes('discussion') || lowerName.includes('laboratory_investigation') || lowerName.includes('investigation')) return 'Discussion';
     if (ext === '.html' || ext === '.htm') return 'HTML Note';
     if (ext === '.md') return 'Markdown Document';
     return 'Document';
@@ -60,7 +68,7 @@ function extractDisplayTitle(fullPath, filename, fileType) {
             const match = content.match(/<title>(.*?)<\/title>/i);
             if (match) {
                 const rawTitle = match[1].trim();
-                const clean = rawTitle.replace(/\s*-\s*(Complete Discussion|Interactive Mind Map|Discussion|Mind Map)$/i, '').trim();
+                const clean = rawTitle.replace(/\s*[\-\|]\s*(Complete Discussion|Laboratory Investigation|Interactive Mind Map|Discussion|Mind Map|Investigation)\s*$/i, '').trim();
                 if (clean) return clean;
             }
         } catch (e) {

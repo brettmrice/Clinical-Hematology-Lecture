@@ -1,5 +1,6 @@
 let filesData = [];
 let currentSection = 'all'; // 'all', 'lecture', or 'laboratory'
+let currentModule = 'all';  // 'all', 'Physiology', 'CBC_PBS', or 'Erythrocyte'
 let currentFilter = 'all';   // 'all', 'discussion', 'pdf', 'video', or 'mindmap'
 let currentSearch = '';
 let currentView = 'grid';   // 'grid' or 'tree'
@@ -9,9 +10,18 @@ const TOPIC_CONFIG = {
     'L2_BCE_RBC-HGB': { title: 'L2 · Erythrocytes & Hemoglobin', domain: 'lecture' },
     'L3_BCE_WBC-PLT': { title: 'L3 · Leukocytes & Platelets', domain: 'lecture' },
     'L4_RBC_Analysis': { title: 'L4 · RBC Analysis', domain: 'lecture' },
+    'L5_Iron_and_Heme': { title: 'L5 · Iron & Heme', domain: 'lecture' },
+    'L6_Hemoglobinopathies': { title: 'L6 · Hemoglobinopathy & Thalassemia', domain: 'lecture' },
+    'L7_Macros_Hypos': { title: 'L7 · Macrocytic & Hypoproliferative', domain: 'lecture' },
+    'L8_Hemolytic': { title: 'L8 · Hemolytic', domain: 'lecture' },
     'L1_Manual_Counts': { title: 'L1 · Manual Counts', domain: 'laboratory' },
     'L2_Slide_Preparation': { title: 'L2 · Slide Preparation', domain: 'laboratory' },
-    'L3_Slide_Evaluation': { title: 'L3 · Slide Evaluation', domain: 'laboratory' }
+    'L3_Slide_Evaluation': { title: 'L3 · Slide Evaluation', domain: 'laboratory' },
+    'L4_CBC_Analysis': { title: 'L4 · CBC Analysis', domain: 'laboratory' },
+    'L5_Microcytic': { title: 'L5 · Microcytic Anemias', domain: 'laboratory' },
+    'L6_Hemoglobinopathy': { title: 'L6 · Hemoglobinopathy', domain: 'laboratory' },
+    'L7_Macrocytic': { title: 'L7 · Macrocytic', domain: 'laboratory' },
+    'L8_Normocytic': { title: 'L8 · Normocytic', domain: 'laboratory' }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -133,6 +143,29 @@ function getDomainKey(file) {
     return 'lecture';
 }
 
+function getModuleKey(file) {
+    const cat = (file.category || '').toLowerCase();
+    const path = (file.path || '').toLowerCase();
+    if (cat.includes('physiology') || path.includes('/physiology/')) return 'Physiology';
+    if (cat.includes('cbc_pbs') || cat.includes('cbc & pbs') || path.includes('/cbc_pbs/')) return 'CBC_PBS';
+    if (cat.includes('erythrocyte') || path.includes('/erythrocytes/') || path.includes('/erythrocyte/')) return 'Erythrocyte';
+    return 'Other';
+}
+
+function getBadgeLabel(file) {
+    const lowerName = (file.name || '').toLowerCase();
+    const lowerTitle = (file.title || '').toLowerCase();
+    if (lowerName.includes('investigation') || lowerTitle.includes('investigation')) {
+        return 'Investigation';
+    }
+    return file.type;
+}
+
+function cleanDisplayTitle(rawTitle, fileName) {
+    let title = rawTitle || fileName.replace(/\.[^/.]+$/, '').replace(/_/g, ' ');
+    return title.replace(/\s*[\-\|]\s*(Complete Discussion|Laboratory Investigation|Interactive Mind Map|Discussion|Mind Map|Investigation)\s*$/gi, '').trim();
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
     // Search input
@@ -150,23 +183,35 @@ function setupEventListeners() {
         themeBtn.addEventListener('click', toggleTheme);
     }
 
-    // Section Selector Tabs (All, Lecture, Laboratory)
-    const sectionTabs = document.querySelectorAll('.section-tab');
-    sectionTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            sectionTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            currentSection = tab.getAttribute('data-section');
+    // Domain / Folder Filter Chips (All, Lecture, Laboratory)
+    const domainChips = document.querySelectorAll('.chip-domain');
+    domainChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            domainChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentSection = chip.getAttribute('data-domain');
             updateCategoryCounts();
             render();
         });
     });
 
-    // Filter Chips
-    const chips = document.querySelectorAll('.chip');
-    chips.forEach(chip => {
+    // Module / Subfolder Filter Chips (All, Physiology, CBC & PBS, Erythrocyte)
+    const moduleChips = document.querySelectorAll('.chip-module');
+    moduleChips.forEach(chip => {
         chip.addEventListener('click', () => {
-            chips.forEach(c => c.classList.remove('active'));
+            moduleChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentModule = chip.getAttribute('data-module');
+            updateCategoryCounts();
+            render();
+        });
+    });
+
+    // Resource Type Filter Chips
+    const typeChips = document.querySelectorAll('.chip-type');
+    typeChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            typeChips.forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
             currentFilter = chip.getAttribute('data-filter');
             render();
@@ -211,23 +256,44 @@ function setupEventListeners() {
     window.addEventListener('hashchange', checkUrlHashTarget);
 }
 
-// Count items for section tabs and chips
+// Count items for domain chips, module chips, and type chips
 function updateCategoryCounts() {
-    const countSectionAll = filesData.length;
-    const countSectionLecture = filesData.filter(f => getDomainKey(f) === 'lecture').length;
-    const countSectionLab = filesData.filter(f => getDomainKey(f) === 'laboratory').length;
+    const countDomainAll = filesData.length;
+    const countDomainLecture = filesData.filter(f => getDomainKey(f) === 'lecture').length;
+    const countDomainLab = filesData.filter(f => getDomainKey(f) === 'laboratory').length;
 
-    const elSecAll = document.getElementById('countSectionAll');
-    const elSecLec = document.getElementById('countSectionLecture');
-    const elSecLab = document.getElementById('countSectionLab');
-    if (elSecAll) elSecAll.textContent = countSectionAll;
-    if (elSecLec) elSecLec.textContent = countSectionLecture;
-    if (elSecLab) elSecLab.textContent = countSectionLab;
+    const elDomAll = document.getElementById('countDomainAll');
+    const elDomLec = document.getElementById('countDomainLecture');
+    const elDomLab = document.getElementById('countDomainLab');
+    if (elDomAll) elDomAll.textContent = countDomainAll;
+    if (elDomLec) elDomLec.textContent = countDomainLecture;
+    if (elDomLab) elDomLab.textContent = countDomainLab;
 
-    // Files scoped to the active section for the chip counts
-    const scopedFiles = currentSection === 'all'
+    // Files scoped to the active domain for module counts
+    const domainScopedFiles = currentSection === 'all'
         ? filesData
         : filesData.filter(f => getDomainKey(f) === currentSection);
+
+    const countModAll = domainScopedFiles.length;
+    const countModPhys = domainScopedFiles.filter(f => getModuleKey(f) === 'Physiology').length;
+    const countModCBC = domainScopedFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
+    const countModEryth = domainScopedFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
+
+    const elModAll = document.getElementById('countModuleAll');
+    const elModPhys = document.getElementById('countModulePhysiology');
+    const elModCBC = document.getElementById('countModuleCBC');
+    const elModEryth = document.getElementById('countModuleErythrocyte');
+
+    if (elModAll) elModAll.textContent = countModAll;
+    if (elModPhys) elModPhys.textContent = countModPhys;
+    if (elModCBC) elModCBC.textContent = countModCBC;
+    if (elModEryth) elModEryth.textContent = countModEryth;
+
+    // Files scoped to active domain and active module for the type chip counts
+    const scopedFiles = domainScopedFiles.filter(f => {
+        if (currentModule === 'all') return true;
+        return getModuleKey(f) === currentModule;
+    });
 
     const countAll = scopedFiles.length;
     const countDisc = scopedFiles.filter(f => f.type === 'Discussion').length;
@@ -260,12 +326,18 @@ function updateCategoryCounts() {
 // Filter logic
 function getFilteredFiles() {
     const filtered = filesData.filter(file => {
-        // 1. Section tab filter (All, Lecture, Laboratory)
+        // 1. Folder / Domain filter (All, Lecture, Laboratory)
         const domain = getDomainKey(file);
         if (currentSection === 'lecture' && domain !== 'lecture') return false;
         if (currentSection === 'laboratory' && domain !== 'laboratory') return false;
 
-        // 2. Resource type filter chip
+        // 2. Module / Subfolder filter (All, Physiology, CBC & PBS, Erythrocyte)
+        if (currentModule !== 'all') {
+            const mod = getModuleKey(file);
+            if (mod !== currentModule) return false;
+        }
+
+        // 3. Resource type filter chip
         if (currentFilter === 'discussion' && file.type !== 'Discussion') return false;
         if (currentFilter === 'pdf' && file.type !== 'Slide Deck') return false;
         if (currentFilter === 'video' && file.type !== 'Video') return false;
@@ -274,7 +346,7 @@ function getFilteredFiles() {
         if (currentFilter === 'trainer' && file.type !== 'Trainer') return false;
         if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
 
-        // 3. Search text query
+        // 4. Search text query
         if (currentSearch) {
             const topicInfo = getTopicInfo(file);
             const matchName = file.name.toLowerCase().includes(currentSearch);
@@ -479,15 +551,16 @@ function renderCardGrid(container, files) {
                         if (file.type === 'Trainer') badgeClass = 'badge-trainer';
                         if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
-                        const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                        const displayTitle = cleanDisplayTitle(file.title, file.name);
                         const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
                         const catFormatted = formatCategory(file.category);
+                        const badgeLabel = getBadgeLabel(file);
 
                         html += `
                             <div class="card" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                                 <div>
                                     <div class="card-header">
-                                        <span class="card-badge ${badgeClass}">${file.type}</span>
+                                        <span class="card-badge ${badgeClass}">${badgeLabel}</span>
                                         <span class="card-category">${escapeHtml(catFormatted)}</span>
                                     </div>
                                     <div class="card-title">${escapeHtml(displayTitle)}</div>
@@ -616,13 +689,14 @@ function renderTree(container, files) {
                         if (file.type === 'Trainer') badgeClass = 'badge-trainer';
                         if (file.type === 'Mind Map') badgeClass = 'badge-map';
 
-                        const displayTitle = file.title || file.name.replace(/\.[^/.]+$/, "").replace(/_/g, " ");
+                        const displayTitle = cleanDisplayTitle(file.title, file.name);
                         const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
+                        const badgeLabel = getBadgeLabel(file);
 
                         html += `
                             <div class="tree-item" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                                 <div class="tree-item-left">
-                                    <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${file.type}</span>
+                                    <span class="card-badge ${badgeClass}" style="padding: 2px 8px; font-size: 0.7rem;">${badgeLabel}</span>
                                     <span class="tree-item-name">${escapeHtml(displayTitle)}</span>
                                 </div>
                                 <div class="tree-item-actions">
