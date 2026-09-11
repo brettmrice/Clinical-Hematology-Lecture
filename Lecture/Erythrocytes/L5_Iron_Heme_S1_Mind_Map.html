@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iron & Heme - Interactive Mind Map</title>
+  <title>Iron Heme - Interactive Mind Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -118,6 +118,37 @@
       color: #475569;
       transition: all 0.2s ease;
       white-space: nowrap;
+    }
+
+    .top-highyield-card {
+      top: 116px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #b45309;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+      background: rgba(254, 252, 232, 0.95);
+    }
+
+    .top-highyield-card:hover {
+      background: #fef08a;
+      color: #78350f;
+      border-color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.2);
+    }
+
+    .top-highyield-card.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 4px 12px rgba(217, 119, 6, 0.3);
     }
 
     .top-collapse-card:hover, .top-expand-card:hover {
@@ -340,6 +371,46 @@
       font-weight: 600;
     }
 
+    /* High-Yield Filter Styling */
+    .node.high-yield-node::before {
+      content: '⚡';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    body.high-yield-mode .node:not(.is-high-yield-branch) {
+      opacity: 0.22 !important;
+      filter: grayscale(65%);
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.is-high-yield-branch {
+      opacity: 1.0 !important;
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.high-yield-node {
+      box-shadow: 0 0 0 2.5px #f59e0b, 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+      border-color: #d97706 !important;
+      font-weight: 700;
+    }
+
+    body.high-yield-mode .connection-line:not(.is-high-yield-path) {
+      opacity: 0.15 !important;
+      stroke: #cbd5e1 !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease;
+    }
+
+    body.high-yield-mode .connection-line.is-high-yield-path {
+      opacity: 1.0 !important;
+      stroke: #d97706 !important;
+      stroke-width: 2.5px !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    }
+
     /* SVG Connecting Lines */
     .connection-line {
       fill: none;
@@ -380,7 +451,7 @@
 
   <!-- Top Floating Element 1: Title Card -->
   <div class="floating-panel top-title-card">
-    <h1 id="topic-title">Iron & Heme</h1>
+    <h1 id="topic-title">Iron Heme</h1>
   </div>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
@@ -406,6 +477,12 @@
     Expand All
   </div>
 
+  <!-- Top Floating Element 5: High-Yield Toggle Card -->
+  <div class="floating-panel top-highyield-card" id="btn-high-yield">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    High-Yield Only
+  </div>
+
   <!-- Canvas Viewport -->
   <div id="viewport">
     <svg id="mindmap-svg">
@@ -427,242 +504,140 @@
     // --- MIND MAP DATA STRUCTURE ---
     const mindMapData = {
   "id": "root",
-  "text": "Iron & Heme",
+  "text": "Iron Heme",
   "level": 0,
+  "high_yield": true,
   "children": [
     {
       "id": "sec-anemia-mech",
-      "text": "Anemia Mechanisms and Compensations",
+      "text": "Anemia Mechanisms and Reticulocytes",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
-          "id": "sub-erythro-balance",
-          "text": "Erythrocyte Dynamic Equilibrium",
+          "id": "sub-erythro-kinetics",
+          "text": "Erythrocyte Kinetics and Compensation",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-marrow-prod",
-              "text": "Bone Marrow Output",
+              "id": "node-kinetics-eq",
+              "text": "Dynamic Equilibrium",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-daily-turnover",
-                  "text": "Daily Turnover 1%",
+                  "text": "Daily Turnover ~1%",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-daily-count",
-                  "text": "20-25 x 10^9 Cells/Day",
+                  "id": "node-rbc-lifespan",
+                  "text": "RBC Lifespan 100-120 Days",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-marrow-expansion",
-                  "text": "Expands 6-8x Baseline",
+                  "id": "node-bm-expansion",
+                  "text": "Marrow Expansion 6-8x",
                   "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-circ-lifespan",
-              "text": "Circulatory Lifespan",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-normal-lifespan",
-                  "text": "100-120 Days",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-res-clearance",
-              "text": "Reticuloendothelial Clearance",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-res-spleen",
-                  "text": "Splenic Macrophages",
-                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-res-liver",
-                  "text": "Hepatic Kupffer Cells",
+                  "id": "node-me-ratio",
+                  "text": "M:E Ratio Shift",
                   "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-erythroid-hyperplasia",
-              "text": "Erythroid Hyperplasia",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-me-baseline",
-                  "text": "Normal M:E 2:1-4:1",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-me-inversion",
-                  "text": "Inverted M:E 1:2-1:3",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-anemia-pathophys",
-          "text": "Pathophysiological Mechanisms",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-accel-loss",
-              "text": "Accelerated Erythrocyte Loss",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-mech-hemolysis",
-                  "text": "Active Hemolysis",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-mech-hemorrhage",
-                  "text": "Overt Hemorrhage",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-impaired-prod",
-              "text": "Impaired Marrow Production",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hypoprolif",
-                  "text": "Stem Cell Hypoproliferation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-ineffective-eryth",
-                  "text": "Ineffective Erythropoiesis",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-epo-defic",
-                  "text": "EPO Synthesis Failure",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-physio-comp",
-          "text": "Physiological Compensations",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-cardiovasc-adapt",
-              "text": "Cardiovascular Adaptations",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-vasodilation",
-                  "text": "Arterial Vasodilation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-viscosity-drop",
-                  "text": "Decreased Blood Viscosity",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-cardiac-output",
-                  "text": "Increased Cardiac Output",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-selective-shunting",
-                  "text": "Central Oxygen Shunting",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-pulm-adapt",
-              "text": "Pulmonary Adaptations",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-chemoreceptors",
-                  "text": "Chemoreceptor Triggering",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hyperventilation",
-                  "text": "Tachypnea and Hyperpnea",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-biochem-offload",
-              "text": "Biochemical Oxygen Offloading",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-rapoport-shunt",
-                  "text": "Rapoport-Luebering Shunt",
-                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-bpg-synth",
-                      "text": "Increased 2,3-BPG Synthesis",
+                      "id": "node-me-normal",
+                      "text": "Normal Ratio 2:1-4:1",
                       "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-me-hyperplasia",
+                      "text": "Erythroid Inversion 1:2-1:3",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-physio-comp",
+              "text": "Hypoxia Compensatory Mechanisms",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hemodynamic",
+                  "text": "Hemodynamic Adjustments",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-vasodilation",
+                      "text": "Systemic Arterial Vasodilation",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-cardiac-output",
+                      "text": "Increased Cardiac Output",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-selective-flow",
+                      "text": "Selective Shunting to Vitals",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-t-state",
-                  "text": "T-State Conformation",
+                  "id": "node-bpg-pathway",
+                  "text": "Rapoport-Luebering Shunt",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-salt-bridges",
-                      "text": "Beta Chain Salt Bridges",
+                      "id": "node-23bpg-elev",
+                      "text": "Elevated 2,3-BPG Synthesis",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-right-shift",
-                      "text": "Rightward Curve Shift",
+                      "id": "node-t-state",
+                      "text": "T-State Deoxyhemoglobin Stabilization",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-curve-right",
+                      "text": "Right-Shifted Dissociation Curve",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
                       "id": "node-p50-rise",
-                      "text": "Increased P50 > 26.6 mmHg",
+                      "text": "Increased P50 (>26.6 mmHg)",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -671,403 +646,137 @@
                   "id": "node-bohr-effect",
                   "text": "Bohr Effect",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-lactic-acid",
-                      "text": "Lactic Acid Accumulation",
+                      "id": "node-acidosis",
+                      "text": "Tissue Acidosis (H+ Accumulation)",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
-                      "id": "node-histidine-prot",
-                      "text": "Histidine Protonation",
+                      "id": "node-histidine-proton",
+                      "text": "Histidine Residue Protonation",
                       "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-renal-adapt",
-              "text": "Renal Endocrine Signaling",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hif1a",
-                  "text": "HIF-1alpha Stabilization",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-epo-secretion",
-                  "text": "Peritubular EPO Secretion",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-apoptosis-block",
-                  "text": "Erythroblast Apoptosis Blockade",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-loss-tempo",
-          "text": "Blood Loss Kinetics",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-hyperacute-hem",
-              "text": "Hyperacute Hemorrhage",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-false-norm",
-                  "text": "Falsely Normal Hb/Hct",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-fluid-shift",
-                  "text": "Fluid Shift 24-72h",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-unmasked-anemia",
-                  "text": "Delayed Anemia Manifestation",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-chronic-hem",
-              "text": "Chronic Blood Loss",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-plasma-expansion",
-                  "text": "Compensatory Plasma Expansion",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-tolerated-low",
-                  "text": "Tolerates Hb < 5.0 g/dL",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-loss-severity",
-              "text": "Volume Loss Strata",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-loss-lt20",
-                  "text": "< 20% (< 1000 mL)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-loss-lt20-symp",
-                      "text": "Resting Asymptomatic",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-loss-2030",
-                  "text": "20-30% (1000-1500 mL)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-loss-2030-symp",
-                      "text": "Postural Hypotension",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-loss-3040",
-                  "text": "30-40% (1500-2000 mL)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-loss-3040-symp",
-                      "text": "Circulatory Collapse",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-loss-gt50",
-                  "text": "> 50% (> 2500 mL)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-loss-gt50-symp",
-                      "text": "Hypovolemic Shock",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-vol-distortions",
-              "text": "Volume Distortions",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-pseudoanemia",
-                  "text": "Pseudoanemia Hemodilution",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-pseudoanemia-causes",
-                      "text": "Pregnancy, CHF, IV Fluids",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-pseudopoly",
-                  "text": "Pseudopolycythemia Hemoconcentration",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-pseudopoly-causes",
-                      "text": "Dehydration, Burns, Diuretics",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-hypoxia-adapt",
-                  "text": "Secondary Polycythemia",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-altitude-smokers",
-                      "text": "High Altitude and Smoking",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-retic-metrics",
-      "text": "Reticulocyte Metrics and Diagnostics",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-retic-biology",
-          "text": "Reticulocyte Biology",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-transitional-stage",
-              "text": "Transitional Enucleated Erythrocyte",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-maturation-times",
-              "text": "Maturation Duration",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-marrow-retic",
-                  "text": "Marrow Reticulocyte 2-3 Days",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-pb-retic",
-                  "text": "Peripheral Reticulocyte 1-2 Days",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-supravital",
-          "text": "Supravital Staining",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-supravital-dyes",
-              "text": "Cationic Dyes",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-nmb",
-                  "text": "New Methylene Blue",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-bcb",
-                  "text": "Brilliant Cresyl Blue",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-staining-mechanism",
-              "text": "Ribosomal Precipitation",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-organelles-stained",
-                  "text": "Precipitates RNA and Mitochondria",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-retic-definition",
-              "text": "Enumeration Standard",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-granule-count",
-                  "text": ">= 2 Discrete Granules",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-quantitative-counts",
-          "text": "Quantitative Formulations",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-arc",
-              "text": "Absolute Reticulocyte Count",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-arc-formula",
-                  "text": "RBC x Retic% x 10",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-arc-ref",
-                  "text": "Normal 25-75 x 10^9/L",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-crc",
-              "text": "Corrected Reticulocyte Count",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-crc-formula",
-                  "text": "Retic% x (Hct / 45%)",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-crc-cutoff",
-                  "text": "Threshold 2%",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-rpi",
-              "text": "Reticulocyte Production Index",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-rpi-formula",
-                  "text": "CRC / Maturation Factor",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-shift-factors",
-                  "text": "Shift Maturation Factors",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-shift-45",
-                      "text": "Hct 40-45% = 1.0 Day",
-                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
-                      "id": "node-shift-35",
-                      "text": "Hct 35-39% = 1.5 Days",
+                      "id": "node-o2-offloading",
+                      "text": "Facilitated Oxygen Offloading",
                       "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-shift-25",
-                      "text": "Hct 25-34% = 2.0 Days",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-shift-15",
-                      "text": "Hct 15-24% = 2.5 Days",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-shift-lt15",
-                      "text": "Hct < 15% = 3.0 Days",
-                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-rpi-interpretation",
-                  "text": "RPI Interpretive Thresholds",
+                  "id": "node-hif-epo",
+                  "text": "Renal Endocrine Signaling",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-rpi-hypo",
-                      "text": "RPI < 2.0 Hypoproliferative",
+                      "id": "node-hif1a",
+                      "text": "HIF-1alpha Stabilization",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-rpi-hyper",
-                      "text": "RPI >= 2.0 Regenerative",
+                      "id": "node-epo-secretion",
+                      "text": "Renal Cortical EPO Secretion",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-apoptosis-block",
+                      "text": "Blocks Erythroblast Apoptosis",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-blood-loss-dyn",
+              "text": "Blood Loss Dynamics",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-acute-loss",
+                  "text": "Hyperacute Hemorrhage",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-normovolemic-drop",
+                      "text": "Initial Normal Hb and Hct",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-fluid-shift",
+                      "text": "Fluid Shift (24-72 Hours)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-delayed-drop",
+                      "text": "Unmasked Dilutional Anemia",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-chronic-loss",
+                  "text": "Chronic Blood Loss",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-plasma-comp",
+                      "text": "Compensated Plasma Expansion",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-low-hb-tolerated",
+                      "text": "Tolerates Severe Drops (<5 g/dL)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-volume-artifacts",
+                  "text": "Plasma Volume Distortions",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-pseudoanemia",
+                      "text": "Pseudoanemia via Hypervolemia",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-pseudopoly",
+                      "text": "Pseudopolycythemia via Dehydration",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
@@ -1077,371 +786,870 @@
           ]
         },
         {
-          "id": "sub-auto-retic",
-          "text": "Automated Reticulocyte Indices",
+          "id": "sub-retic-metrics",
+          "text": "Quantitative Reticulocyte Metrics",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-irf",
-              "text": "Immature Reticulocyte Fraction",
+              "id": "node-supravital",
+              "text": "Supravital Staining",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-irf-flow",
-                  "text": "Fluorescent RNA Staining",
+                  "id": "node-dyes",
+                  "text": "Cationic Dyes",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-irf-engraftment",
-                  "text": "Earliest Marrow Engraftment Marker",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-rethe",
-              "text": "Reticulocyte Hemoglobin Equivalent",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-rethe-measure",
-                  "text": "Real-Time Iron Incorporation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-rethe-detection",
-                  "text": "Detects Functional Iron Deficiency",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-hemolysis-dx",
-      "text": "Hemolytic Diagnostics",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-intravasc-hem",
-          "text": "Intravascular Hemolysis Pathway",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-hb-release",
-              "text": "Circulating Free Hemoglobin",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-dimers",
-                  "text": "Alpha-Beta Dimers in Plasma",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-haptoglobin-clearance",
-              "text": "Haptoglobin Depletion",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hapto-complex",
-                  "text": "1:1 Stoichiometric Binding",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-cd163-clearance",
-                  "text": "Hepatic CD163 Receptor Clearance",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hapto-low",
-                  "text": "Haptoglobin < 10 mg/dL",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-renal-handling",
-              "text": "Renal Hemoglobin Processing",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-glomerular-filter",
-                  "text": "Glomerular Filtration",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-tubular-absorb",
-                  "text": "Proximal Tubular Reabsorption",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hemoglobinuria",
-                  "text": "Gross Hemoglobinuria",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hemosiderinuria",
-                  "text": "Hemosiderinuria 48-72h Post-Event",
-                  "level": 4,
+                  "high_yield": false,
                   "children": [
                     {
-                      "id": "node-prussian-urine",
-                      "text": "Prussian Blue Positive Sediment",
+                      "id": "node-nmb",
+                      "text": "New Methylene Blue",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
+                    },
+                    {
+                      "id": "node-bcb",
+                      "text": "Brilliant Cresyl Blue",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-target-organelle",
+                  "text": "Precipitates Ribosomal RNA",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-retic-def",
+                  "text": ">=2 Discrete Granules/Threads",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-retic-calculations",
+              "text": "Reticulocyte Calculations",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-arc",
+                  "text": "Absolute Reticulocyte Count (ARC)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-arc-formula",
+                      "text": "RBC x (Retic% / 100)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-arc-ref",
+                      "text": "Reference 25-75 x10^9/L",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-crc",
+                  "text": "Corrected Reticulocyte Count (CRC)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-crc-formula",
+                      "text": "Retic% x (Patient Hct / 45)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-crc-cutoff",
+                      "text": "Hypoproliferative Cutoff <2%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-rpi",
+                  "text": "Reticulocyte Production Index (RPI)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-rpi-formula",
+                      "text": "CRC / Maturation Time",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-shift-factors",
+                      "text": "Maturation Shift Factors",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-sf-45",
+                          "text": "Hct 40-45%: 1.0 Day",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-sf-35",
+                          "text": "Hct 35-39%: 1.5 Days",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-sf-25",
+                          "text": "Hct 25-34%: 2.0 Days",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-sf-15",
+                          "text": "Hct 15-24%: 2.5 Days",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-sf-low",
+                          "text": "Hct <15%: 3.0 Days",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-rpi-interp",
+                      "text": "Diagnostic Interpretation",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-rpi-hypo",
+                          "text": "RPI <2.0: Hypoproliferative",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-rpi-regen",
+                          "text": "RPI >=2.0: Regenerative / Hemolysis",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-heme-scavenging",
-              "text": "Secondary Heme Scavenging",
+              "id": "node-auto-retic",
+              "text": "Automated Reticulocyte Indices",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-methemoglobin",
-                  "text": "Oxidation to Methemoglobin",
+                  "id": "node-irf",
+                  "text": "Immature Reticulocyte Fraction (IRF)",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hemopexin-depletion",
-                  "text": "Hemopexin Binding and Depletion",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-methemalbumin",
-                  "text": "Methemalbumin Formation",
-                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-schumm-peak",
-                      "text": "Schumm Peak 620 nm",
+                      "id": "node-irf-flow",
+                      "text": "High RNA Fluorescence",
                       "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-irf-engraftment",
+                      "text": "Earliest Engraftment Marker",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "node-ldh-spill",
-              "text": "Erythrocyte Enzyme Release",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-ldh-high",
-                  "text": "Strikingly Elevated Total LDH",
-                  "level": 4,
-                  "children": []
                 },
                 {
-                  "id": "node-ldh-isoenzymes",
-                  "text": "Flipped Ratio LDH1 > LDH2",
+                  "id": "node-rethe",
+                  "text": "Reticulocyte Hemoglobin (RET-He)",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-rethe-iron",
+                      "text": "Real-Time Iron Availability",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-rethe-window",
+                      "text": "Reflects Preceding 24-48 Hours",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-extravasc-hem",
-          "text": "Extravascular Hemolysis Pathway",
+          "id": "sub-hemo-diagnostics",
+          "text": "Hemolytic Pathways and Markers",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-res-phagocytosis",
-              "text": "Macrophage Phagocytosis",
+              "id": "node-intravascular",
+              "text": "Intravascular Hemolysis Pathway",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-cords-billroth",
-                  "text": "Splenic Cords of Billroth",
+                  "id": "node-iv-lysis",
+                  "text": "Circulatory Erythrocyte Lysis",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-target-defects",
-                  "text": "Sensitized or Rigid Erythrocytes",
+                  "id": "node-iv-hapto",
+                  "text": "Free Haptoglobin Depletion",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-hapto-complex",
+                      "text": "Dimeric Hb:Haptoglobin Complex",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-cd163-clear",
+                      "text": "Hepatic CD163 Receptor Clearance",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-hapto-drop",
+                      "text": "Plasma Haptoglobin <10 mg/dL",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-renal-filtration",
+                  "text": "Renal Glomerular Filtration",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-hemoglobinuria",
+                      "text": "Gross Hemoglobinuria",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-hemosiderinuria",
+                      "text": "Urine Hemosiderinuria (48-72h)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-heme-salvage",
+                  "text": "Secondary Heme Clearance",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-hemopexin",
+                      "text": "Hemopexin Binding & Depletion",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-methemalbumin",
+                      "text": "Methemalbumin Formation",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-schumm",
+                          "text": "Schumm Test Peak 620 nm",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "node-ldh-spike",
+                  "text": "Striking LDH Elevation",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ldh-flip",
+                      "text": "Isoenzyme Shift (LDH1 > LDH2)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 }
               ]
             },
             {
-              "id": "node-heme-catabolism",
-              "text": "Heme Ring Degradation",
+              "id": "node-extravascular",
+              "text": "Extravascular Hemolysis Pathway",
               "level": 3,
+              "high_yield": true,
               "children": [
+                {
+                  "id": "node-res-clearance",
+                  "text": "Macrophage Phagocytosis",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-splenic-cords",
+                      "text": "Splenic Cords of Billroth",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-splenomegaly",
+                      "text": "Reticuloendothelial Work Splenomegaly",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
                 {
                   "id": "node-heme-oxygenase",
-                  "text": "Heme Oxygenase Cleavage",
+                  "text": "Heme Catabolism",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-fe-recycled",
-                      "text": "Recycled Iron (Fe2+)",
+                      "id": "node-heme-ox-step",
+                      "text": "Heme Oxygenase Cleavage",
                       "level": 5,
-                      "children": []
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-cat-fe",
+                          "text": "Iron Recycling (Fe2+)",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-cat-co",
+                          "text": "Carbon Monoxide Exhalation",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-cat-bv",
+                          "text": "Biliverdin Intermediate",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
                     },
                     {
-                      "id": "node-co-liberated",
-                      "text": "Carbon Monoxide",
+                      "id": "node-bvr",
+                      "text": "Biliverdin Reductase",
                       "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-biliverdin-gen",
-                      "text": "Biliverdin Generation",
-                      "level": 5,
-                      "children": []
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-unconjugated-bili",
+                          "text": "Unconjugated (Indirect) Bilirubin",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "id": "node-biliverdin-red",
-                  "text": "Biliverdin Reductase",
+                  "id": "node-ev-biomarkers",
+                  "text": "Laboratory Biomarkers",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-indirect-bili",
-                      "text": "Unconjugated Indirect Bilirubin",
+                      "id": "node-bili-elev",
+                      "text": "Marked Unconjugated Hyperbilirubinemia",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-urobili-elev",
+                      "text": "Marked Urobilinogen Elevation",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-urine-hgb-neg",
+                      "text": "Negative Urine Free Hemoglobin",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-urine-hemo-neg",
+                      "text": "Negative Urine Hemosiderin",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-hapto-ev",
+                      "text": "Haptoglobin Normal to Low",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "node-hepatic-conjugation",
-              "text": "Hepatic Clearance and Conjugation",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-albumin-transport",
-                  "text": "Albumin Carrier Transport",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-glucuronidation",
-                  "text": "UDP-Glucuronosyltransferase Conjugation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-bile-secretion",
-                  "text": "Biliary Glucuronide Secretion",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-urobilinogen-cycle",
-              "text": "Enterohepatic Urobilinogen Cycle",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-stercobilin",
-                  "text": "Fecal Stercobilin Excretion",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-elevated-urobil",
-                  "text": "Elevated Urine Urobilinogen",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-clinical-signs-ev",
-              "text": "Extravascular Clinical Hallmarks",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-splenomegaly",
-                  "text": "Splenomegaly Work Hyperplasia",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-absent-urine-hb",
-                  "text": "Absent Urine Free Hemoglobin",
-                  "level": 4,
-                  "children": []
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-dat-testing",
-          "text": "Direct Antiglobulin Testing",
+          "id": "sub-class-systems",
+          "text": "Classification Systems & Inclusions",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-dat-principle",
-              "text": "Agglutination Analysis",
+              "id": "node-morph-class",
+              "text": "Morphological Classification",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-anti-igg",
-                  "text": "Monospecific Anti-IgG",
+                  "id": "node-micro-hypo",
+                  "text": "Microcytic Hypochromic",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-micro-cutoffs",
+                      "text": "MCV <80 fL, MCHC <32 g/dL",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-micro-causes",
+                      "text": "IDA, ACD, Thalassemias, Lead",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-anti-c3d",
-                  "text": "Monospecific Anti-C3d",
+                  "id": "node-normo-normo",
+                  "text": "Normocytic Normochromic",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-normo-cutoffs",
+                      "text": "MCV 80-100 fL, MCHC 32-36 g/dL",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-normo-split",
+                      "text": "Stratified by Reticulocyte RPI",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-macro-class",
+                  "text": "Macrocytic Normochromic",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-macro-cutoffs",
+                      "text": "MCV >100 fL, MCHC 32-36 g/dL",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-megaloblastic",
+                      "text": "Megaloblastic Defect",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-megalo-findings",
+                          "text": "Macro-Ovalocytes & Hypersegmented Neutrophils",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-megalo-etiology",
+                          "text": "B12 Deficiency, Folate, MDS",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-non-megaloblastic",
+                      "text": "Non-Megaloblastic Macrocytosis",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-nonmeg-findings",
+                          "text": "Round Macrocytes & Polychromasia",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-nonmeg-etiology",
+                          "text": "Liver Disease, Alcoholism, Reticulocytosis",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
             {
-              "id": "node-dat-differentiation",
-              "text": "Etiological Discrimination",
+              "id": "node-func-class",
+              "text": "Functional Kinetic Classification",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-warm-aiha",
-                  "text": "Positive Warm AIHA IgG",
+                  "id": "node-prolif-defects",
+                  "text": "Proliferation Defects",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-prolif-marrow",
+                      "text": "Hypocellular Marrow, RPI <2.0",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-prolif-causes",
+                      "text": "Aplastic Anemia, PRCA, CKD",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-cold-cad",
-                  "text": "Positive Cold Agglutinin C3d",
+                  "id": "node-matur-defects",
+                  "text": "Maturation Defects",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-matur-marrow",
+                      "text": "Hypercellular Marrow, RPI <2.0",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-matur-ineffective",
+                      "text": "Ineffective Intramedullary Apoptosis",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-matur-types",
+                      "text": "Nuclear vs Cytoplasmic Defects",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-maha-hs",
-                  "text": "Negative MAHA and Spherocytosis",
+                  "id": "node-surv-defects",
+                  "text": "Survival Defects",
                   "level": 4,
-                  "children": []
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-surv-marrow",
+                      "text": "Hypercellular Marrow, RPI >=2.0",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-surv-causes",
+                      "text": "Hemolytic Anemias, Acute Bleeding",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-lab-qc",
+              "text": "Laboratory Quality Control",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-rule-three",
+                  "text": "Rule of Three",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-r3-formula",
+                      "text": "RBCx3=Hb, Hbx3=Hct +/-3%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-r3-cold",
+                      "text": "Cold Agglutinins (Spurious Hct)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-r3-turbid",
+                      "text": "Lipemia Turbidity (Spurious Hb)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-rdw-dynamics",
+                  "text": "RDW Diagnostic Dynamics",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-rdw-high",
+                      "text": "High RDW (>15%): Anisocytosis (IDA)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-rdw-normal",
+                      "text": "Normal RDW (Beta-Thal Minor)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-inclusions",
+                  "text": "Erythrocyte Inclusions Differential",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-basophilic-stippling",
+                      "text": "Basophilic Stippling",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-bs-comp",
+                          "text": "Precipitated Ribosomal RNA",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-bs-stain",
+                          "text": "Prussian Blue Negative",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-bs-etiology",
+                          "text": "Lead Toxicity, Thalassemias",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-pappenheimer",
+                      "text": "Pappenheimer Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-papp-comp",
+                          "text": "Iron-Dense Mitochondrial Remnants",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-papp-stain",
+                          "text": "Prussian Blue Positive",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-papp-etiology",
+                          "text": "Sideroblastic Anemia, Asplenia",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-howell-jolly",
+                      "text": "Howell-Jolly Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-hj-comp",
+                          "text": "Nuclear DNA Fragments",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-hj-stain",
+                          "text": "Feulgen Positive, Prussian Negative",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-hj-etiology",
+                          "text": "Post-Splenectomy, Severe Megaloblastic",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-heinz-bodies",
+                      "text": "Heinz Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-heinz-comp",
+                          "text": "Denatured Oxidized Hemoglobin",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-heinz-stain",
+                          "text": "Invisible on Wright-Giemsa",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-heinz-supra",
+                          "text": "Requires Supravital Crystal Violet",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-heinz-etiology",
+                          "text": "G6PD Deficiency, Oxidant Stress",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -1450,66 +1658,85 @@
       ]
     },
     {
-      "id": "sec-classifications",
-      "text": "Morphological and Functional Classifications",
+      "id": "sec-iron-heme-disorders",
+      "text": "Iron Homeostasis and Heme Biosynthesis",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
-          "id": "sub-morph-class",
-          "text": "Morphological Framework (MCV/MCHC)",
+          "id": "sub-iron-metabolism",
+          "text": "Molecular Homeostasis and Biomarkers",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-micro-hypo",
-              "text": "Microcytic Hypochromic Group",
+              "id": "node-compartments",
+              "text": "Body Iron Compartments",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
-                  "id": "node-micro-indices",
-                  "text": "MCV < 80, MCHC < 32",
+                  "id": "node-func-pool",
+                  "text": "Functional Iron Pool",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-micro-smear",
-                  "text": "Central Pallor > 1/3",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-micro-diff",
-                  "text": "IDA, Thalassemia, Sideroblastic, Plumbism",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-normo-normo",
-              "text": "Normocytic Normochromic Group",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-normo-indices",
-                  "text": "MCV 80-100, MCHC 32-36",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-normo-rpi-strat",
-                  "text": "RPI Subclassification",
-                  "level": 4,
+                  "high_yield": false,
                   "children": [
                     {
-                      "id": "node-normo-hypo-rpi",
-                      "text": "RPI < 2 Aplastic/Renal",
+                      "id": "node-hb-iron",
+                      "text": "Hemoglobin (65-70%, Fe2+)",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-normo-hyper-rpi",
-                      "text": "RPI >= 2 Hemolysis/Hemorrhage",
+                      "id": "node-mb-iron",
+                      "text": "Myoglobin (4-5%)",
                       "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-enz-iron",
+                      "text": "Cytochromes & Catalase (~1%)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-storage-pool",
+                  "text": "Storage Iron Pool (20-30%)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ferritin-pool",
+                      "text": "Water-Soluble Apoferritin Shell",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-hemosiderin-pool",
+                      "text": "Insoluble Prussian-Positive Hemosiderin",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-trans-pool",
+                  "text": "Transport Iron Pool (<0.1%)",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-transferrin-bound",
+                      "text": "Circulating Transferrin-Bound Fe3+",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
@@ -1517,993 +1744,392 @@
               ]
             },
             {
-              "id": "node-macro-normo",
-              "text": "Macrocytic Group",
+              "id": "node-duodenal-abs",
+              "text": "Duodenal Enterocyte Absorption",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-macro-indices",
-                  "text": "MCV > 100 fL",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-megaloblastic-type",
-                  "text": "Megaloblastic Defect",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-megalo-path",
-                      "text": "Impaired DNA Synthesis",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-megalo-features",
-                      "text": "Macro-Ovalocytes and Hypersegmented PMNs",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-megalo-causes",
-                      "text": "B12 Deficiency, Folate, MDS",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-nonmegalo-type",
-                  "text": "Non-Megaloblastic Macrocytosis",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-round-macrocytes",
-                      "text": "Round Macrocytes Without Hypersegmentation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-nonmegalo-causes",
-                      "text": "Liver Disease, Alcoholism, Polychromasia",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-functional-class",
-          "text": "Functional Pathophysiological Framework",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-prolif-defects",
-              "text": "Proliferation Defects",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-prolif-marrow",
-                  "text": "Hypocellular Marrow Hypoplasia",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-prolif-rpi",
-                  "text": "RPI < 2.0 Low Retics",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-prolif-causes",
-                  "text": "Aplastic Anemia, PRCA, CKD",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-matur-defects",
-              "text": "Maturation Defects",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-ineffective-erythropoiesis",
-                  "text": "Ineffective Erythropoiesis",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-marrow-hyperplasia-matur",
-                      "text": "Erythroid Hyperplasia in Marrow",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-intramedullary-death",
-                      "text": "Intramedullary Precursor Apoptosis",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-matur-rpi",
-                      "text": "Low Peripheral Retics RPI < 2",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-nuclear-defects",
-                  "text": "Nuclear Maturation Class",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-b12-folate-mds",
-                      "text": "B12, Folate Deficiency, MDS",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-cyto-defects",
-                  "text": "Cytoplasmic Maturation Class",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-cyto-causes",
-                      "text": "Severe IDA, Thalassemias, Sideroblastic",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-survival-defects",
-              "text": "Survival Defects",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-survival-features",
-                  "text": "Lifespan Shortened < 100 Days",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-survival-rpi",
-                  "text": "Compensated Reticulocytosis RPI >= 2",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-survival-causes",
-                  "text": "Intrinsic/Extrinsic Hemolysis, Acute Loss",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-qc-inclusions",
-      "text": "Laboratory Quality Control and Inclusions",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-rule-three",
-          "text": "The Rule of Three",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-rule-equations",
-              "text": "Mathematical Proportions",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-r3-hb",
-                  "text": "RBC x 3 = Hemoglobin",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-r3-hct",
-                  "text": "Hb x 3 = Hematocrit +/- 3%",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-rule-violations",
-              "text": "Rule Violation Flags",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-cold-agglutinin-flag",
-                  "text": "Hct Disproportionate Cold Agglutinins",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-turbidity-flag",
-                  "text": "Hb Elevated Turbidity Lipemia",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-rdw-eval",
-          "text": "Red Cell Distribution Width",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-high-rdw",
-              "text": "Elevated RDW > 15%",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-anisocytosis",
-                  "text": "Significant Anisocytosis",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-early-ida-rdw",
-                  "text": "Early IDA, Mixed Deficiencies",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-norm-rdw",
-              "text": "Normal RDW 11.5-14.5%",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-thal-rdw",
-                  "text": "Beta-Thalassemia Minor Trait",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-rbc-inclusions",
-          "text": "Erythrocyte Inclusion Differentiation",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-basophilic-stippling",
-              "text": "Basophilic Stippling",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-stippling-comp",
-                  "text": "Precipitated Ribosomal RNA",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-stippling-stain",
-                  "text": "Prussian Blue Negative",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-stippling-assoc",
-                  "text": "Plumbism, Hemoglobinopathies, Thalassemias",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-pappenheimer",
-              "text": "Pappenheimer Bodies",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-papp-comp",
-                  "text": "Iron-Dense Mitochondrial Remnants",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-papp-stain",
-                  "text": "Prussian Blue Positive",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-papp-assoc",
-                  "text": "Sideroblastic Anemia, Post-Splenectomy",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-howell-jolly",
-              "text": "Howell-Jolly Bodies",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hj-comp",
-                  "text": "Nuclear DNA Fragments",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hj-stain",
-                  "text": "Feulgen Positive, Prussian Negative",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-hj-assoc",
-                  "text": "Hyposplenism, Post-Splenectomy, Megaloblastic",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-heinz-bodies",
-              "text": "Heinz Bodies",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-heinz-comp",
-                  "text": "Denatured Oxidized Hemoglobin",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-heinz-stain",
-                  "text": "Supravital Crystal Violet Only",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-heinz-wright",
-                  "text": "Invisible on Wright-Giemsa",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-heinz-assoc",
-                  "text": "G6PD Deficiency, Oxidant Stress",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-molecular-iron",
-      "text": "Molecular Iron Homeostasis",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-iron-pools",
-          "text": "Total Body Iron Compartments",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-total-content",
-              "text": "Total Content 3-5 Grams",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-female-mass",
-                  "text": "Females 3.0-4.0 g",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-male-mass",
-                  "text": "Males 4.0-5.0 g",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-functional-pool",
-              "text": "Functional Iron Compartment",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hb-iron",
-                  "text": "Hemoglobin Fe2+ (65-70%)",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-myoglobin-iron",
-                  "text": "Myoglobin (4-5%)",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-enzyme-iron",
-                  "text": "Cytochromes and Catalase (~1%)",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-storage-pool",
-              "text": "Storage Iron Compartment (20-30%)",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-ferritin-shell",
-                  "text": "Ferritin Water-Soluble Shell",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-apoferritin",
-                      "text": "24 Subunit Apoferritin Cage",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-ferritin-ions",
-                      "text": "Up to 4500 Fe3+",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-hemosiderin-pool",
-                  "text": "Hemosiderin Insoluble Complex",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-hemo-refractile",
-                      "text": "Golden-Brown Refractile Aggregates",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-hemo-prussian",
-                      "text": "Bright Blue Prussian Reaction",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-transport-pool",
-              "text": "Transport Iron Compartment",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-trans-pct",
-                  "text": "Circulating Pool < 0.1%",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-transferrin-glyco",
-                  "text": "Transferrin Hepatic Glycoprotein",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-duodenal-abs",
-          "text": "Duodenal Enterocyte Absorption",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-luminal-reduction",
-              "text": "Apical Ferric Reduction",
-              "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-dcytb",
-                  "text": "Duodenal Cytochrome b (Dcytb)",
+                  "text": "Apical Dcytb Reduction (Fe3+->Fe2+)",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-ascorbate-acid",
-                  "text": "Enhanced by Ascorbic Acid",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-apical-import",
-              "text": "Apical Membrane Transporters",
-              "level": 3,
-              "children": [
-                {
                   "id": "node-dmt1",
-                  "text": "Divalent Metal Transporter 1",
+                  "text": "Apical DMT1 Cotransport",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-hcp1",
-                  "text": "Heme Carrier Protein 1",
+                  "text": "Heme Internalization via HCP1",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-enterocyte-ho",
-                  "text": "Intracellular Heme Oxygenase",
+                  "id": "node-fpn1",
+                  "text": "Basolateral Ferroportin-1 Export",
                   "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hephaestin",
+                  "text": "Basolateral Hephaestin Ferroxidase",
+                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
             },
             {
-              "id": "node-basolateral-export",
-              "text": "Basolateral Iron Efflux",
+              "id": "node-hepcidin-axis",
+              "text": "Hepcidin-Ferroportin Regulatory Axis",
               "level": 3,
-              "children": [
-                {
-                  "id": "node-fpn1",
-                  "text": "Ferroportin-1 (FPN-1) Channel",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-ferroxidases",
-                  "text": "Ferroxidation to Fe3+",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-hephaestin",
-                      "text": "Hephaestin Copper Enzyme",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-ceruloplasmin",
-                      "text": "Plasma Ceruloplasmin Homolog",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-hepcidin-axis",
-          "text": "Hepcidin-Ferroportin Regulatory Axis",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-hepcidin-nature",
-              "text": "Hepcidin Peptide Properties",
-              "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-hepcidin-origin",
-                  "text": "25-Amino-Acid Hepatic Hormone",
+                  "text": "Hepatic 25-AA Peptide Hormone",
                   "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-hepcidin-mechanism",
-              "text": "Inhibitory Target Mechanism",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-fpn-binding",
-                  "text": "Binds Ferroportin Directly",
-                  "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-fpn-degradation",
-                  "text": "Phosphorylation and Lysosomal Degradation",
+                  "id": "node-hepcidin-mech",
+                  "text": "Internalizes & Degrades Ferroportin",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-iron-trapping",
-                  "text": "Traps Iron in Macrophages/Enterocytes",
+                  "id": "node-hepcidin-consequence",
+                  "text": "Blocks Enterocyte/Macrophage Iron Efflux",
                   "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-hepcidin-upreg",
-              "text": "Hepcidin Induction Pathways",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-il6-jak-stat",
-                  "text": "IL-6 via JAK/STAT3 Signaling",
-                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-iron-excess",
-                  "text": "Systemic Iron Overload Sensing",
+                  "id": "node-hepcidin-up",
+                  "text": "Upregulators",
                   "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-hepcidin-downreg",
-              "text": "Hepcidin Suppression Pathways",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-erfe",
-                  "text": "Erythroblast Erythroferrone (ERFE)",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-tissue-hypoxia",
-                  "text": "Tissue Hypoxia and Depletion",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-iron-panels",
-      "text": "Diagnostic Iron Panels",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-serum-iron",
-          "text": "Serum Iron",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-iron-method",
-              "text": "Ferrozine Acid Dissociation Method",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-iron-diurnal",
-              "text": "Marked Diurnal Fluctuation",
-              "level": 3,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "sub-tibc-trans",
-          "text": "Total Iron-Binding Capacity",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-tibc-indirect",
-              "text": "Indirect Transferrin Measure",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-trans-multiplier",
-                  "text": "Transferrin x 1.41 = TIBC",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-tibc-acute-phase",
-              "text": "Negative Acute-Phase Reactant",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-tibc-behavior",
-                  "text": "High in IDA, Low Inflammation",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-transferrin-sat",
-          "text": "Transferrin Saturation",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-tsat-calc",
-              "text": "Formula (Iron / TIBC) x 100",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-tsat-ref",
-              "text": "Normal 20-50% (Mean 33%)",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-tsat-cutoffs",
-              "text": "Diagnostic Thresholds",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-tsat-low",
-                  "text": "< 16% Inadequate Supply",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-tsat-high",
-                  "text": "> 50-60% Iron Overload",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-ferritin-assay",
-          "text": "Serum Ferritin Immunoassay",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-ferritin-linear",
-              "text": "1 ug/L = 8-10 mg Stores",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-ferritin-gold",
-              "text": "< 15 ug/L Storage Exhaustion",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-ferritin-acute-phase",
-              "text": "Positive Acute-Phase Reactant",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-elevated-inflam",
-                  "text": "Spurious Elevations in Inflammation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-adjusted-cutoff",
-                  "text": "Adjusted Cutoff < 50-100 ug/L",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-stfr-assay",
-          "text": "Soluble Transferrin Receptor",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-stfr-origin",
-              "text": "Cleaved Monomer CD71 Receptor",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-stfr-unaffected",
-              "text": "Unaffected by Systemic Inflammation",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-stfr-utility",
-              "text": "Distinguishes Pure IDA vs ACD",
-              "level": 3,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "sub-zpp-assay",
-          "text": "Zinc Protoporphyrin (ZPP)",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-zpp-enzymatic",
-              "text": "Ferrochelatase Zinc Substitution",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-zpp-method",
-              "text": "Front-Face Hematofluorometry",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-zpp-lifespan",
-              "text": "120-Day Functional Iron Marker",
-              "level": 3,
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-microcytic-diff",
-      "text": "Microcytic Hypochromic Anemias",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-ida-stages",
-          "text": "Iron Deficiency Anemia Continuum",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-ida-stage1",
-              "text": "Stage 1: Iron Depletion",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-s1-ferritin",
-                  "text": "Ferritin Drops < 15 ug/L",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s1-marrow",
-                  "text": "Marrow Hemosiderin Depleted",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s1-normal",
-                  "text": "Hemoglobin, MCV, RDW Normal",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-ida-stage2",
-              "text": "Stage 2: Deficient Erythropoiesis",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-s2-iron-drop",
-                  "text": "Serum Iron Decreased",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s2-tsat-drop",
-                  "text": "Transferrin Saturation < 16%",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s2-markers",
-                  "text": "ZPP and sTfR Rise",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s2-rdw-expands",
-                  "text": "RDW Expands Early",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-ida-stage3",
-              "text": "Stage 3: Overt IDA",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-s3-indices",
-                  "text": "MCV < 80, MCHC < 32",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-s3-smear",
-                  "text": "Smear Morphologies",
-                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-pencil-cells",
-                      "text": "Elongated Pencil Cells",
+                      "id": "node-il6-jak",
+                      "text": "IL-6 (JAK/STAT3 Pathway)",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-target-cells",
-                      "text": "Target Codocytes",
+                      "id": "node-iron-stores-high",
+                      "text": "Systemic Iron Overload",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-sec-thrombocytosis",
-                  "text": "Secondary Thrombocytosis",
+                  "id": "node-hepcidin-down",
+                  "text": "Downregulators",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-cmpl-cross",
-                      "text": "EPO Stimulates c-Mpl Receptors",
+                      "id": "node-erfe",
+                      "text": "Erythroblast Erythroferrone (ERFE)",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-tissue-hypoxia",
+                      "text": "Tissue Hypoxia & Anemia",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-iron-biomarkers",
+              "text": "Diagnostic Iron Biomarkers",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-serum-iron",
+                  "text": "Serum Iron",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-diurnal-iron",
+                      "text": "Marked Diurnal Fluctuation",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-transferrin-bound-fe",
+                      "text": "Measures Circulating Fe3+",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-ida-clinical",
-                  "text": "Distinctive Clinical Features",
+                  "id": "node-tibc",
+                  "text": "Total Iron-Binding Capacity (TIBC)",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-koilonychia",
-                      "text": "Concave Spoon Nails (Koilonychia)",
+                      "id": "node-tibc-apr",
+                      "text": "Negative Acute-Phase Reactant",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-pica",
-                      "text": "Pica Food Cravings",
+                      "id": "node-tibc-ida",
+                      "text": "Elevated in Iron Deficiency (>400)",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-tf-sat",
+                  "text": "Transferrin Saturation (%)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-tsat-formula",
+                      "text": "(Serum Iron / TIBC) x 100",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-tsat-ida-cut",
+                      "text": "<16% Indicates Inadequate Delivery",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-tsat-overload",
+                      "text": ">50-60% Suggests Overload",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-ferritin-marker",
+                  "text": "Serum Ferritin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ferritin-gold",
+                      "text": "Stores Depleted: <15 ug/L",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-ferritin-pos-apr",
+                      "text": "Positive Acute-Phase Reactant",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-ferritin-inflam-cut",
+                      "text": "Inflammation Threshold <50-100 ug/L",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-stfr",
+                  "text": "Soluble Transferrin Receptor (sTfR)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-stfr-origin",
+                      "text": "Shed CD71 Monomer",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-stfr-inflam-proof",
+                      "text": "Unaffected by Systemic Inflammation",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-stfr-diff",
+                      "text": "Elevated in Pure IDA vs ACD",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-zpp",
+                  "text": "Zinc Protoporphyrin (ZPP)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-zpp-mech",
+                      "text": "Zn2+ Substitution by Ferrochelatase",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-zpp-utility",
+                      "text": "Functional Iron Deficiency & Plumbism",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-micro-differentials",
+          "text": "Differential Diagnosis of Microcytosis",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-ida-stages",
+              "text": "Iron Deficiency Anemia (IDA)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-ida-s1",
+                  "text": "Stage 1: Iron Depletion",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-s1-marrow",
+                      "text": "Exhausted Marrow Hemosiderin",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s1-ferritin",
+                      "text": "Serum Ferritin <15 ug/L",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s1-normal",
+                      "text": "Normal Hb, MCV, RDW",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-ida-s2",
+                  "text": "Stage 2: Iron-Deficient Erythropoiesis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-s2-iron-drop",
+                      "text": "Serum Iron Drops, TIBC Rises",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s2-tsat",
+                      "text": "Transferrin Saturation <16%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s2-rdw",
+                      "text": "RDW Widens Early",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s2-zpp",
+                      "text": "Elevated ZPP and sTfR",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-ida-s3",
+                  "text": "Stage 3: Overt IDA",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-s3-smear",
+                      "text": "Pencil Cells and Target Cells",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s3-platelets",
+                      "text": "Reactive Secondary Thrombocytosis",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-s3-clinical",
+                      "text": "Koilonychia and Pica",
+                      "level": 5,
+                      "high_yield": true,
                       "children": [
                         {
-                          "id": "node-pagophagia",
-                          "text": "Pagophagia for Ice",
+                          "id": "node-pica-types",
+                          "text": "Pagophagia, Geophagia, Amylophagia",
                           "level": 6,
-                          "children": []
-                        },
-                        {
-                          "id": "node-geophagia",
-                          "text": "Geophagia for Dirt",
-                          "level": 6,
+                          "high_yield": false,
                           "children": []
                         }
                       ]
@@ -2511,172 +2137,81 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "sub-acd-aci",
-          "text": "Anemia of Chronic Disease",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-acd-cytokines",
-              "text": "Inflammatory Cytokine Drive",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-il6-acd",
-                  "text": "IL-6 Induces Hepcidin",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-suppression-cytokines",
-                  "text": "TNF-alpha and IFN-gamma Suppression",
-                  "level": 4,
-                  "children": []
-                }
-              ]
             },
             {
-              "id": "node-acd-sequestration",
-              "text": "Reticuloendothelial Trapping",
+              "id": "node-acd-path",
+              "text": "Anemia of Chronic Disease (ACD/ACI)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-functional-fe-def",
-                  "text": "Functional Iron Deficiency State",
+                  "id": "node-acd-cytokines",
+                  "text": "Pro-Inflammatory Cytokines",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-marrow-storage-high",
-                  "text": "Abundant Macrophage Prussian Iron",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-sideroblasts-absent",
-                  "text": "Sideroblasts Absent or Rare",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-acd-panel",
-              "text": "ACD Biomarker Profile",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-acd-fe-low",
-                  "text": "Low Serum Iron",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-acd-tibc-low",
-                  "text": "Low or Normal TIBC",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-acd-ferritin-high",
-                  "text": "Normal or Elevated Ferritin",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-acd-stfr-norm",
-                  "text": "Normal sTfR Level",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-hh-overload",
-          "text": "Hereditary Hemochromatosis",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-hfe-genetics",
-              "text": "HFE Gene Mutations",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-c282y",
-                  "text": "C282Y Homozygosity",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-h63d",
-                  "text": "H63D Polymorphism",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-hh-pathophys",
-              "text": "Suppressed Hepcidin Synthesis",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-unrestrained-efflux",
-                  "text": "Unregulated Duodenal Iron Absorption",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-ntbi-circ",
-                  "text": "Non-Transferrin-Bound Iron (NTBI)",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-fenton-toxicity",
-              "text": "Fenton Reaction Toxicity",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-hydroxyl-radicals",
-                  "text": "Hydroxyl Free Radical Generation",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-organ-damage",
-                  "text": "End-Organ Deposition Damage",
-                  "level": 4,
+                  "high_yield": false,
                   "children": [
                     {
-                      "id": "node-cirrhosis",
-                      "text": "Micronodular Liver Cirrhosis",
+                      "id": "node-acd-il6",
+                      "text": "IL-6 Stimulates Hepcidin",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-bronze-diabetes",
-                      "text": "Pancreatic Bronze Diabetes",
+                      "id": "node-acd-tnf",
+                      "text": "TNF-alpha Suppresses Erythropoiesis",
                       "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-acd-trapping",
+                  "text": "Reticuloendothelial Iron Sequestration",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-acd-labs",
+                  "text": "Diagnostic Biomarkers",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-acd-iron",
+                      "text": "Serum Iron Decreased",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
-                      "id": "node-cardiomyopathy",
-                      "text": "Dilated Cardiomyopathy and Arrhythmias",
+                      "id": "node-acd-tibc",
+                      "text": "TIBC Decreased to Normal",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-pseudogout",
-                      "text": "Chondrocalcinosis Pseudogout",
+                      "id": "node-acd-ferritin",
+                      "text": "Ferritin Normal to Elevated",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-acd-stfr",
+                      "text": "Normal sTfR",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-acd-marrow",
+                      "text": "Abundant Macrophage Iron Reserves",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -2684,26 +2219,118 @@
               ]
             },
             {
-              "id": "node-hh-panel",
-              "text": "HH Iron Panel Findings",
+              "id": "node-hh-overload",
+              "text": "Hereditary Hemochromatosis (HH)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-hh-iron-high",
-                  "text": "Serum Iron > 180 ug/dL",
+                  "id": "node-hh-genetics",
+                  "text": "HFE Gene Mutations",
                   "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-c282y",
+                      "text": "C282Y Homozygosity",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-h63d",
+                      "text": "H63D Mutation",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-hh-mech",
+                  "text": "Inappropriately Suppressed Hepcidin",
+                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-hh-tsat-high",
-                  "text": "Transferrin Saturation > 50-80%",
+                  "id": "node-fenton-rxn",
+                  "text": "Fenton Reaction Free Radicals",
                   "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-fenton-eq",
+                      "text": "Fe2+ + H2O2 -> OH*",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-fenton-organs",
+                      "text": "Cirrhosis, Bronze Diabetes, Cardiomyopathy",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-hh-labs",
+                  "text": "Laboratory Hallmarks",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-hh-tsat",
+                      "text": "Transferrin Saturation >60-80%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-hh-ferritin",
+                      "text": "Ferritin Markedly High (>1000)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-thal-minor",
+              "text": "Beta-Thalassemia Minor",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-thal-mcv",
+                  "text": "Disproportionate Marked Microcytosis",
+                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-hh-ferritin-high",
-                  "text": "Serum Ferritin > 500-1000 ug/L",
+                  "id": "node-thal-rdw",
+                  "text": "Characteristically Normal RDW (<14%)",
                   "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-thal-fe",
+                  "text": "Normal/Elevated Iron & Ferritin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-thal-smear",
+                  "text": "Target Cells & Basophilic Stippling",
+                  "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -2711,297 +2338,99 @@
           ]
         },
         {
-          "id": "sub-beta-thal",
-          "text": "Beta-Thalassemia Minor Trait",
+          "id": "sub-heme-pathway",
+          "text": "Heme Biosynthesis, Sideroblastic Anemia, and Porphyria",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-thal-indices",
-              "text": "Uniform Microcytosis Indices",
+              "id": "node-heme-steps",
+              "text": "Biosynthetic Pathway Cascade",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-thal-mcv-low",
-                  "text": "Marked Low MCV 55-70",
+                  "id": "node-step-alas2",
+                  "text": "Mitochondrial Rate-Limiting Step",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-thal-rdw-normal",
-                  "text": "Characteristically Normal RDW < 14%",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-thal-rbc-high",
-                  "text": "Normal or High RBC",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-thal-iron-status",
-              "text": "Preserved Iron Reserves",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-thal-ferritin-norm",
-                  "text": "Ferritin Normal or Elevated",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-thal-iron-norm",
-                  "text": "Serum Iron and TIBC Normal",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-thal-blood-smear",
-              "text": "Cytomorphological Findings",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-thal-targets",
-                  "text": "Target Cells and Microcytes",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-thal-stippling",
-                  "text": "Prominent Basophilic Stippling",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-heme-pathway",
-      "text": "Heme Biosynthetic Disruptions",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-heme-enzymes",
-          "text": "Heme Synthesis Enzymatic Cascade",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-mito-initiation",
-              "text": "Mitochondrial Step 1",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-alas2-step",
-                  "text": "ALAS2 Condensation Reaction",
-                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-alas2-substrates",
-                      "text": "Glycine and Succinyl-CoA",
+                      "id": "node-alas2-enz",
+                      "text": "ALAS2 Enzyme",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-alas2-product",
-                      "text": "delta-Aminolevulinic Acid (ALA)",
+                      "id": "node-alas2-reactants",
+                      "text": "Glycine + Succinyl-CoA",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
                       "id": "node-alas2-b6",
-                      "text": "Requires Pyridoxal 5'-Phosphate (B6)",
+                      "text": "Requires Pyridoxal Phosphate (B6)",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-alas2-ratelimit",
-                      "text": "Primary Rate-Limiting Step",
+                      "id": "node-alas2-prod",
+                      "text": "delta-Aminolevulinic Acid (ALA)",
                       "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-cyto-steps",
-              "text": "Cytoplasmic Intermediates",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-alad-step",
-                  "text": "ALA Dehydratase (ALAD)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-pbg-prod",
-                      "text": "Porphobilinogen (PBG) Synthesis",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-alad-inhibit",
-                      "text": "Inhibited Competitively by Lead",
-                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-hmbs-step",
-                  "text": "Hydroxymethylbilane Synthase (HMBS)",
+                  "id": "node-cyto-steps",
+                  "text": "Cytoplasmic Intermediate Steps",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-hmb-prod",
-                      "text": "Forms Linear Hydroxymethylbilane",
+                      "id": "node-alad-step",
+                      "text": "ALA Dehydratase (ALAD)",
                       "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-uros-step",
-                  "text": "Uroporphyrinogen III Synthase (UROS)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-uro3-prod",
-                      "text": "Forms Cyclic Uroporphyrinogen III",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-cep-lesion",
-                      "text": "Deficient in CEP G\u00fcnther",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-copro-step",
-                  "text": "Uroporphyrinogen Decarboxylase",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-copro3-prod",
-                      "text": "Generates Coproporphyrinogen III",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-mito-finalization",
-              "text": "Mitochondrial Heme Assembly",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-proto9-conv",
-                  "text": "Protoporphyrinogen to Protoporphyrin IX",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-ferrochelatase-step",
-                  "text": "Ferrochelatase (FECH) Insertion",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-fe-insertion",
-                      "text": "Inserts Fe2+ into Ring",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-fech-inhibit",
-                      "text": "Inhibited Competitively by Lead",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-epp-lesion",
-                      "text": "Deficient in EPP",
-                      "level": 5,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-sidero-anemia",
-          "text": "Sideroblastic Anemias",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-ringed-sideroblast-def",
-              "text": "Ringed Sideroblast Criteria",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-stain-prussian",
-                  "text": "Perls' Prussian Blue Stain",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-granule-criteria",
-                  "text": ">= 5 Prussian Granules",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-perimeter-criteria",
-                  "text": "Encircles >= 33% Nucleus",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-ferruginous-micelles",
-                  "text": "Iron-Loaded Mitochondrial Cristae",
-                  "level": 4,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-sidero-etiologies",
-              "text": "Sideroblastic Etiologies",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-xlsa",
-                  "text": "X-Linked Sideroblastic Anemia",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-alas2-mut",
-                      "text": "ALAS2 Inactivating Mutation",
-                      "level": 5,
-                      "children": []
-                    },
-                    {
-                      "id": "node-dimorphic-smear",
-                      "text": "Dimorphic Erythrocyte Population",
-                      "level": 5,
+                      "high_yield": true,
                       "children": [
                         {
-                          "id": "node-lyonization",
-                          "text": "Lyonization in Heterozygous Females",
+                          "id": "node-alad-lead",
+                          "text": "Inhibited by Lead (Plumbism)",
                           "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-alad-prod",
+                          "text": "Forms Porphobilinogen (PBG)",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-hmbs-step",
+                      "text": "Hydroxymethylbilane Synthase (HMBS)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-uros-step",
+                      "text": "Uroporphyrinogen III Synthase (UROS)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-uros-cep",
+                          "text": "Deficient in CEP",
+                          "level": 6,
+                          "high_yield": true,
                           "children": []
                         }
                       ]
@@ -3009,64 +2438,293 @@
                   ]
                 },
                 {
-                  "id": "node-mds-rs",
-                  "text": "MDS with Ring Sideroblasts",
+                  "id": "node-mito-final",
+                  "text": "Mitochondrial Heme Finalization",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-sf3b1",
-                      "text": "SF3B1 Spliceosome Somatic Mutation",
+                      "id": "node-fe-import",
+                      "text": "Mitoferrin Fe2+ Mitochondrial Import",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
-                      "id": "node-mds-macro",
-                      "text": "Macrocytic Dyserythropoietic Profile",
+                      "id": "node-ferrochelatase",
+                      "text": "Ferrochelatase (FECH)",
                       "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-fech-action",
+                          "text": "Inserts Fe2+ into Protoporphyrin IX",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-fech-lead",
+                          "text": "Inhibited by Lead",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-fech-epp",
+                          "text": "Deficient in EPP",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-sidero-anemia",
+              "text": "Sideroblastic Anemias",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-ringed-sidero-def",
+                  "text": "Ringed Sideroblast Criteria",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-rs-granules",
+                      "text": ">=5 Prussian Blue Granules",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-rs-perimeter",
+                      "text": "Encircling >=33% Nuclear Perimeter",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-rs-mito",
+                      "text": "Iron-Encrusted Mitochondrial Micelles",
+                      "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-lead-toxicity",
-                  "text": "Lead Poisoning Plumbism",
+                  "id": "node-sidero-etiologies",
+                  "text": "Etiological Subtypes",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-lead-targets",
-                      "text": "Inhibits ALAD and Ferrochelatase",
+                      "id": "node-xlsa",
+                      "text": "X-Linked Sideroblastic Anemia",
                       "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-alas2-mut",
+                          "text": "ALAS2 Inactivating Gene Mutation",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-dimorphic-pop",
+                          "text": "Dimorphic RBC Population (Lyonization)",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-mds-rs",
+                      "text": "MDS with Ring Sideroblasts (MDS-RS)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-sf3b1",
+                          "text": "SF3B1 Spliceosome Mutation",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-mds-macro",
+                          "text": "Macrocytic Dysplastic Anemia",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-lead-tox",
+                      "text": "Lead Toxicity (Plumbism)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-lead-enzymes",
+                          "text": "Inhibits ALAD and Ferrochelatase",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-p5n-inhibit",
+                          "text": "Inhibits Pyrimidine 5'-Nucleotidase",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-lead-stipple",
+                          "text": "Coarse Basophilic Stippling",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-lead-zpp",
+                          "text": "High Free Erythrocyte ZPP",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-acquired-metabolic",
+                      "text": "Acquired Metabolic Toxins",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-ethanol-tox",
+                          "text": "Ethanol Mitochondrial Toxicity",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-inh-tox",
+                          "text": "Isoniazid (Competes with B6)",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-porphyrias",
+              "text": "The Porphyrias",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cep",
+                  "text": "Congenital Erythropoietic Porphyria (CEP)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-cep-enz",
+                      "text": "UROS Deficiency (Autosomal Recessive)",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-p5n-inhibit",
-                      "text": "Pyrimidine 5'-Nucleotidase Inhibition",
+                      "id": "node-cep-shunt",
+                      "text": "Isomer-I Porphyrin Accumulation",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
-                      "id": "node-plumbism-features",
-                      "text": "Coarse Basophilic Stippling and ZPP",
+                      "id": "node-cep-photo",
+                      "text": "Severe Mutilating Photosensitivity",
                       "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-erythrodontia",
+                      "text": "Erythrodontia (Red UV Fluorescence)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-cep-hemolysis",
+                      "text": "Severe Hemolysis (Lifespan ~18d)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-port-wine",
+                      "text": "Port-Wine Urine Discoloration",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
                 },
                 {
-                  "id": "node-toxic-sidero",
-                  "text": "Metabolic Drug Disruptions",
+                  "id": "node-epp",
+                  "text": "Erythropoietic Protoporphyria (EPP)",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-alcohol-tox",
-                      "text": "Ethanol Mitochondrial Toxicity",
+                      "id": "node-epp-enz",
+                      "text": "Ferrochelatase (FECH) Deficiency",
                       "level": 5,
+                      "high_yield": true,
                       "children": []
                     },
                     {
-                      "id": "node-inh-tox",
-                      "text": "Isoniazid Pyridoxal Kinase Block",
+                      "id": "node-epp-accum",
+                      "text": "Protoporphyrin IX Accumulation",
                       "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-epp-clinical",
+                      "text": "Acute Painful Solar Urticaria",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-epp-no-blister",
+                      "text": "Absence of Blisters or Erythrodontia",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-epp-liver",
+                      "text": "Risk of Cholestatic Liver Failure",
+                      "level": 5,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -3076,212 +2734,80 @@
           ]
         },
         {
-          "id": "sub-porphyrias",
-          "text": "Erythropoietic Porphyrias",
+          "id": "sub-lab-techniques",
+          "text": "Targeted Diagnostic Methodologies",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-cep-disorder",
-              "text": "Congenital Erythropoietic Porphyria",
+              "id": "node-prussian-principle",
+              "text": "Perls' Prussian Blue Reaction",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-cep-enzyme",
-                  "text": "UROS Autosomal Recessive Defect",
+                  "id": "node-prussian-chem",
+                  "text": "Acid Ferrocyanide + Fe3+",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-isomer1-shunt",
-                  "text": "Isomer-I Porphyrin Deposition",
+                  "id": "node-prussian-precip",
+                  "text": "Insoluble Ferric Ferrocyanide Precipitate",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-cep-mutilation",
-                  "text": "Severe Mutilating Photosensitivity",
+                  "id": "node-prussian-qc",
+                  "text": "Internal QC: Macrophage Storage",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-erythrodontia",
-                  "text": "Erythrodontia 405 nm Fluorescence",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-cep-hemolysis",
-                  "text": "Severe Hemolysis (Lifespan ~18d)",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-port-wine",
-                  "text": "Dark Port-Wine Urine",
-                  "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
             },
             {
-              "id": "node-epp-disorder",
-              "text": "Erythropoietic Protoporphyria",
+              "id": "node-toxicology-screen",
+              "text": "Plumbism Toxicological Confirmation",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-epp-enzyme",
-                  "text": "Ferrochelatase (FECH) Deficiency",
+                  "id": "node-icpms",
+                  "text": "Whole Blood Lead ICP-MS",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
-                  "id": "node-proto9-acc",
-                  "text": "Protoporphyrin IX Tissue Accumulation",
+                  "id": "node-gfaas",
+                  "text": "Graphite Furnace Atomic Absorption",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-epp-symptoms",
-                  "text": "Painful Solar Urticaria Burning",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-epp-absent-signs",
-                  "text": "No Mutilation or Erythrodontia",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-cholestasis-risk",
-                  "text": "Cholestatic Liver Failure Risk",
-                  "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-targeted-diagnostics",
-      "text": "Targeted Diagnostics and Pearls",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-perls-technique",
-          "text": "Perls' Prussian Blue Cytochemistry",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-perls-reagents",
-              "text": "Acid-Ferrocyanide Reaction",
-              "level": 3,
-              "children": []
             },
             {
-              "id": "node-perls-product",
-              "text": "Insoluble Ferric Ferrocyanide Precipitate",
+              "id": "node-fluorometry",
+              "text": "Fluorometric Porphyrin Analysis",
               "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-perls-qc",
-              "text": "Verify Macrophage Iron Controls",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-inclusion-counterstain",
-              "text": "Differentiates Pappenheimer vs Stippling",
-              "level": 3,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "sub-toxicology-plumb",
-          "text": "Lead Toxicological Quantification",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-gfaas",
-              "text": "Graphite Furnace Atomic Absorption",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-icpms",
-              "text": "Inductively Coupled Plasma Mass-Spectrometry",
-              "level": 3,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "sub-fluoro-porphyrin",
-          "text": "Fluorometric Porphyrin Profiling",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-soret-band",
-              "text": "Soret Excitation 400-410 nm",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-porphyrin-emission",
-              "text": "Red Emission 600-650 nm",
-              "level": 3,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "sub-master-pearls",
-          "text": "Master Clinical Pearls",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-pearl-rpi-cutoff",
-              "text": "RPI 2.0 Cutoff Value",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-pearl-hemolysis-triad",
-              "text": "Intravascular Triad Hapto/LDH/Hemosiderin",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-pearl-stfr-discriminator",
-              "text": "sTfR Distinguishes IDA/ACD",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "node-pearl-dimorphic-etiologies",
-              "text": "Dimorphic Volume Histogram Causes",
-              "level": 3,
+              "high_yield": false,
               "children": [
                 {
-                  "id": "node-dimorphic-alas2",
-                  "text": "Heterozygous ALAS2 Female Lyonization",
+                  "id": "node-soret-band",
+                  "text": "Soret Absorbance Peak 400-410 nm",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
-                  "id": "node-dimorphic-tx",
-                  "text": "Transfused Microcytic Recipient",
+                  "id": "node-emission-fluor",
+                  "text": "Red Emission 600-650 nm",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "node-dimorphic-iron-response",
-                  "text": "Early Responded Iron Therapy",
-                  "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -3353,6 +2879,24 @@
       }
     }
 
+    // High-Yield Filter State
+    let isHighYieldOnly = false;
+
+    // Determine if a node is High Yield or contains High Yield descendants (ancestor path)
+    function computeHighYieldFlags(node) {
+      let hasHY = (node.high_yield === true || node.high_yield === 'true');
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          if (computeHighYieldFlags(child)) {
+            hasHY = true;
+          }
+        });
+      }
+      node._isHYBranch = hasHY;
+      return hasHY;
+    }
+    computeHighYieldFlags(mindMapData);
+
     function flattenNodes(node, list = []) {
       list.push(node);
       const isCollapsed = collapsedNodes.has(node.id);
@@ -3365,6 +2909,9 @@
     let isInitialLoad = true;
 
     function renderMindMap() {
+      // Re-compute high-yield branch flags
+      computeHighYieldFlags(mindMapData);
+
       // 1. Compute Y positions
       const yOffset = { val: 0 };
       computeVerticalLayout(mindMapData, 0, yOffset);
@@ -3385,9 +2932,11 @@
       allVisible.forEach(node => {
         const hasChildren = node.children && node.children.length > 0;
         const isCollapsed = collapsedNodes.has(node.id);
+        const isHYNode = (node.high_yield === true || node.high_yield === 'true');
+        const isHYBranch = !!node._isHYBranch;
 
         const el = document.createElement('div');
-        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''} ${isHYNode ? 'high-yield-node' : ''} ${isHYBranch ? 'is-high-yield-branch' : ''}`;
         
         el.style.left = `0px`;
         el.style.top = `${node.y}px`;
@@ -3466,7 +3015,8 @@
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', pathD);
-      path.setAttribute('class', 'connection-line');
+      const isHYPath = !!child._isHYBranch;
+      path.setAttribute('class', `connection-line ${isHYPath ? 'is-high-yield-path' : ''}`);
 
       svgPathsGroup.appendChild(path);
     }
@@ -3856,6 +3406,30 @@
       collapseAll(mindMapData);
       renderMindMap();
       setTimeout(() => centerInitialView(true), 50);
+    });
+
+    // High-Yield Only Toggle Button Listener
+    const btnHighYield = document.getElementById('btn-high-yield');
+    btnHighYield.addEventListener('click', () => {
+      isHighYieldOnly = !isHighYieldOnly;
+      if (isHighYieldOnly) {
+        btnHighYield.classList.add('active');
+        document.body.classList.add('high-yield-mode');
+
+        // Automatically expand high-yield pathways so they are visible
+        function expandHighYieldPaths(node) {
+          if (node._isHYBranch && node.children && node.children.length > 0) {
+            collapsedNodes.delete(node.id);
+            node.children.forEach(expandHighYieldPaths);
+          }
+        }
+        expandHighYieldPaths(mindMapData);
+        renderMindMap();
+      } else {
+        btnHighYield.classList.remove('active');
+        document.body.classList.remove('high-yield-mode');
+        renderMindMap();
+      }
     });
 
     document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));

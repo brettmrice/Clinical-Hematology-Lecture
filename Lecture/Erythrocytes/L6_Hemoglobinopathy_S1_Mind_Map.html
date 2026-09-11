@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hemoglobinopathy - Interactive Mind Map</title>
+  <title>Hemoglobinopathies - Interactive Mind Map</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -118,6 +118,37 @@
       color: #475569;
       transition: all 0.2s ease;
       white-space: nowrap;
+    }
+
+    .top-highyield-card {
+      top: 116px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #b45309;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+      background: rgba(254, 252, 232, 0.95);
+    }
+
+    .top-highyield-card:hover {
+      background: #fef08a;
+      color: #78350f;
+      border-color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.2);
+    }
+
+    .top-highyield-card.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 4px 12px rgba(217, 119, 6, 0.3);
     }
 
     .top-collapse-card:hover, .top-expand-card:hover {
@@ -340,6 +371,46 @@
       font-weight: 600;
     }
 
+    /* High-Yield Filter Styling */
+    .node.high-yield-node::before {
+      content: '⚡';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    body.high-yield-mode .node:not(.is-high-yield-branch) {
+      opacity: 0.22 !important;
+      filter: grayscale(65%);
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.is-high-yield-branch {
+      opacity: 1.0 !important;
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.high-yield-node {
+      box-shadow: 0 0 0 2.5px #f59e0b, 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+      border-color: #d97706 !important;
+      font-weight: 700;
+    }
+
+    body.high-yield-mode .connection-line:not(.is-high-yield-path) {
+      opacity: 0.15 !important;
+      stroke: #cbd5e1 !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease;
+    }
+
+    body.high-yield-mode .connection-line.is-high-yield-path {
+      opacity: 1.0 !important;
+      stroke: #d97706 !important;
+      stroke-width: 2.5px !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    }
+
     /* SVG Connecting Lines */
     .connection-line {
       fill: none;
@@ -380,7 +451,7 @@
 
   <!-- Top Floating Element 1: Title Card -->
   <div class="floating-panel top-title-card">
-    <h1 id="topic-title">Hemoglobinopathy</h1>
+    <h1 id="topic-title">Hemoglobinopathies</h1>
   </div>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
@@ -406,6 +477,12 @@
     Expand All
   </div>
 
+  <!-- Top Floating Element 5: High-Yield Toggle Card -->
+  <div class="floating-panel top-highyield-card" id="btn-high-yield">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    High-Yield Only
+  </div>
+
   <!-- Canvas Viewport -->
   <div id="viewport">
     <svg id="mindmap-svg">
@@ -427,106 +504,251 @@
     // --- MIND MAP DATA STRUCTURE ---
     const mindMapData = {
   "id": "root",
-  "text": "Hemoglobinopathy",
+  "text": "Hemoglobinopathies",
   "level": 0,
+  "high_yield": true,
   "children": [
     {
       "id": "sec-1",
-      "text": "Globin Architecture and Ontogeny",
+      "text": "Qualitative Variants & Diagnostics",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-1-1",
-          "text": "Genetic Clusters",
+          "text": "Genetic Architecture & Ontogeny",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-1-1",
-              "text": "Alpha Cluster Chromosome 16p13.3",
+              "text": "Alpha Gene Cluster",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-1-1-1",
-                  "text": "Tandem Duplicated Loci",
+                  "text": "Chromosome 16p13.3",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-1-1-1",
-                      "text": "Alpha-2 Gene",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-1-1-1-2",
-                      "text": "Alpha-1 Gene",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-1-1-1-2",
-                  "text": "4 Functional Alpha Genes",
-                  "level": 4
+                  "text": "Four Functional Genes",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-1-1-1-3",
                   "text": "Embryonic Zeta Gene",
-                  "level": 4
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-1-1-1-4",
-                  "text": "Single Gene Mutation Impact",
+                  "text": "Mutation Yields ~25% Variant",
                   "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-1-2",
+              "text": "Beta Gene Cluster",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-1-2-1",
+                  "text": "Chromosome 11p15.5",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-2-2",
+                  "text": "Two Functional Genes",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-2-3",
+                  "text": "Associated Cluster Genes",
+                  "level": 4,
+                  "high_yield": false,
                   "children": [
                     {
-                      "id": "node-1-1-1-4-1",
-                      "text": "Alters ~25% Output",
-                      "level": 5
+                      "id": "node-1-1-2-3-1",
+                      "text": "Epsilon",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-2-3-2",
+                      "text": "Gamma G and A",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-2-3-3",
+                      "text": "Delta",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-1-2-4",
+                  "text": "Mutation Yields ~50% Variant",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-1-3",
+              "text": "Developmental Globin Ontogeny",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-1-3-1",
+                  "text": "Embryonic Hemoglobins",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-1-1-3-1-1",
+                      "text": "Gower 1 (Zeta2 Epsilon2)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-1-2",
+                      "text": "Gower 2 (Alpha2 Epsilon2)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-1-3",
+                      "text": "Portland (Zeta2 Gamma2)",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-1-3-2",
+                  "text": "Fetal Hemoglobin (HbF)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-1-3-2-1",
+                      "text": "Structure: Alpha2 Gamma2",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-2-2",
+                      "text": "Begins Week 5-6",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-2-3",
+                      "text": "Birth Fraction 60-80%",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-1-3-3",
+                  "text": "Adult Hemoglobin Switch",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-1-3-3-1",
+                      "text": "Occurs 3-6 Months Postpartum",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-3-2",
+                      "text": "Repressors BCL11A & ZBTB7A",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-3-3",
+                      "text": "HbA (Alpha2 Beta2) 95-98%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-3-4",
+                      "text": "HbA2 (Alpha2 Delta2) 1.5-3.5%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-1-3-3-5",
+                      "text": "HbF (Alpha2 Gamma2) <2%",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-1-1-2",
-              "text": "Beta Cluster Chromosome 11p15.5",
+              "id": "node-1-1-4",
+              "text": "Evolutionary Selection",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
-                  "id": "node-1-1-2-1",
-                  "text": "Single Locus Per Haploid",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-1-2-2",
-                  "text": "2 Functional Beta Genes",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-1-2-3",
-                  "text": "Embryonic Epsilon Gene",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-1-2-4",
-                  "text": "Fetal G-Gamma and A-Gamma",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-1-2-5",
-                  "text": "Adult Delta Gene",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-1-2-6",
-                  "text": "Single Gene Mutation Impact",
+                  "id": "node-1-1-4-1",
+                  "text": "Malaria Hypothesis",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-1-2-6-1",
-                      "text": "Alters ~50% Output",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-4-2",
+                  "text": "Protection Against Plasmodium falciparum",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-1-4-3",
+                  "text": "Accelerated Splenic Clearance",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 }
               ]
             }
@@ -534,60 +756,261 @@
         },
         {
           "id": "sub-1-2",
-          "text": "Developmental Globin Ontogeny",
+          "text": "Diagnostic Methodologies",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-2-1",
-              "text": "Embryonic Stage Weeks 0-10",
+              "text": "Sickle Solubility Test",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-1-1",
-                  "text": "Yolk Sac Hematopoiesis",
-                  "level": 4
+                  "text": "Reagents",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-1-2-1-1-1",
+                      "text": "Sodium Dithionite Reducing Agent",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-1-1-2",
+                      "text": "Saponin Membrane Surfactant",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-1-1-3",
+                      "text": "Hypertonic Phosphate Buffer",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "id": "node-1-2-1-2",
-                  "text": "Hb Gower 1 (Zeta2-Epsilon2)",
-                  "level": 4
+                  "text": "Interpretation Criteria",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-2-1-2-1",
+                      "text": "Turbid Suspension: Lines Obscured",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-1-2-2",
+                      "text": "Clear Solution: Lines Visible",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-1-2-3",
+                      "text": "Positive in HbS & HbC-Harlem",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "id": "node-1-2-1-3",
-                  "text": "Hb Gower 2 (Alpha2-Epsilon2)",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-2-1-4",
-                  "text": "Hb Portland (Zeta2-Gamma2)",
-                  "level": 4
+                  "text": "Testing Limitations",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-2-1-3-1",
+                      "text": "Cannot Distinguish Trait/Disease",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-1-3-2",
+                      "text": "False Negatives",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-1-2-1-3-2-1",
+                          "text": "Infants <6 Months",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-2-1-3-2-2",
+                          "text": "Hb <7.0 g/dL",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-2-1-3-2-3",
+                          "text": "Recent PRBC Transfusion",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-1-2-1-3-3",
+                      "text": "False Positives",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-1-2-1-3-3-1",
+                          "text": "Hyperproteinemia or Paraproteinemia",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-2-1-3-3-2",
+                          "text": "Extreme Hyperlipidemia",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-2-1-3-3-3",
+                          "text": "Post-Splenectomy Erythrocytosis",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
             {
               "id": "node-1-2-2",
-              "text": "Fetal Stage Weeks 10-38",
+              "text": "Dual-Matrix Gel Electrophoresis",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-2-1",
-                  "text": "Liver and Spleen Sites",
-                  "level": 4
+                  "text": "Alkaline Electrophoresis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-2-2-1-1",
+                      "text": "Cellulose Acetate Support",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-1-2",
+                      "text": "Buffer pH 8.4-8.6",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-1-3",
+                      "text": "Migration Order: C,S,F,A",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-1-4",
+                      "text": "C Band Co-Migration",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-1-2-2-1-4-1",
+                          "text": "HbC, HbA2, HbE, HbO-Arab",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-1-2-2-1-5",
+                      "text": "S Band Co-Migration",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-1-2-2-1-5-1",
+                          "text": "HbS, HbD, HbG, Hb Lepore",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "id": "node-1-2-2-2",
-                  "text": "HbF Assembly (Alpha2-Gamma2)",
-                  "level": 4
-                },
-                {
-                  "id": "node-1-2-2-3",
-                  "text": "Obligate Alpha Synthesis",
+                  "text": "Acid Electrophoresis",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-1-2-2-3-1",
-                      "text": "Begins Gestational Weeks 5-6",
-                      "level": 5
+                      "id": "node-1-2-2-2-1",
+                      "text": "Citrate Agar Support",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-2-2",
+                      "text": "Buffer pH 6.0-6.2",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-2-3",
+                      "text": "Agaropectin Binding Principle",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-2-4",
+                      "text": "Migration Order: F,A,S,C",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-2-5",
+                      "text": "Origin Migration: A,D,G,E,A2",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-2-2-2-6",
+                      "text": "Isolates C and S",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     }
                   ]
                 }
@@ -595,69 +1018,52 @@
             },
             {
               "id": "node-1-2-3",
-              "text": "Adult Transition",
+              "text": "HPLC & Capillary Electrophoresis",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-1-2-3-1",
-                  "text": "Gamma Repressors",
+                  "text": "Cation-Exchange Stationary Phase",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-3-1-1",
-                      "text": "BCL11A",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-2-3-1-2",
-                      "text": "ZBTB7A/LRF",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-1-2-3-2",
-                  "text": "Normal Adult Distribution",
+                  "text": "Retention Windows",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
                       "id": "node-1-2-3-2-1",
-                      "text": "HbA (Alpha2-Beta2) 95-98%",
-                      "level": 5
+                      "text": "HbA2: 3.60-3.90 min",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     },
                     {
                       "id": "node-1-2-3-2-2",
-                      "text": "HbA2 (Alpha2-Delta2) 1.5-3.5%",
-                      "level": 5
+                      "text": "HbS: 4.40-4.80 min",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
                     },
                     {
                       "id": "node-1-2-3-2-3",
-                      "text": "HbF (Alpha2-Gamma2) <1-2%",
-                      "level": 5
+                      "text": "HbC: 4.90-5.30 min",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
                     }
                   ]
                 },
                 {
                   "id": "node-1-2-3-3",
-                  "text": "Clinical Onset Timelines",
+                  "text": "Capillary Zone Electrophoresis",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-2-3-3-1",
-                      "text": "Alpha Defects Manifest In-Utero",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-2-3-3-2",
-                      "text": "Beta Defects Silent Prenatally",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-2-3-3-3",
-                      "text": "Beta Defects Manifest Months 3-6",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
                 }
               ]
             }
@@ -665,84 +1071,469 @@
         },
         {
           "id": "sub-1-3",
-          "text": "Geographic Heterogeneity",
+          "text": "Qualitative Beta-Chain Variants",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-3-1",
-              "text": "Balanced Polymorphism",
-              "level": 3
+              "text": "Hemoglobin S",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-3-1-1",
+                  "text": "Molecular Mutation",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-1-1",
+                      "text": "Codon 6 GAG to GTG",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-1-2",
+                      "text": "beta6(A3) Glu to Val",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-3-1-2",
+                  "text": "Sickling Pathophysiology",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-2-1",
+                      "text": "Tense State Deoxygenation",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-2-2",
+                      "text": "Phe85 & Leu88 Pocket Exposure",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-2-3",
+                      "text": "14-Strand Helical Polymers",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-2-4",
+                      "text": "Gardos Channel Activation",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": [
+                        {
+                          "id": "node-1-3-1-2-4-1",
+                          "text": "Intracellular Ca2+ Influx",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-3-1-2-4-2",
+                          "text": "Potassium & Water Efflux",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-3-1-2-4-3",
+                          "text": "Severe Cellular Dehydration",
+                          "level": 6,
+                          "high_yield": false,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-1-3-1-2-5",
+                      "text": "External Phosphatidylserine Exposure",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-3-1-3",
+                  "text": "HbSS Clinical Complications",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-3-1",
+                      "text": "Vaso-Occlusive Pain Crises",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-3-2",
+                      "text": "Dactylitis Hand-Foot Syndrome",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-3-3",
+                      "text": "Acute Chest Syndrome",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-3-4",
+                      "text": "Splenic Sequestration & Autosplenectomy",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-1-3-1-3-4-1",
+                          "text": "Encapsulated Sepsis Susceptibility",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        },
+                        {
+                          "id": "node-1-3-1-3-4-2",
+                          "text": "Salmonella Osteomyelitis Risk",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "node-1-3-1-3-5",
+                      "text": "Parvovirus B19 Aplastic Crisis",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": [
+                        {
+                          "id": "node-1-3-1-3-5-1",
+                          "text": "Absolute Reticulocytopenia (0%)",
+                          "level": 6,
+                          "high_yield": true,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-3-1-4",
+                  "text": "HbSS Laboratory Findings",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-4-1",
+                      "text": "Hb 6.0-9.0 g/dL",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-4-2",
+                      "text": "Drepanocytes & Target Cells",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-4-3",
+                      "text": "Howell-Jolly & Pappenheimer Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-4-4",
+                      "text": "Profile: HbA 0%, HbS 85-95%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-3-1-5",
+                  "text": "Sickle Trait (HbAS)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-5-1",
+                      "text": "Asymptomatic Carrier State",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-5-2",
+                      "text": "Renal Hyposthenuria & Hematuria",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-5-3",
+                      "text": "Smear: No Drepanocytes",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-5-4",
+                      "text": "HbA 55-60%, HbS 35-40%",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-3-1-6",
+                  "text": "Hydroxyurea Therapy",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-3-1-6-1",
+                      "text": "Inhibits Ribonucleotide Reductase",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-6-2",
+                      "text": "Reactivates Gamma Transcription",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-1-3-1-6-3",
+                      "text": "Induces HbF Synthesis",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "node-1-3-2",
-              "text": "Plasmodium falciparum Malaria Resistance",
-              "level": 3
+              "text": "Hemoglobin C",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-3-2-1",
+                  "text": "Codon 6 GAG to AAG",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-2-2",
+                  "text": "beta6(A3) Glu to Lys",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-2-3",
+                  "text": "Hexagonal Gold Bar Crystals",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-2-4",
+                  "text": "Smear: Abundant Codocytes (Targets)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-2-5",
+                  "text": "Solubility Test Negative",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-2-6",
+                  "text": "HbCC: HbC >90%, HbA 0%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
             },
             {
               "id": "node-1-3-3",
-              "text": "Prevalent Endemic Variants",
+              "text": "Hemoglobin SC",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-3-3-1",
-                  "text": "African Ancestry",
+                  "text": "Compound Heterozygote betaS/betaC",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-3-1-1",
-                      "text": "HbS Variant",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-3-3-1-2",
-                      "text": "HbC Variant",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-3-3-1-3",
-                      "text": "Trans Alpha Deletion (-a/-a)",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-1-3-3-2",
-                  "text": "Mediterranean Basin",
+                  "text": "Finger-Like Condensed Crystals",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-3-2-1",
-                      "text": "Beta-Thalassemia Point Mutations",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-3-3-2-2",
-                      "text": "Alpha-Zero Thalassemia",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-1-3-3-3",
-                  "text": "Southeast Asian Ancestry",
+                  "text": "Proliferative Sickle Retinopathy",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-1-3-3-3-1",
-                      "text": "HbE Variant",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-3-3-3-2",
-                      "text": "Hb Constant Spring",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-1-3-3-3-3",
-                      "text": "Cis Alpha Deletion (--/aa)",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-4",
+                  "text": "Femoral Avascular Necrosis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-5",
+                  "text": "Solubility Test Positive",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-3-6",
+                  "text": "Profile: HbS 50%, HbC 50%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-3-4",
+              "text": "Hemoglobin E",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-3-4-1",
+                  "text": "Codon 26 GAG to AAG",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-2",
+                  "text": "beta26(B8) Glu to Lys",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-3",
+                  "text": "Cryptic Splice Site Activation",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-4",
+                  "text": "Dual Structural/Thalassemic Phenotype",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-5",
+                  "text": "Prevalent in Southeast Asia",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-6",
+                  "text": "Marked Microcytosis (MCV 55-65)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-4-7",
+                  "text": "HbEE: HbE >85%, HbA 0%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-1-3-5",
+              "text": "Hemoglobin D-Punjab",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-3-5-1",
+                  "text": "Codon 121 GAA to CAA",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-5-2",
+                  "text": "beta121(GH4) Glu to Gln",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-5-3",
+                  "text": "Co-migrates with HbS Alkaline",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-5-4",
+                  "text": "Solubility Test Negative",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-1-3-5-5",
+                  "text": "Co-migrates with HbA Acid",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             }
@@ -752,138 +1543,157 @@
     },
     {
       "id": "sec-2",
-      "text": "Laboratory Methodologies",
+      "text": "Quantitative Thalassemias",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-2-1",
-          "text": "Sickle Solubility Screening",
+          "text": "Pathophysiologic Mechanisms",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-1-1",
-              "text": "Reagent Chemical System",
+              "text": "Chain Synthesis Imbalance",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-1-1",
-                  "text": "Saponin Detergent Lysis",
-                  "level": 4
+                  "text": "Suppression of Target Chain",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-1-2",
-                  "text": "Sodium Dithionite Reducing Agent",
-                  "level": 4
-                },
-                {
-                  "id": "node-2-1-1-3",
-                  "text": "Hypertonic Phosphate Buffer",
-                  "level": 4
+                  "text": "Accumulation of Orphan Chains",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-1-2",
-              "text": "Physical Mechanism",
+              "text": "Excess Alpha Chain Fate",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-2-1",
-                  "text": "Deoxygenation of Variant Hb",
-                  "level": 4
+                  "text": "Cannot Form Stable Homotetramers",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-2-2",
-                  "text": "Polymerization into Tactoids",
-                  "level": 4
+                  "text": "Precipitate in Marrow Erythroblasts",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-2-3",
-                  "text": "Light Scatter and Turbidity",
-                  "level": 4
+                  "text": "Fenton Reactions Generate ROS",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-2-4",
+                  "text": "Severe Ineffective Erythropoiesis (70-90%)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-1-3",
-              "text": "Visual Interpretation",
+              "text": "Excess Non-Alpha Chain Fate",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-3-1",
-                  "text": "Positive Obscured Bold Lines",
-                  "level": 4
+                  "text": "Hb Bart's (Gamma4 Homotetramer)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-3-2",
-                  "text": "Negative Clear Solution",
-                  "level": 4
+                  "text": "HbH (Beta4 Homotetramer)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-3-3",
+                  "text": "Extreme Oxygen Affinity (P50 2-4)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-3-4",
+                  "text": "Lacks Heme Cooperativity",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-3-5",
+                  "text": "Peripheral Extravascular Hemolysis Dominates",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-1-4",
-              "text": "Method Limitations",
+              "text": "Secondary Complications",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-4-1",
-                  "text": "Cannot Distinguish Trait vs Disease",
-                  "level": 4
+                  "text": "Marrow Inversion (M:E 1:10-1:20)",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-4-2",
-                  "text": "False Negatives",
+                  "text": "Chipmunk Facies & Hair-On-End Skull",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-2-1",
-                      "text": "Infants <6 Months Old",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-2-2",
-                      "text": "Total Hb <7.0 g/dL",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-2-3",
-                      "text": "Transfusion Within 3-4 Months",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-2-4",
-                      "text": "Expired Reducing Reagent",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-1-4-3",
-                  "text": "False Positives",
+                  "text": "Hepatosplenomegaly Extramedullary Hematopoiesis",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-1-4-3-1",
-                      "text": "Severe Hyperproteinemia",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-3-2",
-                      "text": "Marked Hyperlipidemia",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-3-3",
-                      "text": "HbC-Harlem Variant",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-1-4-3-4",
-                      "text": "Post-Splenectomy Leukocytes >50x10^9/L",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-4-4",
+                  "text": "Erythroferrone Suppresses Hepcidin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-1-4-5",
+                  "text": "Cardiac Siderosis Iron Overload",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             }
@@ -891,99 +1701,217 @@
         },
         {
           "id": "sub-2-2",
-          "text": "Dual-Matrix Electrophoresis",
+          "text": "Alpha-Thalassemias",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-2-1",
-              "text": "Alkaline Electrophoresis",
+              "text": "Silent Carrier (-a/aa)",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-2-2-1-1",
-                  "text": "Cellulose Acetate Support",
-                  "level": 4
+                  "text": "Single Alpha Gene Deletion",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-2-1-2",
-                  "text": "Buffer pH 8.4-8.6",
-                  "level": 4
+                  "text": "Asymptomatic with Normal Indices",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-2-1-3",
-                  "text": "Net Negative Surface Charge",
-                  "level": 4
+                  "text": "1-2% Bart's at Birth",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-2-1-4",
-                  "text": "Cathode to Anode (C-S-F-A)",
-                  "level": 4
-                },
-                {
-                  "id": "node-2-2-1-5",
-                  "text": "Co-Migrating Species",
+                  "text": "Requires Gap-PCR Confirmation",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-2-1-5-1",
-                      "text": "C Band (C, A2, E, O-Arab)",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-2-1-5-2",
-                      "text": "S Band (S, D, G, Lepore)",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-2-2",
-              "text": "Acid Electrophoresis",
+              "text": "Alpha-Thal Minor (2 Deletions)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-2-2-1",
-                  "text": "Citrate Agar Support",
-                  "level": 4
+                  "text": "Cis Deletion (--/aa)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-2-2-2-1-1",
+                      "text": "Prevalent in Southeast Asia",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-2-2-1-2",
+                      "text": "High Hydrops Fetalis Risk",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "id": "node-2-2-2-2",
-                  "text": "Buffer pH 6.0-6.2",
-                  "level": 4
+                  "text": "Trans Deletion (-a/-a)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-2-2-2-2-1",
+                      "text": "Prevalent in African Ancestry",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-2-2-2-2",
+                      "text": "Zero Hydrops Fetalis Risk",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "id": "node-2-2-2-3",
-                  "text": "Agaropectin Binding Principle",
-                  "level": 4
+                  "text": "MCV 60-75 fL & Elevated RBC",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-2-2-4",
-                  "text": "Migration Order (C-S-Origin-F)",
-                  "level": 4
+                  "text": "Adult Electrophoresis Appears Normal",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-2-3",
+              "text": "Hemoglobin H Disease (--/-a)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-2-3-1",
+                  "text": "Three Alpha Genes Deleted",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
-                  "id": "node-2-2-2-5",
-                  "text": "Resolves Alkaline Overlaps",
+                  "id": "node-2-2-3-2",
+                  "text": "Excess Beta Forms Beta4",
                   "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-3-3",
+                  "text": "Chronic Extravascular Hemolysis Splenomegaly",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-3-4",
+                  "text": "Supravital Staining",
+                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-2-2-2-5-1",
-                      "text": "Separates HbC from A2/E",
-                      "level": 5
+                      "id": "node-2-2-3-4-1",
+                      "text": "Brilliant Cresyl Blue Reagent",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
                     },
                     {
-                      "id": "node-2-2-2-5-2",
-                      "text": "Separates HbS from D/G",
-                      "level": 5
+                      "id": "node-2-2-3-4-2",
+                      "text": "Golf-Ball Cytoplasmic Inclusions",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     },
                     {
-                      "id": "node-2-2-2-5-3",
-                      "text": "HbD/G Migrate with HbA",
-                      "level": 5
+                      "id": "node-2-2-3-4-3",
+                      "text": "Distinct from Heinz Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     }
                   ]
+                },
+                {
+                  "id": "node-2-2-3-5",
+                  "text": "Electrophoresis: HbH 5-30%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-2-4",
+              "text": "Hydrops Fetalis (--/--)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-2-4-1",
+                  "text": "Four Alpha Genes Deleted",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-4-2",
+                  "text": "Absence of HbF & HbA",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-4-3",
+                  "text": "Predominant Hb Bart's (Gamma4)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-4-4",
+                  "text": "Lethal In Utero Anasarca",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-2-4-5",
+                  "text": "Maternal Mirror Syndrome Risk",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             }
@@ -991,1306 +1919,587 @@
         },
         {
           "id": "sub-2-3",
-          "text": "Quantitative Liquid Separation",
+          "text": "Beta-Thalassemias",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-3-1",
-              "text": "Cation-Exchange HPLC",
+              "text": "Molecular Etiology",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-3-1-1",
-                  "text": "Negatively Charged Silica Resin",
-                  "level": 4
+                  "text": "Chromosome 11 Point Mutations",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-3-1-2",
-                  "text": "Sodium Phosphate Buffer Gradient",
-                  "level": 4
+                  "text": "Promoter & Splice Mutations",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
                   "id": "node-2-3-1-3",
-                  "text": "Retention Windows",
+                  "text": "Beta0 Absent vs Beta+ Reduced",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-2-3-1-3-1",
-                      "text": "HbA2 Window (3.60-3.90 min)",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-3-1-3-2",
-                      "text": "HbS Window (4.40-4.80 min)",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-2-3-1-3-3",
-                      "text": "HbC Window (4.90-5.30 min)",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
               "id": "node-2-3-2",
-              "text": "Capillary Zone Electrophoresis",
+              "text": "Beta-Thal Major (Cooley's Anemia)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-3-2-1",
-                  "text": "High-Voltage Separation",
-                  "level": 4
+                  "text": "Genotype: beta0/beta0",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-3-2-2",
-                  "text": "Narrow Silica Capillaries",
-                  "level": 4
+                  "text": "Silent at Birth",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
                   "id": "node-2-3-2-3",
-                  "text": "Direct HbA2/E/C Resolution",
-                  "level": 4
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-3",
-      "text": "Qualitative Beta-Chain Variants",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-3-1",
-          "text": "Hemoglobin S",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-3-1-1",
-              "text": "Molecular Pathophysiology",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-1-1",
-                  "text": "Beta-6 Glu->Val Substitution",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-1-2",
-                  "text": "A-to-T Transversion (GAG->GTG)",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-1-3",
-                  "text": "Deoxy T-State Transition",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-1-4",
-                  "text": "Phe85 and Leu88 Pocket",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-1-5",
-                  "text": "14-Strand Helical Polymers",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-1-6",
-                  "text": "Membrane Shear Pathology",
+                  "text": "Onset at 3-6 Months",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-1-6-1",
-                      "text": "Ca2+ Influx",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-1-6-2",
-                      "text": "Gardos Channel Activation",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-1-6-3",
-                      "text": "K+ and Water Efflux",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-1-6-4",
-                      "text": "Outer Phosphatidylserine Exposure",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-1-6-5",
-                      "text": "Irreversibly Sickled Cells",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-2-4",
+                  "text": "Hb 2.0-5.0 g/dL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-2-5",
+                  "text": "Smear: Dacrocytes & Abundant NRBCs",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-2-6",
+                  "text": "Electrophoresis: HbF 90-95%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-2-7",
+                  "text": "HbA 0% in beta0/beta0",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-3-1-2",
-              "text": "Clinical Complications",
+              "id": "node-2-3-3",
+              "text": "Beta-Thal Intermedia",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
-                  "id": "node-3-1-2-1",
-                  "text": "Vaso-Occlusive Crises",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-2-2",
-                  "text": "Dactylitis Hand-Foot Syndrome",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-2-3",
-                  "text": "Acute Chest Syndrome",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-1-2-4",
-                  "text": "Splenic Pathology",
+                  "id": "node-2-3-3-1",
+                  "text": "Genotypes: beta+/beta+ or beta0/beta+",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-4-1",
-                      "text": "Acute Sequestration Crisis",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-2-4-2",
-                      "text": "Fibrotic Autosplenectomy",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-2-4-3",
-                      "text": "Encapsulated Bacterial Sepsis",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
                 },
                 {
-                  "id": "node-3-1-2-5",
-                  "text": "Parvovirus B19 Aplastic Crisis",
+                  "id": "node-2-3-3-2",
+                  "text": "Transfusion-Independent Baseline",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-2-5-1",
-                      "text": "Reticulocytopenia 0%",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-3-3",
+                  "text": "Hb 7.0-10.0 g/dL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-3-1-3",
-              "text": "Laboratory Findings",
+              "id": "node-2-3-4",
+              "text": "Beta-Thal Minor (Trait)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-3-1-3-1",
-                  "text": "Sickle Cell Anemia (HbSS)",
+                  "id": "node-2-3-4-1",
+                  "text": "Genotypes: beta0/beta or beta+/beta",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-3-1-1",
-                      "text": "Severe Anemia (Hb 6-9 g/dL)",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-2",
-                      "text": "Reticulocytes 8-20%",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-3",
-                      "text": "Drepanocytes and Codocytes",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-4",
-                      "text": "Howell-Jolly and Pappenheimer Bodies",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-5",
-                      "text": "HbS 85-95%",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-6",
-                      "text": "HbF 5-15%",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-1-7",
-                      "text": "HbA 0%",
-                      "level": 5
-                    }
-                  ]
+                  "high_yield": false,
+                  "children": []
                 },
                 {
-                  "id": "node-3-1-3-2",
-                  "text": "Sickle Cell Trait (HbAS)",
+                  "id": "node-2-3-4-2",
+                  "text": "Profound Microcytosis (MCV 55-72)",
                   "level": 4,
-                  "children": [
-                    {
-                      "id": "node-3-1-3-2-1",
-                      "text": "Normal Erythrocyte Indices",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-2-2",
-                      "text": "Absent Routine Drepanocytes",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-2-3",
-                      "text": "Positive Solubility Test",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-2-4",
-                      "text": "HbA 55-60%",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-3-1-3-2-5",
-                      "text": "HbS 35-40%",
-                      "level": 5
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-3-1-4",
-              "text": "Pharmacologic Intervention",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-1-4-1",
-                  "text": "Hydroxyurea Therapy",
-                  "level": 4
+                  "high_yield": true,
+                  "children": []
                 },
                 {
-                  "id": "node-3-1-4-2",
-                  "text": "Ribonucleotide Reductase Inhibition",
-                  "level": 4
+                  "id": "node-2-3-4-3",
+                  "text": "Normal or High RBC Count",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
-                  "id": "node-3-1-4-3",
-                  "text": "HbF Gamma Induction",
-                  "level": 4
+                  "id": "node-2-3-4-4",
+                  "text": "Diagnostic Hallmark: HbA2 3.5-7.0%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
-                  "id": "node-3-1-4-4",
-                  "text": "Blocks Polymer Incorporation",
-                  "level": 4
+                  "id": "node-2-3-4-5",
+                  "text": "HbA2 >8% Suggests Co-Elution",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-3-4-6",
+                  "text": "Iron Deficiency Depresses HbA2",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-3-2",
-          "text": "Hemoglobin C",
+          "id": "sub-2-4",
+          "text": "Complex Variants",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
-              "id": "node-3-2-1",
-              "text": "Beta-6 Glu->Lys Substitution",
-              "level": 3
-            },
-            {
-              "id": "node-3-2-2",
-              "text": "A-to-G Transition (GAG->AAG)",
-              "level": 3
-            },
-            {
-              "id": "node-3-2-3",
-              "text": "Hexagonal Gold Bar Crystals",
-              "level": 3
-            },
-            {
-              "id": "node-3-2-4",
-              "text": "Clear Cytoplasmic Halos",
-              "level": 3
-            },
-            {
-              "id": "node-3-2-5",
-              "text": "Abundant Codocytes (30-90%)",
-              "level": 3
-            },
-            {
-              "id": "node-3-2-6",
-              "text": "Laboratory Differentiation",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-3-2-6-1",
-                  "text": "HbAC Trait (60% A, 40% C)",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-2-6-2",
-                  "text": "HbCC Disease (>90% C, 0% A)",
-                  "level": 4
-                },
-                {
-                  "id": "node-3-2-6-3",
-                  "text": "Negative Solubility Screen",
-                  "level": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-3-3",
-          "text": "Hemoglobin SC Disease",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-3-3-1",
-              "text": "Compound Heterozygous (BetaS/BetaC)",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-2",
-              "text": "K-Cl Cotransporter Dehydration",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-3",
-              "text": "Increased MCHC Concentrations",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-4",
-              "text": "Proliferative Retinopathy Risk",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-5",
-              "text": "Femoral Head Avascular Necrosis",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-6",
-              "text": "Finger-Like Condensed Crystals",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-7",
-              "text": "Positive Sickle Solubility",
-              "level": 3
-            },
-            {
-              "id": "node-3-3-8",
-              "text": "Equimolar Profile (50% S, 50% C)",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "id": "sub-3-4",
-          "text": "Hemoglobin E",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-3-4-1",
-              "text": "Beta-26 Glu->Lys Substitution",
-              "level": 3
-            },
-            {
-              "id": "node-3-4-2",
-              "text": "Cryptic Splice Site Activation",
-              "level": 3
-            },
-            {
-              "id": "node-3-4-3",
-              "text": "Aberrant mRNA Nuclear Degradation",
-              "level": 3
-            },
-            {
-              "id": "node-3-4-4",
-              "text": "Quantitative Beta+ Thalassemic Phenotype",
-              "level": 3
-            },
-            {
-              "id": "node-3-4-5",
-              "text": "Marked Microcytosis (MCV 55-65 fL)",
-              "level": 3
-            },
-            {
-              "id": "node-3-4-6",
-              "text": "HbEE Pattern (>85% E, 0% A)",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "id": "sub-3-5",
-          "text": "Hemoglobin D-Punjab",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-3-5-1",
-              "text": "Beta-121 Glu->Gln Substitution",
-              "level": 3
-            },
-            {
-              "id": "node-3-5-2",
-              "text": "Negative Sickle Solubility",
-              "level": 3
-            },
-            {
-              "id": "node-3-5-3",
-              "text": "Alkaline Co-Migration with HbS",
-              "level": 3
-            },
-            {
-              "id": "node-3-5-4",
-              "text": "Acid Co-Migration with HbA",
-              "level": 3
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-4",
-      "text": "Quantitative Thalassemias",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-4-1",
-          "text": "Pathophysiologic Mechanisms",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-4-1-1",
-              "text": "Globin Synthesis Rate Suppression",
-              "level": 3
-            },
-            {
-              "id": "node-4-1-2",
-              "text": "Stoichiometric Monomer Imbalance",
-              "level": 3
-            },
-            {
-              "id": "node-4-1-3",
-              "text": "Beta-Thalassemia Chain Pathology",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-1-3-1",
-                  "text": "Excess Insoluble Alpha Monomers",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-3-2",
-                  "text": "Precipitate in Marrow Erythroblasts",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-3-3",
-                  "text": "Band 3 and Spectrin Binding",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-3-4",
-                  "text": "Fenton Reactive Oxygen Species",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-3-5",
-                  "text": "Ineffective Erythropoiesis (70-90% Apoptosis)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-3-6",
-                  "text": "Secondary Extravascular Hemolysis",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-1-4",
-              "text": "Alpha-Thalassemia Chain Pathology",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-1-4-1",
-                  "text": "Excess Soluble Homotetramers",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-4-2",
-                  "text": "Fetal Hb Bart's (Gamma4)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-4-3",
-                  "text": "Adult HbH (Beta4)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-4-4",
-                  "text": "Extreme Oxygen Affinity (P50 2-4)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-4-5",
-                  "text": "Absence of Bohr Effect",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-4-6",
-                  "text": "Late Mature Erythrocyte Hemolysis",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-1-5",
-              "text": "Systemic Consequences",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-1-5-1",
-                  "text": "Inverted M:E Ratio (1:10)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-5-2",
-                  "text": "Cortical Bone Thinning",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-5-3",
-                  "text": "Hair-on-End Diploid Radiography",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-5-4",
-                  "text": "Maxillary Chipmunk Facies",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-5-5",
-                  "text": "Extramedullary Hepatosplenomegaly",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-1-5-6",
-                  "text": "Iron Siderosis Mechanism",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-4-1-5-6-1",
-                      "text": "Erythroferrone Secretion",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-1-5-6-2",
-                      "text": "Hepatic Hepcidin Suppression",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-1-5-6-3",
-                      "text": "Accelerated Duodenal Absorption",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-1-5-6-4",
-                      "text": "Cardiac Siderosis Mortality",
-                      "level": 5
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-4-2",
-          "text": "Alpha-Thalassemia Classification",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-4-2-1",
-              "text": "Silent Carrier (-a/aa)",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-2-1-1",
-                  "text": "Single Alpha Gene Deletion",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-1-2",
-                  "text": "Borderline MCV (78-82 fL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-1-3",
-                  "text": "Trace Cord Hb Bart's 1-2%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-1-4",
-                  "text": "Requires Molecular Gap-PCR",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-2-2",
-              "text": "Alpha-Thal Minor (2 Genes)",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-2-2-1",
-                  "text": "Cis Deletion (--/aa)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-4-2-2-1-1",
-                      "text": "Asian Population Prevalent",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-2-2-1-2",
-                      "text": "Hydrops Fetalis Risk",
-                      "level": 5
-                    }
-                  ]
-                },
-                {
-                  "id": "node-4-2-2-2",
-                  "text": "Trans Deletion (-a/-a)",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-4-2-2-2-1",
-                      "text": "African Population Prevalent",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-2-2-2-2",
-                      "text": "No Hydrops Transmission Risk",
-                      "level": 5
-                    }
-                  ]
-                },
-                {
-                  "id": "node-4-2-2-3",
-                  "text": "MCV 60-75 fL",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-2-4",
-                  "text": "Elevated RBC >5.5x10^12/L",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-2-5",
-                  "text": "Normal/Low HbA2 Marker",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-2-6",
-                  "text": "Cord Hb Bart's 5-15%",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-2-3",
-              "text": "Hemoglobin H Disease (--/-a)",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-2-3-1",
-                  "text": "Three Alpha Genes Deleted",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-3-2",
-                  "text": "Moderate Anemia (Hb 7-10 g/dL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-3-3",
-                  "text": "Marked Microcytosis (MCV 55-65 fL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-3-4",
-                  "text": "HbH Fraction 5-30%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-3-5",
-                  "text": "Brilliant Cresyl Blue Stain",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-4-2-3-5-1",
-                      "text": "Fine Golf-Ball Stippling",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-2-3-5-2",
-                      "text": "Diffuse Cytoplasmic Inclusions",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-2-3-5-3",
-                      "text": "Distinct from Heinz Bodies",
-                      "level": 5
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-4-2-4",
-              "text": "Hydrops Fetalis (--/--)",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-2-4-1",
-                  "text": "Four Alpha Genes Deleted",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-2",
-                  "text": "Zero Functional Alpha Production",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-3",
-                  "text": "Hb Bart's 80-90%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-4",
-                  "text": "HbA 0% and HbF 0%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-5",
-                  "text": "Severe Edema (Anasarca)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-6",
-                  "text": "High-Output Cardiac Failure",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-2-4-7",
-                  "text": "Maternal Mirror Syndrome Risk",
-                  "level": 4
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-4-3",
-          "text": "Beta-Thalassemia Classification",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-4-3-1",
-              "text": "Beta-Thalassemia Major",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-3-1-1",
-                  "text": "Homozygous Cooley's Anemia (B0/B0)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-2",
-                  "text": "Asymptomatic at Delivery",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-3",
-                  "text": "Unmasked Months 3-6",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-4",
-                  "text": "Profound Anemia (Hb 2-5 g/dL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-5",
-                  "text": "HbF 90-95%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-6",
-                  "text": "HbA 0%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-7",
-                  "text": "Abundant Normoblasts and Dacrocytes",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-1-8",
-                  "text": "Obligate Transfusion Dependence",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-3-2",
-              "text": "Beta-Thalassemia Intermedia",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-3-2-1",
-                  "text": "Moderate Anemia (Hb 7-10 g/dL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-2-2",
-                  "text": "Transfusion Independence at Baseline",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-2-3",
-                  "text": "Iron Absorption Overload Risk",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-3-3",
-              "text": "Beta-Thalassemia Minor",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-3-3-1",
-                  "text": "Heterozygous Carrier (B0/B or B+/B)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-3-2",
-                  "text": "Proportionate Microcytosis (MCV 55-72)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-3-3",
-                  "text": "Elevated RBC (>5.0-6.5x10^12/L)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-3-4",
-                  "text": "Normal RDW (<15%)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-3-3-5",
-                  "text": "HbA2 Diagnostic Window",
-                  "level": 4,
-                  "children": [
-                    {
-                      "id": "node-4-3-3-5-1",
-                      "text": "Diagnostic Range 3.5-7.0%",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-3-3-5-2",
-                      "text": "Values >8.0% Indicate Co-Elution",
-                      "level": 5
-                    },
-                    {
-                      "id": "node-4-3-3-5-3",
-                      "text": "Concomitant Iron Lowers HbA2",
-                      "level": 5
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-4-4",
-          "text": "Complex Regulatory Variants",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-4-4-1",
+              "id": "node-2-4-1",
               "text": "Delta-Beta Thalassemia",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-4-4-1-1",
-                  "text": "Linked Delta-Beta Deletion",
-                  "level": 4
+                  "id": "node-2-4-1-1",
+                  "text": "Deletion of Delta & Beta Genes",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
-                  "id": "node-4-4-1-2",
-                  "text": "Persistent Gamma Compensation",
-                  "level": 4
+                  "id": "node-2-4-1-2",
+                  "text": "Compensatory Gamma Synthesis",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
                 },
                 {
-                  "id": "node-4-4-1-3",
-                  "text": "Normal/Decreased HbA2 (<2.5%)",
-                  "level": 4
+                  "id": "node-2-4-1-3",
+                  "text": "Normal or Decreased HbA2",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 },
                 {
-                  "id": "node-4-4-1-4",
-                  "text": "Elevated HbF (5-20%)",
-                  "level": 4
+                  "id": "node-2-4-1-4",
+                  "text": "Elevated HbF 5-20%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
                 }
               ]
             },
             {
-              "id": "node-4-4-2",
+              "id": "node-2-4-2",
               "text": "Hereditary Persistence Fetal Hb",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-4-4-2-1",
-                  "text": "Gamma Promoter Point Mutations",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-2-2",
-                  "text": "Normal RBC Indices",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-2-3",
-                  "text": "Heterozygote HbF 15-35%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-2-4",
-                  "text": "Homozygote HbF 100%",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-2-5",
-                  "text": "Completely Asymptomatic Course",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-4-4-3",
-              "text": "Hb Constant Spring",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-4-4-3-1",
-                  "text": "Stop Codon TAA->CAA Mutation",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-3-2",
-                  "text": "Elongated Alpha Chain (172 AA)",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-3-3",
-                  "text": "Rapid mRNA Degradation",
-                  "level": 4
-                },
-                {
-                  "id": "node-4-4-3-4",
-                  "text": "Non-Deletional Alpha0 Behavior",
-                  "level": 4
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sec-5",
-      "text": "Specialized Differential Calculations",
-      "level": 1,
-      "children": [
-        {
-          "id": "sub-5-1",
-          "text": "Mentzer Index Differentiation",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-5-1-1",
-              "text": "Formula (MCV / RBC)",
-              "level": 3
-            },
-            {
-              "id": "node-5-1-2",
-              "text": "Value <13 Thalassemia Trait",
-              "level": 3
-            },
-            {
-              "id": "node-5-1-3",
-              "text": "Value >13 Iron Deficiency",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "id": "sub-5-2",
-          "text": "Analyzer Rule of Three QC",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-5-2-1",
-              "text": "Formula RBCx3 = Hb",
-              "level": 3
-            },
-            {
-              "id": "node-5-2-2",
-              "text": "Formula Hbx3 = Hct (+/-3%)",
-              "level": 3
-            },
-            {
-              "id": "node-5-2-3",
-              "text": "Violation in Microcytic Polycythemia",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "id": "sub-5-3",
-          "text": "WBC Count Correction",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-5-3-1",
-              "text": "Trigger >=5 NRBC per 100 WBC",
-              "level": 3
-            },
-            {
-              "id": "node-5-3-2",
-              "text": "Formula (Uncorrectedx100)/(100+NRBC)",
-              "level": 3
-            },
-            {
-              "id": "node-5-3-3",
-              "text": "Prevents Spurious Pseudoleukocytosis",
-              "level": 3
-            }
-          ]
-        },
-        {
-          "id": "sub-5-4",
-          "text": "Kleihauer-Betke Acid Elution",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-5-4-1",
-              "text": "Buffer pH 3.2-3.3",
-              "level": 3
-            },
-            {
-              "id": "node-5-4-2",
-              "text": "HbA Elutes Leaving Ghosts",
-              "level": 3
-            },
-            {
-              "id": "node-5-4-3",
-              "text": "HbF Resists and Stains Pink",
-              "level": 3
-            },
-            {
-              "id": "node-5-4-4",
-              "text": "Diagnostic Distribution Patterns",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-5-4-4-1",
-                  "text": "Pancellular Uniform HPFH",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-4-4-2",
-                  "text": "Heterocellular Patchy Thalassemia",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-4-4-3",
-                  "text": "Fetal-Maternal Hemorrhage Quantification",
+                  "id": "node-2-4-2-1",
+                  "text": "Gamma Promoter Mutations",
                   "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-2-2",
+                  "text": "Failed Perinatal Gamma Shutdown",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-2-3",
+                  "text": "Asymptomatic Normal Indices",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-2-4",
+                  "text": "Heterozygous HbF 15-35%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-2-5",
+                  "text": "Pancellular HbF Distribution",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-4-3",
+              "text": "Hemoglobin Constant Spring",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-4-3-1",
+                  "text": "Stop Codon TAA to CAA",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-3-2",
+                  "text": "Elongated Alpha (172 Residues)",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-3-3",
+                  "text": "Non-deletional Alpha Phenotype",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-4-3-4",
+                  "text": "Coinheritance Gives Severe HbH",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-2-5",
+          "text": "Calculations & Laboratory Differentials",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-2-5-1",
+              "text": "Mentzer Index Calculation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-5-1-1",
+                  "text": "Formula: MCV / RBC Count",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-1-2",
+                  "text": "<13 Suspicious Thalassemia Trait",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-1-3",
+                  "text": ">13 Suspicious Iron Deficiency",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-2",
+              "text": "Rule of Three Failure",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-2-5-2-1",
+                  "text": "Formula: RBC x 3 = Hb",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-2-2",
+                  "text": "Formula: Hb x 3 = Hct",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-2-3",
+                  "text": "Discrepancy in Thalassemia Microcytosis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-3",
+              "text": "WBC Leukocyte Correction",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-5-3-1",
+                  "text": "Indication: NRBC >=5 per 100 WBC",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-3-2",
+                  "text": "(Uncorrected WBC x 100)/(100+NRBC)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-3-3",
+                  "text": "Prevents Spurious Pseudo-Leukocytosis",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-2-5-4",
+              "text": "Kleihauer-Betke Acid Elution",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-5-4-1",
+                  "text": "Acid Buffer pH 3.2-3.3",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-4-2",
+                  "text": "HbA Elutes Creating Ghosts",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-4-3",
+                  "text": "HbF Resists Acid Elution",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-2-5-4-4",
+                  "text": "Staining Distributions",
+                  "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
-                      "id": "node-5-4-4-3-1",
-                      "text": "FMH Volume = Fetal% x 50",
-                      "level": 5
+                      "id": "node-2-5-4-4-1",
+                      "text": "Pancellular: Uniform Pink in HPFH",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     },
                     {
-                      "id": "node-5-4-4-3-2",
-                      "text": "Vials = (FMH/30) + 1",
-                      "level": 5
+                      "id": "node-2-5-4-4-2",
+                      "text": "Heterocellular: Patchy in Beta-Thal",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-2-5-4-5",
+                  "text": "Fetomaternal Hemorrhage Dosing",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-2-5-4-5-1",
+                      "text": "FMH mL = %Fetal Cells x 50",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-4-5-2",
+                      "text": "Dose = (FMH/30) + 1 Vial",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
                     }
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "sub-5-5",
-          "text": "Microcytic Differential Parameters",
-          "level": 2,
-          "children": [
-            {
-              "id": "node-5-5-1",
-              "text": "Beta-Thalassemia Minor",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-5-5-1-1",
-                  "text": "RBC Count >5.5x10^12/L",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-1-2",
-                  "text": "RDW Normal (<15%)",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-1-3",
-                  "text": "Ferritin Normal to High",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-1-4",
-                  "text": "HbA2 Elevated (3.5-7.0%)",
-                  "level": 4
-                }
-              ]
             },
             {
-              "id": "node-5-5-2",
-              "text": "Alpha-Thalassemia Minor",
+              "id": "node-2-5-5",
+              "text": "Microcytic Anemia Differentials",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-5-5-2-1",
-                  "text": "RBC Count >5.5x10^12/L",
-                  "level": 4
+                  "id": "node-2-5-5-1",
+                  "text": "Iron Deficiency Anemia",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-2-5-5-1-1",
+                      "text": "Decreased RBC & High RDW",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-1-2",
+                      "text": "Low Ferritin (<15 ng/mL)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-1-3",
+                      "text": "Markedly Elevated TIBC",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-1-4",
+                      "text": "Pencil Elliptocyte Cells",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-5-5-2-2",
-                  "text": "RDW Normal (<15%)",
-                  "level": 4
+                  "id": "node-2-5-5-2",
+                  "text": "Beta-Thalassemia Minor",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-2-5-5-2-1",
+                      "text": "Elevated RBC & Normal RDW",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-2-2",
+                      "text": "Normal/High Ferritin & Iron",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-2-3",
+                      "text": "Elevated HbA2 (3.5-7.0%)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-2-4",
+                      "text": "Basophilic Stippling & Targets",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-5-5-2-3",
-                  "text": "Ferritin Normal to High",
-                  "level": 4
+                  "id": "node-2-5-5-3",
+                  "text": "Anemia of Chronic Disease",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-2-5-5-3-1",
+                      "text": "Elevated Ferritin (>100 ng/mL)",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-3-2",
+                      "text": "Decreased TIBC",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 },
                 {
-                  "id": "node-5-5-2-4",
-                  "text": "HbA2 Normal to Low",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-5-5-3",
-              "text": "Iron Deficiency Anemia",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-5-5-3-1",
-                  "text": "RBC Count <4.0x10^12/L",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-3-2",
-                  "text": "RDW High (>16-22%)",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-3-3",
-                  "text": "Ferritin Low (<15 ng/mL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-3-4",
-                  "text": "TIBC Markedly Elevated",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-5-5-4",
-              "text": "Anemia of Chronic Disease",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-5-5-4-1",
-                  "text": "RBC Normal to Decreased",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-4-2",
-                  "text": "Ferritin High (>100 ng/mL)",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-4-3",
-                  "text": "TIBC Low to Normal",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-4-4",
-                  "text": "HbA2 Normal",
-                  "level": 4
-                }
-              ]
-            },
-            {
-              "id": "node-5-5-5",
-              "text": "Sideroblastic Anemia",
-              "level": 3,
-              "children": [
-                {
-                  "id": "node-5-5-5-1",
-                  "text": "Dimorphic Red Cell Population",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-5-2",
-                  "text": "RDW Markedly High",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-5-3",
-                  "text": "Serum Iron Markedly Elevated",
-                  "level": 4
-                },
-                {
-                  "id": "node-5-5-5-4",
-                  "text": "Pappenheimer Bodies Present",
-                  "level": 4
+                  "id": "node-2-5-5-4",
+                  "text": "Sideroblastic Anemia",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-2-5-5-4-1",
+                      "text": "Elevated Iron & Ferritin",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    },
+                    {
+                      "id": "node-2-5-5-4-2",
+                      "text": "Dimorphic Smear & Pappenheimer Bodies",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
                 }
               ]
             }
@@ -2361,6 +2570,24 @@
       }
     }
 
+    // High-Yield Filter State
+    let isHighYieldOnly = false;
+
+    // Determine if a node is High Yield or contains High Yield descendants (ancestor path)
+    function computeHighYieldFlags(node) {
+      let hasHY = (node.high_yield === true || node.high_yield === 'true');
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          if (computeHighYieldFlags(child)) {
+            hasHY = true;
+          }
+        });
+      }
+      node._isHYBranch = hasHY;
+      return hasHY;
+    }
+    computeHighYieldFlags(mindMapData);
+
     function flattenNodes(node, list = []) {
       list.push(node);
       const isCollapsed = collapsedNodes.has(node.id);
@@ -2373,6 +2600,9 @@
     let isInitialLoad = true;
 
     function renderMindMap() {
+      // Re-compute high-yield branch flags
+      computeHighYieldFlags(mindMapData);
+
       // 1. Compute Y positions
       const yOffset = { val: 0 };
       computeVerticalLayout(mindMapData, 0, yOffset);
@@ -2393,9 +2623,11 @@
       allVisible.forEach(node => {
         const hasChildren = node.children && node.children.length > 0;
         const isCollapsed = collapsedNodes.has(node.id);
+        const isHYNode = (node.high_yield === true || node.high_yield === 'true');
+        const isHYBranch = !!node._isHYBranch;
 
         const el = document.createElement('div');
-        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''} ${isHYNode ? 'high-yield-node' : ''} ${isHYBranch ? 'is-high-yield-branch' : ''}`;
         
         el.style.left = `0px`;
         el.style.top = `${node.y}px`;
@@ -2474,7 +2706,8 @@
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', pathD);
-      path.setAttribute('class', 'connection-line');
+      const isHYPath = !!child._isHYBranch;
+      path.setAttribute('class', `connection-line ${isHYPath ? 'is-high-yield-path' : ''}`);
 
       svgPathsGroup.appendChild(path);
     }
@@ -2864,6 +3097,30 @@
       collapseAll(mindMapData);
       renderMindMap();
       setTimeout(() => centerInitialView(true), 50);
+    });
+
+    // High-Yield Only Toggle Button Listener
+    const btnHighYield = document.getElementById('btn-high-yield');
+    btnHighYield.addEventListener('click', () => {
+      isHighYieldOnly = !isHighYieldOnly;
+      if (isHighYieldOnly) {
+        btnHighYield.classList.add('active');
+        document.body.classList.add('high-yield-mode');
+
+        // Automatically expand high-yield pathways so they are visible
+        function expandHighYieldPaths(node) {
+          if (node._isHYBranch && node.children && node.children.length > 0) {
+            collapsedNodes.delete(node.id);
+            node.children.forEach(expandHighYieldPaths);
+          }
+        }
+        expandHighYieldPaths(mindMapData);
+        renderMindMap();
+      } else {
+        btnHighYield.classList.remove('active');
+        document.body.classList.remove('high-yield-mode');
+        renderMindMap();
+      }
     });
 
     document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
