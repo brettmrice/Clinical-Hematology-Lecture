@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBC Analysis - Complete Discussion</title>
+    <title>CBC Analysis | Complete Discussion</title>
     
     <!-- GitHub Flavored Markdown CSS Baseline -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
@@ -289,16 +289,67 @@
 </head>
 <body>
     <article class="markdown-body">
-<h1 id="cbc-analysis-complete-discussion">CBC Analysis - Complete Discussion</h1>
-<h1 id="navigation">Navigation</h1>
+<h1 id="cbc-analysis-complete-discussion">CBC Analysis | Complete Discussion</h1>
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
 <ul>
-<li><a href="#principles">Principles</a><ul>
-<li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
-<li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
-<li><a href="#laboratory-slide-breakdowns">Laboratory Slide Breakdowns</a></li>
-<li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
+<li><strong>III. Hematology Laboratory Testing</strong><ul>
+<li><strong>A. Cell Counts (Blood and Body Fluids)</strong></li>
+<li>
+<ol>
+<li>Manual hemocytometer counts and calculation formulas</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Automated cell counting (electrical impedance, radiofrequency, optical light scatter)</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Spurious results and corrective action protocols (cold agglutinins, lipemia, icterus, in vitro hemolysis, platelet clumping/satellitism)</li>
+</ol>
+</li>
+<li><strong>B. Differentials and Morphology Evaluation</strong></li>
+<li>Monolayer evaluation and slide estimations (WBC estimate, platelet estimate)</li>
+<li>Absolute and relative WBC subpopulation calculations</li>
+<li><strong>C. Hemoglobin</strong></li>
+<li>
+<ol>
+<li>Quantitative spectrophotometric measurement (525 nm / cyanmethemoglobin and SLS methods) and interferences</li>
+</ol>
+</li>
+<li><strong>D. Hematocrit</strong></li>
+<li>Automated pulse-height summation and manual spun microhematocrit</li>
+<li><strong>E. Indices</strong></li>
+<li>Mathematical derivation and diagnostic utility of MCV, MCH, MCHC, and RDW</li>
+<li>Internal quality control verification (Rule of Threes)</li>
 </ul>
 </li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>I. Quality Assessment / Troubleshooting</strong><ul>
+<li>Analytical linearity limits, dilution protocols, background counts, and Westgard multi-rule application</li>
+</ul>
+</li>
+<li><strong>II. Safety</strong><ul>
+<li>OSHA Bloodborne Pathogens Standard, engineering controls, PPE, and biohazard disposal</li>
+</ul>
+</li>
+<li><strong>III. Laboratory Mathematics</strong><ul>
+<li>Red blood cell indices formulas, corrected WBC count for nRBCs, manual hemocytometer calculation, relative-to-absolute differentials, and manual out-of-linearity dilution factors</li>
+</ul>
+</li>
+<li><strong>IV. Manual/Automated Methodology and Instrumentation</strong><ul>
+<li><strong>M. Hematology Instrumentation</strong> (Aperture impedance, hydrodynamic focusing, flow cell maintenance, error codes, and troubleshooting)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="navigation">Navigation</h1>
+<ul>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#parameters">Parameters</a><ul>
 <li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
 <li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
@@ -308,804 +359,20 @@
 </li>
 </ul>
 <hr />
-<hr />
-<h1 id="principles">Principles</h1>
+<h1 id="parameters">Parameters</h1>
 <h2 id="summary-clinical-synthesis">Summary &amp; Clinical Synthesis</h2>
-<p>Automated Complete Blood Count (CBC) analysis forms the backbone of diagnostic hematology, providing quantitative and qualitative assessment of erythrocytes, leukocytes, and thrombocytes. Modern hematology instrumentation integrates fluidics, electrical impedance, laser optics, radiofrequency conductivity, and spectrophotometry to deliver rapid, precise, and reproducible cellular measurements. Laboratory testing is divided into three distinct operational phases: pre-analytical (specimen collection in dipotassium or tripotassium EDTA, specimen integrity assessment, identification, and clot inspection), analytical (direct cell counting, hydrodynamic focusing, chemical lysing, spectrophotometric absorbance, and quality control validation), and post-analytical (data review, histogram and scatterplot evaluation, flagging protocol execution, and clinical result reporting).</p>
-<p>The core sizing and counting technology across modern platforms relies on the Coulter Principle of electrical impedance. Whole blood is aspirated (typically a micro-volume of approximately 15 µL) and partitioned into dedicated fluidic pathways and reaction chambers:</p>
+<p>Automated Complete Blood Count (CBC) analysis forms the quantitative foundation of diagnostic hematology. Modern multi-parameter hematology analyzers (such as the Sysmex pocH-100i and Beckman Coulter DxH 800) utilize direct-current (DC) electrical impedance (the Coulter Principle), radiofrequency (RF) conductivity, laser light scatter (VCS technology), and spectrophotometry to enumerate and characterize cellular elements in whole blood.</p>
+<p>The generation of accurate patient data relies on distinguishing directly measured parameters from derived and calculated indices:</p>
 <ul>
-<li>In the WBC/HGB chamber, a lytic reagent selectively breaks red cell membranes, shrinks leukocyte cytoplasm around intact nuclei, and converts free hemoglobin into a stable chromophore measured spectrophotometrically at 525 nm (or 540 nm), while white blood cells are counted via direct current (DC) impedance.</li>
-<li>In the RBC/PLT chamber, an isotonic, conductive diluent preserves cellular volume and structural integrity, allowing hydrodynamically focused single-file passage through the aperture sensing zone to count and size erythrocytes (25–250 fL) and platelets (2–30 fL).</li>
+<li>Directly measured parameters include the Red Blood Cell (RBC) count, White Blood Cell (WBC) count, Platelet (PLT) count, and Hemoglobin (HGB) concentration.</li>
+<li>Directly derived histogram parameters include the Mean Cell Volume (MCV), Red Cell Distribution Width (RDW), and Mean Platelet Volume (MPV).</li>
+<li>Mathematically calculated indices include the Hematocrit (HCT), Mean Cell Hemoglobin (MCH), Mean Cell Hemoglobin Concentration (MCHC), and absolute/relative WBC differential subpopulations.</li>
 </ul>
-<p>Leukocyte subclassification ranges from 3-part differential histograms on point-of-care (POC) platforms (separating lymphocytes, mixed mononuclear cells, and granulocytes based on post-lytic electronic volume thresholds) to advanced 5-part differentials on high-throughput analyzers using Volume, Conductivity, and Scatter (VCS) technology. VCS evaluates cell volume via low-frequency DC, internal nuclear/granular composition and chemical opacity via high-frequency radio current (RF), and external surface granularity/refractivity via multi-angle laser light scatter. </p>
-<p>Rigorous quality assurance involves daily background checks, multi-level control runs, preventative maintenance, and rapid troubleshooting of instrument error flags (e.g., linearity limits <code>+++++</code>, aperture clogs <code>:::::</code>, voteouts <code>-----</code>, or unverified derivations <code>R</code>). Biosafety mandates strict adherence to Standard Precautions, personal protective equipment (PPE), closed-tube sampling, and proper biohazard waste management.</p>
+<p>Quality assurance in automated hematology requires continuous analytical monitoring, including daily background checks, multi-level quality control (QC), adherence to analytical linearity limits, recognition of instrument error codes, and mathematical validation using internal QC rules (such as the Rule of Threes). When interferences occur—such as in vitro hemolysis, cold agglutinins, lipemia, extreme icterus, platelet satellitism, or reagent failure—the medical laboratory scientist must identify the underlying mechanism, evaluate the peripheral blood smear (PBS), and execute established corrective protocols (such as warm incubation, saline plasma replacement, manual hemocytometer counts, or out-of-linearity dilutions).</p>
 <hr />
 <h2 id="visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</h2>
-<h3 id="automated-cbc-fluidic-architecture-measurement-pathways">Automated CBC Fluidic Architecture &amp; Measurement Pathways</h3>
-<div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Whole Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Automated Sample Aspiration (15 µL)&quot;]
-        B --&gt; C[&quot;Primary Dilution with Conductive Isotonic Diluent&quot;]
-
-        C --&gt; D[&quot;WBC / HGB Chamber&quot;]
-        C --&gt; E[&quot;RBC / PLT Chamber&quot;]
-
-        D --&gt; F[&quot;Addition of Lytic Reagent&quot;]
-        F --&gt; G[&quot;Selective Erythrocyte Lysis &amp; Leukocyte Membrane Stripping&quot;]
-        G --&gt; H[&quot;WBC Counting &amp; Sizing (DC Impedance Pulse Detection)&quot;]
-        G --&gt; I[&quot;Stable Chromophore Conversion&quot;]
-        I --&gt; J[&quot;HGB Spectrophotometry (Absorbance at 525 nm)&quot;]
-
-        E --&gt; K[&quot;Secondary Dilution (Isotonic Diluent Only)&quot;]
-        K --&gt; L[&quot;Hydrodynamic Focusing (Sheath Fluid Single-File Alignment)&quot;]
-        L --&gt; M[&quot;RBC Direct Count &amp; Sizing Histogram (25 to 250 fL)&quot;]
-        L --&gt; N[&quot;PLT Direct Count &amp; Fitted Log-Normal Curve (2 to 30 fL)&quot;]
-
-        H --&gt; O[&quot;3-Part Differential Histogram (POC) or VCS Module (5-Part)&quot;]" data-original-code="flowchart TD
-        A[&quot;Whole Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Automated Sample Aspiration (15 µL)&quot;]
-        B --&gt; C[&quot;Primary Dilution with Conductive Isotonic Diluent&quot;]
-
-        C --&gt; D[&quot;WBC / HGB Chamber&quot;]
-        C --&gt; E[&quot;RBC / PLT Chamber&quot;]
-
-        D --&gt; F[&quot;Addition of Lytic Reagent&quot;]
-        F --&gt; G[&quot;Selective Erythrocyte Lysis &amp; Leukocyte Membrane Stripping&quot;]
-        G --&gt; H[&quot;WBC Counting &amp; Sizing (DC Impedance Pulse Detection)&quot;]
-        G --&gt; I[&quot;Stable Chromophore Conversion&quot;]
-        I --&gt; J[&quot;HGB Spectrophotometry (Absorbance at 525 nm)&quot;]
-
-        E --&gt; K[&quot;Secondary Dilution (Isotonic Diluent Only)&quot;]
-        K --&gt; L[&quot;Hydrodynamic Focusing (Sheath Fluid Single-File Alignment)&quot;]
-        L --&gt; M[&quot;RBC Direct Count &amp; Sizing Histogram (25 to 250 fL)&quot;]
-        L --&gt; N[&quot;PLT Direct Count &amp; Fitted Log-Normal Curve (2 to 30 fL)&quot;]
-
-        H --&gt; O[&quot;3-Part Differential Histogram (POC) or VCS Module (5-Part)&quot;]">
-flowchart TD
-        A["Whole Blood Specimen (EDTA)"] --> B["Automated Sample Aspiration (15 µL)"]
-        B --> C["Primary Dilution with Conductive Isotonic Diluent"]
-
-        C --> D["WBC / HGB Chamber"]
-        C --> E["RBC / PLT Chamber"]
-
-        D --> F["Addition of Lytic Reagent"]
-        F --> G["Selective Erythrocyte Lysis & Leukocyte Membrane Stripping"]
-        G --> H["WBC Counting & Sizing (DC Impedance Pulse Detection)"]
-        G --> I["Stable Chromophore Conversion"]
-        I --> J["HGB Spectrophotometry (Absorbance at 525 nm)"]
-
-        E --> K["Secondary Dilution (Isotonic Diluent Only)"]
-        K --> L["Hydrodynamic Focusing (Sheath Fluid Single-File Alignment)"]
-        L --> M["RBC Direct Count & Sizing Histogram (25 to 250 fL)"]
-        L --> N["PLT Direct Count & Fitted Log-Normal Curve (2 to 30 fL)"]
-
-        H --> O["3-Part Differential Histogram (POC) or VCS Module (5-Part)"]
-</div>
-
-<h3 id="analytical-workflow-corrective-action-protocol">Analytical Workflow &amp; Corrective Action Protocol</h3>
-<div class="mermaid" data-original-source="flowchart TD
-        Start[&quot;Analyzer Startup &amp; Background Check&quot;] --&gt; QC[&quot;Analyze Multi-Level Commercial QC&quot;]
-        QC --&gt; QC_Pass{&quot;QC Acceptable?&quot;}
-        QC_Pass -- No --&gt; QC_Fail[&quot;Troubleshoot / Re-run QC / Maintenance&quot;]
-        QC_Fail --&gt; QC
-
-        QC_Pass -- Yes --&gt; Prep[&quot;Pre-Analytical Inspection: Invert EDTA Tube 8-10x &amp; Check Clots&quot;]
-        Prep --&gt; Clot{&quot;Clot Present?&quot;}
-        Clot -- Yes --&gt; Reject[&quot;Reject Specimen: Request Recollection&quot;]
-
-        Clot -- No --&gt; Run[&quot;Sample Aspiration &amp; Dual-Chamber Analysis&quot;]
-        Run --&gt; FlagCheck{&quot;Instrument Flags Triggered?&quot;}
-
-        FlagCheck -- &quot;None&quot; --&gt; Verify[&quot;Validate Internal QC (Rule of Threes) &amp; Report&quot;]
-        FlagCheck -- &quot;+++++ (Overrange)&quot; --&gt; Dilute[&quot;Perform 1:2 Saline Dilution, Re-run, Multiply&quot;]
-        FlagCheck -- &quot;::::: (Aperture Clog)&quot; --&gt; Clean[&quot;Execute Backflush / Aperture Cleaning Cycle&quot;]
-        FlagCheck -- &quot;----- (Voteout)&quot; --&gt; Rerun[&quot;Inspect Chamber &amp; Re-run Specimen&quot;]
-        FlagCheck -- &quot;R (Review Result)&quot; --&gt; Manual[&quot;Inspect Raw Data, Manual Smear Review / Differential&quot;]
-
-        Dilute --&gt; Verify
-        Clean --&gt; Run
-        Rerun --&gt; Verify
-        Manual --&gt; Verify" data-original-code="flowchart TD
-        Start[&quot;Analyzer Startup &amp; Background Check&quot;] --&gt; QC[&quot;Analyze Multi-Level Commercial QC&quot;]
-        QC --&gt; QC_Pass{&quot;QC Acceptable?&quot;}
-        QC_Pass -- No --&gt; QC_Fail[&quot;Troubleshoot / Re-run QC / Maintenance&quot;]
-        QC_Fail --&gt; QC
-
-        QC_Pass -- Yes --&gt; Prep[&quot;Pre-Analytical Inspection: Invert EDTA Tube 8-10x &amp; Check Clots&quot;]
-        Prep --&gt; Clot{&quot;Clot Present?&quot;}
-        Clot -- Yes --&gt; Reject[&quot;Reject Specimen: Request Recollection&quot;]
-
-        Clot -- No --&gt; Run[&quot;Sample Aspiration &amp; Dual-Chamber Analysis&quot;]
-        Run --&gt; FlagCheck{&quot;Instrument Flags Triggered?&quot;}
-
-        FlagCheck -- &quot;None&quot; --&gt; Verify[&quot;Validate Internal QC (Rule of Threes) &amp; Report&quot;]
-        FlagCheck -- &quot;+++++ (Overrange)&quot; --&gt; Dilute[&quot;Perform 1:2 Saline Dilution, Re-run, Multiply&quot;]
-        FlagCheck -- &quot;::::: (Aperture Clog)&quot; --&gt; Clean[&quot;Execute Backflush / Aperture Cleaning Cycle&quot;]
-        FlagCheck -- &quot;----- (Voteout)&quot; --&gt; Rerun[&quot;Inspect Chamber &amp; Re-run Specimen&quot;]
-        FlagCheck -- &quot;R (Review Result)&quot; --&gt; Manual[&quot;Inspect Raw Data, Manual Smear Review / Differential&quot;]
-
-        Dilute --&gt; Verify
-        Clean --&gt; Run
-        Rerun --&gt; Verify
-        Manual --&gt; Verify">
-flowchart TD
-        Start["Analyzer Startup & Background Check"] --> QC["Analyze Multi-Level Commercial QC"]
-        QC --> QC_Pass{"QC Acceptable?"}
-        QC_Pass -- No --> QC_Fail["Troubleshoot / Re-run QC / Maintenance"]
-        QC_Fail --> QC
-
-        QC_Pass -- Yes --> Prep["Pre-Analytical Inspection: Invert EDTA Tube 8-10x & Check Clots"]
-        Prep --> Clot{"Clot Present?"}
-        Clot -- Yes --> Reject["Reject Specimen: Request Recollection"]
-
-        Clot -- No --> Run["Sample Aspiration & Dual-Chamber Analysis"]
-        Run --> FlagCheck{"Instrument Flags Triggered?"}
-
-        FlagCheck -- "None" --> Verify["Validate Internal QC (Rule of Threes) & Report"]
-        FlagCheck -- "+++++ (Overrange)" --> Dilute["Perform 1:2 Saline Dilution, Re-run, Multiply"]
-        FlagCheck -- "::::: (Aperture Clog)" --> Clean["Execute Backflush / Aperture Cleaning Cycle"]
-        FlagCheck -- "----- (Voteout)" --> Rerun["Inspect Chamber & Re-run Specimen"]
-        FlagCheck -- "R (Review Result)" --> Manual["Inspect Raw Data, Manual Smear Review / Differential"]
-
-        Dilute --> Verify
-        Clean --> Run
-        Rerun --> Verify
-        Manual --> Verify
-</div>
-
-<h3 id="directly-measured-vs-derived-cbc-parameters">Directly Measured vs Derived CBC Parameters</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Parameter</th>
-<th style="text-align: left;">Measurement Modality / Derivation Mechanism</th>
-<th style="text-align: left;">Analytical Chamber</th>
-<th style="text-align: left;">Standard Unit (Conventional)</th>
-<th style="text-align: left;">Standard Unit (SI)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>WBC</strong></td>
-<td style="text-align: left;">Direct DC electrical impedance counting (&gt;35 fL / &gt;30 fL post-lysis)</td>
-<td style="text-align: left;">WBC / HGB Bath</td>
-<td style="text-align: left;">$10^3\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$10^9\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RBC</strong></td>
-<td style="text-align: left;">Direct hydrodynamic focusing DC electrical impedance (25–250 fL / $\ge 36\text{ fL}$)</td>
-<td style="text-align: left;">RBC / PLT Bath</td>
-<td style="text-align: left;">$10^6\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$10^{12}\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HGB</strong></td>
-<td style="text-align: left;">Direct spectrophotometric absorbance at $525\text{ nm}$ (cyanmethemoglobin-comparable)</td>
-<td style="text-align: left;">WBC / HGB Bath</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HCT</strong></td>
-<td style="text-align: left;">Derived mathematically: $\text{HCT} = \frac{\text{RBC} \times \text{MCV}}{10}$</td>
-<td style="text-align: left;">Derived</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">$\text{L/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCV</strong></td>
-<td style="text-align: left;">Derived from average pulse volume of RBC histogram channels ($36–360\text{ fL}$)</td>
-<td style="text-align: left;">RBC / PLT Bath</td>
-<td style="text-align: left;">$\text{fL or }\mu^3$</td>
-<td style="text-align: left;">$\text{fL}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCH</strong></td>
-<td style="text-align: left;">Derived mathematically: $\text{MCH} = \frac{\text{HGB} \times 10}{\text{RBC}}$</td>
-<td style="text-align: left;">Derived</td>
-<td style="text-align: left;">$\text{pg}$</td>
-<td style="text-align: left;">$\text{pg}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCHC</strong></td>
-<td style="text-align: left;">Derived mathematically: $\text{MCHC} = \frac{\text{HGB} \times 100}{\text{HCT}}$</td>
-<td style="text-align: left;">Derived</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RDW-CV</strong></td>
-<td style="text-align: left;">Derived from RBC histogram: $\text{RDW-CV} = \left(\frac{\text{MCV SD}}{\text{MCV}}\right) \times 100$</td>
-<td style="text-align: left;">Derived</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">$\%$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>PLT</strong></td>
-<td style="text-align: left;">Direct impedance count fitted to log-normal distribution curve ($2–30\text{ fL}$)</td>
-<td style="text-align: left;">RBC / PLT Bath</td>
-<td style="text-align: left;">$10^3\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$10^9\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MPV</strong></td>
-<td style="text-align: left;">Derived from geometric mean volume of the fitted PLT histogram curve</td>
-<td style="text-align: left;">RBC / PLT Bath</td>
-<td style="text-align: left;">$\text{fL}$</td>
-<td style="text-align: left;">$\text{fL}$</td>
-</tr>
-</tbody>
-</table>
-<h3 id="hematology-analyzer-instrument-error-codes-and-action-protocol">Hematology Analyzer Instrument Error Codes and Action Protocol</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Error Code / Flag</th>
-<th style="text-align: left;">Technical Instrument Definition</th>
-<th style="text-align: left;">Root Cause / Mechanism</th>
-<th style="text-align: left;">Mandatory Laboratory Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>+++++</code></td>
-<td style="text-align: left;">Exceeds operating / linearity range</td>
-<td style="text-align: left;">Extreme leukocytosis, erythrocytosis, thrombocytosis, or elevated HGB</td>
-<td style="text-align: left;">Perform manual $1:2$ dilution with isotonic saline; re-run, multiply by dilution factor.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>-----</code></td>
-<td style="text-align: left;">Total voteout</td>
-<td style="text-align: left;">Replicate sensing apertures disagreed beyond statistical threshold</td>
-<td style="text-align: left;">Check fluidics; re-run sample. No average histogram is displayed.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>R</code></td>
-<td style="text-align: left;">Review result</td>
-<td style="text-align: left;">Parameter calculated from unstable, flagged, or abnormal raw channel data</td>
-<td style="text-align: left;">Perform manual data inspection; recalculation blocked until raw data is verified.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>?????</code></td>
-<td style="text-align: left;">Outside format display range</td>
-<td style="text-align: left;">Numerical result exceeds display buffer formatting width</td>
-<td style="text-align: left;">Check raw numeric data buffer; verify analyzer electronic boundaries.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>:::::</code></td>
-<td style="text-align: left;">Flow cell / aperture clog detected</td>
-<td style="text-align: left;">Protein buildup, fibrin strand, or particulate debris in aperture</td>
-<td style="text-align: left;">Initiate automated/manual backflush and aperture clean cycle; re-run.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>.....</code></td>
-<td style="text-align: left;">Incomplete computation</td>
-<td style="text-align: left;">Upstream primary parameter failed due to overrange or voteout</td>
-<td style="text-align: left;">Resolve primary raw parameter flag; calculation will auto-complete.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>#####</code></td>
-<td style="text-align: left;">Analysis rejected</td>
-<td style="text-align: left;">Critical hardware, vacuum, pressure, or fluidic transmission failure</td>
-<td style="text-align: left;">Verify fluidic pressures, reagent levels, and sample aspiration integrity; re-run.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>x x x x x</code></td>
-<td style="text-align: left;">Parameter not enabled at analysis</td>
-<td style="text-align: left;">Panel configuration disabled parameter during analytical run</td>
-<td style="text-align: left;">Enable parameter in software settings if test profile allows recalculation.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="wbc-differential-modalities-comparison">WBC Differential Modalities Comparison</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Feature / Modality</th>
-<th style="text-align: left;">3-Part Differential (POC Systems / pocH-100i)</th>
-<th style="text-align: left;">5-Part Differential (VCS Technology / DxH 800)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Primary Technology</strong></td>
-<td style="text-align: left;">Single-channel DC electrical impedance post-lysis</td>
-<td style="text-align: left;">Tri-dimensional VCS: DC Volume, RF Conductivity, Diode Laser Scatter</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Pre-Treatment</strong></td>
-<td style="text-align: left;">Lytic reagent strips cytoplasm; shrinks to nuclear envelope</td>
-<td style="text-align: left;">Lytic reagent preserves leukocyte integrity; optimizes optical refractivity</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Populations Identified</strong></td>
-<td style="text-align: left;">Lymphocytes, Mixed Mononuclear (Mono/Eos/Baso), Neutrophils</td>
-<td style="text-align: left;">Neutrophils, Lymphocytes, Monocytes, Eosinophils, Basophils (+ nRBCs)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Discriminator Regions</strong></td>
-<td style="text-align: left;">LD to T1 ($35–90\text{ fL}$), T1 to T2 ($90–160\text{ fL}$), T2 to UD ($160–450\text{ fL}$)</td>
-<td style="text-align: left;">Multi-planar clusters: V vs. SS (granularity), V vs. OP (internal structure)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Throughput / Setting</strong></td>
-<td style="text-align: left;">Low-volume clinics, urgent care, point-of-care settings</td>
-<td style="text-align: left;">High-volume core clinical reference laboratories</td>
-</tr>
-</tbody>
-</table>
-<h3 id="normal-adult-cbc-reference-intervals">Normal Adult CBC Reference Intervals</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Parameter</th>
-<th style="text-align: left;">Conventional Reference Interval</th>
-<th style="text-align: left;">Conventional Units</th>
-<th style="text-align: left;">SI Reference Interval</th>
-<th style="text-align: left;">SI Units</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>WBC</strong></td>
-<td style="text-align: left;">$4.5 - 11.0$</td>
-<td style="text-align: left;">$\times 10^3\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$4.5 - 11.0$</td>
-<td style="text-align: left;">$\times 10^9\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RBC (Male)</strong></td>
-<td style="text-align: left;">$4.5 - 5.5$</td>
-<td style="text-align: left;">$\times 10^6\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$4.5 - 5.5$</td>
-<td style="text-align: left;">$\times 10^{12}\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RBC (Female)</strong></td>
-<td style="text-align: left;">$4.0 - 5.0$</td>
-<td style="text-align: left;">$\times 10^6\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$4.0 - 5.0$</td>
-<td style="text-align: left;">$\times 10^{12}\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HGB (Male)</strong></td>
-<td style="text-align: left;">$14.0 - 17.4$</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">$140 - 174$</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HGB (Female)</strong></td>
-<td style="text-align: left;">$12.0 - 16.0$</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">$120 - 160$</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HCT (Male)</strong></td>
-<td style="text-align: left;">$42 - 52$</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">$0.42 - 0.52$</td>
-<td style="text-align: left;">$\text{L/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HCT (Female)</strong></td>
-<td style="text-align: left;">$36 - 46$</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">$0.36 - 0.46$</td>
-<td style="text-align: left;">$\text{L/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCV</strong></td>
-<td style="text-align: left;">$80 - 100$</td>
-<td style="text-align: left;">$\mu^3$</td>
-<td style="text-align: left;">$80 - 100$</td>
-<td style="text-align: left;">$\text{fL}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCH</strong></td>
-<td style="text-align: left;">$28 - 34$</td>
-<td style="text-align: left;">$\text{pg}$</td>
-<td style="text-align: left;">$28 - 34$</td>
-<td style="text-align: left;">$\text{pg}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCHC</strong></td>
-<td style="text-align: left;">$32 - 36$</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">$320 - 360$</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RDW</strong></td>
-<td style="text-align: left;">$12.0 - 14.6$</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">$12.0 - 14.6$</td>
-<td style="text-align: left;">$\%$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>PLT</strong></td>
-<td style="text-align: left;">$150 - 400$</td>
-<td style="text-align: left;">$\times 10^3\text{/}\mu\text{L}$</td>
-<td style="text-align: left;">$150 - 400$</td>
-<td style="text-align: left;">$\times 10^9\text{/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MPV</strong></td>
-<td style="text-align: left;">$6.8 - 10.2$</td>
-<td style="text-align: left;">$\text{fL}$</td>
-<td style="text-align: left;">$6.8 - 10.2$</td>
-<td style="text-align: left;">$\text{fL}$</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="laboratory-slide-breakdowns">Laboratory Slide Breakdowns</h2>
-<h3 id="foundations-of-hematology-testing-automated-fluidic-architecture">Foundations of Hematology Testing &amp; Automated Fluidic Architecture</h3>
-<p>The total testing process in hematology spans three critical operational phases:</p>
-<ul>
-<li><strong>Pre-Analytical Phase</strong>: Involves correct patient identification, venipuncture collection into evacuated tubes containing dipotassium or tripotassium ethylenediaminetetraacetic acid ($K_2\text{EDTA}$ or $K_3\text{EDTA}$), specimen transport under temperature-controlled conditions, and verification of specimen integrity. The sample must be checked for clots or fibrin webs prior to aspiration using two wooden applicator sticks.</li>
-<li><strong>Analytical Phase</strong>: Encompasses direct sample aspiration, fluidic partitioning, automated dilution, cell counting via electrical impedance, spectrophotometric hemoglobin measurement, flow cytometric optical scatter, internal quality control validation, and morphological differential analysis.</li>
-<li><strong>Post-Analytical Phase</strong>: Involves verifying instrument calibration, evaluating mathematical indices, checking data consistency using internal rules (such as the Rule of Threes), resolving error codes, performing manual smear reviews when indicated, and reporting validated results to the electronic health record.</li>
-</ul>
-<p>Modern automated analyzers, including point-of-care systems such as the Sysmex pocH-100i, utilize a dedicated micro-sampling fluidic pathway. Upon aspiration of an exact whole blood volume ($15\ \mu\text{L}$), the sample is mixed with an isotonic, electrically conductive diluent. The stream splits into two distinct analytical chambers:</p>
-<ol>
-<li><strong>WBC/HGB Chamber</strong>: Receives an aliquot of the diluted sample mixed with lytic reagent. Following an incubation of approximately $10\text{ seconds}$, red blood cells are destroyed, hemoglobin is liberated and converted to a chromophore for spectrophotometric measurement at $525\text{ nm}$, and intact leukocyte nuclei are quantified via direct current electrical impedance.</li>
-<li><strong>RBC/PLT Chamber</strong>: Receives a second aliquot further diluted with conductive diluent alone. Because no lytic reagent is introduced, red blood cells and platelets remain intact in their native states and are counted and sized via hydrodynamic focusing DC impedance.</li>
-</ol>
-<div class="mermaid" data-original-source="flowchart LR
-        WB[&quot;Aspirate Whole Blood (15 µL)&quot;] --&gt; Dil[&quot;Initial Dilution with Conductive Diluent&quot;]
-        Dil --&gt; Split1[&quot;WBC / HGB Bath (+ Lytic Reagent)&quot;]
-        Dil --&gt; Split2[&quot;RBC / PLT Bath (+ Isotonic Diluent Only)&quot;]
-        Split1 --&gt; Out1[&quot;WBC Count + Differential &amp; HGB Spectrophotometry (525 nm)&quot;]
-        Split2 --&gt; Out2[&quot;Hydrodynamically Focused RBC &amp; PLT Impedance Counts&quot;]" data-original-code="flowchart LR
-        WB[&quot;Aspirate Whole Blood (15 µL)&quot;] --&gt; Dil[&quot;Initial Dilution with Conductive Diluent&quot;]
-        Dil --&gt; Split1[&quot;WBC / HGB Bath (+ Lytic Reagent)&quot;]
-        Dil --&gt; Split2[&quot;RBC / PLT Bath (+ Isotonic Diluent Only)&quot;]
-        Split1 --&gt; Out1[&quot;WBC Count + Differential &amp; HGB Spectrophotometry (525 nm)&quot;]
-        Split2 --&gt; Out2[&quot;Hydrodynamically Focused RBC &amp; PLT Impedance Counts&quot;]">
-flowchart LR
-        WB["Aspirate Whole Blood (15 µL)"] --> Dil["Initial Dilution with Conductive Diluent"]
-        Dil --> Split1["WBC / HGB Bath (+ Lytic Reagent)"]
-        Dil --> Split2["RBC / PLT Bath (+ Isotonic Diluent Only)"]
-        Split1 --> Out1["WBC Count + Differential & HGB Spectrophotometry (525 nm)"]
-        Split2 --> Out2["Hydrodynamically Focused RBC & PLT Impedance Counts"]
-</div>
-
-<hr />
-<h3 id="reagent-systems-electrical-impedance-hydrodynamic-focusing">Reagent Systems, Electrical Impedance, &amp; Hydrodynamic Focusing</h3>
-<p>Automated hematology analyzers rely on two foundational reagent formulations to achieve physical separation and chemical isolation of cellular elements:</p>
-<ul>
-<li><strong>Conductive Isotonic Diluent</strong>: Formulated to match physiologic osmolarity and pH, preventing cellular swelling, crenation, or premature lysis. The high electrolytic ion content serves as the electrical conductor transmitting continuous direct current between internal and external electrodes across the aperture.</li>
-<li><strong>Lytic Reagent</strong>: Contains quaternary ammonium salts or non-toxic cyanide-free surfactants. The lytic agent rapidly disrupts lipid bilayers of non-nucleated red blood cells, reducing erythrocyte membranes to microscopic stroma. Simultaneously, it strips and collapses leukocyte cytoplasm while preserving nuclear membrane boundaries for volumetric sizing, and binds liberated heme iron to form a stable pigment for photometric absorption.</li>
-</ul>
-<div class="mermaid" data-original-source="flowchart TD
-        Reagents[&quot;Core Hematology Reagent Systems&quot;]
-        Reagents --&gt; DIL[&quot;Conductive Isotonic Diluent&quot;]
-        Reagents --&gt; LYS[&quot;Lytic Reagent (Quaternary Salts)&quot;]
-
-        DIL --&gt; DIL1[&quot;Preserves Native RBC &amp; PLT Morphology&quot;]
-        DIL --&gt; DIL2[&quot;Electrolyte Medium for DC/RF Conduction&quot;]
-
-        LYS --&gt; LYS1[&quot;Selectively Lyses RBC Cell Membranes&quot;]
-        LYS --&gt; LYS2[&quot;Collapses WBC Cytoplasm to Nuclear Core&quot;]
-        LYS --&gt; LYS3[&quot;Converts Free Heme into Stable Chromophore&quot;]" data-original-code="flowchart TD
-        Reagents[&quot;Core Hematology Reagent Systems&quot;]
-        Reagents --&gt; DIL[&quot;Conductive Isotonic Diluent&quot;]
-        Reagents --&gt; LYS[&quot;Lytic Reagent (Quaternary Salts)&quot;]
-
-        DIL --&gt; DIL1[&quot;Preserves Native RBC &amp; PLT Morphology&quot;]
-        DIL --&gt; DIL2[&quot;Electrolyte Medium for DC/RF Conduction&quot;]
-
-        LYS --&gt; LYS1[&quot;Selectively Lyses RBC Cell Membranes&quot;]
-        LYS --&gt; LYS2[&quot;Collapses WBC Cytoplasm to Nuclear Core&quot;]
-        LYS --&gt; LYS3[&quot;Converts Free Heme into Stable Chromophore&quot;]">
-flowchart TD
-        Reagents["Core Hematology Reagent Systems"]
-        Reagents --> DIL["Conductive Isotonic Diluent"]
-        Reagents --> LYS["Lytic Reagent (Quaternary Salts)"]
-
-        DIL --> DIL1["Preserves Native RBC & PLT Morphology"]
-        DIL --> DIL2["Electrolyte Medium for DC/RF Conduction"]
-
-        LYS --> LYS1["Selectively Lyses RBC Cell Membranes"]
-        LYS --> LYS2["Collapses WBC Cytoplasm to Nuclear Core"]
-        LYS --> LYS3["Converts Free Heme into Stable Chromophore"]
-</div>
-
-<p>The underlying mechanism of cellular quantification is the <strong>Coulter Principle (Electrical Impedance)</strong>:</p>
-<ul>
-<li>Cells suspended in an electrically conductive electrolyte solution are drawn through a precision micro-aperture separating an internal and external platinum electrode.</li>
-<li>A constant direct current (DC) supply maintains a steady baseline electrical flow between the electrodes.</li>
-<li>As a non-conductive blood cell passes through the aperture sensing zone, it displaces an equivalent volume of conductive electrolyte, momentarily increasing electrical resistance (impedance) between the electrodes.</li>
-<li>This resistance produces a transient voltage pulse:<br />
-    $$\Delta V \propto \text{Cellular Volume (Size)}$$<br />
-    $$\text{Pulse Frequency (Count / Time)} \propto \text{Cell Concentration}$$</li>
-</ul>
-<p>To overcome physical counting artifacts inherent to standard aperture flow, advanced analyzers employ <strong>Hydrodynamic Focusing</strong>:</p>
-<ul>
-<li>A concentric sheath fluid encloses the central sample stream under strict laminar flow conditions.</li>
-<li>Dynamic pressure acceleration narrows the sample core into a single-cell diameter column, forcing blood cells to traverse the aperture in strict single file.</li>
-<li>This eliminates three major sources of counting error:<ol>
-<li><em>Aperture border-zone errors</em> caused by cells passing along the low-field perimeter.</li>
-<li><em>Recirculation and eddy currents</em> where cells are swept back into the sensing zone behind the aperture.</li>
-<li><em>Coincident passage</em> where two cells enter the aperture simultaneously and register as a single large pulse.</li>
-</ol>
-</li>
-</ul>
-<div class="mermaid" data-original-source="flowchart LR
-        SheathIn[&quot;Sheath Fluid (Laminar Flow)&quot;] --&gt; HydroFocus[&quot;Hydrodynamic Focusing Zone&quot;]
-        SampleIn[&quot;Sample Nozzle Injection&quot;] --&gt; HydroFocus
-        HydroFocus --&gt; SingleFile[&quot;Strict Single-File Alignment&quot;]
-        SingleFile --&gt; Sense[&quot;Center-Aperture DC Sensing Zone&quot;]
-        Sense --&gt; Accurate[&quot;High-Resolution Pulse Sizing &amp; Zero Coincidence&quot;]" data-original-code="flowchart LR
-        SheathIn[&quot;Sheath Fluid (Laminar Flow)&quot;] --&gt; HydroFocus[&quot;Hydrodynamic Focusing Zone&quot;]
-        SampleIn[&quot;Sample Nozzle Injection&quot;] --&gt; HydroFocus
-        HydroFocus --&gt; SingleFile[&quot;Strict Single-File Alignment&quot;]
-        SingleFile --&gt; Sense[&quot;Center-Aperture DC Sensing Zone&quot;]
-        Sense --&gt; Accurate[&quot;High-Resolution Pulse Sizing &amp; Zero Coincidence&quot;]">
-flowchart LR
-        SheathIn["Sheath Fluid (Laminar Flow)"] --> HydroFocus["Hydrodynamic Focusing Zone"]
-        SampleIn["Sample Nozzle Injection"] --> HydroFocus
-        HydroFocus --> SingleFile["Strict Single-File Alignment"]
-        SingleFile --> Sense["Center-Aperture DC Sensing Zone"]
-        Sense --> Accurate["High-Resolution Pulse Sizing & Zero Coincidence"]
-</div>
-
-<hr />
-<h3 id="primary-analytical-chambers-cell-counting-channels">Primary Analytical Chambers &amp; Cell Counting Channels</h3>
-<p>The analyzer fluidic pathway separates whole blood into two primary reaction chambers:</p>
-<div class="mermaid" data-original-source="flowchart TD
-        subgraph WBC_HGB_Chamber [&quot;WBC &amp; HGB Analytical Chamber&quot;]
-                direction TD
-                W1[&quot;Whole Blood Aliquot + Lytic Reagent&quot;] --&gt; W2[&quot;RBC Lysis + Leukocyte Cytoplasmic Collapse&quot;]
-                W2 --&gt; W3[&quot;Impedance Sizing: Particles &amp;gt; 30 fL / &amp;gt; 35 fL = WBCs&quot;]
-                W2 --&gt; W4[&quot;Hemoglobin Reaction: Stable Chromophore Pigment&quot;]
-                W4 --&gt; W5[&quot;Spectrophotometric Absorbance Detection at 525 nm&quot;]
-        end
-
-        subgraph RBC_PLT_Chamber [&quot;RBC &amp; PLT Analytical Chamber&quot;]
-                direction TD
-                R1[&quot;Whole Blood Aliquot + Isotonic Diluent&quot;] --&gt; R2[&quot;Hydrodynamic Focusing Stream&quot;]
-                R2 --&gt; R3[&quot;Platelet Sizing Threshold: 2 to 30 fL (Fitted Log-Normal Curve)&quot;]
-                R2 --&gt; R4[&quot;Erythrocyte Sizing Threshold: 25 to 250 fL (RBC Histogram 36 to 360 fL)&quot;]
-        end" data-original-code="flowchart TD
-        subgraph WBC_HGB_Chamber [&quot;WBC &amp; HGB Analytical Chamber&quot;]
-                direction TD
-                W1[&quot;Whole Blood Aliquot + Lytic Reagent&quot;] --&gt; W2[&quot;RBC Lysis + Leukocyte Cytoplasmic Collapse&quot;]
-                W2 --&gt; W3[&quot;Impedance Sizing: Particles &amp;gt; 30 fL / &amp;gt; 35 fL = WBCs&quot;]
-                W2 --&gt; W4[&quot;Hemoglobin Reaction: Stable Chromophore Pigment&quot;]
-                W4 --&gt; W5[&quot;Spectrophotometric Absorbance Detection at 525 nm&quot;]
-        end
-
-        subgraph RBC_PLT_Chamber [&quot;RBC &amp; PLT Analytical Chamber&quot;]
-                direction TD
-                R1[&quot;Whole Blood Aliquot + Isotonic Diluent&quot;] --&gt; R2[&quot;Hydrodynamic Focusing Stream&quot;]
-                R2 --&gt; R3[&quot;Platelet Sizing Threshold: 2 to 30 fL (Fitted Log-Normal Curve)&quot;]
-                R2 --&gt; R4[&quot;Erythrocyte Sizing Threshold: 25 to 250 fL (RBC Histogram 36 to 360 fL)&quot;]
-        end">
-flowchart TD
-        subgraph WBC_HGB_Chamber ["WBC & HGB Analytical Chamber"]
-                direction TD
-                W1["Whole Blood Aliquot + Lytic Reagent"] --> W2["RBC Lysis + Leukocyte Cytoplasmic Collapse"]
-                W2 --> W3["Impedance Sizing: Particles &gt; 30 fL / &gt; 35 fL = WBCs"]
-                W2 --> W4["Hemoglobin Reaction: Stable Chromophore Pigment"]
-                W4 --> W5["Spectrophotometric Absorbance Detection at 525 nm"]
-        end
-
-        subgraph RBC_PLT_Chamber ["RBC & PLT Analytical Chamber"]
-                direction TD
-                R1["Whole Blood Aliquot + Isotonic Diluent"] --> R2["Hydrodynamic Focusing Stream"]
-                R2 --> R3["Platelet Sizing Threshold: 2 to 30 fL (Fitted Log-Normal Curve)"]
-                R2 --> R4["Erythrocyte Sizing Threshold: 25 to 250 fL (RBC Histogram 36 to 360 fL)"]
-        end
-</div>
-
-<ul>
-<li><strong>WBC &amp; HGB Chamber</strong>:<ul>
-<li><em>WBC Direct Count</em>: Particles in the lysed suspension larger than $30\text{ fL}$ (pocH-100i) or $35\text{ fL}$ (DxH 800) are registered as leukocytes. Platelet debris and red cell stroma fall below this cutoff, preventing interference. The raw count is multiplied by a factory calibration factor.</li>
-<li><em>Hemoglobin Concentration</em>: Measured photometrically. CBC lytic reagent converts free hemoglobin into a stable chromophore with maximum light absorbance at $525\text{ nm}$ (or $540\text{ nm}$). Transmittance is detected by a photodiode, and absorbance is directly proportional to total hemoglobin concentration, equivalent to the reference cyanmethemoglobin method.</li>
-</ul>
-</li>
-<li><strong>RBC &amp; PLT Chamber</strong>:<ul>
-<li><em>RBC Direct Count &amp; Histogram</em>: Measures intact erythrocytes within a defined discriminator threshold ($25–250\text{ fL}$ on POC systems; $\ge 36\text{ fL}$ on larger platforms). The RBC histogram plots pulses across 24 to 360 fL channels. Because millions of erythrocytes outnumber leukocytes (thousands per microliter), WBC co-passage interference is clinically negligible.</li>
-<li><em>Platelet Count &amp; Histogram</em>: Platelet sizing occurs simultaneously within the lower pulse range ($2–30\text{ fL}$ or $2–20\text{ fL}$). Raw channel counts are fitted to an extended log-normal mathematical curve ($0–70\text{ fL}$) to derive the final platelet count, eliminating electrical noise and micro-debris at the lower limit and microcytic RBC fragments at the upper limit.</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h3 id="automated-leukocyte-differential-technologies">Automated Leukocyte Differential Technologies</h3>
-<p>Automated leukocyte analysis is performed using either 3-part or 5-part differential technologies:</p>
-<div class="mermaid" data-original-source="flowchart TD
-        DiffTech[&quot;Leukocyte Differential Modalities&quot;]
-
-        DiffTech --&gt; POC[&quot;3-Part Differential (POC Systems)&quot;]
-        POC --&gt; P1[&quot;Post-Lysis Electronic Volume Sizing&quot;]
-        P1 --&gt; P2[&quot;LD to T1 (35–90 fL): Lymphocytes&quot;]
-        P1 --&gt; P3[&quot;T1 to T2 (90–160 fL): Mixed Cells (Monocytes, Eos, Basos)&quot;]
-        P1 --&gt; P4[&quot;T2 to UD (160–450 fL): Neutrophils / Granulocytes&quot;]
-
-        DiffTech --&gt; VCS[&quot;5-Part Differential (VCS Technology)&quot;]
-        VCS --&gt; V1[&quot;V: Volume (Low-Frequency DC Current)&quot;]
-        VCS --&gt; V2[&quot;C: Conductivity (High-Frequency RF Current)&quot;]
-        VCS --&gt; V3[&quot;S: Light Scatter (Multi-Angle Diode Laser)&quot;]" data-original-code="flowchart TD
-        DiffTech[&quot;Leukocyte Differential Modalities&quot;]
-
-        DiffTech --&gt; POC[&quot;3-Part Differential (POC Systems)&quot;]
-        POC --&gt; P1[&quot;Post-Lysis Electronic Volume Sizing&quot;]
-        P1 --&gt; P2[&quot;LD to T1 (35–90 fL): Lymphocytes&quot;]
-        P1 --&gt; P3[&quot;T1 to T2 (90–160 fL): Mixed Cells (Monocytes, Eos, Basos)&quot;]
-        P1 --&gt; P4[&quot;T2 to UD (160–450 fL): Neutrophils / Granulocytes&quot;]
-
-        DiffTech --&gt; VCS[&quot;5-Part Differential (VCS Technology)&quot;]
-        VCS --&gt; V1[&quot;V: Volume (Low-Frequency DC Current)&quot;]
-        VCS --&gt; V2[&quot;C: Conductivity (High-Frequency RF Current)&quot;]
-        VCS --&gt; V3[&quot;S: Light Scatter (Multi-Angle Diode Laser)&quot;]">
-flowchart TD
-        DiffTech["Leukocyte Differential Modalities"]
-
-        DiffTech --> POC["3-Part Differential (POC Systems)"]
-        POC --> P1["Post-Lysis Electronic Volume Sizing"]
-        P1 --> P2["LD to T1 (35–90 fL): Lymphocytes"]
-        P1 --> P3["T1 to T2 (90–160 fL): Mixed Cells (Monocytes, Eos, Basos)"]
-        P1 --> P4["T2 to UD (160–450 fL): Neutrophils / Granulocytes"]
-
-        DiffTech --> VCS["5-Part Differential (VCS Technology)"]
-        VCS --> V1["V: Volume (Low-Frequency DC Current)"]
-        VCS --> V2["C: Conductivity (High-Frequency RF Current)"]
-        VCS --> V3["S: Light Scatter (Multi-Angle Diode Laser)"]
-</div>
-
-<h4 id="3-part-differential-point-of-care-systems">3-Part Differential (Point-of-Care Systems)</h4>
-<p>On POC systems (such as the Sysmex pocH-100i), the 3-part differential is derived from the WBC histogram generated after lytic agent exposure. The lytic reagent selectively strips the cytoplasm, shrinking cells to sizes governed by nuclear volume and residual membrane resistance:</p>
-<ul>
-<li><strong>Lower Discriminator (LD) to Trough 1 (T1) ($35–90\text{ fL}$)</strong>: Smallest post-lytic volume, corresponding to the <strong>Lymphocyte</strong> population.</li>
-<li><strong>Trough 1 (T1) to Trough 2 (T2) ($90–160\text{ fL}$)</strong>: Intermediate volume, corresponding to the <strong>Mixed Mononuclear</strong> population (monocytes, eosinophils, and basophils).</li>
-<li><strong>Trough 2 (T2) to Upper Discriminator (UD) ($160–450\text{ fL}$)</strong>: Largest post-lytic volume, corresponding to the <strong>Neutrophil / Granulocyte</strong> population.</li>
-</ul>
-<h4 id="5-part-differential-vcs-technology">5-Part Differential (VCS Technology)</h4>
-<p>High-throughput platforms (such as the Beckman Coulter DxH 800) use Volume, Conductivity, and Scatter (VCS) technology to analyze leukocytes in near-native states:</p>
-<ul>
-<li><strong>Volume (V)</strong>: Measured using low-frequency direct current (Coulter principle) to accurately determine physical cell displacement volume.</li>
-<li><strong>Conductivity (C)</strong>: Measured using high-frequency radiofrequency (RF) current. Because cellular membranes act as conductors at high frequencies, the RF signal penetrates the cell interior, probing nuclear size, nuclear lobularity, nuclear-to-cytoplasmic ratio, and cytoplasmic chemical density. Opacity (OP) is derived from the ratio of RF conductivity to DC volume.</li>
-<li><strong>Light Scatter (S)</strong>: A coherent diode laser illuminates cells traversing the optical flow cell in single file. Multi-angle scattered light detects structural surface features, cytoplasmic granularity, and internal refractivity.</li>
-</ul>
-<h4 id="vcs-scatterplot-topographical-distribution">VCS Scatterplot Topographical Distribution</h4>
-<p>When plotted on a multi-dimensional scatterplot (Volume vs. Side Scatter and Volume vs. Opacity), distinct cellular clusters separate based on morphologic properties:</p>
-<ul>
-<li><strong>Lymphocytes (LY)</strong>: Occupy the lower left quadrant (low volume, minimal side scatter/granularity).</li>
-<li><strong>Monocytes (MO)</strong>: Form a distinct cluster above lymphocytes (large physical volume, moderate side scatter, complex nuclear folding).</li>
-<li><strong>Neutrophils (NE)</strong>: Cluster in the mid-to-upper central zone (moderate volume, moderate-to-high side scatter from neutral secondary granules and segmented nuclei).</li>
-<li><strong>Eosinophils (EO)</strong>: Form an isolated cluster to the far right (moderate volume, extremely high side scatter due to large, highly refractive cytoplasmic granules).</li>
-<li><strong>Basophils (BA)</strong>: Form a cluster situated between lymphocytes and monocytes; resolved on the radiofrequency Opacity plane.</li>
-<li><strong>Nucleated Red Blood Cells (nRBCs)</strong>: Appear below the lymphocyte cluster near the noise threshold.</li>
-</ul>
-<div class="mermaid" data-original-source="quadrantChart
-        title VCS 2D Scatterplot Topography (Volume vs Side Scatter)
-        x-axis Low Side Scatter (Internal Granularity) --&gt; High Side Scatter
-        y-axis Low Volume (DC Cell Size) --&gt; High Volume
-        quadrant-1 Neutrophils (Mod V, Mod-High SS)
-        quadrant-2 Monocytes (High V, Mod SS)
-        quadrant-3 Lymphocytes (Low V, Low SS)
-        quadrant-4 Eosinophils (Mod V, High SS)" data-original-code="quadrantChart
-        title VCS 2D Scatterplot Topography (Volume vs Side Scatter)
-        x-axis Low Side Scatter (Internal Granularity) --&gt; High Side Scatter
-        y-axis Low Volume (DC Cell Size) --&gt; High Volume
-        quadrant-1 Neutrophils (Mod V, Mod-High SS)
-        quadrant-2 Monocytes (High V, Mod SS)
-        quadrant-3 Lymphocytes (Low V, Low SS)
-        quadrant-4 Eosinophils (Mod V, High SS)">
-quadrantChart
-        title VCS 2D Scatterplot Topography (Volume vs Side Scatter)
-        x-axis Low Side Scatter (Internal Granularity) --> High Side Scatter
-        y-axis Low Volume (DC Cell Size) --> High Volume
-        quadrant-1 Neutrophils (Mod V, Mod-High SS)
-        quadrant-2 Monocytes (High V, Mod SS)
-        quadrant-3 Lymphocytes (Low V, Low SS)
-        quadrant-4 Eosinophils (Mod V, High SS)
-</div>
-
-<hr />
-<h3 id="quality-assurance-error-flags-analytical-workflow-biosafety">Quality Assurance, Error Flags, Analytical Workflow, &amp; Biosafety</h3>
-<div class="mermaid" data-original-source="flowchart LR
-        subgraph Maintenance_QC [&quot;Maintenance &amp; Quality Control Schedule&quot;]
-                M1[&quot;Daily / Shift: Cleanings, Background Checks, Multi-Level QC&quot;]
-                M2[&quot;Periodic: Weekly / Monthly Decontamination &amp; Deep Clean&quot;]
-                M3[&quot;Lot Validation: Daily Reagent Verification &amp; Lot-to-Lot Crossover&quot;]
-        end" data-original-code="flowchart LR
-        subgraph Maintenance_QC [&quot;Maintenance &amp; Quality Control Schedule&quot;]
-                M1[&quot;Daily / Shift: Cleanings, Background Checks, Multi-Level QC&quot;]
-                M2[&quot;Periodic: Weekly / Monthly Decontamination &amp; Deep Clean&quot;]
-                M3[&quot;Lot Validation: Daily Reagent Verification &amp; Lot-to-Lot Crossover&quot;]
-        end">
-flowchart LR
-        subgraph Maintenance_QC ["Maintenance & Quality Control Schedule"]
-                M1["Daily / Shift: Cleanings, Background Checks, Multi-Level QC"]
-                M2["Periodic: Weekly / Monthly Decontamination & Deep Clean"]
-                M3["Lot Validation: Daily Reagent Verification & Lot-to-Lot Crossover"]
-        end
-</div>
-
-<h4 id="preventative-maintenance-quality-assurance">Preventative Maintenance &amp; Quality Assurance</h4>
-<p>To guarantee precision and regulatory compliance, laboratory personnel must follow an established quality assurance schedule:</p>
-<ul>
-<li><strong>Daily / Shift Requirements</strong>: Perform startup verification, electronic aperture background counts (ensuring background diluent contains no particulate contamination), and analyze at least two to three levels of commercial quality control materials.</li>
-<li><strong>Periodic Maintenance</strong>: Execute weekly and monthly chemical flushes of fluidic lines, bleach deproteination of baths, and transducer calibration verification.</li>
-<li><strong>Reagent Lot Validation</strong>: Carry out lot-to-lot crossover testing prior to clinical implementation of new diluent or lysing reagent lots to verify that baseline calibration is maintained.</li>
-</ul>
-<h4 id="analytical-procedure-step-by-step">Analytical Procedure: Step-by-Step</h4>
-<ol>
-<li><strong>Startup &amp; Background Verification</strong>: Confirm that instrument background limits are within specification ($\text{WBC} < 0.2\times 10^3/\mu\text{L}$, $\text{RBC} < 0.02\times 10^6/\mu\text{L}$, $\text{HGB} < 0.1\text{ g/dL}$, $\text{PLT} < 10\times 10^3/\mu\text{L}$) and QC results fall within established target ranges ($\pm 2\text{ SD}$).</li>
-<li><strong>Specimen Inspection &amp; Pre-Analytical Mixing</strong>: Ensure specimen is collected in an EDTA tube. Invert the tube gently 8 to 10 times to resuspend cells uniformly. Uncap using protective gauze and sweep two wooden applicator sticks through the sample to confirm the absence of fibrin clots. <em>A clotted specimen must be rejected.</em></li>
-<li><strong>Sample Presentation &amp; Aspiration</strong>: Present the specimen to the closed or open piercing probe; the analyzer aspirates an aliquot ($15\ \mu\text{L}$).</li>
-<li><strong>Internal Dilution &amp; Reaction</strong>: The analyzer automatically mixes the sample with conductive diluent and partitions it into the WBC/HGB and RBC/PLT baths.</li>
-<li><strong>Real-Time Signal Detection</strong>: Electrical impedance pulses and spectrophotometric light absorbance at $525\text{ nm}$ are captured simultaneously.</li>
-<li>
-<p><strong>Data Review &amp; Flag Verification</strong>: Review numerical data, histogram profiles, and VCS scatterplots. Check the internal consistency using the <strong>Rule of Threes</strong>:<br />
-        $$\text{RBC} \times 3 \approx \text{HGB}$$<br />
-        $$\text{HGB} \times 3 \approx \text{HCT} \pm 3$$<br />
-        $$\text{MCHC} \le 36\text{ g/dL}$$</p>
-</li>
-<li>
-<p><strong>Corrective Action &amp; Flag Resolution</strong>: If overrange flags (<code>+++++</code>) occur, prepare a manual $1:2$ dilution with isotonic saline, re-analyze, and multiply counts by the dilution factor. For aperture clogs (<code>:::::</code>), run an automated backflush cycle. For review flags (<code>R</code>), inspect raw channel distributions and review the peripheral blood smear.</p>
-</li>
-</ol>
-<h4 id="biosafety-biohazard-controls">Biosafety &amp; Biohazard Controls</h4>
-<ul>
-<li><strong>Standard / Universal Precautions</strong>: All human blood specimens must be handled as infectious for bloodborne pathogens, including Hepatitis B Virus (HBV), Hepatitis C Virus (HCV), and Human Immunodeficiency Virus (HIV).</li>
-<li><strong>Personal Protective Equipment (PPE)</strong>: Nitrile gloves, fluid-resistant laboratory coats, and ANSI-approved safety glasses or face shields are mandatory during uncapping, manual maintenance, and reagent handling.</li>
-<li><strong>Aerosol Containment</strong>: Closed-tube sampling analyzers should remain closed during routine aspiration to prevent aerosolization of biological fluids.</li>
-<li><strong>Biohazard Waste Disposal</strong>: Liquid analyzer effluent containing quaternary ammonium salts must be handled per environmental regulations. Contaminated wooden applicators, transfer pipettes, and gauze must be disposed of immediately in rigid biohazard waste containers.</li>
-</ul>
-<hr />
-<h2 id="key-clinical-takeaways">Key Clinical Takeaways</h2>
-<ul>
-<li><strong>Core Coulter Impedance Principle</strong>: Cell counting and volumetric sizing rely on electrical resistance changes as non-conductive cells displace an equivalent volume of conductive electrolyte diluent between two electrodes across a micro-aperture ($\Delta V \propto \text{Cell Volume}$; pulse count $\propto \text{Cell Concentration}$).</li>
-<li><strong>Dual Fluidic Pathways</strong>: Automated CBC analysis partitions whole blood into two chambers: the WBC/HGB bath (lytic agent destroys RBCs, converts hemoglobin to a $525\text{ nm}$ chromophore, and counts stripped WBC nuclei) and the RBC/PLT bath (isotonic diluent preserves intact RBCs and PLTs for hydrodynamic focusing impedance counting).</li>
-<li><strong>Differentiation Technologies</strong>: Point-of-care instruments generate a 3-part differential histogram based on post-lytic volume (Lymphocytes $35–90\text{ fL}$, Mixed Mononuclear cells $90–160\text{ fL}$, Granulocytes $160–450\text{ fL}$), whereas high-throughput analyzers utilize 3D VCS technology (DC Volume, RF Conductivity/Opacity, Diode Laser Scatter) to differentiate all 5 leukocyte populations.</li>
-<li><strong>Mathematical Derivations and the Rule of Threes</strong>: Hematocrit ($\text{HCT} = [\text{RBC}\times\text{MCV}]/10$), $\text{MCH} = (\text{HGB}\times 10)/\text{RBC}$, and $\text{MCHC} = (\text{HGB}\times 100)/\text{HCT}$ must be verified using internal quality control rules ($\text{RBC}\times 3\approx\text{HGB}$; $\text{HGB}\times 3\approx\text{HCT}\pm 3$; $\text{MCHC}\le 36\text{ g/dL}$) to identify analytical interferences or instrument drift.</li>
-<li><strong>Flag Resolution &amp; Corrective Protocols</strong>: Values exceeding instrument linearity (<code>+++++</code>) require a calibrated $1:2$ saline dilution; aperture clogs (<code>:::::</code>) require immediate backflush/cleaning cycles; voteouts (<code>-----</code>) mandate repeat analysis; and <code>R</code> flags block derived parameters until raw data and blood smears are verified.</li>
-<li><strong>Specimen Quality &amp; Biosafety Compliance</strong>: All specimens must be collected in EDTA, inverted 8–10 times, and checked for micro-clots with dual applicator sticks prior to analysis. Standard Precautions, PPE, closed-tube processing, and biohazard waste containment must be maintained at all times.</li>
-</ul>
-<hr />
-<h1 id="parameters">Parameters</h1>
-<h2 id="summary-clinical-synthesis_1">Summary &amp; Clinical Synthesis</h2>
-<p>Automated Complete Blood Count (CBC) analysis serves as the foundational diagnostic panel in the clinical hematology laboratory, measuring and calculating the cellular constituents of peripheral blood. Utilizing hydrodynamic focusing, direct current (DC) electrical impedance (Coulter Principle), and spectrophotometry, automated analyzers measure the primary parameters: White Blood Cell count (WBC), Red Blood Cell count (RBC), Hemoglobin concentration (HGB), and Platelet count (PLT). Derived parameters, including Hematocrit (HCT), Mean Corpuscular Volume (MCV), Mean Corpuscular Hemoglobin (MCH), Mean Corpuscular Hemoglobin Concentration (MCHC), and Red Cell Distribution Width (RDW-CV), are calculated through mathematical models or extracted from size-distribution histograms.</p>
-<p>Quality control protocols and analytical validation ensure the clinical validity of these metrics. Technologists employ the internal Rule of Threes to verify the mathematical alignment between RBC counts, hemoglobin concentration, and hematocrit in normocytic, normochromic specimens. Peripheral blood smear (PBS) estimations under high-dry and oil-immersion microscopy provide an essential manual correlation check to detect pre-analytical errors, analyzer interference, and instrument drift. When sample pathologies or analyzer failure modes arise—such as hyperlipidemia, cold agglutinin autoantibodies, in vitro hemolysis, platelet satellitism, or exhausted lytic reagents—established corrective algorithms, such as plasma replacement, specimen pre-warming, manual hemocytometer counts, and microhematocrit determinations, restore diagnostic accuracy.</p>
-<div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Whole Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Automated CBC Analyzer&quot;]
-        B --&gt; C[&quot;Direct Electrical &amp; Optical Measurements (WBC, RBC, HGB, PLT)&quot;]
-        B --&gt; D[&quot;Histogram &amp; Mathematical Derivations (MCV, HCT, MCH, MCHC, RDW)&quot;]
-        C --&gt; E[&quot;Quality Assurance &amp; Internal QC Check (Rule of Threes)&quot;]
-        D --&gt; E
-        E --&gt; F{&quot;QC &amp; Delta Checks Valid?&quot;}
-        F -- &quot;Yes&quot; --&gt; G[&quot;Correlate with PBS Monolayer &amp; Release Results&quot;]
-        F -- &quot;No (Interference / +++++ Flag)&quot; --&gt; H[&quot;Initiate Corrective Protocol (Warm 37°C / Dilute 1:2 / Plasma Replacement)&quot;]
-        H --&gt; G" data-original-code="flowchart TD
-        A[&quot;Whole Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Automated CBC Analyzer&quot;]
-        B --&gt; C[&quot;Direct Electrical &amp; Optical Measurements (WBC, RBC, HGB, PLT)&quot;]
-        B --&gt; D[&quot;Histogram &amp; Mathematical Derivations (MCV, HCT, MCH, MCHC, RDW)&quot;]
-        C --&gt; E[&quot;Quality Assurance &amp; Internal QC Check (Rule of Threes)&quot;]
-        D --&gt; E
-        E --&gt; F{&quot;QC &amp; Delta Checks Valid?&quot;}
-        F -- &quot;Yes&quot; --&gt; G[&quot;Correlate with PBS Monolayer &amp; Release Results&quot;]
-        F -- &quot;No (Interference / +++++ Flag)&quot; --&gt; H[&quot;Initiate Corrective Protocol (Warm 37°C / Dilute 1:2 / Plasma Replacement)&quot;]
-        H --&gt; G">
-flowchart TD
-        A["Whole Blood Specimen (EDTA)"] --> B["Automated CBC Analyzer"]
-        B --> C["Direct Electrical & Optical Measurements (WBC, RBC, HGB, PLT)"]
-        B --> D["Histogram & Mathematical Derivations (MCV, HCT, MCH, MCHC, RDW)"]
-        C --> E["Quality Assurance & Internal QC Check (Rule of Threes)"]
-        D --> E
-        E --> F{"QC & Delta Checks Valid?"}
-        F -- "Yes" --> G["Correlate with PBS Monolayer & Release Results"]
-        F -- "No (Interference / +++++ Flag)" --> H["Initiate Corrective Protocol (Warm 37°C / Dilute 1:2 / Plasma Replacement)"]
-        H --> G
-</div>
-
-<hr />
-<h2 id="visual-diagrams-comparative-data_1">Visual Diagrams &amp; Comparative Data</h2>
-<h3 id="reference-intervals-conventional-vs-si-units">Reference Intervals: Conventional vs. SI Units</h3>
-<p>The table below delineates the established adult reference intervals across both Conventional and International System of Units (SI).</p>
+<h3 id="official-ascp-boc-standard-reference-intervals-conventional-vs-si-units">Official ASCP BOC Standard Reference Intervals: Conventional vs. SI Units</h3>
+<p>In accordance with the official ASCP BOC Examination Standards, the following standard composite reference intervals (inclusive of all genders and demographic populations) are utilized for examination preparation, competency evaluation, and clinical reporting:</p>
 <table>
 <thead>
 <tr>
@@ -1118,742 +385,684 @@ flowchart TD
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>WBC</strong></td>
-<td style="text-align: left;">4.5 – 11.0</td>
+<td style="text-align: left;"><strong>WBC (Total White Blood Cell Count)</strong></td>
+<td style="text-align: left;">$3.6 - 10.6$</td>
 <td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
-<td style="text-align: left;">4.5 – 11.0</td>
+<td style="text-align: left;">$3.6 - 10.6$</td>
 <td style="text-align: left;">$\times 10^9/\text{L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RBC (Total Adult)</strong></td>
-<td style="text-align: left;">4.00 – 5.50</td>
+<td style="text-align: left;"><strong>RBC (Red Blood Cell Count)</strong></td>
+<td style="text-align: left;">$4.00 - 6.00$</td>
 <td style="text-align: left;">$\times 10^6/\mu\text{L}$</td>
-<td style="text-align: left;">4.00 – 5.50</td>
+<td style="text-align: left;">$4.00 - 6.00$</td>
 <td style="text-align: left;">$\times 10^{12}/\text{L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RBC (Male)</strong></td>
-<td style="text-align: left;">4.50 – 5.50</td>
-<td style="text-align: left;">$\times 10^6/\mu\text{L}$</td>
-<td style="text-align: left;">4.50 – 5.50</td>
-<td style="text-align: left;">$\times 10^{12}/\text{L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RBC (Female)</strong></td>
-<td style="text-align: left;">4.00 – 5.00</td>
-<td style="text-align: left;">$\times 10^6/\mu\text{L}$</td>
-<td style="text-align: left;">4.00 – 5.00</td>
-<td style="text-align: left;">$\times 10^{12}/\text{L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HGB (Male)</strong></td>
-<td style="text-align: left;">14.0 – 17.4</td>
+<td style="text-align: left;"><strong>HGB (Hemoglobin)</strong></td>
+<td style="text-align: left;">$12.0 - 18.0$</td>
 <td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">140 – 174</td>
+<td style="text-align: left;">$120 - 180$</td>
 <td style="text-align: left;">$\text{g/L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>HGB (Female)</strong></td>
-<td style="text-align: left;">12.0 – 16.0</td>
-<td style="text-align: left;">$\text{g/dL}$</td>
-<td style="text-align: left;">120 – 160</td>
-<td style="text-align: left;">$\text{g/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>HCT (Male)</strong></td>
-<td style="text-align: left;">42.0 – 52.0</td>
+<td style="text-align: left;"><strong>HCT (Hematocrit)</strong></td>
+<td style="text-align: left;">$35 - 50$</td>
 <td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">0.42 – 0.52</td>
+<td style="text-align: left;">$0.35 - 0.50$</td>
 <td style="text-align: left;">$\text{L/L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>HCT (Female)</strong></td>
-<td style="text-align: left;">36.0 – 46.0</td>
-<td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">0.36 – 0.46</td>
-<td style="text-align: left;">$\text{L/L}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>MCV</strong></td>
-<td style="text-align: left;">80.0 – 100.0</td>
-<td style="text-align: left;">$\text{fL (or }\mu\text{m}^3\text{)}$</td>
-<td style="text-align: left;">80.0 – 100.0</td>
+<td style="text-align: left;"><strong>MCV (Mean Corpuscular Volume)</strong></td>
+<td style="text-align: left;">$76 - 100$</td>
+<td style="text-align: left;">$\text{fL}$</td>
+<td style="text-align: left;">$76 - 100$</td>
 <td style="text-align: left;">$\text{fL}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>MCH</strong></td>
-<td style="text-align: left;">28.0 – 34.0</td>
+<td style="text-align: left;"><strong>MCH (Mean Corpuscular Hemoglobin)</strong></td>
+<td style="text-align: left;">$26 - 34$</td>
 <td style="text-align: left;">$\text{pg}$</td>
-<td style="text-align: left;">28.0 – 34.0</td>
+<td style="text-align: left;">$26 - 34$</td>
 <td style="text-align: left;">$\text{pg}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>MCHC</strong></td>
-<td style="text-align: left;">32.0 – 36.0</td>
-<td style="text-align: left;">$\text{g/dL (or }\%\text{)}$</td>
-<td style="text-align: left;">320 – 360</td>
+<td style="text-align: left;"><strong>MCHC (Mean Corpuscular Hgb Conc.)</strong></td>
+<td style="text-align: left;">$32 - 36$</td>
+<td style="text-align: left;">$\text{g/dL}$</td>
+<td style="text-align: left;">$320 - 360$</td>
 <td style="text-align: left;">$\text{g/L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RDW-CV</strong></td>
-<td style="text-align: left;">12.0 – 14.6</td>
+<td style="text-align: left;"><strong>RDW (Red Cell Distribution Width)</strong></td>
+<td style="text-align: left;">$11.5 - 14.5$</td>
 <td style="text-align: left;">$\%$</td>
-<td style="text-align: left;">12.0 – 14.6</td>
-<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.115 - 0.145$</td>
+<td style="text-align: left;">Fraction</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>PLT</strong></td>
-<td style="text-align: left;">150 – 400</td>
+<td style="text-align: left;"><strong>Platelets</strong></td>
+<td style="text-align: left;">$150 - 450$</td>
 <td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
-<td style="text-align: left;">150 – 400</td>
+<td style="text-align: left;">$150 - 450$</td>
 <td style="text-align: left;">$\times 10^9/\text{L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>MPV</strong></td>
-<td style="text-align: left;">6.8 – 10.2</td>
-<td style="text-align: left;">$\text{fL}$</td>
-<td style="text-align: left;">6.8 – 10.2</td>
-<td style="text-align: left;">$\text{fL}$</td>
+<td style="text-align: left;"><strong>Reticulocytes (Absolute)</strong></td>
+<td style="text-align: left;">$20 - 115$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$20 - 115$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reticulocytes (Relative)</strong></td>
+<td style="text-align: left;">$0.5 - 2.5$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.005 - 0.025$</td>
+<td style="text-align: left;">Fraction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>nRBCs (Nucleated RBCs)</strong></td>
+<td style="text-align: left;">$0$</td>
+<td style="text-align: left;">$\text{nRBC}/100\text{ WBC}$</td>
+<td style="text-align: left;">$0$</td>
+<td style="text-align: left;">$\text{nRBC}/100\text{ WBC}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Neutrophils (Absolute)</strong></td>
+<td style="text-align: left;">$1.7 - 7.5$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.7 - 7.5$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Neutrophils (Relative)</strong></td>
+<td style="text-align: left;">$50 - 70$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.50 - 0.70$</td>
+<td style="text-align: left;">Fraction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lymphocytes (Absolute)</strong></td>
+<td style="text-align: left;">$1.0 - 3.2$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.0 - 3.2$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lymphocytes (Relative)</strong></td>
+<td style="text-align: left;">$18 - 42$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.18 - 0.42$</td>
+<td style="text-align: left;">Fraction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Monocytes (Absolute)</strong></td>
+<td style="text-align: left;">$0.1 - 1.3$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0.1 - 1.3$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Monocytes (Relative)</strong></td>
+<td style="text-align: left;">$2 - 11$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.02 - 0.11$</td>
+<td style="text-align: left;">Fraction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Eosinophils (Absolute)</strong></td>
+<td style="text-align: left;">$0 - 0.3$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0 - 0.3$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Eosinophils (Relative)</strong></td>
+<td style="text-align: left;">$1 - 3$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.01 - 0.03$</td>
+<td style="text-align: left;">Fraction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Basophils (Absolute)</strong></td>
+<td style="text-align: left;">$0 - 0.2$</td>
+<td style="text-align: left;">$\times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0 - 0.2$</td>
+<td style="text-align: left;">$\times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Basophils (Relative)</strong></td>
+<td style="text-align: left;">$0 - 2$</td>
+<td style="text-align: left;">$\%$</td>
+<td style="text-align: left;">$0.00 - 0.02$</td>
+<td style="text-align: left;">Fraction</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="critical-panic-notification-values-analytical-linearity">Critical (Panic) Notification Values &amp; Analytical Linearity</h3>
-<p>Critical panic values represent life-threatening clinical boundaries requiring immediate direct telephonic notification to the responsible physician or licensed healthcare provider. Analytical linearity limits define the operational range within which the instrument yields mathematically validated results without dilution.</p>
+<h3 id="critical-panic-limits-and-operational-linearity">Critical (Panic) Limits and Operational Linearity</h3>
+<p>Values outside analytical linearity or breaching critical limits require immediate laboratory action.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Parameter</th>
 <th style="text-align: left;">Critical (Panic) Limits</th>
-<th style="text-align: left;">Analytical Linearity (Sysmex pocH-100i)</th>
-<th style="text-align: left;">Action if Exceeding Linearity ("+++++")</th>
-<th style="text-align: left;">Action if Below Linearity</th>
+<th style="text-align: left;">Sysmex pocH-100i Linearity Range</th>
+<th style="text-align: left;">Corrective Action When Below Linearity</th>
+<th style="text-align: left;">Corrective Action When Exceeding Linearity ("+++++")</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>WBC</strong></td>
-<td style="text-align: left;">$< 1.0\text{ or } > 40.0 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$< 1.0 \text{ or } > 40.0 \times 10^3/\mu\text{L}$</td>
 <td style="text-align: left;">$1.0 - 99.9 \times 10^3/\mu\text{L}$</td>
-<td style="text-align: left;">$1:2$ Dilution with isotonic diluent; rerun and multiply by $2$</td>
-<td style="text-align: left;">Manual count using hemocytometer</td>
+<td style="text-align: left;">Manual hemocytometer count</td>
+<td style="text-align: left;">Perform 1:2 dilution, multiply measured WBC by 2</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>RBC</strong></td>
-<td style="text-align: left;">Clinical discretion</td>
+<td style="text-align: left;">N/A</td>
 <td style="text-align: left;">$0.30 - 7.00 \times 10^6/\mu\text{L}$</td>
-<td style="text-align: left;">$1:2$ Dilution; rerun; check WBC count subtraction</td>
-<td style="text-align: left;">Manual count using hemocytometer</td>
+<td style="text-align: left;">Manual hemocytometer count</td>
+<td style="text-align: left;">Perform 1:2 dilution, multiply measured RBC by 2</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>HGB</strong></td>
-<td style="text-align: left;">$< 7.0\text{ or } > 20.0\text{ g/dL}$</td>
-<td style="text-align: left;">$0.1 - 25.0\text{ g/dL}$</td>
-<td style="text-align: left;">$1:2$ Dilution; rerun and multiply by $2$</td>
-<td style="text-align: left;">Report $< 0.1\text{ g/dL}$; do NOT report MCH/MCHC</td>
+<td style="text-align: left;">$< 7.0 \text{ or } > 20.0 \text{ g/dL}$</td>
+<td style="text-align: left;">$0.1 - 25.0 \text{ g/dL}$</td>
+<td style="text-align: left;">Report $< 0.1 \text{ g/dL}$; suppress MCH/MCHC</td>
+<td style="text-align: left;">Perform 1:2 dilution, multiply measured HGB by 2</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>HCT</strong></td>
-<td style="text-align: left;">Clinical discretion</td>
+<td style="text-align: left;">N/A</td>
 <td style="text-align: left;">$10.0 - 60.0\%$</td>
-<td style="text-align: left;">Spun microhematocrit on undiluted sample</td>
+<td style="text-align: left;">Perform manual spun microhematocrit</td>
 <td style="text-align: left;">Perform manual spun microhematocrit</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>PLT</strong></td>
-<td style="text-align: left;">$< 50\text{ or } > 1,000 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$< 50 \text{ or } > 1,000 \times 10^3/\mu\text{L}$</td>
 <td style="text-align: left;">$10 - 999 \times 10^3/\mu\text{L}$</td>
-<td style="text-align: left;">$1:2$ Dilution with isotonic diluent; rerun and multiply by $2$</td>
-<td style="text-align: left;">Manual count using hemocytometer</td>
+<td style="text-align: left;">Manual hemocytometer count</td>
+<td style="text-align: left;">Perform 1:2 dilution, multiply measured PLT by 2</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="automated-cbc-interference-matrix">Automated CBC Interference Matrix</h3>
+<h3 id="common-instrument-error-codes">Common Instrument Error Codes</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Interference Condition</th>
-<th style="text-align: left;">Underlying Mechanism</th>
-<th style="text-align: left;">Primary Parameter Impact</th>
-<th style="text-align: left;">Indices &amp; Secondary Impact</th>
-<th style="text-align: left;">Corrective Protocol</th>
+<th style="text-align: left;">Error Code</th>
+<th style="text-align: left;">Definition / Analyzer Status</th>
+<th style="text-align: left;">Corrective Action Protocol</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>Lipemia / Extreme Icterus</strong></td>
-<td style="text-align: left;">Chylomicrons/turbidity block $525\text{ nm}$ light path</td>
-<td style="text-align: left;">$\text{HGB} \uparrow\uparrow$ (falsely high); $\text{RBC}, \text{HCT}$ unaffected</td>
-<td style="text-align: left;">$\text{MCH} \uparrow\uparrow$, $\text{MCHC} \uparrow\uparrow$ ($> 36.0\text{ g/dL}$)</td>
-<td style="text-align: left;">Perform <strong>Saline / Diluent Plasma Replacement</strong></td>
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;">Review result</td>
+<td style="text-align: left;">Review and edit flagged parameter; dependent indices cannot recalculate until resolved</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Cold Agglutinins (IgM)</strong></td>
-<td style="text-align: left;">Autoantibodies aggregate RBCs at ambient room temp</td>
-<td style="text-align: left;">$\text{RBC} \downarrow\downarrow$ (clumps counted as single large cells); $\text{HGB}$ true</td>
-<td style="text-align: left;">$\text{MCV} \uparrow\uparrow$, $\text{MCH} \uparrow\uparrow$, $\text{MCHC} \uparrow\uparrow$ ($> 38.0\text{ g/dL}$)</td>
-<td style="text-align: left;">Incubate at <strong>$37^\circ\text{C}$ for $10-15\text{ min}$</strong>; rerun immediately</td>
+<td style="text-align: left;"><strong>x x x x x</strong></td>
+<td style="text-align: left;">Parameter not enabled as a test at time of analysis</td>
+<td style="text-align: left;">Re-enable parameter in instrument settings if panel requires testing</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Gross In Vitro Hemolysis</strong></td>
-<td style="text-align: left;">Pre-analytical lysis destroys intact red cell membranes</td>
-<td style="text-align: left;">$\text{RBC} \downarrow\downarrow$, $\text{HCT} \downarrow\downarrow$; $\text{HGB}$ unaffected (free in plasma)</td>
-<td style="text-align: left;">Spurious $\text{MCH} \uparrow\uparrow$, $\text{MCHC} \uparrow\uparrow$</td>
-<td style="text-align: left;">Request immediate <strong>re-collection</strong></td>
+<td style="text-align: left;"><strong>: : : : :</strong></td>
+<td style="text-align: left;">Flow cell clog detected</td>
+<td style="text-align: left;">Perform aperture/flow cell flush, clean cycle, or manual deproteinization</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Platelet Clumping / Satellitism</strong></td>
-<td style="text-align: left;">EDTA-dependent antibodies agglutinate platelets around neutrophils</td>
-<td style="text-align: left;">$\text{PLT} \downarrow\downarrow$ (aggregates enter WBC aperture threshold)</td>
-<td style="text-align: left;">$\text{WBC} \uparrow$ (falsely elevated)</td>
-<td style="text-align: left;">Recollect in <strong>Sodium Citrate (Blue top)</strong>; multiply PLT by $1.1$</td>
+<td style="text-align: left;"><strong>- - - - -</strong></td>
+<td style="text-align: left;">Total voteout occurred</td>
+<td style="text-align: left;">Aperture count disagreement; clean apertures and repeat analysis</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>. . . . .</strong></td>
+<td style="text-align: left;">Incomplete computation</td>
+<td style="text-align: left;">Resolve voteout or over-range in primary measured parameter</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>+ + + + +</strong></td>
+<td style="text-align: left;">Result exceeds analytical linearity</td>
+<td style="text-align: left;">Perform manual 1:2 dilution with isotonic diluent and re-analyze</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>? ? ? ? ?</strong></td>
+<td style="text-align: left;">Value outside display formatting range</td>
+<td style="text-align: left;">Investigate catastrophic dilution or calculation overflow</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong># # # # #</strong></td>
+<td style="text-align: left;">Results were rejected</td>
+<td style="text-align: left;">Re-aspirate and rerun sample; check for clotted specimen</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="laboratory-slide-breakdowns_1">Laboratory Slide Breakdowns</h2>
-<h3 id="core-reference-ranges-critical-limits-and-operational-linearity">Core Reference Ranges, Critical Limits, and Operational Linearity</h3>
-<div class="mermaid" data-original-source="graph LR
-        subgraph Panic [&quot;Critical Panic Triggers&quot;]
-                P1[&quot;WBC &amp;lt; 1.0 or &amp;gt; 40.0 x10³/µL&quot;]
-                P2[&quot;HGB &amp;lt; 7.0 or &amp;gt; 20.0 g/dL&quot;]
-                P3[&quot;PLT &amp;lt; 50 or &amp;gt; 1,000 x10³/µL&quot;]
-        end
-        subgraph Action [&quot;Laboratory Response&quot;]
-                A1[&quot;Immediate Physician Notification&quot;]
-                A2[&quot;Document Call, Provider Name, Time&quot;]
-                A3[&quot;Check Instrument Linearity &amp; Flags&quot;]
-        end
-        Panic --&gt; Action" data-original-code="graph LR
-        subgraph Panic [&quot;Critical Panic Triggers&quot;]
-                P1[&quot;WBC &amp;lt; 1.0 or &amp;gt; 40.0 x10³/µL&quot;]
-                P2[&quot;HGB &amp;lt; 7.0 or &amp;gt; 20.0 g/dL&quot;]
-                P3[&quot;PLT &amp;lt; 50 or &amp;gt; 1,000 x10³/µL&quot;]
-        end
-        subgraph Action [&quot;Laboratory Response&quot;]
-                A1[&quot;Immediate Physician Notification&quot;]
-                A2[&quot;Document Call, Provider Name, Time&quot;]
-                A3[&quot;Check Instrument Linearity &amp; Flags&quot;]
-        end
-        Panic --&gt; Action">
-graph LR
-        subgraph Panic ["Critical Panic Triggers"]
-                P1["WBC &lt; 1.0 or &gt; 40.0 x10³/µL"]
-                P2["HGB &lt; 7.0 or &gt; 20.0 g/dL"]
-                P3["PLT &lt; 50 or &gt; 1,000 x10³/µL"]
-        end
-        subgraph Action ["Laboratory Response"]
-                A1["Immediate Physician Notification"]
-                A2["Document Call, Provider Name, Time"]
-                A3["Check Instrument Linearity & Flags"]
-        end
-        Panic --> Action
+<h3 id="analytical-troubleshooting-corrective-workflows">Analytical Troubleshooting &amp; Corrective Workflows</h3>
+<div class="mermaid" data-original-source="flowchart TD
+    Start[&quot;Evaluate CBC &amp; Internal QC Checks&quot;] --&gt; CheckMCHC{&quot;MCHC &gt; 36.0 g/dL or Rule of Threes Failed?&quot;}
+    CheckMCHC -- No --&gt; ReportValid[&quot;Verify Smear Estimates &amp; Report Results&quot;]
+    CheckMCHC -- Yes --&gt; Investigate{&quot;Investigate Root Cause&quot;}
+    Investigate --&gt; ColdAgg[&quot;Suspected Cold Agglutinin: RBC clumped, high MCV/MCHC&quot;]
+    Investigate --&gt; LipIct[&quot;Suspected Lipemia or Extreme Icterus: High HGB/MCH/MCHC, normal RBC&quot;]
+    Investigate --&gt; Hemolysis[&quot;Gross In Vitro Hemolysis: Low RBC/HCT, true HGB&quot;]
+    Investigate --&gt; ReagentFail[&quot;Lytic Reagent Failure: Extreme WBC &amp; HGB elevation&quot;]
+    ColdAgg --&gt; ActionCold[&quot;Incubate sample at 37°C for 10-15 min, rerun immediately&quot;]
+    LipIct --&gt; ActionPlasma[&quot;Execute Saline Plasma Replacement Protocol&quot;]
+    Hemolysis --&gt; ActionHem[&quot;Request specimen re-collection&quot;]
+    ReagentFail --&gt; ActionReagent[&quot;Replenish lytic reagent, prime system, re-run controls&quot;]
+    ActionCold --&gt; RecheckCold{&quot;Resolved?&quot;}
+    RecheckCold -- Yes --&gt; ReportCold[&quot;Report Warmed Run Results with Comment&quot;]
+    RecheckCold -- No --&gt; ActionWarmReplace[&quot;Perform 37°C Warmed Plasma Replacement&quot;]
+    ActionPlasma --&gt; ReportPlasma[&quot;Report RBC parameters from diluted run, WBC/PLT from original run&quot;]" data-original-code="flowchart TD
+    Start[&quot;Evaluate CBC &amp; Internal QC Checks&quot;] --&gt; CheckMCHC{&quot;MCHC &gt; 36.0 g/dL or Rule of Threes Failed?&quot;}
+    CheckMCHC -- No --&gt; ReportValid[&quot;Verify Smear Estimates &amp; Report Results&quot;]
+    CheckMCHC -- Yes --&gt; Investigate{&quot;Investigate Root Cause&quot;}
+    Investigate --&gt; ColdAgg[&quot;Suspected Cold Agglutinin: RBC clumped, high MCV/MCHC&quot;]
+    Investigate --&gt; LipIct[&quot;Suspected Lipemia or Extreme Icterus: High HGB/MCH/MCHC, normal RBC&quot;]
+    Investigate --&gt; Hemolysis[&quot;Gross In Vitro Hemolysis: Low RBC/HCT, true HGB&quot;]
+    Investigate --&gt; ReagentFail[&quot;Lytic Reagent Failure: Extreme WBC &amp; HGB elevation&quot;]
+    ColdAgg --&gt; ActionCold[&quot;Incubate sample at 37°C for 10-15 min, rerun immediately&quot;]
+    LipIct --&gt; ActionPlasma[&quot;Execute Saline Plasma Replacement Protocol&quot;]
+    Hemolysis --&gt; ActionHem[&quot;Request specimen re-collection&quot;]
+    ReagentFail --&gt; ActionReagent[&quot;Replenish lytic reagent, prime system, re-run controls&quot;]
+    ActionCold --&gt; RecheckCold{&quot;Resolved?&quot;}
+    RecheckCold -- Yes --&gt; ReportCold[&quot;Report Warmed Run Results with Comment&quot;]
+    RecheckCold -- No --&gt; ActionWarmReplace[&quot;Perform 37°C Warmed Plasma Replacement&quot;]
+    ActionPlasma --&gt; ReportPlasma[&quot;Report RBC parameters from diluted run, WBC/PLT from original run&quot;]">
+flowchart TD
+    Start["Evaluate CBC & Internal QC Checks"] --> CheckMCHC{"MCHC > 36.0 g/dL or Rule of Threes Failed?"}
+    CheckMCHC -- No --> ReportValid["Verify Smear Estimates & Report Results"]
+    CheckMCHC -- Yes --> Investigate{"Investigate Root Cause"}
+    Investigate --> ColdAgg["Suspected Cold Agglutinin: RBC clumped, high MCV/MCHC"]
+    Investigate --> LipIct["Suspected Lipemia or Extreme Icterus: High HGB/MCH/MCHC, normal RBC"]
+    Investigate --> Hemolysis["Gross In Vitro Hemolysis: Low RBC/HCT, true HGB"]
+    Investigate --> ReagentFail["Lytic Reagent Failure: Extreme WBC & HGB elevation"]
+    ColdAgg --> ActionCold["Incubate sample at 37°C for 10-15 min, rerun immediately"]
+    LipIct --> ActionPlasma["Execute Saline Plasma Replacement Protocol"]
+    Hemolysis --> ActionHem["Request specimen re-collection"]
+    ReagentFail --> ActionReagent["Replenish lytic reagent, prime system, re-run controls"]
+    ActionCold --> RecheckCold{"Resolved?"}
+    RecheckCold -- Yes --> ReportCold["Report Warmed Run Results with Comment"]
+    RecheckCold -- No --> ActionWarmReplace["Perform 37°C Warmed Plasma Replacement"]
+    ActionPlasma --> ReportPlasma["Report RBC parameters from diluted run, WBC/PLT from original run"]
 </div>
 
-<p>Laboratory evaluation of a complete blood count begins with establishing baseline physiological reference intervals, defining critical panic boundaries, and confirming analyzer operational linearity. </p>
+<hr />
+<h2 id="laboratory-slide-breakdowns">Laboratory Slide Breakdowns</h2>
+<h3 id="core-cbc-reference-ranges-and-unit-conventions">Core CBC Reference Ranges and Unit Conventions</h3>
+<p>Automated hematology reporting uses both Conventional (US standard) and International System of Units (SI). Laboratory personnel must be proficient in translating values between systems:</p>
 <ul>
-<li><strong>Physiological Reference Intervals</strong>: Normal adult ranges differ between biological sexes for red cell parameters due to androgenic stimulation of erythropoietin. Adult males present with higher baseline RBC counts ($4.50 - 5.50 \times 10^6/\mu\text{L}$), Hemoglobin ($14.0 - 17.4\text{ g/dL}$), and Hematocrit ($42.0 - 52.0\%$) compared to adult females (RBC $4.00 - 5.00 \times 10^6/\mu\text{L}$, HGB $12.0 - 16.0\text{ g/dL}$, HCT $36.0 - 46.0\%$). WBC counts ($4.5 - 11.0 \times 10^3/\mu\text{L}$) and Platelet counts ($150 - 400 \times 10^3/\mu\text{L}$) remain uniform across adult sexes.</li>
-<li><strong>Critical (Panic) Alert Values</strong>: Clinical thresholds indicating urgent physiological distress mandate immediate verbal notification to the patient's licensed care provider:<ul>
-<li>$\text{WBC} < 1.0 \times 10^3/\mu\text{L}$ (severe agranulocytosis / neutropenic risk) or $> 40.0 \times 10^3/\mu\text{L}$ (leukemoid reaction / acute leukemia).</li>
-<li>$\text{HGB} < 7.0\text{ g/dL}$ (severe hypoxemic risk / transfusion trigger) or $> 20.0\text{ g/dL}$ (severe polycythemia / hyperviscosity).</li>
-<li>$\text{PLT} < 50 \times 10^3/\mu\text{L}$ (acute spontaneous hemorrhagic risk) or $> 1,000 \times 10^3/\mu\text{L}$ (thrombocytosis / thromboembolic risk).</li>
+<li>WBC counts are expressed as $\times 10^3/\mu\text{L}$ (Conventional) or $\times 10^9/\text{L}$ (SI), maintaining identical numerical values ($3.6 - 10.6 \times 10^3/\mu\text{L} = 3.6 - 10.6 \times 10^9/\text{L}$).</li>
+<li>RBC counts are expressed as $\times 10^6/\mu\text{L}$ (Conventional) or $\times 10^{12}/\text{L}$ (SI), maintaining identical numerical values ($4.00 - 6.00 \times 10^6/\mu\text{L} = 4.00 - 6.00 \times 10^{12}/\text{L}$).</li>
+<li>Hemoglobin is reported in $\text{g/dL}$ (Conventional) or $\text{g/L}$ (SI), differing by a factor of 10 ($12.0 - 18.0\text{ g/dL} = 120 - 180\text{ g/L}$).</li>
+<li>Hematocrit is reported as a percentage ($\%$, Conventional) or as a decimal volume fraction ($\text{L/L}$, SI), differing by a factor of 100 ($35 - 50\% = 0.35 - 0.50\text{ L/L}$).</li>
+<li>RBC indices maintain uniform numerical values across systems, with MCV in femtoliters ($\text{fL}$), MCH in picograms ($\text{pg}$), and MCHC expressed as either $\text{g/dL}$ conventionally or $\text{g/L}$ in SI ($32.0 - 36.0\text{ g/dL} = 320 - 360\text{ g/L}$).</li>
+<li>Platelet counts are expressed as $\times 10^3/\mu\text{L}$ (Conventional) or $\times 10^9/\text{L}$ (SI), maintaining identical numerical values ($150 - 450 \times 10^3/\mu\text{L} = 150 - 450 \times 10^9/\text{L}$).</li>
 </ul>
-</li>
-<li><strong>Instrument Analytical Linearity</strong>: Defines the upper and lower limits of accurate measurement:<ul>
-<li>Operating parameters (pocH-100i): WBC $1.0 - 99.9 \times 10^3/\mu\text{L}$, RBC $0.30 - 7.00 \times 10^6/\mu\text{L}$, HGB $0.1 - 25.0\text{ g/dL}$, HCT $10.0 - 60.0\%$, PLT $10 - 999 \times 10^3/\mu\text{L}$.</li>
-<li>Sub-linearity samples require manual hemocytometer enumeration or spun microhematocrit. Over-range samples flagged with <code>+++++</code> require manual dilution protocols.</li>
-</ul>
-</li>
+<p>In physiological contexts, erythropoietic parameters can vary between demographic groups due to hormonal influences on erythropoiesis (androgens stimulate erythropoietin). However, for board examination standardization and quality control validation, the <strong>ASCP BOC establishes unified composite adult reference ranges</strong>:</p>
+<ul>
+<li><strong>RBC</strong>: $4.00 - 6.00 \times 10^6/\mu\text{L}$ ($4.00 - 6.00 \times 10^{12}/\text{L}$)</li>
+<li><strong>HGB</strong>: $12.0 - 18.0\text{ g/dL}$ ($120 - 180\text{ g/L}$)</li>
+<li><strong>HCT</strong>: $35 - 50\%$ ($0.35 - 0.50\text{ L/L}$)</li>
+<li><strong>MCV</strong>: $76 - 100\text{ fL}$</li>
+<li><strong>MCH</strong>: $26 - 34\text{ pg}$</li>
+<li><strong>MCHC</strong>: $32 - 36\text{ g/dL}$ ($320 - 360\text{ g/L}$)</li>
+<li><strong>RDW</strong>: $11.5 - 14.5\%$ ($0.115 - 0.145$)</li>
+<li><strong>WBC</strong>: $3.6 - 10.6 \times 10^3/\mu\text{L}$ ($3.6 - 10.6 \times 10^9/\text{L}$)</li>
+<li><strong>Platelets</strong>: $150 - 450 \times 10^3/\mu\text{L}$ ($150 - 450 \times 10^9/\text{L}$)</li>
 </ul>
 <hr />
-<h3 id="rbc-indices-mathematical-derivations">RBC Indices &amp; Mathematical Derivations</h3>
-<p>The red blood cell indices (MCV, MCH, MCHC, and RDW-CV) provide mathematical descriptions of erythrocyte size, mass, and hemoglobin concentration.</p>
-<div class="mermaid" data-original-source="flowchart LR
-        RBC[&quot;Direct RBC Count (x10⁶/µL)&quot;] --&gt; MCV_Calc[&quot;MCV = (HCT x 10) / RBC&quot;]
-        HCT[&quot;Hematocrit HCT (%)&quot;] --&gt; MCV_Calc
-        HGB[&quot;Direct HGB (g/dL)&quot;] --&gt; MCH_Calc[&quot;MCH = (HGB x 10) / RBC&quot;]
-        RBC --&gt; MCH_Calc
-        HGB --&gt; MCHC_Calc[&quot;MCHC = (HGB x 100) / HCT&quot;]
-        HCT --&gt; MCHC_Calc
-        MCV_Calc --&gt; RDW_Calc[&quot;RDW-CV = (MCV_SD / MCV) x 100&quot;]" data-original-code="flowchart LR
-        RBC[&quot;Direct RBC Count (x10⁶/µL)&quot;] --&gt; MCV_Calc[&quot;MCV = (HCT x 10) / RBC&quot;]
-        HCT[&quot;Hematocrit HCT (%)&quot;] --&gt; MCV_Calc
-        HGB[&quot;Direct HGB (g/dL)&quot;] --&gt; MCH_Calc[&quot;MCH = (HGB x 10) / RBC&quot;]
-        RBC --&gt; MCH_Calc
-        HGB --&gt; MCHC_Calc[&quot;MCHC = (HGB x 100) / HCT&quot;]
-        HCT --&gt; MCHC_Calc
-        MCV_Calc --&gt; RDW_Calc[&quot;RDW-CV = (MCV_SD / MCV) x 100&quot;]">
-flowchart LR
-        RBC["Direct RBC Count (x10⁶/µL)"] --> MCV_Calc["MCV = (HCT x 10) / RBC"]
-        HCT["Hematocrit HCT (%)"] --> MCV_Calc
-        HGB["Direct HGB (g/dL)"] --> MCH_Calc["MCH = (HGB x 10) / RBC"]
-        RBC --> MCH_Calc
-        HGB --> MCHC_Calc["MCHC = (HGB x 100) / HCT"]
-        HCT --> MCHC_Calc
-        MCV_Calc --> RDW_Calc["RDW-CV = (MCV_SD / MCV) x 100"]
-</div>
-
+<h3 id="critical-panic-limits-and-operational-linearity-verification">Critical Panic Limits and Operational Linearity Verification</h3>
+<p>Critical (panic) values represent laboratory findings indicating high immediate risk to patient health:</p>
 <ul>
-<li>
-<p><strong>Mean Corpuscular Volume (MCV)</strong>: Reflects the average volume of individual red blood cells in femtoliters ($\text{fL}$ or $\mu\text{m}^3$). Derived mathematically from the hematocrit and direct red cell count:<br />
-$$\text{MCV (fL)} = \frac{\text{HCT (\%)} \times 10}{\text{RBC Count } (10^6/\mu\text{L})}$$</p>
-</li>
-<li>
-<p><strong>Mean Corpuscular Hemoglobin (MCH)</strong>: Quantifies the average absolute mass (weight) of hemoglobin contained within an individual red blood cell in picograms ($\text{pg}$):<br />
-$$\text{MCH (pg)} = \frac{\text{HGB (g/dL)} \times 10}{\text{RBC Count } (10^6/\mu\text{L})}$$</p>
-</li>
-<li>
-<p><strong>Mean Corpuscular Hemoglobin Concentration (MCHC)</strong>: Calculates the average concentration of hemoglobin contained within a packed volume of red blood cells in $\text{g/dL}$ (or $\%$):<br />
-$$\text{MCHC (g/dL)} = \frac{\text{HGB (g/dL)} \times 100}{\text{HCT (\%)}}$$</p>
-</li>
-<li>
-<p><strong>Red Cell Distribution Width (RDW-CV)</strong>: Represents the coefficient of variation of erythrocyte size distribution (anisocytosis), expressed as a percentage:<br />
-$$\text{RDW-CV (\%)} = \left(\frac{\text{MCV}_{\text{Standard Deviation}}}{\text{MCV}}\right) \times 100$$</p>
-</li>
+<li>Critical low WBC ($< 1.0 \times 10^3/\mu\text{L}$ or $< 1,000/\mu\text{L}$) signals profound neutropenia and high susceptibility to lethal sepsis.</li>
+<li>Critical high WBC ($> 40.0 \times 10^3/\mu\text{L}$ or $> 40,000/\mu\text{L}$) indicates acute leukemic crises, severe leukemoid reactions, or hyperleukocytosis.</li>
+<li>Critical low Hemoglobin ($< 7.0\text{ g/dL}$) indicates severe tissue hypoxia requiring immediate transfusion evaluation.</li>
+<li>Critical high Hemoglobin ($> 20.0\text{ g/dL}$) indicates severe polycythemia and life-threatening hyperviscosity syndrome.</li>
+<li>Critical low Platelets ($< 50 \times 10^3/\mu\text{L}$ or $< 50,000/\mu\text{L}$) creates significant risk for spontaneous intracranial or mucosal hemorrhage.</li>
+<li>Critical high Platelets ($> 1,000 \times 10^3/\mu\text{L}$ or $> 1,000,000/\mu\text{L}$) carries severe thrombotic and paradoxical hemorrhagic risks.</li>
 </ul>
-<h4 id="step-by-step-worked-indice-calculations">Step-by-Step Worked Indice Calculations</h4>
-<p>Given whole blood parameters:</p>
+<p>Analytical linearity defines the dynamic operational range within which the instrument transducer and detector maintain a proportional relationship between physical cell quantity and electronic output:</p>
 <ul>
-<li>$\text{RBC} = 4.50 \times 10^6/\mu\text{L}$</li>
-<li>$\text{HGB} = 13.5\text{ g/dL}$</li>
-<li>$\text{HCT} = 40.5\%$</li>
+<li>When parameters fall below analytical linearity (e.g., $\text{WBC} < 1.0 \times 10^3/\mu\text{L}$, $\text{RBC} < 0.30 \times 10^6/\mu\text{L}$, $\text{PLT} < 10 \times 10^3/\mu\text{L}$), electronic impedance noise interferes with pulse counting. The verified backup method requires a manual hemocytometer chamber count:</li>
 </ul>
-<ol>
-<li>
-<p><strong>MCV Calculation</strong>:<br />
-$$\text{MCV} = \frac{40.5 \times 10}{4.50} = \frac{405}{4.50} = 90.0\text{ fL}$$<br />
-<em>(Classification: Normocytic, reference range $80.0 - 100.0\text{ fL}$)</em></p>
-</li>
-<li>
-<p><strong>MCH Calculation</strong>:<br />
-$$\text{MCH} = \frac{13.5 \times 10}{4.50} = \frac{135}{4.50} = 30.0\text{ pg}$$<br />
-<em>(Classification: Normal hemoglobin weight per cell, reference range $28.0 - 34.0\text{ pg}$)</em></p>
-</li>
-<li>
-<p><strong>MCHC Calculation</strong>:<br />
-$$\text{MCHC} = \frac{13.5 \times 100}{40.5} = \frac{1350}{40.5} = 33.3\text{ g/dL}$$<br />
-<em>(Classification: Normochromic, reference range $32.0 - 36.0\text{ g/dL}$)</em></p>
-</li>
-</ol>
+<p>$$\text{Cells/}\mu\text{L} = \frac{\text{Total Cells Counted} \times \text{Dilution Factor}}{\text{Number of Large Squares Counted} \times 0.1\text{ mm (Depth)}}$$</p>
+<ul>
+<li>If Hemoglobin falls below $0.1\text{ g/dL}$, spectrophotometer baseline absorbance drift prevents reliable detection. The value must be reported as $< 0.1\text{ g/dL}$, and calculated MCH and MCHC values must be suppressed.</li>
+<li>If Hematocrit falls below $10.0\%$, a manual spun microhematocrit must be performed.</li>
+<li>When cell counts exceed detector linearity, the analyzer displays the over-range flag (<code>+++++</code>). The specimen must be diluted 1:2 with isotonic diluent, re-analyzed, and multiplied by the dilution factor (2).</li>
+</ul>
 <hr />
-<h3 id="absolute-and-relative-wbc-calculations">Absolute and Relative WBC Calculations</h3>
-<p>Automated and manual white blood cell differentials evaluate leukocyte populations using both relative percentages and absolute counts.</p>
-<div class="mermaid" data-original-source="flowchart LR
-        A[&quot;Relative WBC %&quot;] -- &quot;[% x Total WBC] / 100&quot; --&gt; B[&quot;Absolute WBC Count (x10³/µL)&quot;]
-        B -- &quot;[(Absolute Count) / Total WBC] x 100&quot; --&gt; A" data-original-code="flowchart LR
-        A[&quot;Relative WBC %&quot;] -- &quot;[% x Total WBC] / 100&quot; --&gt; B[&quot;Absolute WBC Count (x10³/µL)&quot;]
-        B -- &quot;[(Absolute Count) / Total WBC] x 100&quot; --&gt; A">
-flowchart LR
-        A["Relative WBC %"] -- "[% x Total WBC] / 100" --> B["Absolute WBC Count (x10³/µL)"]
-        B -- "[(Absolute Count) / Total WBC] x 100" --> A
-</div>
-
+<h3 id="rbc-index-derivations-and-mathematical-calculations">RBC Index Derivations and Mathematical Calculations</h3>
+<p>Erythrocyte indices characterize mean cellular volume and hemoglobin content:</p>
+<p>$$\text{MCV (fL)} = \frac{\text{HCT (\%)} \times 10}{\text{RBC Count } (\times 10^6/\mu\text{L})}$$</p>
+<p>$$\text{MCH (pg)} = \frac{\text{HGB (g/dL)} \times 10}{\text{RBC Count } (\times 10^6/\mu\text{L})}$$</p>
+<p>$$\text{MCHC (g/dL)} = \frac{\text{HGB (g/dL)} \times 100}{\text{HCT (\%)}} = \frac{\text{MCH (pg)}}{\text{MCV (fL)}} \times 100$$</p>
+<p>$$\text{RDW-CV (\%)} = \left(\frac{\text{Standard Deviation of MCV}}{\text{MCV}}\right) \times 100$$</p>
+<p>Hematocrit is computed directly by automated analyzers by integrating individual RBC volume pulses:</p>
+<p>$$\text{HCT (\%)} = \frac{\text{RBC } (\times 10^6/\mu\text{L}) \times \text{MCV (fL)}}{10}$$</p>
+<h4 id="worked-example">Worked Example</h4>
+<p>Given a patient profile with $\text{RBC} = 4.50 \times 10^6/\mu\text{L}$, $\text{HGB} = 13.5\text{ g/dL}$, and $\text{HCT} = 40.5\%$:</p>
 <ul>
-<li>
-<p><strong>Calculating Absolute Counts from Relative Percentages</strong>:<br />
-$$\text{Absolute Count } (\times 10^3/\mu\text{L}) = \frac{\text{Relative Percentage (\%)} \times \text{Total WBC Count } (\times 10^3/\mu\text{L})}{100}$$</p>
-<ul>
-<li><em>Worked Example</em>: A patient presents with a total $\text{WBC} = 11.9 \times 10^3/\mu\text{L}$ and a relative lymphocyte fraction of $23\%$:<br />
-$$\text{Absolute Lymphocyte Count} = \frac{23 \times 11.9}{100} = 2.737 \approx 2.7 \times 10^3/\mu\text{L}$$</li>
+<li>$\text{MCV} = \frac{40.5 \times 10}{4.50} = \frac{405}{4.50} = 90.0\text{ fL}$ (Normocytic, ASCP BOC reference range: $76 - 100\text{ fL}$)</li>
+<li>$\text{MCH} = \frac{13.5 \times 10}{4.50} = \frac{135}{4.50} = 30.0\text{ pg}$ (Normochromic, ASCP BOC reference range: $26 - 34\text{ pg}$)</li>
+<li>$\text{MCHC} = \frac{13.5 \times 100}{40.5} = \frac{1350}{40.5} = 33.3\text{ g/dL}$ (Normochromic, ASCP BOC reference range: $32 - 36\text{ g/dL}$)</li>
 </ul>
-</li>
-<li>
-<p><strong>Calculating Relative Percentages from Absolute Counts</strong>:<br />
-$$\text{Relative Percentage (\%)} = \left(\frac{\text{Absolute Count } (\times 10^3/\mu\text{L})}{\text{Total WBC Count } (\times 10^3/\mu\text{L})}\right) \times 100$$</p>
-<ul>
-<li><em>Worked Example</em>: A patient presents with a total $\text{WBC} = 25.1 \times 10^3/\mu\text{L}$ and an absolute neutrophil count of $9.3 \times 10^3/\mu\text{L}$:<br />
-$$\text{Relative Neutrophil Percentage} = \left(\frac{9.3}{25.1}\right) \times 100 = 37.05\% \approx 37.1\%$$</li>
-</ul>
-</li>
-</ul>
+<hr />
+<h3 id="absolute-vs-relative-wbc-subpopulation-calculations-corrected-wbc">Absolute vs. Relative WBC Subpopulation Calculations &amp; Corrected WBC</h3>
+<p>Differential WBC analysis evaluates both the relative percentage (proportion of total WBCs) and the absolute cell concentration per volume of blood:</p>
+<p>$$\text{Absolute Count } (\times 10^3/\mu\text{L}) = \text{Total WBC Count } (\times 10^3/\mu\text{L}) \times \left(\frac{\text{Relative Percentage (\%)}}{100}\right)$$</p>
+<p>$$\text{Relative Percentage (\%)} = \left(\frac{\text{Absolute Count}}{\text{Total WBC Count}}\right) \times 100$$</p>
+<h4 id="forward-calculation-relative-to-absolute">Forward Calculation (Relative to Absolute)</h4>
+<p>A patient with a total WBC count of $11.9 \times 10^3/\mu\text{L}$ has a relative lymphocyte count of $23\%$:</p>
+<p>$$\text{Absolute Lymphocyte Count} = 11.9 \times 10^3/\mu\text{L} \times 0.23 = 2.74 \approx 2.7 \times 10^3/\mu\text{L}$$</p>
+<p><em>(Evaluation against ASCP BOC reference range: $1.0 - 3.2 \times 10^3/\mu\text{L}$ or $1.0 - 3.2 \times 10^9/\text{L}$; the absolute lymphocyte count is within normal limits).</em></p>
+<h4 id="reverse-calculation-absolute-to-relative">Reverse Calculation (Absolute to Relative)</h4>
+<p>A patient with a total WBC count of $25.1 \times 10^3/\mu\text{L}$ presents with an absolute neutrophil count of $9.3 \times 10^3/\mu\text{L}$:</p>
+<p>$$\text{Relative Neutrophil Percentage} = \left(\frac{9.3 \times 10^3/\mu\text{L}}{25.1 \times 10^3/\mu\text{L}}\right) \times 100 = 37.05 \approx 37.1\%$$</p>
+<p><em>(Evaluation against ASCP BOC reference ranges: while relative neutrophils of $37.1\%$ are decreased relative to the $50 - 70\%$ reference interval, the absolute neutrophil count of $9.3 \times 10^3/\mu\text{L}$ exceeds the normal absolute range of $1.7 - 7.5 \times 10^3/\mu\text{L}$, demonstrating absolute neutrophilia with relative pseudoneutropenia).</em></p>
+<h4 id="corrected-wbc-count-formula-for-nucleated-rbcs">Corrected WBC Count Formula (for Nucleated RBCs)</h4>
+<p>When circulating nucleated red blood cells ($\text{nRBCs} > 10 / 100\text{ WBC}$) are present, automated impedance counters misidentify them as leukocytes due to their resistance to lytic agents:</p>
+<p>$$\text{Corrected WBC} = \text{Uncorrected WBC} \times \left(\frac{100}{100 + \text{nRBC}}\right)$$</p>
+<p><em>Example</em>: If the automated WBC count is $16.0 \times 10^3/\mu\text{L}$ and $25\text{ nRBCs}/100\text{ WBC}$ are identified on the smear:</p>
+<p>$$\text{Corrected WBC} = 16.0 \times \left(\frac{100}{100 + 25}\right) = 16.0 \times \frac{100}{125} = 12.8 \times 10^3/\mu\text{L}$$</p>
 <hr />
 <h3 id="internal-quality-control-the-rule-of-threes">Internal Quality Control: The Rule of Threes</h3>
-<p>The Rule of Threes serves as the primary mathematical check for validating analyzer accuracy and confirming sample integrity in normocytic, normochromic specimens.</p>
+<p>The Rule of Threes serves as an internal quality control check applicable to normocytic, normochromic erythrocyte populations:</p>
+<p>$$\text{RBC Count } (\times 10^6/\mu\text{L}) \times 3 \approx \text{HGB (g/dL)} \pm 3$$</p>
+<p>$$\text{HGB (g/dL)} \times 3 \approx \text{HCT (\%)} \pm 3$$</p>
+<p>When a patient’s automated CBC results fail the Rule of Threes or generate an $\text{MCHC} > 36.0\text{ g/dL}$, the medical laboratory scientist must not report the results until the underlying cause is identified. Potential causes include pre-analytical specimen collection problems, analytical interferences (such as lipemia, cold agglutinins, or icterus), or genuine red cell pathology (such as hereditary spherocytosis).</p>
 <div class="mermaid" data-original-source="flowchart LR
-        RBC[&quot;[ RBC Count ]&quot;] -- &quot;x 3&quot; --&gt; HGB[&quot;[ HGB Concentration ] ± 3&quot;]
-        HGB -- &quot;x 3&quot; --&gt; HCT[&quot;[ HCT % ] ± 3&quot;]" data-original-code="flowchart LR
-        RBC[&quot;[ RBC Count ]&quot;] -- &quot;x 3&quot; --&gt; HGB[&quot;[ HGB Concentration ] ± 3&quot;]
-        HGB -- &quot;x 3&quot; --&gt; HCT[&quot;[ HCT % ] ± 3&quot;]">
+    RBC[&quot;RBC Count (x10^6/µL)&quot;] -- &quot;Multiply by 3 (±3)&quot; --&gt; HGB[&quot;Hemoglobin (g/dL)&quot;]
+    HGB -- &quot;Multiply by 3 (±3)&quot; --&gt; HCT[&quot;Hematocrit (%)&quot;]" data-original-code="flowchart LR
+    RBC[&quot;RBC Count (x10^6/µL)&quot;] -- &quot;Multiply by 3 (±3)&quot; --&gt; HGB[&quot;Hemoglobin (g/dL)&quot;]
+    HGB -- &quot;Multiply by 3 (±3)&quot; --&gt; HCT[&quot;Hematocrit (%)&quot;]">
 flowchart LR
-        RBC["[ RBC Count ]"] -- "x 3" --> HGB["[ HGB Concentration ] ± 3"]
-        HGB -- "x 3" --> HCT["[ HCT % ] ± 3"]
+    RBC["RBC Count (x10^6/µL)"] -- "Multiply by 3 (±3)" --> HGB["Hemoglobin (g/dL)"]
+    HGB -- "Multiply by 3 (±3)" --> HCT["Hematocrit (%)"]
 </div>
 
+<hr />
+<h3 id="rbc-morphological-classification-matrix">RBC Morphological Classification Matrix</h3>
+<p>Erythrocyte morphology is classified based on cell size (MCV) and hemoglobinization (MCHC), which correlate directly with microscopic findings in the monolayer zone of a stained blood smear.</p>
+<pre class="highlight"><code>                    MCHC &lt; 32.0 g/dL              MCHC 32.0 - 36.0 g/dL
+                     (Hypochromic)                   (Normochromic)
+             +----------------------------+----------------------------+
+             |                            |                            |
+MCV &gt; 100 fL |      Macrocytic,           |      Macrocytic,           |
+(Macrocytic) |      Hypochromic           |      Normochromic          |
+             |                            |                            |
+             +----------------------------+----------------------------+
+MCV 76-100 fL|      Normocytic,           |      Normocytic,           |
+(Normocytic) |      Hypochromic           |      Normochromic          |
+             |                            |                            |
+             +----------------------------+----------------------------+
+MCV &lt; 76 fL  |      Microcytic,           |      Microcytic,           |
+(Microcytic) |      Hypochromic           |      Normochromic          |
+             |                            |                            |
+             +----------------------------+----------------------------+</code></pre>
 <ul>
-<li>
-<p><strong>Mathematical Equations</strong>:<br />
-$$\text{RBC } (\times 10^6/\mu\text{L}) \times 3 \approx \text{HGB (g/dL)} \pm 3$$<br />
-$$\text{HGB (g/dL)} \times 3 \approx \text{HCT (\%)} \pm 3$$</p>
-</li>
-<li>
-<p><strong>Clinical Significance</strong>:</p>
-<ul>
-<li>The Rule of Threes applies <strong>strictly</strong> to specimens with normal erythrocyte morphology (normocytic, normochromic erythrocytes; $\text{MCV } 80 - 100\text{ fL}$, $\text{MCHC } 32 - 36\text{ g/dL}$).</li>
-<li>A failure in the Rule of Threes (e.g., $\text{HGB} \times 3 \neq \text{HCT} \pm 3$) or an $\text{MCHC} > 36.0\text{ g/dL}$ indicates either true abnormal red cell morphology (spherocytosis, sickle cells) or an analytical interference (lipemia, icterus, cold agglutinins, lysed sample).</li>
-</ul>
-</li>
+<li><strong>Microcytic ($\text{MCV} < 76.0\text{ fL}$)</strong>: Erythrocyte diameter is smaller than the nucleus of a normal resting small lymphocyte ($< 6.5\,\mu\text{m}$).</li>
+<li><strong>Normocytic ($\text{MCV } 76.0 - 100.0\text{ fL}$)</strong>: Erythrocyte diameter matches the normal resting lymphocyte nucleus ($6.8 - 7.5\,\mu\text{m}$).</li>
+<li><strong>Macrocytic ($\text{MCV} > 100.0\text{ fL}$)</strong>: Large erythrocytes ($> 8.0\,\mu\text{m}$), often presenting as oval macrocytes.</li>
+<li><strong>Hypochromic ($\text{MCHC} < 32.0\text{ g/dL}$)</strong>: Central pallor expands beyond the normal one-third of the total cell diameter.</li>
+<li><strong>Normochromic ($\text{MCHC } 32.0 - 36.0\text{ g/dL}$)</strong>: Central pallor occupies approximately one-third of the cell center.</li>
+<li><strong>"Hyperchromic" ($\text{MCHC} > 36.0\text{ g/dL}$)</strong>: True physiological hyperchromia is physically impossible because hemoglobin precipitates at concentrations above $36.0 - 37.0\text{ g/dL}$. Elevated MCHC indicates either dense membrane-contracted spherocytes (hereditary or autoimmune hemolytic anemia) or analyzer interference (lipemia, cold agglutination, or unlysed RBCs).</li>
+<li><strong>Anisocytosis ($\text{RDW} > 14.5\%$)</strong>: Significant variation in red cell diameters across microscopic fields.</li>
 </ul>
 <hr />
-<h3 id="rbc-morphology-classification-matrix">RBC Morphology Classification Matrix</h3>
-<p>Erythrocytes are categorized based on indices and microscopic correlation:</p>
-<div class="mermaid" data-original-source="quadrantChart
-        title RBC Morphology Grid (MCV vs MCHC)
-        x-axis &quot;Hypochromic (&lt;32)&quot; --&gt; &quot;Normochromic (32-36)&quot;
-        y-axis &quot;Microcytic (&lt;80)&quot; --&gt; &quot;Macrocytic (&gt;100)&quot;
-        quadrant-1 &quot;Macrocytic Normochromic&quot;
-        quadrant-2 &quot;Macrocytic Hypochromic&quot;
-        quadrant-3 &quot;Microcytic Hypochromic&quot;
-        quadrant-4 &quot;Microcytic Normochromic&quot;" data-original-code="quadrantChart
-        title RBC Morphology Grid (MCV vs MCHC)
-        x-axis &quot;Hypochromic (&lt;32)&quot; --&gt; &quot;Normochromic (32-36)&quot;
-        y-axis &quot;Microcytic (&lt;80)&quot; --&gt; &quot;Macrocytic (&gt;100)&quot;
-        quadrant-1 &quot;Macrocytic Normochromic&quot;
-        quadrant-2 &quot;Macrocytic Hypochromic&quot;
-        quadrant-3 &quot;Microcytic Hypochromic&quot;
-        quadrant-4 &quot;Microcytic Normochromic&quot;">
-quadrantChart
-        title RBC Morphology Grid (MCV vs MCHC)
-        x-axis "Hypochromic (<32)" --> "Normochromic (32-36)"
-        y-axis "Microcytic (<80)" --> "Macrocytic (>100)"
-        quadrant-1 "Macrocytic Normochromic"
-        quadrant-2 "Macrocytic Hypochromic"
-        quadrant-3 "Microcytic Hypochromic"
-        quadrant-4 "Microcytic Normochromic"
-</div>
-
-<ul>
-<li><strong>Size Classification (MCV)</strong>:<ul>
-<li><strong>Microcytic ($\text{MCV} < 80.0\text{ fL}$)</strong>: RBC diameter is smaller than the nucleus of a resting small mature lymphocyte ($< 6.5\,\mu\text{m}$).</li>
-<li><strong>Normocytic ($\text{MCV } 80.0 - 100.0\text{ fL}$)</strong>: Normal RBC diameter ($6.8 - 7.5\,\mu\text{m}$).</li>
-<li><strong>Macrocytic ($\text{MCV} > 100.0\text{ fL}$)</strong>: Enlarged red blood cells ($> 8.0\,\mu\text{m}$).</li>
-</ul>
-</li>
-<li><strong>Hemoglobin Content Classification (MCHC)</strong>:<ul>
-<li><strong>Hypochromic ($\text{MCHC} < 32.0\text{ g/dL}$)</strong>: Increased area of central pallor exceeding one-third of the total cell diameter.</li>
-<li><strong>Normochromic ($\text{MCHC } 32.0 - 36.0\text{ g/dL}$)</strong>: Central pallor occupies approximately one-third of the cell diameter.</li>
-<li><strong>"Hyperchromic" ($\text{MCHC} > 36.0\text{ g/dL}$)</strong>: Physiologically impossible for normal biconcave discs; indicates loss of central pallor (hereditary/immune spherocytes) or severe pre-analytical/analytical interference.</li>
-</ul>
-</li>
-<li><strong>Size Variation (RDW-CV)</strong>:<ul>
-<li>$\text{RDW-CV} > 14.6\%$ indicates marked <strong>anisocytosis</strong> (heterogeneous population of red cell volumes).</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h3 id="peripheral-blood-smear-pbs-estimates-monolayer-selection">Peripheral Blood Smear (PBS) Estimates &amp; Monolayer Selection</h3>
-<p>Microscopic validation of automated cell counts requires peripheral blood smear (PBS) evaluations in the ideal monolayer zone.</p>
+<h3 id="peripheral-blood-smear-pbs-correlation-and-slide-estimates">Peripheral Blood Smear (PBS) Correlation and Slide Estimates</h3>
+<p>Automated counts must be validated by performing microscopic slide estimates within the monolayer zone (where red cells are evenly distributed and minimally touching without overlapping or wide gaps).</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Selection [&quot;Monolayer Zone Evaluation&quot;]
-                direction TD
-                Z1[&quot;Too Crowded (Overlapping RBCs, distorted morphology)&quot;]
-                Z2[&quot;Too Thin (RBCs flattened, broken, water artifact)&quot;]
-                Z3[&quot;Monolayer (RBCs evenly spaced, barely touching)&quot;]
-        end
-        Z3 --&gt; WBC_Est[&quot;WBC Estimate (40x High-Dry Objective)&quot;]
-        Z3 --&gt; PLT_Est[&quot;Platelet Estimate (100x Oil-Immersion Objective)&quot;]
-        WBC_Est --&gt; WBC_Calc[&quot;Avg WBC per Field x 2,000 = WBC Estimate (cells/µL)&quot;]
-        PLT_Est --&gt; PLT_Calc[&quot;Avg PLT per Field x 20,000 = PLT Estimate (PLTs/µL)&quot;]" data-original-code="flowchart TD
-        subgraph Selection [&quot;Monolayer Zone Evaluation&quot;]
-                direction TD
-                Z1[&quot;Too Crowded (Overlapping RBCs, distorted morphology)&quot;]
-                Z2[&quot;Too Thin (RBCs flattened, broken, water artifact)&quot;]
-                Z3[&quot;Monolayer (RBCs evenly spaced, barely touching)&quot;]
-        end
-        Z3 --&gt; WBC_Est[&quot;WBC Estimate (40x High-Dry Objective)&quot;]
-        Z3 --&gt; PLT_Est[&quot;Platelet Estimate (100x Oil-Immersion Objective)&quot;]
-        WBC_Est --&gt; WBC_Calc[&quot;Avg WBC per Field x 2,000 = WBC Estimate (cells/µL)&quot;]
-        PLT_Est --&gt; PLT_Calc[&quot;Avg PLT per Field x 20,000 = PLT Estimate (PLTs/µL)&quot;]">
+    Monolayer[&quot;Select Ideal Counting Area: Monolayer Zone&quot;] --&gt; WBCpath[&quot;WBC Slide Estimation (40x High-Dry Objective)&quot;]
+    Monolayer --&gt; PLTpath[&quot;Platelet Slide Estimation (100x Oil-Immersion Objective)&quot;]
+    WBCpath --&gt; CountWBC[&quot;Count WBCs across 10 consecutive fields&quot;]
+    CountWBC --&gt; CalcWBC[&quot;Calculate: Average WBC per field&quot;]
+    CalcWBC --&gt; MultiWBC[&quot;Multiply: Average WBC × 2,000&quot;]
+    MultiWBC --&gt; FinalWBC[&quot;Estimated WBC Count (Cells/µL)&quot;]
+    PLTpath --&gt; CountPLT[&quot;Count PLTs across 10 consecutive fields&quot;]
+    CountPLT --&gt; CalcPLT[&quot;Calculate: Average PLT per field&quot;]
+    CalcPLT --&gt; MultiPLT[&quot;Multiply: Average PLT × 20,000&quot;]
+    MultiPLT --&gt; FinalPLT[&quot;Estimated Platelet Count (PLTs/µL)&quot;]" data-original-code="flowchart TD
+    Monolayer[&quot;Select Ideal Counting Area: Monolayer Zone&quot;] --&gt; WBCpath[&quot;WBC Slide Estimation (40x High-Dry Objective)&quot;]
+    Monolayer --&gt; PLTpath[&quot;Platelet Slide Estimation (100x Oil-Immersion Objective)&quot;]
+    WBCpath --&gt; CountWBC[&quot;Count WBCs across 10 consecutive fields&quot;]
+    CountWBC --&gt; CalcWBC[&quot;Calculate: Average WBC per field&quot;]
+    CalcWBC --&gt; MultiWBC[&quot;Multiply: Average WBC × 2,000&quot;]
+    MultiWBC --&gt; FinalWBC[&quot;Estimated WBC Count (Cells/µL)&quot;]
+    PLTpath --&gt; CountPLT[&quot;Count PLTs across 10 consecutive fields&quot;]
+    CountPLT --&gt; CalcPLT[&quot;Calculate: Average PLT per field&quot;]
+    CalcPLT --&gt; MultiPLT[&quot;Multiply: Average PLT × 20,000&quot;]
+    MultiPLT --&gt; FinalPLT[&quot;Estimated Platelet Count (PLTs/µL)&quot;]">
 flowchart TD
-        subgraph Selection ["Monolayer Zone Evaluation"]
-                direction TD
-                Z1["Too Crowded (Overlapping RBCs, distorted morphology)"]
-                Z2["Too Thin (RBCs flattened, broken, water artifact)"]
-                Z3["Monolayer (RBCs evenly spaced, barely touching)"]
-        end
-        Z3 --> WBC_Est["WBC Estimate (40x High-Dry Objective)"]
-        Z3 --> PLT_Est["Platelet Estimate (100x Oil-Immersion Objective)"]
-        WBC_Est --> WBC_Calc["Avg WBC per Field x 2,000 = WBC Estimate (cells/µL)"]
-        PLT_Est --> PLT_Calc["Avg PLT per Field x 20,000 = PLT Estimate (PLTs/µL)"]
+    Monolayer["Select Ideal Counting Area: Monolayer Zone"] --> WBCpath["WBC Slide Estimation (40x High-Dry Objective)"]
+    Monolayer --> PLTpath["Platelet Slide Estimation (100x Oil-Immersion Objective)"]
+    WBCpath --> CountWBC["Count WBCs across 10 consecutive fields"]
+    CountWBC --> CalcWBC["Calculate: Average WBC per field"]
+    CalcWBC --> MultiWBC["Multiply: Average WBC × 2,000"]
+    MultiWBC --> FinalWBC["Estimated WBC Count (Cells/µL)"]
+    PLTpath --> CountPLT["Count PLTs across 10 consecutive fields"]
+    CountPLT --> CalcPLT["Calculate: Average PLT per field"]
+    CalcPLT --> MultiPLT["Multiply: Average PLT × 20,000"]
+    MultiPLT --> FinalPLT["Estimated Platelet Count (PLTs/µL)"]
 </div>
 
 <ul>
-<li><strong>Monolayer Identification</strong>:<ul>
-<li><strong>Too Crowded</strong>: Red cells are stacked and overlapping; boundaries are indistinguishable; invalid for differential or morphology grading.</li>
-<li><strong>Too Thin (Feathered Edge)</strong>: Cells are flattened and distorted; lack central pallor; platelets clump at the outer margin.</li>
-<li><strong>Monolayer (Ideal Area)</strong>: Red blood cells are distributed evenly, lying side-by-side, barely touching without overlapping.</li>
-</ul>
-</li>
-<li>
-<p><strong>Microscopic Estimation Formulas</strong>:</p>
-<ul>
-<li>
-<p><strong>WBC Field Estimate ($40\times$ High-Dry)</strong>:<br />
-$$\text{Estimated WBC Count (cells/}\mu\text{L)} = (\text{Average WBC Count per } 40\times \text{ field across 10 fields}) \times 2,000$$</p>
-</li>
-<li>
-<p><strong>Platelet Field Estimate ($100\times$ Oil-Immersion)</strong>:<br />
-$$\text{Estimated Platelet Count (PLTs/}\mu\text{L)} = (\text{Average PLT Count per } 100\times \text{ field across 10 fields}) \times 20,000$$</p>
-</li>
-</ul>
-</li>
+<li><strong>WBC Estimate Protocol</strong>: Examine 10 consecutive fields under the $40\times$ high-dry objective. Sum total leukocytes and divide by 10 to obtain the average WBC per field. Multiply by the factor $2,000$ to obtain the estimated count ($\text{Cells}/\mu\text{L}$).</li>
+<li><strong>Platelet Estimate Protocol</strong>: Examine 10 consecutive fields under the $100\times$ oil-immersion objective in the monolayer. Sum total platelets and divide by 10. Multiply the average platelet count per field by the factor $20,000$ to obtain the estimated count ($\text{PLTs}/\mu\text{L}$).</li>
 </ul>
 <hr />
-<h3 id="analytical-interferences-and-corrective-protocols">Analytical Interferences and Corrective Protocols</h3>
-<h4 id="plasma-replacement-protocol">Plasma Replacement Protocol</h4>
-<div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Suspected Interference (Lipemia / Icterus / MCHC &amp;gt; 36.0 g/dL)&quot;] --&gt; B[&quot;1. Aliquot Whole Blood into Wintrobe Tube&quot;]
-        B --&gt; C[&quot;2. Centrifuge for 5 min at 2000 rpm&quot;]
-        C --&gt; D[&quot;3. Precisely Mark Upper Plasma Level on Tube&quot;]
-        D --&gt; E[&quot;4. Aspirate and Discard Turbid/Icteric Plasma ONLY&quot;]
-        E --&gt; F[&quot;5. Reconstitute with Isotonic Diluent to the Initial Mark&quot;]
-        F --&gt; G[&quot;6. Mix Erythrocyte/Diluent Suspension Thoroughly&quot;]
-        G --&gt; H[&quot;7. Re-run on Analyzer&quot;]
-        H --&gt; I[&quot;8. Report Corrected RBC &amp; HGB from Rerun; Report Original WBC &amp; PLT&quot;]
-        I --&gt; J[&quot;9. Document Plasma Replacement in Patient Record&quot;]" data-original-code="flowchart TD
-        A[&quot;Suspected Interference (Lipemia / Icterus / MCHC &amp;gt; 36.0 g/dL)&quot;] --&gt; B[&quot;1. Aliquot Whole Blood into Wintrobe Tube&quot;]
-        B --&gt; C[&quot;2. Centrifuge for 5 min at 2000 rpm&quot;]
-        C --&gt; D[&quot;3. Precisely Mark Upper Plasma Level on Tube&quot;]
-        D --&gt; E[&quot;4. Aspirate and Discard Turbid/Icteric Plasma ONLY&quot;]
-        E --&gt; F[&quot;5. Reconstitute with Isotonic Diluent to the Initial Mark&quot;]
-        F --&gt; G[&quot;6. Mix Erythrocyte/Diluent Suspension Thoroughly&quot;]
-        G --&gt; H[&quot;7. Re-run on Analyzer&quot;]
-        H --&gt; I[&quot;8. Report Corrected RBC &amp; HGB from Rerun; Report Original WBC &amp; PLT&quot;]
-        I --&gt; J[&quot;9. Document Plasma Replacement in Patient Record&quot;]">
-flowchart TD
-        A["Suspected Interference (Lipemia / Icterus / MCHC &gt; 36.0 g/dL)"] --> B["1. Aliquot Whole Blood into Wintrobe Tube"]
-        B --> C["2. Centrifuge for 5 min at 2000 rpm"]
-        C --> D["3. Precisely Mark Upper Plasma Level on Tube"]
-        D --> E["4. Aspirate and Discard Turbid/Icteric Plasma ONLY"]
-        E --> F["5. Reconstitute with Isotonic Diluent to the Initial Mark"]
-        F --> G["6. Mix Erythrocyte/Diluent Suspension Thoroughly"]
-        G --> H["7. Re-run on Analyzer"]
-        H --> I["8. Report Corrected RBC & HGB from Rerun; Report Original WBC & PLT"]
-        I --> J["9. Document Plasma Replacement in Patient Record"]
+<h3 id="automated-cbc-interference-patterns-and-corrective-protocols">Automated CBC Interference Patterns and Corrective Protocols</h3>
+<p>Interferences in automated cell counting and sizing produce distinct parameter discrepancies:</p>
+<div class="mermaid" data-original-source="flowchart LR
+    subgraph Lipemia_Icterus [&quot;Lipemia / Extreme Icterus&quot;]
+        direction TB
+        L1[&quot;Turbidity / Absorbance at 525 nm&quot;] --&gt; L2[&quot;HGB falsely elevated&quot;]
+        L2 --&gt; L3[&quot;MCH &amp; MCHC falsely elevated (&amp;gt;36 g/dL)&quot;]
+        L4[&quot;RBC and HCT unaffected&quot;]
+    end
+    subgraph Cold_Agglutinins [&quot;Cold Agglutinins (IgM)&quot;]
+        direction TB
+        C1[&quot;RBC clumping at room temp&quot;] --&gt; C2[&quot;RBC count falsely low&quot;]
+        C1 --&gt; C3[&quot;MCV falsely high (clumps sized as 1 cell)&quot;]
+        C2 &amp; C3 --&gt; C4[&quot;MCHC falsely high (&amp;gt;38 g/dL)&quot;]
+        C5[&quot;HGB remains accurate&quot;]
+    end
+    subgraph In_Vitro_Hemolysis [&quot;In Vitro Hemolysis&quot;]
+        direction TB
+        H1[&quot;RBC lysis prior to aspiration&quot;] --&gt; H2[&quot;RBC count falsely low&quot;]
+        H1 --&gt; H3[&quot;Calculated HCT falsely low&quot;]
+        H2 &amp; H3 --&gt; H4[&quot;MCH &amp; MCHC falsely elevated&quot;]
+        H5[&quot;HGB remains true (stroma lysed in bath)&quot;]
+    end
+    subgraph PLT_Clumping [&quot;Platelet Clumping / Satellitism&quot;]
+        direction TB
+        P1[&quot;EDTA-dependent aggregation&quot;] --&gt; P2[&quot;PLT count falsely low&quot;]
+        P1 --&gt; P3[&quot;Clumps enter WBC aperture (&amp;gt;35 fL)&quot;]
+        P3 --&gt; P4[&quot;WBC count falsely elevated&quot;]
+    end" data-original-code="flowchart LR
+    subgraph Lipemia_Icterus [&quot;Lipemia / Extreme Icterus&quot;]
+        direction TB
+        L1[&quot;Turbidity / Absorbance at 525 nm&quot;] --&gt; L2[&quot;HGB falsely elevated&quot;]
+        L2 --&gt; L3[&quot;MCH &amp; MCHC falsely elevated (&amp;gt;36 g/dL)&quot;]
+        L4[&quot;RBC and HCT unaffected&quot;]
+    end
+    subgraph Cold_Agglutinins [&quot;Cold Agglutinins (IgM)&quot;]
+        direction TB
+        C1[&quot;RBC clumping at room temp&quot;] --&gt; C2[&quot;RBC count falsely low&quot;]
+        C1 --&gt; C3[&quot;MCV falsely high (clumps sized as 1 cell)&quot;]
+        C2 &amp; C3 --&gt; C4[&quot;MCHC falsely high (&amp;gt;38 g/dL)&quot;]
+        C5[&quot;HGB remains accurate&quot;]
+    end
+    subgraph In_Vitro_Hemolysis [&quot;In Vitro Hemolysis&quot;]
+        direction TB
+        H1[&quot;RBC lysis prior to aspiration&quot;] --&gt; H2[&quot;RBC count falsely low&quot;]
+        H1 --&gt; H3[&quot;Calculated HCT falsely low&quot;]
+        H2 &amp; H3 --&gt; H4[&quot;MCH &amp; MCHC falsely elevated&quot;]
+        H5[&quot;HGB remains true (stroma lysed in bath)&quot;]
+    end
+    subgraph PLT_Clumping [&quot;Platelet Clumping / Satellitism&quot;]
+        direction TB
+        P1[&quot;EDTA-dependent aggregation&quot;] --&gt; P2[&quot;PLT count falsely low&quot;]
+        P1 --&gt; P3[&quot;Clumps enter WBC aperture (&amp;gt;35 fL)&quot;]
+        P3 --&gt; P4[&quot;WBC count falsely elevated&quot;]
+    end">
+flowchart LR
+    subgraph Lipemia_Icterus ["Lipemia / Extreme Icterus"]
+        direction TB
+        L1["Turbidity / Absorbance at 525 nm"] --> L2["HGB falsely elevated"]
+        L2 --> L3["MCH & MCHC falsely elevated (&gt;36 g/dL)"]
+        L4["RBC and HCT unaffected"]
+    end
+    subgraph Cold_Agglutinins ["Cold Agglutinins (IgM)"]
+        direction TB
+        C1["RBC clumping at room temp"] --> C2["RBC count falsely low"]
+        C1 --> C3["MCV falsely high (clumps sized as 1 cell)"]
+        C2 & C3 --> C4["MCHC falsely high (&gt;38 g/dL)"]
+        C5["HGB remains accurate"]
+    end
+    subgraph In_Vitro_Hemolysis ["In Vitro Hemolysis"]
+        direction TB
+        H1["RBC lysis prior to aspiration"] --> H2["RBC count falsely low"]
+        H1 --> H3["Calculated HCT falsely low"]
+        H2 & H3 --> H4["MCH & MCHC falsely elevated"]
+        H5["HGB remains true (stroma lysed in bath)"]
+    end
+    subgraph PLT_Clumping ["Platelet Clumping / Satellitism"]
+        direction TB
+        P1["EDTA-dependent aggregation"] --> P2["PLT count falsely low"]
+        P1 --> P3["Clumps enter WBC aperture (&gt;35 fL)"]
+        P3 --> P4["WBC count falsely elevated"]
+    end
 </div>
 
-<ul>
-<li><strong>Indication</strong>: Elevated chylomicrons (lipemia) or extreme bilirubin (icterus) causing turbidity at $525\text{ nm}$, yielding falsely high HGB, MCH, and MCHC ($> 36.0\text{ g/dL}$) while RBC and HCT remain accurate.</li>
-<li><strong>Procedure Steps</strong>:<ol>
-<li>Aliquot patient EDTA whole blood into a Wintrobe tube.</li>
-<li>Centrifuge at $2000\text{ rpm}$ for $5\text{ minutes}$ to cleanly separate plasma and packed cells.</li>
-<li>Mark the exact meniscus of the plasma layer on the tube wall.</li>
-<li>Carefully aspirate and discard the interfering plasma without disturbing the buffy coat or erythrocyte layer.</li>
-<li>Add isotonic instrument diluent up to the calibrated plasma mark.</li>
-<li>Thoroughly resuspend and mix the cellular button with the fresh diluent.</li>
-<li>Re-analyze the sample.</li>
-<li>Report RBC, HGB, and derived RBC indices from the replaced run; report WBC and PLT counts from the primary, unmanipulated run.</li>
+<h4 id="saline-plasma-replacement-protocol-for-lipemia-or-icterus">Saline Plasma Replacement Protocol (for Lipemia or Icterus)</h4>
+<p>When severe lipemia (chylomicrons) or extreme icterus (elevated bilirubin) causes optical turbidity in the spectrophotometric chamber at $525\text{ nm}$, HGB, MCH, and MCHC become falsely elevated. The corrective procedure is as follows:</p>
+<ol>
+<li>Aliquot the well-mixed whole blood sample into a Wintrobe tube.</li>
+<li>Centrifuge the tube for $5\text{ minutes}$ at $2,000\text{ rpm}$ to pack red blood cells.</li>
+<li>Precisely mark the top meniscus of the plasma volume on the tube exterior.</li>
+<li>Carefully aspirate and discard only the turbid/icteric plasma layer, taking care not to disturb the buffy coat or erythrocyte layer.</li>
+<li>Reconstitute the tube to the original marked meniscus line with isotonic analyzer diluent.</li>
+<li>Mix thoroughly by gentle inversion to resuspend the cells and re-run on the automated analyzer.</li>
+<li>Report the RBC count, HGB, HCT, and RBC indices from the reconstituted replacement run.</li>
+<li>Report WBC and PLT counts from the original non-diluted run.</li>
+<li>Document in the laboratory information system that a plasma replacement procedure was performed.</li>
 </ol>
-</li>
-</ul>
+<h4 id="cold-agglutinin-correction-protocol">Cold Agglutinin Correction Protocol</h4>
+<p>In the presence of cold-reactive IgM autoantibodies, erythrocytes clump at room temperature, causing falsely low RBC counts, elevated MCV ($> 120\text{ fL}$), and elevated MCHC ($> 38\text{ g/dL}$):</p>
+<ol>
+<li>Place the EDTA collection tube in a $37^\circ\text{C}$ water bath or heat block for $10 - 15\text{ minutes}$.</li>
+<li>Remove the tube and re-run immediately on the hematology analyzer while warm.</li>
+<li>If indices fail to correct due to high-titer cold agglutinins, perform a warmed saline plasma replacement using pre-warmed ($37^\circ\text{C}$) diluent and tube.</li>
+<li>Report results with the laboratory documentation note: "Specimen warmed to $37^\circ\text{C}$ prior to analysis to disperse cold agglutinins."</li>
+</ol>
+<h4 id="platelet-satellitism-and-clumping-correction">Platelet Satellitism and Clumping Correction</h4>
+<p>EDTA-dependent platelet agglutinins cause platelets to clump or adhere to neutrophil surfaces (satellitism), leading to falsely low PLT counts and falsely elevated WBC counts:</p>
+<ol>
+<li>Review the peripheral blood smear to confirm platelet clumps or satellitism around neutrophils.</li>
+<li>Request a specimen re-collection in a Sodium Citrate anticoagulant tube (light blue top).</li>
+<li>Analyze the sodium citrate tube on the automated analyzer.</li>
+<li>Multiply the resulting platelet and leukocyte counts by a factor of $1.1$ to adjust for the 9:1 blood-to-anticoagulant dilution in citrate tubes.</li>
+</ol>
 <hr />
-<h4 id="cold-agglutinin-corrective-protocol">Cold Agglutinin Corrective Protocol</h4>
+<h3 id="out-of-linearity-dilution-protocol">Out-of-Linearity Dilution Protocol</h3>
+<p>When cell counts or hemoglobin concentrations exceed the instrument's operational linearity, the analyzer displays <code>+++++</code>. The medical laboratory scientist must perform a manual dilution:</p>
 <div class="mermaid" data-original-source="flowchart TD
-        CA[&quot;Cold Agglutinins (IgM Autoantibodies)&quot;] --&gt; Clump[&quot;RBC Agglutination at Room Temp&quot;]
-        Clump --&gt; Sign[&quot;Indices Flag: RBC ↓↓, MCV ↑↑, MCHC &amp;gt; 38.0 g/dL&quot;]
-        Sign --&gt; Inc[&quot;Incubate Specimen at 37°C for 10-15 min&quot;]
-        Inc --&gt; Rerun[&quot;Rerun Immediately on Hematology Analyzer&quot;]
-        Rerun --&gt; Check{&quot;Indices Corrected?&quot;}
-        Check -- &quot;Yes&quot; --&gt; Rep[&quot;Report Results with Cold Agglutinin Noted&quot;]
-        Check -- &quot;No (Strong IgM)&quot; --&gt; WPR[&quot;Perform WARMED Plasma Replacement (37°C Specimen &amp; Diluent)&quot;]" data-original-code="flowchart TD
-        CA[&quot;Cold Agglutinins (IgM Autoantibodies)&quot;] --&gt; Clump[&quot;RBC Agglutination at Room Temp&quot;]
-        Clump --&gt; Sign[&quot;Indices Flag: RBC ↓↓, MCV ↑↑, MCHC &amp;gt; 38.0 g/dL&quot;]
-        Sign --&gt; Inc[&quot;Incubate Specimen at 37°C for 10-15 min&quot;]
-        Inc --&gt; Rerun[&quot;Rerun Immediately on Hematology Analyzer&quot;]
-        Rerun --&gt; Check{&quot;Indices Corrected?&quot;}
-        Check -- &quot;Yes&quot; --&gt; Rep[&quot;Report Results with Cold Agglutinin Noted&quot;]
-        Check -- &quot;No (Strong IgM)&quot; --&gt; WPR[&quot;Perform WARMED Plasma Replacement (37°C Specimen &amp; Diluent)&quot;]">
+    Flag[&quot;Analyzer Flags Result: &#x27;+++++&#x27; (Exceeds Linearity)&quot;] --&gt; Step1[&quot;1. Pipette 500 µL EDTA whole blood + 500 µL Isotonic Diluent (1:2 Dilution)&quot;]
+    Step1 --&gt; Step2[&quot;2. Mix thoroughly and re-analyze on automated instrument&quot;]
+    Step2 --&gt; Step3[&quot;3. Multiply directly measured diluted parameters (WBC, RBC, HGB, PLT) by 2&quot;]
+    Step3 --&gt; Step4{&quot;Extreme Leukocytosis Present? (WBC &gt; 100 x 10^3/µL)&quot;}
+    Step4 -- Yes --&gt; Step5[&quot;4. Correct RBC count: Corrected RBC = Measured RBC - (WBC x 10^3 / 10^6)&quot;]
+    Step4 -- No --&gt; Step6[&quot;5. Perform manual Spun Microhematocrit on UNDILUTED original whole blood&quot;]
+    Step5 --&gt; Step6
+    Step6 --&gt; Step7[&quot;6. Manually recalculate MCH and MCHC using corrected RBC, corrected HGB, and Spun HCT&quot;]
+    Step7 --&gt; Step8[&quot;7. Report verified results with documentation of dilution factor&quot;]" data-original-code="flowchart TD
+    Flag[&quot;Analyzer Flags Result: &#x27;+++++&#x27; (Exceeds Linearity)&quot;] --&gt; Step1[&quot;1. Pipette 500 µL EDTA whole blood + 500 µL Isotonic Diluent (1:2 Dilution)&quot;]
+    Step1 --&gt; Step2[&quot;2. Mix thoroughly and re-analyze on automated instrument&quot;]
+    Step2 --&gt; Step3[&quot;3. Multiply directly measured diluted parameters (WBC, RBC, HGB, PLT) by 2&quot;]
+    Step3 --&gt; Step4{&quot;Extreme Leukocytosis Present? (WBC &gt; 100 x 10^3/µL)&quot;}
+    Step4 -- Yes --&gt; Step5[&quot;4. Correct RBC count: Corrected RBC = Measured RBC - (WBC x 10^3 / 10^6)&quot;]
+    Step4 -- No --&gt; Step6[&quot;5. Perform manual Spun Microhematocrit on UNDILUTED original whole blood&quot;]
+    Step5 --&gt; Step6
+    Step6 --&gt; Step7[&quot;6. Manually recalculate MCH and MCHC using corrected RBC, corrected HGB, and Spun HCT&quot;]
+    Step7 --&gt; Step8[&quot;7. Report verified results with documentation of dilution factor&quot;]">
 flowchart TD
-        CA["Cold Agglutinins (IgM Autoantibodies)"] --> Clump["RBC Agglutination at Room Temp"]
-        Clump --> Sign["Indices Flag: RBC ↓↓, MCV ↑↑, MCHC &gt; 38.0 g/dL"]
-        Sign --> Inc["Incubate Specimen at 37°C for 10-15 min"]
-        Inc --> Rerun["Rerun Immediately on Hematology Analyzer"]
-        Rerun --> Check{"Indices Corrected?"}
-        Check -- "Yes" --> Rep["Report Results with Cold Agglutinin Noted"]
-        Check -- "No (Strong IgM)" --> WPR["Perform WARMED Plasma Replacement (37°C Specimen & Diluent)"]
+    Flag["Analyzer Flags Result: '+++++' (Exceeds Linearity)"] --> Step1["1. Pipette 500 µL EDTA whole blood + 500 µL Isotonic Diluent (1:2 Dilution)"]
+    Step1 --> Step2["2. Mix thoroughly and re-analyze on automated instrument"]
+    Step2 --> Step3["3. Multiply directly measured diluted parameters (WBC, RBC, HGB, PLT) by 2"]
+    Step3 --> Step4{"Extreme Leukocytosis Present? (WBC > 100 x 10^3/µL)"}
+    Step4 -- Yes --> Step5["4. Correct RBC count: Corrected RBC = Measured RBC - (WBC x 10^3 / 10^6)"]
+    Step4 -- No --> Step6["5. Perform manual Spun Microhematocrit on UNDILUTED original whole blood"]
+    Step5 --> Step6
+    Step6 --> Step7["6. Manually recalculate MCH and MCHC using corrected RBC, corrected HGB, and Spun HCT"]
+    Step7 --> Step8["7. Report verified results with documentation of dilution factor"]
 </div>
 
-<ul>
-<li><strong>Presentation</strong>: Presence of cold-reacting IgM antibodies causes red cells to aggregate at room temperature. The analyzer counts clumps as single large particles: $\text{RBC} \downarrow\downarrow$, $\text{MCV} \uparrow\uparrow$, $\text{MCHC} \uparrow\uparrow$ (frequently $> 38.0\text{ g/dL}$); HGB remains accurate.</li>
-<li><strong>Protocol</strong>: Incubate specimen in a $37^\circ\text{C}$ water bath for $10 - 15\text{ minutes}$. Rerun immediately. For persistent or high-titer cold agglutinins, perform a warmed plasma replacement using pre-warmed diluent ($37^\circ\text{C}$).</li>
-</ul>
 <hr />
-<h4 id="out-of-linearity-protocol-flags">Out-of-Linearity Protocol (<code>+++++</code> Flags)</h4>
+<h3 id="failure-mode-analysis-depleted-lytic-reagent">Failure Mode Analysis: Depleted Lytic Reagent</h3>
+<p>If the analyzer runs out of lytic reagent or suffers a reagent metering failure, unlysed erythrocytes remain intact throughout all analytical chambers:</p>
 <div class="mermaid" data-original-source="flowchart TD
-        Flag[&quot;Analyzer Result Flag: +++++ (Exceeds Linearity)&quot;] --&gt; Dil[&quot;Prepare 1:2 Manual Dilution: 500 µL Blood + 500 µL Isotonic Diluent&quot;]
-        Dil --&gt; Mix[&quot;Mix Thoroughly and Re-analyze&quot;]
-        Mix --&gt; Mult[&quot;Multiply Direct Measured Values (WBC, RBC, HGB, PLT) by Dilution Factor (x2)&quot;]
-        Mult --&gt; CheckWBC{&quot;Total WBC &gt; 100 x 10³/µL?&quot;}
-        CheckWBC -- &quot;Yes&quot; --&gt; RBC_Corr[&quot;Correct RBC: Measured RBC - (WBC x 10³ / 10⁶)&quot;]
-        CheckWBC -- &quot;No&quot; --&gt; SpunHCT[&quot;Perform Manual Spun Microhematocrit on UNDILUTED Whole Blood&quot;]
-        RBC_Corr --&gt; SpunHCT
-        SpunHCT --&gt; Recalc[&quot;Recalculate MCH &amp; MCHC using Corrected RBC, HGB, and Spun HCT&quot;]
-        Recalc --&gt; Final[&quot;Report Verified Values with Dilution Notation&quot;]" data-original-code="flowchart TD
-        Flag[&quot;Analyzer Result Flag: +++++ (Exceeds Linearity)&quot;] --&gt; Dil[&quot;Prepare 1:2 Manual Dilution: 500 µL Blood + 500 µL Isotonic Diluent&quot;]
-        Dil --&gt; Mix[&quot;Mix Thoroughly and Re-analyze&quot;]
-        Mix --&gt; Mult[&quot;Multiply Direct Measured Values (WBC, RBC, HGB, PLT) by Dilution Factor (x2)&quot;]
-        Mult --&gt; CheckWBC{&quot;Total WBC &gt; 100 x 10³/µL?&quot;}
-        CheckWBC -- &quot;Yes&quot; --&gt; RBC_Corr[&quot;Correct RBC: Measured RBC - (WBC x 10³ / 10⁶)&quot;]
-        CheckWBC -- &quot;No&quot; --&gt; SpunHCT[&quot;Perform Manual Spun Microhematocrit on UNDILUTED Whole Blood&quot;]
-        RBC_Corr --&gt; SpunHCT
-        SpunHCT --&gt; Recalc[&quot;Recalculate MCH &amp; MCHC using Corrected RBC, HGB, and Spun HCT&quot;]
-        Recalc --&gt; Final[&quot;Report Verified Values with Dilution Notation&quot;]">
+    LyseFail[&quot;Depletion / Failure of Lytic Reagent Delivery&quot;] --&gt; WBCBath[&quot;WBC &amp; Differential Counting Bath&quot;]
+    LyseFail --&gt; HGBBath[&quot;Spectrophotometric HGB Bath (525 nm)&quot;]
+    WBCBath --&gt; IntactRBC[&quot;Millions of intact RBCs enter WBC impedance aperture&quot;]
+    IntactRBC --&gt; VolOverlap[&quot;RBC volumes (&amp;gt;30 fL) register across WBC thresholds&quot;]
+    VolOverlap --&gt; FalseLeuko[&quot;False Massive Leukocytosis (WBC &amp;gt; 100 x 10^3/µL)&quot;]
+    VolOverlap --&gt; FalseLymph[&quot;Spurious Lymphocytosis in 3-part differential&quot;]
+    HGBBath --&gt; TurbidBath[&quot;Unlysed RBCs create severe optical turbidity / light scatter&quot;]
+    TurbidBath --&gt; MaxAbsorb[&quot;Absorbance detector registers maximal light blockage&quot;]
+    MaxAbsorb --&gt; FalseHGB[&quot;Falsely Skyrocketing HGB (&amp;gt; 25 g/dL)&quot;]
+    FalseHGB --&gt; ExtremeQC[&quot;Severe Rule of Threes Failure &amp; Incompatible MCHC (&amp;gt; 50 g/dL)&quot;]" data-original-code="flowchart TD
+    LyseFail[&quot;Depletion / Failure of Lytic Reagent Delivery&quot;] --&gt; WBCBath[&quot;WBC &amp; Differential Counting Bath&quot;]
+    LyseFail --&gt; HGBBath[&quot;Spectrophotometric HGB Bath (525 nm)&quot;]
+    WBCBath --&gt; IntactRBC[&quot;Millions of intact RBCs enter WBC impedance aperture&quot;]
+    IntactRBC --&gt; VolOverlap[&quot;RBC volumes (&amp;gt;30 fL) register across WBC thresholds&quot;]
+    VolOverlap --&gt; FalseLeuko[&quot;False Massive Leukocytosis (WBC &amp;gt; 100 x 10^3/µL)&quot;]
+    VolOverlap --&gt; FalseLymph[&quot;Spurious Lymphocytosis in 3-part differential&quot;]
+    HGBBath --&gt; TurbidBath[&quot;Unlysed RBCs create severe optical turbidity / light scatter&quot;]
+    TurbidBath --&gt; MaxAbsorb[&quot;Absorbance detector registers maximal light blockage&quot;]
+    MaxAbsorb --&gt; FalseHGB[&quot;Falsely Skyrocketing HGB (&amp;gt; 25 g/dL)&quot;]
+    FalseHGB --&gt; ExtremeQC[&quot;Severe Rule of Threes Failure &amp; Incompatible MCHC (&amp;gt; 50 g/dL)&quot;]">
 flowchart TD
-        Flag["Analyzer Result Flag: +++++ (Exceeds Linearity)"] --> Dil["Prepare 1:2 Manual Dilution: 500 µL Blood + 500 µL Isotonic Diluent"]
-        Dil --> Mix["Mix Thoroughly and Re-analyze"]
-        Mix --> Mult["Multiply Direct Measured Values (WBC, RBC, HGB, PLT) by Dilution Factor (x2)"]
-        Mult --> CheckWBC{"Total WBC > 100 x 10³/µL?"}
-        CheckWBC -- "Yes" --> RBC_Corr["Correct RBC: Measured RBC - (WBC x 10³ / 10⁶)"]
-        CheckWBC -- "No" --> SpunHCT["Perform Manual Spun Microhematocrit on UNDILUTED Whole Blood"]
-        RBC_Corr --> SpunHCT
-        SpunHCT --> Recalc["Recalculate MCH & MCHC using Corrected RBC, HGB, and Spun HCT"]
-        Recalc --> Final["Report Verified Values with Dilution Notation"]
+    LyseFail["Depletion / Failure of Lytic Reagent Delivery"] --> WBCBath["WBC & Differential Counting Bath"]
+    LyseFail --> HGBBath["Spectrophotometric HGB Bath (525 nm)"]
+    WBCBath --> IntactRBC["Millions of intact RBCs enter WBC impedance aperture"]
+    IntactRBC --> VolOverlap["RBC volumes (&gt;30 fL) register across WBC thresholds"]
+    VolOverlap --> FalseLeuko["False Massive Leukocytosis (WBC &gt; 100 x 10^3/µL)"]
+    VolOverlap --> FalseLymph["Spurious Lymphocytosis in 3-part differential"]
+    HGBBath --> TurbidBath["Unlysed RBCs create severe optical turbidity / light scatter"]
+    TurbidBath --> MaxAbsorb["Absorbance detector registers maximal light blockage"]
+    MaxAbsorb --> FalseHGB["Falsely Skyrocketing HGB (&gt; 25 g/dL)"]
+    FalseHGB --> ExtremeQC["Severe Rule of Threes Failure & Incompatible MCHC (&gt; 50 g/dL)"]
 </div>
 
+<hr />
+<h3 id="laboratory-quality-control-maintenance-and-biosafety">Laboratory Quality Control, Maintenance, and Biosafety</h3>
 <ul>
-<li><strong>Dilution Protocol</strong>: When an analyte exceeds linearity limits, mix $500\,\mu\text{L}$ EDTA blood with $500\,\mu\text{L}$ isotonic diluent ($1:2\text{ dilution}$). Multiply directly measured diluted parameters (WBC, RBC, HGB, PLT) by $2$.</li>
-<li>
-<p><strong>Extreme Leukocytosis RBC Correction</strong>: When WBC count exceeds $100 \times 10^3/\mu\text{L}$, white cells are counted in the RBC aperture bath. Correct the RBC count:<br />
-$$\text{Corrected RBC } (\times 10^6/\mu\text{L}) = \text{Measured RBC Count} - \left(\frac{\text{WBC Count } (\times 10^3/\mu\text{L})}{1000}\right)$$</p>
-</li>
-<li>
-<p><strong>Hematocrit and Indices Correction</strong>: Perform a manual spun microhematocrit on the <strong>undiluted</strong> original whole blood specimen. Recalculate MCH and MCHC using the corrected RBC, corrected HGB, and spun microhematocrit.</p>
-</li>
+<li><strong>Instrument Startup &amp; Background Counts</strong>: Run daily background checks using particle-free isotonic diluent to verify baseline cleanliness. Background limits must not exceed manufacturer thresholds (e.g., $\text{WBC} \le 0.1 \times 10^3/\mu\text{L}$, $\text{RBC} \le 0.02 \times 10^6/\mu\text{L}$, $\text{HGB} \le 0.1\text{ g/dL}$, $\text{PLT} \le 10 \times 10^3/\mu\text{L}$).</li>
+<li><strong>Commercial Quality Control Evaluation</strong>: Analyze three levels of commercially prepared stable control materials (low, normal, high) each day or shift. Evaluate control data using Westgard multi-rules; do not run patient samples if QC falls outside $\pm 2$ standard deviations ($\pm 2\text{ SD}$).</li>
+<li><strong>Scheduled Preventative Maintenance</strong>: Execute daily shutdown cleaning cycles, weekly deproteinization flushes, and monthly aperture cleaning to prevent protein build-up, bacterial biofilm formation, or flow cell clogs.</li>
+<li><strong>Pre-Analytical Specimen Inspection</strong>: Mix EDTA tubes on a mechanical rocker for a minimum of 2 minutes before analysis. Check for microclots and fibrin strands by inserting two wooden applicator sticks into the unstoppered tube. Clotted specimens must be rejected because clots invalidate platelet, WBC, and RBC parameters and cause analyzer aperture clogs.</li>
+<li><strong>Biosafety &amp; Universal Precautions</strong>: Treat all blood samples as potentially infectious (OSHA Bloodborne Pathogens Standard). Wear complete personal protective equipment (PPE)—including lab coat, gloves, and splash eye protection—during tube opening, manual dilution, maintenance, and waste handling. Dispose of biohazard waste and sharps in designated rigid containers.</li>
 </ul>
 <hr />
-<h3 id="failure-mode-analysis-exhausted-lytic-reagent">Failure Mode Analysis: Exhausted Lytic Reagent</h3>
-<p>Failure of lytic reagent delivery (due to reagent depletion or pump failure) disrupts automated counting chambers:</p>
-<div class="mermaid" data-original-source="flowchart TD
-        LysFail[&quot;Lytic Reagent Depleted / Delivery Failure&quot;] --&gt; Split{&quot;Impact on Analytical Baths&quot;}
-
-        Split --&gt; WBC_Bath[&quot;WBC &amp; Differential Bath Impact&quot;]
-        WBC_Bath --&gt; W1[&quot;Millions of Intact RBCs Enter WBC Chamber&quot;]
-        W1 --&gt; W2[&quot;RBC Volumes (&amp;gt; 30 fL) Overlap with Small Leukocytes&quot;]
-        W2 --&gt; W3[&quot;False Massive Leukocytosis (WBC &amp;gt; 100 x 10³/µL)&quot;]
-        W2 --&gt; W4[&quot;False Lymphocytosis on 3-Part Differential Histogram&quot;]
-
-        Split --&gt; HGB_Bath[&quot;Spectrophotometric HGB Bath Impact&quot;]
-        HGB_Bath --&gt; H1[&quot;Unlysed Intact RBCs Cause Extreme Optical Turbidity&quot;]
-        H1 --&gt; H2[&quot;Spectrophotometric Light Path Blocked at 525 nm&quot;]
-        H2 --&gt; H3[&quot;Absorbance Falsely Skyrockets (Spurious HGB Elevation)&quot;]
-        H3 --&gt; H4[&quot;Extreme Rule of Threes Failure &amp; MCHC &amp;gt; 50 g/dL&quot;]" data-original-code="flowchart TD
-        LysFail[&quot;Lytic Reagent Depleted / Delivery Failure&quot;] --&gt; Split{&quot;Impact on Analytical Baths&quot;}
-
-        Split --&gt; WBC_Bath[&quot;WBC &amp; Differential Bath Impact&quot;]
-        WBC_Bath --&gt; W1[&quot;Millions of Intact RBCs Enter WBC Chamber&quot;]
-        W1 --&gt; W2[&quot;RBC Volumes (&amp;gt; 30 fL) Overlap with Small Leukocytes&quot;]
-        W2 --&gt; W3[&quot;False Massive Leukocytosis (WBC &amp;gt; 100 x 10³/µL)&quot;]
-        W2 --&gt; W4[&quot;False Lymphocytosis on 3-Part Differential Histogram&quot;]
-
-        Split --&gt; HGB_Bath[&quot;Spectrophotometric HGB Bath Impact&quot;]
-        HGB_Bath --&gt; H1[&quot;Unlysed Intact RBCs Cause Extreme Optical Turbidity&quot;]
-        H1 --&gt; H2[&quot;Spectrophotometric Light Path Blocked at 525 nm&quot;]
-        H2 --&gt; H3[&quot;Absorbance Falsely Skyrockets (Spurious HGB Elevation)&quot;]
-        H3 --&gt; H4[&quot;Extreme Rule of Threes Failure &amp; MCHC &amp;gt; 50 g/dL&quot;]">
-flowchart TD
-        LysFail["Lytic Reagent Depleted / Delivery Failure"] --> Split{"Impact on Analytical Baths"}
-
-        Split --> WBC_Bath["WBC & Differential Bath Impact"]
-        WBC_Bath --> W1["Millions of Intact RBCs Enter WBC Chamber"]
-        W1 --> W2["RBC Volumes (&gt; 30 fL) Overlap with Small Leukocytes"]
-        W2 --> W3["False Massive Leukocytosis (WBC &gt; 100 x 10³/µL)"]
-        W2 --> W4["False Lymphocytosis on 3-Part Differential Histogram"]
-
-        Split --> HGB_Bath["Spectrophotometric HGB Bath Impact"]
-        HGB_Bath --> H1["Unlysed Intact RBCs Cause Extreme Optical Turbidity"]
-        H1 --> H2["Spectrophotometric Light Path Blocked at 525 nm"]
-        H2 --> H3["Absorbance Falsely Skyrockets (Spurious HGB Elevation)"]
-        H3 --> H4["Extreme Rule of Threes Failure & MCHC &gt; 50 g/dL"]
-</div>
-
+<h2 id="key-clinical-takeaways">Key Clinical Takeaways</h2>
 <ul>
-<li><strong>WBC Counting Bath</strong>: In the absence of lysis, unlysed RBCs (millions $/ \mu\text{L}$) pass through the WBC aperture. Because intact RBCs exceed the $> 30\text{ fL}$ threshold, they are falsely registered as leukocytes, resulting in spurious extreme leukocytosis ($\text{WBC} > 100 \times 10^3/\mu\text{L}$) and false lymphocytosis on the size histogram.</li>
-<li><strong>Hemoglobin Bath</strong>: Complete lysis of erythrocytes is required to release hemoglobin into solution. Intact RBCs scatter and block light at $525\text{ nm}$, producing severe optical absorbance. The analyzer registers this light blockage as extreme hemoglobin concentration, causing severe Rule of Threes breakdown and unphysiological $\text{MCHC} > 50\text{ g/dL}$.</li>
+<li><strong>Directly Measured vs. Calculated CBC Values</strong>: Automated hematology analyzers directly measure RBC, WBC, PLT counts (via electrical impedance/hydrodynamic focusing), and Hemoglobin (spectrophotometrically at $525\text{ nm}$). MCV and RDW are derived from RBC pulse-height histograms, while HCT, MCH, and MCHC are calculated mathematically.</li>
+<li><strong>ASCP BOC Standard Composite Intervals</strong>: For examination preparation and laboratory standardization, adult composite reference intervals are: WBC $3.6 - 10.6 \times 10^3/\mu\text{L}$ ($3.6 - 10.6 \times 10^9/\text{L}$), RBC $4.00 - 6.00 \times 10^6/\mu\text{L}$ ($4.00 - 6.00 \times 10^{12}/\text{L}$), HGB $12.0 - 18.0\text{ g/dL}$ ($120 - 180\text{ g/L}$), HCT $35 - 50\%$ ($0.35 - 0.50\text{ L/L}$), MCV $76 - 100\text{ fL}$, MCH $26 - 34\text{ pg}$, MCHC $32 - 36\text{ g/dL}$ ($320 - 360\text{ g/L}$), RDW $11.5 - 14.5\%$, and Platelets $150 - 450 \times 10^3/\mu\text{L}$ ($150 - 450 \times 10^9/\text{L}$).</li>
+<li><strong>The Rule of Threes as an Internal QC Check</strong>: In normocytic, normochromic erythrocytes, $\text{RBC} \times 3 \approx \text{HGB} \pm 3$ and $\text{HGB} \times 3 \approx \text{HCT} \pm 3$. An elevated $\text{MCHC} > 36.0\text{ g/dL}$ indicates either analyzer interference (such as lipemia, cold agglutinins, or extreme icterus) or true red cell pathology (hereditary spherocytosis).</li>
+<li><strong>Protocol for Linearity Limits</strong>: Parameter counts marked with <code>+++++</code> exceed electronic linearity and require a 1:2 manual dilution with isotonic diluent, re-analysis, and multiplication by the dilution factor (2). Conversely, counts below linearity require manual hemocytometer counts.</li>
+<li><strong>Corrective Procedures for Common Interferences</strong>: Manage lipemia and extreme icterus by performing a saline plasma replacement to correct falsely elevated HGB and MCHC. For cold agglutinins, warm the specimen at $37^\circ\text{C}$ for $10 - 15\text{ minutes}$ and re-analyze immediately. When platelet clumping or satellitism occurs in EDTA, redraw the specimen in sodium citrate (multiplying the result by $1.1$).</li>
+<li><strong>Slide Estimates for Automated Result Validation</strong>: Validate automated results using peripheral blood smear evaluations in the monolayer zone: WBC count is estimated by multiplying the average number of leukocytes per $40\times$ field by $2,000$, and platelet count is estimated by multiplying the average number of platelets per $100\times$ oil-immersion field by $20,000$.</li>
 </ul>
-<hr />
-<h3 id="quality-control-biosafety">Quality Control &amp; Biosafety</h3>
-<div class="mermaid" data-original-source="flowchart TD
-        subgraph QC [&quot;Daily Quality Assurance&quot;]
-                direction TD
-                Q1[&quot;Analyze 3 Levels of Commercial Controls (Low, Normal, High)&quot;]
-                Q2[&quot;Perform Daily Background Counts (Diluent Baseline Checks)&quot;]
-                Q3[&quot;Track Levey-Jennings Shifts, Trends, and Delta Checks&quot;]
-        end
-        subgraph Maintenance [&quot;Instrument Maintenance&quot;]
-                direction TD
-                M1[&quot;Daily Aperture &amp; Chamber Cleanings&quot;]
-                M2[&quot;Weekly / Monthly Reagent Line Decontaminations&quot;]
-                M3[&quot;Lot-to-Lot Reagent Crossover Validations&quot;]
-        end
-        subgraph Biosafety [&quot;Biosafety &amp; PPE&quot;]
-                direction TD
-                B1[&quot;Universal Precautions (All Specimen Handled as Infectious)&quot;]
-                B2[&quot;Mandatory Barrier PPE (Nitrile Gloves, Lab Coat, Eye Protection)&quot;]
-                B3[&quot;Aerosol Suppression during Cap Removal &amp; Tube Sampling&quot;]
-        end
-        QC --&gt; Valid[&quot;Validated Clinical Release&quot;]
-        Maintenance --&gt; Valid
-        Biosafety --&gt; Valid" data-original-code="flowchart TD
-        subgraph QC [&quot;Daily Quality Assurance&quot;]
-                direction TD
-                Q1[&quot;Analyze 3 Levels of Commercial Controls (Low, Normal, High)&quot;]
-                Q2[&quot;Perform Daily Background Counts (Diluent Baseline Checks)&quot;]
-                Q3[&quot;Track Levey-Jennings Shifts, Trends, and Delta Checks&quot;]
-        end
-        subgraph Maintenance [&quot;Instrument Maintenance&quot;]
-                direction TD
-                M1[&quot;Daily Aperture &amp; Chamber Cleanings&quot;]
-                M2[&quot;Weekly / Monthly Reagent Line Decontaminations&quot;]
-                M3[&quot;Lot-to-Lot Reagent Crossover Validations&quot;]
-        end
-        subgraph Biosafety [&quot;Biosafety &amp; PPE&quot;]
-                direction TD
-                B1[&quot;Universal Precautions (All Specimen Handled as Infectious)&quot;]
-                B2[&quot;Mandatory Barrier PPE (Nitrile Gloves, Lab Coat, Eye Protection)&quot;]
-                B3[&quot;Aerosol Suppression during Cap Removal &amp; Tube Sampling&quot;]
-        end
-        QC --&gt; Valid[&quot;Validated Clinical Release&quot;]
-        Maintenance --&gt; Valid
-        Biosafety --&gt; Valid">
-flowchart TD
-        subgraph QC ["Daily Quality Assurance"]
-                direction TD
-                Q1["Analyze 3 Levels of Commercial Controls (Low, Normal, High)"]
-                Q2["Perform Daily Background Counts (Diluent Baseline Checks)"]
-                Q3["Track Levey-Jennings Shifts, Trends, and Delta Checks"]
-        end
-        subgraph Maintenance ["Instrument Maintenance"]
-                direction TD
-                M1["Daily Aperture & Chamber Cleanings"]
-                M2["Weekly / Monthly Reagent Line Decontaminations"]
-                M3["Lot-to-Lot Reagent Crossover Validations"]
-        end
-        subgraph Biosafety ["Biosafety & PPE"]
-                direction TD
-                B1["Universal Precautions (All Specimen Handled as Infectious)"]
-                B2["Mandatory Barrier PPE (Nitrile Gloves, Lab Coat, Eye Protection)"]
-                B3["Aerosol Suppression during Cap Removal & Tube Sampling"]
-        end
-        QC --> Valid["Validated Clinical Release"]
-        Maintenance --> Valid
-        Biosafety --> Valid
-</div>
-
-<ul>
-<li><strong>Internal Daily Quality Control</strong>: Run three levels of commercial whole blood controls (Low, Normal, and High) at the beginning of each shift to evaluate precision and accuracy. Background counts on fresh diluent ensure aperture chambers are clear of particulate debris.</li>
-<li><strong>Routine Maintenance Schedules</strong>: Perform daily automated cleaning cycles, aperture burn-off cycles, and weekly decontaminations according to manufacturer instructions for use (IFU). Complete lot-to-lot reagent validation prior to releasing patient results.</li>
-<li><strong>Biosafety &amp; Standard Precautions</strong>: All human blood specimens must be handled under Biosafety Level 2 (BSL-2) Universal Precautions. Laboratory personnel must wear PPE including fluid-resistant laboratory coats, nitrile gloves, and eye/face shields during tube opening and manual dilution procedures.</li>
-</ul>
-<hr />
-<h2 id="key-clinical-takeaways_1">Key Clinical Takeaways</h2>
-<ul>
-<li><strong>The Rule of Threes is the Primary Integrity Screen</strong>: The mathematical relationship ($\text{RBC} \times 3 \approx \text{HGB}$; $\text{HGB} \times 3 \approx \text{HCT} \pm 3$) is valid exclusively in normocytic, normochromic erythrocytes. Any divergence, or an $\text{MCHC} > 36.0\text{ g/dL}$, indicates analytical interference (lipemia, icterus, cold agglutinins) or membrane abnormalities (spherocytosis).</li>
-<li><strong>MCHC Greater Than 36.0 g/dL Requires Immediate Investigation</strong>: A hyperchromic MCHC ($> 36.0\text{ g/dL}$) is physiologically impossible for normal biconcave red blood cells. The technologist must evaluate the specimen for lipemia (requiring plasma replacement), cold agglutinins (requiring $37^\circ\text{C}$ incubation), or gross hemolysis.</li>
-<li><strong>Corrective Protocols for Linear Range Exceedance (<code>+++++</code>)</strong>: Values exceeding analytical linearity must be diluted $1:2$ with isotonic diluent. Directly measured parameters are multiplied by $2$. When extreme leukocytosis ($> 100 \times 10^3/\mu\text{L}$) falsely elevates RBC counts, subtract the WBC contribution, obtain a spun microhematocrit on undiluted blood, and manually recalculate MCH and MCHC.</li>
-<li><strong>Microscopic Smear Estimates Validate Automated Data</strong>: Peripheral blood smear evaluation in the ideal monolayer zone ($40\times$ high-dry for WBCs with a $2,000$ multiplier; $100\times$ oil-immersion for platelets with a $20,000$ multiplier) serves as an essential manual cross-check before releasing flagged automated counts.</li>
-<li><strong>Critical Panic Values Mandate Immediate Provider Notification</strong>: Extreme values ($\text{WBC} < 1.0\text{ or } > 40.0 \times 10^3/\mu\text{L}$; $\text{HGB} < 7.0\text{ or } > 20.0\text{ g/dL}$; $\text{PLT} < 50\text{ or } > 1,000 \times 10^3/\mu\text{L}$) require verbal reporting to the responsible healthcare provider, accompanied by complete laboratory documentation of the call time, date, and recipient.</li>
-</ul>
-<hr />
     </article>
 
     <!-- Fullscreen Mermaid Diagram Viewer Modal -->

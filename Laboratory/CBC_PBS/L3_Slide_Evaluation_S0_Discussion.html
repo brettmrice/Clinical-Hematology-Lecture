@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide Evaluation - Complete Discussion</title>
+    <title>Slide Eval | Complete Discussion</title>
     
     <!-- GitHub Flavored Markdown CSS Baseline -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
@@ -289,9 +289,49 @@
 </head>
 <body>
     <article class="markdown-body">
-<h1 id="slide-evaluation---complete-discussion">Slide Evaluation - Complete Discussion</h1>
+<h1 id="slide-eval-complete-discussion">Slide Eval | Complete Discussion</h1>
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>Hematology Laboratory Testing (Cell Counts, Differentials, and Morphology Evaluation)</strong>:<ul>
+<li>Manual differential methodology: Battlement pattern, 100-cell differential, smudge cell handling, and inclusion evaluation</li>
+<li>Cell counts and field estimates: Low-power ($10\times$) architecture survey, high-dry ($40\times$) total WBC estimation ($\pm 20\%$ validation), and oil immersion ($100\times$) platelet estimation</li>
+<li>Spurious automated counts and interferences: Cold autoagglutination, EDTA-dependent platelet satellitism/clumping, and nucleated red blood cell ($\text{nRBC}$) automated count interference</li>
+<li>Erythrocyte morphology and poikilocytosis: Mechanical trauma (schistocytes), membrane defects (spherocytes, acanthocytes, echinocytes), hemoglobin/metabolic defects (drepanocytes, codocytes, degmacytes, dacrocytes), and erythrocyte inclusions (Howell-Jolly bodies, coarse basophilic stippling, Pappenheimer bodies, Heinz bodies, Hb C crystals)</li>
+<li>Leukocyte morphology and maturation: Granulocytic lineage maturation (myeloblast through segmented neutrophil), reactive toxic changes (toxic granulation, Döhle bodies, toxic vacuolization), dysplasias/congenital anomalies (Pelger-Huët, May-Hegglin, Alder-Reilly, Chediak-Higashi, hypersegmentation), and reactive vs. malignant mononuclear cells (reactive Downey lymphocytes, CLL lymphocytes, prolymphocytes, hairy cells, plasma cells)</li>
+<li>Thrombocyte morphology: Macrothrombocytes (giant platelets), hypogranular forms, and circulating megakaryocyte fragments</li>
+<li>Blood parasites: Intraerythrocytic (<em>Plasmodium</em> spp., <em>Babesia microti</em>) and intracellular/extracellular pathogens (<em>Borrelia</em> spp., <em>Anaplasma</em>, <em>Ehrlichia</em>)</li>
+</ul>
+</li>
+<li><strong>Hematology Disease States</strong>:<ul>
+<li>Microangiopathic hemolytic anemia (MAHA, TTP, DIC, HUS)</li>
+<li>Hemoglobinopathies and thalassemias (Hb SS, Hb CC, Hb SC)</li>
+<li>Myeloid and lymphoid neoplasms (AML, APL, CML, MDS, CLL, HCL, multiple myeloma, primary myelofibrosis)</li>
+<li>Benign and reactive leukocyte disorders (leukemoid reaction, infectious mononucleosis, toxic changes)</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>Laboratory Mathematics</strong>:<ul>
+<li>Corrected WBC count when $>10\text{ nRBCs}/100\text{ WBCs}$ are present</li>
+<li>Absolute leukocyte concentration calculations from relative differential percentages</li>
+<li>Anticoagulant dilution correction factor ($1.11\times$) for sodium citrate redraws</li>
+<li>High-dry WBC field estimation factor ($2,000$) and oil immersion platelet field estimation factor ($20,000$)</li>
+</ul>
+</li>
+<li><strong>Quality Assessment, Safety, and Troubleshooting</strong>:<ul>
+<li>Microscopic versus automated analyzer data cross-checks ($\pm 20\%$ WBC correlation, RBC indices correlation)</li>
+<li>Specimen acceptability, rejection criteria (fibrin microclots), and storage artifact identification</li>
+<li>Pre-warming and saline replacement protocols for cold autoagglutinins ($\text{MCHC} > 36.0\text{ g/dL}$)</li>
+<li>Standard universal precautions, biohazard waste handling, and critical value escalation protocols</li>
+</ul>
+</li>
+</ul>
+<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#pbs-evaluation">PBS Evaluation</a><ul>
 <li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
 <li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
@@ -308,84 +348,71 @@
 </li>
 </ul>
 <hr />
-<hr />
 <h1 id="pbs-evaluation">PBS Evaluation</h1>
 <h2 id="summary-clinical-synthesis">Summary &amp; Clinical Synthesis</h2>
 <p>The peripheral blood smear (PBS) evaluation serves as the definitive diagnostic reflex and gold-standard confirmatory method in clinical hematology. Automated hematology analyzers process whole blood specimens rapidly using impedance, optical scatter, and fluorescence flow cytometry; however, instrumentation alerts, abnormal cell distributions, critical parameter flags, and suspected hematologic malignancies mandate manual slide review. A systematic smear evaluation correlates automated quantitative indices with direct qualitative and semi-quantitative microscopic observations across three distinct optical tiers: low-power ($10\times$), high-dry ($40\times$), and oil immersion ($100\times$).</p>
 <div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Whole Blood Specimen (K2/K3-EDTA)&quot;] --&gt; B[&quot;Automated Hematology Analyzer Run&quot;]
-        B --&gt; C{&quot;Instrument Flags or Critical Limits?&quot;}
-        C -- &quot;No&quot; --&gt; D[&quot;Verify QC &amp; Report Results&quot;]
-        C -- &quot;Yes / Reflex Protocol&quot; --&gt; E[&quot;Manual Peripheral Blood Smear (PBS) Review&quot;]
-
-        E --&gt; F[&quot;Low-Power Survey (10x Objective / 100x Total)&quot;]
-        F --&gt; F1[&quot;Assess Stain Quality &amp; Smear Architecture&quot;]
-        F --&gt; F2[&quot;Screen Margins for Rogue Blasts &amp; Large Cells&quot;]
-        F --&gt; F3[&quot;Check for Platelet Clumping &amp; Fibrin Microclots&quot;]
-        F --&gt; F4[&quot;Identify Optimal Monolayer Target Zone&quot;]
-
-        F --&gt; G[&quot;High-Dry Assessment (40x Objective / 400x Total)&quot;]
-        G --&gt; G1[&quot;Perform 10-Field Total WBC Estimation&quot;]
-        G --&gt; G2[&quot;Validate Correlation within +/-20% of Analyzer WBC&quot;]
-
-        G --&gt; H[&quot;Oil Immersion Assessment (100x Objective / 1000x Total)&quot;]
-        H --&gt; H1[&quot;100-Cell Leukocyte Differential (Battlement Track)&quot;]
-        H --&gt; H2[&quot;Tabulate nRBCs &amp; Smudge Cells Separately&quot;]
-        H --&gt; H3[&quot;10-Field Platelet Estimation (OIF x 20,000)&quot;]
-        H --&gt; H4[&quot;Graded RBC Poikilocytosis &amp; Inclusion Morphology&quot;]
-
-        H --&gt; I{&quot;Pathologist Review Criteria Triggered?&quot;}
-        I -- &quot;Yes (Blasts, Microorganisms, &gt;1% Schistocytes)&quot; --&gt; J[&quot;Critical Escalation / Pathologist Review&quot;]
-        I -- &quot;No&quot; --&gt; K[&quot;Final Review &amp; Electronic Verification&quot;]" data-original-code="flowchart TD
-        A[&quot;Whole Blood Specimen (K2/K3-EDTA)&quot;] --&gt; B[&quot;Automated Hematology Analyzer Run&quot;]
-        B --&gt; C{&quot;Instrument Flags or Critical Limits?&quot;}
-        C -- &quot;No&quot; --&gt; D[&quot;Verify QC &amp; Report Results&quot;]
-        C -- &quot;Yes / Reflex Protocol&quot; --&gt; E[&quot;Manual Peripheral Blood Smear (PBS) Review&quot;]
-
-        E --&gt; F[&quot;Low-Power Survey (10x Objective / 100x Total)&quot;]
-        F --&gt; F1[&quot;Assess Stain Quality &amp; Smear Architecture&quot;]
-        F --&gt; F2[&quot;Screen Margins for Rogue Blasts &amp; Large Cells&quot;]
-        F --&gt; F3[&quot;Check for Platelet Clumping &amp; Fibrin Microclots&quot;]
-        F --&gt; F4[&quot;Identify Optimal Monolayer Target Zone&quot;]
-
-        F --&gt; G[&quot;High-Dry Assessment (40x Objective / 400x Total)&quot;]
-        G --&gt; G1[&quot;Perform 10-Field Total WBC Estimation&quot;]
-        G --&gt; G2[&quot;Validate Correlation within +/-20% of Analyzer WBC&quot;]
-
-        G --&gt; H[&quot;Oil Immersion Assessment (100x Objective / 1000x Total)&quot;]
-        H --&gt; H1[&quot;100-Cell Leukocyte Differential (Battlement Track)&quot;]
-        H --&gt; H2[&quot;Tabulate nRBCs &amp; Smudge Cells Separately&quot;]
-        H --&gt; H3[&quot;10-Field Platelet Estimation (OIF x 20,000)&quot;]
-        H --&gt; H4[&quot;Graded RBC Poikilocytosis &amp; Inclusion Morphology&quot;]
-
-        H --&gt; I{&quot;Pathologist Review Criteria Triggered?&quot;}
-        I -- &quot;Yes (Blasts, Microorganisms, &gt;1% Schistocytes)&quot; --&gt; J[&quot;Critical Escalation / Pathologist Review&quot;]
-        I -- &quot;No&quot; --&gt; K[&quot;Final Review &amp; Electronic Verification&quot;]">
+    A[&quot;Whole Blood Specimen (K2/K3-EDTA)&quot;] --&gt; B[&quot;Automated Hematology Analyzer Run&quot;]
+    B --&gt; C{&quot;Instrument Flags or Critical Limits?&quot;}
+    C -- &quot;No&quot; --&gt; D[&quot;Verify QC &amp; Report Results&quot;]
+    C -- &quot;Yes / Reflex Protocol&quot; --&gt; E[&quot;Manual Peripheral Blood Smear (PBS) Review&quot;]
+    E --&gt; F[&quot;Low-Power Survey (10x Objective / 100x Total)&quot;]
+    F --&gt; F1[&quot;Assess Stain Quality &amp; Smear Architecture&quot;]
+    F --&gt; F2[&quot;Screen Margins for Rogue Blasts &amp; Large Cells&quot;]
+    F --&gt; F3[&quot;Check for Platelet Clumping &amp; Fibrin Microclots&quot;]
+    F --&gt; F4[&quot;Identify Optimal Monolayer Target Zone&quot;]
+    F --&gt; G[&quot;High-Dry Assessment (40x Objective / 400x Total)&quot;]
+    G --&gt; G1[&quot;Perform 10-Field Total WBC Estimation&quot;]
+    G --&gt; G2[&quot;Validate Correlation within +/-20% of Analyzer WBC&quot;]
+    G --&gt; H[&quot;Oil Immersion Assessment (100x Objective / 1000x Total)&quot;]
+    H --&gt; H1[&quot;100-Cell Leukocyte Differential (Battlement Track)&quot;]
+    H --&gt; H2[&quot;Tabulate nRBCs &amp; Smudge Cells Separately&quot;]
+    H --&gt; H3[&quot;10-Field Platelet Estimation (OIF x 20,000)&quot;]
+    H --&gt; H4[&quot;Graded RBC Poikilocytosis &amp; Inclusion Morphology&quot;]
+    H --&gt; I{&quot;Pathologist Review Criteria Triggered?&quot;}
+    I -- &quot;Yes (Blasts, Microorganisms, &gt;1% Schistocytes)&quot; --&gt; J[&quot;Critical Escalation / Pathologist Review&quot;]
+    I -- &quot;No&quot; --&gt; K[&quot;Final Review &amp; Electronic Verification&quot;]" data-original-code="flowchart TD
+    A[&quot;Whole Blood Specimen (K2/K3-EDTA)&quot;] --&gt; B[&quot;Automated Hematology Analyzer Run&quot;]
+    B --&gt; C{&quot;Instrument Flags or Critical Limits?&quot;}
+    C -- &quot;No&quot; --&gt; D[&quot;Verify QC &amp; Report Results&quot;]
+    C -- &quot;Yes / Reflex Protocol&quot; --&gt; E[&quot;Manual Peripheral Blood Smear (PBS) Review&quot;]
+    E --&gt; F[&quot;Low-Power Survey (10x Objective / 100x Total)&quot;]
+    F --&gt; F1[&quot;Assess Stain Quality &amp; Smear Architecture&quot;]
+    F --&gt; F2[&quot;Screen Margins for Rogue Blasts &amp; Large Cells&quot;]
+    F --&gt; F3[&quot;Check for Platelet Clumping &amp; Fibrin Microclots&quot;]
+    F --&gt; F4[&quot;Identify Optimal Monolayer Target Zone&quot;]
+    F --&gt; G[&quot;High-Dry Assessment (40x Objective / 400x Total)&quot;]
+    G --&gt; G1[&quot;Perform 10-Field Total WBC Estimation&quot;]
+    G --&gt; G2[&quot;Validate Correlation within +/-20% of Analyzer WBC&quot;]
+    G --&gt; H[&quot;Oil Immersion Assessment (100x Objective / 1000x Total)&quot;]
+    H --&gt; H1[&quot;100-Cell Leukocyte Differential (Battlement Track)&quot;]
+    H --&gt; H2[&quot;Tabulate nRBCs &amp; Smudge Cells Separately&quot;]
+    H --&gt; H3[&quot;10-Field Platelet Estimation (OIF x 20,000)&quot;]
+    H --&gt; H4[&quot;Graded RBC Poikilocytosis &amp; Inclusion Morphology&quot;]
+    H --&gt; I{&quot;Pathologist Review Criteria Triggered?&quot;}
+    I -- &quot;Yes (Blasts, Microorganisms, &gt;1% Schistocytes)&quot; --&gt; J[&quot;Critical Escalation / Pathologist Review&quot;]
+    I -- &quot;No&quot; --&gt; K[&quot;Final Review &amp; Electronic Verification&quot;]">
 flowchart TD
-        A["Whole Blood Specimen (K2/K3-EDTA)"] --> B["Automated Hematology Analyzer Run"]
-        B --> C{"Instrument Flags or Critical Limits?"}
-        C -- "No" --> D["Verify QC & Report Results"]
-        C -- "Yes / Reflex Protocol" --> E["Manual Peripheral Blood Smear (PBS) Review"]
-
-        E --> F["Low-Power Survey (10x Objective / 100x Total)"]
-        F --> F1["Assess Stain Quality & Smear Architecture"]
-        F --> F2["Screen Margins for Rogue Blasts & Large Cells"]
-        F --> F3["Check for Platelet Clumping & Fibrin Microclots"]
-        F --> F4["Identify Optimal Monolayer Target Zone"]
-
-        F --> G["High-Dry Assessment (40x Objective / 400x Total)"]
-        G --> G1["Perform 10-Field Total WBC Estimation"]
-        G --> G2["Validate Correlation within +/-20% of Analyzer WBC"]
-
-        G --> H["Oil Immersion Assessment (100x Objective / 1000x Total)"]
-        H --> H1["100-Cell Leukocyte Differential (Battlement Track)"]
-        H --> H2["Tabulate nRBCs & Smudge Cells Separately"]
-        H --> H3["10-Field Platelet Estimation (OIF x 20,000)"]
-        H --> H4["Graded RBC Poikilocytosis & Inclusion Morphology"]
-
-        H --> I{"Pathologist Review Criteria Triggered?"}
-        I -- "Yes (Blasts, Microorganisms, >1% Schistocytes)" --> J["Critical Escalation / Pathologist Review"]
-        I -- "No" --> K["Final Review & Electronic Verification"]
+    A["Whole Blood Specimen (K2/K3-EDTA)"] --> B["Automated Hematology Analyzer Run"]
+    B --> C{"Instrument Flags or Critical Limits?"}
+    C -- "No" --> D["Verify QC & Report Results"]
+    C -- "Yes / Reflex Protocol" --> E["Manual Peripheral Blood Smear (PBS) Review"]
+    E --> F["Low-Power Survey (10x Objective / 100x Total)"]
+    F --> F1["Assess Stain Quality & Smear Architecture"]
+    F --> F2["Screen Margins for Rogue Blasts & Large Cells"]
+    F --> F3["Check for Platelet Clumping & Fibrin Microclots"]
+    F --> F4["Identify Optimal Monolayer Target Zone"]
+    F --> G["High-Dry Assessment (40x Objective / 400x Total)"]
+    G --> G1["Perform 10-Field Total WBC Estimation"]
+    G --> G2["Validate Correlation within +/-20% of Analyzer WBC"]
+    G --> H["Oil Immersion Assessment (100x Objective / 1000x Total)"]
+    H --> H1["100-Cell Leukocyte Differential (Battlement Track)"]
+    H --> H2["Tabulate nRBCs & Smudge Cells Separately"]
+    H --> H3["10-Field Platelet Estimation (OIF x 20,000)"]
+    H --> H4["Graded RBC Poikilocytosis & Inclusion Morphology"]
+    H --> I{"Pathologist Review Criteria Triggered?"}
+    I -- "Yes (Blasts, Microorganisms, >1% Schistocytes)" --> J["Critical Escalation / Pathologist Review"]
+    I -- "No" --> K["Final Review & Electronic Verification"]
 </div>
 
 <p>Smear evaluation adheres to strict pre-analytical and analytical parameters:</p>
@@ -393,9 +420,9 @@ flowchart TD
 <li><strong>Specimen Timing and Anticoagulation</strong>: Whole blood collected in tripotassium or dipotassium ethylenediaminetetraacetic acid ($\text{K}_2\text{EDTA}$ / $\text{K}_3\text{EDTA}$) must be smeared and stained within 2 to 4 hours of collection at ambient room temperature ($18\text{--}25^\circ\text{C}$). Prolonged storage ($>4\text{ hours}$) induces artifactual degenerative vacuolization, neutrophil necrobiosis (karyorrhexis and pyknosis), and platelet swelling.</li>
 <li><strong>Macroscopic Architecture</strong>: A diagnostically acceptable wedge smear covers two-thirds to three-quarters of the total slide length, exhibits a smooth, gradual thumbprint/bullet shape with distinct lateral glass margins, and terminates in a straight, even feathered edge devoid of ridges, waves, or tails.</li>
 <li><strong>Optical Hierarchy</strong>: Initial survey at $10\times$ (low power, $100\times$ total magnification) evaluates overall stain distribution, detects gross agglutination or fibrin microclots, and screens smear perimeters for margination of large leukocytes (blasts, monocytes). Intermediate assessment at $40\times$ (high dry, $400\times$ total magnification) establishes the ideal monolayer zone—where erythrocytes are evenly spaced and just touching without overlapping—and calculates a rapid WBC estimate to cross-check analyzer counts within $\pm 20\%$. High-resolution assessment at $100\times$ oil immersion ($1000\times$ total magnification using Type A or B immersion oil) facilitates the 100-cell manual white blood cell differential, erythrocyte morphological grading, platelet estimation, and identification of cellular inclusions or intracellular parasites.</li>
-<li><strong>Mathematical Adjustments</strong>: When nucleated red blood cells ($\text{nRBCs}$) equal or exceed $5\text{ per }100\text{ WBCs}$, the automated leukocyte count is spuriously elevated due to automated analyzer misclassification of $\text{nRBC}$ nuclei as leukocytes. A mathematical correction formula must be applied:</li>
+<li><strong>Mathematical Adjustments</strong>: When nucleated red blood cells ($\text{nRBCs}$) exceed $10\text{ per }100\text{ WBCs}$ (or per laboratory protocol when $\ge 5\text{ nRBCs}/100\text{ WBCs}$ are observed), the automated leukocyte count is spuriously elevated due to automated analyzer misclassification of $\text{nRBC}$ nuclei as leukocytes. In accordance with ASCP BOC standards, when $>10\text{ nRBCs}/100\text{ WBCs}$ are present, the mathematical correction formula must be applied:</li>
 </ul>
-<p>$$\text{Corrected WBC} = \frac{\text{Uncorrected WBC} \times 100}{100 + \text{nRBCs}}$$</p>
+<p>$$\text{Corrected WBC} = \text{Uncorrected WBC} \times \left(\frac{100}{100 + \text{nRBC}}\right)$$</p>
 <ul>
 <li><strong>Absolute vs. Relative Leukocyte Counts</strong>: Relative differential percentages must never be interpreted in isolation, as relative lymphocytosis can mask severe, life-threatening neutropenia in leukopenic patients. Absolute lineage concentrations are calculated as:</li>
 </ul>
@@ -404,149 +431,144 @@ flowchart TD
 <h2 id="visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</h2>
 <h3 id="leukocyte-maturation-and-differential-classification">Leukocyte Maturation and Differential Classification</h3>
 <div class="mermaid" data-original-source="flowchart LR
-        subgraph Myeloid Lineage
-                MB[&quot;Myeloblast\n(Auer Rods confirms lineage)&quot;] --&gt; PM[&quot;Promyelocyte\n(Primary azurophilic granules)&quot;]
-                PM --&gt; MY[&quot;Myelocyte\n(Specific granules appear)&quot;]
-                MY --&gt; MM[&quot;Metamyelocyte\n(Kidney indent &amp;lt;50%)&quot;]
-                MM --&gt; BD[&quot;Band Neutrophil\n(Indent &amp;gt;50%, no filament)&quot;]
-                BD --&gt; SG[&quot;Segmented Neutrophil\n(3-5 lobes with thread-like filaments)&quot;]
-        end
-
-        subgraph Monocytic Lineage
-                MO[&quot;Monoblast / Promonocyte&quot;] --&gt; MONO[&quot;Monocyte\n(Folded nucleus, ground-glass cytoplasm)&quot;]
-        end
-
-        subgraph Lymphoid Lineage
-                LB[&quot;Lymphoblast&quot;] --&gt; LY[&quot;Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)&quot;]
-                LY --&gt; PL[&quot;Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)&quot;]
-        end" data-original-code="flowchart LR
-        subgraph Myeloid Lineage
-                MB[&quot;Myeloblast\n(Auer Rods confirms lineage)&quot;] --&gt; PM[&quot;Promyelocyte\n(Primary azurophilic granules)&quot;]
-                PM --&gt; MY[&quot;Myelocyte\n(Specific granules appear)&quot;]
-                MY --&gt; MM[&quot;Metamyelocyte\n(Kidney indent &amp;lt;50%)&quot;]
-                MM --&gt; BD[&quot;Band Neutrophil\n(Indent &amp;gt;50%, no filament)&quot;]
-                BD --&gt; SG[&quot;Segmented Neutrophil\n(3-5 lobes with thread-like filaments)&quot;]
-        end
-
-        subgraph Monocytic Lineage
-                MO[&quot;Monoblast / Promonocyte&quot;] --&gt; MONO[&quot;Monocyte\n(Folded nucleus, ground-glass cytoplasm)&quot;]
-        end
-
-        subgraph Lymphoid Lineage
-                LB[&quot;Lymphoblast&quot;] --&gt; LY[&quot;Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)&quot;]
-                LY --&gt; PL[&quot;Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)&quot;]
-        end">
+    subgraph Myeloid Lineage
+        MB[&quot;Myeloblast\n(Auer Rods confirms lineage)&quot;] --&gt; PM[&quot;Promyelocyte\n(Primary azurophilic granules)&quot;]
+        PM --&gt; MY[&quot;Myelocyte\n(Specific granules appear)&quot;]
+        MY --&gt; MM[&quot;Metamyelocyte\n(Kidney indent &amp;lt;50%)&quot;]
+        MM --&gt; BD[&quot;Band Neutrophil\n(Indent &amp;gt;50%, no filament)&quot;]
+        BD --&gt; SG[&quot;Segmented Neutrophil\n(3-5 lobes with thread-like filaments)&quot;]
+    end
+    subgraph Monocytic Lineage
+        MO[&quot;Monoblast / Promonocyte&quot;] --&gt; MONO[&quot;Monocyte\n(Folded nucleus, ground-glass cytoplasm)&quot;]
+    end
+    subgraph Lymphoid Lineage
+        LB[&quot;Lymphoblast&quot;] --&gt; LY[&quot;Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)&quot;]
+        LY --&gt; PL[&quot;Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)&quot;]
+    end" data-original-code="flowchart LR
+    subgraph Myeloid Lineage
+        MB[&quot;Myeloblast\n(Auer Rods confirms lineage)&quot;] --&gt; PM[&quot;Promyelocyte\n(Primary azurophilic granules)&quot;]
+        PM --&gt; MY[&quot;Myelocyte\n(Specific granules appear)&quot;]
+        MY --&gt; MM[&quot;Metamyelocyte\n(Kidney indent &amp;lt;50%)&quot;]
+        MM --&gt; BD[&quot;Band Neutrophil\n(Indent &amp;gt;50%, no filament)&quot;]
+        BD --&gt; SG[&quot;Segmented Neutrophil\n(3-5 lobes with thread-like filaments)&quot;]
+    end
+    subgraph Monocytic Lineage
+        MO[&quot;Monoblast / Promonocyte&quot;] --&gt; MONO[&quot;Monocyte\n(Folded nucleus, ground-glass cytoplasm)&quot;]
+    end
+    subgraph Lymphoid Lineage
+        LB[&quot;Lymphoblast&quot;] --&gt; LY[&quot;Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)&quot;]
+        LY --&gt; PL[&quot;Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)&quot;]
+    end">
 flowchart LR
-        subgraph Myeloid Lineage
-                MB["Myeloblast\n(Auer Rods confirms lineage)"] --> PM["Promyelocyte\n(Primary azurophilic granules)"]
-                PM --> MY["Myelocyte\n(Specific granules appear)"]
-                MY --> MM["Metamyelocyte\n(Kidney indent &lt;50%)"]
-                MM --> BD["Band Neutrophil\n(Indent &gt;50%, no filament)"]
-                BD --> SG["Segmented Neutrophil\n(3-5 lobes with thread-like filaments)"]
-        end
-
-        subgraph Monocytic Lineage
-                MO["Monoblast / Promonocyte"] --> MONO["Monocyte\n(Folded nucleus, ground-glass cytoplasm)"]
-        end
-
-        subgraph Lymphoid Lineage
-                LB["Lymphoblast"] --> LY["Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)"]
-                LY --> PL["Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)"]
-        end
+    subgraph Myeloid Lineage
+        MB["Myeloblast\n(Auer Rods confirms lineage)"] --> PM["Promyelocyte\n(Primary azurophilic granules)"]
+        PM --> MY["Myelocyte\n(Specific granules appear)"]
+        MY --> MM["Metamyelocyte\n(Kidney indent &lt;50%)"]
+        MM --> BD["Band Neutrophil\n(Indent &gt;50%, no filament)"]
+        BD --> SG["Segmented Neutrophil\n(3-5 lobes with thread-like filaments)"]
+    end
+    subgraph Monocytic Lineage
+        MO["Monoblast / Promonocyte"] --> MONO["Monocyte\n(Folded nucleus, ground-glass cytoplasm)"]
+    end
+    subgraph Lymphoid Lineage
+        LB["Lymphoblast"] --> LY["Lymphocyte\n(Dense chromatin, scant pale blue cytoplasm)"]
+        LY --> PL["Plasma Cell\n(Eccentric nucleus, cartwheel chromatin, perinuclear hof)"]
+    end
 </div>
 
 <h3 id="pre-analytical-interference-and-corrective-workflows">Pre-Analytical Interference and Corrective Workflows</h3>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Interferences
-                direction TD
-                INT{&quot;Microscopic / Analyzer Interference Detected&quot;}
-                INT --&gt;|&quot;Platelet Clumping / Satellitism&quot;| SAT[&quot;EDTA-Dependent Platelet Satellitism / Clumping&quot;]
-                INT --&gt;|&quot;Fibrin Strands Observed&quot;| FIB[&quot;Fibrin Microclots Present&quot;]
-        end
-
-        SAT --&gt; SAT_ACT[&quot;Request Redraw in 3.2% Sodium Citrate (Light Blue Top)&quot;]
-        SAT_ACT --&gt; SAT_CALC[&quot;Multiply Citrate PLT &amp; WBC Analyzer Values by 1.11 Dilution Factor&quot;]
-        SAT_CALC --&gt; SAT_REL[&quot;Validate Platelet Estimate on New Smear &amp; Release Results&quot;]
-
-        FIB --&gt; FIB_ACT[&quot;Invalidate Specimen Immediately (Microclots Consume Platelets &amp; Distort Cells)&quot;]
-        FIB_ACT --&gt; FIB_REDRAW[&quot;Request Immediate Fresh EDTA Whole Blood Redraw&quot;]" data-original-code="flowchart TD
-        subgraph Interferences
-                direction TD
-                INT{&quot;Microscopic / Analyzer Interference Detected&quot;}
-                INT --&gt;|&quot;Platelet Clumping / Satellitism&quot;| SAT[&quot;EDTA-Dependent Platelet Satellitism / Clumping&quot;]
-                INT --&gt;|&quot;Fibrin Strands Observed&quot;| FIB[&quot;Fibrin Microclots Present&quot;]
-        end
-
-        SAT --&gt; SAT_ACT[&quot;Request Redraw in 3.2% Sodium Citrate (Light Blue Top)&quot;]
-        SAT_ACT --&gt; SAT_CALC[&quot;Multiply Citrate PLT &amp; WBC Analyzer Values by 1.11 Dilution Factor&quot;]
-        SAT_CALC --&gt; SAT_REL[&quot;Validate Platelet Estimate on New Smear &amp; Release Results&quot;]
-
-        FIB --&gt; FIB_ACT[&quot;Invalidate Specimen Immediately (Microclots Consume Platelets &amp; Distort Cells)&quot;]
-        FIB_ACT --&gt; FIB_REDRAW[&quot;Request Immediate Fresh EDTA Whole Blood Redraw&quot;]">
+    subgraph Interferences
+        direction TD
+        INT{&quot;Microscopic / Analyzer Interference Detected&quot;}
+        INT --&gt;|&quot;Platelet Clumping / Satellitism&quot;| SAT[&quot;EDTA-Dependent Platelet Satellitism / Clumping&quot;]
+        INT --&gt;|&quot;Fibrin Strands Observed&quot;| FIB[&quot;Fibrin Microclots Present&quot;]
+    end
+    SAT --&gt; SAT_ACT[&quot;Request Redraw in 3.2% Sodium Citrate (Light Blue Top)&quot;]
+    SAT_ACT --&gt; SAT_CALC[&quot;Multiply Citrate PLT &amp; WBC Analyzer Values by 1.11 Dilution Factor&quot;]
+    SAT_CALC --&gt; SAT_REL[&quot;Validate Platelet Estimate on New Smear &amp; Release Results&quot;]
+    FIB --&gt; FIB_ACT[&quot;Invalidate Specimen Immediately (Microclots Consume Platelets &amp; Distort Cells)&quot;]
+    FIB_ACT --&gt; FIB_REDRAW[&quot;Request Immediate Fresh EDTA Whole Blood Redraw&quot;]" data-original-code="flowchart TD
+    subgraph Interferences
+        direction TD
+        INT{&quot;Microscopic / Analyzer Interference Detected&quot;}
+        INT --&gt;|&quot;Platelet Clumping / Satellitism&quot;| SAT[&quot;EDTA-Dependent Platelet Satellitism / Clumping&quot;]
+        INT --&gt;|&quot;Fibrin Strands Observed&quot;| FIB[&quot;Fibrin Microclots Present&quot;]
+    end
+    SAT --&gt; SAT_ACT[&quot;Request Redraw in 3.2% Sodium Citrate (Light Blue Top)&quot;]
+    SAT_ACT --&gt; SAT_CALC[&quot;Multiply Citrate PLT &amp; WBC Analyzer Values by 1.11 Dilution Factor&quot;]
+    SAT_CALC --&gt; SAT_REL[&quot;Validate Platelet Estimate on New Smear &amp; Release Results&quot;]
+    FIB --&gt; FIB_ACT[&quot;Invalidate Specimen Immediately (Microclots Consume Platelets &amp; Distort Cells)&quot;]
+    FIB_ACT --&gt; FIB_REDRAW[&quot;Request Immediate Fresh EDTA Whole Blood Redraw&quot;]">
 flowchart TD
-        subgraph Interferences
-                direction TD
-                INT{"Microscopic / Analyzer Interference Detected"}
-                INT -->|"Platelet Clumping / Satellitism"| SAT["EDTA-Dependent Platelet Satellitism / Clumping"]
-                INT -->|"Fibrin Strands Observed"| FIB["Fibrin Microclots Present"]
-        end
-
-        SAT --> SAT_ACT["Request Redraw in 3.2% Sodium Citrate (Light Blue Top)"]
-        SAT_ACT --> SAT_CALC["Multiply Citrate PLT & WBC Analyzer Values by 1.11 Dilution Factor"]
-        SAT_CALC --> SAT_REL["Validate Platelet Estimate on New Smear & Release Results"]
-
-        FIB --> FIB_ACT["Invalidate Specimen Immediately (Microclots Consume Platelets & Distort Cells)"]
-        FIB_ACT --> FIB_REDRAW["Request Immediate Fresh EDTA Whole Blood Redraw"]
+    subgraph Interferences
+        direction TD
+        INT{"Microscopic / Analyzer Interference Detected"}
+        INT -->|"Platelet Clumping / Satellitism"| SAT["EDTA-Dependent Platelet Satellitism / Clumping"]
+        INT -->|"Fibrin Strands Observed"| FIB["Fibrin Microclots Present"]
+    end
+    SAT --> SAT_ACT["Request Redraw in 3.2% Sodium Citrate (Light Blue Top)"]
+    SAT_ACT --> SAT_CALC["Multiply Citrate PLT & WBC Analyzer Values by 1.11 Dilution Factor"]
+    SAT_CALC --> SAT_REL["Validate Platelet Estimate on New Smear & Release Results"]
+    FIB --> FIB_ACT["Invalidate Specimen Immediately (Microclots Consume Platelets & Distort Cells)"]
+    FIB_ACT --> FIB_REDRAW["Request Immediate Fresh EDTA Whole Blood Redraw"]
 </div>
 
-<h3 id="reference-intervals-adult-leukocyte-differentials">Reference Intervals: Adult Leukocyte Differentials</h3>
+<h3 id="reference-intervals-adult-leukocyte-differentials-ascp-boc-standards">Reference Intervals: Adult Leukocyte Differentials (ASCP BOC Standards)</h3>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Lineage / Parameter</th>
-<th style="text-align: left;">Relative Percentage (%)</th>
-<th style="text-align: left;">Absolute Concentration ($\times 10^9/\text{L}$ or cells/$\mu\text{L}$)</th>
+<th style="text-align: left;">Conventional Units (Relative %)</th>
+<th style="text-align: left;">Conventional Units (Absolute Count)</th>
+<th style="text-align: left;">SI Units (Absolute Count)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Total WBC</strong></td>
 <td style="text-align: left;">--</td>
-<td style="text-align: left;">$4.5 - 11.0 \times 10^9/\text{L}$ ($4,500 - 11,000/\mu\text{L}$)</td>
+<td style="text-align: left;">$3.6 - 10.6 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$3.6 - 10.6 \times 10^9/\text{L}$</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Segmented Neutrophils</strong></td>
-<td style="text-align: left;">$40 - 70\%$</td>
-<td style="text-align: left;">$1.8 - 7.7 \times 10^9/\text{L}$ ($1,800 - 7,700/\mu\text{L}$)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Band Neutrophils</strong></td>
-<td style="text-align: left;">$2 - 8\%$</td>
-<td style="text-align: left;">$0.0 - 0.8 \times 10^9/\text{L}$ ($0 - 800/\mu\text{L}$)</td>
+<td style="text-align: left;"><strong>Neutrophils (Total/Segmented)</strong></td>
+<td style="text-align: left;">$50 - 70\%$</td>
+<td style="text-align: left;">$1.7 - 7.5 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.7 - 7.5 \times 10^9/\text{L}$</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Lymphocytes</strong></td>
-<td style="text-align: left;">$20 - 40\%$*</td>
-<td style="text-align: left;">$1.0 - 4.8 \times 10^9/\text{L}$ ($1,000 - 4,800/\mu\text{L}$)</td>
+<td style="text-align: left;">$18 - 42\%$</td>
+<td style="text-align: left;">$1.0 - 3.2 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$1.0 - 3.2 \times 10^9/\text{L}$</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Monocytes</strong></td>
-<td style="text-align: left;">$2 - 10\%$</td>
-<td style="text-align: left;">$0.2 - 1.0 \times 10^9/\text{L}$ ($200 - 1,000/\mu\text{L}$)</td>
+<td style="text-align: left;">$2 - 11\%$</td>
+<td style="text-align: left;">$0.1 - 1.3 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0.1 - 1.3 \times 10^9/\text{L}$</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Eosinophils</strong></td>
-<td style="text-align: left;">$1 - 7\%$</td>
-<td style="text-align: left;">$0.05 - 0.5 \times 10^9/\text{L}$ ($50 - 500/\mu\text{L}$)</td>
+<td style="text-align: left;">$1 - 3\%$</td>
+<td style="text-align: left;">$0 - 0.3 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0 - 0.3 \times 10^9/\text{L}$</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Basophils</strong></td>
-<td style="text-align: left;">$0 - 1\%$</td>
-<td style="text-align: left;">$0.0 - 0.1 \times 10^9/\text{L}$ ($0 - 100/\mu\text{L}$)</td>
+<td style="text-align: left;">$0 - 2\%$</td>
+<td style="text-align: left;">$0 - 0.2 \times 10^3/\mu\text{L}$</td>
+<td style="text-align: left;">$0 - 0.2 \times 10^9/\text{L}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nucleated RBCs (nRBCs)</strong></td>
+<td style="text-align: left;">$0\text{ nRBC}/100\text{ WBC}$</td>
+<td style="text-align: left;">$0/\mu\text{L}$</td>
+<td style="text-align: left;">$0\text{ nRBC}/100\text{ WBC}$</td>
 </tr>
 </tbody>
 </table>
-<p><em>*Pediatric Variation ($3\text{--}12\text{ years}$): Up to $60\%$ physiologic lymphocyte predominance.</em></p>
 <h3 id="semi-quantitative-morphology-grading-matrix">Semi-Quantitative Morphology Grading Matrix</h3>
 <table>
 <thead>
@@ -606,29 +628,29 @@ flowchart TD
 <li><strong>Microscope Alignment and Hygiene</strong>: Proper Köhler illumination must be set by adjusting the field diaphragm, centering the substage condenser, and focusing the condenser lens to ensure uniform, glare-free field illumination and optimal resolution. Lenses must be maintained strictly with dedicated lens paper; immersion oil (Type A or B) must never contact non-oil objectives ($10\times$ and $40\times$).</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Optical Tier Setup
-                direction TD
-                OPT1[&quot;10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning&quot;]
-                OPT2[&quot;40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification&quot;]
-                OPT3[&quot;100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Optical Tier Setup
-                direction TD
-                OPT1[&quot;10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning&quot;]
-                OPT2[&quot;40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification&quot;]
-                OPT3[&quot;100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading&quot;]
-        end">
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1[&quot;10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning&quot;]
+        OPT2[&quot;40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification&quot;]
+        OPT3[&quot;100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1[&quot;10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning&quot;]
+        OPT2[&quot;40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification&quot;]
+        OPT3[&quot;100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading&quot;]
+    end">
 flowchart TD
-        subgraph Optical Tier Setup
-                direction TD
-                OPT1["10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning"]
-                OPT2["40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification"]
-                OPT3["100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading"]
-        end
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1["10x Objective (100x Total) | Air Medium\nSmear architecture, stain quality, fibrin microclots, rouleaux, platelet clumps, margin scanning"]
+        OPT2["40x Objective (400x Total) | Air Medium\nMonolayer identification, WBC field estimation, automated verification"]
+        OPT3["100x Objective (1000x Total) | Type A/B Oil\n100-cell WBC differential, cell inclusion morphology, platelet estimates, RBC poikilocytosis grading"]
+    end
 </div>
 
 <hr />
-<h3 id="low-power-mathinlinex76x-smear-architecture-and-boundary-scanning">Low-Power ($10\times$) Smear Architecture and Boundary Scanning</h3>
+<h3 id="low-power-mathinlinex85x-smear-architecture-and-boundary-scanning">Low-Power ($10\times$) Smear Architecture and Boundary Scanning</h3>
 <p>Low-power examination provides the structural overview of the smear before executing cellular counts:</p>
 <ul>
 <li><strong>Target Monolayer Selection</strong>: Technologists scan the blood film to locate the optimal reading zone (the monolayer), situated immediately adjacent to the feathered edge. In this area, erythrocytes are distributed uniformly in a single layer, barely touching one another without overlapping or losing their central pallor.</li>
@@ -642,7 +664,7 @@ flowchart TD
 </li>
 </ul>
 <hr />
-<h3 id="high-dry-mathinlinex78x-zone-verification-and-leukocyte-estimation">High-Dry ($40\times$) Zone Verification and Leukocyte Estimation</h3>
+<h3 id="high-dry-mathinlinex87x-zone-verification-and-leukocyte-estimation">High-Dry ($40\times$) Zone Verification and Leukocyte Estimation</h3>
 <p>The high-dry ($40\times$) objective operates in an air medium ($400\times$ total magnification) to confirm monolayer distribution and perform a semi-quantitative leukocyte estimate:</p>
 <ul>
 <li><strong>Cellular Distribution Check</strong>: Ensures that leukocytes and erythrocytes are evenly dispersed across the monolayer without field-to-field clumping or empty voids.</li>
@@ -654,25 +676,25 @@ flowchart TD
 <li><strong>Clinical Quality Control Correlation</strong>: The calculated microscopic WBC estimate must correlate with the automated hematology analyzer's reported WBC count within an acceptable clinical tolerance of $\pm 20\%$. A discrepancy greater than $\pm 20\%$ indicates potential specimen misidentification, analyzer aspiration error, severe leukocyte margination, unlysed red cells, or high nRBC contamination, requiring investigation before reporting.</li>
 </ul>
 <hr />
-<h3 id="oil-immersion-mathinlinex84x-100-cell-leukocyte-differential-protocol">Oil Immersion ($100\times$) 100-Cell Leukocyte Differential Protocol</h3>
+<h3 id="oil-immersion-mathinlinex93x-100-cell-leukocyte-differential-protocol">Oil Immersion ($100\times$) 100-Cell Leukocyte Differential Protocol</h3>
 <p>High-resolution morphological classification is performed under Type A or B immersion oil ($1000\times$ total magnification) using a standardized battlement scanning pattern:</p>
 <div class="mermaid" data-original-source="flowchart LR
-        A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
-        B --&gt; C[&quot;Move 3 Fields Vertically Inward&quot;]
-        C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
-        D --&gt; E[&quot;Move 3 Fields Vertically Outward&quot;]
-        E --&gt; F[&quot;Repeat Meander / Battlement Pattern&quot;]" data-original-code="flowchart LR
-        A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
-        B --&gt; C[&quot;Move 3 Fields Vertically Inward&quot;]
-        C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
-        D --&gt; E[&quot;Move 3 Fields Vertically Outward&quot;]
-        E --&gt; F[&quot;Repeat Meander / Battlement Pattern&quot;]">
+    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
+    B --&gt; C[&quot;Move 3 Fields Vertically Inward&quot;]
+    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
+    D --&gt; E[&quot;Move 3 Fields Vertically Outward&quot;]
+    E --&gt; F[&quot;Repeat Meander / Battlement Pattern&quot;]" data-original-code="flowchart LR
+    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
+    B --&gt; C[&quot;Move 3 Fields Vertically Inward&quot;]
+    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
+    D --&gt; E[&quot;Move 3 Fields Vertically Outward&quot;]
+    E --&gt; F[&quot;Repeat Meander / Battlement Pattern&quot;]">
 flowchart LR
-        A["Begin at Monolayer Border"] --> B["Move 3 Fields Horizontally"]
-        B --> C["Move 3 Fields Vertically Inward"]
-        C --> D["Move 3 Fields Horizontally"]
-        D --> E["Move 3 Fields Vertically Outward"]
-        E --> F["Repeat Meander / Battlement Pattern"]
+    A["Begin at Monolayer Border"] --> B["Move 3 Fields Horizontally"]
+    B --> C["Move 3 Fields Vertically Inward"]
+    C --> D["Move 3 Fields Horizontally"]
+    D --> E["Move 3 Fields Vertically Outward"]
+    E --> F["Repeat Meander / Battlement Pattern"]
 </div>
 
 <ul>
@@ -685,7 +707,7 @@ flowchart LR
 </li>
 </ul>
 <hr />
-<h3 id="oil-immersion-mathinlinex87x-platelet-estimation-protocol">Oil Immersion ($100\times$) Platelet Estimation Protocol</h3>
+<h3 id="oil-immersion-mathinlinex96x-platelet-estimation-protocol">Oil Immersion ($100\times$) Platelet Estimation Protocol</h3>
 <p>Direct microscopic estimation of platelet concentration confirms automated analyzer results and flags pre-analytical artifacts:</p>
 <ul>
 <li><strong>Platelet Estimation Formula</strong>: Count the total number of platelets in 10 consecutive oil immersion fields (OIFs) within the monolayer at $1000\times$ total magnification. Calculate the average platelet count per field and multiply by the platelet factor of $20,000$:</li>
@@ -693,45 +715,45 @@ flowchart LR
 <p>$$\text{Estimated Platelets} (\text{PLTs}/\mu\text{L}) = \frac{\text{PLTs in } 10\text{ OIF}}{10} \times 20,000$$</p>
 <p>$$\text{Estimated Platelets} (\text{PLTs}/\mu\text{L}) = \text{Average PLTs per OIF} \times 20,000$$</p>
 <ul>
-<li><strong>Platelet Morphology Assessment</strong>: Evaluate for normal platelets ($1.5\text{--}3\,\mu\text{m}$, disc-shaped with fine purple-red alpha granules), giant platelets ($>7\,\mu\text{m}$, larger than a normal erythrocyte, associated with Bernard-Soulier syndrome or myeloproliferative neoplasms), and hypogranular or agranular dysplastic platelets (seen in myelodysplastic syndromes or gray platelet syndrome).</li>
+<li><strong>Platelet Morphology Assessment</strong>: Evaluate for normal platelets ($1.5\text{--}3\,\mu\text{m}$, disc-shaped with fine purple-red alpha granules; standard platelet reference range $150\text{--}450 \times 10^3/\mu\text{L}$), giant platelets ($>7\,\mu\text{m}$, larger than a normal erythrocyte, associated with Bernard-Soulier syndrome or myeloproliferative neoplasms), and hypogranular or agranular dysplastic platelets (seen in myelodysplastic syndromes or gray platelet syndrome).</li>
 <li><strong>Overlying Platelet Artifact</strong>: Platelets resting on top of erythrocytes can mimic red cell inclusions (such as Howell-Jolly bodies or malaria). True overlying platelets display a characteristic surrounding clear halo and focus in a slightly different optical plane than the red cell cytoplasm.</li>
 </ul>
 <hr />
-<h3 id="nucleated-red-blood-cell-mathinlinex92x-count-correction">Nucleated Red Blood Cell ($\text{nRBC}$) Count Correction</h3>
+<h3 id="nucleated-red-blood-cell-mathinlinex102x-count-correction">Nucleated Red Blood Cell ($\text{nRBC}$) Count Correction</h3>
 <p>Automated hematology analyzers measure white blood cells by lysing non-nucleated erythrocytes and counting the remaining intact nuclei using impedance or optical methods. Because $\text{nRBCs}$ retain their rigid, condensed chromatin nuclei, automated instruments cannot distinguish them from small intact leukocytes, generating a falsely elevated total WBC count.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Circulating nRBCs in Whole Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse Reagent Applied&quot;]
-        B --&gt; C[&quot;Mature RBCs Lysed; nRBC Nuclei Remain Intact&quot;]
-        C --&gt; D[&quot;Analyzer Senses Intact nRBC Nuclei as Leukocytes&quot;]
-        D --&gt; E[&quot;Spuriously Elevated Automated WBC Count&quot;]
-        E --&gt; F{&quot;Manual Differential: nRBCs &gt;= 5 per 100 WBCs?&quot;}
-        F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction Formula&quot;]
-        F -- &quot;No (&lt; 5 nRBCs)&quot; --&gt; H[&quot;Report Uncorrected WBC Count&quot;]
-        G --&gt; I[&quot;Release Clinically Validated Corrected WBC Count&quot;]" data-original-code="flowchart TD
-        A[&quot;Circulating nRBCs in Whole Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse Reagent Applied&quot;]
-        B --&gt; C[&quot;Mature RBCs Lysed; nRBC Nuclei Remain Intact&quot;]
-        C --&gt; D[&quot;Analyzer Senses Intact nRBC Nuclei as Leukocytes&quot;]
-        D --&gt; E[&quot;Spuriously Elevated Automated WBC Count&quot;]
-        E --&gt; F{&quot;Manual Differential: nRBCs &gt;= 5 per 100 WBCs?&quot;}
-        F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction Formula&quot;]
-        F -- &quot;No (&lt; 5 nRBCs)&quot; --&gt; H[&quot;Report Uncorrected WBC Count&quot;]
-        G --&gt; I[&quot;Release Clinically Validated Corrected WBC Count&quot;]">
+    A[&quot;Circulating nRBCs in Whole Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse Reagent Applied&quot;]
+    B --&gt; C[&quot;Mature RBCs Lysed; nRBC Nuclei Remain Intact&quot;]
+    C --&gt; D[&quot;Analyzer Senses Intact nRBC Nuclei as Leukocytes&quot;]
+    D --&gt; E[&quot;Spuriously Elevated Automated WBC Count&quot;]
+    E --&gt; F{&quot;Manual Differential: nRBCs &gt; 10 per 100 WBCs?&quot;}
+    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction Formula&quot;]
+    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol / Report Count&quot;]
+    G --&gt; I[&quot;Release Clinically Validated Corrected WBC Count&quot;]" data-original-code="flowchart TD
+    A[&quot;Circulating nRBCs in Whole Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse Reagent Applied&quot;]
+    B --&gt; C[&quot;Mature RBCs Lysed; nRBC Nuclei Remain Intact&quot;]
+    C --&gt; D[&quot;Analyzer Senses Intact nRBC Nuclei as Leukocytes&quot;]
+    D --&gt; E[&quot;Spuriously Elevated Automated WBC Count&quot;]
+    E --&gt; F{&quot;Manual Differential: nRBCs &gt; 10 per 100 WBCs?&quot;}
+    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction Formula&quot;]
+    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol / Report Count&quot;]
+    G --&gt; I[&quot;Release Clinically Validated Corrected WBC Count&quot;]">
 flowchart TD
-        A["Circulating nRBCs in Whole Blood"] --> B["Automated Analyzer Lyse Reagent Applied"]
-        B --> C["Mature RBCs Lysed; nRBC Nuclei Remain Intact"]
-        C --> D["Analyzer Senses Intact nRBC Nuclei as Leukocytes"]
-        D --> E["Spuriously Elevated Automated WBC Count"]
-        E --> F{"Manual Differential: nRBCs >= 5 per 100 WBCs?"}
-        F -- "Yes" --> G["Apply nRBC WBC Correction Formula"]
-        F -- "No (< 5 nRBCs)" --> H["Report Uncorrected WBC Count"]
-        G --> I["Release Clinically Validated Corrected WBC Count"]
+    A["Circulating nRBCs in Whole Blood"] --> B["Automated Analyzer Lyse Reagent Applied"]
+    B --> C["Mature RBCs Lysed; nRBC Nuclei Remain Intact"]
+    C --> D["Analyzer Senses Intact nRBC Nuclei as Leukocytes"]
+    D --> E["Spuriously Elevated Automated WBC Count"]
+    E --> F{"Manual Differential: nRBCs > 10 per 100 WBCs?"}
+    F -- "Yes" --> G["Apply nRBC WBC Correction Formula"]
+    F -- "No (<= 10 nRBCs)" --> H["Follow Laboratory Protocol / Report Count"]
+    G --> I["Release Clinically Validated Corrected WBC Count"]
 </div>
 
 <ul>
-<li><strong>Correction Trigger Threshold</strong>: A mathematical correction must be performed whenever $\ge 5\text{ nRBCs per } 100\text{ WBCs}$ are identified during the manual differential.</li>
+<li><strong>Correction Trigger Threshold</strong>: In strict accordance with ASCP BOC standards, a mathematical correction is required when $>10\text{ nRBCs per } 100\text{ WBCs}$ are present on the peripheral smear (many institutional laboratory information systems reflex at $\ge 5\text{ nRBCs}/100\text{ WBCs}$).</li>
 <li><strong>Correction Mathematical Formula</strong>:</li>
 </ul>
-<p>$$\text{Corrected WBC} = \frac{\text{Uncorrected Analyzer WBC} \times 100}{100 + \text{nRBCs}}$$</p>
+<p>$$\text{Corrected WBC} = \text{Uncorrected WBC} \times \left(\frac{100}{100 + \text{nRBC}}\right)$$</p>
 <ul>
 <li><strong>Worked Clinical Example</strong>:<ul>
 <li><em>Analyzer WBC</em>: $24.8 \times 10^3/\mu\text{L}$</li>
@@ -739,11 +761,10 @@ flowchart TD
 </ul>
 </li>
 </ul>
-<p>$$\text{Corrected WBC} = \frac{24.8 \times 100}{100 + 18} = \frac{2480}{118} = 21.0 \times 10^3/\mu\text{L}$$</p>
+<p>$$\text{Corrected WBC} = 24.8 \times \left(\frac{100}{100 + 18}\right) = \frac{2480}{118} = 21.0 \times 10^3/\mu\text{L} \quad (21.0 \times 10^9/\text{L})$$</p>
 <ul>
 <li><em>Clinical Significance</em>: Failure to correct this leukocyte count results in a $+18\%$ clinical overestimation of the patient's true white cell concentration, which could inappropriately skew clinical decision-making.</li>
 </ul>
-
 <hr />
 <h3 id="absolute-vs-relative-leukocyte-concentrations">Absolute vs. Relative Leukocyte Concentrations</h3>
 <p>In clinical hematology, relative leukocyte values represent the percentage of a specific leukocyte lineage among 100 counted white blood cells, whereas absolute values represent the true concentration of that lineage per unit volume of circulating blood:</p>
@@ -751,13 +772,11 @@ flowchart TD
 <ul>
 <li><strong>The "Percentages Mask Reality" Principle</strong>: Relative percentages can be highly deceptive in patients with abnormal total white blood cell counts (leukopenia or leukocytosis).</li>
 <li><strong>Clinical Deception Scenario</strong>:<ul>
-<li><em>Patient Data</em>: Total WBC $= 1.5 \times 10^3/\mu\text{L}$ ($1,500/\mu\text{L}$, severe leukopenia); Differential shows $70\%$ Lymphocytes and $20\%$ Segmented Neutrophils.</li>
-<li><em>Deceptive Relative Interpretation</em>: A clinician observing "$70\%\text{ Lymphocytes}$" might suspect absolute lymphocytosis (normal relative range $20\text{--}40\%$).</li>
-<li><em>True Absolute Calculation</em>:<ul>
-<li>$\text{Absolute Lymphocyte Count} = 1,500 \times 0.70 = 1,050/\mu\text{L}$ ($1.05 \times 10^9/\text{L}$, which is normal; reference range $1.0\text{--}4.8 \times 10^9/\text{L}$).</li>
-<li>$\text{Absolute Neutrophil Count (ANC)} = 1,500 \times 0.20 = 300/\mu\text{L}$ ($0.30 \times 10^9/\text{L}$, indicating critical, life-threatening neutropenia; normal reference range $1.8\text{--}7.7 \times 10^9/\text{L}$).</li>
-</ul>
-</li>
+<li><em>Patient Data</em>: Total WBC $= 1.5 \times 10^3/\mu\text{L}$ ($1,500/\mu\text{L}$, severe leukopenia; standard reference range $3.6\text{--}10.6 \times 10^3/\mu\text{L}$); Differential shows $70\%$ Lymphocytes and $20\%$ Segmented Neutrophils.</li>
+<li><em>Deceptive Relative Interpretation</em>: A clinician observing "$70\%\text{ Lymphocytes}$" might suspect absolute lymphocytosis (normal relative lymphocyte reference range $18\text{--}42\%$).</li>
+<li><em>True Absolute Calculation</em>:</li>
+<li>$\text{Absolute Lymphocyte Count} = 1,500 \times 0.70 = 1,050/\mu\text{L} = 1.05 \times 10^3/\mu\text{L}$ ($1.05 \times 10^9/\text{L}$, which is completely within the normal adult reference range of $1.0\text{--}3.2 \times 10^3/\mu\text{L}$).</li>
+<li>$\text{Absolute Neutrophil Count (ANC)} = 1,500 \times 0.20 = 300/\mu\text{L} = 0.30 \times 10^3/\mu\text{L}$ ($0.30 \times 10^9/\text{L}$, indicating critical, life-threatening neutropenia; normal adult reference range $1.7\text{--}7.5 \times 10^3/\mu\text{L}$).</li>
 <li><em>Conclusion</em>: The primary clinical emergency is not lymphocytosis, but profound neutropenia, demonstrating why absolute counts must always be evaluated.</li>
 </ul>
 </li>
@@ -766,43 +785,40 @@ flowchart TD
 <h3 id="morphology-grading-tiers-inclusions-and-matrix-standards">Morphology Grading Tiers, Inclusions, and Matrix Standards</h3>
 <p>Morphology evaluation involves standardized semi-quantitative reporting of red cell variations, white cell reactive/toxic alterations, and intracellular inclusions:</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Morphology Grading Tiers
-                direction TD
-                T1[&quot;Slight / 1+ (SL)\nUp to 25% of evaluated cells&quot;]
-                T2[&quot;Moderate / 2+ (MOD)\n25% to 50% of evaluated cells&quot;]
-                T3[&quot;Marked / 3+ (MK)\n&amp;gt; 50% of evaluated cells&quot;]
-        end
-
-        subgraph Clinically Significant Inclusions
-                direction TD
-                INC1[&quot;Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria&quot;]
-                INC2[&quot;Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Morphology Grading Tiers
-                direction TD
-                T1[&quot;Slight / 1+ (SL)\nUp to 25% of evaluated cells&quot;]
-                T2[&quot;Moderate / 2+ (MOD)\n25% to 50% of evaluated cells&quot;]
-                T3[&quot;Marked / 3+ (MK)\n&amp;gt; 50% of evaluated cells&quot;]
-        end
-
-        subgraph Clinically Significant Inclusions
-                direction TD
-                INC1[&quot;Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria&quot;]
-                INC2[&quot;Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals&quot;]
-        end">
+    subgraph Morphology Grading Tiers
+        direction TD
+        T1[&quot;Slight / 1+ (SL)\nUp to 25% of evaluated cells&quot;]
+        T2[&quot;Moderate / 2+ (MOD)\n25% to 50% of evaluated cells&quot;]
+        T3[&quot;Marked / 3+ (MK)\n&amp;gt; 50% of evaluated cells&quot;]
+    end
+    subgraph Clinically Significant Inclusions
+        direction TD
+        INC1[&quot;Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria&quot;]
+        INC2[&quot;Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Morphology Grading Tiers
+        direction TD
+        T1[&quot;Slight / 1+ (SL)\nUp to 25% of evaluated cells&quot;]
+        T2[&quot;Moderate / 2+ (MOD)\n25% to 50% of evaluated cells&quot;]
+        T3[&quot;Marked / 3+ (MK)\n&amp;gt; 50% of evaluated cells&quot;]
+    end
+    subgraph Clinically Significant Inclusions
+        direction TD
+        INC1[&quot;Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria&quot;]
+        INC2[&quot;Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals&quot;]
+    end">
 flowchart TD
-        subgraph Morphology Grading Tiers
-                direction TD
-                T1["Slight / 1+ (SL)\nUp to 25% of evaluated cells"]
-                T2["Moderate / 2+ (MOD)\n25% to 50% of evaluated cells"]
-                T3["Marked / 3+ (MK)\n&gt; 50% of evaluated cells"]
-        end
-
-        subgraph Clinically Significant Inclusions
-                direction TD
-                INC1["Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria"]
-                INC2["Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals"]
-        end
+    subgraph Morphology Grading Tiers
+        direction TD
+        T1["Slight / 1+ (SL)\nUp to 25% of evaluated cells"]
+        T2["Moderate / 2+ (MOD)\n25% to 50% of evaluated cells"]
+        T3["Marked / 3+ (MK)\n&gt; 50% of evaluated cells"]
+    end
+    subgraph Clinically Significant Inclusions
+        direction TD
+        INC1["Leukocyte Inclusions: Auer Rods, Döhle Bodies, Toxic Granulation, Intracellular Bacteria"]
+        INC2["Erythrocyte Inclusions: Howell-Jolly Bodies, Basophilic Stippling, Pappenheimer Bodies, Hb C Crystals"]
+    end
 </div>
 
 <ul>
@@ -826,34 +842,34 @@ flowchart TD
 <h3 id="pre-analytical-pitfalls-and-technical-interferences">Pre-Analytical Pitfalls and Technical Interferences</h3>
 <p>Pre-analytical errors distort blood smear morphology and cause severe automated instrument measurement artifacts:</p>
 <div class="mermaid" data-original-source="flowchart LR
-        subgraph Platelet Satellitism Pathway
-                PS1[&quot;EDTA Anticoagulant Interaction&quot;] --&gt; PS2[&quot;Anti-PLT Antibodies Coat Platelets&quot;]
-                PS2 --&gt; PS3[&quot;Platelets Adhere Around Neutrophils (Rosettes)&quot;]
-                PS3 --&gt; PS4[&quot;Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)&quot;]
-                PS4 --&gt; PS5[&quot;Corrective Action: Sodium Citrate (Light Blue) Redraw&quot;]
-                PS5 --&gt; PS6[&quot;Multiply Citrate PLT/WBC by 1.11 Factor&quot;]
-        end" data-original-code="flowchart LR
-        subgraph Platelet Satellitism Pathway
-                PS1[&quot;EDTA Anticoagulant Interaction&quot;] --&gt; PS2[&quot;Anti-PLT Antibodies Coat Platelets&quot;]
-                PS2 --&gt; PS3[&quot;Platelets Adhere Around Neutrophils (Rosettes)&quot;]
-                PS3 --&gt; PS4[&quot;Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)&quot;]
-                PS4 --&gt; PS5[&quot;Corrective Action: Sodium Citrate (Light Blue) Redraw&quot;]
-                PS5 --&gt; PS6[&quot;Multiply Citrate PLT/WBC by 1.11 Factor&quot;]
-        end">
+    subgraph Platelet Satellitism Pathway
+        PS1[&quot;EDTA Anticoagulant Interaction&quot;] --&gt; PS2[&quot;Anti-PLT Antibodies Coat Platelets&quot;]
+        PS2 --&gt; PS3[&quot;Platelets Adhere Around Neutrophils (Rosettes)&quot;]
+        PS3 --&gt; PS4[&quot;Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)&quot;]
+        PS4 --&gt; PS5[&quot;Corrective Action: Sodium Citrate (Light Blue) Redraw&quot;]
+        PS5 --&gt; PS6[&quot;Multiply Citrate PLT/WBC by 1.11 Factor&quot;]
+    end" data-original-code="flowchart LR
+    subgraph Platelet Satellitism Pathway
+        PS1[&quot;EDTA Anticoagulant Interaction&quot;] --&gt; PS2[&quot;Anti-PLT Antibodies Coat Platelets&quot;]
+        PS2 --&gt; PS3[&quot;Platelets Adhere Around Neutrophils (Rosettes)&quot;]
+        PS3 --&gt; PS4[&quot;Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)&quot;]
+        PS4 --&gt; PS5[&quot;Corrective Action: Sodium Citrate (Light Blue) Redraw&quot;]
+        PS5 --&gt; PS6[&quot;Multiply Citrate PLT/WBC by 1.11 Factor&quot;]
+    end">
 flowchart LR
-        subgraph Platelet Satellitism Pathway
-                PS1["EDTA Anticoagulant Interaction"] --> PS2["Anti-PLT Antibodies Coat Platelets"]
-                PS2 --> PS3["Platelets Adhere Around Neutrophils (Rosettes)"]
-                PS3 --> PS4["Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)"]
-                PS4 --> PS5["Corrective Action: Sodium Citrate (Light Blue) Redraw"]
-                PS5 --> PS6["Multiply Citrate PLT/WBC by 1.11 Factor"]
-        end
+    subgraph Platelet Satellitism Pathway
+        PS1["EDTA Anticoagulant Interaction"] --> PS2["Anti-PLT Antibodies Coat Platelets"]
+        PS2 --> PS3["Platelets Adhere Around Neutrophils (Rosettes)"]
+        PS3 --> PS4["Analyzer Counts Rosette as Single WBC (Pseudothrombocytopenia)"]
+        PS4 --> PS5["Corrective Action: Sodium Citrate (Light Blue) Redraw"]
+        PS5 --> PS6["Multiply Citrate PLT/WBC by 1.11 Factor"]
+    end
 </div>
 
 <ul>
 <li><strong>EDTA-Dependent Platelet Satellitism and Clumping</strong>:<ul>
 <li><em>Mechanism</em>: An in vitro immunologic phenomenon wherein serum autoantibodies react in the presence of EDTA to bind platelet glycoprotein IIb/IIIa complexes, causing four or more platelets to adhere to the outer membrane of neutrophils (forming rosettes) or aggregate into large clumps.</li>
-<li><em>Analytical Consequence</em>: Automated counters fail to count individual platelets, causing spurious, profound pseudothrombocytopenia while artificially increasing the total WBC count.</li>
+<li><em>Analytical Consequence</em>: Automated counters fail to count individual platelets, causing spurious, profound pseudothrombocytopenia (falsely dropping below the $150\text{--}450 \times 10^3/\mu\text{L}$ reference interval) while artificially increasing the total WBC count.</li>
 <li><em>Corrective Protocol</em>: Request an immediate redraw in a $3.2\%$ sodium citrate tube (light blue top). Because sodium citrate liquid anticoagulant dilutes the blood by a $9:1$ ratio ($10\%$ liquid volume), multiply the analyzer's citrate platelet count and leukocyte count by $1.11$ to report the true concentration:</li>
 </ul>
 </li>
@@ -872,8 +888,8 @@ flowchart LR
 <p>Quality assurance protocols establish clinical safety checks before results are certified and released:</p>
 <ul>
 <li><strong>Microscopic vs. Analyzer Cross-Check Audit</strong>:<ul>
-<li><em>WBC Estimate</em>: The $40\times$ high-dry estimate ($\text{Average WBC per HPF} \times 2,000$) must agree within $\pm 20\%$ of the automated instrument WBC count.</li>
-<li><em>Platelet Estimate</em>: The $100\times$ oil immersion estimate ($\text{Average PLTs per OIF} \times 20,000$) must correlate with the automated instrument platelet concentration.</li>
+<li><em>WBC Estimate</em>: The $40\times$ high-dry estimate ($\text{Average WBC per HPF} \times 2,000$) must agree within $\pm 20\%$ of the automated instrument WBC count (ASCP BOC reference range: $3.6\text{--}10.6 \times 10^3/\mu\text{L}$).</li>
+<li><em>Platelet Estimate</em>: The $100\times$ oil immersion estimate ($\text{Average PLTs per OIF} \times 20,000$) must correlate with the automated instrument platelet concentration (ASCP BOC reference range: $150\text{--}450 \times 10^3/\mu\text{L}$).</li>
 </ul>
 </li>
 <li><strong>Mandatory Pathologist Review Flag Criteria</strong>: Smears exhibiting any of the following critical criteria must be held and immediately escalated for senior pathologist review:<ul>
@@ -888,96 +904,81 @@ flowchart LR
 <h2 id="key-clinical-takeaways">Key Clinical Takeaways</h2>
 <ul>
 <li><strong>Smear Preparation and Monolayer Zone</strong>: A diagnostic blood smear must be prepared within 2 to 4 hours of collection in EDTA, exhibit a straight feathered edge, and be evaluated in the optimal monolayer zone where RBCs are evenly spaced and just touching without overlapping.</li>
-<li><strong>WBC Estimation and $\pm 20\%$ Validation</strong>: The $40\times$ high-dry leukocyte estimate ($\text{WBC in } 10\text{ HPF} / 10 \times 2,000$) must correlate with the automated analyzer WBC count within $\pm 20\%$ to ensure specimen validity and exclude counting artifacts.</li>
-<li><strong>Platelet Estimation and Satellitism Correction</strong>: Platelet concentrations are estimated at $100\times$ oil immersion ($\text{PLTs in } 10\text{ OIF} / 10 \times 20,000$). When EDTA platelet satellitism or clumping causes pseudothrombocytopenia, redraw blood in sodium citrate (light blue top) and multiply the resulting platelet and WBC counts by $1.11$.</li>
-<li><strong>Mandatory nRBC Count Correction</strong>: When $\ge 5\text{ nRBCs per } 100\text{ WBCs}$ are identified, calculate the corrected leukocyte count using $[(\text{Uncorrected WBC} \times 100) / (100 + \text{nRBCs})]$ to eliminate spurious instrument overestimation.</li>
-<li><strong>Absolute Counts Override Relative Percentages</strong>: Never rely solely on relative leukocyte percentages; absolute lineage concentrations ($[\text{Total WBC} \times \text{Relative } \%] / 100$) must be calculated to prevent missing critical clinical conditions like severe neutropenia masked by a relative lymphocytosis.</li>
+<li><strong>WBC Estimation and $\pm 20\%$ Validation</strong>: The $40\times$ high-dry leukocyte estimate ($\text{WBC in } 10\text{ HPF} / 10 \times 2,000$) must correlate with the automated analyzer WBC count within $\pm 20\%$ (evaluating against the reference interval $3.6\text{--}10.6 \times 10^3/\mu\text{L}$) to ensure specimen validity and exclude counting artifacts.</li>
+<li><strong>Platelet Estimation and Satellitism Correction</strong>: Platelet concentrations are estimated at $100\times$ oil immersion ($\text{PLTs in } 10\text{ OIF} / 10 \times 20,000$) to cross-check the normal range ($150\text{--}450 \times 10^3/\mu\text{L}$). When EDTA platelet satellitism or clumping causes pseudothrombocytopenia, redraw blood in sodium citrate (light blue top) and multiply the resulting platelet and WBC counts by $1.11$.</li>
+<li><strong>Mandatory nRBC Count Correction</strong>: When $>10\text{ nRBCs per } 100\text{ WBCs}$ are identified (reference value: $0\text{ nRBC}/100\text{ WBC}$), calculate the corrected leukocyte count using $\text{Corrected WBC} = \text{Uncorrected WBC} \times [100 / (100 + \text{nRBC})]$ to eliminate spurious instrument overestimation.</li>
+<li><strong>Absolute Counts Override Relative Percentages</strong>: Never rely solely on relative leukocyte percentages; absolute lineage concentrations ($[\text{Total WBC} \times \text{Relative } \%] / 100$) must be calculated to prevent missing critical clinical conditions like severe neutropenia (normal ANC $1.7\text{--}7.5 \times 10^3/\mu\text{L}$) masked by a relative lymphocytosis.</li>
 <li><strong>Critical Escalation Criteria</strong>: Smears containing circulating blasts, intracellular microorganisms, or $>1\%$ schistocytes (indicating life-threatening microangiopathic hemolysis such as TTP or DIC) must be flagged for immediate review by a pathologist.</li>
 </ul>
 <hr />
 <h1 id="pbs-morphologies">PBS Morphologies</h1>
 <h2 id="summary-clinical-synthesis_1">Summary &amp; Clinical Synthesis</h2>
 <p>Peripheral blood smear (PBS) examination represents the definitive morphological correlation to automated hematology analyzer data. Microscopic evaluation provides qualitative and semiquantitative assessment of white blood cells (WBCs), red blood cells (RBCs), and platelets (thrombocytes), identifying reactive, dysplastic, malignant, metabolic, and infectious alterations. </p>
-<p>The diagnostic workflow begins with systematic scanning in the evaluative area (the monolayer where red cells are evenly spaced, just touching without significant overlapping). Pathologic identification spans myeloid maturation (from primitive myeloblasts characterized by fine chromatin and potential Auer rods through intermediate promyelocytes, myelocytes, and metamyelocytes to mature segmented neutrophils and bands), reactive and dysplastic neutrophil alterations (toxic granulation, Döhle bodies, vacuolization, Pelger-Huët anomaly, hypersegmentation, and necrobiotic cell death), lymphoid and monocytic lineages (monocytes with folded cerebriform nuclei, polymorphic reactive Downey lymphocytes, smudge/basket cells, and clonal malignancies including chronic lymphocytic leukemia, prolymphocytes, hairy cell leukemia, and plasma cells), erythrocyte poikilocytosis and inclusions (schistocytes, spherocytes, acanthocytes, echinocytes, drepanocytes, codocytes, degmacytes, dacrocytes, Howell-Jolly bodies, basophilic stippling, Pappenheimer bodies, Heinz bodies, and hemoglobin C crystals), distribution artifacts (rouleaux versus cold IgM agglutination causing spurious MCHC elevations above 37.0 g/dL), platelet morphological variants (giant platelets, hypogranular "ghost" forms, and circulating megakaryocyte fragments), and intra- and extracellular blood parasites (such as <em>Plasmodium</em>, <em>Babesia</em>, and <em>Borrelia</em> spirochetes).</p>
+<p>The diagnostic workflow begins with systematic scanning in the evaluative area (the monolayer where red cells are evenly spaced, just touching without significant overlapping). Pathologic identification spans myeloid maturation (from primitive myeloblasts characterized by fine chromatin and potential Auer rods through intermediate promyelocytes, myelocytes, and metamyelocytes to mature segmented neutrophils and bands), reactive and dysplastic neutrophil alterations (toxic granulation, Döhle bodies, vacuolization, Pelger-Huët anomaly, hypersegmentation, and necrobiotic cell death), lymphoid and monocytic lineages (monocytes with folded cerebriform nuclei, polymorphic reactive Downey lymphocytes, smudge/basket cells, and clonal malignancies including chronic lymphocytic leukemia, prolymphocytes, hairy cell leukemia, and plasma cells), erythrocyte poikilocytosis and inclusions (schistocytes, spherocytes, acanthocytes, echinocytes, drepanocytes, codocytes, degmacytes, dacrocytes, Howell-Jolly bodies, basophilic stippling, Pappenheimer bodies, Heinz bodies, and hemoglobin C crystals), distribution artifacts (rouleaux versus cold IgM agglutination causing spurious MCHC elevations exceeding the upper reference limit of $36\text{ g/dL}$), platelet morphological variants (giant platelets, hypogranular "ghost" forms, and circulating megakaryocyte fragments), and intra- and extracellular blood parasites (such as <em>Plasmodium</em>, <em>Babesia</em>, and <em>Borrelia</em> spirochetes).</p>
 <p>All critical morphological abnormalities—including circulating blasts, schistocytes (&gt;1%), intracellular microorganisms, and unexplained high-titer agglutination—trigger immediate protocol-defined quality assurance actions, correlation with automated hematological indices, and path-directed review.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        A[&quot;Peripheral Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Monolayer Smear &amp; Wright-Giemsa Stain&quot;]
-        B --&gt; C[&quot;Systematic Microscopic Examination (100x Oil)&quot;]
-
-        C --&gt; D[&quot;Leukocyte Evaluation&quot;]
-        C --&gt; E[&quot;Erythrocyte Evaluation&quot;]
-        C --&gt; F[&quot;Thrombocyte &amp; Parasite Evaluation&quot;]
-
-        D --&gt; D1[&quot;Granulocyte Maturation &amp; Toxic / Dysplastic Changes&quot;]
-        D --&gt; D2[&quot;Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies&quot;]
-
-        E --&gt; E1[&quot;Poikilocytosis: Mechanical, Membrane, Metabolic &amp; Hb Defects&quot;]
-        E --&gt; E2[&quot;Intracellular Inclusions &amp; Agglutination / Rouleaux Artifacts&quot;]
-
-        F --&gt; F1[&quot;PLT Size, Granularity &amp; Megakaryocytic Fragments&quot;]
-        F --&gt; F2[&quot;Intracellular &amp; Extracellular Pathogens&quot;]
-
-        D1 &amp; D2 &amp; E1 &amp; E2 &amp; F1 &amp; F2 --&gt; G[&quot;Correlation with Automated CBC Indices &amp; Histograms&quot;]
-        G --&gt; H[&quot;Pathologist Escalation / Critical Result Notification&quot;]" data-original-code="flowchart TD
-        A[&quot;Peripheral Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Monolayer Smear &amp; Wright-Giemsa Stain&quot;]
-        B --&gt; C[&quot;Systematic Microscopic Examination (100x Oil)&quot;]
-
-        C --&gt; D[&quot;Leukocyte Evaluation&quot;]
-        C --&gt; E[&quot;Erythrocyte Evaluation&quot;]
-        C --&gt; F[&quot;Thrombocyte &amp; Parasite Evaluation&quot;]
-
-        D --&gt; D1[&quot;Granulocyte Maturation &amp; Toxic / Dysplastic Changes&quot;]
-        D --&gt; D2[&quot;Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies&quot;]
-
-        E --&gt; E1[&quot;Poikilocytosis: Mechanical, Membrane, Metabolic &amp; Hb Defects&quot;]
-        E --&gt; E2[&quot;Intracellular Inclusions &amp; Agglutination / Rouleaux Artifacts&quot;]
-
-        F --&gt; F1[&quot;PLT Size, Granularity &amp; Megakaryocytic Fragments&quot;]
-        F --&gt; F2[&quot;Intracellular &amp; Extracellular Pathogens&quot;]
-
-        D1 &amp; D2 &amp; E1 &amp; E2 &amp; F1 &amp; F2 --&gt; G[&quot;Correlation with Automated CBC Indices &amp; Histograms&quot;]
-        G --&gt; H[&quot;Pathologist Escalation / Critical Result Notification&quot;]">
+    A[&quot;Peripheral Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Monolayer Smear &amp; Wright-Giemsa Stain&quot;]
+    B --&gt; C[&quot;Systematic Microscopic Examination (100x Oil)&quot;]
+    C --&gt; D[&quot;Leukocyte Evaluation&quot;]
+    C --&gt; E[&quot;Erythrocyte Evaluation&quot;]
+    C --&gt; F[&quot;Thrombocyte &amp; Parasite Evaluation&quot;]
+    D --&gt; D1[&quot;Granulocyte Maturation &amp; Toxic / Dysplastic Changes&quot;]
+    D --&gt; D2[&quot;Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies&quot;]
+    E --&gt; E1[&quot;Poikilocytosis: Mechanical, Membrane, Metabolic &amp; Hb Defects&quot;]
+    E --&gt; E2[&quot;Intracellular Inclusions &amp; Agglutination / Rouleaux Artifacts&quot;]
+    F --&gt; F1[&quot;PLT Size, Granularity &amp; Megakaryocytic Fragments&quot;]
+    F --&gt; F2[&quot;Intracellular &amp; Extracellular Pathogens&quot;]
+    D1 &amp; D2 &amp; E1 &amp; E2 &amp; F1 &amp; F2 --&gt; G[&quot;Correlation with Automated CBC Indices &amp; Histograms&quot;]
+    G --&gt; H[&quot;Pathologist Escalation / Critical Result Notification&quot;]" data-original-code="flowchart TD
+    A[&quot;Peripheral Blood Specimen (EDTA)&quot;] --&gt; B[&quot;Monolayer Smear &amp; Wright-Giemsa Stain&quot;]
+    B --&gt; C[&quot;Systematic Microscopic Examination (100x Oil)&quot;]
+    C --&gt; D[&quot;Leukocyte Evaluation&quot;]
+    C --&gt; E[&quot;Erythrocyte Evaluation&quot;]
+    C --&gt; F[&quot;Thrombocyte &amp; Parasite Evaluation&quot;]
+    D --&gt; D1[&quot;Granulocyte Maturation &amp; Toxic / Dysplastic Changes&quot;]
+    D --&gt; D2[&quot;Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies&quot;]
+    E --&gt; E1[&quot;Poikilocytosis: Mechanical, Membrane, Metabolic &amp; Hb Defects&quot;]
+    E --&gt; E2[&quot;Intracellular Inclusions &amp; Agglutination / Rouleaux Artifacts&quot;]
+    F --&gt; F1[&quot;PLT Size, Granularity &amp; Megakaryocytic Fragments&quot;]
+    F --&gt; F2[&quot;Intracellular &amp; Extracellular Pathogens&quot;]
+    D1 &amp; D2 &amp; E1 &amp; E2 &amp; F1 &amp; F2 --&gt; G[&quot;Correlation with Automated CBC Indices &amp; Histograms&quot;]
+    G --&gt; H[&quot;Pathologist Escalation / Critical Result Notification&quot;]">
 flowchart TD
-        A["Peripheral Blood Specimen (EDTA)"] --> B["Monolayer Smear & Wright-Giemsa Stain"]
-        B --> C["Systematic Microscopic Examination (100x Oil)"]
-
-        C --> D["Leukocyte Evaluation"]
-        C --> E["Erythrocyte Evaluation"]
-        C --> F["Thrombocyte & Parasite Evaluation"]
-
-        D --> D1["Granulocyte Maturation & Toxic / Dysplastic Changes"]
-        D --> D2["Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies"]
-
-        E --> E1["Poikilocytosis: Mechanical, Membrane, Metabolic & Hb Defects"]
-        E --> E2["Intracellular Inclusions & Agglutination / Rouleaux Artifacts"]
-
-        F --> F1["PLT Size, Granularity & Megakaryocytic Fragments"]
-        F --> F2["Intracellular & Extracellular Pathogens"]
-
-        D1 & D2 & E1 & E2 & F1 & F2 --> G["Correlation with Automated CBC Indices & Histograms"]
-        G --> H["Pathologist Escalation / Critical Result Notification"]
+    A["Peripheral Blood Specimen (EDTA)"] --> B["Monolayer Smear & Wright-Giemsa Stain"]
+    B --> C["Systematic Microscopic Examination (100x Oil)"]
+    C --> D["Leukocyte Evaluation"]
+    C --> E["Erythrocyte Evaluation"]
+    C --> F["Thrombocyte & Parasite Evaluation"]
+    D --> D1["Granulocyte Maturation & Toxic / Dysplastic Changes"]
+    D --> D2["Mononuclear Lineage: Monocytes vs Reactive vs Clonal Malignancies"]
+    E --> E1["Poikilocytosis: Mechanical, Membrane, Metabolic & Hb Defects"]
+    E --> E2["Intracellular Inclusions & Agglutination / Rouleaux Artifacts"]
+    F --> F1["PLT Size, Granularity & Megakaryocytic Fragments"]
+    F --> F2["Intracellular & Extracellular Pathogens"]
+    D1 & D2 & E1 & E2 & F1 & F2 --> G["Correlation with Automated CBC Indices & Histograms"]
+    G --> H["Pathologist Escalation / Critical Result Notification"]
 </div>
 
 <hr />
 <h2 id="visual-diagrams-comparative-data_1">Visual Diagrams &amp; Comparative Data</h2>
 <h3 id="granulocytic-maturation-sequence">Granulocytic Maturation Sequence</h3>
 <div class="mermaid" data-original-source="flowchart LR
-        MB[&quot;Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)&quot;] --&gt; PM[&quot;Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)&quot;]
-        PM --&gt; MY[&quot;Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)&quot;]
-        MY --&gt; MM[&quot;Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &amp;lt; 50%)&quot;]
-        MM --&gt; BD[&quot;Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &amp;gt; 50%)&quot;]
-        BD --&gt; PMN[&quot;Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)&quot;]" data-original-code="flowchart LR
-        MB[&quot;Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)&quot;] --&gt; PM[&quot;Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)&quot;]
-        PM --&gt; MY[&quot;Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)&quot;]
-        MY --&gt; MM[&quot;Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &amp;lt; 50%)&quot;]
-        MM --&gt; BD[&quot;Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &amp;gt; 50%)&quot;]
-        BD --&gt; PMN[&quot;Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)&quot;]">
+    MB[&quot;Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)&quot;] --&gt; PM[&quot;Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)&quot;]
+    PM --&gt; MY[&quot;Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)&quot;]
+    MY --&gt; MM[&quot;Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &amp;lt; 50%)&quot;]
+    MM --&gt; BD[&quot;Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &amp;gt; 50%)&quot;]
+    BD --&gt; PMN[&quot;Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)&quot;]" data-original-code="flowchart LR
+    MB[&quot;Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)&quot;] --&gt; PM[&quot;Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)&quot;]
+    PM --&gt; MY[&quot;Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)&quot;]
+    MY --&gt; MM[&quot;Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &amp;lt; 50%)&quot;]
+    MM --&gt; BD[&quot;Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &amp;gt; 50%)&quot;]
+    BD --&gt; PMN[&quot;Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)&quot;]">
 flowchart LR
-        MB["Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)"] --> PM["Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)"]
-        PM --> MY["Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)"]
-        MY --> MM["Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &lt; 50%)"]
-        MM --> BD["Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &gt; 50%)"]
-        BD --> PMN["Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)"]
+    MB["Myeloblast (15-20 um, N:C 7:1-5:1, Fine Chromatin, +/- Auer Rods)"] --> PM["Promyelocyte (12-24 um, N:C 5:1-3:1, Primary Azurophilic Granules, Golgi Hof)"]
+    PM --> MY["Myelocyte (10-18 um, N:C 2:1-1:1, Secondary Specific Granules, Golgi Hof)"]
+    MY --> MM["Metamyelocyte (10-18 um, N:C 1.5:1-1:1, Kidney Indentation &lt; 50%)"]
+    MM --> BD["Band Neutrophil (10-18 um, N:C 1:1.5-1:2, C/U-Shape Indentation &gt; 50%)"]
+    BD --> PMN["Segmented Neutrophil (10-15 um, N:C 1:3, 2-5 Lobes with Thread Filaments)"]
 </div>
 
 <h3 id="comparative-morphologic-characteristics-of-peripheral-blood-leukocytes">Comparative Morphologic Characteristics of Peripheral Blood Leukocytes</h3>
@@ -1031,7 +1032,7 @@ flowchart LR
 <td style="text-align: left;">1:1.5–1:2</td>
 <td style="text-align: left;">C-, U-, or S-shaped; nuclear indentation &gt;50% width without thread-like filament</td>
 <td style="text-align: left;">Pale pink cytoplasm with fine specific granules</td>
-<td style="text-align: left;">Normal blood (5–10%); increased in acute infection, inflammation, tissue injury</td>
+<td style="text-align: left;">Peripheral blood left shift; increased in acute infection, inflammation, tissue injury</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Segmented Neutrophil</strong></td>
@@ -1039,7 +1040,7 @@ flowchart LR
 <td style="text-align: left;">1:3</td>
 <td style="text-align: left;">2–5 distinct dense lobes connected by thin thread-like chromatin-free filaments</td>
 <td style="text-align: left;">Pale pink cytoplasm filled with fine neutral/lilac secondary granules</td>
-<td style="text-align: left;">Normal blood (predominant WBC, 50–70%); acute bacterial infections, inflammation</td>
+<td style="text-align: left;">Normal blood (predominant WBC, 50–70%, absolute $1.7\text{--}7.5 \times 10^3/\mu\text{L}$); bacterial infections</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Monocyte</strong></td>
@@ -1047,7 +1048,7 @@ flowchart LR
 <td style="text-align: left;">4:1–2:1</td>
 <td style="text-align: left;">Folded, cerebriform, indented (kidney/3-pointed hat), lacy condensed chromatin</td>
 <td style="text-align: left;">Abundant blue-gray "ground-glass" cytoplasm, fine azurophilic granules, pseudopods, vacuoles</td>
-<td style="text-align: left;">Chronic inflammation, monocytic leukemias, intracellular bacterial/protozoal infections</td>
+<td style="text-align: left;">Chronic inflammation, monocytic leukemias, intracellular infections (normal 2–11%, $0.1\text{--}1.3 \times 10^3/\mu\text{L}$)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Reactive Lymphocyte</strong></td>
@@ -1099,7 +1100,7 @@ flowchart LR
 <td style="text-align: left;"><strong>Spherocyte</strong></td>
 <td style="text-align: left;">Dense, globular, round (&lt;6.5 µm) with decreased diameter and NO central pallor</td>
 <td style="text-align: left;">Loss of cell membrane surface area relative to intracellular volume</td>
-<td style="text-align: left;">High MCHC, increased osmotic fragility</td>
+<td style="text-align: left;">High MCHC ($>36\text{ g/dL}$), increased osmotic fragility</td>
 <td style="text-align: left;">Hereditary spherocytosis, warm autoimmune hemolytic anemia (AIHA), severe burns</td>
 </tr>
 <tr>
@@ -1185,34 +1186,34 @@ flowchart LR
 <li><strong>Metamyelocyte</strong>: The earliest post-mitotic myeloid precursor, measuring 10–18 µm with an N:C ratio of 1.5:1 to 1:1. The nucleus exhibits a distinct indentation or reniform (kidney-bean) contour. By strict definition, the nuclear indentation measures <strong>less than 50%</strong> of the maximal nuclear diameter. Chromatin is heavily clumped and condensed. The cytoplasm is completely amphophilic, containing fine lilac specific granules with only rare primary granules visible.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Proliferative_Pool [&quot;Mitotic / Proliferative Pool&quot;]
-                direction TD
-                A[&quot;Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)&quot;] --&gt; B[&quot;Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)&quot;]
-                B --&gt; C[&quot;Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)&quot;]
-        end
-        subgraph PostMitotic_Pool [&quot;Post-Mitotic / Maturation Pool&quot;]
-                direction TD
-                C --&gt; D[&quot;Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &amp;lt; 50%)&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Proliferative_Pool [&quot;Mitotic / Proliferative Pool&quot;]
-                direction TD
-                A[&quot;Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)&quot;] --&gt; B[&quot;Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)&quot;]
-                B --&gt; C[&quot;Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)&quot;]
-        end
-        subgraph PostMitotic_Pool [&quot;Post-Mitotic / Maturation Pool&quot;]
-                direction TD
-                C --&gt; D[&quot;Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &amp;lt; 50%)&quot;]
-        end">
+    subgraph Proliferative_Pool [&quot;Mitotic / Proliferative Pool&quot;]
+        direction TD
+        A[&quot;Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)&quot;] --&gt; B[&quot;Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)&quot;]
+        B --&gt; C[&quot;Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)&quot;]
+    end
+    subgraph PostMitotic_Pool [&quot;Post-Mitotic / Maturation Pool&quot;]
+        direction TD
+        C --&gt; D[&quot;Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &amp;lt; 50%)&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Proliferative_Pool [&quot;Mitotic / Proliferative Pool&quot;]
+        direction TD
+        A[&quot;Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)&quot;] --&gt; B[&quot;Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)&quot;]
+        B --&gt; C[&quot;Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)&quot;]
+    end
+    subgraph PostMitotic_Pool [&quot;Post-Mitotic / Maturation Pool&quot;]
+        direction TD
+        C --&gt; D[&quot;Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &amp;lt; 50%)&quot;]
+    end">
 flowchart TD
-        subgraph Proliferative_Pool ["Mitotic / Proliferative Pool"]
-                direction TD
-                A["Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)"] --> B["Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)"]
-                B --> C["Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)"]
-        end
-        subgraph PostMitotic_Pool ["Post-Mitotic / Maturation Pool"]
-                direction TD
-                C --> D["Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &lt; 50%)"]
-        end
+    subgraph Proliferative_Pool ["Mitotic / Proliferative Pool"]
+        direction TD
+        A["Myeloblast - (15-20 um | N:C 7:1-5:1 | Fine Chromatin | Auer Rods)"] --> B["Promyelocyte - (12-24 um | N:C 5:1-3:1 | Primary Azurophilic Granules | Golgi Hof)"]
+        B --> C["Myelocyte - (10-18 um | N:C 2:1-1:1 | Secondary Lilac Granules | Flattened Nucleus)"]
+    end
+    subgraph PostMitotic_Pool ["Post-Mitotic / Maturation Pool"]
+        direction TD
+        C --> D["Metamyelocyte - (10-18 um | N:C 1.5:1-1:1 | Indentation &lt; 50%)"]
+    end
 </div>
 
 <hr />
@@ -1221,7 +1222,7 @@ flowchart TD
 <ul>
 <li><strong>Band Neutrophils versus Segmented Neutrophils</strong>:<ul>
 <li><strong>Band Neutrophil</strong>: Measures 10–18 µm with an N:C ratio of 1:1.5 to 1:2. The nucleus is indented to <strong>greater than 50%</strong> of the nuclear width, forming a continuous sausage-, C-, or U-shaped band without chromatin condensation into an acellular thread.</li>
-<li><strong>Segmented Neutrophil</strong>: Measures 10–15 µm with an N:C ratio of 1:3. Characterized by 2 to 5 distinct nuclear lobes connected by a dark, solid, thread-like filament devoid of internal chromatin.</li>
+<li><strong>Segmented Neutrophil</strong>: Measures 10–15 µm with an N:C ratio of 1:3. Characterized by 2 to 5 distinct nuclear lobes connected by a dark, solid, thread-like filament devoid of internal chromatin. Total neutrophil ASCP BOC reference range: $50\text{--}70\%$ relative, $1.7\text{--}7.5 \times 10^3/\mu\text{L}$ ($1.7\text{--}7.5 \times 10^9/\text{L}$) absolute.</li>
 </ul>
 </li>
 <li><strong>Reactive "Toxic" Neutrophil Changes</strong>:<ul>
@@ -1232,19 +1233,19 @@ flowchart TD
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        Cytokines[&quot;Infection / Inflammation / G-CSF Release&quot;] --&gt; A[&quot;Accelerated Myelopoiesis &amp; Activation&quot;]
-        A --&gt; B[&quot;Toxic Granulation (Persistent Azurophilic Primary Granules)&quot;]
-        A --&gt; C[&quot;Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)&quot;]
-        A --&gt; D[&quot;Toxic Vacuolization (Phagocytic Secondary Lysosomes)&quot;]" data-original-code="flowchart LR
-        Cytokines[&quot;Infection / Inflammation / G-CSF Release&quot;] --&gt; A[&quot;Accelerated Myelopoiesis &amp; Activation&quot;]
-        A --&gt; B[&quot;Toxic Granulation (Persistent Azurophilic Primary Granules)&quot;]
-        A --&gt; C[&quot;Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)&quot;]
-        A --&gt; D[&quot;Toxic Vacuolization (Phagocytic Secondary Lysosomes)&quot;]">
+    Cytokines[&quot;Infection / Inflammation / G-CSF Release&quot;] --&gt; A[&quot;Accelerated Myelopoiesis &amp; Activation&quot;]
+    A --&gt; B[&quot;Toxic Granulation (Persistent Azurophilic Primary Granules)&quot;]
+    A --&gt; C[&quot;Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)&quot;]
+    A --&gt; D[&quot;Toxic Vacuolization (Phagocytic Secondary Lysosomes)&quot;]" data-original-code="flowchart LR
+    Cytokines[&quot;Infection / Inflammation / G-CSF Release&quot;] --&gt; A[&quot;Accelerated Myelopoiesis &amp; Activation&quot;]
+    A --&gt; B[&quot;Toxic Granulation (Persistent Azurophilic Primary Granules)&quot;]
+    A --&gt; C[&quot;Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)&quot;]
+    A --&gt; D[&quot;Toxic Vacuolization (Phagocytic Secondary Lysosomes)&quot;]">
 flowchart LR
-        Cytokines["Infection / Inflammation / G-CSF Release"] --> A["Accelerated Myelopoiesis & Activation"]
-        A --> B["Toxic Granulation (Persistent Azurophilic Primary Granules)"]
-        A --> C["Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)"]
-        A --> D["Toxic Vacuolization (Phagocytic Secondary Lysosomes)"]
+    Cytokines["Infection / Inflammation / G-CSF Release"] --> A["Accelerated Myelopoiesis & Activation"]
+    A --> B["Toxic Granulation (Persistent Azurophilic Primary Granules)"]
+    A --> C["Döhle Bodies (Peripheral Lamellar Aggregates of Rough ER)"]
+    A --> D["Toxic Vacuolization (Phagocytic Secondary Lysosomes)"]
 </div>
 
 <hr />
@@ -1253,7 +1254,7 @@ flowchart LR
 <ul>
 <li><strong>Nuclear Dysplasias &amp; Hereditary Variations</strong>:<ul>
 <li><strong>Pelger-Huët Anomaly (Congenital vs Pseudo-Pelger-Huët)</strong>: Characterized by bilobed "pince-nez" (spectacle-shaped) nuclei connected by a thin filament, or unsegmented round nuclei with hypercondensed, coarse chromatin. Congenital Pelger-Huët is an autosomal dominant disorder caused by mutations in the <em>Lamin B Receptor (LBR)</em> gene, affecting virtually 100% of neutrophils without functional impairment. Acquired <strong>Pseudo-Pelger-Huët</strong> affects only a fraction of neutrophils and serves as a dysplastic marker in Myelodysplastic Syndromes (MDS) and acute myeloid leukemia, or occurs secondary to drugs (e.g., mycophenolate mofetil, sulfonamides).</li>
-<li><strong>Hypersegmentation</strong>: Defined as neutrophils possessing <strong>6 or more distinct lobes</strong> (or &gt;=5% of neutrophils with 5 lobes). It is the classic hematological hallmark of impaired nuclear DNA synthesis seen in megaloblastic anemias (Vitamin B12 or folate deficiency) and antimetabolite chemotherapy (hydroxyurea, methotrexate).</li>
+<li><strong>Hypersegmentation</strong>: Defined as neutrophils possessing <strong>6 or more distinct lobes</strong> (or $\ge 5\%$ of neutrophils with 5 lobes). It is the classic hematological hallmark of impaired nuclear DNA synthesis seen in megaloblastic anemias (Vitamin B12 or folate deficiency) and antimetabolite chemotherapy (hydroxyurea, methotrexate).</li>
 </ul>
 </li>
 <li><strong>Granule Anomalies &amp; Inclusions</strong>:<ul>
@@ -1265,47 +1266,41 @@ flowchart LR
 <li><strong>Neutrophil Necrobiosis (Apoptosis / Cell Death)</strong>: Non-specific finding in severe infections and malignancies characterized by nuclear <strong>pyknosis</strong> (condensation of chromatin into an ink-drop-like dark sphere) followed by <strong>karyorrhexis</strong> (nuclear fragmentation into multiple discrete, structureless spherical chromatin balls).</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Congenital_Acquired_Anomalies [&quot;Neutrophil Anomalies &amp; Dysplasias&quot;]
-                direction TD
-                A[&quot;Nuclear Morphology&quot;] --&gt; A1[&quot;Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)&quot;]
-                A --&gt; A2[&quot;Hypersegmentation (&amp;gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)&quot;]
-
-                B[&quot;Granule &amp; Cytoplasm&quot;] --&gt; B1[&quot;May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)&quot;]
-                B --&gt; B2[&quot;Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)&quot;]
-                B --&gt; B3[&quot;Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)&quot;]
-
-                C[&quot;Cell Death / Degeneration&quot;] --&gt; C1[&quot;Necrobiosis: Nuclear Pyknosis &amp; Karyorrhexis&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Congenital_Acquired_Anomalies [&quot;Neutrophil Anomalies &amp; Dysplasias&quot;]
-                direction TD
-                A[&quot;Nuclear Morphology&quot;] --&gt; A1[&quot;Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)&quot;]
-                A --&gt; A2[&quot;Hypersegmentation (&amp;gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)&quot;]
-
-                B[&quot;Granule &amp; Cytoplasm&quot;] --&gt; B1[&quot;May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)&quot;]
-                B --&gt; B2[&quot;Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)&quot;]
-                B --&gt; B3[&quot;Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)&quot;]
-
-                C[&quot;Cell Death / Degeneration&quot;] --&gt; C1[&quot;Necrobiosis: Nuclear Pyknosis &amp; Karyorrhexis&quot;]
-        end">
+    subgraph Congenital_Acquired_Anomalies [&quot;Neutrophil Anomalies &amp; Dysplasias&quot;]
+        direction TD
+        A[&quot;Nuclear Morphology&quot;] --&gt; A1[&quot;Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)&quot;]
+        A --&gt; A2[&quot;Hypersegmentation (&amp;gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)&quot;]
+        B[&quot;Granule &amp; Cytoplasm&quot;] --&gt; B1[&quot;May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)&quot;]
+        B --&gt; B2[&quot;Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)&quot;]
+        B --&gt; B3[&quot;Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)&quot;]
+        C[&quot;Cell Death / Degeneration&quot;] --&gt; C1[&quot;Necrobiosis: Nuclear Pyknosis &amp; Karyorrhexis&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Congenital_Acquired_Anomalies [&quot;Neutrophil Anomalies &amp; Dysplasias&quot;]
+        direction TD
+        A[&quot;Nuclear Morphology&quot;] --&gt; A1[&quot;Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)&quot;]
+        A --&gt; A2[&quot;Hypersegmentation (&amp;gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)&quot;]
+        B[&quot;Granule &amp; Cytoplasm&quot;] --&gt; B1[&quot;May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)&quot;]
+        B --&gt; B2[&quot;Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)&quot;]
+        B --&gt; B3[&quot;Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)&quot;]
+        C[&quot;Cell Death / Degeneration&quot;] --&gt; C1[&quot;Necrobiosis: Nuclear Pyknosis &amp; Karyorrhexis&quot;]
+    end">
 flowchart TD
-        subgraph Congenital_Acquired_Anomalies ["Neutrophil Anomalies & Dysplasias"]
-                direction TD
-                A["Nuclear Morphology"] --> A1["Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)"]
-                A --> A2["Hypersegmentation (&gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)"]
-
-                B["Granule & Cytoplasm"] --> B1["May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)"]
-                B --> B2["Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)"]
-                B --> B3["Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)"]
-
-                C["Cell Death / Degeneration"] --> C1["Necrobiosis: Nuclear Pyknosis & Karyorrhexis"]
-        end
+    subgraph Congenital_Acquired_Anomalies ["Neutrophil Anomalies & Dysplasias"]
+        direction TD
+        A["Nuclear Morphology"] --> A1["Pelger-Huët / Pseudo-Pelger (Bilobed Pince-Nez | LBR / MDS)"]
+        A --> A2["Hypersegmentation (&gt;= 6 Lobes | B12 / Folate Megaloblastic Anemia)"]
+        B["Granule & Cytoplasm"] --> B1["May-Hegglin (MYH9 | Spindle Inclusions + Giant Platelets)"]
+        B --> B2["Alder-Reilly (Purplish Granules in ALL WBCs | Mucopolysaccharidoses)"]
+        B --> B3["Chediak-Higashi (Giant Fused Peroxidase+ Granules | LYST Defect)"]
+        C["Cell Death / Degeneration"] --> C1["Necrobiosis: Nuclear Pyknosis & Karyorrhexis"]
+    end
 </div>
 
 <hr />
 <h3 id="monocytes-reactive-lymphocytes-smudge-cells">Monocytes, Reactive Lymphocytes &amp; Smudge Cells</h3>
 <p>Accurate differentiation between reactive mononuclear cells, benign monocytes, and fragile neoplastic lymphocytes is essential for distinguishing viral syndromes from hematologic neoplasms.</p>
 <ul>
-<li><strong>Monocytes</strong>: Sizing 12–20 µm with an N:C ratio of 4:1 to 2:1. Characterized by abundant, opaque, blue-gray "ground-glass" cytoplasm containing dust-like azurophilic granules, irregular outer cytoplasmic borders with blunt pseudopodia, and prominent cytoplasmic phagocytic vacuoles. The nucleus is folded, indented, kidney-bean-shaped, or cerebriform with loose, linear, rope-like chromatin strands.</li>
+<li><strong>Monocytes</strong>: Sizing 12–20 µm with an N:C ratio of 4:1 to 2:1. Characterized by abundant, opaque, blue-gray "ground-glass" cytoplasm containing dust-like azurophilic granules, irregular outer cytoplasmic borders with blunt pseudopodia, and prominent cytoplasmic phagocytic vacuoles. The nucleus is folded, indented, kidney-bean-shaped, or cerebriform with loose, linear, rope-like chromatin strands. Normal reference intervals: $2\text{--}11\%$ relative, $0.1\text{--}1.3 \times 10^3/\mu\text{L}$ ($0.1\text{--}1.3 \times 10^9/\text{L}$) absolute.</li>
 <li><strong>Reactive Lymphocytes (Downey Cells)</strong>: Antigen-stimulated lymphocytes characterized by extreme morphological <strong>heterogeneity (pleomorphism)</strong> on a single smear.<ul>
 <li><strong>Downey Type II (Classic Reactive Lymphocyte)</strong>: Large (10–25 µm) with a low N:C ratio (3:1 to 1:2), abundant pale blue-gray cytoplasm that dramatically <strong>furls, scallops, and indents around adjacent red blood cells</strong>, accompanied by intensified dark-blue basophilic borders. Chromatin is moderately condensed but loose and streaked. Classically seen in Infectious Mononucleosis (Epstein-Barr Virus), Cytomegalovirus (CMV), and acute viral hepatitis.</li>
 <li><strong>Downey Type I</strong>: Indented, folded nucleus with condensed chromatin and vacuolated cytoplasm.</li>
@@ -1315,38 +1310,35 @@ flowchart TD
 <li><strong>Smudge Cells (Basket Cells)</strong>: Fragile, bare nuclear remnants lacking intact cytoplasm that rupture during the mechanical shear of glass slide preparation. While occasionally seen in normal blood, high numbers of smudge cells are classically associated with <strong>Chronic Lymphocytic Leukemia (CLL)</strong> due to deficiency of the cytoskeletal protein vimentin. Smudge cells can be stabilized by preparing a smear using one drop of 22% bovine serum albumin (BSA) mixed with four drops of blood.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Mononuclear_Differentiation [&quot;Mononuclear Differential Pathway&quot;]
-                direction TD
-                A[&quot;Mononuclear Cell on Blood Smear&quot;] --&gt; B{&quot;Cytoplasm &amp; Nuclear Features&quot;}
-
-                B --&gt;|&quot;Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles&quot;| C[&quot;Monocyte&quot;]
-                B --&gt;|&quot;Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs&quot;| D[&quot;Reactive Lymphocyte (Downey II)&quot;]
-                B --&gt;|&quot;Bare Ruptured Chromatin Mass, No Intact Cytoplasm&quot;| E[&quot;Smudge / Basket Cell (CLL Fragility)&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Mononuclear_Differentiation [&quot;Mononuclear Differential Pathway&quot;]
-                direction TD
-                A[&quot;Mononuclear Cell on Blood Smear&quot;] --&gt; B{&quot;Cytoplasm &amp; Nuclear Features&quot;}
-
-                B --&gt;|&quot;Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles&quot;| C[&quot;Monocyte&quot;]
-                B --&gt;|&quot;Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs&quot;| D[&quot;Reactive Lymphocyte (Downey II)&quot;]
-                B --&gt;|&quot;Bare Ruptured Chromatin Mass, No Intact Cytoplasm&quot;| E[&quot;Smudge / Basket Cell (CLL Fragility)&quot;]
-        end">
+    subgraph Mononuclear_Differentiation [&quot;Mononuclear Differential Pathway&quot;]
+        direction TD
+        A[&quot;Mononuclear Cell on Blood Smear&quot;] --&gt; B{&quot;Cytoplasm &amp; Nuclear Features&quot;}
+        B --&gt;|&quot;Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles&quot;| C[&quot;Monocyte&quot;]
+        B --&gt;|&quot;Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs&quot;| D[&quot;Reactive Lymphocyte (Downey II)&quot;]
+        B --&gt;|&quot;Bare Ruptured Chromatin Mass, No Intact Cytoplasm&quot;| E[&quot;Smudge / Basket Cell (CLL Fragility)&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Mononuclear_Differentiation [&quot;Mononuclear Differential Pathway&quot;]
+        direction TD
+        A[&quot;Mononuclear Cell on Blood Smear&quot;] --&gt; B{&quot;Cytoplasm &amp; Nuclear Features&quot;}
+        B --&gt;|&quot;Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles&quot;| C[&quot;Monocyte&quot;]
+        B --&gt;|&quot;Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs&quot;| D[&quot;Reactive Lymphocyte (Downey II)&quot;]
+        B --&gt;|&quot;Bare Ruptured Chromatin Mass, No Intact Cytoplasm&quot;| E[&quot;Smudge / Basket Cell (CLL Fragility)&quot;]
+    end">
 flowchart TD
-        subgraph Mononuclear_Differentiation ["Mononuclear Differential Pathway"]
-                direction TD
-                A["Mononuclear Cell on Blood Smear"] --> B{"Cytoplasm & Nuclear Features"}
-
-                B -->|"Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles"| C["Monocyte"]
-                B -->|"Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs"| D["Reactive Lymphocyte (Downey II)"]
-                B -->|"Bare Ruptured Chromatin Mass, No Intact Cytoplasm"| E["Smudge / Basket Cell (CLL Fragility)"]
-        end
+    subgraph Mononuclear_Differentiation ["Mononuclear Differential Pathway"]
+        direction TD
+        A["Mononuclear Cell on Blood Smear"] --> B{"Cytoplasm & Nuclear Features"}
+        B -->|"Ground-Glass Blue-Gray, Folded Cerebriform Nucleus, Vacuoles"| C["Monocyte"]
+        B -->|"Abundant Pale Cytoplasm, Scalloped / Furled Borders Hugging RBCs"| D["Reactive Lymphocyte (Downey II)"]
+        B -->|"Bare Ruptured Chromatin Mass, No Intact Cytoplasm"| E["Smudge / Basket Cell (CLL Fragility)"]
+    end
 </div>
 
 <hr />
 <h3 id="malignant-lymphoid-plasma-cell-morphologies">Malignant Lymphoid &amp; Plasma Cell Morphologies</h3>
 <p>Clonal lymphoproliferative disorders and plasma cell dyscrasias produce distinct, monotonous morphological patterns on peripheral blood films.</p>
 <ul>
-<li><strong>Chronic Lymphocytic Leukemia (CLL) / Small Lymphocytic Lymphoma (SLL)</strong>: Monotonous population of small, mature-appearing lymphocytes (7–15 µm) characterized by dense, coarsely clumped chromatin broken by clear parachromatin cracks, imparting a classic <strong>"soccer-ball"</strong> or "cracked-mud" pattern. Smears typically show absolute lymphocytosis and numerous smudge cells.</li>
+<li><strong>Chronic Lymphocytic Leukemia (CLL) / Small Lymphocytic Lymphoma (SLL)</strong>: Monotonous population of small, mature-appearing lymphocytes (7–15 µm) characterized by dense, coarsely clumped chromatin broken by clear parachromatin cracks, imparting a classic <strong>"soccer-ball"</strong> or "cracked-mud" pattern. Smears typically show absolute lymphocytosis ($>3.2 \times 10^3/\mu\text{L}$) and numerous smudge cells.</li>
 <li><strong>Prolymphocyte</strong>: Larger lymphoid cell (10–18 µm) with moderate, homogeneously staining pale-blue cytoplasm, condensed chromatin, and a single, central, <strong>prominent punched-out nucleolus</strong>. Prolymphocytes account for &lt;10% of cells in typical CLL, but predominate in prolymphocytic leukemia (PLL) or during Richter transformation.</li>
 <li><strong>Hairy Cell Leukemia (HCL)</strong>: Round-to-ovoid mature B-cells (12–20 µm) with abundant, pale blue-gray cytoplasm demonstrating fine, delicate, irregular, <strong>hair-like cytoplasmic projections</strong> around the entire cell circumference. The nucleus is oval, indented, or bean-shaped with spongy, homogeneous ground-glass chromatin and inconspicuous nucleoli.</li>
 <li><strong>Malignant Plasma Cells</strong>: Terminally differentiated B-lineage cells (10–20 µm) with an eccentric round nucleus exhibiting a classic <strong>"clock-face" or cartwheel</strong> pattern of alternating dense heterochromatin blocks. The cytoplasm is deeply basophilic (rich in RNA) with a prominent, distinct, pale crescent-shaped <strong>perinuclear Golgi hof</strong>. Malignant plasma cells in Multiple Myeloma may show:<ul>
@@ -1357,19 +1349,19 @@ flowchart TD
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        A[&quot;Malignant Lymphoid &amp; Plasma Cell Variants&quot;] --&gt; B[&quot;CLL: Soccer-Ball Chromatin + Smudge Cells&quot;]
-        A --&gt; C[&quot;Prolymphocyte: Prominent Punched-Out Nucleolus&quot;]
-        A --&gt; D[&quot;Hairy Cell: Circumferential Hair-Like Projections&quot;]
-        A --&gt; E[&quot;Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof&quot;]" data-original-code="flowchart LR
-        A[&quot;Malignant Lymphoid &amp; Plasma Cell Variants&quot;] --&gt; B[&quot;CLL: Soccer-Ball Chromatin + Smudge Cells&quot;]
-        A --&gt; C[&quot;Prolymphocyte: Prominent Punched-Out Nucleolus&quot;]
-        A --&gt; D[&quot;Hairy Cell: Circumferential Hair-Like Projections&quot;]
-        A --&gt; E[&quot;Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof&quot;]">
+    A[&quot;Malignant Lymphoid &amp; Plasma Cell Variants&quot;] --&gt; B[&quot;CLL: Soccer-Ball Chromatin + Smudge Cells&quot;]
+    A --&gt; C[&quot;Prolymphocyte: Prominent Punched-Out Nucleolus&quot;]
+    A --&gt; D[&quot;Hairy Cell: Circumferential Hair-Like Projections&quot;]
+    A --&gt; E[&quot;Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof&quot;]" data-original-code="flowchart LR
+    A[&quot;Malignant Lymphoid &amp; Plasma Cell Variants&quot;] --&gt; B[&quot;CLL: Soccer-Ball Chromatin + Smudge Cells&quot;]
+    A --&gt; C[&quot;Prolymphocyte: Prominent Punched-Out Nucleolus&quot;]
+    A --&gt; D[&quot;Hairy Cell: Circumferential Hair-Like Projections&quot;]
+    A --&gt; E[&quot;Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof&quot;]">
 flowchart LR
-        A["Malignant Lymphoid & Plasma Cell Variants"] --> B["CLL: Soccer-Ball Chromatin + Smudge Cells"]
-        A --> C["Prolymphocyte: Prominent Punched-Out Nucleolus"]
-        A --> D["Hairy Cell: Circumferential Hair-Like Projections"]
-        A --> E["Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof"]
+    A["Malignant Lymphoid & Plasma Cell Variants"] --> B["CLL: Soccer-Ball Chromatin + Smudge Cells"]
+    A --> C["Prolymphocyte: Prominent Punched-Out Nucleolus"]
+    A --> D["Hairy Cell: Circumferential Hair-Like Projections"]
+    A --> E["Plasma Cell: Clock-Face Nucleus + Perinuclear Golgi Hof"]
 </div>
 
 <hr />
@@ -1377,33 +1369,33 @@ flowchart LR
 <p>Alterations in erythrocyte membrane surface area, lipid composition, and intravascular mechanical forces generate distinct poikilocytes indicative of life-threatening microangiopathies and systemic organ failure.</p>
 <ul>
 <li><strong>Schistocytes (Helmet Cells / Keratocytes)</strong>: Rigid, irregularly pointed, triangular erythrocyte fragments formed when intact RBCs are sheared across intravascular fibrin meshes in the microvasculature. Schistocytes lack central pallor. They are the critical morphological marker of <strong>Microangiopathic Hemolytic Anemia (MAHA)</strong>, including Disseminated Intravascular Coagulation (DIC), Thrombotic Thrombocytopenic Purpura (TTP), Hemolytic Uremic Syndrome (HUS), and mechanical shear from prosthetic heart valves.</li>
-<li><strong>Spherocytes</strong>: Deeply staining, perfectly round, dense erythrocytes with reduced diameter (&lt;6.5 µm) and a complete absence of central pallor. Spherocytes arise from the direct loss of cell membrane surface area without a corresponding loss of intracellular volume (low surface area-to-volume ratio), resulting in spherical shape, increased cellular rigidity, high MCHC (&gt;36.0 g/dL), and decreased osmotic resistance. Classically observed in <strong>Hereditary Spherocytosis</strong> (spectrin/ankyrin gene mutations) and <strong>Warm Autoimmune Hemolytic Anemia (AIHA)</strong> (splenic macrophage partial phagocytosis of IgG-opsonized membrane).</li>
+<li><strong>Spherocytes</strong>: Deeply staining, perfectly round, dense erythrocytes with reduced diameter (&lt;6.5 µm) and a complete absence of central pallor. Spherocytes arise from the direct loss of cell membrane surface area without a corresponding loss of intracellular volume (low surface area-to-volume ratio), resulting in spherical shape, increased cellular rigidity, high MCHC exceeding the normal reference range of $32\text{--}36\text{ g/dL}$ ($>36.0\text{ g/dL}$), and decreased osmotic resistance. Classically observed in <strong>Hereditary Spherocytosis</strong> (spectrin/ankyrin gene mutations) and <strong>Warm Autoimmune Hemolytic Anemia (AIHA)</strong> (splenic macrophage partial phagocytosis of IgG-opsonized membrane).</li>
 <li><strong>Acanthocytes (Spur Cells)</strong>: Spheroidal, densely stained erythrocytes lacking central pallor that exhibit 3 to 20 irregular, sharp, thorn-like spicules of variable lengths and uneven spacing. Acanthocytes result from abnormal lipid incorporation (excess cholesterol-to-phospholipid ratio) into the outer leaflet of the erythrocyte lipid bilayer. Classically associated with severe end-stage liver disease (spur cell anemia), abetalipoproteinemia, and McLeod phenotype.</li>
 <li><strong>Echinocytes (Burr Cells / Crenated Cells)</strong>: Erythrocytes displaying 10 to 30 short, blunt, uniform spicules distributed symmetrically across the entire surface while maintaining normal central pallor. True in vivo echinocytosis is associated with uremia, renal failure, and pyruvate kinase deficiency. More frequently, echinocytes represent an in vitro artifact caused by slow air-drying, high slide pH, or aged EDTA blood.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Membrane_Mechanical_Etiologies [&quot;Mechanical &amp; Membrane Defect Pathways&quot;]
-                direction TD
-                A[&quot;Intravascular Fibrin Shearing&quot;] --&gt; B[&quot;Schistocytes (Helmet Cells) -&amp;gt; DIC / TTP / MAHA&quot;]
-                C[&quot;Membrane Surface Area Loss&quot;] --&gt; D[&quot;Spherocytes -&amp;gt; Hereditary Spherocytosis / Warm AIHA&quot;]
-                E[&quot;Outer Membrane Lipid Alteration&quot;] --&gt; F[&quot;Acanthocytes (Spur Cells) -&amp;gt; Severe Liver Disease&quot;]
-                G[&quot;Hyperosmolality / Uremia / Slide Artifact&quot;] --&gt; H[&quot;Echinocytes (Burr Cells) -&amp;gt; Renal Failure / Artifact&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Membrane_Mechanical_Etiologies [&quot;Mechanical &amp; Membrane Defect Pathways&quot;]
-                direction TD
-                A[&quot;Intravascular Fibrin Shearing&quot;] --&gt; B[&quot;Schistocytes (Helmet Cells) -&amp;gt; DIC / TTP / MAHA&quot;]
-                C[&quot;Membrane Surface Area Loss&quot;] --&gt; D[&quot;Spherocytes -&amp;gt; Hereditary Spherocytosis / Warm AIHA&quot;]
-                E[&quot;Outer Membrane Lipid Alteration&quot;] --&gt; F[&quot;Acanthocytes (Spur Cells) -&amp;gt; Severe Liver Disease&quot;]
-                G[&quot;Hyperosmolality / Uremia / Slide Artifact&quot;] --&gt; H[&quot;Echinocytes (Burr Cells) -&amp;gt; Renal Failure / Artifact&quot;]
-        end">
+    subgraph Membrane_Mechanical_Etiologies [&quot;Mechanical &amp; Membrane Defect Pathways&quot;]
+        direction TD
+        A[&quot;Intravascular Fibrin Shearing&quot;] --&gt; B[&quot;Schistocytes (Helmet Cells) -&amp;gt; DIC / TTP / MAHA&quot;]
+        C[&quot;Membrane Surface Area Loss&quot;] --&gt; D[&quot;Spherocytes -&amp;gt; Hereditary Spherocytosis / Warm AIHA&quot;]
+        E[&quot;Outer Membrane Lipid Alteration&quot;] --&gt; F[&quot;Acanthocytes (Spur Cells) -&amp;gt; Severe Liver Disease&quot;]
+        G[&quot;Hyperosmolality / Uremia / Slide Artifact&quot;] --&gt; H[&quot;Echinocytes (Burr Cells) -&amp;gt; Renal Failure / Artifact&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Membrane_Mechanical_Etiologies [&quot;Mechanical &amp; Membrane Defect Pathways&quot;]
+        direction TD
+        A[&quot;Intravascular Fibrin Shearing&quot;] --&gt; B[&quot;Schistocytes (Helmet Cells) -&amp;gt; DIC / TTP / MAHA&quot;]
+        C[&quot;Membrane Surface Area Loss&quot;] --&gt; D[&quot;Spherocytes -&amp;gt; Hereditary Spherocytosis / Warm AIHA&quot;]
+        E[&quot;Outer Membrane Lipid Alteration&quot;] --&gt; F[&quot;Acanthocytes (Spur Cells) -&amp;gt; Severe Liver Disease&quot;]
+        G[&quot;Hyperosmolality / Uremia / Slide Artifact&quot;] --&gt; H[&quot;Echinocytes (Burr Cells) -&amp;gt; Renal Failure / Artifact&quot;]
+    end">
 flowchart TD
-        subgraph Membrane_Mechanical_Etiologies ["Mechanical & Membrane Defect Pathways"]
-                direction TD
-                A["Intravascular Fibrin Shearing"] --> B["Schistocytes (Helmet Cells) -&gt; DIC / TTP / MAHA"]
-                C["Membrane Surface Area Loss"] --> D["Spherocytes -&gt; Hereditary Spherocytosis / Warm AIHA"]
-                E["Outer Membrane Lipid Alteration"] --> F["Acanthocytes (Spur Cells) -&gt; Severe Liver Disease"]
-                G["Hyperosmolality / Uremia / Slide Artifact"] --> H["Echinocytes (Burr Cells) -&gt; Renal Failure / Artifact"]
-        end
+    subgraph Membrane_Mechanical_Etiologies ["Mechanical & Membrane Defect Pathways"]
+        direction TD
+        A["Intravascular Fibrin Shearing"] --> B["Schistocytes (Helmet Cells) -&gt; DIC / TTP / MAHA"]
+        C["Membrane Surface Area Loss"] --> D["Spherocytes -&gt; Hereditary Spherocytosis / Warm AIHA"]
+        E["Outer Membrane Lipid Alteration"] --> F["Acanthocytes (Spur Cells) -&gt; Severe Liver Disease"]
+        G["Hyperosmolality / Uremia / Slide Artifact"] --> H["Echinocytes (Burr Cells) -&gt; Renal Failure / Artifact"]
+    end
 </div>
 
 <hr />
@@ -1416,19 +1408,19 @@ flowchart TD
 <li><strong>Dacrocytes (Teardrop Cells)</strong>: Pear-shaped or teardrop erythrocytes possessing a single elongated, blunted tail. Dacrocytes are formed when erythrocytes undergo severe mechanical distortion and pinching as they are squeezed through the tight, collagen-choked sinuses of a fibrotic bone marrow. They are pathognomonic for <strong>Primary Myelofibrosis (PMF)</strong> and marrow replacement (myelophthisic processes). In vitro preparation artifacts can mimic teardrops, but artifactual tails all align in the same direction across the smear.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        A[&quot;Hb S Deoxygenation &amp; Polymerization&quot;] --&gt; B[&quot;Drepanocyte (Sickle Cell) -&amp;gt; Hb SS Disease&quot;]
-        C[&quot;Excess Membrane-to-Hb Ratio&quot;] --&gt; D[&quot;Codocyte (Target Cell) -&amp;gt; Thalassemia / Hb C / Liver&quot;]
-        E[&quot;Splenic Pitting of Heinz Bodies&quot;] --&gt; F[&quot;Degmacyte (Bite Cell) -&amp;gt; G6PD Deficiency&quot;]
-        G[&quot;Extrusion via Fibrotic Bone Marrow&quot;] --&gt; H[&quot;Dacrocyte (Teardrop Cell) -&amp;gt; Primary Myelofibrosis&quot;]" data-original-code="flowchart LR
-        A[&quot;Hb S Deoxygenation &amp; Polymerization&quot;] --&gt; B[&quot;Drepanocyte (Sickle Cell) -&amp;gt; Hb SS Disease&quot;]
-        C[&quot;Excess Membrane-to-Hb Ratio&quot;] --&gt; D[&quot;Codocyte (Target Cell) -&amp;gt; Thalassemia / Hb C / Liver&quot;]
-        E[&quot;Splenic Pitting of Heinz Bodies&quot;] --&gt; F[&quot;Degmacyte (Bite Cell) -&amp;gt; G6PD Deficiency&quot;]
-        G[&quot;Extrusion via Fibrotic Bone Marrow&quot;] --&gt; H[&quot;Dacrocyte (Teardrop Cell) -&amp;gt; Primary Myelofibrosis&quot;]">
+    A[&quot;Hb S Deoxygenation &amp; Polymerization&quot;] --&gt; B[&quot;Drepanocyte (Sickle Cell) -&amp;gt; Hb SS Disease&quot;]
+    C[&quot;Excess Membrane-to-Hb Ratio&quot;] --&gt; D[&quot;Codocyte (Target Cell) -&amp;gt; Thalassemia / Hb C / Liver&quot;]
+    E[&quot;Splenic Pitting of Heinz Bodies&quot;] --&gt; F[&quot;Degmacyte (Bite Cell) -&amp;gt; G6PD Deficiency&quot;]
+    G[&quot;Extrusion via Fibrotic Bone Marrow&quot;] --&gt; H[&quot;Dacrocyte (Teardrop Cell) -&amp;gt; Primary Myelofibrosis&quot;]" data-original-code="flowchart LR
+    A[&quot;Hb S Deoxygenation &amp; Polymerization&quot;] --&gt; B[&quot;Drepanocyte (Sickle Cell) -&amp;gt; Hb SS Disease&quot;]
+    C[&quot;Excess Membrane-to-Hb Ratio&quot;] --&gt; D[&quot;Codocyte (Target Cell) -&amp;gt; Thalassemia / Hb C / Liver&quot;]
+    E[&quot;Splenic Pitting of Heinz Bodies&quot;] --&gt; F[&quot;Degmacyte (Bite Cell) -&amp;gt; G6PD Deficiency&quot;]
+    G[&quot;Extrusion via Fibrotic Bone Marrow&quot;] --&gt; H[&quot;Dacrocyte (Teardrop Cell) -&amp;gt; Primary Myelofibrosis&quot;]">
 flowchart LR
-        A["Hb S Deoxygenation & Polymerization"] --> B["Drepanocyte (Sickle Cell) -&gt; Hb SS Disease"]
-        C["Excess Membrane-to-Hb Ratio"] --> D["Codocyte (Target Cell) -&gt; Thalassemia / Hb C / Liver"]
-        E["Splenic Pitting of Heinz Bodies"] --> F["Degmacyte (Bite Cell) -&gt; G6PD Deficiency"]
-        G["Extrusion via Fibrotic Bone Marrow"] --> H["Dacrocyte (Teardrop Cell) -&gt; Primary Myelofibrosis"]
+    A["Hb S Deoxygenation & Polymerization"] --> B["Drepanocyte (Sickle Cell) -&gt; Hb SS Disease"]
+    C["Excess Membrane-to-Hb Ratio"] --> D["Codocyte (Target Cell) -&gt; Thalassemia / Hb C / Liver"]
+    E["Splenic Pitting of Heinz Bodies"] --> F["Degmacyte (Bite Cell) -&gt; G6PD Deficiency"]
+    G["Extrusion via Fibrotic Bone Marrow"] --> H["Dacrocyte (Teardrop Cell) -&gt; Primary Myelofibrosis"]
 </div>
 
 <hr />
@@ -1442,37 +1434,34 @@ flowchart LR
 <li><strong>Hemoglobin C (Hb C) Crystals</strong>: Dense, dark-red, hexagonal, rod-shaped, or tetragonal crystals ("Washington Monument" appearance) formed within erythrocytes in homozygous <strong>Hemoglobin CC disease</strong> or <strong>Hemoglobin SC disease</strong> (especially post-splenectomy). Crystallization occurs as insoluble hemoglobin C precipitates within the red cell, often leaving a clear membrane blister devoid of cytoplasm.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph RBC_Inclusion_Differential [&quot;Differential Diagnosis of RBC Inclusions&quot;]
-                direction TD
-                A[&quot;Intraerythrocytic Inclusion&quot;] --&gt; B{&quot;Wright-Giemsa Staining &amp; Morphology&quot;}
-
-                B --&gt;|&quot;Single Round Dark-Purple Dot (1 um)&quot;| C[&quot;Howell-Jolly Body (DNA) -&amp;gt; Asplenia / Splenectomy&quot;]
-                B --&gt;|&quot;Coarse Blue Punctate Granules Dispersed Throughout&quot;| D[&quot;Basophilic Stippling (Ribosomal RNA) -&amp;gt; Lead Poisoning / Thalassemia&quot;]
-                B --&gt;|&quot;Angular Peripheral Clusters (Prussian Blue Positive)&quot;| E[&quot;Pappenheimer Bodies (Iron) -&amp;gt; Sideroblastic / Iron Overload&quot;]
-                B --&gt;|&quot;Invisible on Wright; Blue on Supravital Stain&quot;| F[&quot;Heinz Bodies (Denatured Hb) -&amp;gt; G6PD Deficiency&quot;]
-                B --&gt;|&quot;Dense Washington-Monument Rhomboid / Rod&quot;| G[&quot;Hb C Crystal (Hb C Polymer) -&amp;gt; Hb CC / Hb SC Disease&quot;]
-        end" data-original-code="flowchart TD
-        subgraph RBC_Inclusion_Differential [&quot;Differential Diagnosis of RBC Inclusions&quot;]
-                direction TD
-                A[&quot;Intraerythrocytic Inclusion&quot;] --&gt; B{&quot;Wright-Giemsa Staining &amp; Morphology&quot;}
-
-                B --&gt;|&quot;Single Round Dark-Purple Dot (1 um)&quot;| C[&quot;Howell-Jolly Body (DNA) -&amp;gt; Asplenia / Splenectomy&quot;]
-                B --&gt;|&quot;Coarse Blue Punctate Granules Dispersed Throughout&quot;| D[&quot;Basophilic Stippling (Ribosomal RNA) -&amp;gt; Lead Poisoning / Thalassemia&quot;]
-                B --&gt;|&quot;Angular Peripheral Clusters (Prussian Blue Positive)&quot;| E[&quot;Pappenheimer Bodies (Iron) -&amp;gt; Sideroblastic / Iron Overload&quot;]
-                B --&gt;|&quot;Invisible on Wright; Blue on Supravital Stain&quot;| F[&quot;Heinz Bodies (Denatured Hb) -&amp;gt; G6PD Deficiency&quot;]
-                B --&gt;|&quot;Dense Washington-Monument Rhomboid / Rod&quot;| G[&quot;Hb C Crystal (Hb C Polymer) -&amp;gt; Hb CC / Hb SC Disease&quot;]
-        end">
+    subgraph RBC_Inclusion_Differential [&quot;Differential Diagnosis of RBC Inclusions&quot;]
+        direction TD
+        A[&quot;Intraerythrocytic Inclusion&quot;] --&gt; B{&quot;Wright-Giemsa Staining &amp; Morphology&quot;}
+        B --&gt;|&quot;Single Round Dark-Purple Dot (1 um)&quot;| C[&quot;Howell-Jolly Body (DNA) -&amp;gt; Asplenia / Splenectomy&quot;]
+        B --&gt;|&quot;Coarse Blue Punctate Granules Dispersed Throughout&quot;| D[&quot;Basophilic Stippling (Ribosomal RNA) -&amp;gt; Lead Poisoning / Thalassemia&quot;]
+        B --&gt;|&quot;Angular Peripheral Clusters (Prussian Blue Positive)&quot;| E[&quot;Pappenheimer Bodies (Iron) -&amp;gt; Sideroblastic / Iron Overload&quot;]
+        B --&gt;|&quot;Invisible on Wright; Blue on Supravital Stain&quot;| F[&quot;Heinz Bodies (Denatured Hb) -&amp;gt; G6PD Deficiency&quot;]
+        B --&gt;|&quot;Dense Washington-Monument Rhomboid / Rod&quot;| G[&quot;Hb C Crystal (Hb C Polymer) -&amp;gt; Hb CC / Hb SC Disease&quot;]
+    end" data-original-code="flowchart TD
+    subgraph RBC_Inclusion_Differential [&quot;Differential Diagnosis of RBC Inclusions&quot;]
+        direction TD
+        A[&quot;Intraerythrocytic Inclusion&quot;] --&gt; B{&quot;Wright-Giemsa Staining &amp; Morphology&quot;}
+        B --&gt;|&quot;Single Round Dark-Purple Dot (1 um)&quot;| C[&quot;Howell-Jolly Body (DNA) -&amp;gt; Asplenia / Splenectomy&quot;]
+        B --&gt;|&quot;Coarse Blue Punctate Granules Dispersed Throughout&quot;| D[&quot;Basophilic Stippling (Ribosomal RNA) -&amp;gt; Lead Poisoning / Thalassemia&quot;]
+        B --&gt;|&quot;Angular Peripheral Clusters (Prussian Blue Positive)&quot;| E[&quot;Pappenheimer Bodies (Iron) -&amp;gt; Sideroblastic / Iron Overload&quot;]
+        B --&gt;|&quot;Invisible on Wright; Blue on Supravital Stain&quot;| F[&quot;Heinz Bodies (Denatured Hb) -&amp;gt; G6PD Deficiency&quot;]
+        B --&gt;|&quot;Dense Washington-Monument Rhomboid / Rod&quot;| G[&quot;Hb C Crystal (Hb C Polymer) -&amp;gt; Hb CC / Hb SC Disease&quot;]
+    end">
 flowchart TD
-        subgraph RBC_Inclusion_Differential ["Differential Diagnosis of RBC Inclusions"]
-                direction TD
-                A["Intraerythrocytic Inclusion"] --> B{"Wright-Giemsa Staining & Morphology"}
-
-                B -->|"Single Round Dark-Purple Dot (1 um)"| C["Howell-Jolly Body (DNA) -&gt; Asplenia / Splenectomy"]
-                B -->|"Coarse Blue Punctate Granules Dispersed Throughout"| D["Basophilic Stippling (Ribosomal RNA) -&gt; Lead Poisoning / Thalassemia"]
-                B -->|"Angular Peripheral Clusters (Prussian Blue Positive)"| E["Pappenheimer Bodies (Iron) -&gt; Sideroblastic / Iron Overload"]
-                B -->|"Invisible on Wright; Blue on Supravital Stain"| F["Heinz Bodies (Denatured Hb) -&gt; G6PD Deficiency"]
-                B -->|"Dense Washington-Monument Rhomboid / Rod"| G["Hb C Crystal (Hb C Polymer) -&gt; Hb CC / Hb SC Disease"]
-        end
+    subgraph RBC_Inclusion_Differential ["Differential Diagnosis of RBC Inclusions"]
+        direction TD
+        A["Intraerythrocytic Inclusion"] --> B{"Wright-Giemsa Staining & Morphology"}
+        B -->|"Single Round Dark-Purple Dot (1 um)"| C["Howell-Jolly Body (DNA) -&gt; Asplenia / Splenectomy"]
+        B -->|"Coarse Blue Punctate Granules Dispersed Throughout"| D["Basophilic Stippling (Ribosomal RNA) -&gt; Lead Poisoning / Thalassemia"]
+        B -->|"Angular Peripheral Clusters (Prussian Blue Positive)"| E["Pappenheimer Bodies (Iron) -&gt; Sideroblastic / Iron Overload"]
+        B -->|"Invisible on Wright; Blue on Supravital Stain"| F["Heinz Bodies (Denatured Hb) -&gt; G6PD Deficiency"]
+        B -->|"Dense Washington-Monument Rhomboid / Rod"| G["Hb C Crystal (Hb C Polymer) -&gt; Hb CC / Hb SC Disease"]
+    end
 </div>
 
 <hr />
@@ -1485,77 +1474,78 @@ flowchart TD
 </ul>
 </li>
 <li><strong>RBC Agglutination (Cold Autoagglutination)</strong>: Erythrocytes clumped into irregular, disorganized, three-dimensional grape-like clusters across the thin monolayer. Agglutination is mediated by <strong>Cold Agglutinins</strong> (high-titer IgM antibodies directed against RBC I/i carbohydrate antigens) that bind erythrocyte surfaces at temperatures below 37°C.<ul>
-<li><em>Automated Instrument Impact &amp; Spurious Lab Indices</em>: Cold agglutinins cause automated hematology analyzers to count multi-cell clusters as single large erythrocytes, generating a <strong>falsely decreased RBC count</strong>, <strong>falsely elevated Mean Corpuscular Volume (MCV)</strong>, and a physiologically <strong>impossible Mean Corpuscular Hemoglobin Concentration ($\text{MCHC} > 37.0\text{ g/dL}$)</strong> (often exceeding 40–50 g/dL).</li>
-<li><em>Mandatory Corrective Action Protocol</em>:<ol>
-<li>Incubate the EDTA specimen tube in a calibrated <strong>37°C water bath for 15 to 30 minutes</strong>.</li>
-<li>Immediately re-run the warmed specimen on the automated analyzer to obtain accurate, non-aggregated indices.</li>
-<li>If the MCHC fails to normalize, perform a 37°C saline wash and replacement protocol prior to re-analysis.</li>
-</ol>
-</li>
+<li><em>Automated Instrument Impact &amp; Spurious Lab Indices</em>: Cold agglutinins cause automated hematology analyzers to count multi-cell clusters as single large erythrocytes, generating a <strong>falsely decreased RBC count</strong> (below reference range $4.00\text{--}6.00 \times 10^6/\mu\text{L}$), <strong>falsely elevated Mean Corpuscular Volume (MCV)</strong> (exceeding normal $76\text{--}100\text{ fL}$), and a physiologically <strong>impossible Mean Corpuscular Hemoglobin Concentration ($\text{MCHC} > 36.0\text{ g/dL}$)</strong> (exceeding standard range $32\text{--}36\text{ g/dL}$, often exceeding 40–50 g/dL).</li>
+<li><em>Mandatory Corrective Action Protocol</em>:<br />
+1. Incubate the EDTA specimen tube in a calibrated <strong>37°C water bath for 15 to 30 minutes</strong>.<br />
+2. Immediately re-run the warmed specimen on the automated analyzer to obtain accurate, non-aggregated indices.<br />
+3. If the MCHC fails to normalize ($\le 36.0\text{ g/dL}$), perform a 37°C saline wash and replacement protocol prior to re-analysis.</li>
 </ul>
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Agglutination_Troubleshooting [&quot;Cold Agglutinin Investigation &amp; Correction Protocol&quot;]
-                direction TD
-                A[&quot;Automated CBC Flag: Impossible MCHC &amp;gt; 37.0 g/dL, High MCV, Low RBC&quot;] --&gt; B[&quot;Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping&quot;]
-                B --&gt; C[&quot;Verify Cold Agglutination (IgM-Mediated Autoantibody)&quot;]
-                C --&gt; D[&quot;Action: Incubate EDTA Tube at 37°C for 15-30 Minutes&quot;]
-                D --&gt; E[&quot;Immediately Re-Analyze Specimen on Automated Analyzer&quot;]
-                E --&gt; F{&quot;Did MCHC Normalize &lt;= 36.0 g/dL?&quot;}
-                F --&gt;|&quot;Yes&quot;| G[&quot;Release Validated CBC Results &amp; Document 37°C Pre-Warming&quot;]
-                F --&gt;|&quot;No&quot;| H[&quot;Perform 37°C Saline Wash / Replacement Protocol&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Agglutination_Troubleshooting [&quot;Cold Agglutinin Investigation &amp; Correction Protocol&quot;]
-                direction TD
-                A[&quot;Automated CBC Flag: Impossible MCHC &amp;gt; 37.0 g/dL, High MCV, Low RBC&quot;] --&gt; B[&quot;Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping&quot;]
-                B --&gt; C[&quot;Verify Cold Agglutination (IgM-Mediated Autoantibody)&quot;]
-                C --&gt; D[&quot;Action: Incubate EDTA Tube at 37°C for 15-30 Minutes&quot;]
-                D --&gt; E[&quot;Immediately Re-Analyze Specimen on Automated Analyzer&quot;]
-                E --&gt; F{&quot;Did MCHC Normalize &lt;= 36.0 g/dL?&quot;}
-                F --&gt;|&quot;Yes&quot;| G[&quot;Release Validated CBC Results &amp; Document 37°C Pre-Warming&quot;]
-                F --&gt;|&quot;No&quot;| H[&quot;Perform 37°C Saline Wash / Replacement Protocol&quot;]
-        end">
+    subgraph Agglutination_Troubleshooting [&quot;Cold Agglutinin Investigation &amp; Correction Protocol&quot;]
+        direction TD
+        A[&quot;Automated CBC Flag: Impossible MCHC &amp;gt; 36.0 g/dL, High MCV &amp;gt; 100 fL, Low RBC&quot;] --&gt; B[&quot;Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping&quot;]
+        B --&gt; C[&quot;Verify Cold Agglutination (IgM-Mediated Autoantibody)&quot;]
+        D[&quot;Action: Incubate EDTA Tube at 37°C for 15-30 Minutes&quot;]
+        C --&gt; D
+        D --&gt; E[&quot;Immediately Re-Analyze Specimen on Automated Analyzer&quot;]
+        E --&gt; F{&quot;Did MCHC Normalize to 32 - 36 g/dL?&quot;}
+        F --&gt;|&quot;Yes&quot;| G[&quot;Release Validated CBC Results &amp; Document 37°C Pre-Warming&quot;]
+        F --&gt;|&quot;No&quot;| H[&quot;Perform 37°C Saline Wash / Replacement Protocol&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Agglutination_Troubleshooting [&quot;Cold Agglutinin Investigation &amp; Correction Protocol&quot;]
+        direction TD
+        A[&quot;Automated CBC Flag: Impossible MCHC &amp;gt; 36.0 g/dL, High MCV &amp;gt; 100 fL, Low RBC&quot;] --&gt; B[&quot;Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping&quot;]
+        B --&gt; C[&quot;Verify Cold Agglutination (IgM-Mediated Autoantibody)&quot;]
+        D[&quot;Action: Incubate EDTA Tube at 37°C for 15-30 Minutes&quot;]
+        C --&gt; D
+        D --&gt; E[&quot;Immediately Re-Analyze Specimen on Automated Analyzer&quot;]
+        E --&gt; F{&quot;Did MCHC Normalize to 32 - 36 g/dL?&quot;}
+        F --&gt;|&quot;Yes&quot;| G[&quot;Release Validated CBC Results &amp; Document 37°C Pre-Warming&quot;]
+        F --&gt;|&quot;No&quot;| H[&quot;Perform 37°C Saline Wash / Replacement Protocol&quot;]
+    end">
 flowchart TD
-        subgraph Agglutination_Troubleshooting ["Cold Agglutinin Investigation & Correction Protocol"]
-                direction TD
-                A["Automated CBC Flag: Impossible MCHC &gt; 37.0 g/dL, High MCV, Low RBC"] --> B["Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping"]
-                B --> C["Verify Cold Agglutination (IgM-Mediated Autoantibody)"]
-                C --> D["Action: Incubate EDTA Tube at 37°C for 15-30 Minutes"]
-                D --> E["Immediately Re-Analyze Specimen on Automated Analyzer"]
-                E --> F{"Did MCHC Normalize <= 36.0 g/dL?"}
-                F -->|"Yes"| G["Release Validated CBC Results & Document 37°C Pre-Warming"]
-                F -->|"No"| H["Perform 37°C Saline Wash / Replacement Protocol"]
-        end
+    subgraph Agglutination_Troubleshooting ["Cold Agglutinin Investigation & Correction Protocol"]
+        direction TD
+        A["Automated CBC Flag: Impossible MCHC &gt; 36.0 g/dL, High MCV &gt; 100 fL, Low RBC"] --> B["Microscopic PBS Review in Monolayer: Irregular Grape-Like 3D Clumping"]
+        B --> C["Verify Cold Agglutination (IgM-Mediated Autoantibody)"]
+        D["Action: Incubate EDTA Tube at 37°C for 15-30 Minutes"]
+        C --> D
+        D --> E["Immediately Re-Analyze Specimen on Automated Analyzer"]
+        E --> F{"Did MCHC Normalize to 32 - 36 g/dL?"}
+        F -->|"Yes"| G["Release Validated CBC Results & Document 37°C Pre-Warming"]
+        F -->|"No"| H["Perform 37°C Saline Wash / Replacement Protocol"]
+    end
 </div>
 
 <hr />
 <h3 id="platelet-morphologies-anomalies">Platelet Morphologies &amp; Anomalies</h3>
 <p>Platelet size, granularity, and cytoplasmic fragmentation provide vital insight into megakaryocytopoiesis, accelerated consumption, myelodysplasia, and in vitro pre-analytical artifacts.</p>
 <ul>
-<li><strong>Normal Platelets</strong>: Small, discoid cytoplasmic fragments measuring 1.5–3.0 µm in diameter, featuring pale blue-gray cytoplasm filled with fine, evenly distributed purple-red <strong>alpha granules</strong>.</li>
+<li><strong>Normal Platelets</strong>: Small, discoid cytoplasmic fragments measuring 1.5–3.0 µm in diameter, featuring pale blue-gray cytoplasm filled with fine, evenly distributed purple-red <strong>alpha granules</strong> (ASCP BOC reference interval: $150\text{--}450 \times 10^3/\mu\text{L}$ or $150\text{--}450 \times 10^9/\text{L}$).</li>
 <li><strong>Giant Platelets (Macrothrombocytes)</strong>: Platelets exceeding the diameter of normal red blood cells (<strong>&gt;7.0 µm</strong>, typically 10–20 µm). Giant platelets indicate accelerated bone marrow megakaryocytopoiesis and premature release of young stress platelets in high-turnover states (such as <strong>Immune Thrombocytopenia [ITP]</strong> and recovery from myelosuppressive chemotherapy) or congenital macrothrombocytopenias (such as <strong>May-Hegglin Anomaly</strong> and <strong>Bernard-Soulier Syndrome</strong>).</li>
 <li><strong>Hypogranular / Agranular "Ghost" Platelets</strong>: Platelets that appear as pale, slate-blue or clear cytoplasmic discs lacking normal purple alpha granules. Hypogranularity is a characteristic marker of platelet dysplasia in <strong>Myelodysplastic Syndromes (MDS)</strong> and Chronic Myeloid Leukemia (CML), or the rare congenital <strong>Gray Platelet Syndrome</strong> (alpha granule deficiency).</li>
 <li><strong>Megakaryocyte Nuclear Fragments</strong>: Bare, multi-lobulated, densely clumped, smudged nuclear masses surrounded by a narrow rim of wispy, frilly cytoplasm with budding blebs and attached platelets. Circulating megakaryocyte fragments indicate profound marrow stress, bone marrow architecture breakdown, or neoplastic proliferation in <strong>Primary Myelofibrosis (PMF)</strong>, chronic myeloproliferative neoplasms, and severe leukoerythroblastic reactions.</li>
-<li><strong>Platelet Satellitism</strong>: An in vitro artifact where four or more platelets adhere to the outer membrane of segmented neutrophils (and rarely monocytes), forming distinct rosettes. Satellitism is caused by an EDTA-dependent IgG autoantibody directed against the glycoprotein IIb/IIIa complex and neutrophil Fc receptors. This causes automated cell counters to register the rosetted platelets as leukocytes, producing <strong>spurious thrombocytopenia</strong> and falsely elevated WBC counts. It is resolved by collecting a fresh specimen in a <strong>sodium citrate (light blue-top) tube</strong>, multiplying the measured platelet count by 1.1 to correct for citrate dilution.</li>
+<li><strong>Platelet Satellitism</strong>: An in vitro artifact where four or more platelets adhere to the outer membrane of segmented neutrophils (and rarely monocytes), forming distinct rosettes. Satellitism is caused by an EDTA-dependent IgG autoantibody directed against the glycoprotein IIb/IIIa complex and neutrophil Fc receptors. This causes automated cell counters to register the rosetted platelets as leukocytes, producing <strong>spurious thrombocytopenia</strong> and falsely elevated WBC counts. It is resolved by collecting a fresh specimen in a <strong>sodium citrate (light blue-top) tube</strong>, multiplying the measured platelet count by $1.11$ to correct for citrate dilution.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        A[&quot;Platelet Morphologies&quot;] --&gt; B[&quot;Normal (1.5-3.0 um | Fine Alpha Granules)&quot;]
-        A --&gt; C[&quot;Giant Platelets (&amp;gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)&quot;]
-        A --&gt; D[&quot;Hypogranular &#x27;Ghost&#x27; Platelets (MDS / Gray Platelet Syndrome)&quot;]
-        A --&gt; E[&quot;Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)&quot;]
-        A --&gt; F[&quot;Platelet Satellitism (EDTA In Vitro Rosetting -&amp;gt; Resolve via Citrate Tube)&quot;]" data-original-code="flowchart LR
-        A[&quot;Platelet Morphologies&quot;] --&gt; B[&quot;Normal (1.5-3.0 um | Fine Alpha Granules)&quot;]
-        A --&gt; C[&quot;Giant Platelets (&amp;gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)&quot;]
-        A --&gt; D[&quot;Hypogranular &#x27;Ghost&#x27; Platelets (MDS / Gray Platelet Syndrome)&quot;]
-        A --&gt; E[&quot;Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)&quot;]
-        A --&gt; F[&quot;Platelet Satellitism (EDTA In Vitro Rosetting -&amp;gt; Resolve via Citrate Tube)&quot;]">
+    A[&quot;Platelet Morphologies&quot;] --&gt; B[&quot;Normal (1.5-3.0 um | Fine Alpha Granules)&quot;]
+    A --&gt; C[&quot;Giant Platelets (&amp;gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)&quot;]
+    A --&gt; D[&quot;Hypogranular &#x27;Ghost&#x27; Platelets (MDS / Gray Platelet Syndrome)&quot;]
+    A --&gt; E[&quot;Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)&quot;]
+    A --&gt; F[&quot;Platelet Satellitism (EDTA In Vitro Rosetting -&amp;gt; Resolve via Citrate Tube x 1.11)&quot;]" data-original-code="flowchart LR
+    A[&quot;Platelet Morphologies&quot;] --&gt; B[&quot;Normal (1.5-3.0 um | Fine Alpha Granules)&quot;]
+    A --&gt; C[&quot;Giant Platelets (&amp;gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)&quot;]
+    A --&gt; D[&quot;Hypogranular &#x27;Ghost&#x27; Platelets (MDS / Gray Platelet Syndrome)&quot;]
+    A --&gt; E[&quot;Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)&quot;]
+    A --&gt; F[&quot;Platelet Satellitism (EDTA In Vitro Rosetting -&amp;gt; Resolve via Citrate Tube x 1.11)&quot;]">
 flowchart LR
-        A["Platelet Morphologies"] --> B["Normal (1.5-3.0 um | Fine Alpha Granules)"]
-        A --> C["Giant Platelets (&gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)"]
-        A --> D["Hypogranular 'Ghost' Platelets (MDS / Gray Platelet Syndrome)"]
-        A --> E["Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)"]
-        A --> F["Platelet Satellitism (EDTA In Vitro Rosetting -&gt; Resolve via Citrate Tube)"]
+    A["Platelet Morphologies"] --> B["Normal (1.5-3.0 um | Fine Alpha Granules)"]
+    A --> C["Giant Platelets (&gt; 7.0 um | ITP / May-Hegglin / Bernard-Soulier)"]
+    A --> D["Hypogranular 'Ghost' Platelets (MDS / Gray Platelet Syndrome)"]
+    A --> E["Megakaryocyte Fragments (Marrow Fibrosis / PMF / Leukoerythroblastosis)"]
+    A --> F["Platelet Satellitism (EDTA In Vitro Rosetting -&gt; Resolve via Citrate Tube x 1.11)"]
 </div>
 
 <hr />
@@ -1581,34 +1571,31 @@ flowchart LR
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Parasite_Differential [&quot;Differential Diagnosis of Blood Parasites&quot;]
-                direction TD
-                A[&quot;Suspected Blood Pathogen on PBS&quot;] --&gt; B{&quot;Location &amp; Morphology&quot;}
-
-                B --&gt;|&quot;Intraerythrocytic Rings, Maltese Cross, No Pigment&quot;| C[&quot;Babesia microti (Tick-Borne)&quot;]
-                B --&gt;|&quot;Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots&quot;| D[&quot;Plasmodium sp. (Malaria)&quot;]
-                B --&gt;|&quot;Extracellular Loose Spirochetes / Coils Between RBCs&quot;| E[&quot;Borrelia sp. (Relapsing Fever)&quot;]
-                B --&gt;|&quot;Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)&quot;| F[&quot;Anaplasma (PMNs) / Ehrlichia (Monocytes)&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Parasite_Differential [&quot;Differential Diagnosis of Blood Parasites&quot;]
-                direction TD
-                A[&quot;Suspected Blood Pathogen on PBS&quot;] --&gt; B{&quot;Location &amp; Morphology&quot;}
-
-                B --&gt;|&quot;Intraerythrocytic Rings, Maltese Cross, No Pigment&quot;| C[&quot;Babesia microti (Tick-Borne)&quot;]
-                B --&gt;|&quot;Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots&quot;| D[&quot;Plasmodium sp. (Malaria)&quot;]
-                B --&gt;|&quot;Extracellular Loose Spirochetes / Coils Between RBCs&quot;| E[&quot;Borrelia sp. (Relapsing Fever)&quot;]
-                B --&gt;|&quot;Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)&quot;| F[&quot;Anaplasma (PMNs) / Ehrlichia (Monocytes)&quot;]
-        end">
+    subgraph Parasite_Differential [&quot;Differential Diagnosis of Blood Parasites&quot;]
+        direction TD
+        A[&quot;Suspected Blood Pathogen on PBS&quot;] --&gt; B{&quot;Location &amp; Morphology&quot;}
+        B --&gt;|&quot;Intraerythrocytic Rings, Maltese Cross, No Pigment&quot;| C[&quot;Babesia microti (Tick-Borne)&quot;]
+        B --&gt;|&quot;Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots&quot;| D[&quot;Plasmodium sp. (Malaria)&quot;]
+        B --&gt;|&quot;Extracellular Loose Spirochetes / Coils Between RBCs&quot;| E[&quot;Borrelia sp. (Relapsing Fever)&quot;]
+        B --&gt;|&quot;Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)&quot;| F[&quot;Anaplasma (PMNs) / Ehrlichia (Monocytes)&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Parasite_Differential [&quot;Differential Diagnosis of Blood Parasites&quot;]
+        direction TD
+        A[&quot;Suspected Blood Pathogen on PBS&quot;] --&gt; B{&quot;Location &amp; Morphology&quot;}
+        B --&gt;|&quot;Intraerythrocytic Rings, Maltese Cross, No Pigment&quot;| C[&quot;Babesia microti (Tick-Borne)&quot;]
+        B --&gt;|&quot;Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots&quot;| D[&quot;Plasmodium sp. (Malaria)&quot;]
+        B --&gt;|&quot;Extracellular Loose Spirochetes / Coils Between RBCs&quot;| E[&quot;Borrelia sp. (Relapsing Fever)&quot;]
+        B --&gt;|&quot;Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)&quot;| F[&quot;Anaplasma (PMNs) / Ehrlichia (Monocytes)&quot;]
+    end">
 flowchart TD
-        subgraph Parasite_Differential ["Differential Diagnosis of Blood Parasites"]
-                direction TD
-                A["Suspected Blood Pathogen on PBS"] --> B{"Location & Morphology"}
-
-                B -->|"Intraerythrocytic Rings, Maltese Cross, No Pigment"| C["Babesia microti (Tick-Borne)"]
-                B -->|"Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots"| D["Plasmodium sp. (Malaria)"]
-                B -->|"Extracellular Loose Spirochetes / Coils Between RBCs"| E["Borrelia sp. (Relapsing Fever)"]
-                B -->|"Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)"| F["Anaplasma (PMNs) / Ehrlichia (Monocytes)"]
-        end
+    subgraph Parasite_Differential ["Differential Diagnosis of Blood Parasites"]
+        direction TD
+        A["Suspected Blood Pathogen on PBS"] --> B{"Location & Morphology"}
+        B -->|"Intraerythrocytic Rings, Maltese Cross, No Pigment"| C["Babesia microti (Tick-Borne)"]
+        B -->|"Intraerythrocytic Rings, Banana Gametocytes, Schüffner Dots"| D["Plasmodium sp. (Malaria)"]
+        B -->|"Extracellular Loose Spirochetes / Coils Between RBCs"| E["Borrelia sp. (Relapsing Fever)"]
+        B -->|"Intraleukocytic Cytoplasmic Morulae (Clusters of Dots)"| F["Anaplasma (PMNs) / Ehrlichia (Monocytes)"]
+    end
 </div>
 
 <hr />
@@ -1626,34 +1613,31 @@ flowchart TD
 <li><strong>Platelets Overlying Red Blood Cells</strong>: A normal platelet superimposed directly on top of an erythrocyte can mimic an intraerythrocytic parasite (<em>Plasmodium</em> or <em>Babesia</em>) or a Howell-Jolly body. A superimposed platelet is distinguished by its characteristic pale-purple granular center, its surrounding clear halo (caused by membrane displacement), and its different focal plane relative to the underlying RBC.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Artifact_Differentiation [&quot;Artifact vs Pathologic Structure Differential&quot;]
-                direction TD
-                A[&quot;Indeterminate Intraerythrocytic / Extracellular Structure&quot;] --&gt; B{&quot;Microscopic Evaluation Criteria&quot;}
-
-                B --&gt;|&quot;Refractile under fine focus, hollow center, changes light&quot;| C[&quot;Water / Drying Artifact (Methanol Contamination)&quot;]
-                B --&gt;|&quot;Irregular sizes, dark purple debris in cell-free zones&quot;| D[&quot;Precipitated Wright-Giemsa Stain&quot;]
-                B --&gt;|&quot;Pale purple granular center with surrounding clear halo&quot;| E[&quot;Superimposed Overlying Platelet&quot;]
-                B --&gt;|&quot;True chromatin dot + blue cytoplasm in identical focal plane&quot;| F[&quot;True Intraerythrocytic Parasite (Plasmodium / Babesia)&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Artifact_Differentiation [&quot;Artifact vs Pathologic Structure Differential&quot;]
-                direction TD
-                A[&quot;Indeterminate Intraerythrocytic / Extracellular Structure&quot;] --&gt; B{&quot;Microscopic Evaluation Criteria&quot;}
-
-                B --&gt;|&quot;Refractile under fine focus, hollow center, changes light&quot;| C[&quot;Water / Drying Artifact (Methanol Contamination)&quot;]
-                B --&gt;|&quot;Irregular sizes, dark purple debris in cell-free zones&quot;| D[&quot;Precipitated Wright-Giemsa Stain&quot;]
-                B --&gt;|&quot;Pale purple granular center with surrounding clear halo&quot;| E[&quot;Superimposed Overlying Platelet&quot;]
-                B --&gt;|&quot;True chromatin dot + blue cytoplasm in identical focal plane&quot;| F[&quot;True Intraerythrocytic Parasite (Plasmodium / Babesia)&quot;]
-        end">
+    subgraph Artifact_Differentiation [&quot;Artifact vs Pathologic Structure Differential&quot;]
+        direction TD
+        A[&quot;Indeterminate Intraerythrocytic / Extracellular Structure&quot;] --&gt; B{&quot;Microscopic Evaluation Criteria&quot;}
+        B --&gt;|&quot;Refractile under fine focus, hollow center, changes light&quot;| C[&quot;Water / Drying Artifact (Methanol Contamination)&quot;]
+        B --&gt;|&quot;Irregular sizes, dark purple debris in cell-free zones&quot;| D[&quot;Precipitated Wright-Giemsa Stain&quot;]
+        B --&gt;|&quot;Pale purple granular center with surrounding clear halo&quot;| E[&quot;Superimposed Overlying Platelet&quot;]
+        B --&gt;|&quot;True chromatin dot + blue cytoplasm in identical focal plane&quot;| F[&quot;True Intraerythrocytic Parasite (Plasmodium / Babesia)&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Artifact_Differentiation [&quot;Artifact vs Pathologic Structure Differential&quot;]
+        direction TD
+        A[&quot;Indeterminate Intraerythrocytic / Extracellular Structure&quot;] --&gt; B{&quot;Microscopic Evaluation Criteria&quot;}
+        B --&gt;|&quot;Refractile under fine focus, hollow center, changes light&quot;| C[&quot;Water / Drying Artifact (Methanol Contamination)&quot;]
+        B --&gt;|&quot;Irregular sizes, dark purple debris in cell-free zones&quot;| D[&quot;Precipitated Wright-Giemsa Stain&quot;]
+        B --&gt;|&quot;Pale purple granular center with surrounding clear halo&quot;| E[&quot;Superimposed Overlying Platelet&quot;]
+        B --&gt;|&quot;True chromatin dot + blue cytoplasm in identical focal plane&quot;| F[&quot;True Intraerythrocytic Parasite (Plasmodium / Babesia)&quot;]
+    end">
 flowchart TD
-        subgraph Artifact_Differentiation ["Artifact vs Pathologic Structure Differential"]
-                direction TD
-                A["Indeterminate Intraerythrocytic / Extracellular Structure"] --> B{"Microscopic Evaluation Criteria"}
-
-                B -->|"Refractile under fine focus, hollow center, changes light"| C["Water / Drying Artifact (Methanol Contamination)"]
-                B -->|"Irregular sizes, dark purple debris in cell-free zones"| D["Precipitated Wright-Giemsa Stain"]
-                B -->|"Pale purple granular center with surrounding clear halo"| E["Superimposed Overlying Platelet"]
-                B -->|"True chromatin dot + blue cytoplasm in identical focal plane"| F["True Intraerythrocytic Parasite (Plasmodium / Babesia)"]
-        end
+    subgraph Artifact_Differentiation ["Artifact vs Pathologic Structure Differential"]
+        direction TD
+        A["Indeterminate Intraerythrocytic / Extracellular Structure"] --> B{"Microscopic Evaluation Criteria"}
+        B -->|"Refractile under fine focus, hollow center, changes light"| C["Water / Drying Artifact (Methanol Contamination)"]
+        B -->|"Irregular sizes, dark purple debris in cell-free zones"| D["Precipitated Wright-Giemsa Stain"]
+        B -->|"Pale purple granular center with surrounding clear halo"| E["Superimposed Overlying Platelet"]
+        B -->|"True chromatin dot + blue cytoplasm in identical focal plane"| F["True Intraerythrocytic Parasite (Plasmodium / Babesia)"]
+    end
 </div>
 
 <hr />
@@ -1662,20 +1646,26 @@ flowchart TD
 <ul>
 <li><strong>Evaluative Field Selection</strong>: Smear review must be conducted exclusively in the optimal monolayer (where red cells are evenly distributed, separated by narrow margins, and just touching one another without distortion or stacking). Microscopic evaluation in the feathered edge causes artificial cell flattening and loss of central pallor; evaluation in the thick body causes artificial rouleaux and cellular crowding.</li>
 <li><strong>Automated Parameter Correlation Checklist</strong>:<ol>
-<li><strong>Red Cell Indices Verification</strong>:<br />
-        * Microcytosis ($\text{MCV} < 80\text{ fL}$) and hypochromia on the smear must correlate with low automated MCV and MCH.<br />
-        * Macrocytosis ($\text{MCV} > 100\text{ fL}$) on the smear must correlate with automated macrocytic histograms.<br />
-        * Elevated RDW (&gt;15.0%) must match visible anisocytosis and poikilocytosis on the blood film.</li>
-<li><strong>White Cell &amp; Differential Verification</strong>:<br />
-        * High automated WBC counts with immature granulocyte flags must be confirmed by manual differential verifying left-shifted bands, metamyelocytes, myelocytes, or blasts.<br />
-        * Lymphocytic histogram flags must be visually differentiated into benign reactive lymphocytes versus monoclonal malignant populations (e.g., CLL soccer-ball cells, prolymphocytes, or blast forms).</li>
-<li><strong>Platelet Estimate Cross-Check</strong>:<br />
-        * Estimate the platelet count on 100x oil immersion in the monolayer: $\text{Estimated Platelet Count } (\times 10^3/\mu\text{L}) = \text{Average Number of Platelets per 100x Field} \times 20,000$.<br />
-        * Verify that the calculated microscopic estimate closely matches the automated analyzer platelet count; investigate discrepancies for giant platelets, fibrin microclots, or platelet satellitism.</li>
+<li><strong>Red Cell Indices Verification</strong>:<ul>
+<li>Microcytosis ($\text{MCV} < 76\text{ fL}$) and hypochromia ($\text{MCHC} < 32\text{ g/dL}$) on the smear must correlate with low automated MCV and MCHC (standard ranges: MCV $76\text{--}100\text{ fL}$, MCHC $32\text{--}36\text{ g/dL}$).</li>
+<li>Macrocytosis ($\text{MCV} > 100\text{ fL}$) on the smear must correlate with automated macrocytic histograms.</li>
+<li>Elevated RDW ($>14.5\%$, reference range $11.5\text{--}14.5\%$) must match visible anisocytosis and poikilocytosis on the blood film.</li>
+</ul>
+</li>
+<li><strong>White Cell &amp; Differential Verification</strong>:<ul>
+<li>High automated WBC counts ($>10.6 \times 10^3/\mu\text{L}$) with immature granulocyte flags must be confirmed by manual differential verifying left-shifted bands, metamyelocytes, myelocytes, or blasts.</li>
+<li>Lymphocytic histogram flags must be visually differentiated into benign reactive lymphocytes versus monoclonal malignant populations (e.g., CLL soccer-ball cells, prolymphocytes, or blast forms).</li>
+</ul>
+</li>
+<li><strong>Platelet Estimate Cross-Check</strong>:<ul>
+<li>Estimate the platelet count on 100x oil immersion in the monolayer: $\text{Estimated Platelet Count } (\text{PLTs}/\mu\text{L}) = \text{Average Number of Platelets per 100x Field} \times 20,000$.</li>
+<li>Verify that the calculated microscopic estimate closely matches the automated analyzer platelet count (reference range $150\text{--}450 \times 10^3/\mu\text{L}$); investigate discrepancies for giant platelets, fibrin microclots, or platelet satellitism.</li>
+</ul>
+</li>
 </ol>
 </li>
 <li><strong>Critical Finding Escalation Protocol</strong>:<ul>
-<li>Immediately escalate critical morphological findings to the hematopathologist and notify the attending clinician:<ul>
+<li>Immediately escalate critical morphological findings to the hematopathologist and notify the attending clinician:</li>
 <li>Presence of circulating <strong>blasts</strong> of any percentage.</li>
 <li>Presence of <strong>Auer rods</strong> (confirming acute myeloid/promyelocytic leukemia).</li>
 <li>Presence of <strong>schistocytes $\ge 1.0\%$</strong> (indicating acute microangiopathic hemolytic anemia / TTP / DIC).</li>
@@ -1684,49 +1674,41 @@ flowchart TD
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph QC_Escalation_Workflow [&quot;Laboratory Morphology Verification &amp; Escalation&quot;]
-                direction TD
-                A[&quot;Perform 100-Cell Manual Differential in Monolayer&quot;] --&gt; B[&quot;Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)&quot;]
-                B --&gt; C[&quot;Cross-Check Manual Smear Findings against Automated Indices&quot;]
-
-                C --&gt; D{&quot;Are Critical Findings Present?&quot;}
-
-                D --&gt;|&quot;Blasts / Auer Rods&quot;| E[&quot;STAT Pathologist Review &amp; Critical Value Clinical Call&quot;]
-                D --&gt;|&quot;Schistocytes &gt;= 1.0%&quot;| E
-                D --&gt;|&quot;Intracellular Parasites (Malaria / Babesia)&quot;| E
-                D --&gt;|&quot;Unexplained Agglutination / MCHC &gt; 37.0&quot;| F[&quot;Perform 37°C Incubation / Saline Replacement&quot;]
-                D --&gt;|&quot;No Critical Flags / Normal Correlation&quot;| G[&quot;Verify &amp; Release Validated CBC and Differential&quot;]
-        end" data-original-code="flowchart TD
-        subgraph QC_Escalation_Workflow [&quot;Laboratory Morphology Verification &amp; Escalation&quot;]
-                direction TD
-                A[&quot;Perform 100-Cell Manual Differential in Monolayer&quot;] --&gt; B[&quot;Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)&quot;]
-                B --&gt; C[&quot;Cross-Check Manual Smear Findings against Automated Indices&quot;]
-
-                C --&gt; D{&quot;Are Critical Findings Present?&quot;}
-
-                D --&gt;|&quot;Blasts / Auer Rods&quot;| E[&quot;STAT Pathologist Review &amp; Critical Value Clinical Call&quot;]
-                D --&gt;|&quot;Schistocytes &gt;= 1.0%&quot;| E
-                D --&gt;|&quot;Intracellular Parasites (Malaria / Babesia)&quot;| E
-                D --&gt;|&quot;Unexplained Agglutination / MCHC &gt; 37.0&quot;| F[&quot;Perform 37°C Incubation / Saline Replacement&quot;]
-                D --&gt;|&quot;No Critical Flags / Normal Correlation&quot;| G[&quot;Verify &amp; Release Validated CBC and Differential&quot;]
-        end">
+    subgraph QC_Escalation_Workflow [&quot;Laboratory Morphology Verification &amp; Escalation&quot;]
+        direction TD
+        A[&quot;Perform 100-Cell Manual Differential in Monolayer&quot;] --&gt; B[&quot;Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)&quot;]
+        B --&gt; C[&quot;Cross-Check Manual Smear Findings against Automated Indices&quot;]
+        C --&gt; D{&quot;Are Critical Findings Present?&quot;}
+        D --&gt;|&quot;Blasts / Auer Rods&quot;| E[&quot;STAT Pathologist Review &amp; Critical Value Clinical Call&quot;]
+        D --&gt;|&quot;Schistocytes &gt;= 1.0%&quot;| E
+        D --&gt;|&quot;Intracellular Parasites (Malaria / Babesia)&quot;| E
+        D --&gt;|&quot;Unexplained Agglutination / MCHC &gt; 36.0 g/dL&quot;| F[&quot;Perform 37°C Incubation / Saline Replacement&quot;]
+        D --&gt;|&quot;No Critical Flags / Normal Correlation&quot;| G[&quot;Verify &amp; Release Validated CBC and Differential&quot;]
+    end" data-original-code="flowchart TD
+    subgraph QC_Escalation_Workflow [&quot;Laboratory Morphology Verification &amp; Escalation&quot;]
+        direction TD
+        A[&quot;Perform 100-Cell Manual Differential in Monolayer&quot;] --&gt; B[&quot;Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)&quot;]
+        B --&gt; C[&quot;Cross-Check Manual Smear Findings against Automated Indices&quot;]
+        C --&gt; D{&quot;Are Critical Findings Present?&quot;}
+        D --&gt;|&quot;Blasts / Auer Rods&quot;| E[&quot;STAT Pathologist Review &amp; Critical Value Clinical Call&quot;]
+        D --&gt;|&quot;Schistocytes &gt;= 1.0%&quot;| E
+        D --&gt;|&quot;Intracellular Parasites (Malaria / Babesia)&quot;| E
+        D --&gt;|&quot;Unexplained Agglutination / MCHC &gt; 36.0 g/dL&quot;| F[&quot;Perform 37°C Incubation / Saline Replacement&quot;]
+        D --&gt;|&quot;No Critical Flags / Normal Correlation&quot;| G[&quot;Verify &amp; Release Validated CBC and Differential&quot;]
+    end">
 flowchart TD
-        subgraph QC_Escalation_Workflow ["Laboratory Morphology Verification & Escalation"]
-                direction TD
-                A["Perform 100-Cell Manual Differential in Monolayer"] --> B["Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)"]
-                B --> C["Cross-Check Manual Smear Findings against Automated Indices"]
-
-                C --> D{"Are Critical Findings Present?"}
-
-                D -->|"Blasts / Auer Rods"| E["STAT Pathologist Review & Critical Value Clinical Call"]
-                D -->|"Schistocytes >= 1.0%"| E
-                D -->|"Intracellular Parasites (Malaria / Babesia)"| E
-                D -->|"Unexplained Agglutination / MCHC > 37.0"| F["Perform 37°C Incubation / Saline Replacement"]
-                D -->|"No Critical Flags / Normal Correlation"| G["Verify & Release Validated CBC and Differential"]
-        end
+    subgraph QC_Escalation_Workflow ["Laboratory Morphology Verification & Escalation"]
+        direction TD
+        A["Perform 100-Cell Manual Differential in Monolayer"] --> B["Calculate PLT Estimate (Avg PLTs / 100x Field x 20,000)"]
+        B --> C["Cross-Check Manual Smear Findings against Automated Indices"]
+        C --> D{"Are Critical Findings Present?"}
+        D -->|"Blasts / Auer Rods"| E["STAT Pathologist Review & Critical Value Clinical Call"]
+        D -->|"Schistocytes >= 1.0%"| E
+        D -->|"Intracellular Parasites (Malaria / Babesia)"| E
+        D -->|"Unexplained Agglutination / MCHC > 36.0 g/dL"| F["Perform 37°C Incubation / Saline Replacement"]
+        D -->|"No Critical Flags / Normal Correlation"| G["Verify & Release Validated CBC and Differential"]
+    end
 </div>
 
 <hr />
@@ -1735,11 +1717,10 @@ flowchart TD
 <li><strong>Myeloid Maturation &amp; Auer Rod Significance</strong>: The transition from myeloblast through promyelocyte, myelocyte, and metamyelocyte is characterized by progressive nuclear chromatin condensation, loss of nucleoli, development of the perinuclear Golgi hof, and replacement of primary azurophilic granules with secondary specific granules. The presence of Auer rods definitively establishes myeloid lineage.</li>
 <li><strong>Reactive Toxic Changes versus Inherited Inclusions</strong>: Toxic granulation, Döhle bodies (rough endoplasmic reticulum), and toxic vacuolization represent reactive changes driven by inflammatory cytokines and accelerated granulopoiesis. They must be differentiated from inherited conditions such as May-Hegglin anomaly (<em>MYH9</em> mutations, giant platelets, spindle-shaped inclusions) and Alder-Reilly anomaly (mucopolysaccharidosis, coarse purple granules in all leukocyte lineages).</li>
 <li><strong>Reactive Downey Lymphocytes versus Monoclonal Malignancy</strong>: Reactive lymphocytes (Downey Type II) exhibit pronounced morphological pleomorphism with low N:C ratios and soft, pale-blue cytoplasm that scallops and furled borders around adjacent red blood cells. In contrast, malignant lymphoid disorders present with a monotonous population (e.g., CLL soccer-ball chromatin and smudge cells; prolymphocytes with prominent punched-out nucleoli; hairy cell leukemia with fine circumferential projections).</li>
-<li><strong>Life-Threatening RBC Poikilocytes</strong>: The presence of schistocytes (helmet cells/keratocytes) indicates mechanical shearing across fibrin strands in microangiopathic hemolytic anemias (TTP, DIC, HUS) and requires immediate pathologist escalation when $\ge 1.0\%$. Spherocytes indicate membrane surface area loss (hereditary spherocytosis or warm AIHA), while degmacytes (bite cells) reflect splenic pitting of Heinz bodies during oxidative hemolysis (G6PD deficiency).</li>
-<li><strong>Cold Agglutinin Recognition &amp; MCHC Correction</strong>: High-titer cold IgM antibodies cause gross, irregular, three-dimensional RBC agglutination, resulting in spurious automated indices (falsely low RBC, falsely high MCV, and an impossible $\text{MCHC} > 37.0\text{ g/dL}$). This artifact is resolved by incubating the specimen at 37°C for 15 to 30 minutes and immediately re-running the warmed sample.</li>
-<li><strong>Platelet Artifacts &amp; Parasite Confirmation</strong>: Platelet satellitism is an in vitro EDTA-induced artifact causing spurious automated thrombocytopenia that is corrected by recollecting blood in a sodium citrate tube (multiplying the result by 1.1). Intraerythrocytic parasites (<em>Plasmodium</em>, <em>Babesia</em> Maltese cross) must be distinguished from overlying platelets, stain precipitates, and refractile water drying artifacts by confirming true chromatin dots and blue cytoplasm in the same focal plane.</li>
+<li><strong>Life-Threatening RBC Poikilocytes</strong>: The presence of schistocytes (helmet cells/keratocytes) indicates mechanical shearing across fibrin strands in microangiopathic hemolytic anemias (TTP, DIC, HUS) and requires immediate pathologist escalation when $\ge 1.0\%$. Spherocytes indicate membrane surface area loss (hereditary spherocytosis or warm AIHA), elevating MCHC above the $32\text{--}36\text{ g/dL}$ range, while degmacytes (bite cells) reflect splenic pitting of Heinz bodies during oxidative hemolysis (G6PD deficiency).</li>
+<li><strong>Cold Agglutinin Recognition &amp; MCHC Correction</strong>: High-titer cold IgM antibodies cause gross, irregular, three-dimensional RBC agglutination, resulting in spurious automated indices (falsely low RBC count $<4.00 \times 10^6/\mu\text{L}$, falsely high MCV $>100\text{ fL}$, and an impossible $\text{MCHC} > 36.0\text{ g/dL}$). This artifact is resolved by incubating the specimen at 37°C for 15 to 30 minutes and immediately re-running the warmed sample.</li>
+<li><strong>Platelet Artifacts &amp; Parasite Confirmation</strong>: Platelet satellitism is an in vitro EDTA-induced artifact causing spurious automated thrombocytopenia that is corrected by recollecting blood in a sodium citrate tube (multiplying the result by $1.11$). Intraerythrocytic parasites (<em>Plasmodium</em>, <em>Babesia</em> Maltese cross) must be distinguished from overlying platelets, stain precipitates, and refractile water drying artifacts by confirming true chromatin dots and blue cytoplasm in the same focal plane.</li>
 </ul>
-<hr />
     </article>
 
     <!-- Fullscreen Mermaid Diagram Viewer Modal -->

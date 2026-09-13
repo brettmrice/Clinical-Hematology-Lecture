@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../shared/mindmap_quiz.css">
+  <script src="../../../../shared/mindmaps_manifest.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -35,18 +37,370 @@
       position: absolute;
     }
 
-    /* Top Left Title Card */
+    /* Top Left Title Button Card */
     .top-title-card {
       top: 20px;
       left: 24px;
-      padding: 10px 18px;
+      padding: 8px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.96);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+      text-align: left;
+    }
+
+    .top-title-card:hover {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .top-title-card:active {
+      transform: translateY(0);
+    }
+
+    .top-title-card .menu-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6366f1;
+      transition: transform 0.2s ease;
+    }
+
+    .top-title-card:hover .menu-icon {
+      transform: scale(1.1);
     }
 
     .top-title-card h1 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #1a202c;
       white-space: nowrap;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .top-title-card .badge {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: #eef2ff;
+      color: #4f46e5;
+      letter-spacing: 0.02em;
+    }
+
+    /* Slide-out Sidebar Drawer & Backdrop */
+    .sidebar-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(3px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 380px;
+      max-width: 88vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.16);
+      z-index: 101;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      user-select: auto;
+    }
+
+    .sidebar-drawer.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+    }
+
+    .sidebar-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-header-left svg {
+      color: #6366f1;
+    }
+
+    .sidebar-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    .sidebar-controls {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #ffffff;
+    }
+
+    /* Type Filter Toggle Group */
+    .filter-type-group {
+      display: flex;
+      background: #f1f5f9;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+    }
+
+    .filter-type-btn {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .filter-type-btn.active {
+      background: #ffffff;
+      color: #4f46e5;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Subfolder & Search row */
+    .sidebar-search-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .sidebar-search-box input {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #f8fafc;
+    }
+
+    .sidebar-search-box input:focus {
+      border-color: #6366f1;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+    .sidebar-search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+
+    .sidebar-sort-btn {
+      height: 35px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-sort-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sidebar-sort-btn.active {
+      background: #eef2ff;
+      border-color: #6366f1;
+      color: #4f46e5;
+    }
+
+    .subfolder-select {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .subfolder-select:focus {
+      border-color: #6366f1;
+    }
+
+    /* List Container */
+    .sidebar-list-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .mindmap-item-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .mindmap-item-card:hover {
+      border-color: #c7d2fe;
+      background: #f8faff;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(99, 102, 241, 0.08);
+    }
+
+    .mindmap-item-card.current {
+      border-color: #6366f1;
+      background: #eef2ff;
+      box-shadow: 0 0 0 1px #6366f1, 0 3px 10px rgba(99, 102, 241, 0.1);
+    }
+
+    .mindmap-item-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+
+    .mindmap-item-card.current .mindmap-item-title {
+      color: #4338ca;
+    }
+
+    .mindmap-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    .badge-type {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-type.lecture {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .badge-type.lab {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .badge-type.other {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .sidebar-empty-state {
+      padding: 32px 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
     }
 
     /* Bottom Left Search Card */
@@ -120,6 +474,61 @@
       white-space: nowrap;
     }
 
+    .top-highyield-card {
+      top: 116px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #b45309;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+      background: rgba(254, 252, 232, 0.95);
+    }
+
+    .top-highyield-card:hover {
+      background: #fef08a;
+      color: #78350f;
+      border-color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.2);
+    }
+
+    .top-highyield-card.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .top-quiz-card {
+      top: 164px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #4f46e5;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #c7d2fe;
+      background: rgba(238, 242, 255, 0.95);
+    }
+
+    .top-quiz-card:hover {
+      background: #e0e7ff;
+      color: #3730a3;
+      border-color: #6366f1;
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+    }
+
     .top-collapse-card:hover, .top-expand-card:hover {
       background: #ffffff;
       color: #0f172a;
@@ -167,11 +576,16 @@
       position: absolute;
       display: inline-flex;
       align-items: center;
-      padding: 9px 18px;
-      border-radius: 20px;
-      font-size: 13.5px;
+      padding: 8px 16px;
+      border-radius: 18px;
+      font-size: 13px;
       font-weight: 600;
-      white-space: nowrap;
+      white-space: normal;
+      width: max-content;
+      max-width: 320px;
+      line-height: 1.35;
+      word-break: normal;
+      overflow-wrap: break-word;
       cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -181,6 +595,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+      box-sizing: border-box;
     }
 
     .node:hover {
@@ -193,6 +608,7 @@
     .node.has-children.collapsed::after {
       content: '+';
       display: inline-block;
+      flex-shrink: 0;
       font-family: monospace;
       font-size: 14px;
       font-weight: 700;
@@ -203,6 +619,7 @@
     .node.has-children:not(.collapsed)::after {
       content: '−';
       display: inline-block;
+      flex-shrink: 0;
       font-family: monospace;
       font-size: 14px;
       font-weight: 700;
@@ -302,6 +719,76 @@
       font-weight: 600;
     }
 
+    .node-level-11 {
+      background-color: #818cf8;
+      color: #1e1b4b;
+      font-weight: 600;
+    }
+
+    .node-level-12 {
+      background-color: #38bdf8;
+      color: #082f49;
+      font-weight: 600;
+    }
+
+    .node-level-13 {
+      background-color: #2dd4bf;
+      color: #134e4a;
+      font-weight: 600;
+    }
+
+    .node-level-14 {
+      background-color: #4ade80;
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .node-level-15, .node-level-16, .node-level-17, .node-level-18, .node-level-19, .node-level-20 {
+      background-color: #a3e635;
+      color: #1a2e05;
+      font-weight: 600;
+    }
+
+    /* High-Yield Filter Styling */
+    .node.high-yield-node::before {
+      content: '⚡';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    body.high-yield-mode .node:not(.is-high-yield-branch) {
+      opacity: 0.22 !important;
+      filter: grayscale(65%);
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.is-high-yield-branch {
+      opacity: 1.0 !important;
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.high-yield-node {
+      box-shadow: 0 0 0 2.5px #f59e0b, 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+      border-color: #d97706 !important;
+      font-weight: 700;
+    }
+
+    body.high-yield-mode .connection-line:not(.is-high-yield-path) {
+      opacity: 0.15 !important;
+      stroke: #cbd5e1 !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease;
+    }
+
+    body.high-yield-mode .connection-line.is-high-yield-path {
+      opacity: 1.0 !important;
+      stroke: #d97706 !important;
+      stroke-width: 2.5px !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    }
+
     /* SVG Connecting Lines */
     .connection-line {
       fill: none;
@@ -340,10 +827,78 @@
 </head>
 <body>
 
-  <!-- Top Floating Element 1: Title Card -->
-  <div class="floating-panel top-title-card">
+  <!-- Top Floating Element 1: Title Card / Sidebar Toggle Button -->
+  <button class="floating-panel top-title-card" id="btn-open-sidebar" title="Click to view all course mind maps">
+    <div class="menu-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
     <h1 id="topic-title">Leukocytes & Platelets</h1>
-  </div>
+    <span class="badge">Mind Maps</span>
+  </button>
+
+  <!-- Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- Slide-out Sidebar Drawer -->
+  <aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Course Mind Maps Navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-header-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <h2>Course Mind Maps</h2>
+      </div>
+      <button class="sidebar-close-btn" id="btn-close-sidebar" title="Close Sidebar (Esc)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="sidebar-controls">
+      <!-- Tier 1: Type Filter Buttons -->
+      <div class="filter-type-group" id="filter-type-group">
+        <button class="filter-type-btn active" data-type="all">All (<span id="count-all">0</span>)</button>
+        <button class="filter-type-btn" data-type="lecture">Lectures (<span id="count-lecture">0</span>)</button>
+        <button class="filter-type-btn" data-type="lab">Labs (<span id="count-lab">0</span>)</button>
+      </div>
+
+      <!-- Tier 2: Subfolder / Module Dropdown -->
+      <select class="subfolder-select" id="sidebar-subfolder-select">
+        <option value="all">All Subfolders & Modules</option>
+      </select>
+
+      <!-- Quick Search Bar & A-Z Sort Toggle -->
+      <div class="sidebar-search-row">
+        <div class="sidebar-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="sidebar-search-input" placeholder="Search mind maps by title...">
+        </div>
+        <button class="sidebar-sort-btn" id="sidebar-sort-toggle" title="Toggle Lesson Order vs Alphabetical (A-Z)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18H9M19 12H5M21 6H3"/>
+          </svg>
+          <span id="sidebar-sort-label">A-Z</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mind Maps Card List -->
+    <div class="sidebar-list-container" id="sidebar-list-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+  </aside>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
   <div class="floating-panel bottom-search-card">
@@ -366,6 +921,18 @@
   <div class="floating-panel top-expand-card" id="btn-expand-all">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     Expand All
+  </div>
+
+  <!-- Top Floating Element 5: High-Yield Toggle Card -->
+  <div class="floating-panel top-highyield-card" id="btn-high-yield">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    High-Yield Only
+  </div>
+
+  <!-- Top Floating Element 6: Quiz Game Trigger Card -->
+  <div class="floating-panel top-quiz-card" id="btn-quiz-me" title="Launch Mind Map Quiz Game (? Me)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    ? Me
   </div>
 
   <!-- Canvas Viewport -->
@@ -391,56 +958,66 @@
   "id": "root",
   "text": "Leukocytes & Platelets",
   "level": 0,
+  "high_yield": true,
   "children": [
     {
       "id": "sec-1",
       "text": "Granulocytes",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-1-1",
           "text": "Overview & Reference Values",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-1-1",
-              "text": "Adult Total WBC: 4.0-11.0x10^3/uL",
+              "text": "WBC: 3.6-10.6x10^3/uL",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-1-1-2",
               "text": "Relative & Absolute Differential Counts",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-1-2-1",
-                  "text": "Segmented Neutrophils: 40-80%, 1.8-7.0x10^3/uL",
+                  "text": "Neutrophils: 50-70%, 1.7-7.5x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-1-2-2",
-                  "text": "Lymphocytes: 25-35%, 1.0-4.8x10^3/uL",
+                  "text": "Lymphocytes: 18-42%, 1.0-3.2x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-1-2-3",
-                  "text": "Monocytes: 2-10%, 0.1-0.8x10^3/uL",
+                  "text": "Monocytes: 2-11%, 0.1-1.3x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-1-2-4",
-                  "text": "Eosinophils: 0-5%, 0.0-0.4x10^3/uL",
+                  "text": "Eosinophils: 1-3%, 0-0.3x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-1-2-5",
-                  "text": "Basophils: 0-1%, 0.0-0.2x10^3/uL",
+                  "text": "Basophils: 0-2%, 0-0.2x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -449,23 +1026,27 @@
               "id": "node-1-1-3",
               "text": "Pediatric Reversed Differential Pattern",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-1-1-4",
               "text": "Immune Defense Arms",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-1-1-4-1",
-                  "text": "Innate System: Rapid, PAMPs/DAMPs, Phagocytes",
+                  "text": "Innate System: Rapid Phagocytes",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-1-4-2",
-                  "text": "Adaptive System: Specific, Memory, Lymphocytes",
+                  "text": "Adaptive System: Memory Lymphocytes",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -476,28 +1057,33 @@
           "id": "sub-1-2",
           "text": "Neutrophil Maturation Pathway",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-2-1",
               "text": "Myeloblast",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-1-1",
-                  "text": "Size & Nucleus: 14-20 um, 1-5 Nucleoli",
+                  "text": "14-20 um, 1-5 Nucleoli",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-2-1-2",
-                  "text": "Cytoplasm: Scant, <20 Primary Granules",
+                  "text": "Scant Cytoplasm, Rare Granules",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-2-1-3",
-                  "text": "Stain & Markers: MPO+, CD45+, CD34+, CD33+, CD13+",
+                  "text": "MPO+, CD34+, CD33+, CD13+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -506,23 +1092,27 @@
               "id": "node-1-2-2",
               "text": "Promyelocyte",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-2-1",
-                  "text": "Size & Nucleus: 15-21 um, Fading Nucleoli",
+                  "text": "15-21 um, Indistinct Nucleoli",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-2-2-2",
-                  "text": "Cytoplasm: >=20 Azurophilic Granules, MPO++",
+                  "text": "Primary Azurophilic Granules, MPO+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-2-2-3",
-                  "text": "Markers: CD45+, CD33+, CD13+, CD34-",
+                  "text": "CD33+, CD13+, CD34 Negative",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -531,23 +1121,27 @@
               "id": "node-1-2-3",
               "text": "Myelocyte",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-3-1",
-                  "text": "Size & Nucleus: 12-18 um, No Nucleoli",
+                  "text": "12-18 um, No Nucleoli",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-2-3-2",
-                  "text": "Cytoplasm: Secondary Pink Granules, MPO-",
+                  "text": "Specific Secondary Granules",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-2-3-3",
-                  "text": "Key Milestone: Last Mitotic Stage",
+                  "text": "Last Mitotic Stage",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -556,17 +1150,20 @@
               "id": "node-1-2-4",
               "text": "Metamyelocyte",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-4-1",
-                  "text": "Size & Nucleus: 10-18 um, Indentation <1/2",
+                  "text": "Kidney Indentation <50%",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-2-4-2",
-                  "text": "Cytoplasm: Post-Mitotic, Neutral Pink",
+                  "text": "Post-Mitotic Pink Cytoplasm",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -575,17 +1172,20 @@
               "id": "node-1-2-5",
               "text": "Band Neutrophil",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-5-1",
-                  "text": "Size & Nucleus: 9-15 um, Indentation >1/2",
+                  "text": "Horseshoe Indentation >50%",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-2-5-2",
-                  "text": "Cytoplasm: Pink-Tan, Condensed End Chromatin",
+                  "text": "Pink-Tan, Condensed Chromatin",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -594,17 +1194,20 @@
               "id": "node-1-2-6",
               "text": "Segmented Neutrophil",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-2-6-1",
-                  "text": "Size & Nucleus: 9-15 um, 3-5 Lobes",
+                  "text": "Segmented 3-5 Lobes",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-2-6-2",
-                  "text": "Cytoplasm: Pink-Tan, Secretory Vesicles",
+                  "text": "Pink Cytoplasm, Secretory Vesicles",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -615,41 +1218,48 @@
           "id": "sub-1-3",
           "text": "Neutrophil Pools & Kinetics",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-1-3-1",
-              "text": "Bone Marrow Reserve Pool (~3x PB)",
+              "text": "Bone Marrow Reserve Pool",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-1-3-1-1",
-                  "text": "Mitotic Pool: Blasts, Promyelocytes, Myelocytes",
+                  "text": "Mitotic Pool: Proliferating Precursors",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-3-1-2",
-                  "text": "Post-Mitotic Reserve: Metamyelocytes, Bands, Segs",
+                  "text": "Post-Mitotic Storage: Maturing Pools",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-1-3-2",
-              "text": "Peripheral Blood Kinetics (~8 Hour Lifespan)",
+              "text": "Peripheral Blood Kinetics",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-1-3-2-1",
-                  "text": "Circulating Pool (CGP): 50% Freely Flowing",
+                  "text": "Circulating Granulocyte Pool (CGP)",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-3-2-2",
-                  "text": "Marginating Pool (MGP): 50% Endothelial Attached",
+                  "text": "Marginating Granulocyte Pool (MGP)",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -658,29 +1268,34 @@
               "id": "node-1-3-3",
               "text": "Clinical Pathology Thresholds",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-3-3-1",
-                  "text": "Neutrophilia: >7.0x10^3/uL",
+                  "text": "Neutrophilia: >7.5x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-3-3-2",
-                  "text": "Neutropenia: <1.8x10^9/L",
+                  "text": "Neutropenia: <1.7x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-3-3-3",
-                  "text": "Granulocytopenia: <2.0x10^9/L",
+                  "text": "Granulocytopenia: <2.0x10^3/uL",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-3-3-4",
-                  "text": "Agranulocytosis: <0.5x10^9/L",
+                  "text": "Agranulocytosis: <0.5x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -691,23 +1306,27 @@
           "id": "sub-1-4",
           "text": "Neutrophil Function & Microbicidal Action",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-1-4-1",
-              "text": "Functional Sequence: Adherence, Chemotaxis, Phagocytosis",
+              "text": "Adherence, Chemotaxis, Phagocytosis",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-1-4-2",
-              "text": "Oxygen-Dependent Killing: MPO Respiratory Burst",
+              "text": "MPO-Dependent Respiratory Burst",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-1-4-3",
-              "text": "Toxic Granulation: Persistent MPO Granules",
+              "text": "Toxic Granulation: Stress Response",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -716,34 +1335,40 @@
           "id": "sub-1-5",
           "text": "Eosinophil & Basophil Lineages",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-5-1",
               "text": "Eosinophils",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-5-1-1",
-                  "text": "Morphology: 12-15 um, 2-3 Lobes",
+                  "text": "Bilobed Nucleus, 12-15 um",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-5-1-2",
-                  "text": "Granules: Red-Orange, Charcot-Leyden Proteins",
+                  "text": "Coarse Red-Orange Granules",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-5-1-3",
-                  "text": "Kinetics: ~18 Hours, Morning Peak",
+                  "text": "Circulating Lifespan ~18 Hours",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-5-1-4",
-                  "text": "Eosinophilia: >0.4x10^3/uL, Parasitic & Allergic",
+                  "text": "Eosinophilia: >0.3x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -752,23 +1377,27 @@
               "id": "node-1-5-2",
               "text": "Basophils",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-1-5-2-1",
-                  "text": "Morphology: 10-15 um, Obscured Nucleus",
+                  "text": "Segmented Obscured Nucleus",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-1-5-2-2",
-                  "text": "Granules: Dark Purple-Black, Histamine, Heparin",
+                  "text": "Water-Soluble Purple-Black Granules",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-1-5-2-3",
-                  "text": "Function: Type I Immediate Hypersensitivity",
+                  "text": "Type I Hypersensitivity Mediator",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -781,39 +1410,46 @@
       "id": "sec-2",
       "text": "Lymphocytes",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-2-1",
           "text": "Maturation & Precursor Criteria",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-1-1",
-              "text": "Differential Share: 20-40% Adult WBC",
+              "text": "Lymphocytes: 18-42% WBC",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-2-1-2",
-              "text": "Precursor Cytochemistry: PAS+, TdT+, MPO-",
+              "text": "Precursors: TdT+, PAS+, MPO-",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-2-1-3",
               "text": "Lymphoblast",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-3-1",
-                  "text": "Morphology: 10-18 um, Lacy Chromatin",
+                  "text": "10-18 um, Lacy Chromatin",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-2-1-3-2",
-                  "text": "Markers: CD34+, CD45+, PAS+, TdT+",
+                  "text": "CD34+, TdT+, CD45+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -822,11 +1458,13 @@
               "id": "node-2-1-4",
               "text": "Prolymphocyte",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-2-1-4-1",
-                  "text": "Morphology: Early Clumping, 1 Nucleolus",
+                  "text": "Clumped Chromatin, Single Nucleolus",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -835,17 +1473,20 @@
               "id": "node-2-1-5",
               "text": "Mature Small Lymphocyte",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-1-5-1",
-                  "text": "Morphology: 7-10 um, N:C ~90%",
+                  "text": "Small Lymphocyte: High N:C",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-2-1-5-2",
-                  "text": "Diagnostic Standard: Nucleus RBC Size (7-8 um)",
+                  "text": "Nucleus Matches Normal RBC",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -856,16 +1497,19 @@
           "id": "sub-2-2",
           "text": "Morphological Variants",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-2-1",
               "text": "Large Granular Lymphocyte (LGL)",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-2-2-1-1",
-                  "text": "Features: T/NK Lineage, Coarse Granules",
+                  "text": "Azurophilic Granules, T/NK Lineage",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -874,23 +1518,27 @@
               "id": "node-2-2-2",
               "text": "Reactive Lymphocyte (Atypical)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-2-2-1",
-                  "text": "Morphology: 16-30 um, Amoeboid, RBC-Hugging",
+                  "text": "Amoeboid, Skirts Red Cells",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-2-2-2",
-                  "text": "Cytoplasm: Peripheral Basophilia, Vacuoles",
+                  "text": "Peripheral Basophilia, Deep Blue",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-2-2-3",
-                  "text": "Etiology: Viral Infections, EBV",
+                  "text": "Reactive Etiology: EBV, Mononucleosis",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -899,23 +1547,27 @@
               "id": "node-2-2-3",
               "text": "Plasma Cell Subtypes",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-2-3-1",
-                  "text": "Plasma Cell: Eccentric Cartwheel Nucleus, Golgi Halo",
+                  "text": "Eccentric Cartwheel, Perinuclear Halo",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-2-3-2",
-                  "text": "Flame Cell: Fiery Red-Purple Cytoplasm, IgA",
+                  "text": "Flame Cell: IgA Dyscrasia",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-2-3-3",
-                  "text": "Mott Cell: Russell Bodies, Ig Globules",
+                  "text": "Mott Cell: Russell Bodies",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -926,22 +1578,26 @@
           "id": "sub-2-3",
           "text": "Kinetics & Body Pools",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-2-3-1",
               "text": "Distribution Pools",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-2-3-1-1",
                   "text": "Peripheral Blood Pool: ~5%",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-2-3-1-2",
                   "text": "Extravascular Pool: ~95%",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -950,17 +1606,20 @@
               "id": "node-2-3-2",
               "text": "Circulating Lifespans",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-2-3-2-1",
-                  "text": "Long-Lived Memory: ~80%, Months-Years",
+                  "text": "Long-Lived Memory Cells (80%)",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-2-3-2-2",
-                  "text": "Short-Lived Effector: ~20%, Hours-5 Days",
+                  "text": "Short-Lived Effector Cells (20%)",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -969,17 +1628,20 @@
               "id": "node-2-3-3",
               "text": "Diagnostic Thresholds",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-3-3-1",
-                  "text": "Lymphocytosis: >4.8x10^3/uL",
+                  "text": "Lymphocytosis: >3.2x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-3-3-2",
                   "text": "Lymphocytopenia: <1.0x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -990,22 +1652,26 @@
           "id": "sub-2-4",
           "text": "Functional Subsets",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-4-1",
               "text": "B Lymphocytes (Humoral)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-4-1-1",
-                  "text": "Proportion & Markers: 15-30%, CD10+, CD19+, CD20+",
+                  "text": "B-Cells: CD19+, CD20+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-4-1-2",
-                  "text": "Antibody Response: Primary IgM, Secondary IgG",
+                  "text": "Humoral Immunity: IgM, IgG",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1014,23 +1680,27 @@
               "id": "node-2-4-2",
               "text": "T Lymphocytes (Cell-Mediated)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-4-2-1",
-                  "text": "Universal Marker: 60-80%, CD3+",
+                  "text": "T-Cells: CD3+ Universal",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-4-2-2",
-                  "text": "CD4+ T Helper: CD3+/CD4+/CD8-, MHC Class II",
+                  "text": "CD4+ Helper: MHC-II Restricted",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-4-2-3",
-                  "text": "CD8+ T Cytotoxic: CD3+/CD8+/CD4-, MHC Class I",
+                  "text": "CD8+ Cytotoxic: MHC-I Restricted",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1039,17 +1709,20 @@
               "id": "node-2-4-3",
               "text": "NK Cells (Innate)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-2-4-3-1",
-                  "text": "Proportion & Markers: 5-15%, CD16+, CD56+, CD3-",
+                  "text": "NK Cells: CD16+, CD56+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-2-4-3-2",
-                  "text": "Function: Rapid Innate Cytolysis",
+                  "text": "Rapid Innate Cytotoxic Killing",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1062,45 +1735,53 @@
       "id": "sec-3",
       "text": "Monocytes-Platelets",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-3-1",
           "text": "Monocyte Maturation Lineage",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-3-1-1",
-              "text": "Monoblast: 12-20 um, High N:C, Agranular",
+              "text": "Monoblast: Agranular, High N:C",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-1-2",
-              "text": "Promonocyte: 12-20 um, Folded Nucleus, Granules",
+              "text": "Promonocyte: Folded Indented Nucleus",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-1-3",
               "text": "Mature Monocyte",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-3-1-3-1",
-                  "text": "Morphology: 12-20 um, Horseshoe Nucleus",
+                  "text": "Folded Horseshoe Monocyte Nucleus",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-1-3-2",
-                  "text": "Cytoplasm: Blue-Gray, Ground Glass, Vacuoles",
+                  "text": "Blue-Gray Ground-Glass Vacuolated Cytoplasm",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-1-3-3",
                   "text": "Markers: CD14+, NSE+",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1111,52 +1792,61 @@
           "id": "sub-3-2",
           "text": "Tissue Macrophages & Kinetics",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-3-2-1",
-              "text": "Vascular Kinetics: ~8 Hours PB Lifespan",
+              "text": "Blood Lifespan: ~8 Hours",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-2-2",
-              "text": "Vascular Pools: MGP ~3x CGP",
+              "text": "Marginating Pool: ~3x Circulating",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-2-3",
-              "text": "Anatomical Tissue Macrophages (15-80 um)",
+              "text": "Tissue Macrophage Distribution",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-3-2-3-1",
                   "text": "Connective Tissue: Histiocytes",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-3-2-3-2",
                   "text": "Liver: Kupffer Cells",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-2-3-3",
                   "text": "Lungs: Alveolar Macrophages",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-3-2-3-4",
                   "text": "Skin: Langerhans Cells",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-2-3-5",
                   "text": "Brain: Microglial Cells",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1167,53 +1857,62 @@
           "id": "sub-3-3",
           "text": "Platelet Kinetics & Morphology",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-3-3-1",
               "text": "Reference Values",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-3-3-1-1",
-                  "text": "Count: 150-450x10^3/uL",
+                  "text": "Platelets: 150-450x10^3/uL",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-3-1-2",
                   "text": "Lifespan: 7-10 Days",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-3-1-3",
-                  "text": "Distribution: 2/3 Circulating, 1/3 Splenic",
+                  "text": "Distribution: 2/3 Blood, 1/3 Spleen",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-3-3-2",
-              "text": "Reticulated Platelets: 5-10%, Residual RNA",
+              "text": "Reticulated Platelets: Immature RNA",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-3-3",
               "text": "Morphology & Giant Forms",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "node-3-3-3-1",
-                  "text": "Normal: 2-3 um, Anucleated",
+                  "text": "Normal Platelet: 2-3 um",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "node-3-3-3-2",
-                  "text": "Giant Platelets: >5 um, MPNs, Recovery",
+                  "text": "Giant Platelets: >5 um",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1222,23 +1921,27 @@
               "id": "node-3-3-4",
               "text": "EDTA In Vitro Artifacts",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "node-3-3-4-1",
                   "text": "Platelet Satellitism: Neutrophil Adherence",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-3-4-2",
                   "text": "Platelet Clumping: In Vitro Aggregation",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "node-3-3-4-3",
                   "text": "Diagnostic Result: Pseudothrombocytopenia",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1249,29 +1952,34 @@
           "id": "sub-3-4",
           "text": "Primary Hemostasis Stages",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-3-4-1",
-              "text": "1. Adhesion: vWF Binds Collagen, GPIb Binds vWF",
+              "text": "Adhesion: GPIb Binds vWF",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-4-2",
-              "text": "2. Shape Change: Cellular Contraction & Pseudopods",
+              "text": "Shape Change: Pseudopod Extension",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-4-3",
-              "text": "3. Secretion: Release Dense & Alpha Granules",
+              "text": "Secretion: Alpha, Dense Granules",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-4-4",
-              "text": "4. Aggregation: Fibrinogen Bridges Activated GPIIb/IIIa",
+              "text": "Aggregation: GPIIb/IIIa Binds Fibrinogen",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -1280,6 +1988,7 @@
     }
   ]
 };
+    window.mindMapData = mindMapData;
 
     // State Variables
     let scale = 1.0;
@@ -1300,26 +2009,33 @@
     setInitialCollapsedState(mindMapData);
 
     const LEVEL_X_GAP = 320;
-    const NODE_Y_GAP = 54;
+    const NODE_MIN_GAP = 20;
 
     const viewport = document.getElementById('viewport');
     const nodesContainer = document.getElementById('nodes-container');
     const svgPathsGroup = document.getElementById('svg-paths-group');
 
     // --- LAYOUT ENGINE ---
-    function computeVerticalLayout(node, depth = 0, yOffset = { val: 0 }) {
+    function computeVerticalLayout(node, depth = 0, tracker = { lastCenterY: null, lastHalfH: 0 }) {
       node.depth = depth;
 
       const isCollapsed = collapsedNodes.has(node.id);
       const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+      const rectH = node.domEl ? (node.domEl.offsetHeight || 38) : 38;
+      const halfH = rectH / 2;
 
       if (visibleChildren.length === 0) {
-        node.y = yOffset.val;
-        yOffset.val += NODE_Y_GAP;
+        if (tracker.lastCenterY === null) {
+          node.y = halfH;
+        } else {
+          node.y = tracker.lastCenterY + tracker.lastHalfH + NODE_MIN_GAP + halfH;
+        }
+        tracker.lastCenterY = node.y;
+        tracker.lastHalfH = halfH;
       } else {
         const childYs = [];
         visibleChildren.forEach(child => {
-          computeVerticalLayout(child, depth + 1, yOffset);
+          computeVerticalLayout(child, depth + 1, tracker);
           childYs.push(child.y);
         });
         node.y = (childYs[0] + childYs[childYs.length - 1]) / 2;
@@ -1341,6 +2057,24 @@
       }
     }
 
+    // High-Yield Filter State
+    let isHighYieldOnly = false;
+
+    // Determine if a node is High Yield or contains High Yield descendants (ancestor path)
+    function computeHighYieldFlags(node) {
+      let hasHY = (node.high_yield === true || node.high_yield === 'true');
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          if (computeHighYieldFlags(child)) {
+            hasHY = true;
+          }
+        });
+      }
+      node._isHYBranch = hasHY;
+      return hasHY;
+    }
+    computeHighYieldFlags(mindMapData);
+
     function flattenNodes(node, list = []) {
       list.push(node);
       const isCollapsed = collapsedNodes.has(node.id);
@@ -1353,32 +2087,26 @@
     let isInitialLoad = true;
 
     function renderMindMap() {
-      // 1. Compute Y positions
-      const yOffset = { val: 0 };
-      computeVerticalLayout(mindMapData, 0, yOffset);
+      // Re-compute high-yield branch flags
+      computeHighYieldFlags(mindMapData);
 
-      // Center layout vertically relative to origin
       const allVisible = flattenNodes(mindMapData);
-      if (allVisible.length > 0) {
-        const minY = Math.min(...allVisible.map(n => n.y));
-        const maxY = Math.max(...allVisible.map(n => n.y));
-        const midY = (minY + maxY) / 2;
-        allVisible.forEach(n => n.y -= midY);
-      }
 
-      // 2. Initial pass node rendering (positioned vertically, temporary X=0)
+      // 1. Initial pass DOM rendering (temporary positioned, measured for height)
       nodesContainer.innerHTML = '';
       svgPathsGroup.innerHTML = '';
 
       allVisible.forEach(node => {
         const hasChildren = node.children && node.children.length > 0;
         const isCollapsed = collapsedNodes.has(node.id);
+        const isHYNode = (node.high_yield === true || node.high_yield === 'true');
+        const isHYBranch = !!node._isHYBranch;
 
         const el = document.createElement('div');
-        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''} ${isHYNode ? 'high-yield-node' : ''} ${isHYBranch ? 'is-high-yield-branch' : ''}`;
         
         el.style.left = `0px`;
-        el.style.top = `${node.y}px`;
+        el.style.top = `0px`;
         el.dataset.id = node.id;
         el.innerText = node.text;
 
@@ -1404,6 +2132,23 @@
         nodesContainer.appendChild(el);
         node.domEl = el;
       });
+
+      // 2. Compute dynamic vertical layout using actual measured node heights + minimum vertical gap
+      const yTracker = { lastCenterY: null, lastHalfH: 0 };
+      computeVerticalLayout(mindMapData, 0, yTracker);
+
+      // Center layout vertically relative to origin & position top
+      if (allVisible.length > 0) {
+        const minY = Math.min(...allVisible.map(n => n.y));
+        const maxY = Math.max(...allVisible.map(n => n.y));
+        const midY = (minY + maxY) / 2;
+        allVisible.forEach(n => {
+          n.y -= midY;
+          if (n.domEl) {
+            n.domEl.style.top = `${n.y}px`;
+          }
+        });
+      }
 
       // 3. Compute dynamic X positions based on measured DOM widths & position nodes/curves
       requestAnimationFrame(() => {
@@ -1454,7 +2199,8 @@
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', pathD);
-      path.setAttribute('class', 'connection-line');
+      const isHYPath = !!child._isHYBranch;
+      path.setAttribute('class', `connection-line ${isHYPath ? 'is-high-yield-path' : ''}`);
 
       svgPathsGroup.appendChild(path);
     }
@@ -1697,19 +2443,24 @@
         }
       });
 
-      // High contrast level color palette up to Level 10
+      // High contrast level color palette with fallback for deeper levels
       const levelColors = {
         0: { bg: '#b4acf0', text: '#1e1945', weight: '800', size: 15 },
         1: { bg: '#aebdf5', text: '#111a45', weight: '700', size: 14 },
-        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13.5 },
-        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13.5 },
-        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13.5 },
-        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13.5 },
-        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13.5 },
-        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13.5 },
-        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13.5 },
-        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13.5 },
-        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13.5 }
+        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13 },
+        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13 },
+        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13 },
+        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13 },
+        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13 },
+        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13 },
+        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13 },
+        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13 },
+        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13 },
+        11: { bg: '#818cf8', text: '#1e1b4b', weight: '600', size: 13 },
+        12: { bg: '#38bdf8', text: '#082f49', weight: '600', size: 13 },
+        13: { bg: '#2dd4bf', text: '#134e4a', weight: '600', size: 13 },
+        14: { bg: '#4ade80', text: '#14532d', weight: '600', size: 13 },
+        15: { bg: '#a3e635', text: '#1a2e05', weight: '600', size: 13 }
       };
 
       // 3. Draw Pill Nodes onto 4x Canvas
@@ -1721,10 +2472,10 @@
         const nx = node.x + offsetX;
         const ny = (node.y - (h / 2)) + offsetY;
 
-        const styleConfig = levelColors[Math.min(node.level, 10)] || levelColors[10];
+        const styleConfig = levelColors[node.level] || levelColors[10 + (node.level % 6)] || levelColors[10];
 
         // Draw pill background
-        const radius = h / 2;
+        const radius = Math.min(18, h / 2);
         ctx.beginPath();
         ctx.roundRect(nx, ny, w, h, radius);
         ctx.fillStyle = styleConfig.bg;
@@ -1742,12 +2493,33 @@
           displayText += isCollapsed ? '  +' : '  −';
         }
 
-        // Draw crystal-clear text on 4x supersampled canvas
+        // Draw crystal-clear text on 4x supersampled canvas with word wrapping support
         ctx.fillStyle = styleConfig.text;
         ctx.font = `${styleConfig.weight} ${styleConfig.size}px Inter, system-ui, sans-serif`;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(displayText, nx + 18, ny + (h / 2));
+
+        const maxTextW = w - 32;
+        const words = displayText.split(' ');
+        const lines = [];
+        let currentLine = words[0] || '';
+
+        for (let i = 1; i < words.length; i++) {
+          const testLine = currentLine + ' ' + words[i];
+          if (ctx.measureText(testLine).width <= maxTextW) {
+            currentLine = testLine;
+          } else {
+            lines.push(currentLine);
+            currentLine = words[i];
+          }
+        }
+        lines.push(currentLine);
+
+        const lineHeight = styleConfig.size * 1.35;
+        const startTextY = ny + (h / 2) - ((lines.length - 1) * lineHeight / 2);
+        lines.forEach((line, lineIdx) => {
+          ctx.fillText(line, nx + 16, startTextY + (lineIdx * lineHeight));
+        });
       });
 
       // Format download filename as "Mind_Map_[topic].png"
@@ -1820,6 +2592,30 @@
       setTimeout(() => centerInitialView(true), 50);
     });
 
+    // High-Yield Only Toggle Button Listener
+    const btnHighYield = document.getElementById('btn-high-yield');
+    btnHighYield.addEventListener('click', () => {
+      isHighYieldOnly = !isHighYieldOnly;
+      if (isHighYieldOnly) {
+        btnHighYield.classList.add('active');
+        document.body.classList.add('high-yield-mode');
+
+        // Automatically expand high-yield pathways so they are visible
+        function expandHighYieldPaths(node) {
+          if (node._isHYBranch && node.children && node.children.length > 0) {
+            collapsedNodes.delete(node.id);
+            node.children.forEach(expandHighYieldPaths);
+          }
+        }
+        expandHighYieldPaths(mindMapData);
+        renderMindMap();
+      } else {
+        btnHighYield.classList.remove('active');
+        document.body.classList.remove('high-yield-mode');
+        renderMindMap();
+      }
+    });
+
     document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
     document.getElementById('zoom-reset').addEventListener('click', resetZoomToInitial);
     document.getElementById('download-png-btn').addEventListener('click', downloadMindMapPNG);
@@ -1884,7 +2680,271 @@
     if (titleEl && mindMapData && mindMapData.text) {
       titleEl.textContent = mindMapData.text;
     }
+
+    // Expose MindMapBridge for Quiz Engine and Interactive Tooling
+    window.MindMapBridge = {
+      mindMapData: mindMapData,
+      collapsedNodes: collapsedNodes,
+      renderMindMap: renderMindMap,
+      updateTransform: updateTransform,
+      getScale: () => scale,
+      setScale: (s) => { scale = s; },
+      getTranslateX: () => translateX,
+      setTranslateX: (tx) => { translateX = tx; },
+      getTranslateY: () => translateY,
+      setTranslateY: (ty) => { translateY = ty; },
+      setTransform: (s, tx, ty, animated = false) => {
+        scale = s;
+        translateX = tx;
+        translateY = ty;
+        updateTransform(animated);
+      },
+      fitToWindow: fitToWindow,
+      centerInitialView: centerInitialView,
+      nodesContainer: nodesContainer,
+      svgPathsGroup: svgPathsGroup
+    };
+
+    // Quiz Trigger Card Event Listener
+    const btnQuizMe = document.getElementById('btn-quiz-me');
+    if (btnQuizMe) {
+      btnQuizMe.addEventListener('click', () => {
+        if (window.MindMapQuiz) {
+          window.MindMapQuiz.startQuiz();
+        } else {
+          alert('Quiz Game engine (mindmap_quiz.js) is not loaded for this standalone file.');
+        }
+      });
+    }
+
+    if (window.MindMapQuiz) {
+      window.MindMapQuiz.init(mindMapData, window.MindMapBridge);
+    }
+
+    // --- COURSE MIND MAPS SIDEBAR LOGIC ---
+    const relSharedPath = "../../../../shared";
+    const btnOpenSidebar = document.getElementById('btn-open-sidebar');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarDrawer = document.getElementById('sidebar-drawer');
+    const sidebarListContainer = document.getElementById('sidebar-list-container');
+    const sidebarSubfolderSelect = document.getElementById('sidebar-subfolder-select');
+    const sidebarSearchInput = document.getElementById('sidebar-search-input');
+    const filterTypeGroup = document.getElementById('filter-type-group');
+
+    let currentTypeFilter = 'all';
+    let currentSubfolderFilter = 'all';
+    let currentSearchQuery = '';
+    let currentSortMode = 'lesson'; // 'lesson' (L# alternating lec/lab) or 'alpha' (A-Z)
+    const sidebarSortToggle = document.getElementById('sidebar-sort-toggle');
+    const sidebarSortLabel = document.getElementById('sidebar-sort-label');
+
+    function openSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.add('active');
+        sidebarBackdrop.classList.add('active');
+        populateSubfoldersDropdown();
+        renderSidebarList();
+        setTimeout(() => {
+          if (sidebarSearchInput) sidebarSearchInput.focus();
+        }, 150);
+      }
+    }
+
+    function closeSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.remove('active');
+        sidebarBackdrop.classList.remove('active');
+      }
+    }
+
+    if (btnOpenSidebar) btnOpenSidebar.addEventListener('click', openSidebar);
+    if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', closeSidebar);
+    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebarDrawer && sidebarDrawer.classList.contains('active')) {
+        closeSidebar();
+      }
+    });
+
+    function getMindMapsList() {
+      return (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) ? window.COURSE_MINDMAPS : [];
+    }
+
+    function populateSubfoldersDropdown() {
+      if (!sidebarSubfolderSelect) return;
+      const maps = getMindMapsList();
+      const subfolders = new Set();
+      maps.forEach(m => {
+        if (m.subfolder) subfolders.add(m.subfolder);
+      });
+
+      const currentVal = sidebarSubfolderSelect.value;
+      sidebarSubfolderSelect.innerHTML = '<option value="all">All Subfolders & Modules</option>';
+      Array.from(subfolders).sort().forEach(sf => {
+        const opt = document.createElement('option');
+        opt.value = sf;
+        opt.textContent = sf;
+        sidebarSubfolderSelect.appendChild(opt);
+      });
+      if (subfolders.has(currentVal)) {
+        sidebarSubfolderSelect.value = currentVal;
+      }
+    }
+
+    function updateCounts() {
+      const maps = getMindMapsList();
+      const allCount = maps.length;
+      const lectureCount = maps.filter(m => m.type === 'lecture').length;
+      const labCount = maps.filter(m => m.type === 'lab').length;
+
+      const elAll = document.getElementById('count-all');
+      const elLec = document.getElementById('count-lecture');
+      const elLab = document.getElementById('count-lab');
+
+      if (elAll) elAll.textContent = allCount;
+      if (elLec) elLec.textContent = lectureCount;
+      if (elLab) elLab.textContent = labCount;
+    }
+
+    function renderSidebarList() {
+      if (!sidebarListContainer) return;
+      updateCounts();
+
+      const maps = getMindMapsList();
+      const currentFilename = window.location.pathname.split('/').pop().toLowerCase();
+      const currentTitle = (mindMapData && mindMapData.text) ? mindMapData.text.toLowerCase().trim() : '';
+
+      let filtered = maps.filter(item => {
+        // Type filter
+        if (currentTypeFilter !== 'all' && item.type !== currentTypeFilter) {
+          return false;
+        }
+        // Subfolder filter
+        if (currentSubfolderFilter !== 'all' && item.subfolder !== currentSubfolderFilter) {
+          return false;
+        }
+        // Search filter
+        if (currentSearchQuery) {
+          const textToSearch = `${item.title} ${item.subfolder} ${item.filename}`.toLowerCase();
+          if (!textToSearch.includes(currentSearchQuery)) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      // Sort filtered items based on currentSortMode
+      filtered.sort((a, b) => {
+        if (currentSortMode === 'alpha') {
+          return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+        } else {
+          // Default: Lesson / L# alternating lecture then lab
+          const numA = (typeof a.number === 'number') ? a.number : 9999;
+          const numB = (typeof b.number === 'number') ? b.number : 9999;
+          if (numA !== numB) return numA - numB;
+          const typeOrderA = a.type === 'lecture' ? 0 : (a.type === 'lab' ? 1 : 2);
+          const typeOrderB = b.type === 'lecture' ? 0 : (b.type === 'lab' ? 1 : 2);
+          if (typeOrderA !== typeOrderB) return typeOrderA - typeOrderB;
+          return a.title.localeCompare(b.title);
+        }
+      });
+
+      sidebarListContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        sidebarListContainer.innerHTML = `
+          <div class="sidebar-empty-state">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 8px; display: block; opacity: 0.6;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            ${maps.length === 0 ? 'No manifest data found. Please run the course manifest builder.' : 'No matching mind maps found.'}
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('a');
+        card.className = 'mindmap-item-card';
+
+        // Resolve direct link from current file to target mind map using relSharedPath
+        const targetHref = `${relSharedPath}/${item.rel_path_from_shared}`;
+        card.href = targetHref;
+
+        const isCurrent = (item.filename && item.filename.toLowerCase() === currentFilename) ||
+                          (item.title && item.title.toLowerCase().trim() === currentTitle);
+
+        if (isCurrent) {
+          card.classList.add('current');
+        }
+
+        const typeClass = item.type === 'lecture' ? 'lecture' : (item.type === 'lab' ? 'lab' : 'other');
+        const typeLabel = item.type === 'lecture' ? 'Lecture' : (item.type === 'lab' ? 'Lab' : 'General');
+        const numLabel = (item.number && item.number < 9000) ? `L${item.number}` : '';
+
+        card.innerHTML = `
+          <div class="mindmap-item-title">${item.title} ${isCurrent ? ' (Current)' : ''}</div>
+          <div class="mindmap-item-meta">
+            ${numLabel ? `<span class="badge-type ${typeClass}">${numLabel}</span>` : ''}
+            <span class="badge-type ${typeClass}">${typeLabel}</span>
+            <span>${item.subfolder || 'General'}</span>
+          </div>
+        `;
+
+        sidebarListContainer.appendChild(card);
+      });
+    }
+
+    if (sidebarSortToggle) {
+      sidebarSortToggle.addEventListener('click', () => {
+        if (currentSortMode === 'lesson') {
+          currentSortMode = 'alpha';
+          sidebarSortToggle.classList.add('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'L#';
+          sidebarSortToggle.title = 'Switch to Lesson Order (L# alternating Lec/Lab)';
+        } else {
+          currentSortMode = 'lesson';
+          sidebarSortToggle.classList.remove('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'A-Z';
+          sidebarSortToggle.title = 'Switch to Alphabetical (A-Z)';
+        }
+        renderSidebarList();
+      });
+    }
+
+    if (filterTypeGroup) {
+      filterTypeGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-type-btn');
+        if (!btn) return;
+        filterTypeGroup.querySelectorAll('.filter-type-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTypeFilter = btn.dataset.type || 'all';
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSubfolderSelect) {
+      sidebarSubfolderSelect.addEventListener('change', (e) => {
+        currentSubfolderFilter = e.target.value;
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSearchInput) {
+      sidebarSearchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.toLowerCase().trim();
+        renderSidebarList();
+      });
+    }
+
+    // Initialize counts and initial sidebar state on load
+    updateCounts();
+
     renderMindMap();
   </script>
+  <script src="../../../../shared/mindmap_quiz.js"></script>
 </body>
 </html>

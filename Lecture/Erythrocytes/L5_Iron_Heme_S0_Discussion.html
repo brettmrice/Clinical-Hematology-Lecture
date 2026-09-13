@@ -310,6 +310,7 @@
 <li><a href="#master-diagnostic-pearls-reference-review">Master Diagnostic Pearls &amp; Reference Review</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="anemia-mechanisms-reticulocyte-dynamics-classification-frameworks">Anemia Mechanisms, Reticulocyte Dynamics &amp; Classification Frameworks</h1>
@@ -318,67 +319,61 @@
 <li><strong>Analyze Pathophysiological Mechanisms and Compensatory Responses in Anemia</strong>: Evaluate erythrocyte kinetic equilibrium, systemic hemodynamic shifts, cardiopulmonary adaptations, and tissue oxygenation dynamics (Rapoport-Luebering shunt, 2,3-BPG elevation, Bohr effect) in acute versus chronic blood loss.</li>
 <li><strong>Calculate and Interpret Quantitative Reticulocyte Metrics</strong>: Formulate and calculate the Absolute Reticulocyte Count (ARC), Corrected Reticulocyte Count (CRC), and Reticulocyte Production Index (RPI) using hematocrit-dependent maturation correction factors to distinguish hypoproliferative states from regenerative marrow responses.</li>
 <li><strong>Differentiate Intravascular and Extravascular Hemolysis</strong>: Characterize the catabolic pathways of erythrocyte destruction and evaluate diagnostic biomarker panels (haptoglobin, hemopexin, methemalbumin, LDH, unconjugated bilirubin, urine hemosiderin, and the Direct Antiglobulin Test).</li>
-<li><strong>Classify Anemias by Morphological and Functional Frameworks</strong>: Systematically categorize anemias using automated red blood cell indices (MCV, MCH, MCHC, RDW), peripheral blood film cytomorphology, and kinetic classifications (proliferation, maturation, and survival defects).</li>
+<li><strong>Classify Anemias by Morphological and Functional Frameworks</strong>: Systematically categorize anemias using automated red blood cell indices (MCV: 76 – 100 fL, MCH: 26 – 34 pg, MCHC: 32 – 36 g/dL, RDW: 11.5 – 14.5%), peripheral blood film cytomorphology, and kinetic classifications (proliferation, maturation, and survival defects).</li>
 <li><strong>Apply Laboratory Quality Control and Diagnostic Rules</strong>: Implement operational validation techniques, including the "Rule of Three," spurious macrocytosis resolution, and cytochemical distinction of erythrocyte inclusions.</li>
 </ul>
 <hr />
 <h2 id="pathophysiology-and-compensatory-dynamics-of-anemia">Pathophysiology and Compensatory Dynamics of Anemia</h2>
-<p>Anemia is defined functionally as a reduction below age- and sex-adjusted reference intervals in the circulating red blood cell (RBC) count, hemoglobin (Hb) concentration, or hematocrit (Hct). Its primary pathophysiological consequence is a decreased oxygen-carrying capacity of whole blood, culminating in cellular hypoxia. Anemia represents an objective sign of an underlying disease rather than a primary diagnosis.</p>
+<p>Anemia is defined functionally as a reduction below standard reference intervals in circulating red blood cell count (RBC: $4.00\text{ -- }6.00 \times 10^6/\mu\text{L}$ [$4.00\text{ -- }6.00 \times 10^{12}/\text{L}$]), hemoglobin concentration (HGB: $12.0\text{ -- }18.0\text{ g/dL}$ [$120\text{ -- }180\text{ g/L}$]), or hematocrit (HCT: $35\text{ -- }50\%$ [$0.35\text{ -- }0.50\text{ L/L}$]). Its primary pathophysiological consequence is a decreased oxygen-carrying capacity of whole blood, culminating in cellular hypoxia. Anemia represents an objective sign of an underlying disease rather than an isolated diagnosis.</p>
 <h3 id="erythrocyte-dynamic-equilibrium">Erythrocyte Dynamic Equilibrium</h3>
-<p>In healthy adults, erythrocyte kinetics are maintained in dynamic equilibrium. The bone marrow produces approximately $1%$ ($20 \times 10^{9}\text{ to }25 \times 10^{9}$) of the total circulating erythrocyte mass daily to replace the equal fraction of senescent cells cleared by the reticuloendothelial system (RES; predominantly splenic and hepatic macrophages) after their normal 100- to 120-day lifespan.</p>
+<p>In healthy individuals, erythrocyte kinetics are maintained in dynamic equilibrium. The bone marrow produces approximately $1\%$ ($20 \times 10^{9}\text{ to }25 \times 10^{9}$) of the total circulating erythrocyte mass daily to replace the equal fraction of senescent cells cleared by the reticuloendothelial system (RES; predominantly splenic and hepatic macrophages) after their normal 100- to 120-day lifespan.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Balance [&quot;Erythrocyte Dynamic Equilibrium&quot;]
-                direction TB
-                BM[&quot;Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)&quot;] 
-                Circ[&quot;Circulating Erythrocyte Mass - (Lifespan: 100-120 days)&quot;]
-                RES[&quot;Reticuloendothelial Clearance - (Senescence in Spleen &amp; Liver)&quot;]
-                BM --&gt;|&quot;Daily Production&quot;| Circ
-                Circ --&gt;|&quot;Daily Clearance&quot;| RES
-        end
-
-        subgraph Disruption [&quot;Pathophysiological Mechanisms of Anemia&quot;]
-                direction TB
-                L1[&quot;Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)&quot;]
-                L2[&quot;Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)&quot;]
-        end
-
-        L1 -.-&gt;|&quot;Production &lt; Clearance&quot;| BM
-        L2 -.-&gt;|&quot;Clearance &gt; Production&quot;| RES" data-original-code="flowchart TD
-        subgraph Balance [&quot;Erythrocyte Dynamic Equilibrium&quot;]
-                direction TB
-                BM[&quot;Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)&quot;] 
-                Circ[&quot;Circulating Erythrocyte Mass - (Lifespan: 100-120 days)&quot;]
-                RES[&quot;Reticuloendothelial Clearance - (Senescence in Spleen &amp; Liver)&quot;]
-                BM --&gt;|&quot;Daily Production&quot;| Circ
-                Circ --&gt;|&quot;Daily Clearance&quot;| RES
-        end
-
-        subgraph Disruption [&quot;Pathophysiological Mechanisms of Anemia&quot;]
-                direction TB
-                L1[&quot;Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)&quot;]
-                L2[&quot;Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)&quot;]
-        end
-
-        L1 -.-&gt;|&quot;Production &lt; Clearance&quot;| BM
-        L2 -.-&gt;|&quot;Clearance &gt; Production&quot;| RES">
+    subgraph Balance [&quot;Erythrocyte Dynamic Equilibrium&quot;]
+        direction TB
+        BM[&quot;Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)&quot;] 
+        Circ[&quot;Circulating Erythrocyte Mass - (Lifespan: 100-120 days)&quot;]
+        RES[&quot;Reticuloendothelial Clearance - (Senescence in Spleen &amp; Liver)&quot;]
+        BM --&gt;|&quot;Daily Production&quot;| Circ
+        Circ --&gt;|&quot;Daily Clearance&quot;| RES
+    end
+    subgraph Disruption [&quot;Pathophysiological Mechanisms of Anemia&quot;]
+        direction TB
+        L1[&quot;Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)&quot;]
+        L2[&quot;Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)&quot;]
+    end
+    L1 -.-&gt;|&quot;Production &lt; Clearance&quot;| BM
+    L2 -.-&gt;|&quot;Clearance &gt; Production&quot;| RES" data-original-code="flowchart TD
+    subgraph Balance [&quot;Erythrocyte Dynamic Equilibrium&quot;]
+        direction TB
+        BM[&quot;Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)&quot;] 
+        Circ[&quot;Circulating Erythrocyte Mass - (Lifespan: 100-120 days)&quot;]
+        RES[&quot;Reticuloendothelial Clearance - (Senescence in Spleen &amp; Liver)&quot;]
+        BM --&gt;|&quot;Daily Production&quot;| Circ
+        Circ --&gt;|&quot;Daily Clearance&quot;| RES
+    end
+    subgraph Disruption [&quot;Pathophysiological Mechanisms of Anemia&quot;]
+        direction TB
+        L1[&quot;Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)&quot;]
+        L2[&quot;Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)&quot;]
+    end
+    L1 -.-&gt;|&quot;Production &lt; Clearance&quot;| BM
+    L2 -.-&gt;|&quot;Clearance &gt; Production&quot;| RES">
 flowchart TD
-        subgraph Balance ["Erythrocyte Dynamic Equilibrium"]
-                direction TB
-                BM["Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)"] 
-                Circ["Circulating Erythrocyte Mass - (Lifespan: 100-120 days)"]
-                RES["Reticuloendothelial Clearance - (Senescence in Spleen & Liver)"]
-                BM -->|"Daily Production"| Circ
-                Circ -->|"Daily Clearance"| RES
-        end
-
-        subgraph Disruption ["Pathophysiological Mechanisms of Anemia"]
-                direction TB
-                L1["Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)"]
-                L2["Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)"]
-        end
-
-        L1 -.->|"Production < Clearance"| BM
-        L2 -.->|"Clearance > Production"| RES
+    subgraph Balance ["Erythrocyte Dynamic Equilibrium"]
+        direction TB
+        BM["Bone Marrow Erythropoiesis - (Normal: ~1% turnover/day; can expand 6-8x)"] 
+        Circ["Circulating Erythrocyte Mass - (Lifespan: 100-120 days)"]
+        RES["Reticuloendothelial Clearance - (Senescence in Spleen & Liver)"]
+        BM -->|"Daily Production"| Circ
+        Circ -->|"Daily Clearance"| RES
+    end
+    subgraph Disruption ["Pathophysiological Mechanisms of Anemia"]
+        direction TB
+        L1["Impaired Production - (Hypoproliferation / Ineffective Erythropoiesis)"]
+        L2["Accelerated Loss or Destruction - (Hemorrhage / Hemolysis)"]
+    end
+    L1 -.->|"Production < Clearance"| BM
+    L2 -.->|"Clearance > Production"| RES
 </div>
 
 <p>When this equilibrium is disrupted, anemia ensues via two distinct kinetic pathways:</p>
@@ -395,60 +390,54 @@ flowchart TD
 <li><strong>Biochemical Oxygen Offloading (2,3-BPG and the Bohr Effect)</strong>:<ul>
 <li>Hypoxia upregulates glycolytic flux in circulating erythrocytes, generating increased levels of <strong>2,3-bisphosphoglycerate (2,3-BPG)</strong> via the Rapoport-Luebering shunt.</li>
 <li>2,3-BPG binds the central cavity of the deoxygenated hemoglobin tetramer, specifically forming salt bridges that cross-link and stabilize the $\beta$-globin chains in the "tense" (T) quaternary conformation.</li>
-<li>This binding shifts the <strong>oxygen-hemoglobin dissociation curve to the right</strong>, increasing the $P_{50}$ (the partial pressure of oxygen at which hemoglobin is $50%$ saturated) above its baseline of $\sim 26.6\text{ mm Hg}$. Consequently, hemoglobin's oxygen affinity decreases, facilitating fractional unloading to hypoxic tissues.</li>
-<li>Concurrently, hypoxic tissues accumulate lactic acid and carbon dioxide ($CO_2$). Under the <strong>Bohr effect</strong>, protons ($H^+$) bind specific allosteric histidine residues on deoxyhemoglobin, stabilizing the T-state and promoting further oxygen release.</li>
+<li>This binding shifts the <strong>oxygen-hemoglobin dissociation curve to the right</strong>, increasing the $P_{50}$ (the partial pressure of oxygen at which hemoglobin is $50\%$ saturated) above its baseline of $\sim 26.6\text{ mm Hg}$. Consequently, hemoglobin's oxygen affinity decreases, facilitating fractional unloading to hypoxic tissues.</li>
+<li>Concurrently, hypoxic tissues accumulate lactic acid and carbon dioxide ($\text{CO}_2$). Under the <strong>Bohr effect</strong>, protons ($\text{H}^+$) bind specific allosteric histidine residues on deoxyhemoglobin, stabilizing the T-state and promoting further oxygen release.</li>
 </ul>
 </li>
-<li><strong>Renal Endocrine Signaling</strong>: Interstitial peritubular fibroblasts in the renal cortex detect reduced tissue $pO_2$ via the hypoxia-inducible factor-1$\alpha$ (HIF-1$\alpha$) pathway. Stabilization of HIF-1$\alpha$ drives transcriptional activation and secretion of <strong>erythropoietin (EPO)</strong>, which prevents erythroblast apoptosis and stimulates terminal erythroid maturation.</li>
+<li><strong>Renal Endocrine Signaling</strong>: Interstitial peritubular fibroblasts in the renal cortex detect reduced tissue $\text{pO}_2$ via the hypoxia-inducible factor-1$\alpha$ (HIF-1$\alpha$) pathway. Stabilization of HIF-1$\alpha$ drives transcriptional activation and secretion of <strong>erythropoietin (EPO)</strong>, which prevents erythroblast apoptosis and stimulates terminal erythroid maturation.</li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        Hypoxia[&quot;Tissue Hypoxia&quot;] --&gt; Glycolysis[&quot;Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)&quot;]
-        Glycolysis --&gt; BPG[&quot;Elevated 2,3-BPG Synthesis&quot;]
-        BPG --&gt; Stabilize[&quot;Stabilizes Deoxyhemoglobin (T-State)&quot;]
-        Stabilize --&gt; ShiftRight[&quot;Rightward Shift of O2 Curve - (Increased P50)&quot;]
-        ShiftRight --&gt; O2Delivery[&quot;Enhanced Fractional O2 Delivery&quot;]
-
-        Hypoxia --&gt; LacticAcid[&quot;Tissue Lactic Acid &amp; CO2 Accumulation&quot;]
-        LacticAcid --&gt; Bohr[&quot;Bohr Effect (Protonation of Histidine)&quot;]
-        Bohr --&gt; Stabilize
-
-        Hypoxia --&gt; HIF[&quot;HIF-1alpha Stabilization in Renal Cortex&quot;]
-        HIF --&gt; EPO[&quot;EPO Transcription &amp; Secretion&quot;]
-        EPO --&gt; Marrow[&quot;Suppression of Erythroblast Apoptosis - &amp; Erythroid Hyperplasia&quot;]" data-original-code="flowchart LR
-        Hypoxia[&quot;Tissue Hypoxia&quot;] --&gt; Glycolysis[&quot;Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)&quot;]
-        Glycolysis --&gt; BPG[&quot;Elevated 2,3-BPG Synthesis&quot;]
-        BPG --&gt; Stabilize[&quot;Stabilizes Deoxyhemoglobin (T-State)&quot;]
-        Stabilize --&gt; ShiftRight[&quot;Rightward Shift of O2 Curve - (Increased P50)&quot;]
-        ShiftRight --&gt; O2Delivery[&quot;Enhanced Fractional O2 Delivery&quot;]
-
-        Hypoxia --&gt; LacticAcid[&quot;Tissue Lactic Acid &amp; CO2 Accumulation&quot;]
-        LacticAcid --&gt; Bohr[&quot;Bohr Effect (Protonation of Histidine)&quot;]
-        Bohr --&gt; Stabilize
-
-        Hypoxia --&gt; HIF[&quot;HIF-1alpha Stabilization in Renal Cortex&quot;]
-        HIF --&gt; EPO[&quot;EPO Transcription &amp; Secretion&quot;]
-        EPO --&gt; Marrow[&quot;Suppression of Erythroblast Apoptosis - &amp; Erythroid Hyperplasia&quot;]">
+    Hypoxia[&quot;Tissue Hypoxia&quot;] --&gt; Glycolysis[&quot;Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)&quot;]
+    Glycolysis --&gt; BPG[&quot;Elevated 2,3-BPG Synthesis&quot;]
+    BPG --&gt; Stabilize[&quot;Stabilizes Deoxyhemoglobin (T-State)&quot;]
+    Stabilize --&gt; ShiftRight[&quot;Rightward Shift of O2 Curve - (Increased P50)&quot;]
+    ShiftRight --&gt; O2Delivery[&quot;Enhanced Fractional O2 Delivery&quot;]
+    Hypoxia --&gt; LacticAcid[&quot;Tissue Lactic Acid &amp; CO2 Accumulation&quot;]
+    LacticAcid --&gt; Bohr[&quot;Bohr Effect (Protonation of Histidine)&quot;]
+    Bohr --&gt; Stabilize
+    Hypoxia --&gt; HIF[&quot;HIF-1alpha Stabilization in Renal Cortex&quot;]
+    HIF --&gt; EPO[&quot;EPO Transcription &amp; Secretion&quot;]
+    EPO --&gt; Marrow[&quot;Suppression of Erythroblast Apoptosis - &amp; Erythroid Hyperplasia&quot;]" data-original-code="flowchart LR
+    Hypoxia[&quot;Tissue Hypoxia&quot;] --&gt; Glycolysis[&quot;Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)&quot;]
+    Glycolysis --&gt; BPG[&quot;Elevated 2,3-BPG Synthesis&quot;]
+    BPG --&gt; Stabilize[&quot;Stabilizes Deoxyhemoglobin (T-State)&quot;]
+    Stabilize --&gt; ShiftRight[&quot;Rightward Shift of O2 Curve - (Increased P50)&quot;]
+    ShiftRight --&gt; O2Delivery[&quot;Enhanced Fractional O2 Delivery&quot;]
+    Hypoxia --&gt; LacticAcid[&quot;Tissue Lactic Acid &amp; CO2 Accumulation&quot;]
+    LacticAcid --&gt; Bohr[&quot;Bohr Effect (Protonation of Histidine)&quot;]
+    Bohr --&gt; Stabilize
+    Hypoxia --&gt; HIF[&quot;HIF-1alpha Stabilization in Renal Cortex&quot;]
+    HIF --&gt; EPO[&quot;EPO Transcription &amp; Secretion&quot;]
+    EPO --&gt; Marrow[&quot;Suppression of Erythroblast Apoptosis - &amp; Erythroid Hyperplasia&quot;]">
 flowchart LR
-        Hypoxia["Tissue Hypoxia"] --> Glycolysis["Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)"]
-        Glycolysis --> BPG["Elevated 2,3-BPG Synthesis"]
-        BPG --> Stabilize["Stabilizes Deoxyhemoglobin (T-State)"]
-        Stabilize --> ShiftRight["Rightward Shift of O2 Curve - (Increased P50)"]
-        ShiftRight --> O2Delivery["Enhanced Fractional O2 Delivery"]
-
-        Hypoxia --> LacticAcid["Tissue Lactic Acid & CO2 Accumulation"]
-        LacticAcid --> Bohr["Bohr Effect (Protonation of Histidine)"]
-        Bohr --> Stabilize
-
-        Hypoxia --> HIF["HIF-1alpha Stabilization in Renal Cortex"]
-        HIF --> EPO["EPO Transcription & Secretion"]
-        EPO --> Marrow["Suppression of Erythroblast Apoptosis - & Erythroid Hyperplasia"]
+    Hypoxia["Tissue Hypoxia"] --> Glycolysis["Enhanced Erythrocyte Glycolysis - (Rapoport-Luebering Shunt)"]
+    Glycolysis --> BPG["Elevated 2,3-BPG Synthesis"]
+    BPG --> Stabilize["Stabilizes Deoxyhemoglobin (T-State)"]
+    Stabilize --> ShiftRight["Rightward Shift of O2 Curve - (Increased P50)"]
+    ShiftRight --> O2Delivery["Enhanced Fractional O2 Delivery"]
+    Hypoxia --> LacticAcid["Tissue Lactic Acid & CO2 Accumulation"]
+    LacticAcid --> Bohr["Bohr Effect (Protonation of Histidine)"]
+    Bohr --> Stabilize
+    Hypoxia --> HIF["HIF-1alpha Stabilization in Renal Cortex"]
+    HIF --> EPO["EPO Transcription & Secretion"]
+    EPO --> Marrow["Suppression of Erythroblast Apoptosis - & Erythroid Hyperplasia"]
 </div>
 
 <h3 id="acute-hemorrhage-versus-chronic-blood-loss-dynamics">Acute Hemorrhage versus Chronic Blood Loss Dynamics</h3>
 <p>Diagnostic presentation varies substantially based on the tempo of blood loss and associated plasma volume shifts:</p>
 <ul>
-<li><strong>Hyperacute Hemorrhage</strong>: Whole blood is lost in balanced proportions: red cell mass and plasma volume drop in a $1:1$ ratio. Immediate post-event Hb and Hct values appear falsely normal because cellular concentration is preserved. Over the subsequent 24 to 72 hours, extravascular fluid shifts into the intravascular space to restore normovolemia, diluting the remaining red cell mass and unmasking the true extent of anemia.</li>
-<li><strong>Chronic Blood Loss</strong>: Slow blood loss (e.g., gastrointestinal occult bleeding, menorrhagia) allows time for compensatory plasma volume expansion and cardiopulmonary adjustments. Because circulating volume remains normal, severe reductions in hemoglobin (e.g., Hb $< 5.0\text{ g/dL}$) can be tolerated with minimal symptoms at rest.</li>
+<li><strong>Hyperacute Hemorrhage</strong>: Whole blood is lost in balanced proportions: red cell mass and plasma volume drop in a $1:1$ ratio. Immediate post-event HGB and HCT values appear falsely normal because cellular concentration is preserved. Over the subsequent 24 to 72 hours, extravascular fluid shifts into the intravascular space to restore normovolemia, diluting the remaining red cell mass and unmasking the true extent of anemia.</li>
+<li><strong>Chronic Blood Loss</strong>: Slow blood loss (e.g., gastrointestinal occult bleeding, menorrhagia) allows time for compensatory plasma volume expansion and cardiopulmonary adjustments. Because circulating volume remains normal, severe reductions in hemoglobin (e.g., $\text{HGB} < 5.0\text{ g/dL}$) can be tolerated with minimal symptoms at rest.</li>
 </ul>
 <table>
 <thead>
@@ -460,56 +449,56 @@ flowchart LR
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>$< 20%$ (&lt; 1000 mL)</strong></td>
+<td style="text-align: left;"><strong>$< 20\%$ (&lt; 1000 mL)</strong></td>
 <td style="text-align: left;">Resting asymptomatic; mild postural tachycardia on moderate exertion.</td>
 <td style="text-align: left;">Asymptomatic; compensatory cardiovascular shifts preserve functional capacity.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$20% - 30%$ (1000–1500 mL)</strong></td>
+<td style="text-align: left;"><strong>$20\% - 30\%$ (1000–1500 mL)</strong></td>
 <td style="text-align: left;">Postural hypotension, syncope, exertional tachycardia.</td>
 <td style="text-align: left;">Well-tolerated at rest; exertional dyspnea, mild fatigue.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$30% - 40%$ (1500–2000 mL)</strong></td>
+<td style="text-align: left;"><strong>$30\% - 40\%$ (1500–2000 mL)</strong></td>
 <td style="text-align: left;">Severe orthostatic hypotension, resting tachycardia, cold clammy skin, circulatory collapse.</td>
 <td style="text-align: left;">Chronic fatigue, flow murmurs, marked pallor, headache, bounding pulses.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$> 50%$ (&gt; 2500 mL)</strong></td>
+<td style="text-align: left;"><strong>$> 50\%$ (&gt; 2500 mL)</strong></td>
 <td style="text-align: left;">Hypovolemic shock, lactic acidosis, imminent mortality without rapid transfusion.</td>
-<td style="text-align: left;">Survives Hb levels $< 5.0\text{ g/dL}$ due to expanded plasma volume and elevated 2,3-BPG.</td>
+<td style="text-align: left;">Survives HGB levels $< 5.0\text{ g/dL}$ due to expanded plasma volume and elevated 2,3-BPG.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="plasma-volume-distortions">Plasma Volume Distortions</h4>
 <ul>
-<li><strong>Pseudoanemia (Hypervolemia)</strong>: Hemodilution occurs in third-trimester pregnancy, congestive heart failure, and aggressive intravenous crystalloid administration. Total red blood cell mass remains normal, but concentration-dependent indices (Hb, Hct, RBC count) fall below reference ranges.</li>
-<li><strong>Pseudopolycythemia (Hypovolemia)</strong>: Hemoconcentration caused by severe dehydration, acute burn injury, or diuretic abuse elevates Hb and Hct concentrations, potentially masking an underlying anemia.</li>
-<li><strong>Physiological Adjustments</strong>: Individuals residing at high altitudes adapt to chronic ambient hypoxia through HIF-1$\alpha$-mediated EPO secretion, elevating baseline Hb/Hct ranges. Heavy smokers experience chronic tissue hypoxia due to elevated circulating carboxyhemoglobin ($CO\text{Hb}$), which lacks oxygen-carrying capacity and produces a secondary compensatory erythrocytosis.</li>
+<li><strong>Pseudoanemia (Hypervolemia)</strong>: Hemodilution occurs in third-trimester pregnancy, congestive heart failure, and aggressive intravenous crystalloid administration. Total red blood cell mass remains normal, but concentration-dependent parameters (HGB, HCT, RBC count) fall below reference ranges.</li>
+<li><strong>Pseudopolycythemia (Hypovolemia)</strong>: Hemoconcentration caused by severe dehydration, acute burn injury, or diuretic abuse elevates HGB and HCT concentrations, potentially masking an underlying anemia.</li>
+<li><strong>Physiological Adjustments</strong>: Individuals residing at high altitudes adapt to chronic ambient hypoxia through HIF-1$\alpha$-mediated EPO secretion, elevating baseline HGB/HCT ranges. Heavy smokers experience chronic tissue hypoxia due to elevated circulating carboxyhemoglobin ($\text{COHb}$), which lacks oxygen-carrying capacity and produces a secondary compensatory erythrocytosis.</li>
 </ul>
 <hr />
 <h2 id="quantitative-reticulocyte-metrics-and-hemolytic-diagnostics">Quantitative Reticulocyte Metrics and Hemolytic Diagnostics</h2>
 <p>The reticulocyte is the transitional, non-nucleated erythrocyte between the orthochromic normoblast (which has extruded its nucleus within the marrow stroma) and the mature red blood cell. Reticulocytes spend 2 to 3 days maturing in the bone marrow and 1 to 2 days circulating in peripheral blood before completely clearing their residual organelles.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        Normoblast[&quot;Orthochromic Normoblast (Bone Marrow)&quot;] --&gt; Extrusion[&quot;Nuclear Extrusion&quot;]
-        Extrusion --&gt; ReticMarrow[&quot;Marrow Reticulocyte (Maturation: ~2-3 days)&quot;]
-        ReticMarrow --&gt; Exit[&quot;Transit Across Endothelial Sinusoids&quot;]
-        Exit --&gt; ReticPB[&quot;Peripheral Blood Reticulocyte (Maturation: ~1 day)&quot;]
-        ReticPB --&gt; LossRNA[&quot;Autophagy &amp; Exocytosis of Ribosomal RNA&quot;]
-        LossRNA --&gt; MatureRBC[&quot;Mature Biconcave Erythrocyte (Lifespan: 100-120 days)&quot;]" data-original-code="flowchart TD
-        Normoblast[&quot;Orthochromic Normoblast (Bone Marrow)&quot;] --&gt; Extrusion[&quot;Nuclear Extrusion&quot;]
-        Extrusion --&gt; ReticMarrow[&quot;Marrow Reticulocyte (Maturation: ~2-3 days)&quot;]
-        ReticMarrow --&gt; Exit[&quot;Transit Across Endothelial Sinusoids&quot;]
-        Exit --&gt; ReticPB[&quot;Peripheral Blood Reticulocyte (Maturation: ~1 day)&quot;]
-        ReticPB --&gt; LossRNA[&quot;Autophagy &amp; Exocytosis of Ribosomal RNA&quot;]
-        LossRNA --&gt; MatureRBC[&quot;Mature Biconcave Erythrocyte (Lifespan: 100-120 days)&quot;]">
+    Normoblast[&quot;Orthochromic Normoblast (Bone Marrow)&quot;] --&gt; Extrusion[&quot;Nuclear Extrusion&quot;]
+    Extrusion --&gt; ReticMarrow[&quot;Marrow Reticulocyte (Maturation: ~2-3 days)&quot;]
+    ReticMarrow --&gt; Exit[&quot;Transit Across Endothelial Sinusoids&quot;]
+    Exit --&gt; ReticPB[&quot;Peripheral Blood Reticulocyte (Maturation: ~1 day)&quot;]
+    ReticPB --&gt; LossRNA[&quot;Autophagy &amp; Exocytosis of Ribosomal RNA&quot;]
+    LossRNA --&gt; MatureRBC[&quot;Mature Biconcave Erythrocyte (Lifespan: 100-120 days)&quot;]" data-original-code="flowchart TD
+    Normoblast[&quot;Orthochromic Normoblast (Bone Marrow)&quot;] --&gt; Extrusion[&quot;Nuclear Extrusion&quot;]
+    Extrusion --&gt; ReticMarrow[&quot;Marrow Reticulocyte (Maturation: ~2-3 days)&quot;]
+    ReticMarrow --&gt; Exit[&quot;Transit Across Endothelial Sinusoids&quot;]
+    Exit --&gt; ReticPB[&quot;Peripheral Blood Reticulocyte (Maturation: ~1 day)&quot;]
+    ReticPB --&gt; LossRNA[&quot;Autophagy &amp; Exocytosis of Ribosomal RNA&quot;]
+    LossRNA --&gt; MatureRBC[&quot;Mature Biconcave Erythrocyte (Lifespan: 100-120 days)&quot;]">
 flowchart TD
-        Normoblast["Orthochromic Normoblast (Bone Marrow)"] --> Extrusion["Nuclear Extrusion"]
-        Extrusion --> ReticMarrow["Marrow Reticulocyte (Maturation: ~2-3 days)"]
-        ReticMarrow --> Exit["Transit Across Endothelial Sinusoids"]
-        Exit --> ReticPB["Peripheral Blood Reticulocyte (Maturation: ~1 day)"]
-        ReticPB --> LossRNA["Autophagy & Exocytosis of Ribosomal RNA"]
-        LossRNA --> MatureRBC["Mature Biconcave Erythrocyte (Lifespan: 100-120 days)"]
+    Normoblast["Orthochromic Normoblast (Bone Marrow)"] --> Extrusion["Nuclear Extrusion"]
+    Extrusion --> ReticMarrow["Marrow Reticulocyte (Maturation: ~2-3 days)"]
+    ReticMarrow --> Exit["Transit Across Endothelial Sinusoids"]
+    Exit --> ReticPB["Peripheral Blood Reticulocyte (Maturation: ~1 day)"]
+    ReticPB --> LossRNA["Autophagy & Exocytosis of Ribosomal RNA"]
+    LossRNA --> MatureRBC["Mature Biconcave Erythrocyte (Lifespan: 100-120 days)"]
 </div>
 
 <h3 id="supravital-staining-mechanism-and-enumeration">Supravital Staining Mechanism and Enumeration</h3>
@@ -520,71 +509,66 @@ flowchart TD
 <li><strong>Microscopic Definition</strong>: Precipitation yields visible dark-blue intracytoplasmic filaments, granules, or networks. By international standard criteria, any non-nucleated erythrocyte containing <strong>two or more discrete, blue-staining granules or threads</strong> is classified as a reticulocyte.</li>
 </ul>
 <p>The <strong>Absolute Reticulocyte Count (ARC)</strong> provides a direct measure of circulating reticulocytes per unit volume, uninfluenced by red blood cell count fluctuations:</p>
-<p>$$\text{ARC } (\times 10^{9}/\text{L}) = \text{RBC Count } (\times 10^{12}/\text{L}) \times \left( \frac{\text{Reticulocyte } [%]}{100} \right) \times 1000$$</p>
-<p>$$\text{Adult Reference Interval: } 25\text{ to }75 \times 10^{9}/\text{L } (0.5%\text{ to }2.5%)$$</p>
+<p>$$\text{ARC } (\times 10^3/\mu\text{L}) = \text{RBC Count } (\times 10^6/\mu\text{L}) \times \left( \frac{\text{Reticulocytes } [\%]}{100} \right) \times 1000$$</p>
+<p>$$\text{or in SI units: } \text{ARC } (\times 10^9/\text{L}) = \text{RBC Count } (\times 10^{12}/\text{L}) \times \left( \frac{\text{Reticulocytes } [\%]}{100} \right) \times 1000$$</p>
+<p>$$\text{ASCP BOC Reference Interval: Absolute: } 20\text{ -- }115 \times 10^3/\mu\text{L } (20\text{ -- }115 \times 10^9/\text{L}); \quad \text{Relative: } 0.5\text{ -- }2.5\% \text{ (0.005 -- 0.025)}$$</p>
 <h3 id="corrected-reticulocyte-count-crc">Corrected Reticulocyte Count (CRC)</h3>
-<p>The uncorrected reticulocyte percentage can be misleading in anemic patients. Because the total number of circulating mature erythrocytes (the denominator) is diminished, the reticulocyte percentage appears elevated even if daily marrow red cell output remains static. The <strong>Corrected Reticulocyte Count (CRC)</strong> normalizes the measured reticulocyte percentage to an idealized normal adult hematocrit of $45%$:</p>
-<p>$$\text{CRC } (%) = \text{Reticulocyte } (%) \times \left( \frac{\text{Patient Hematocrit } [%]}{45%} \right)$$</p>
+<p>The uncorrected reticulocyte percentage can be misleading in anemic patients. Because the total number of circulating mature erythrocytes (the denominator) is diminished, the reticulocyte percentage appears elevated even if daily marrow red cell output remains static. The <strong>Corrected Reticulocyte Count (CRC)</strong> normalizes the measured reticulocyte percentage to an idealized normal adult hematocrit of $45\%$ (the midpoint of the $35\text{ -- }50\%$ reference interval):</p>
+<p>$$\text{CRC } (\%) = \text{Reticulocytes } (\%) \times \left( \frac{\text{Patient Hematocrit } [\%]}{45\%} \right)$$</p>
 <ul>
-<li><strong>Decision Limits</strong>: A $\text{CRC} < 2%$ indicates hypoproliferation (inadequate marrow production for the degree of anemia). A $\text{CRC} \ge 2%$ suggests accelerated erythroid output.</li>
+<li><strong>Decision Limits</strong>: A $\text{CRC} < 2\%$ indicates hypoproliferation (inadequate marrow production for the degree of anemia). A $\text{CRC} \ge 2\%$ suggests accelerated erythroid output.</li>
 </ul>
 <h3 id="reticulocyte-production-index-rpi">Reticulocyte Production Index (RPI)</h3>
 <p>The CRC does not account for <strong>premature marrow release</strong>. Under intense EPO stimulation, reticulocytes exit marrow sinuses prematurely ("stress" or "shift" reticulocytes). These immature cells spend less time in the marrow and spend up to 2.5 to 3 days maturing in peripheral blood before losing their reticulum. This extended peripheral lifespan inflates the circulating reticulocyte count, overestimating daily marrow production. </p>
 <p>The <strong>Reticulocyte Production Index (RPI)</strong> corrects for both the decreased red cell mass and the prolonged peripheral maturation time:</p>
-<p>$$\text{RPI} = \frac{\text{CRC}}{\text{Peripheral Maturation Time (Days)}} = \frac{\text{Reticulocyte } [%] \times \left( \frac{\text{Patient Hct } [%]}{45%} \right)}{\text{Shift Correction Factor (Days)}}$$</p>
+<p>$$\text{RPI} = \frac{\text{CRC}}{\text{Peripheral Maturation Time (Days)}} = \frac{\text{Reticulocytes } [\%] \times \left( \frac{\text{Patient HCT } [\%]}{45\%} \right)}{\text{Shift Correction Factor (Days)}}$$</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Patient Hematocrit (Hct, %)</th>
+<th style="text-align: left;">Patient Hematocrit (HCT, %)</th>
 <th style="text-align: left;">Peripheral Maturation Time / Shift Factor (Days)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>$40% - 45%$</strong></td>
+<td style="text-align: left;"><strong>$40\% - 45\%$</strong></td>
 <td style="text-align: left;">1.0</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$35% - 39%$</strong></td>
+<td style="text-align: left;"><strong>$35\% - 39\%$</strong></td>
 <td style="text-align: left;">1.5</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$25% - 34%$</strong></td>
+<td style="text-align: left;"><strong>$25\% - 34\%$</strong></td>
 <td style="text-align: left;">2.0</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$15% - 24%$</strong></td>
+<td style="text-align: left;"><strong>$15\% - 24\%$</strong></td>
 <td style="text-align: left;">2.5</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>$< 15%$</strong></td>
+<td style="text-align: left;"><strong>$< 15\%$</strong></td>
 <td style="text-align: left;">3.0</td>
 </tr>
 </tbody>
 </table>
 <div class="mermaid" data-original-source="flowchart TD
-        Calc[&quot;Calculate RPI Value&quot;] --&gt; Decision{&quot;RPI Diagnostic Cutoff&quot;}
-
-        Decision --&gt;|RPI &lt; 2.0| Hypo[&quot;Hypoproliferative Response - (Inadequate Bone Marrow Compensation)&quot;]
-        Decision --&gt;|RPI &gt;= 2.0| Hyper[&quot;Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)&quot;]
-
-        Hypo --&gt; HypoCauses[&quot;- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)&quot;]
-        Hyper --&gt; HyperCauses[&quot;- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)&quot;]" data-original-code="flowchart TD
-        Calc[&quot;Calculate RPI Value&quot;] --&gt; Decision{&quot;RPI Diagnostic Cutoff&quot;}
-
-        Decision --&gt;|RPI &lt; 2.0| Hypo[&quot;Hypoproliferative Response - (Inadequate Bone Marrow Compensation)&quot;]
-        Decision --&gt;|RPI &gt;= 2.0| Hyper[&quot;Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)&quot;]
-
-        Hypo --&gt; HypoCauses[&quot;- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)&quot;]
-        Hyper --&gt; HyperCauses[&quot;- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)&quot;]">
+    Calc[&quot;Calculate RPI Value&quot;] --&gt; Decision{&quot;RPI Diagnostic Cutoff&quot;}
+    Decision --&gt;|RPI &lt; 2.0| Hypo[&quot;Hypoproliferative Response - (Inadequate Bone Marrow Compensation)&quot;]
+    Decision --&gt;|RPI &gt;= 2.0| Hyper[&quot;Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)&quot;]
+    Hypo --&gt; HypoCauses[&quot;- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)&quot;]
+    Hyper --&gt; HyperCauses[&quot;- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)&quot;]" data-original-code="flowchart TD
+    Calc[&quot;Calculate RPI Value&quot;] --&gt; Decision{&quot;RPI Diagnostic Cutoff&quot;}
+    Decision --&gt;|RPI &lt; 2.0| Hypo[&quot;Hypoproliferative Response - (Inadequate Bone Marrow Compensation)&quot;]
+    Decision --&gt;|RPI &gt;= 2.0| Hyper[&quot;Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)&quot;]
+    Hypo --&gt; HypoCauses[&quot;- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)&quot;]
+    Hyper --&gt; HyperCauses[&quot;- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)&quot;]">
 flowchart TD
-        Calc["Calculate RPI Value"] --> Decision{"RPI Diagnostic Cutoff"}
-
-        Decision -->|RPI < 2.0| Hypo["Hypoproliferative Response - (Inadequate Bone Marrow Compensation)"]
-        Decision -->|RPI >= 2.0| Hyper["Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)"]
-
-        Hypo --> HypoCauses["- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)"]
-        Hyper --> HyperCauses["- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)"]
+    Calc["Calculate RPI Value"] --> Decision{"RPI Diagnostic Cutoff"}
+    Decision -->|RPI < 2.0| Hypo["Hypoproliferative Response - (Inadequate Bone Marrow Compensation)"]
+    Decision -->|RPI >= 2.0| Hyper["Regenerative / Hyperproliferative Response - (Appropriate Bone Marrow Compensation)"]
+    Hypo --> HypoCauses["- Aplastic Anemia / Pure Red Cell Aplasia - - Nutritional Deficiencies (Early IDA, B12/Folate) - - Chronic Kidney Disease (EPO Deficiency) - - Myelophthisic Infiltration (Fibrosis, Malignancy)"]
+    Hyper --> HyperCauses["- Active Hemolytic Anemias (Immune / Non-Immune) - - Acute Post-Hemorrhagic Blood Loss (Compensated) - - Response to Targeted Therapy (Iron, Cobalamin, Folate)"]
 </div>
 
 <h4 id="advanced-automated-reticulocyte-indices">Advanced Automated Reticulocyte Indices</h4>
@@ -596,101 +580,98 @@ flowchart TD
 <h2 id="hemolytic-diagnostics-intravascular-vs-extravascular-pathways">Hemolytic Diagnostics: Intravascular vs. Extravascular Pathways</h2>
 <p>When an elevated RPI ($\ge 2.0$) indicates accelerated erythrocyte loss, the clinical laboratory must distinguish <strong>intravascular hemolysis</strong> (destruction within circulating vessels) from <strong>extravascular hemolysis</strong> (phagocytosis within splenic and hepatic macrophage systems).</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Intravascular [&quot;Intravascular Hemolysis Pathway&quot;]
-                direction TB
-                RBC_IV[&quot;Lysis of Erythrocytes in Circulation&quot;] --&gt; FreeHb[&quot;Free Dimeric Hemoglobin (alpha-beta) in Plasma&quot;]
-                FreeHb --&gt; BoundHapt[&quot;Binds Free Haptoglobin (Depleted Plasma Levels)&quot;]
-                FreeHb --&gt; ExcessHb[&quot;Excess Free Hemoglobin Filtered by Glomerulus&quot;]
-                ExcessHb --&gt; Hemoglobinuria[&quot;Gross Hemoglobinuria &amp; Tubular Reabsorption&quot;]
-                Hemoglobinuria --&gt; Hemosiderinuria[&quot;Hemosiderinuria (Prussian Blue Positive Shedding)&quot;]
-                FreeHb --&gt; Oxidation[&quot;Spontaneous Oxidation to Methemoglobin&quot;]
-                Oxidation --&gt; FreeHeme[&quot;Dissociates to Ferriheme&quot;]
-                FreeHeme --&gt; BoundHemopexin[&quot;Binds Hemopexin (Depleted Plasma Levels)&quot;]
-                FreeHeme --&gt; BoundAlbumin[&quot;Binds Albumin -&amp;gt; Methemalbumin Complex&quot;]
-        end
-
-        subgraph Extravascular [&quot;Extravascular Hemolysis Pathway&quot;]
-                direction TB
-                RBC_EV[&quot;Phagocytosis of Sensitized / Rigid RBCs&quot;] --&gt; RES_Mac[&quot;Splenic &amp; Hepatic Macrophage Ingestion&quot;]
-                RES_Mac --&gt; HemeOx[&quot;Heme Oxygenase: Cleaves Heme Ring&quot;]
-                HemeOx --&gt; Biliverdin[&quot;Biliverdin -&amp;gt; Unconjugated (Indirect) Bilirubin&quot;]
-                Biliverdin --&gt; ComplexAlb[&quot;Unconjugated Bilirubin Bound to Serum Albumin&quot;]
-                ComplexAlb --&gt; Liver[&quot;Hepatocyte Glucuronidation (Conjugation)&quot;]
-                Liver --&gt; Bile[&quot;Excreted via Bile into Intestinal Lumen&quot;]
-                Bile --&gt; Urobilinogen[&quot;Elevated Fecal &amp; Urinary Urobilinogen&quot;]
-        end" data-original-code="flowchart TD
-        subgraph Intravascular [&quot;Intravascular Hemolysis Pathway&quot;]
-                direction TB
-                RBC_IV[&quot;Lysis of Erythrocytes in Circulation&quot;] --&gt; FreeHb[&quot;Free Dimeric Hemoglobin (alpha-beta) in Plasma&quot;]
-                FreeHb --&gt; BoundHapt[&quot;Binds Free Haptoglobin (Depleted Plasma Levels)&quot;]
-                FreeHb --&gt; ExcessHb[&quot;Excess Free Hemoglobin Filtered by Glomerulus&quot;]
-                ExcessHb --&gt; Hemoglobinuria[&quot;Gross Hemoglobinuria &amp; Tubular Reabsorption&quot;]
-                Hemoglobinuria --&gt; Hemosiderinuria[&quot;Hemosiderinuria (Prussian Blue Positive Shedding)&quot;]
-                FreeHb --&gt; Oxidation[&quot;Spontaneous Oxidation to Methemoglobin&quot;]
-                Oxidation --&gt; FreeHeme[&quot;Dissociates to Ferriheme&quot;]
-                FreeHeme --&gt; BoundHemopexin[&quot;Binds Hemopexin (Depleted Plasma Levels)&quot;]
-                FreeHeme --&gt; BoundAlbumin[&quot;Binds Albumin -&amp;gt; Methemalbumin Complex&quot;]
-        end
-
-        subgraph Extravascular [&quot;Extravascular Hemolysis Pathway&quot;]
-                direction TB
-                RBC_EV[&quot;Phagocytosis of Sensitized / Rigid RBCs&quot;] --&gt; RES_Mac[&quot;Splenic &amp; Hepatic Macrophage Ingestion&quot;]
-                RES_Mac --&gt; HemeOx[&quot;Heme Oxygenase: Cleaves Heme Ring&quot;]
-                HemeOx --&gt; Biliverdin[&quot;Biliverdin -&amp;gt; Unconjugated (Indirect) Bilirubin&quot;]
-                Biliverdin --&gt; ComplexAlb[&quot;Unconjugated Bilirubin Bound to Serum Albumin&quot;]
-                ComplexAlb --&gt; Liver[&quot;Hepatocyte Glucuronidation (Conjugation)&quot;]
-                Liver --&gt; Bile[&quot;Excreted via Bile into Intestinal Lumen&quot;]
-                Bile --&gt; Urobilinogen[&quot;Elevated Fecal &amp; Urinary Urobilinogen&quot;]
-        end">
+    subgraph Intravascular [&quot;Intravascular Hemolysis Pathway&quot;]
+        direction TB
+        RBC_IV[&quot;Lysis of Erythrocytes in Circulation&quot;] --&gt; FreeHb[&quot;Free Dimeric Hemoglobin (alpha-beta) in Plasma&quot;]
+        FreeHb --&gt; BoundHapt[&quot;Binds Free Haptoglobin (Depleted Plasma Levels)&quot;]
+        FreeHb --&gt; ExcessHb[&quot;Excess Free Hemoglobin Filtered by Glomerulus&quot;]
+        ExcessHb --&gt; Hemoglobinuria[&quot;Gross Hemoglobinuria &amp; Tubular Reabsorption&quot;]
+        Hemoglobinuria --&gt; Hemosiderinuria[&quot;Hemosiderinuria (Prussian Blue Positive Shedding)&quot;]
+        FreeHb --&gt; Oxidation[&quot;Spontaneous Oxidation to Methemoglobin&quot;]
+        Oxidation --&gt; FreeHeme[&quot;Dissociates to Ferriheme&quot;]
+        FreeHeme --&gt; BoundHemopexin[&quot;Binds Hemopexin (Depleted Plasma Levels)&quot;]
+        FreeHeme --&gt; BoundAlbumin[&quot;Binds Albumin -&amp;gt; Methemalbumin Complex&quot;]
+    end
+    subgraph Extravascular [&quot;Extravascular Hemolysis Pathway&quot;]
+        direction TB
+        RBC_EV[&quot;Phagocytosis of Sensitized / Rigid RBCs&quot;] --&gt; RES_Mac[&quot;Splenic &amp; Hepatic Macrophage Ingestion&quot;]
+        RES_Mac --&gt; HemeOx[&quot;Heme Oxygenase: Cleaves Heme Ring&quot;]
+        HemeOx --&gt; Biliverdin[&quot;Biliverdin -&amp;gt; Unconjugated (Indirect) Bilirubin&quot;]
+        Biliverdin --&gt; ComplexAlb[&quot;Unconjugated Bilirubin Bound to Serum Albumin&quot;]
+        ComplexAlb --&gt; Liver[&quot;Hepatocyte Glucuronidation (Conjugation)&quot;]
+        Liver --&gt; Bile[&quot;Excreted via Bile into Intestinal Lumen&quot;]
+        Bile --&gt; Urobilinogen[&quot;Elevated Fecal &amp; Urinary Urobilinogen&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Intravascular [&quot;Intravascular Hemolysis Pathway&quot;]
+        direction TB
+        RBC_IV[&quot;Lysis of Erythrocytes in Circulation&quot;] --&gt; FreeHb[&quot;Free Dimeric Hemoglobin (alpha-beta) in Plasma&quot;]
+        FreeHb --&gt; BoundHapt[&quot;Binds Free Haptoglobin (Depleted Plasma Levels)&quot;]
+        FreeHb --&gt; ExcessHb[&quot;Excess Free Hemoglobin Filtered by Glomerulus&quot;]
+        ExcessHb --&gt; Hemoglobinuria[&quot;Gross Hemoglobinuria &amp; Tubular Reabsorption&quot;]
+        Hemoglobinuria --&gt; Hemosiderinuria[&quot;Hemosiderinuria (Prussian Blue Positive Shedding)&quot;]
+        FreeHb --&gt; Oxidation[&quot;Spontaneous Oxidation to Methemoglobin&quot;]
+        Oxidation --&gt; FreeHeme[&quot;Dissociates to Ferriheme&quot;]
+        FreeHeme --&gt; BoundHemopexin[&quot;Binds Hemopexin (Depleted Plasma Levels)&quot;]
+        FreeHeme --&gt; BoundAlbumin[&quot;Binds Albumin -&amp;gt; Methemalbumin Complex&quot;]
+    end
+    subgraph Extravascular [&quot;Extravascular Hemolysis Pathway&quot;]
+        direction TB
+        RBC_EV[&quot;Phagocytosis of Sensitized / Rigid RBCs&quot;] --&gt; RES_Mac[&quot;Splenic &amp; Hepatic Macrophage Ingestion&quot;]
+        RES_Mac --&gt; HemeOx[&quot;Heme Oxygenase: Cleaves Heme Ring&quot;]
+        HemeOx --&gt; Biliverdin[&quot;Biliverdin -&amp;gt; Unconjugated (Indirect) Bilirubin&quot;]
+        Biliverdin --&gt; ComplexAlb[&quot;Unconjugated Bilirubin Bound to Serum Albumin&quot;]
+        ComplexAlb --&gt; Liver[&quot;Hepatocyte Glucuronidation (Conjugation)&quot;]
+        Liver --&gt; Bile[&quot;Excreted via Bile into Intestinal Lumen&quot;]
+        Bile --&gt; Urobilinogen[&quot;Elevated Fecal &amp; Urinary Urobilinogen&quot;]
+    end">
 flowchart TD
-        subgraph Intravascular ["Intravascular Hemolysis Pathway"]
-                direction TB
-                RBC_IV["Lysis of Erythrocytes in Circulation"] --> FreeHb["Free Dimeric Hemoglobin (alpha-beta) in Plasma"]
-                FreeHb --> BoundHapt["Binds Free Haptoglobin (Depleted Plasma Levels)"]
-                FreeHb --> ExcessHb["Excess Free Hemoglobin Filtered by Glomerulus"]
-                ExcessHb --> Hemoglobinuria["Gross Hemoglobinuria & Tubular Reabsorption"]
-                Hemoglobinuria --> Hemosiderinuria["Hemosiderinuria (Prussian Blue Positive Shedding)"]
-                FreeHb --> Oxidation["Spontaneous Oxidation to Methemoglobin"]
-                Oxidation --> FreeHeme["Dissociates to Ferriheme"]
-                FreeHeme --> BoundHemopexin["Binds Hemopexin (Depleted Plasma Levels)"]
-                FreeHeme --> BoundAlbumin["Binds Albumin -&gt; Methemalbumin Complex"]
-        end
-
-        subgraph Extravascular ["Extravascular Hemolysis Pathway"]
-                direction TB
-                RBC_EV["Phagocytosis of Sensitized / Rigid RBCs"] --> RES_Mac["Splenic & Hepatic Macrophage Ingestion"]
-                RES_Mac --> HemeOx["Heme Oxygenase: Cleaves Heme Ring"]
-                HemeOx --> Biliverdin["Biliverdin -&gt; Unconjugated (Indirect) Bilirubin"]
-                Biliverdin --> ComplexAlb["Unconjugated Bilirubin Bound to Serum Albumin"]
-                ComplexAlb --> Liver["Hepatocyte Glucuronidation (Conjugation)"]
-                Liver --> Bile["Excreted via Bile into Intestinal Lumen"]
-                Bile --> Urobilinogen["Elevated Fecal & Urinary Urobilinogen"]
-        end
+    subgraph Intravascular ["Intravascular Hemolysis Pathway"]
+        direction TB
+        RBC_IV["Lysis of Erythrocytes in Circulation"] --> FreeHb["Free Dimeric Hemoglobin (alpha-beta) in Plasma"]
+        FreeHb --> BoundHapt["Binds Free Haptoglobin (Depleted Plasma Levels)"]
+        FreeHb --> ExcessHb["Excess Free Hemoglobin Filtered by Glomerulus"]
+        ExcessHb --> Hemoglobinuria["Gross Hemoglobinuria & Tubular Reabsorption"]
+        Hemoglobinuria --> Hemosiderinuria["Hemosiderinuria (Prussian Blue Positive Shedding)"]
+        FreeHb --> Oxidation["Spontaneous Oxidation to Methemoglobin"]
+        Oxidation --> FreeHeme["Dissociates to Ferriheme"]
+        FreeHeme --> BoundHemopexin["Binds Hemopexin (Depleted Plasma Levels)"]
+        FreeHeme --> BoundAlbumin["Binds Albumin -&gt; Methemalbumin Complex"]
+    end
+    subgraph Extravascular ["Extravascular Hemolysis Pathway"]
+        direction TB
+        RBC_EV["Phagocytosis of Sensitized / Rigid RBCs"] --> RES_Mac["Splenic & Hepatic Macrophage Ingestion"]
+        RES_Mac --> HemeOx["Heme Oxygenase: Cleaves Heme Ring"]
+        HemeOx --> Biliverdin["Biliverdin -&gt; Unconjugated (Indirect) Bilirubin"]
+        Biliverdin --> ComplexAlb["Unconjugated Bilirubin Bound to Serum Albumin"]
+        ComplexAlb --> Liver["Hepatocyte Glucuronidation (Conjugation)"]
+        Liver --> Bile["Excreted via Bile into Intestinal Lumen"]
+        Bile --> Urobilinogen["Elevated Fecal & Urinary Urobilinogen"]
+    end
 </div>
 
 <h3 id="intravascular-hemolysis-cascade">Intravascular Hemolysis Cascade</h3>
-<p>When red cells lyse directly within the vascular bed, free $\alpha\beta$ hemoglobin dimers enter the plasma and bind to circulating <strong>haptoglobin</strong> ($1:1$ stoichiometric complex). The resulting high-molecular-weight complex is cleared by hepatic macrophage CD163 receptors, causing free serum haptoglobin concentrations to fall. </p>
+<p>When red cells lyse directly within the vascular bed, free $\alpha\beta$ hemoglobin dimers enter the plasma and bind to circulating <strong>haptoglobin</strong> ($1:1$ stoichiometric complex). The resulting high-molecular-weight complex is cleared by hepatic macrophage CD163 receptors, causing free serum haptoglobin concentrations to fall markedly below the normal reference interval ($30\text{ -- }200\text{ mg/dL}$ [$0.3\text{ -- }2.0\text{ g/L}$]). </p>
 <p>Once haptoglobin capacity is saturated, unbound dimeric hemoglobin filters across the glomerular basement membrane. Renal proximal tubular cells reabsorb and catabolize the filtered hemoglobin, storing its iron as tubular ferritin and hemosiderin. When tubular absorptive capacity is exceeded, <strong>free hemoglobinuria</strong> occurs. Over the following 48 to 72 hours, tubular cells slough into the urine, producing <strong>hemosiderinuria</strong> (demonstrated by Perls' Prussian blue staining of the urinary sediment). </p>
-<p>Concurrently, circulating free hemoglobin oxidizes into methemoglobin, liberating ferriheme. This free ferriheme binds <strong>hemopexin</strong>, which is cleared by hepatic parenchymal cells, depleting serum hemopexin. Residual ferriheme associates non-covalently with albumin to generate <strong>methemalbumin</strong>, which exhibits a characteristic spectrophotometric absorbance peak at $620\text{ nm}$ (Schumm's test). Intracellular lactate dehydrogenase (predominantly isoenzymes $LDH_1$ and $LDH_2$) is released into the blood, driving marked elevations in total serum LDH.</p>
+<p>Concurrently, circulating free hemoglobin oxidizes into methemoglobin, liberating ferriheme. This free ferriheme binds <strong>hemopexin</strong>, which is cleared by hepatic parenchymal cells, depleting serum hemopexin. Residual ferriheme associates non-covalently with albumin to generate <strong>methemalbumin</strong>, which exhibits a characteristic spectrophotometric absorbance peak at $620\text{ nm}$ (Schumm's test). Intracellular lactate dehydrogenase (predominantly isoenzymes $\text{LDH}_1$ and $\text{LDH}_2$) is released into the blood, driving marked elevations in total serum LDH.</p>
 <h3 id="extravascular-hemolysis-cascade">Extravascular Hemolysis Cascade</h3>
 <p>Extravascular clearance occurs when macrophages in the splenic red pulp cords (cords of Billroth) and hepatic sinusoids recognize membrane alterations, bound immunoglobulins, complement fragments, or reduced cellular deformability. Phagocytosed erythrocytes are degraded within macrophage phagolysosomes. </p>
-<p>Heme oxygenase linearizes the heme ring, releasing iron for recycling, carbon monoxide, and biliverdin. Biliverdin reductase converts biliverdin to lipid-soluble <strong>unconjugated (indirect) bilirubin</strong>. This unconjugated bilirubin is transported to the liver bound to albumin, where UDP-glucuronosyltransferase conjugates it into water-soluble bilirubin glucuronides. These are excreted in bile and converted by intestinal flora into <strong>urobilinogen</strong>, which is subsequently excreted in feces (stercobilin) and urine. </p>
-<p>Because free hemoglobin is not released directly into the systemic circulation, hemoglobinemia, hemoglobinuria, and hemosiderinuria are absent, and plasma haptoglobin levels are normal or only moderately reduced. Splenomegaly is a frequent physical finding due to reticuloendothelial work hyperplasia.</p>
+<p>Heme oxygenase linearizes the heme ring, releasing iron for recycling, carbon monoxide, and biliverdin. Biliverdin reductase converts biliverdin to lipid-soluble <strong>unconjugated (indirect) bilirubin</strong>. This unconjugated bilirubin ($\text{Unconjugated Bilirubin} = \text{Total Bilirubin} - \text{Conjugated Bilirubin}$) is transported to the liver bound to albumin, where UDP-glucuronosyltransferase conjugates it into water-soluble bilirubin glucuronides. These are excreted in bile and converted by intestinal flora into <strong>urobilinogen</strong>, which is subsequently excreted in feces (stercobilin) and urine (reference interval: $< 1.0\text{ EU}$ [$< 17.0\text{ }\mu\text{mol/L}$]). </p>
+<p>Because free hemoglobin is not released directly into the systemic circulation, hemoglobinemia, hemoglobinuria, and hemosiderinuria are absent, and plasma haptoglobin levels are normal ($30\text{ -- }200\text{ mg/dL}$) or only moderately reduced. Splenomegaly is a frequent physical finding due to reticuloendothelial work hyperplasia.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Biomarker Parameter</th>
 <th style="text-align: left;">Intravascular Hemolysis</th>
 <th style="text-align: left;">Extravascular Hemolysis</th>
-<th style="text-align: left;">Analytical Principle / Specimen</th>
+<th style="text-align: left;">Analytical Principle / Reference Interval</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Plasma Haptoglobin</strong></td>
-<td style="text-align: left;">Markedly Decreased to Absent ($< 10\text{ mg/dL}$)</td>
+<td style="text-align: left;">Markedly Decreased to Absent ($< 30\text{ mg/dL}$ or $< 0.3\text{ g/L}$)</td>
 <td style="text-align: left;">Normal to Moderately Decreased</td>
-<td style="text-align: left;">Immunoturbidimetry; acute-phase reactant</td>
+<td style="text-align: left;">Immunoturbidimetry; ASCP Ref: $30\text{ -- }200\text{ mg/dL}$ ($0.3\text{ -- }2.0\text{ g/L}$)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Plasma Hemopexin</strong></td>
@@ -708,7 +689,7 @@ flowchart TD
 <td style="text-align: left;"><strong>Urine Free Hemoglobin</strong></td>
 <td style="text-align: left;">Positive (pink-red urine; clear supernatant)</td>
 <td style="text-align: left;">Negative</td>
-<td style="text-align: left;">Dipstick pseudoperoxidase reaction</td>
+<td style="text-align: left;">Dipstick pseudoperoxidase reaction (ASCP Ref: Negative)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Urine Hemosiderin</strong></td>
@@ -718,7 +699,7 @@ flowchart TD
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Serum Total LDH</strong></td>
-<td style="text-align: left;">Strikingly Elevated ($LDH_1 > LDH_2$)</td>
+<td style="text-align: left;">Strikingly Elevated ($\text{LDH}_1 > \text{LDH}_2$)</td>
 <td style="text-align: left;">Mild to Moderately Elevated</td>
 <td style="text-align: left;">Kinetic UV enzymatic spectrophotometry</td>
 </tr>
@@ -726,13 +707,13 @@ flowchart TD
 <td style="text-align: left;"><strong>Unconjugated Bilirubin</strong></td>
 <td style="text-align: left;">Normal to Mildly Elevated</td>
 <td style="text-align: left;">Markedly Elevated</td>
-<td style="text-align: left;">Diazo coupling (Jendrassik-Grof method)</td>
+<td style="text-align: left;">Diazo coupling (Jendrassik-Grof); $\text{Total} - \text{Conjugated}$</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Urine Urobilinogen</strong></td>
 <td style="text-align: left;">Normal to Slightly Increased</td>
 <td style="text-align: left;">Markedly Elevated</td>
-<td style="text-align: left;">Ehrlich's aldehyde reagent test</td>
+<td style="text-align: left;">Ehrlich's aldehyde test (ASCP Ref: $< 1.0\text{ EU}$ or $< 17\text{ }\mu\text{mol/L}$)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Direct Antiglobulin (DAT)</strong></td>
@@ -746,75 +727,61 @@ flowchart TD
 <h2 id="morphological-and-functional-classification-systems">Morphological and Functional Classification Systems</h2>
 <p>The diagnostic workup of anemia integrates two complementary strategies: <strong>morphological classification</strong> (based on automated RBC indices and peripheral blood film review) and <strong>functional classification</strong> (based on bone marrow response and kinetic mechanism).</p>
 <div class="mermaid" data-original-source="flowchart TD
-        CBC[&quot;Complete Blood Count (CBC) with Automated Indices&quot;] --&gt; Morph{&quot;Morphological Classification (MCV)&quot;}
-
-        Morph --&gt;|MCV &lt; 80 fL| Micro[&quot;Microcytic, Hypochromic - (MCHC &amp;lt; 32 g/dL)&quot;]
-        Morph --&gt;|MCV 80 - 100 fL| Normo[&quot;Normocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
-        Morph --&gt;|MCV &gt; 100 fL| Macro[&quot;Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
-
-        Micro --&gt; MicroReflex[&quot;Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis&quot;]
-
-        Normo --&gt; NormoRPI{&quot;RPI Assessment&quot;}
-        NormoRPI --&gt;|RPI &lt; 2.0| NormoHypo[&quot;Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration&quot;]
-        NormoRPI --&gt;|RPI &gt;= 2.0| NormoSurv[&quot;Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage&quot;]
-
-        Macro --&gt; MacroSmear{&quot;Peripheral Blood Film Review&quot;}
-        MacroSmear --&gt;|Macro-ovalocytes &amp; Hypersegmented PMNs| Megalo[&quot;Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS&quot;]
-        MacroSmear --&gt;|Round Macrocytes, Target Cells, Polychromasia| NonMegalo[&quot;Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis&quot;]" data-original-code="flowchart TD
-        CBC[&quot;Complete Blood Count (CBC) with Automated Indices&quot;] --&gt; Morph{&quot;Morphological Classification (MCV)&quot;}
-
-        Morph --&gt;|MCV &lt; 80 fL| Micro[&quot;Microcytic, Hypochromic - (MCHC &amp;lt; 32 g/dL)&quot;]
-        Morph --&gt;|MCV 80 - 100 fL| Normo[&quot;Normocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
-        Morph --&gt;|MCV &gt; 100 fL| Macro[&quot;Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
-
-        Micro --&gt; MicroReflex[&quot;Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis&quot;]
-
-        Normo --&gt; NormoRPI{&quot;RPI Assessment&quot;}
-        NormoRPI --&gt;|RPI &lt; 2.0| NormoHypo[&quot;Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration&quot;]
-        NormoRPI --&gt;|RPI &gt;= 2.0| NormoSurv[&quot;Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage&quot;]
-
-        Macro --&gt; MacroSmear{&quot;Peripheral Blood Film Review&quot;}
-        MacroSmear --&gt;|Macro-ovalocytes &amp; Hypersegmented PMNs| Megalo[&quot;Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS&quot;]
-        MacroSmear --&gt;|Round Macrocytes, Target Cells, Polychromasia| NonMegalo[&quot;Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis&quot;]">
+    CBC[&quot;Complete Blood Count (CBC) with Automated Indices&quot;] --&gt; Morph{&quot;Morphological Classification (MCV)&quot;}
+    Morph --&gt;|MCV &lt; 76 fL| Micro[&quot;Microcytic, Hypochromic - (MCHC &amp;lt; 32 g/dL)&quot;]
+    Morph --&gt;|MCV 76 - 100 fL| Normo[&quot;Normocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
+    Morph --&gt;|MCV &gt; 100 fL| Macro[&quot;Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
+    Micro --&gt; MicroReflex[&quot;Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis&quot;]
+    Normo --&gt; NormoRPI{&quot;RPI Assessment&quot;}
+    NormoRPI --&gt;|RPI &lt; 2.0| NormoHypo[&quot;Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration&quot;]
+    NormoRPI --&gt;|RPI &gt;= 2.0| NormoSurv[&quot;Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage&quot;]
+    Macro --&gt; MacroSmear{&quot;Peripheral Blood Film Review&quot;}
+    MacroSmear --&gt;|Macro-ovalocytes &amp; Hypersegmented PMNs| Megalo[&quot;Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS&quot;]
+    MacroSmear --&gt;|Round Macrocytes, Target Cells, Polychromasia| NonMegalo[&quot;Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis&quot;]" data-original-code="flowchart TD
+    CBC[&quot;Complete Blood Count (CBC) with Automated Indices&quot;] --&gt; Morph{&quot;Morphological Classification (MCV)&quot;}
+    Morph --&gt;|MCV &lt; 76 fL| Micro[&quot;Microcytic, Hypochromic - (MCHC &amp;lt; 32 g/dL)&quot;]
+    Morph --&gt;|MCV 76 - 100 fL| Normo[&quot;Normocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
+    Morph --&gt;|MCV &gt; 100 fL| Macro[&quot;Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)&quot;]
+    Micro --&gt; MicroReflex[&quot;Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis&quot;]
+    Normo --&gt; NormoRPI{&quot;RPI Assessment&quot;}
+    NormoRPI --&gt;|RPI &lt; 2.0| NormoHypo[&quot;Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration&quot;]
+    NormoRPI --&gt;|RPI &gt;= 2.0| NormoSurv[&quot;Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage&quot;]
+    Macro --&gt; MacroSmear{&quot;Peripheral Blood Film Review&quot;}
+    MacroSmear --&gt;|Macro-ovalocytes &amp; Hypersegmented PMNs| Megalo[&quot;Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS&quot;]
+    MacroSmear --&gt;|Round Macrocytes, Target Cells, Polychromasia| NonMegalo[&quot;Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis&quot;]">
 flowchart TD
-        CBC["Complete Blood Count (CBC) with Automated Indices"] --> Morph{"Morphological Classification (MCV)"}
-
-        Morph -->|MCV < 80 fL| Micro["Microcytic, Hypochromic - (MCHC &lt; 32 g/dL)"]
-        Morph -->|MCV 80 - 100 fL| Normo["Normocytic, Normochromic - (MCHC 32 - 36 g/dL)"]
-        Morph -->|MCV > 100 fL| Macro["Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)"]
-
-        Micro --> MicroReflex["Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis"]
-
-        Normo --> NormoRPI{"RPI Assessment"}
-        NormoRPI -->|RPI < 2.0| NormoHypo["Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration"]
-        NormoRPI -->|RPI >= 2.0| NormoSurv["Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage"]
-
-        Macro --> MacroSmear{"Peripheral Blood Film Review"}
-        MacroSmear -->|Macro-ovalocytes & Hypersegmented PMNs| Megalo["Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS"]
-        MacroSmear -->|Round Macrocytes, Target Cells, Polychromasia| NonMegalo["Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis"]
+    CBC["Complete Blood Count (CBC) with Automated Indices"] --> Morph{"Morphological Classification (MCV)"}
+    Morph -->|MCV < 76 fL| Micro["Microcytic, Hypochromic - (MCHC &lt; 32 g/dL)"]
+    Morph -->|MCV 76 - 100 fL| Normo["Normocytic, Normochromic - (MCHC 32 - 36 g/dL)"]
+    Morph -->|MCV > 100 fL| Macro["Macrocytic, Normochromic - (MCHC 32 - 36 g/dL)"]
+    Micro --> MicroReflex["Reflex Testing: - Serum Ferritin, Iron Panel, sTfR, Hb Electrophoresis"]
+    Normo --> NormoRPI{"RPI Assessment"}
+    NormoRPI -->|RPI < 2.0| NormoHypo["Hypoproliferative Defect: - Renal Disease (EPO), Aplastic Anemia, Marrow Infiltration"]
+    NormoRPI -->|RPI >= 2.0| NormoSurv["Survival Defect / Acute Loss: - Active Hemolysis (Workup Panel), Acute Hemorrhage"]
+    Macro --> MacroSmear{"Peripheral Blood Film Review"}
+    MacroSmear -->|Macro-ovalocytes & Hypersegmented PMNs| Megalo["Megaloblastic Maturation Defect: - Vitamin B12 or Folate Deficiency, MDS"]
+    MacroSmear -->|Round Macrocytes, Target Cells, Polychromasia| NonMegalo["Non-Megaloblastic Condition: - Liver Disease, Alcoholism, Marked Shift Reticulocytosis"]
 </div>
 
 <h3 id="morphological-classification-framework">Morphological Classification Framework</h3>
-<p>The morphological framework relies on the <strong>Mean Corpuscular Volume (MCV)</strong>, representing the average erythrocyte volume in femtoliters (fL), corroborated by the <strong>Mean Corpuscular Hemoglobin Concentration (MCHC)</strong> in g/dL:</p>
-<p>$$\text{MCV } (\text{fL}) = \frac{\text{Hematocrit } [%] \times 10}{\text{RBC Count } (\times 10^{12}/\text{L})}$$</p>
-<p>$$\text{MCH } (\text{pg}) = \frac{\text{Hemoglobin } [\text{g/dL}] \times 10}{\text{RBC Count } (\times 10^{12}/\text{L})}$$</p>
-<p>$$\text{MCHC } (\text{g/dL}) = \frac{\text{Hemoglobin } [\text{g/dL}] \times 100}{\text{Hematocrit } [%]} = \frac{\text{MCH } [\text{pg}]}{\text{MCV } [\text{fL}]} \times 100$$</p>
+<p>The morphological framework relies on the <strong>Mean Corpuscular Volume (MCV)</strong>, representing the average erythrocyte volume in femtoliters (fL; reference interval: $76\text{ -- }100\text{ fL}$), corroborated by the <strong>Mean Corpuscular Hemoglobin Concentration (MCHC)</strong> in g/dL (reference interval: $32\text{ -- }36\text{ g/dL}$ [$320\text{ -- }360\text{ g/L}$]) and <strong>Mean Corpuscular Hemoglobin (MCH)</strong> in pg (reference interval: $26\text{ -- }34\text{ pg}$):</p>
+<p>$$\text{MCV (fL)} = \frac{\text{HCT (\%)} \times 10}{\text{RBC Count (}\times 10^6/\mu\text{L})} \quad \left[\text{or } \frac{\text{HCT (L/L)} \times 1000}{\text{RBC Count (}\times 10^{12}/\text{L})}\right]$$</p>
+<p>$$\text{MCH (pg)} = \frac{\text{HGB (g/dL)} \times 10}{\text{RBC Count (}\times 10^6/\mu\text{L})} \quad \left[\text{or } \frac{\text{HGB (g/L)}}{\text{RBC Count (}\times 10^{12}/\text{L})}\right]$$</p>
+<p>$$\text{MCHC (g/dL)} = \frac{\text{HGB (g/dL)} \times 100}{\text{HCT (\%)}} \quad \left[\text{or } \frac{\text{MCH (pg)}}{\text{MCV (fL)}} \times 100\right]$$</p>
 <ul>
-<li><strong>Microcytic, Hypochromic ($\text{MCV} < 80\text{ fL}$, $\text{MCHC} < 32\text{ g/dL}$)</strong>:<ul>
+<li><strong>Microcytic, Hypochromic ($\text{MCV} < 76\text{ fL}$, $\text{MCHC} < 32\text{ g/dL}$ [$< 320\text{ g/L}$])</strong>:<ul>
 <li>Reflects cytoplasmic maturation defects in which hemoglobin synthesis is impaired.</li>
 <li><em>Morphology</em>: Expanded central pallor exceeding one-third of the cell's total diameter; cellular diameter smaller than the nucleus of a normal resting lymphocyte ($\sim 7\text{ to }8\text{ }\mu\text{m}$).</li>
 </ul>
 </li>
-<li><strong>Normocytic, Normochromic ($\text{MCV } 80\text{ to }100\text{ fL}$, $\text{MCHC } 32\text{ to }36\text{ g/dL}$)</strong>:<ul>
+<li><strong>Normocytic, Normochromic ($\text{MCV } 76\text{ to }100\text{ fL}$, $\text{MCHC } 32\text{ to }36\text{ g/dL}$ [$320\text{ to }360\text{ g/L}$])</strong>:<ul>
 <li>Normal cellular dimensions and hemoglobin density. Subdivided functionally using the RPI into hypoproliferative disorders ($\text{RPI} < 2$) and survival/hemorrhagic defects ($\text{RPI} \ge 2$).</li>
 </ul>
 </li>
-<li><strong>Macrocytic, Normochromic ($\text{MCV} > 100\text{ fL}$, $\text{MCHC } 32\text{ to }36\text{ g/dL}$)</strong>:<ul>
-<li>Erythrocytes with an expanded volume and normal intracellular hemoglobin concentration:<ul>
-<li><em>Megaloblastic Anemia</em>: Impaired nuclear DNA synthesis with preserved cytoplasmic protein synthesis (nuclear-cytoplasmic dyssynchrony). Marked by cellular gigantism, oval macrocytes (macro-ovalocytes), and hypersegmented neutrophils ($\ge 5%$ of neutrophils with 5 lobes or any single neutrophil with $\ge 6$ lobes).</li>
+<li><strong>Macrocytic, Normochromic ($\text{MCV} > 100\text{ fL}$, $\text{MCHC } 32\text{ to }36\text{ g/dL}$ [$320\text{ to }360\text{ g/L}$])</strong>:<ul>
+<li>Erythrocytes with an expanded volume and normal intracellular hemoglobin concentration:</li>
+<li><em>Megaloblastic Anemia</em>: Impaired nuclear DNA synthesis with preserved cytoplasmic protein synthesis (nuclear-cytoplasmic dyssynchrony). Marked by cellular gigantism, oval macrocytes (macro-ovalocytes), and hypersegmented neutrophils ($\ge 5\%$ of neutrophils with 5 lobes or any single neutrophil with $\ge 6$ lobes).</li>
 <li><em>Non-Megaloblastic Macrocytosis</em>: Round macrocytes lacking hypersegmented neutrophils, seen in chronic liver disease, chronic ethanol abuse, or due to prominent polychromasia (reticulocytes are larger than mature erythrocytes, measuring $100\text{ to }120\text{ fL}$).</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -823,94 +790,88 @@ flowchart TD
 <ul>
 <li><strong>Proliferation Defects (Hypoproliferation)</strong>:<ul>
 <li>Reduced bone marrow erythropoiesis caused by stem cell destruction, toxic ablation, or an absence of essential growth factors.</li>
-<li><em>Signatures</em>: Low absolute reticulocyte count, $\text{RPI} < 2.0$, and hypocellular bone marrow with erythroid hypoplasia.</li>
+<li><em>Signatures</em>: Low absolute reticulocyte count ($< 20 \times 10^3/\mu\text{L}$ [$< 20 \times 10^9/\text{L}$]), $\text{RPI} < 2.0$, and hypocellular bone marrow with erythroid hypoplasia.</li>
 <li><em>Etiologies</em>: Aplastic anemia, pure red cell aplasia (PRCA), chronic kidney disease (loss of peritubular capillary EPO synthesis), and myelophthisic states (marrow replacement by metastatic neoplasms, mycobacterial granulomas, or primary myelofibrosis).</li>
 </ul>
 </li>
 <li><strong>Maturation Defects (Ineffective Erythropoiesis)</strong>:<ul>
 <li>Erythroid precursors proliferate within the marrow, but structural defects cause intramedullary apoptosis before the cells can enter the circulation.</li>
 <li><em>Signatures</em>: <strong>Marked bone marrow erythroid hyperplasia</strong> accompanied by <strong>low peripheral reticulocyte counts</strong> ($\text{RPI} < 2.0$). Serum LDH and unconjugated bilirubin are elevated, reflecting intramedullary destruction of erythroblasts.</li>
-<li><em>Nuclear Maturation Defects</em>: Impaired DNA replication; driven by Vitamin $B_{12}$ deficiency, folate deficiency, or myelodysplastic syndromes (MDS).</li>
+<li><em>Nuclear Maturation Defects</em>: Impaired DNA replication; driven by Vitamin $\text{B}_{12}$ deficiency, folate deficiency, or myelodysplastic syndromes (MDS).</li>
 <li><em>Cytoplasmic Maturation Defects</em>: Defective hemoglobin assembly; driven by severe iron deficiency, thalassemia syndromes, or sideroblastic anemias.</li>
 </ul>
 </li>
 <li><strong>Survival Defects (Accelerated Erythrocyte Clearance)</strong>:<ul>
 <li>Erythrocytes mature and egress normally, but their circulatory lifespan is shortened below 100 days due to intrinsic cellular defects or extrinsic destruction.</li>
-<li><em>Signatures</em>: Marrow erythroid hyperplasia, high peripheral reticulocyte output ($\text{RPI} \ge 2.0$), polychromasia, increased RDW, and characteristic poikilocytes on the peripheral blood film.</li>
+<li><em>Signatures</em>: Marrow erythroid hyperplasia, high peripheral reticulocyte output ($\text{RPI} \ge 2.0$), polychromasia, increased RDW ($> 14.5\%$), and characteristic poikilocytes on the peripheral blood film.</li>
 </ul>
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        subgraph Prolif [&quot;Proliferation Defect&quot;]
-                direction TB
-                BM1[&quot;Hypocellular Bone Marrow - (Erythroid Hypoplasia)&quot;]
-                PB1[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
-                BM1 --&gt; PB1
-        end
-
-        subgraph Matur [&quot;Maturation Defect (Ineffective)&quot;]
-                direction TB
-                BM2[&quot;Hypercellular Bone Marrow - (Erythroid Hyperplasia)&quot;]
-                Death[&quot;Intramedullary Apoptosis - (High LDH &amp; Indirect Bilirubin)&quot;]
-                PB2[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
-                BM2 --&gt; Death --&gt; PB2
-        end
-
-        subgraph Surv [&quot;Survival Defect (Compensated)&quot;]
-                direction TB
-                BM3[&quot;Hypercellular Bone Marrow - (Compensatory Hyperplasia)&quot;]
-                Lysis[&quot;Circulatory Destruction / Hemolysis - or Acute Blood Loss&quot;]
-                PB3[&quot;High Peripheral Reticulocytes - (RPI &amp;gt;= 2.0)&quot;]
-                BM3 --&gt; PB3
-                Lysis -.-&gt;|&quot;EPO Drive&quot;| BM3
-        end" data-original-code="flowchart LR
-        subgraph Prolif [&quot;Proliferation Defect&quot;]
-                direction TB
-                BM1[&quot;Hypocellular Bone Marrow - (Erythroid Hypoplasia)&quot;]
-                PB1[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
-                BM1 --&gt; PB1
-        end
-
-        subgraph Matur [&quot;Maturation Defect (Ineffective)&quot;]
-                direction TB
-                BM2[&quot;Hypercellular Bone Marrow - (Erythroid Hyperplasia)&quot;]
-                Death[&quot;Intramedullary Apoptosis - (High LDH &amp; Indirect Bilirubin)&quot;]
-                PB2[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
-                BM2 --&gt; Death --&gt; PB2
-        end
-
-        subgraph Surv [&quot;Survival Defect (Compensated)&quot;]
-                direction TB
-                BM3[&quot;Hypercellular Bone Marrow - (Compensatory Hyperplasia)&quot;]
-                Lysis[&quot;Circulatory Destruction / Hemolysis - or Acute Blood Loss&quot;]
-                PB3[&quot;High Peripheral Reticulocytes - (RPI &amp;gt;= 2.0)&quot;]
-                BM3 --&gt; PB3
-                Lysis -.-&gt;|&quot;EPO Drive&quot;| BM3
-        end">
+    subgraph Prolif [&quot;Proliferation Defect&quot;]
+        direction TB
+        BM1[&quot;Hypocellular Bone Marrow - (Erythroid Hypoplasia)&quot;]
+        PB1[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
+        BM1 --&gt; PB1
+    end
+    subgraph Matur [&quot;Maturation Defect (Ineffective)&quot;]
+        direction TB
+        BM2[&quot;Hypercellular Bone Marrow - (Erythroid Hyperplasia)&quot;]
+        Death[&quot;Intramedullary Apoptosis - (High LDH &amp; Indirect Bilirubin)&quot;]
+        PB2[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
+        BM2 --&gt; Death --&gt; PB2
+    end
+    subgraph Surv [&quot;Survival Defect (Compensated)&quot;]
+        direction TB
+        BM3[&quot;Hypercellular Bone Marrow - (Compensatory Hyperplasia)&quot;]
+        Lysis[&quot;Circulatory Destruction / Hemolysis - or Acute Blood Loss&quot;]
+        PB3[&quot;High Peripheral Reticulocytes - (RPI &amp;gt;= 2.0)&quot;]
+        BM3 --&gt; PB3
+        Lysis -.-&gt;|&quot;EPO Drive&quot;| BM3
+    end" data-original-code="flowchart LR
+    subgraph Prolif [&quot;Proliferation Defect&quot;]
+        direction TB
+        BM1[&quot;Hypocellular Bone Marrow - (Erythroid Hypoplasia)&quot;]
+        PB1[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
+        BM1 --&gt; PB1
+    end
+    subgraph Matur [&quot;Maturation Defect (Ineffective)&quot;]
+        direction TB
+        BM2[&quot;Hypercellular Bone Marrow - (Erythroid Hyperplasia)&quot;]
+        Death[&quot;Intramedullary Apoptosis - (High LDH &amp; Indirect Bilirubin)&quot;]
+        PB2[&quot;Low Peripheral Reticulocytes - (RPI &amp;lt; 2.0)&quot;]
+        BM2 --&gt; Death --&gt; PB2
+    end
+    subgraph Surv [&quot;Survival Defect (Compensated)&quot;]
+        direction TB
+        BM3[&quot;Hypercellular Bone Marrow - (Compensatory Hyperplasia)&quot;]
+        Lysis[&quot;Circulatory Destruction / Hemolysis - or Acute Blood Loss&quot;]
+        PB3[&quot;High Peripheral Reticulocytes - (RPI &amp;gt;= 2.0)&quot;]
+        BM3 --&gt; PB3
+        Lysis -.-&gt;|&quot;EPO Drive&quot;| BM3
+    end">
 flowchart LR
-        subgraph Prolif ["Proliferation Defect"]
-                direction TB
-                BM1["Hypocellular Bone Marrow - (Erythroid Hypoplasia)"]
-                PB1["Low Peripheral Reticulocytes - (RPI &lt; 2.0)"]
-                BM1 --> PB1
-        end
-
-        subgraph Matur ["Maturation Defect (Ineffective)"]
-                direction TB
-                BM2["Hypercellular Bone Marrow - (Erythroid Hyperplasia)"]
-                Death["Intramedullary Apoptosis - (High LDH & Indirect Bilirubin)"]
-                PB2["Low Peripheral Reticulocytes - (RPI &lt; 2.0)"]
-                BM2 --> Death --> PB2
-        end
-
-        subgraph Surv ["Survival Defect (Compensated)"]
-                direction TB
-                BM3["Hypercellular Bone Marrow - (Compensatory Hyperplasia)"]
-                Lysis["Circulatory Destruction / Hemolysis - or Acute Blood Loss"]
-                PB3["High Peripheral Reticulocytes - (RPI &gt;= 2.0)"]
-                BM3 --> PB3
-                Lysis -.->|"EPO Drive"| BM3
-        end
+    subgraph Prolif ["Proliferation Defect"]
+        direction TB
+        BM1["Hypocellular Bone Marrow - (Erythroid Hypoplasia)"]
+        PB1["Low Peripheral Reticulocytes - (RPI &lt; 2.0)"]
+        BM1 --> PB1
+    end
+    subgraph Matur ["Maturation Defect (Ineffective)"]
+        direction TB
+        BM2["Hypercellular Bone Marrow - (Erythroid Hyperplasia)"]
+        Death["Intramedullary Apoptosis - (High LDH & Indirect Bilirubin)"]
+        PB2["Low Peripheral Reticulocytes - (RPI &lt; 2.0)"]
+        BM2 --> Death --> PB2
+    end
+    subgraph Surv ["Survival Defect (Compensated)"]
+        direction TB
+        BM3["Hypercellular Bone Marrow - (Compensatory Hyperplasia)"]
+        Lysis["Circulatory Destruction / Hemolysis - or Acute Blood Loss"]
+        PB3["High Peripheral Reticulocytes - (RPI &gt;= 2.0)"]
+        BM3 --> PB3
+        Lysis -.->|"EPO Drive"| BM3
+    end
 </div>
 
 <table>
@@ -925,13 +886,13 @@ flowchart LR
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Microcytic, Hypochromic</strong></td>
-<td style="text-align: left;">$\text{MCV} < 80\text{ fL}$<br>$\text{MCHC} < 32\text{ g/dL}$</td>
+<td style="text-align: left;">$\text{MCV} < 76\text{ fL}$<br>$\text{MCHC} < 32\text{ g/dL}$</td>
 <td style="text-align: left;">Target cells (codocytes), pencil cells (elliptocytes), microcytes, basophilic stippling</td>
 <td style="text-align: left;">Iron Deficiency Anemia, Anemia of Chronic Disease (late), $\beta$-Thalassemia Minor, Lead Poisoning</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Normocytic, Normochromic</strong></td>
-<td style="text-align: left;">$\text{MCV } 80\text{--}100\text{ fL}$<br>$\text{MCHC } 32\text{--}36\text{ g/dL}$</td>
+<td style="text-align: left;">$\text{MCV } 76\text{--}100\text{ fL}$<br>$\text{MCHC } 32\text{--}36\text{ g/dL}$</td>
 <td style="text-align: left;">Schistocytes (MAHA), Spherocytes (AIHA, HS), Teardrop cells (dacrocytes in myelophthisis)</td>
 <td style="text-align: left;">Acute post-hemorrhagic anemia, early Anemia of Chronic Disease, Renal Anemia, Aplastic Anemia</td>
 </tr>
@@ -939,7 +900,7 @@ flowchart LR
 <td style="text-align: left;"><strong>Macrocytic, Normochromic</strong></td>
 <td style="text-align: left;">$\text{MCV} > 100\text{ fL}$<br>$\text{MCHC } 32\text{--}36\text{ g/dL}$</td>
 <td style="text-align: left;">Macro-ovalocytes, Howell-Jolly bodies, hypersegmented neutrophils, round macrocytes</td>
-<td style="text-align: left;">Vitamin $B_{12}$ deficiency, Folate deficiency, MDS, Hepatic disease, Spurious (Cold Agglutinins)</td>
+<td style="text-align: left;">Vitamin $\text{B}_{12}$ deficiency, Folate deficiency, MDS, Hepatic disease, Spurious (Cold Agglutinins)</td>
 </tr>
 </tbody>
 </table>
@@ -947,18 +908,18 @@ flowchart LR
 <h2 id="laboratory-quality-control-and-in-vitro-distortions">Laboratory Quality Control and In Vitro Distortions</h2>
 <h3 id="the-rule-of-three">The Rule of Three</h3>
 <p>For normocytic, normochromic erythrocytes, mathematical proportionality governs complete blood count parameters:</p>
-<p>$$\text{RBC Count } (\times 10^{12}/\text{L}) \times 3 \approx \text{Hemoglobin } (\text{g/dL})$$</p>
-<p>$$\text{Hemoglobin } (\text{g/dL}) \times 3 \approx \text{Hematocrit } (%) \pm 3% \text{ (or } 0.03\text{ L/L)}$$</p>
+<p>$$\text{RBC Count } (\times 10^6/\mu\text{L}) \times 3 \approx \text{Hemoglobin } (\text{g/dL})$$</p>
+<p>$$\text{Hemoglobin } (\text{g/dL}) \times 3 \approx \text{Hematocrit } (\%) \pm 3\% \text{ (or } \pm 0.03\text{ L/L)}$$</p>
 <p>A failure of this relationship signals analytical error, physiological discrepancies, or instrument flags:</p>
 <ul>
-<li>If the measured hematocrit significantly exceeds three times the hemoglobin, consider <strong>cold agglutinin disease</strong>, where IgM-mediated agglutination causes the analyzer to count red cell doublets/triplets as single large cells (artificially elevating the MCV and calculated Hct).</li>
+<li>If the measured hematocrit significantly exceeds three times the hemoglobin, consider <strong>cold agglutinin disease</strong>, where IgM-mediated agglutination causes the analyzer to count red cell doublets/triplets as single large cells (artificially elevating the MCV and calculated HCT, while falsely decreasing the RBC count).</li>
 <li>If measured hemoglobin is disproportionately elevated, evaluate the sample for <strong>lipemia, severe hyperbilirubinemia, or high paraproteins</strong>, which cause turbidity that falsely increases spectrophotometric hemoglobin readings at $540\text{ nm}$.</li>
 </ul>
 <h3 id="red-cell-distribution-width-rdw-dynamics">Red Cell Distribution Width (RDW) Dynamics</h3>
-<p>The RDW represents the coefficient of variation (RDW-CV, $%$) or standard deviation (RDW-SD, $\text{fL}$) of the erythrocyte volume distribution:</p>
+<p>The RDW represents the coefficient of variation (RDW-CV, $\%$; reference interval: $11.5\text{ -- }14.5\%$ [$0.115\text{ -- }0.145$]) or standard deviation (RDW-SD, $\text{fL}$) of the erythrocyte volume distribution:</p>
 <ul>
-<li>Elevated RDW ($> 15.0%$) denotes <strong>anisocytosis</strong>, indicating heterogeneous cell sizes. This is an early finding in Iron Deficiency Anemia, mixed nutritional deficiencies (combined iron and folate/cobalamin deficiency), and post-transfusion states.</li>
-<li>Normal RDW ($11.5%\text{ to }14.5%$) paired with microcytosis is classic for <strong>$\beta$-Thalassemia Minor</strong>, reflecting a uniform population of genetically microcytic cells.</li>
+<li>Elevated RDW ($> 14.5\%$) denotes <strong>anisocytosis</strong>, indicating heterogeneous cell sizes. This is an early finding in Iron Deficiency Anemia, mixed nutritional deficiencies (combined iron and folate/cobalamin deficiency), and post-transfusion states.</li>
+<li>Normal RDW ($11.5\%\text{ to }14.5\%$) paired with microcytosis ($\text{MCV} < 76\text{ fL}$) is classic for <strong>$\beta$-Thalassemia Minor</strong>, reflecting a uniform population of genetically microcytic cells.</li>
 </ul>
 <h3 id="differentiating-intracellular-inclusions">Differentiating Intracellular Inclusions</h3>
 <ul>
@@ -982,141 +943,129 @@ flowchart LR
 <p>Total adult body iron is maintained at $3.0\text{ to }4.0\text{ grams}$ in adult females and $4.0\text{ to }5.0\text{ grams}$ in adult males. This total content is distributed across functional, storage, and transport pools:</p>
 <ul>
 <li><strong>Functional Iron Compartment</strong>:<ul>
-<li><strong>Hemoglobin</strong>: Contains $65%\text{ to }70%$ of total body iron ($\sim 2.5\text{ g}$). Iron resides in the divalent ferrous ($\text{Fe}^{2+}$) state within the protoporphyrin IX ring of heme.</li>
-<li><strong>Myoglobin</strong>: Accounts for $4%\text{ to }5%$, mediating oxygen storage in skeletal and cardiac muscle.</li>
-<li><strong>Heme and Non-Heme Enzymes</strong>: Accounts for $\sim 1%$, serving as an essential cofactor in cytochromes ($a, b, c$, P450), catalase, peroxidases, and ribonucleotide reductase.</li>
+<li><strong>Hemoglobin</strong>: Contains $65\%\text{ to }70\%$ of total body iron ($\sim 2.5\text{ g}$). Iron resides in the divalent ferrous ($\text{Fe}^{2+}$) state within the protoporphyrin IX ring of heme.</li>
+<li><strong>Myoglobin</strong>: Accounts for $4\%\text{ to }5\%$, mediating oxygen storage in skeletal and cardiac muscle.</li>
+<li><strong>Heme and Non-Heme Enzymes</strong>: Accounts for $\sim 1\%$, serving as an essential cofactor in cytochromes ($a, b, c$, P450), catalase, peroxidases, and ribonucleotide reductase.</li>
 </ul>
 </li>
 <li><strong>Storage Iron Compartment</strong>:<ul>
-<li>Represents $20%\text{ to }30%$ of body iron, located within splenic, hepatic, and bone marrow macrophages, as well as in hepatocytes.</li>
+<li>Represents $20\%\text{ to }30\%$ of body iron, located within splenic, hepatic, and bone marrow macrophages, as well as in hepatocytes.</li>
 <li><em>Ferritin</em>: The primary water-soluble, bioavailable storage form. An apoferritin protein shell (24 subunits) sequesters up to 4500 ferric ($\text{Fe}^{3+}$) ions as hydrous ferric oxide-phosphate crystals.</li>
 <li><em>Hemosiderin</em>: An insoluble, partially degraded, denatured protein-iron complex. It forms golden-brown refractile granules under light microscopy that stain bright blue with Perls' Prussian blue stain. It is mobilized much more slowly than ferritin.</li>
 </ul>
 </li>
 <li><strong>Transport Iron Compartment</strong>:<ul>
-<li>Comprises $< 0.1%$ of total body iron ($\sim 3\text{ to }4\text{ mg}$), continually circulating bound to the hepatically synthesized transport glycoprotein <strong>transferrin</strong>.</li>
+<li>Comprises $< 0.1\%$ of total body iron ($\sim 3\text{ to }4\text{ mg}$), continually circulating bound to the hepatically synthesized transport glycoprotein <strong>transferrin</strong>.</li>
 </ul>
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Dietary [&quot;Dietary Ingestion (10-20 mg/day)&quot;]
-                direction TD
-                Fe3[&quot;Non-Heme Iron (Fe3+)&quot;]
-                HemeFe[&quot;Heme Iron (Fe2+)&quot;]
-        end
-
-        subgraph Duodenum [&quot;Duodenal Enterocyte Absorption (1-2 mg/day)&quot;]
-                direction TD
-                Dcytb[&quot;Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+&quot;]
-                DMT1[&quot;Divalent Metal Transporter 1 (DMT1)&quot;]
-                HCP1[&quot;Heme Carrier Protein 1 (HCP1)&quot;]
-                HemeOx[&quot;Heme Oxygenase - Releases Fe2+&quot;]
-                EnteroStore[&quot;Enterocyte Ferritin Pool - (Sloughed if unexported)&quot;]
-                FPN[&quot;Ferroportin-1 (FPN-1) - Basolateral Efflux&quot;]
-                Hp[&quot;Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+&quot;]
-
-                Fe3 --&gt; Dcytb --&gt; DMT1
-                HemeFe --&gt; HCP1 --&gt; HemeOx --&gt; Fe2_int[&quot;Intracellular Labile Fe2+ Pool&quot;]
-                DMT1 --&gt; Fe2_int
-                Fe2_int --&gt; EnteroStore
-                Fe2_int --&gt; FPN
-                FPN --&gt; Hp
-        end
-
-        subgraph Circulation [&quot;Plasma Transport &amp; Endocrine Regulation&quot;]
-                direction TD
-                Hp --&gt; PlasmaTF[&quot;Apotransferrin + 2x Fe3+ -&amp;gt; Holotransferrin&quot;]
-                Hepcidin[&quot;Hepcidin - (Hepatic Peptide Hormone)&quot;]
-                Hepcidin -.-&gt;|&quot;Binds, Internalizes &amp; Degrades&quot;| FPN
-        end
-
-        subgraph Utilization [&quot;Tissue Utilization &amp; Recycling&quot;]
-                direction TD
-                PlasmaTF --&gt; BM[&quot;Erythroid Precursors (CD71 / TfR1 Endocytosis)&quot;]
-                BM --&gt; Erythrocytes[&quot;Mature Erythrocytes (Circulate 120 Days)&quot;]
-                Erythrocytes --&gt; RES[&quot;Splenic Macrophages: Senescent Clearance&quot;]
-                RES --&gt;|&quot;Ferroportin-1 Efflux&quot;| PlasmaTF
-                Hepcidin -.-&gt;|&quot;Degrades FPN-1 - (Traps Iron)&quot;| RES
-        end" data-original-code="flowchart TD
-        subgraph Dietary [&quot;Dietary Ingestion (10-20 mg/day)&quot;]
-                direction TD
-                Fe3[&quot;Non-Heme Iron (Fe3+)&quot;]
-                HemeFe[&quot;Heme Iron (Fe2+)&quot;]
-        end
-
-        subgraph Duodenum [&quot;Duodenal Enterocyte Absorption (1-2 mg/day)&quot;]
-                direction TD
-                Dcytb[&quot;Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+&quot;]
-                DMT1[&quot;Divalent Metal Transporter 1 (DMT1)&quot;]
-                HCP1[&quot;Heme Carrier Protein 1 (HCP1)&quot;]
-                HemeOx[&quot;Heme Oxygenase - Releases Fe2+&quot;]
-                EnteroStore[&quot;Enterocyte Ferritin Pool - (Sloughed if unexported)&quot;]
-                FPN[&quot;Ferroportin-1 (FPN-1) - Basolateral Efflux&quot;]
-                Hp[&quot;Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+&quot;]
-
-                Fe3 --&gt; Dcytb --&gt; DMT1
-                HemeFe --&gt; HCP1 --&gt; HemeOx --&gt; Fe2_int[&quot;Intracellular Labile Fe2+ Pool&quot;]
-                DMT1 --&gt; Fe2_int
-                Fe2_int --&gt; EnteroStore
-                Fe2_int --&gt; FPN
-                FPN --&gt; Hp
-        end
-
-        subgraph Circulation [&quot;Plasma Transport &amp; Endocrine Regulation&quot;]
-                direction TD
-                Hp --&gt; PlasmaTF[&quot;Apotransferrin + 2x Fe3+ -&amp;gt; Holotransferrin&quot;]
-                Hepcidin[&quot;Hepcidin - (Hepatic Peptide Hormone)&quot;]
-                Hepcidin -.-&gt;|&quot;Binds, Internalizes &amp; Degrades&quot;| FPN
-        end
-
-        subgraph Utilization [&quot;Tissue Utilization &amp; Recycling&quot;]
-                direction TD
-                PlasmaTF --&gt; BM[&quot;Erythroid Precursors (CD71 / TfR1 Endocytosis)&quot;]
-                BM --&gt; Erythrocytes[&quot;Mature Erythrocytes (Circulate 120 Days)&quot;]
-                Erythrocytes --&gt; RES[&quot;Splenic Macrophages: Senescent Clearance&quot;]
-                RES --&gt;|&quot;Ferroportin-1 Efflux&quot;| PlasmaTF
-                Hepcidin -.-&gt;|&quot;Degrades FPN-1 - (Traps Iron)&quot;| RES
-        end">
+    subgraph Dietary [&quot;Dietary Ingestion (10-20 mg/day)&quot;]
+        direction TD
+        Fe3[&quot;Non-Heme Iron (Fe3+)&quot;]
+        HemeFe[&quot;Heme Iron (Fe2+)&quot;]
+    end
+    subgraph Duodenum [&quot;Duodenal Enterocyte Absorption (1-2 mg/day)&quot;]
+        direction TD
+        Dcytb[&quot;Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+&quot;]
+        DMT1[&quot;Divalent Metal Transporter 1 (DMT1)&quot;]
+        HCP1[&quot;Heme Carrier Protein 1 (HCP1)&quot;]
+        HemeOx[&quot;Heme Oxygenase - Releases Fe2+&quot;]
+        EnteroStore[&quot;Enterocyte Ferritin Pool - (Sloughed if unexported)&quot;]
+        FPN[&quot;Ferroportin-1 (FPN-1) - Basolateral Efflux&quot;]
+        Hp[&quot;Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+&quot;]
+        Fe3 --&gt; Dcytb --&gt; DMT1
+        HemeFe --&gt; HCP1 --&gt; HemeOx --&gt; Fe2_int[&quot;Intracellular Labile Fe2+ Pool&quot;]
+        DMT1 --&gt; Fe2_int
+        Fe2_int --&gt; EnteroStore
+        Fe2_int --&gt; FPN
+        FPN --&gt; Hp
+    end
+    subgraph Circulation [&quot;Plasma Transport &amp; Endocrine Regulation&quot;]
+        direction TD
+        Hp --&gt; PlasmaTF[&quot;Apotransferrin + 2x Fe3+ -&amp;gt; Holotransferrin&quot;]
+        Hepcidin[&quot;Hepcidin - (Hepatic Peptide Hormone)&quot;]
+        Hepcidin -.-&gt;|&quot;Binds, Internalizes &amp; Degrades&quot;| FPN
+    end
+    subgraph Utilization [&quot;Tissue Utilization &amp; Recycling&quot;]
+        direction TD
+        PlasmaTF --&gt; BM[&quot;Erythroid Precursors (CD71 / TfR1 Endocytosis)&quot;]
+        BM --&gt; Erythrocytes[&quot;Mature Erythrocytes (Circulate 120 Days)&quot;]
+        Erythrocytes --&gt; RES[&quot;Splenic Macrophages: Senescent Clearance&quot;]
+        RES --&gt;|&quot;Ferroportin-1 Efflux&quot;| PlasmaTF
+        Hepcidin -.-&gt;|&quot;Degrades FPN-1 - (Traps Iron)&quot;| RES
+    end" data-original-code="flowchart TD
+    subgraph Dietary [&quot;Dietary Ingestion (10-20 mg/day)&quot;]
+        direction TD
+        Fe3[&quot;Non-Heme Iron (Fe3+)&quot;]
+        HemeFe[&quot;Heme Iron (Fe2+)&quot;]
+    end
+    subgraph Duodenum [&quot;Duodenal Enterocyte Absorption (1-2 mg/day)&quot;]
+        direction TD
+        Dcytb[&quot;Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+&quot;]
+        DMT1[&quot;Divalent Metal Transporter 1 (DMT1)&quot;]
+        HCP1[&quot;Heme Carrier Protein 1 (HCP1)&quot;]
+        HemeOx[&quot;Heme Oxygenase - Releases Fe2+&quot;]
+        EnteroStore[&quot;Enterocyte Ferritin Pool - (Sloughed if unexported)&quot;]
+        FPN[&quot;Ferroportin-1 (FPN-1) - Basolateral Efflux&quot;]
+        Hp[&quot;Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+&quot;]
+        Fe3 --&gt; Dcytb --&gt; DMT1
+        HemeFe --&gt; HCP1 --&gt; HemeOx --&gt; Fe2_int[&quot;Intracellular Labile Fe2+ Pool&quot;]
+        DMT1 --&gt; Fe2_int
+        Fe2_int --&gt; EnteroStore
+        Fe2_int --&gt; FPN
+        FPN --&gt; Hp
+    end
+    subgraph Circulation [&quot;Plasma Transport &amp; Endocrine Regulation&quot;]
+        direction TD
+        Hp --&gt; PlasmaTF[&quot;Apotransferrin + 2x Fe3+ -&amp;gt; Holotransferrin&quot;]
+        Hepcidin[&quot;Hepcidin - (Hepatic Peptide Hormone)&quot;]
+        Hepcidin -.-&gt;|&quot;Binds, Internalizes &amp; Degrades&quot;| FPN
+    end
+    subgraph Utilization [&quot;Tissue Utilization &amp; Recycling&quot;]
+        direction TD
+        PlasmaTF --&gt; BM[&quot;Erythroid Precursors (CD71 / TfR1 Endocytosis)&quot;]
+        BM --&gt; Erythrocytes[&quot;Mature Erythrocytes (Circulate 120 Days)&quot;]
+        Erythrocytes --&gt; RES[&quot;Splenic Macrophages: Senescent Clearance&quot;]
+        RES --&gt;|&quot;Ferroportin-1 Efflux&quot;| PlasmaTF
+        Hepcidin -.-&gt;|&quot;Degrades FPN-1 - (Traps Iron)&quot;| RES
+    end">
 flowchart TD
-        subgraph Dietary ["Dietary Ingestion (10-20 mg/day)"]
-                direction TD
-                Fe3["Non-Heme Iron (Fe3+)"]
-                HemeFe["Heme Iron (Fe2+)"]
-        end
-
-        subgraph Duodenum ["Duodenal Enterocyte Absorption (1-2 mg/day)"]
-                direction TD
-                Dcytb["Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+"]
-                DMT1["Divalent Metal Transporter 1 (DMT1)"]
-                HCP1["Heme Carrier Protein 1 (HCP1)"]
-                HemeOx["Heme Oxygenase - Releases Fe2+"]
-                EnteroStore["Enterocyte Ferritin Pool - (Sloughed if unexported)"]
-                FPN["Ferroportin-1 (FPN-1) - Basolateral Efflux"]
-                Hp["Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+"]
-
-                Fe3 --> Dcytb --> DMT1
-                HemeFe --> HCP1 --> HemeOx --> Fe2_int["Intracellular Labile Fe2+ Pool"]
-                DMT1 --> Fe2_int
-                Fe2_int --> EnteroStore
-                Fe2_int --> FPN
-                FPN --> Hp
-        end
-
-        subgraph Circulation ["Plasma Transport & Endocrine Regulation"]
-                direction TD
-                Hp --> PlasmaTF["Apotransferrin + 2x Fe3+ -&gt; Holotransferrin"]
-                Hepcidin["Hepcidin - (Hepatic Peptide Hormone)"]
-                Hepcidin -.->|"Binds, Internalizes & Degrades"| FPN
-        end
-
-        subgraph Utilization ["Tissue Utilization & Recycling"]
-                direction TD
-                PlasmaTF --> BM["Erythroid Precursors (CD71 / TfR1 Endocytosis)"]
-                BM --> Erythrocytes["Mature Erythrocytes (Circulate 120 Days)"]
-                Erythrocytes --> RES["Splenic Macrophages: Senescent Clearance"]
-                RES -->|"Ferroportin-1 Efflux"| PlasmaTF
-                Hepcidin -.->|"Degrades FPN-1 - (Traps Iron)"| RES
-        end
+    subgraph Dietary ["Dietary Ingestion (10-20 mg/day)"]
+        direction TD
+        Fe3["Non-Heme Iron (Fe3+)"]
+        HemeFe["Heme Iron (Fe2+)"]
+    end
+    subgraph Duodenum ["Duodenal Enterocyte Absorption (1-2 mg/day)"]
+        direction TD
+        Dcytb["Ferrireductase (Dcytb) - Reduces Fe3+ to Fe2+"]
+        DMT1["Divalent Metal Transporter 1 (DMT1)"]
+        HCP1["Heme Carrier Protein 1 (HCP1)"]
+        HemeOx["Heme Oxygenase - Releases Fe2+"]
+        EnteroStore["Enterocyte Ferritin Pool - (Sloughed if unexported)"]
+        FPN["Ferroportin-1 (FPN-1) - Basolateral Efflux"]
+        Hp["Hephaestin (Ferroxidase) - Oxidizes Fe2+ to Fe3+"]
+        Fe3 --> Dcytb --> DMT1
+        HemeFe --> HCP1 --> HemeOx --> Fe2_int["Intracellular Labile Fe2+ Pool"]
+        DMT1 --> Fe2_int
+        Fe2_int --> EnteroStore
+        Fe2_int --> FPN
+        FPN --> Hp
+    end
+    subgraph Circulation ["Plasma Transport & Endocrine Regulation"]
+        direction TD
+        Hp --> PlasmaTF["Apotransferrin + 2x Fe3+ -&gt; Holotransferrin"]
+        Hepcidin["Hepcidin - (Hepatic Peptide Hormone)"]
+        Hepcidin -.->|"Binds, Internalizes & Degrades"| FPN
+    end
+    subgraph Utilization ["Tissue Utilization & Recycling"]
+        direction TD
+        PlasmaTF --> BM["Erythroid Precursors (CD71 / TfR1 Endocytosis)"]
+        BM --> Erythrocytes["Mature Erythrocytes (Circulate 120 Days)"]
+        Erythrocytes --> RES["Splenic Macrophages: Senescent Clearance"]
+        RES -->|"Ferroportin-1 Efflux"| PlasmaTF
+        Hepcidin -.->|"Degrades FPN-1 - (Traps Iron)"| RES
+    end
 </div>
 
 <h3 id="duodenal-absorption-and-the-hepcidin-ferroportin-axis">Duodenal Absorption and the Hepcidin-Ferroportin Axis</h3>
@@ -1125,20 +1074,22 @@ flowchart TD
 <li><strong>Enterocyte Uptake</strong>: Non-heme dietary ferric iron ($\text{Fe}^{3+}$) is reduced to ferrous iron ($\text{Fe}^{2+}$) at the apical enterocyte brush border by the enzyme <strong>duodenal cytochrome b (Dcytb)</strong>, a reaction enhanced by gastric acid and dietary ascorbic acid. Divalent iron is transported across the apical membrane via <strong>Divalent Metal Transporter 1 (DMT1)</strong>. Dietary heme iron is internalized intact via <strong>Heme Carrier Protein 1 (HCP1)</strong> and degraded by cytoplasmic heme oxygenase to liberate $\text{Fe}^{2+}$.</li>
 <li><strong>Basolateral Export</strong>: Intracellular $\text{Fe}^{2+}$ enters an active labile pool and is exported across the basolateral membrane into plasma by the transmembrane transporter <strong>Ferroportin-1 (FPN-1)</strong>.</li>
 <li><strong>Ferroxidation and Transferrin Loading</strong>: Exported $\text{Fe}^{2+}$ must be oxidized to $\text{Fe}^{3+}$ to bind apotransferrin. This oxidation is catalyzed at the basolateral enterocyte membrane by the copper-dependent ferroxidase <strong>Hephaestin</strong> (and in systemic circulation by its plasma homolog, <strong>Ceruloplasmin</strong>).</li>
-<li><strong>Hepcidin Regulation</strong>: <strong>Hepcidin</strong> is a 25-amino-acid peptide hormone synthesized by hepatocytes that functions as the primary negative regulator of systemic iron availability.<br />
-        * <em>Mechanism</em>: Circulating hepcidin binds directly to ferroportin on basolateral enterocyte membranes and macrophage surfaces, triggering ferroportin phosphorylation, internalization, and lysosomal degradation.<br />
-        * <em>Consequence</em>: Loss of ferroportin traps iron within duodenal enterocytes (which are shed in feces within days) and locks recycled iron within macrophage storage compartments, reducing iron delivery to transferrin and decreasing availability for erythropoiesis.<br />
-        * <em>Control</em>: Hepcidin transcription is upregulated by iron excess and inflammatory cytokines (predominantly <strong>Interleukin-6 [IL-6]</strong> via the JAK/STAT3 pathway). Conversely, hepcidin is downregulated by iron deficiency, tissue hypoxia, and active erythropoietic drive (mediated by <strong>erythroferrone [ERFE]</strong> released by bone marrow erythroblasts).</li>
+<li><strong>Hepcidin Regulation</strong>: <strong>Hepcidin</strong> is a 25-amino-acid peptide hormone synthesized by hepatocytes that functions as the primary negative regulator of systemic iron availability.<ul>
+<li><em>Mechanism</em>: Circulating hepcidin binds directly to ferroportin on basolateral enterocyte membranes and macrophage surfaces, triggering ferroportin phosphorylation, internalization, and lysosomal degradation.</li>
+<li><em>Consequence</em>: Loss of ferroportin traps iron within duodenal enterocytes (which are shed in feces within days) and locks recycled iron within macrophage storage compartments, reducing iron delivery to transferrin and decreasing availability for erythropoiesis.</li>
+<li><em>Control</em>: Hepcidin transcription is upregulated by iron excess and inflammatory cytokines (predominantly <strong>Interleukin-6 [IL-6]</strong> via the JAK/STAT3 pathway). Conversely, hepcidin is downregulated by iron deficiency, tissue hypoxia, and active erythropoietic drive (mediated by <strong>erythroferrone [ERFE]</strong> released by bone marrow erythroblasts).</li>
+</ul>
+</li>
 </ol>
 <h3 id="diagnostic-iron-biomarker-panel">Diagnostic Iron Biomarker Panel</h3>
-<p>Comprehensive assessment of body iron compartments utilizes six primary laboratory assays:</p>
-<p>$$\text{TIBC } (\mu\text{g/dL}) \approx \text{Serum Transferrin } (\text{mg/dL}) \times 1.41$$</p>
-<p>$$\text{Transferrin Saturation } (%) = \left( \frac{\text{Serum Iron } [\mu\text{g/dL}]}{\text{TIBC } [\mu\text{g/dL}]} \right) \times 100$$</p>
-<p>$$\text{Transferrin Saturation Reference Interval: } 20%\text{ to }50% \text{ (mean } \sim 33%)$$</p>
+<p>Comprehensive assessment of body iron compartments utilizes standard calculations and laboratory assays:</p>
+<p>$$\text{TIBC } (\mu\text{g/dL}) = \text{Serum Iron } (\mu\text{g/dL}) + \text{UIBC } (\mu\text{g/dL})$$</p>
+<p>$$\text{Transferrin Saturation } (\%) = \left( \frac{\text{Serum Iron } [\mu\text{g/dL}]}{\text{TIBC } [\mu\text{g/dL}]} \right) \times 100$$</p>
+<p>$$\text{Reference Interval: Transferrin Saturation: } 20\%\text{ -- }50\% \text{ (mean } \sim 33\%)$$</p>
 <ul>
 <li><strong>Serum Iron</strong>: Measures circulating $\text{Fe}^{3+}$ bound specifically to transferrin. Serum iron demonstrates marked diurnal variation, peaking in the early morning and falling by late afternoon.</li>
-<li><strong>Total Iron-Binding Capacity (TIBC)</strong>: An indirect measure of circulating transferrin capacity. Transferrin behaves as a <strong>negative acute-phase reactant</strong>: its synthesis rises in iron deficiency and falls during systemic inflammation, malnutrition, and hepatic failure.</li>
-<li><strong>Transferrin Saturation</strong>: Reflects the fraction of transferrin iron-binding sites occupied by ferric ions. A saturation $< 16%$ indicates inadequate iron delivery to sustain erythroid progenitor demand; a saturation $> 50%\text{ to }60%$ suggests potential systemic iron overload.</li>
+<li><strong>Total Iron-Binding Capacity (TIBC)</strong>: An indirect measure of circulating transferrin capacity ($\text{TIBC} = \text{Serum Iron} + \text{UIBC}$). Transferrin behaves as a <strong>negative acute-phase reactant</strong>: its synthesis rises in iron deficiency and falls during systemic inflammation, malnutrition, and hepatic failure.</li>
+<li><strong>Transferrin Saturation</strong>: Reflects the fraction of transferrin iron-binding sites occupied by ferric ions. A saturation $< 16\%$ indicates inadequate iron delivery to sustain erythroid progenitor demand; a saturation $> 50\%\text{ to }60\%$ suggests potential systemic iron overload.</li>
 <li><strong>Serum Ferritin</strong>: Quantifies circulating storage iron ($1\text{ }\mu\text{g/L} \approx 8\text{ to }10\text{ mg}$ of storage iron). Values $< 15\text{ }\mu\text{g/L}$ confirm depleted iron stores. However, ferritin is a <strong>positive acute-phase reactant</strong>. In patients with concurrent inflammation, infection, malignancy, or liver disease, circulating ferritin levels rise independently of bone marrow storage iron, masking underlying iron deficiency unless diagnostic thresholds are raised ($< 50\text{ to }100\text{ }\mu\text{g/L}$).</li>
 <li><strong>Soluble Transferrin Receptor (sTfR)</strong>: A cleaved monomer of the transferrin receptor (CD71) shed into plasma. When cellular iron stores decline, surface transferrin receptors are upregulated to capture available transferrin, increasing circulating sTfR. <strong>sTfR is unaffected by systemic inflammation</strong>, making it an effective biomarker for distinguishing pure iron deficiency from anemia of chronic disease.</li>
 <li><strong>Zinc Protoporphyrin (ZPP)</strong>: In the final step of heme synthesis within erythroid mitochondria, ferrochelatase inserts $\text{Fe}^{2+}$ into protoporphyrin IX. When iron is deficient or ferrochelatase is chemically inhibited (as in lead poisoning), the enzyme inserts divalent zinc ($\text{Zn}^{2+}$), forming zinc protoporphyrin. ZPP remains in the erythrocyte for its 120-day lifespan, providing a stable marker of functional iron-deficient erythropoiesis.</li>
@@ -1187,89 +1138,73 @@ flowchart TD
 </table>
 <hr />
 <h2 id="differential-diagnostics-of-microcytic-hypochromic-anemias-and-iron-overload">Differential Diagnostics of Microcytic Hypochromic Anemias and Iron Overload</h2>
-<p>Microcytic hypochromic anemias ($\text{MCV} < 80\text{ fL}$, $\text{MCHC} < 32\text{ g/dL}$) result from defective hemoglobin synthesis:</p>
+<p>Microcytic hypochromic anemias ($\text{MCV} < 76\text{ fL}$, $\text{MCHC} < 32\text{ g/dL}$) result from defective hemoglobin synthesis:</p>
 <p>$$\text{Hemoglobin Tetramer} = \text{Heme} + \text{Globin} = (\text{Protoporphyrin IX} + \text{Iron}) + \text{Globin Chains}$$</p>
 <p>A rate-limiting failure in iron delivery, protoporphyrin assembly, or globin production delays the cytoplasmic hemoglobin accumulation threshold required to terminate erythroblast division. Erythroblasts undergo additional terminal mitoses, producing smaller, poorly hemoglobinized erythrocytes.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        Micro[&quot;Confirmed Microcytic, Hypochromic Anemia - (MCV &amp;lt; 80 fL, MCHC &amp;lt; 32 g/dL)&quot;] --&gt; IronPanel[&quot;Serum Iron, TIBC, % Saturation, Serum Ferritin&quot;]
-
-        IronPanel --&gt; LowFerritin[&quot;Serum Ferritin &amp;lt; 15-30 ug/L - TIBC High (&amp;gt; 400 ug/dL), % Sat &amp;lt; 16%&quot;]
-        LowFerritin --&gt; IDA[&quot;Iron Deficiency Anemia (IDA)&quot;]
-
-        IronPanel --&gt; HighFerritin[&quot;Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased&quot;]
-        HighFerritin --&gt; AssessACD[&quot;Assess Inflammatory Markers, sTfR &amp; Clinical History&quot;]
-
-        AssessACD --&gt; InflamProfile[&quot;Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts&quot;]
-        InflamProfile --&gt; ACD[&quot;Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)&quot;]
-
-        IronPanel --&gt; SideroProfile[&quot;Serum Iron Elevated, % Sat &amp;gt; 50-80% - Serum Ferritin Elevated (&amp;gt; 300 ug/L)&quot;]
-        SideroProfile --&gt; SmearMarrow[&quot;Review Smear &amp; Prussian Blue Bone Marrow Aspirate&quot;]
-
-        SmearMarrow --&gt; SideroTrue[&quot;Prussian Blue: &amp;gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies&quot;]
-        SideroTrue --&gt; SideroDx[&quot;Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)&quot;]
-
-        IronPanel --&gt; ThalProfile[&quot;Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (&amp;lt; 14%)&quot;]
-        ThalProfile --&gt; ThalDx[&quot;Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)&quot;]" data-original-code="flowchart TD
-        Micro[&quot;Confirmed Microcytic, Hypochromic Anemia - (MCV &amp;lt; 80 fL, MCHC &amp;lt; 32 g/dL)&quot;] --&gt; IronPanel[&quot;Serum Iron, TIBC, % Saturation, Serum Ferritin&quot;]
-
-        IronPanel --&gt; LowFerritin[&quot;Serum Ferritin &amp;lt; 15-30 ug/L - TIBC High (&amp;gt; 400 ug/dL), % Sat &amp;lt; 16%&quot;]
-        LowFerritin --&gt; IDA[&quot;Iron Deficiency Anemia (IDA)&quot;]
-
-        IronPanel --&gt; HighFerritin[&quot;Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased&quot;]
-        HighFerritin --&gt; AssessACD[&quot;Assess Inflammatory Markers, sTfR &amp; Clinical History&quot;]
-
-        AssessACD --&gt; InflamProfile[&quot;Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts&quot;]
-        InflamProfile --&gt; ACD[&quot;Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)&quot;]
-
-        IronPanel --&gt; SideroProfile[&quot;Serum Iron Elevated, % Sat &amp;gt; 50-80% - Serum Ferritin Elevated (&amp;gt; 300 ug/L)&quot;]
-        SideroProfile --&gt; SmearMarrow[&quot;Review Smear &amp; Prussian Blue Bone Marrow Aspirate&quot;]
-
-        SmearMarrow --&gt; SideroTrue[&quot;Prussian Blue: &amp;gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies&quot;]
-        SideroTrue --&gt; SideroDx[&quot;Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)&quot;]
-
-        IronPanel --&gt; ThalProfile[&quot;Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (&amp;lt; 14%)&quot;]
-        ThalProfile --&gt; ThalDx[&quot;Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)&quot;]">
+    Micro[&quot;Confirmed Microcytic, Hypochromic Anemia - (MCV &amp;lt; 76 fL, MCHC &amp;lt; 32 g/dL)&quot;] --&gt; IronPanel[&quot;Serum Iron, TIBC, % Saturation, Serum Ferritin&quot;]
+    IronPanel --&gt; LowFerritin[&quot;Serum Ferritin &amp;lt; 15-30 ug/L - TIBC High (&amp;gt; 400 ug/dL), % Sat &amp;lt; 16%&quot;]
+    LowFerritin --&gt; IDA[&quot;Iron Deficiency Anemia (IDA)&quot;]
+    IronPanel --&gt; HighFerritin[&quot;Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased&quot;]
+    HighFerritin --&gt; AssessACD[&quot;Assess Inflammatory Markers, sTfR &amp; Clinical History&quot;]
+    AssessACD --&gt; InflamProfile[&quot;Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts&quot;]
+    InflamProfile --&gt; ACD[&quot;Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)&quot;]
+    IronPanel --&gt; SideroProfile[&quot;Serum Iron Elevated, % Sat &amp;gt; 50-80% - Serum Ferritin Elevated (&amp;gt; 300 ug/L)&quot;]
+    SideroProfile --&gt; SmearMarrow[&quot;Review Smear &amp; Prussian Blue Bone Marrow Aspirate&quot;]
+    SmearMarrow --&gt; SideroTrue[&quot;Prussian Blue: &amp;gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies&quot;]
+    SideroTrue --&gt; SideroDx[&quot;Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)&quot;]
+    IronPanel --&gt; ThalProfile[&quot;Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (11.5 - 14.5%)&quot;]
+    ThalProfile --&gt; ThalDx[&quot;Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)&quot;]" data-original-code="flowchart TD
+    Micro[&quot;Confirmed Microcytic, Hypochromic Anemia - (MCV &amp;lt; 76 fL, MCHC &amp;lt; 32 g/dL)&quot;] --&gt; IronPanel[&quot;Serum Iron, TIBC, % Saturation, Serum Ferritin&quot;]
+    IronPanel --&gt; LowFerritin[&quot;Serum Ferritin &amp;lt; 15-30 ug/L - TIBC High (&amp;gt; 400 ug/dL), % Sat &amp;lt; 16%&quot;]
+    LowFerritin --&gt; IDA[&quot;Iron Deficiency Anemia (IDA)&quot;]
+    IronPanel --&gt; HighFerritin[&quot;Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased&quot;]
+    HighFerritin --&gt; AssessACD[&quot;Assess Inflammatory Markers, sTfR &amp; Clinical History&quot;]
+    AssessACD --&gt; InflamProfile[&quot;Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts&quot;]
+    InflamProfile --&gt; ACD[&quot;Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)&quot;]
+    IronPanel --&gt; SideroProfile[&quot;Serum Iron Elevated, % Sat &amp;gt; 50-80% - Serum Ferritin Elevated (&amp;gt; 300 ug/L)&quot;]
+    SideroProfile --&gt; SmearMarrow[&quot;Review Smear &amp; Prussian Blue Bone Marrow Aspirate&quot;]
+    SmearMarrow --&gt; SideroTrue[&quot;Prussian Blue: &amp;gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies&quot;]
+    SideroTrue --&gt; SideroDx[&quot;Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)&quot;]
+    IronPanel --&gt; ThalProfile[&quot;Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (11.5 - 14.5%)&quot;]
+    ThalProfile --&gt; ThalDx[&quot;Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)&quot;]">
 flowchart TD
-        Micro["Confirmed Microcytic, Hypochromic Anemia - (MCV &lt; 80 fL, MCHC &lt; 32 g/dL)"] --> IronPanel["Serum Iron, TIBC, % Saturation, Serum Ferritin"]
-
-        IronPanel --> LowFerritin["Serum Ferritin &lt; 15-30 ug/L - TIBC High (&gt; 400 ug/dL), % Sat &lt; 16%"]
-        LowFerritin --> IDA["Iron Deficiency Anemia (IDA)"]
-
-        IronPanel --> HighFerritin["Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased"]
-        HighFerritin --> AssessACD["Assess Inflammatory Markers, sTfR & Clinical History"]
-
-        AssessACD --> InflamProfile["Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts"]
-        InflamProfile --> ACD["Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)"]
-
-        IronPanel --> SideroProfile["Serum Iron Elevated, % Sat &gt; 50-80% - Serum Ferritin Elevated (&gt; 300 ug/L)"]
-        SideroProfile --> SmearMarrow["Review Smear & Prussian Blue Bone Marrow Aspirate"]
-
-        SmearMarrow --> SideroTrue["Prussian Blue: &gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies"]
-        SideroTrue --> SideroDx["Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)"]
-
-        IronPanel --> ThalProfile["Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (&lt; 14%)"]
-        ThalProfile --> ThalDx["Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)"]
+    Micro["Confirmed Microcytic, Hypochromic Anemia - (MCV &lt; 76 fL, MCHC &lt; 32 g/dL)"] --> IronPanel["Serum Iron, TIBC, % Saturation, Serum Ferritin"]
+    IronPanel --> LowFerritin["Serum Ferritin &lt; 15-30 ug/L - TIBC High (&gt; 400 ug/dL), % Sat &lt; 16%"]
+    LowFerritin --> IDA["Iron Deficiency Anemia (IDA)"]
+    IronPanel --> HighFerritin["Serum Ferritin Normal or Elevated - TIBC Low or Normal, % Sat Normal or Decreased"]
+    HighFerritin --> AssessACD["Assess Inflammatory Markers, sTfR & Clinical History"]
+    AssessACD --> InflamProfile["Inflammation Present, sTfR Normal - Prussian Blue: High Macrophage Iron, Low Sideroblasts"]
+    InflamProfile --> ACD["Anemia of Chronic Disease / Chronic Inflammation (ACD/ACI)"]
+    IronPanel --> SideroProfile["Serum Iron Elevated, % Sat &gt; 50-80% - Serum Ferritin Elevated (&gt; 300 ug/L)"]
+    SideroProfile --> SmearMarrow["Review Smear & Prussian Blue Bone Marrow Aspirate"]
+    SmearMarrow --> SideroTrue["Prussian Blue: &gt;= 15% Ringed Sideroblasts - Smear: Coarse Basophilic Stippling, Pappenheimer Bodies"]
+    SideroTrue --> SideroDx["Sideroblastic Anemia - (ALAS2 Defect, Lead Poisoning, MDS-RS)"]
+    IronPanel --> ThalProfile["Serum Iron Normal, TIBC Normal, Ferritin Normal - RDW Characteristically Normal (11.5 - 14.5%)"]
+    ThalProfile --> ThalDx["Thalassemia Trait / Minor - (Perform Quantitative Hb Electrophoresis / HPLC)"]
 </div>
 
 <h3 id="pathophysiological-staging-of-iron-deficiency">Pathophysiological Staging of Iron Deficiency</h3>
 <p>Iron deficiency develops along a continuum across three stages:</p>
 <div class="mermaid" data-original-source="flowchart LR
-        S1[&quot;Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&amp;lt; 15 ug/L) - - Serum Iron &amp; TIBC Normal - - Hb, MCV &amp; RDW Normal&quot;] --&gt; S2[&quot;Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &amp;lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands&quot;]
-        S2 --&gt; S3[&quot;Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &amp;lt; 80 fL, MCHC &amp;lt; 32 g/dL - - Classic Pencil &amp; Target Cells - - Koilonychia, Pica, Fatigue&quot;]" data-original-code="flowchart LR
-        S1[&quot;Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&amp;lt; 15 ug/L) - - Serum Iron &amp; TIBC Normal - - Hb, MCV &amp; RDW Normal&quot;] --&gt; S2[&quot;Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &amp;lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands&quot;]
-        S2 --&gt; S3[&quot;Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &amp;lt; 80 fL, MCHC &amp;lt; 32 g/dL - - Classic Pencil &amp; Target Cells - - Koilonychia, Pica, Fatigue&quot;]">
+    S1[&quot;Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&amp;lt; 15 ug/L) - - Serum Iron &amp; TIBC Normal - - Hb, MCV &amp; RDW Normal&quot;] --&gt; S2[&quot;Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &amp;lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands&quot;]
+    S2 --&gt; S3[&quot;Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &amp;lt; 76 fL, MCHC &amp;lt; 32 g/dL - - Classic Pencil &amp; Target Cells - - Koilonychia, Pica, Fatigue&quot;]" data-original-code="flowchart LR
+    S1[&quot;Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&amp;lt; 15 ug/L) - - Serum Iron &amp; TIBC Normal - - Hb, MCV &amp; RDW Normal&quot;] --&gt; S2[&quot;Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &amp;lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands&quot;]
+    S2 --&gt; S3[&quot;Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &amp;lt; 76 fL, MCHC &amp;lt; 32 g/dL - - Classic Pencil &amp; Target Cells - - Koilonychia, Pica, Fatigue&quot;]">
 flowchart LR
-        S1["Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&lt; 15 ug/L) - - Serum Iron & TIBC Normal - - Hb, MCV & RDW Normal"] --> S2["Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands"]
-        S2 --> S3["Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &lt; 80 fL, MCHC &lt; 32 g/dL - - Classic Pencil & Target Cells - - Koilonychia, Pica, Fatigue"]
+    S1["Stage 1: Iron Depletion - - Marrow Hemosiderin Absent - - Serum Ferritin Decreased (&lt; 15 ug/L) - - Serum Iron & TIBC Normal - - Hb, MCV & RDW Normal"] --> S2["Stage 2: Iron-Deficient Erythropoiesis - - Ferritin Depleted - - Serum Iron Decreased - - TIBC Elevated, % Sat &lt; 16% - - ZPP Elevated, sTfR Elevated - - Hb Normal/Low; RDW Expands"]
+    S2 --> S3["Stage 3: Overt Iron Deficiency Anemia - - Microcytic Hypochromic Anemia - - Hb/Hct Severely Reduced - - MCV &lt; 76 fL, MCHC &lt; 32 g/dL - - Classic Pencil & Target Cells - - Koilonychia, Pica, Fatigue"]
 </div>
 
 <ol>
-<li><strong>Stage 1: Iron Depletion</strong>: Mobilization of storage pools to maintain functional requirements. Serum ferritin drops below $15\text{ }\mu\text{g/L}$. Bone marrow macrophage iron stores are exhausted (Prussian blue negative). However, transport iron, transferrin saturation, hemoglobin, and erythrocyte indices (MCV, MCH, RDW) remain within normal ranges.</li>
-<li><strong>Stage 2: Iron-Deficient Erythropoiesis</strong>: Storage iron is exhausted, and transport iron falls below the rate required to support normal erythroid proliferation. Serum iron drops, TIBC increases, and transferrin saturation falls below $16%$. Zinc protoporphyrin (ZPP) and soluble transferrin receptor (sTfR) levels rise. Total hemoglobin and MCV remain near the low end of reference intervals, but the <strong>RDW widens</strong>, reflecting the emergence of a microcytic cohort alongside older normocytic cells.</li>
-<li><strong>Stage 3: Overt Iron Deficiency Anemia (IDA)</strong>: Widespread failure of hemoglobinization. Complete blood counts demonstrate marked microcytosis ($\text{MCV} < 80\text{ fL}$) and hypochromia ($\text{MCHC} < 32\text{ g/dL}$).<br />
-        * <em>Peripheral Smear</em>: Marked anisocytosis and poikilocytosis. Erythrocytes exhibit an expanded central pallor with thin rims of hemoglobin, target cells (codocytes), elliptical or cigar-shaped "pencil cells", and occasional teardrop cells (dacrocytes).<br />
-        * <em>Platelets</em>: Moderate reactive (secondary) thrombocytosis ($450 \times 10^{9}\text{ to }750 \times 10^{9}/\text{L}$) occurs in over $30%$ of patients due to structural homology between erythropoietin and thrombopoietin (TPO), which cross-stimulates megakaryocyte c-Mpl receptors.<br />
-        * <em>Clinical Features</em>: Exertional fatigue, dyspnea, pallor, <strong>koilonychia</strong> (concave spoon-shaped nails), angular cheilitis, atrophic glossitis, and <strong>pica</strong> (compulsive cravings for non-nutritive substances: <em>pagophagia</em> for ice, <em>geophagia</em> for clay, and <em>amylophagia</em> for raw starch).</li>
+<li><strong>Stage 1: Iron Depletion</strong>: Mobilization of storage pools to maintain functional requirements. Serum ferritin drops below $15\text{ }\mu\text{g/L}$. Bone marrow macrophage iron stores are exhausted (Prussian blue negative). However, transport iron, transferrin saturation, hemoglobin (normal: $12.0\text{ -- }18.0\text{ g/dL}$), and erythrocyte indices (MCV: $76\text{ -- }100\text{ fL}$, MCH: $26\text{ -- }34\text{ pg}$, RDW: $11.5\text{ -- }14.5\%$) remain within normal reference intervals.</li>
+<li><strong>Stage 2: Iron-Deficient Erythropoiesis</strong>: Storage iron is exhausted, and transport iron falls below the rate required to support normal erythroid proliferation. Serum iron drops, TIBC increases, and transferrin saturation falls below $16\%$. Zinc protoporphyrin (ZPP) and soluble transferrin receptor (sTfR) levels rise. Total hemoglobin and MCV remain near the low end of reference intervals, but the <strong>RDW widens</strong> ($> 14.5\%$), reflecting the emergence of a microcytic cohort alongside older normocytic cells.</li>
+<li><strong>Stage 3: Overt Iron Deficiency Anemia (IDA)</strong>: Widespread failure of hemoglobinization. Complete blood counts demonstrate marked microcytosis ($\text{MCV} < 76\text{ fL}$) and hypochromia ($\text{MCHC} < 32\text{ g/dL}$ [$< 320\text{ g/L}$]).<ul>
+<li><em>Peripheral Smear</em>: Marked anisocytosis and poikilocytosis. Erythrocytes exhibit an expanded central pallor with thin rims of hemoglobin, target cells (codocytes), elliptical or cigar-shaped "pencil cells", and occasional teardrop cells (dacrocytes).</li>
+<li><em>Platelets</em>: Moderate reactive (secondary) thrombocytosis ($> 450 \times 10^3/\mu\text{L}$ [$> 450 \times 10^9/\text{L}$], commonly $450\text{ -- }750 \times 10^3/\mu\text{L}$; normal reference: $150\text{ -- }450 \times 10^3/\mu\text{L}$) occurs in over $30\%$ of patients due to structural homology between erythropoietin and thrombopoietin (TPO), which cross-stimulates megakaryocyte c-Mpl receptors.</li>
+<li><em>Clinical Features</em>: Exertional fatigue, dyspnea, pallor, <strong>koilonychia</strong> (concave spoon-shaped nails), angular cheilitis, atrophic glossitis, and <strong>pica</strong> (compulsive cravings for non-nutritive substances: <em>pagophagia</em> for ice, <em>geophagia</em> for clay, and <em>amylophagia</em> for raw starch).</li>
+</ul>
+</li>
 </ol>
 <h3 id="pathophysiology-of-anemia-of-chronic-disease-inflammation-acdaci">Pathophysiology of Anemia of Chronic Disease / Inflammation (ACD/ACI)</h3>
 <p>ACD/ACI is the leading cause of anemia among hospitalized and chronically ill patients, driven by immune activation in chronic infections, autoimmune diseases (rheumatoid arthritis, SLE), chronic kidney disease, and malignancies.</p>
@@ -1284,7 +1219,7 @@ flowchart LR
 <ul>
 <li><strong>Pathophysiological Axis</strong>: The physiological HFE protein complexes with transferrin receptor-1 (TfR1) and transferrin receptor-2 (TfR2) to detect circulating iron concentrations and stimulate hepcidin transcription. Mutant HFE disrupts this sensing system, resulting in inappropriately suppressed hepcidin synthesis.</li>
 <li><strong>Persistent Ferroportin Activity</strong>: Inappropriately low hepcidin leaves ferroportin channels continuously open, driving unregulated duodenal iron absorption and unrestrained macrophage iron efflux.</li>
-<li><strong>Tissue Toxicity</strong>: Serum iron and transferrin saturation rise markedly (often $> 60%\text{ to }80%$). When transferrin binding capacity is saturated, non-transferrin-bound iron (NTBI) accumulates in plasma. Free iron enters parenchymal cells and generates hydroxyl free radicals via the <strong>Fenton reaction</strong>:</li>
+<li><strong>Tissue Toxicity</strong>: Serum iron and transferrin saturation rise markedly (often $> 50\%\text{ to }80\%$). When transferrin binding capacity is saturated, non-transferrin-bound iron (NTBI) accumulates in plasma. Free iron enters parenchymal cells and generates hydroxyl free radicals via the <strong>Fenton reaction</strong>:</li>
 </ul>
 <p>$$\text{Fe}^{2+} + \text{H}_{2}\text{O}_{2} \rightarrow \text{Fe}^{3+} + \text{OH}^{\bullet} + \text{OH}^{-}$$</p>
 <ul>
@@ -1303,9 +1238,9 @@ flowchart LR
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>Morphology</strong></td>
-<td style="text-align: left;">Microcytic, Hypochromic</td>
+<td style="text-align: left;">Microcytic, Hypochromic ($\text{MCV} < 76\text{ fL}$)</td>
 <td style="text-align: left;">Normocytic (Early) $\rightarrow$ Microcytic (Late)</td>
-<td style="text-align: left;">Normocytic, Normochromic</td>
+<td style="text-align: left;">Normocytic, Normochromic ($\text{MCV } 76\text{--}100\text{ fL}$)</td>
 <td style="text-align: left;">Uniformly Microcytic, Hypochromic</td>
 </tr>
 <tr>
@@ -1324,10 +1259,10 @@ flowchart LR
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Transferrin Saturation</strong></td>
-<td style="text-align: left;">Severely Low ($< 15%$)</td>
-<td style="text-align: left;">Low to Normal ($15%\text{--}25%$)</td>
-<td style="text-align: left;">Markedly Elevated ($> 50%\text{--}80%$)</td>
-<td style="text-align: left;">Normal to Elevated ($30%\text{--}50%$)</td>
+<td style="text-align: left;">Severely Low ($< 15\%$)</td>
+<td style="text-align: left;">Low to Normal ($15\%\text{--}25\%$)</td>
+<td style="text-align: left;">Markedly Elevated ($> 50\%\text{--}80\%$)</td>
+<td style="text-align: left;">Normal to Elevated ($30\%\text{--}50\%$)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Serum Ferritin</strong></td>
@@ -1337,11 +1272,11 @@ flowchart LR
 <td style="text-align: left;">Normal to Markedly Elevated</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RDW</strong></td>
-<td style="text-align: left;">Markedly Elevated ($> 15.0%$)</td>
+<td style="text-align: left;"><strong>RDW (Ref: 11.5–14.5%)</strong></td>
+<td style="text-align: left;">Markedly Elevated ($> 14.5\%$)</td>
 <td style="text-align: left;">Normal to Mildly Elevated</td>
-<td style="text-align: left;">Normal</td>
-<td style="text-align: left;">Characteristically Normal ($< 14.0%$)</td>
+<td style="text-align: left;">Normal ($11.5\%\text{--}14.5\%$)</td>
+<td style="text-align: left;">Characteristically Normal ($11.5\%\text{--}14.5\%$)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>sTfR</strong></td>
@@ -1366,8 +1301,8 @@ flowchart LR
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Marrow Sideroblasts</strong></td>
-<td style="text-align: left;">Absent ($0%$)</td>
-<td style="text-align: left;">Absent to Rare ($< 10%$)</td>
+<td style="text-align: left;">Absent ($0\%$)</td>
+<td style="text-align: left;">Absent to Rare ($< 10\%$)</td>
 <td style="text-align: left;">Normal</td>
 <td style="text-align: left;">Normal to Elevated</td>
 </tr>
@@ -1384,115 +1319,100 @@ flowchart LR
 <h2 id="heme-biosynthetic-pathway-disruptions-sideroblastic-anemias-and-porphyrias">Heme Biosynthetic Pathway Disruptions: Sideroblastic Anemias and Porphyrias</h2>
 <p>Heme biosynthesis is an eight-step enzymatic process partitioned between the mitochondrial matrix and the cytoplasm. Disruptions along this pathway impair protoporphyrin IX production, arrest iron utilization, and lead to the accumulation of toxic biosynthetic intermediates.</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph Mito1 [&quot;Mitochondrial Initiation&quot;]
-                direction TB
-                GlySuc[&quot;Glycine + Succinyl-CoA&quot;]
-                ALAS2[&quot;ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5&#x27;-Phosphate (B6)&quot;]
-                ALA[&quot;delta-Aminolevulinic Acid (ALA)&quot;]
-                GlySuc --&gt; ALAS2 --&gt; ALA
-        end
-
-        subgraph Cyto [&quot;Cytoplasmic Intermediate Conversions&quot;]
-                direction TB
-                ALAD[&quot;ALA Dehydratase (Inhibited by Lead)&quot;]
-                PBG[&quot;Porphobilinogen (PBG)&quot;]
-                HMBS[&quot;Hydroxymethylbilane Synthase&quot;]
-                HMB[&quot;Hydroxymethylbilane&quot;]
-                UROS[&quot;Uroporphyrinogen III Synthase (Deficient in CEP)&quot;]
-                Uro3[&quot;Uroporphyrinogen III&quot;]
-                Copro3[&quot;Coproporphyrinogen III&quot;]
-
-                ALA --&gt; ALAD --&gt; PBG --&gt; HMBS --&gt; HMB --&gt; UROS --&gt; Uro3 --&gt; Copro3
-        end
-
-        subgraph Mito2 [&quot;Mitochondrial Heme Finalization&quot;]
-                direction TB
-                Proto9[&quot;Protoporphyrinogen IX -&amp;gt; Protoporphyrin IX&quot;]
-                FC[&quot;Ferrochelatase (Inhibited by Lead; Deficient in EPP)&quot;]
-                Fe2[&quot;Ferrous Iron (Fe2+) Import via Mitoferrin&quot;]
-                Heme[&quot;HEME TETRAPYRROLE&quot;]
-
-                Copro3 --&gt; Proto9 --&gt; FC
-                Fe2 --&gt; FC
-                FC --&gt; Heme
-        end
-
-        Lead[&quot;Lead (Pb) Toxicity&quot;] -.-&gt;|&quot;Inhibits&quot;| ALAD
-        Lead -.-&gt;|&quot;Inhibits&quot;| FC
-        ALASmut[&quot;X-Linked Sideroblastic Anemia&quot;] -.-&gt;|&quot;Inactivating Mutation&quot;| ALAS2" data-original-code="flowchart TD
-        subgraph Mito1 [&quot;Mitochondrial Initiation&quot;]
-                direction TB
-                GlySuc[&quot;Glycine + Succinyl-CoA&quot;]
-                ALAS2[&quot;ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5&#x27;-Phosphate (B6)&quot;]
-                ALA[&quot;delta-Aminolevulinic Acid (ALA)&quot;]
-                GlySuc --&gt; ALAS2 --&gt; ALA
-        end
-
-        subgraph Cyto [&quot;Cytoplasmic Intermediate Conversions&quot;]
-                direction TB
-                ALAD[&quot;ALA Dehydratase (Inhibited by Lead)&quot;]
-                PBG[&quot;Porphobilinogen (PBG)&quot;]
-                HMBS[&quot;Hydroxymethylbilane Synthase&quot;]
-                HMB[&quot;Hydroxymethylbilane&quot;]
-                UROS[&quot;Uroporphyrinogen III Synthase (Deficient in CEP)&quot;]
-                Uro3[&quot;Uroporphyrinogen III&quot;]
-                Copro3[&quot;Coproporphyrinogen III&quot;]
-
-                ALA --&gt; ALAD --&gt; PBG --&gt; HMBS --&gt; HMB --&gt; UROS --&gt; Uro3 --&gt; Copro3
-        end
-
-        subgraph Mito2 [&quot;Mitochondrial Heme Finalization&quot;]
-                direction TB
-                Proto9[&quot;Protoporphyrinogen IX -&amp;gt; Protoporphyrin IX&quot;]
-                FC[&quot;Ferrochelatase (Inhibited by Lead; Deficient in EPP)&quot;]
-                Fe2[&quot;Ferrous Iron (Fe2+) Import via Mitoferrin&quot;]
-                Heme[&quot;HEME TETRAPYRROLE&quot;]
-
-                Copro3 --&gt; Proto9 --&gt; FC
-                Fe2 --&gt; FC
-                FC --&gt; Heme
-        end
-
-        Lead[&quot;Lead (Pb) Toxicity&quot;] -.-&gt;|&quot;Inhibits&quot;| ALAD
-        Lead -.-&gt;|&quot;Inhibits&quot;| FC
-        ALASmut[&quot;X-Linked Sideroblastic Anemia&quot;] -.-&gt;|&quot;Inactivating Mutation&quot;| ALAS2">
+    subgraph Mito1 [&quot;Mitochondrial Initiation&quot;]
+        direction TB
+        GlySuc[&quot;Glycine + Succinyl-CoA&quot;]
+        ALAS2[&quot;ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5&#x27;-Phosphate (B6)&quot;]
+        ALA[&quot;delta-Aminolevulinic Acid (ALA)&quot;]
+        GlySuc --&gt; ALAS2 --&gt; ALA
+    end
+    subgraph Cyto [&quot;Cytoplasmic Intermediate Conversions&quot;]
+        direction TB
+        ALAD[&quot;ALA Dehydratase (Inhibited by Lead)&quot;]
+        PBG[&quot;Porphobilinogen (PBG)&quot;]
+        HMBS[&quot;Hydroxymethylbilane Synthase&quot;]
+        HMB[&quot;Hydroxymethylbilane&quot;]
+        UROS[&quot;Uroporphyrinogen III Synthase (Deficient in CEP)&quot;]
+        Uro3[&quot;Uroporphyrinogen III&quot;]
+        Copro3[&quot;Coproporphyrinogen III&quot;]
+        ALA --&gt; ALAD --&gt; PBG --&gt; HMBS --&gt; HMB --&gt; UROS --&gt; Uro3 --&gt; Copro3
+    end
+    subgraph Mito2 [&quot;Mitochondrial Heme Finalization&quot;]
+        direction TB
+        Proto9[&quot;Protoporphyrinogen IX -&amp;gt; Protoporphyrin IX&quot;]
+        FC[&quot;Ferrochelatase (Inhibited by Lead; Deficient in EPP)&quot;]
+        Fe2[&quot;Ferrous Iron (Fe2+) Import via Mitoferrin&quot;]
+        Heme[&quot;HEME TETRAPYRROLE&quot;]
+        Copro3 --&gt; Proto9 --&gt; FC
+        Fe2 --&gt; FC
+        FC --&gt; Heme
+    end
+    Lead[&quot;Lead (Pb) Toxicity&quot;] -.-&gt;|&quot;Inhibits&quot;| ALAD
+    Lead -.-&gt;|&quot;Inhibits&quot;| FC
+    ALASmut[&quot;X-Linked Sideroblastic Anemia&quot;] -.-&gt;|&quot;Inactivating Mutation&quot;| ALAS2" data-original-code="flowchart TD
+    subgraph Mito1 [&quot;Mitochondrial Initiation&quot;]
+        direction TB
+        GlySuc[&quot;Glycine + Succinyl-CoA&quot;]
+        ALAS2[&quot;ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5&#x27;-Phosphate (B6)&quot;]
+        ALA[&quot;delta-Aminolevulinic Acid (ALA)&quot;]
+        GlySuc --&gt; ALAS2 --&gt; ALA
+    end
+    subgraph Cyto [&quot;Cytoplasmic Intermediate Conversions&quot;]
+        direction TB
+        ALAD[&quot;ALA Dehydratase (Inhibited by Lead)&quot;]
+        PBG[&quot;Porphobilinogen (PBG)&quot;]
+        HMBS[&quot;Hydroxymethylbilane Synthase&quot;]
+        HMB[&quot;Hydroxymethylbilane&quot;]
+        UROS[&quot;Uroporphyrinogen III Synthase (Deficient in CEP)&quot;]
+        Uro3[&quot;Uroporphyrinogen III&quot;]
+        Copro3[&quot;Coproporphyrinogen III&quot;]
+        ALA --&gt; ALAD --&gt; PBG --&gt; HMBS --&gt; HMB --&gt; UROS --&gt; Uro3 --&gt; Copro3
+    end
+    subgraph Mito2 [&quot;Mitochondrial Heme Finalization&quot;]
+        direction TB
+        Proto9[&quot;Protoporphyrinogen IX -&amp;gt; Protoporphyrin IX&quot;]
+        FC[&quot;Ferrochelatase (Inhibited by Lead; Deficient in EPP)&quot;]
+        Fe2[&quot;Ferrous Iron (Fe2+) Import via Mitoferrin&quot;]
+        Heme[&quot;HEME TETRAPYRROLE&quot;]
+        Copro3 --&gt; Proto9 --&gt; FC
+        Fe2 --&gt; FC
+        FC --&gt; Heme
+    end
+    Lead[&quot;Lead (Pb) Toxicity&quot;] -.-&gt;|&quot;Inhibits&quot;| ALAD
+    Lead -.-&gt;|&quot;Inhibits&quot;| FC
+    ALASmut[&quot;X-Linked Sideroblastic Anemia&quot;] -.-&gt;|&quot;Inactivating Mutation&quot;| ALAS2">
 flowchart TD
-        subgraph Mito1 ["Mitochondrial Initiation"]
-                direction TB
-                GlySuc["Glycine + Succinyl-CoA"]
-                ALAS2["ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5'-Phosphate (B6)"]
-                ALA["delta-Aminolevulinic Acid (ALA)"]
-                GlySuc --> ALAS2 --> ALA
-        end
-
-        subgraph Cyto ["Cytoplasmic Intermediate Conversions"]
-                direction TB
-                ALAD["ALA Dehydratase (Inhibited by Lead)"]
-                PBG["Porphobilinogen (PBG)"]
-                HMBS["Hydroxymethylbilane Synthase"]
-                HMB["Hydroxymethylbilane"]
-                UROS["Uroporphyrinogen III Synthase (Deficient in CEP)"]
-                Uro3["Uroporphyrinogen III"]
-                Copro3["Coproporphyrinogen III"]
-
-                ALA --> ALAD --> PBG --> HMBS --> HMB --> UROS --> Uro3 --> Copro3
-        end
-
-        subgraph Mito2 ["Mitochondrial Heme Finalization"]
-                direction TB
-                Proto9["Protoporphyrinogen IX -&gt; Protoporphyrin IX"]
-                FC["Ferrochelatase (Inhibited by Lead; Deficient in EPP)"]
-                Fe2["Ferrous Iron (Fe2+) Import via Mitoferrin"]
-                Heme["HEME TETRAPYRROLE"]
-
-                Copro3 --> Proto9 --> FC
-                Fe2 --> FC
-                FC --> Heme
-        end
-
-        Lead["Lead (Pb) Toxicity"] -.->|"Inhibits"| ALAD
-        Lead -.->|"Inhibits"| FC
-        ALASmut["X-Linked Sideroblastic Anemia"] -.->|"Inactivating Mutation"| ALAS2
+    subgraph Mito1 ["Mitochondrial Initiation"]
+        direction TB
+        GlySuc["Glycine + Succinyl-CoA"]
+        ALAS2["ALAS2 (Rate-Limiting Step) - Requires Pyridoxal 5'-Phosphate (B6)"]
+        ALA["delta-Aminolevulinic Acid (ALA)"]
+        GlySuc --> ALAS2 --> ALA
+    end
+    subgraph Cyto ["Cytoplasmic Intermediate Conversions"]
+        direction TB
+        ALAD["ALA Dehydratase (Inhibited by Lead)"]
+        PBG["Porphobilinogen (PBG)"]
+        HMBS["Hydroxymethylbilane Synthase"]
+        HMB["Hydroxymethylbilane"]
+        UROS["Uroporphyrinogen III Synthase (Deficient in CEP)"]
+        Uro3["Uroporphyrinogen III"]
+        Copro3["Coproporphyrinogen III"]
+        ALA --> ALAD --> PBG --> HMBS --> HMB --> UROS --> Uro3 --> Copro3
+    end
+    subgraph Mito2 ["Mitochondrial Heme Finalization"]
+        direction TB
+        Proto9["Protoporphyrinogen IX -&gt; Protoporphyrin IX"]
+        FC["Ferrochelatase (Inhibited by Lead; Deficient in EPP)"]
+        Fe2["Ferrous Iron (Fe2+) Import via Mitoferrin"]
+        Heme["HEME TETRAPYRROLE"]
+        Copro3 --> Proto9 --> FC
+        Fe2 --> FC
+        FC --> Heme
+    end
+    Lead["Lead (Pb) Toxicity"] -.->|"Inhibits"| ALAD
+    Lead -.->|"Inhibits"| FC
+    ALASmut["X-Linked Sideroblastic Anemia"] -.->|"Inactivating Mutation"| ALAS2
 </div>
 
 <h3 id="sideroblastic-anemias">Sideroblastic Anemias</h3>
@@ -1505,123 +1425,117 @@ flowchart TD
 </li>
 </ul>
 <div class="mermaid" data-original-source="flowchart LR
-        subgraph Subtypes [&quot;Sideroblastic Anemia Etiologies&quot;]
-                HSA[&quot;Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)&quot;]
-                MDS[&quot;Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)&quot;]
-                TOX[&quot;Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)&quot;]
-        end
-
-        subgraph Features [&quot;Distinctive Laboratory Findings&quot;]
-                HSA --&gt; F1[&quot;Dimorphic Erythrocyte Population - (Normal &amp; Microcytic/Hypochromic)&quot;]
-                MDS --&gt; F2[&quot;Macrocytic / Normocytic Anemia - (Dysplastic Precursors &amp; Ineffective Erythropoiesis)&quot;]
-                TOX --&gt; F3[&quot;Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film&quot;]
-        end" data-original-code="flowchart LR
-        subgraph Subtypes [&quot;Sideroblastic Anemia Etiologies&quot;]
-                HSA[&quot;Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)&quot;]
-                MDS[&quot;Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)&quot;]
-                TOX[&quot;Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)&quot;]
-        end
-
-        subgraph Features [&quot;Distinctive Laboratory Findings&quot;]
-                HSA --&gt; F1[&quot;Dimorphic Erythrocyte Population - (Normal &amp; Microcytic/Hypochromic)&quot;]
-                MDS --&gt; F2[&quot;Macrocytic / Normocytic Anemia - (Dysplastic Precursors &amp; Ineffective Erythropoiesis)&quot;]
-                TOX --&gt; F3[&quot;Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film&quot;]
-        end">
+    subgraph Subtypes [&quot;Sideroblastic Anemia Etiologies&quot;]
+        HSA[&quot;Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)&quot;]
+        MDS[&quot;Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)&quot;]
+        TOX[&quot;Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)&quot;]
+    end
+    subgraph Features [&quot;Distinctive Laboratory Findings&quot;]
+        HSA --&gt; F1[&quot;Dimorphic Erythrocyte Population - (Normal &amp; Microcytic/Hypochromic)&quot;]
+        MDS --&gt; F2[&quot;Macrocytic / Normocytic Anemia - (Dysplastic Precursors &amp; Ineffective Erythropoiesis)&quot;]
+        TOX --&gt; F3[&quot;Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film&quot;]
+    end" data-original-code="flowchart LR
+    subgraph Subtypes [&quot;Sideroblastic Anemia Etiologies&quot;]
+        HSA[&quot;Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)&quot;]
+        MDS[&quot;Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)&quot;]
+        TOX[&quot;Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)&quot;]
+    end
+    subgraph Features [&quot;Distinctive Laboratory Findings&quot;]
+        HSA --&gt; F1[&quot;Dimorphic Erythrocyte Population - (Normal &amp; Microcytic/Hypochromic)&quot;]
+        MDS --&gt; F2[&quot;Macrocytic / Normocytic Anemia - (Dysplastic Precursors &amp; Ineffective Erythropoiesis)&quot;]
+        TOX --&gt; F3[&quot;Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film&quot;]
+    end">
 flowchart LR
-        subgraph Subtypes ["Sideroblastic Anemia Etiologies"]
-                HSA["Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)"]
-                MDS["Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)"]
-                TOX["Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)"]
-        end
-
-        subgraph Features ["Distinctive Laboratory Findings"]
-                HSA --> F1["Dimorphic Erythrocyte Population - (Normal & Microcytic/Hypochromic)"]
-                MDS --> F2["Macrocytic / Normocytic Anemia - (Dysplastic Precursors & Ineffective Erythropoiesis)"]
-                TOX --> F3["Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film"]
-        end
+    subgraph Subtypes ["Sideroblastic Anemia Etiologies"]
+        HSA["Hereditary: X-Linked Sideroblastic Anemia - (ALAS2 Gene Inactivating Mutation)"]
+        MDS["Acquired Clonal: MDS with Ring Sideroblasts - (MDS-RS / Somatic SF3B1 Mutation)"]
+        TOX["Acquired Metabolic / Toxic Plumbism - (Lead Toxicity, Ethanol, Isoniazid)"]
+    end
+    subgraph Features ["Distinctive Laboratory Findings"]
+        HSA --> F1["Dimorphic Erythrocyte Population - (Normal & Microcytic/Hypochromic)"]
+        MDS --> F2["Macrocytic / Normocytic Anemia - (Dysplastic Precursors & Ineffective Erythropoiesis)"]
+        TOX --> F3["Coarse Basophilic Stippling + Elevated ZPP - + Pappenheimer Bodies on Wright Film"]
+    end
 </div>
 
 <h4 id="etiologies-and-classifications">Etiologies and Classifications</h4>
 <ul>
-<li><strong>Hereditary Sideroblastic Anemia</strong>: Most commonly an <strong>X-linked recessive</strong> defect in the erythroid-specific enzyme <strong>$\delta$-aminolevulinic acid synthase 2 (<em>ALAS2</em>)</strong> on chromosome Xp11.21. <em>ALAS2</em> catalyzes the initial, rate-limiting condensation of glycine and succinyl-CoA into $\delta$-ALA, requiring cofactor <strong>pyridoxal 5'-phosphate (vitamin $B_{6}$)</strong>.<ul>
-<li>Hemizygous males develop marked microcytic, hypochromic anemia and systemic iron overload.</li>
+<li><strong>Hereditary Sideroblastic Anemia</strong>: Most commonly an <strong>X-linked recessive</strong> defect in the erythroid-specific enzyme <strong>$\delta$-aminolevulinic acid synthase 2 (<em>ALAS2</em>)</strong> on chromosome Xp11.21. <em>ALAS2</em> catalyzes the initial, rate-limiting condensation of glycine and succinyl-CoA into $\delta$-ALA, requiring cofactor <strong>pyridoxal 5'-phosphate (vitamin $\text{B}_{6}$)</strong>.<ul>
+<li>Hemizygous males develop marked microcytic, hypochromic anemia ($\text{MCV} < 76\text{ fL}$) and systemic iron overload.</li>
 <li>Heterozygous females often display a prominent <strong>dimorphic erythrocyte population</strong> (two distinct coexisting red cell populations: one normocytic-normochromic, one microcytic-hypochromic). This is visible on peripheral blood films and generates a characteristic bimodal curve on automated RBC volume histograms, driven by random X-chromosome inactivation (<strong>lyonization</strong>).</li>
 </ul>
 </li>
-<li><strong>Acquired Clonal Sideroblastic Anemia</strong>: Associated with <strong>Myelodysplastic Syndromes with Ring Sideroblasts (MDS-RS)</strong>, driven by somatic mutations in the RNA spliceosome gene <strong><em>SF3B1</em></strong>. Manifests as a macrocytic anemia with dyserythropoiesis.</li>
-<li><strong>Lead Poisoning (Plumbism)</strong>: Inorganic lead ($Pb$) displaces divalent zinc cofactors from sulfhydryl groups on two heme synthesis enzymes: cytosolic <strong>$\delta$-aminolevulinic acid dehydratase (ALAD)</strong> and mitochondrial <strong>ferrochelatase</strong>. Substrates $\delta$-ALA and zinc protoporphyrin (ZPP) accumulate. <ul>
+<li><strong>Acquired Clonal Sideroblastic Anemia</strong>: Associated with <strong>Myelodysplastic Syndromes with Ring Sideroblasts (MDS-RS)</strong>, driven by somatic mutations in the RNA spliceosome gene <strong><em>SF3B1</em></strong>. Manifests as a macrocytic anemia ($\text{MCV} > 100\text{ fL}$) with dyserythropoiesis.</li>
+<li><strong>Lead Poisoning (Plumbism)</strong>: Inorganic lead ($\text{Pb}$) displaces divalent zinc cofactors from sulfhydryl groups on two heme synthesis enzymes: cytosolic <strong>$\delta$-aminolevulinic acid dehydratase (ALAD)</strong> and mitochondrial <strong>ferrochelatase</strong>. Substrates $\delta$-ALA and zinc protoporphyrin (ZPP) accumulate. <ul>
 <li>Lead also inhibits erythrocyte <strong>pyrimidine 5'-nucleotidase</strong>, preventing the normal degradation of ribosomal RNA. This causes coarse ribosomal precipitation, producing <strong>coarse basophilic stippling</strong> throughout the erythrocyte cytoplasm on Romanowsky-stained blood films.</li>
 </ul>
 </li>
-<li><strong>Alcohol-Induced &amp; Isoniazid Toxicities</strong>: Chronic ethanol consumption causes direct mitochondrial toxicity and impairs pyridoxal phosphate conversion. The antitubercular agent isoniazid (INH) competitively inhibits pyridoxal kinase, depleting active vitamin $B_{6}$ and blocking the ALAS2 reaction.</li>
+<li><strong>Alcohol-Induced &amp; Isoniazid Toxicities</strong>: Chronic ethanol consumption causes direct mitochondrial toxicity and impairs pyridoxal phosphate conversion. The antitubercular agent isoniazid (INH) competitively inhibits pyridoxal kinase, depleting active vitamin $\text{B}_{6}$ and blocking the ALAS2 reaction.</li>
 </ul>
 <h3 id="the-porphyrias">The Porphyrias</h3>
 <p>Porphyrias are inherited or acquired metabolic disorders caused by deficiencies of specific enzymes in the heme biosynthetic pathway, resulting in the accumulation and excretion of porphyrins and their precursors:</p>
 <div class="mermaid" data-original-source="flowchart TD
-        subgraph CEP [&quot;Congenital Erythropoietic Porphyria (CEP / Günther Disease)&quot;]
-                direction TB
-                E1[&quot;Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient&quot;]
-                P1[&quot;Shunt to Non-Physiological Isomer-I Porphyrins&quot;]
-                C1[&quot;Severe Mutilating Photosensitivity &amp; Ulcerations&quot;]
-                C2[&quot;Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)&quot;]
-                C3[&quot;Severe Hemolytic Anemia (RBC Lifespan ~18 Days)&quot;]
-                C4[&quot;Normoblast UV Autofluorescence &amp; Port-Wine Urine&quot;]
-                E1 --&gt; P1 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
-        end
-
-        subgraph EPP [&quot;Erythropoietic Protoporphyria (EPP)&quot;]
-                direction TB
-                E2[&quot;Enzyme: Ferrochelatase (FECH) Deficient&quot;]
-                P2[&quot;Protoporphyrin IX Accumulation in RBCs &amp; Plasma&quot;]
-                D1[&quot;Acute Painful Solar Urticaria, Burning &amp; Erythema&quot;]
-                D2[&quot;Absence of Blistering Mutilation or Erythrodontia&quot;]
-                D3[&quot;Cholestatic Liver Failure Risk (Biliary Crystal Deposition)&quot;]
-                D4[&quot;Mild or Absent Anemia (Normal Erythrocyte Lifespan)&quot;]
-                E2 --&gt; P2 --&gt; D1 &amp; D2 &amp; D3 &amp; D4
-        end" data-original-code="flowchart TD
-        subgraph CEP [&quot;Congenital Erythropoietic Porphyria (CEP / Günther Disease)&quot;]
-                direction TB
-                E1[&quot;Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient&quot;]
-                P1[&quot;Shunt to Non-Physiological Isomer-I Porphyrins&quot;]
-                C1[&quot;Severe Mutilating Photosensitivity &amp; Ulcerations&quot;]
-                C2[&quot;Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)&quot;]
-                C3[&quot;Severe Hemolytic Anemia (RBC Lifespan ~18 Days)&quot;]
-                C4[&quot;Normoblast UV Autofluorescence &amp; Port-Wine Urine&quot;]
-                E1 --&gt; P1 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
-        end
-
-        subgraph EPP [&quot;Erythropoietic Protoporphyria (EPP)&quot;]
-                direction TB
-                E2[&quot;Enzyme: Ferrochelatase (FECH) Deficient&quot;]
-                P2[&quot;Protoporphyrin IX Accumulation in RBCs &amp; Plasma&quot;]
-                D1[&quot;Acute Painful Solar Urticaria, Burning &amp; Erythema&quot;]
-                D2[&quot;Absence of Blistering Mutilation or Erythrodontia&quot;]
-                D3[&quot;Cholestatic Liver Failure Risk (Biliary Crystal Deposition)&quot;]
-                D4[&quot;Mild or Absent Anemia (Normal Erythrocyte Lifespan)&quot;]
-                E2 --&gt; P2 --&gt; D1 &amp; D2 &amp; D3 &amp; D4
-        end">
+    subgraph CEP [&quot;Congenital Erythropoietic Porphyria (CEP / Günther Disease)&quot;]
+        direction TB
+        E1[&quot;Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient&quot;]
+        P1[&quot;Shunt to Non-Physiological Isomer-I Porphyrins&quot;]
+        C1[&quot;Severe Mutilating Photosensitivity &amp; Ulcerations&quot;]
+        C2[&quot;Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)&quot;]
+        C3[&quot;Severe Hemolytic Anemia (RBC Lifespan ~18 Days)&quot;]
+        C4[&quot;Normoblast UV Autofluorescence &amp; Port-Wine Urine&quot;]
+        E1 --&gt; P1 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
+    end
+    subgraph EPP [&quot;Erythropoietic Protoporphyria (EPP)&quot;]
+        direction TB
+        E2[&quot;Enzyme: Ferrochelatase (FECH) Deficient&quot;]
+        P2[&quot;Protoporphyrin IX Accumulation in RBCs &amp; Plasma&quot;]
+        D1[&quot;Acute Painful Solar Urticaria, Burning &amp; Erythema&quot;]
+        D2[&quot;Absence of Blistering Mutilation or Erythrodontia&quot;]
+        D3[&quot;Cholestatic Liver Failure Risk (Biliary Crystal Deposition)&quot;]
+        D4[&quot;Mild or Absent Anemia (Normal Erythrocyte Lifespan)&quot;]
+        E2 --&gt; P2 --&gt; D1 &amp; D2 &amp; D3 &amp; D4
+    end" data-original-code="flowchart TD
+    subgraph CEP [&quot;Congenital Erythropoietic Porphyria (CEP / Günther Disease)&quot;]
+        direction TB
+        E1[&quot;Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient&quot;]
+        P1[&quot;Shunt to Non-Physiological Isomer-I Porphyrins&quot;]
+        C1[&quot;Severe Mutilating Photosensitivity &amp; Ulcerations&quot;]
+        C2[&quot;Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)&quot;]
+        C3[&quot;Severe Hemolytic Anemia (RBC Lifespan ~18 Days)&quot;]
+        C4[&quot;Normoblast UV Autofluorescence &amp; Port-Wine Urine&quot;]
+        E1 --&gt; P1 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
+    end
+    subgraph EPP [&quot;Erythropoietic Protoporphyria (EPP)&quot;]
+        direction TB
+        E2[&quot;Enzyme: Ferrochelatase (FECH) Deficient&quot;]
+        P2[&quot;Protoporphyrin IX Accumulation in RBCs &amp; Plasma&quot;]
+        D1[&quot;Acute Painful Solar Urticaria, Burning &amp; Erythema&quot;]
+        D2[&quot;Absence of Blistering Mutilation or Erythrodontia&quot;]
+        D3[&quot;Cholestatic Liver Failure Risk (Biliary Crystal Deposition)&quot;]
+        D4[&quot;Mild or Absent Anemia (Normal Erythrocyte Lifespan)&quot;]
+        E2 --&gt; P2 --&gt; D1 &amp; D2 &amp; D3 &amp; D4
+    end">
 flowchart TD
-        subgraph CEP ["Congenital Erythropoietic Porphyria (CEP / Günther Disease)"]
-                direction TB
-                E1["Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient"]
-                P1["Shunt to Non-Physiological Isomer-I Porphyrins"]
-                C1["Severe Mutilating Photosensitivity & Ulcerations"]
-                C2["Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)"]
-                C3["Severe Hemolytic Anemia (RBC Lifespan ~18 Days)"]
-                C4["Normoblast UV Autofluorescence & Port-Wine Urine"]
-                E1 --> P1 --> C1 & C2 & C3 & C4
-        end
-
-        subgraph EPP ["Erythropoietic Protoporphyria (EPP)"]
-                direction TB
-                E2["Enzyme: Ferrochelatase (FECH) Deficient"]
-                P2["Protoporphyrin IX Accumulation in RBCs & Plasma"]
-                D1["Acute Painful Solar Urticaria, Burning & Erythema"]
-                D2["Absence of Blistering Mutilation or Erythrodontia"]
-                D3["Cholestatic Liver Failure Risk (Biliary Crystal Deposition)"]
-                D4["Mild or Absent Anemia (Normal Erythrocyte Lifespan)"]
-                E2 --> P2 --> D1 & D2 & D3 & D4
-        end
+    subgraph CEP ["Congenital Erythropoietic Porphyria (CEP / Günther Disease)"]
+        direction TB
+        E1["Enzyme: Uroporphyrinogen III Synthase (UROS) Deficient"]
+        P1["Shunt to Non-Physiological Isomer-I Porphyrins"]
+        C1["Severe Mutilating Photosensitivity & Ulcerations"]
+        C2["Erythrodontia (Teeth Fluoresce Red Under 405 nm UV)"]
+        C3["Severe Hemolytic Anemia (RBC Lifespan ~18 Days)"]
+        C4["Normoblast UV Autofluorescence & Port-Wine Urine"]
+        E1 --> P1 --> C1 & C2 & C3 & C4
+    end
+    subgraph EPP ["Erythropoietic Protoporphyria (EPP)"]
+        direction TB
+        E2["Enzyme: Ferrochelatase (FECH) Deficient"]
+        P2["Protoporphyrin IX Accumulation in RBCs & Plasma"]
+        D1["Acute Painful Solar Urticaria, Burning & Erythema"]
+        D2["Absence of Blistering Mutilation or Erythrodontia"]
+        D3["Cholestatic Liver Failure Risk (Biliary Crystal Deposition)"]
+        D4["Mild or Absent Anemia (Normal Erythrocyte Lifespan)"]
+        E2 --> P2 --> D1 & D2 & D3 & D4
+    end
 </div>
 
 <h4 id="congenital-erythropoietic-porphyria-cep-gunther-disease">Congenital Erythropoietic Porphyria (CEP; Günther Disease)</h4>
@@ -1645,19 +1559,76 @@ flowchart TD
 <li><strong>Pappenheimer Bodies vs. Basophilic Stippling</strong>: On Wright-Giemsa stain, both appear as blue-purple cytoplasmic inclusions. Confirm iron content by counter-staining with Prussian blue: <strong>Pappenheimer bodies are Prussian blue positive</strong> (iron-dense); basophilic stippling (composed purely of RNA) is <strong>Prussian blue negative</strong>.</li>
 </ul>
 </li>
-<li><strong>Toxicological Screening for Plumbism</strong>: If unexplained microcytic hypochromic anemia with coarse basophilic stippling is detected, obtain a whole-blood lead level via graphite furnace atomic absorption spectrometry or inductively coupled plasma mass spectrometry (ICP-MS).</li>
+<li><strong>Toxicological Screening for Plumbism</strong>: If unexplained microcytic hypochromic anemia ($\text{MCV} < 76\text{ fL}$) with coarse basophilic stippling is detected, obtain a whole-blood lead level via graphite furnace atomic absorption spectrometry or inductively coupled plasma mass spectrometry (ICP-MS).</li>
 <li><strong>Fluorometric Porphyrin Analysis</strong>: Free porphyrins exhibit high light absorbance within the Soret band ($400\text{ to }410\text{ nm}$) and emit fluorescence between $600\text{ and }650\text{ nm}$. This photophysical property enables rapid fluorometric screening and quantification of porphyrin fractions in whole blood, urine, and feces.</li>
 </ul>
 <hr />
 <h2 id="master-diagnostic-pearls-reference-review">Master Diagnostic Pearls &amp; Reference Review</h2>
 <ul>
+<li><strong>ASCP Standard Reference Intervals Summary</strong>:<ul>
+<li><strong>RBC</strong>: $4.00\text{ -- }6.00 \times 10^6/\mu\text{L}$ ($4.00\text{ -- }6.00 \times 10^{12}/\text{L}$)</li>
+<li><strong>HGB</strong>: $12.0\text{ -- }18.0\text{ g/dL}$ ($120\text{ -- }180\text{ g/L}$)</li>
+<li><strong>HCT</strong>: $35\text{ -- }50\%$ ($0.35\text{ -- }0.50\text{ L/L}$)</li>
+<li><strong>MCV</strong>: $76\text{ -- }100\text{ fL}$</li>
+<li><strong>MCH</strong>: $26\text{ -- }34\text{ pg}$</li>
+<li><strong>MCHC</strong>: $32\text{ -- }36\text{ g/dL}$ ($320\text{ -- }360\text{ g/L}$)</li>
+<li><strong>RDW</strong>: $11.5\text{ -- }14.5\%$ ($0.115\text{ -- }0.145$)</li>
+<li><strong>Reticulocytes (Absolute)</strong>: $20\text{ -- }115 \times 10^3/\mu\text{L}$ ($20\text{ -- }115 \times 10^9/\text{L}$)</li>
+<li><strong>Reticulocytes (Relative)</strong>: $0.5\text{ -- }2.5\%$ ($0.005\text{ -- }0.025$)</li>
+<li><strong>Platelets</strong>: $150\text{ -- }450 \times 10^3/\mu\text{L}$ ($150\text{ -- }450 \times 10^9/\text{L}$)</li>
+<li><strong>WBC</strong>: $3.6\text{ -- }10.6 \times 10^3/\mu\text{L}$ ($3.6\text{ -- }10.6 \times 10^9/\text{L}$)</li>
+<li><strong>Haptoglobin</strong>: $30\text{ -- }200\text{ mg/dL}$ ($0.3\text{ -- }2.0\text{ g/L}$)</li>
+</ul>
+</li>
 <li><strong>Compensatory Dynamics</strong>: Hypoxia shifts the oxygen-hemoglobin dissociation curve to the right via elevated 2,3-BPG and localized metabolic acidosis (Bohr effect), increasing fractional oxygen delivery to tissues.</li>
 <li><strong>Hyperacute Hemorrhage Warning</strong>: Immediate post-hemorrhage hemoglobin and hematocrit values appear falsely normal until extravascular fluid shifts into the intravascular compartment over 24 to 72 hours, unmasking hemodilution.</li>
 <li><strong>RPI Decision Rule</strong>: An $\text{RPI} < 2.0$ confirms an inadequate, hypoproliferative marrow response; an $\text{RPI} \ge 2.0$ indicates appropriate bone marrow regeneration, pointing toward hemolysis or acute compensated blood loss.</li>
-<li><strong>Hemolysis Signposts</strong>: The combination of depleted haptoglobin, elevated LDH, and positive urinary hemosiderin (Prussian blue stain) confirms intravascular hemolysis. Extravascular hemolysis presents with indirect hyperbilirubinemia, elevated urobilinogen, and splenomegaly.</li>
+<li><strong>Hemolysis Signposts</strong>: The combination of depleted haptoglobin ($< 30\text{ mg/dL}$), elevated LDH, and positive urinary hemosiderin (Prussian blue stain) confirms intravascular hemolysis. Extravascular hemolysis presents with unconjugated hyperbilirubinemia, elevated urobilinogen ($> 1.0\text{ EU}$ or $> 17\text{ }\mu\text{mol/L}$), and splenomegaly.</li>
 <li><strong>Iron Sequestration vs. Depletion</strong>: Serum ferritin is a positive acute-phase reactant, and transferrin is a negative acute-phase reactant. Soluble transferrin receptor (sTfR) is unaffected by inflammation, serving as an effective discriminator to distinguish Iron Deficiency Anemia (sTfR elevated) from Anemia of Chronic Disease (sTfR normal).</li>
-<li><strong>Ringed Sideroblast Criteria</strong>: Defined specifically on bone marrow Prussian blue stains as $\ge 5$ iron granules encircling $\ge 33%$ of the nuclear perimeter.</li>
-<li><strong>Dimorphic RBC Distributions</strong>: A bimodal distribution on the automated RBC volume histogram with an elevated RDW indicates either a heterozygous female carrier of X-linked sideroblastic anemia (<em>ALAS2</em> mutation), an early therapeutic response to iron replacement in IDA, or a recent transfusion of normal donor erythrocytes into a microcytic recipient.</li>
+<li><strong>Ringed Sideroblast Criteria</strong>: Defined specifically on bone marrow Prussian blue stains as $\ge 5$ iron granules encircling $\ge 33\%$ of the nuclear perimeter.</li>
+<li><strong>Dimorphic RBC Distributions</strong>: A bimodal distribution on the automated RBC volume histogram with an elevated RDW ($> 14.5\%$) indicates either a heterozygous female carrier of X-linked sideroblastic anemia (<em>ALAS2</em> mutation), an early therapeutic response to iron replacement in IDA, or a recent transfusion of normal donor erythrocytes into a microcytic recipient.</li>
+</ul>
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>Hematology Physiology</strong>: Production, destruction, and function of erythrocytes; kinetics of bone marrow erythropoiesis; reticuloendothelial system clearance; cellular hypoxia and compensatory mechanisms (Rapoport-Luebering shunt, 2,3-BPG, Bohr effect, HIF-1$\alpha$, and erythropoietin).</li>
+<li><strong>Hematology Disease States</strong>:<ul>
+<li><em>Erythrocytes - Anemia</em>:</li>
+<li>Microcytic anemias: Iron deficiency anemia, anemia of chronic disease/inflammation, sideroblastic anemia (congenital and acquired), lead poisoning, and thalassemia traits.</li>
+<li>Normocytic anemias: Acute post-hemorrhagic blood loss, anemia of chronic disease, hypoproliferative states (aplastic anemia, renal disease), and hemolytic anemias (intravascular vs. extravascular mechanisms).</li>
+<li>Macrocytic anemias: Megaloblastic (DNA synthesis defects, nuclear-cytoplasmic dyssynchrony) vs. non-megaloblastic disorders.</li>
+<li>Hemoglobinopathies and porphyrias (congenital erythropoietic porphyria, erythropoietic protoporphyria).</li>
+<li><em>Hemostatic and Platelet Correlations</em>: Secondary/reactive thrombocytosis in iron deficiency.</li>
+</ul>
+</li>
+<li><strong>Hematology Laboratory Testing</strong>:<ul>
+<li>Automated red blood cell indices: MCV, MCH, MCHC, RDW.</li>
+<li>Cell counts and differentials: Manual hemocytometer principles, absolute and relative reticulocyte enumeration, immature reticulocyte fraction (IRF), and reticulocyte hemoglobin equivalent (RET-He).</li>
+<li>Peripheral blood film review and morphology: Anisocytosis, poikilocytosis (target cells, pencil cells, schistocytes, spherocytes, dacrocytes), and erythrocyte inclusions (basophilic stippling, Pappenheimer bodies, Howell-Jolly bodies, Heinz bodies).</li>
+<li>Special stains: Prussian blue (Perls' reaction) for bone marrow macrophage iron and ringed sideroblasts; supravital stains (new methylene blue, brilliant cresyl blue) for reticulocytes and Heinz bodies.</li>
+<li>Laboratory quality control and troubleshooting: The "Rule of Three," cold agglutinin interference, spurious macrocytosis, and spectrophotometric interferences (turbidity, lipemia, hyperbilirubinemia).</li>
+</ul>
+</li>
+</ul>
+<h3 id="chemistry">Chemistry</h3>
+<ul>
+<li><strong>Heme Derivatives and Iron Metabolism</strong>:<ul>
+<li>Porphyrin synthesis and heme pathway enzymes (ALAS2, ALAD, ferrochelatase, UROS).</li>
+<li>Iron panels: Serum iron, Total Iron-Binding Capacity (TIBC), transferrin saturation, serum ferritin, and soluble transferrin receptor (sTfR).</li>
+<li>Bilirubin fractions: Unconjugated (indirect) and conjugated (direct) bilirubin metabolism in extravascular hemolysis.</li>
+<li>Hemolytic biomarkers: Haptoglobin, hemopexin, methemalbumin, and lactate dehydrogenase (LDH).</li>
+</ul>
+</li>
+</ul>
+<h3 id="urinalysis-and-body-fluids">Urinalysis and Body Fluids</h3>
+<ul>
+<li><strong>Routine Urinalysis &amp; Microscopic Examination</strong>:<ul>
+<li>Dipstick blood/pseudoperoxidase reaction in free hemoglobinuria.</li>
+<li>Urine urobilinogen excretion patterns.</li>
+<li>Sloughed renal tubular epithelial cells and urine hemosiderin detection via Perls' Prussian blue stain.</li>
+</ul>
+</li>
 </ul>
     </article>
 

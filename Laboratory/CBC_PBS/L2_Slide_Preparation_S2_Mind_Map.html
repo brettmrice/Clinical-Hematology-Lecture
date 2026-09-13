@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../shared/mindmap_quiz.css">
+  <script src="../../../../shared/mindmaps_manifest.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -35,18 +37,370 @@
       position: absolute;
     }
 
-    /* Top Left Title Card */
+    /* Top Left Title Button Card */
     .top-title-card {
       top: 20px;
       left: 24px;
-      padding: 10px 18px;
+      padding: 8px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.96);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+      text-align: left;
+    }
+
+    .top-title-card:hover {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .top-title-card:active {
+      transform: translateY(0);
+    }
+
+    .top-title-card .menu-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6366f1;
+      transition: transform 0.2s ease;
+    }
+
+    .top-title-card:hover .menu-icon {
+      transform: scale(1.1);
     }
 
     .top-title-card h1 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #1a202c;
       white-space: nowrap;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .top-title-card .badge {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: #eef2ff;
+      color: #4f46e5;
+      letter-spacing: 0.02em;
+    }
+
+    /* Slide-out Sidebar Drawer & Backdrop */
+    .sidebar-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(3px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 380px;
+      max-width: 88vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.16);
+      z-index: 101;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      user-select: auto;
+    }
+
+    .sidebar-drawer.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+    }
+
+    .sidebar-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-header-left svg {
+      color: #6366f1;
+    }
+
+    .sidebar-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    .sidebar-controls {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #ffffff;
+    }
+
+    /* Type Filter Toggle Group */
+    .filter-type-group {
+      display: flex;
+      background: #f1f5f9;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+    }
+
+    .filter-type-btn {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .filter-type-btn.active {
+      background: #ffffff;
+      color: #4f46e5;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Subfolder & Search row */
+    .sidebar-search-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .sidebar-search-box input {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #f8fafc;
+    }
+
+    .sidebar-search-box input:focus {
+      border-color: #6366f1;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+    .sidebar-search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+
+    .sidebar-sort-btn {
+      height: 35px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-sort-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sidebar-sort-btn.active {
+      background: #eef2ff;
+      border-color: #6366f1;
+      color: #4f46e5;
+    }
+
+    .subfolder-select {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .subfolder-select:focus {
+      border-color: #6366f1;
+    }
+
+    /* List Container */
+    .sidebar-list-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .mindmap-item-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .mindmap-item-card:hover {
+      border-color: #c7d2fe;
+      background: #f8faff;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(99, 102, 241, 0.08);
+    }
+
+    .mindmap-item-card.current {
+      border-color: #6366f1;
+      background: #eef2ff;
+      box-shadow: 0 0 0 1px #6366f1, 0 3px 10px rgba(99, 102, 241, 0.1);
+    }
+
+    .mindmap-item-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+
+    .mindmap-item-card.current .mindmap-item-title {
+      color: #4338ca;
+    }
+
+    .mindmap-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    .badge-type {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-type.lecture {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .badge-type.lab {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .badge-type.other {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .sidebar-empty-state {
+      padding: 32px 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
     }
 
     /* Bottom Left Search Card */
@@ -120,6 +474,61 @@
       white-space: nowrap;
     }
 
+    .top-highyield-card {
+      top: 116px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #b45309;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+      background: rgba(254, 252, 232, 0.95);
+    }
+
+    .top-highyield-card:hover {
+      background: #fef08a;
+      color: #78350f;
+      border-color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.2);
+    }
+
+    .top-highyield-card.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .top-quiz-card {
+      top: 164px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #4f46e5;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #c7d2fe;
+      background: rgba(238, 242, 255, 0.95);
+    }
+
+    .top-quiz-card:hover {
+      background: #e0e7ff;
+      color: #3730a3;
+      border-color: #6366f1;
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+    }
+
     .top-collapse-card:hover, .top-expand-card:hover {
       background: #ffffff;
       color: #0f172a;
@@ -167,11 +576,16 @@
       position: absolute;
       display: inline-flex;
       align-items: center;
-      padding: 9px 18px;
-      border-radius: 20px;
-      font-size: 13.5px;
+      padding: 8px 16px;
+      border-radius: 18px;
+      font-size: 13px;
       font-weight: 600;
-      white-space: nowrap;
+      white-space: normal;
+      width: max-content;
+      max-width: 320px;
+      line-height: 1.35;
+      word-break: normal;
+      overflow-wrap: break-word;
       cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -181,6 +595,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
+      box-sizing: border-box;
     }
 
     .node:hover {
@@ -193,6 +608,7 @@
     .node.has-children.collapsed::after {
       content: '+';
       display: inline-block;
+      flex-shrink: 0;
       font-family: monospace;
       font-size: 14px;
       font-weight: 700;
@@ -203,6 +619,7 @@
     .node.has-children:not(.collapsed)::after {
       content: '−';
       display: inline-block;
+      flex-shrink: 0;
       font-family: monospace;
       font-size: 14px;
       font-weight: 700;
@@ -302,6 +719,76 @@
       font-weight: 600;
     }
 
+    .node-level-11 {
+      background-color: #818cf8;
+      color: #1e1b4b;
+      font-weight: 600;
+    }
+
+    .node-level-12 {
+      background-color: #38bdf8;
+      color: #082f49;
+      font-weight: 600;
+    }
+
+    .node-level-13 {
+      background-color: #2dd4bf;
+      color: #134e4a;
+      font-weight: 600;
+    }
+
+    .node-level-14 {
+      background-color: #4ade80;
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .node-level-15, .node-level-16, .node-level-17, .node-level-18, .node-level-19, .node-level-20 {
+      background-color: #a3e635;
+      color: #1a2e05;
+      font-weight: 600;
+    }
+
+    /* High-Yield Filter Styling */
+    .node.high-yield-node::before {
+      content: '⚡';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    body.high-yield-mode .node:not(.is-high-yield-branch) {
+      opacity: 0.22 !important;
+      filter: grayscale(65%);
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.is-high-yield-branch {
+      opacity: 1.0 !important;
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.high-yield-node {
+      box-shadow: 0 0 0 2.5px #f59e0b, 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+      border-color: #d97706 !important;
+      font-weight: 700;
+    }
+
+    body.high-yield-mode .connection-line:not(.is-high-yield-path) {
+      opacity: 0.15 !important;
+      stroke: #cbd5e1 !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease;
+    }
+
+    body.high-yield-mode .connection-line.is-high-yield-path {
+      opacity: 1.0 !important;
+      stroke: #d97706 !important;
+      stroke-width: 2.5px !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    }
+
     /* SVG Connecting Lines */
     .connection-line {
       fill: none;
@@ -340,10 +827,78 @@
 </head>
 <body>
 
-  <!-- Top Floating Element 1: Title Card -->
-  <div class="floating-panel top-title-card">
+  <!-- Top Floating Element 1: Title Card / Sidebar Toggle Button -->
+  <button class="floating-panel top-title-card" id="btn-open-sidebar" title="Click to view all course mind maps">
+    <div class="menu-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
     <h1 id="topic-title">Slide Preparation</h1>
-  </div>
+    <span class="badge">Mind Maps</span>
+  </button>
+
+  <!-- Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- Slide-out Sidebar Drawer -->
+  <aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Course Mind Maps Navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-header-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <h2>Course Mind Maps</h2>
+      </div>
+      <button class="sidebar-close-btn" id="btn-close-sidebar" title="Close Sidebar (Esc)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="sidebar-controls">
+      <!-- Tier 1: Type Filter Buttons -->
+      <div class="filter-type-group" id="filter-type-group">
+        <button class="filter-type-btn active" data-type="all">All (<span id="count-all">0</span>)</button>
+        <button class="filter-type-btn" data-type="lecture">Lectures (<span id="count-lecture">0</span>)</button>
+        <button class="filter-type-btn" data-type="lab">Labs (<span id="count-lab">0</span>)</button>
+      </div>
+
+      <!-- Tier 2: Subfolder / Module Dropdown -->
+      <select class="subfolder-select" id="sidebar-subfolder-select">
+        <option value="all">All Subfolders & Modules</option>
+      </select>
+
+      <!-- Quick Search Bar & A-Z Sort Toggle -->
+      <div class="sidebar-search-row">
+        <div class="sidebar-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="sidebar-search-input" placeholder="Search mind maps by title...">
+        </div>
+        <button class="sidebar-sort-btn" id="sidebar-sort-toggle" title="Toggle Lesson Order vs Alphabetical (A-Z)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18H9M19 12H5M21 6H3"/>
+          </svg>
+          <span id="sidebar-sort-label">A-Z</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mind Maps Card List -->
+    <div class="sidebar-list-container" id="sidebar-list-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+  </aside>
 
   <!-- Bottom Left Floating Element 2: Search Box Card -->
   <div class="floating-panel bottom-search-card">
@@ -366,6 +921,18 @@
   <div class="floating-panel top-expand-card" id="btn-expand-all">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     Expand All
+  </div>
+
+  <!-- Top Floating Element 5: High-Yield Toggle Card -->
+  <div class="floating-panel top-highyield-card" id="btn-high-yield">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    High-Yield Only
+  </div>
+
+  <!-- Top Floating Element 6: Quiz Game Trigger Card -->
+  <div class="floating-panel top-quiz-card" id="btn-quiz-me" title="Launch Mind Map Quiz Game (? Me)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    ? Me
   </div>
 
   <!-- Canvas Viewport -->
@@ -391,77 +958,90 @@
   "id": "root",
   "text": "Slide Preparation",
   "level": 0,
+  "high_yield": true,
   "children": [
     {
       "id": "sec-1",
       "text": "Pre-Analytical Specimen Handling",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-1-1",
           "text": "Specimen Collection & Storage",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-1-1",
               "text": "K2EDTA Anticoagulant Requirement",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-1-1-1",
-                  "text": "Preserves cellular morphology",
+                  "text": "Preserves Cellular Morphology",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-1-1-2",
-                  "text": "Prevents platelet clumping",
+                  "text": "Prevents Platelet Clumping",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-1-1-2",
-              "text": "Optimal Window: 0-3 hrs",
+              "text": "Optimal Window: 0-3 Hours",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-1-2-1",
-                  "text": "Controlled temperature: 18-25\u00b0C",
+                  "text": "Room Temperature: 18-25\u00b0C",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-1-1-3",
-              "text": "Tube Fill Volume: >= 50%",
+              "text": "Tube Fill: Minimum 50%",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
         },
         {
           "id": "sub-1-2",
-          "text": "Extended Storage Artifacts (> 3 hrs)",
+          "text": "Extended Storage Artifacts (>3hr)",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-2-1",
               "text": "Platelet Swelling & Disintegration",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-2-1-1",
-                  "text": "Artifactual micro-debris formation",
+                  "text": "Artifactual Micro-Debris Formation",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-2-1-2",
-                  "text": "Causes pseudo-thrombocytopenia",
+                  "text": "Causes Pseudothrombocytopenia",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -470,23 +1050,27 @@
               "id": "node-1-2-2",
               "text": "Leukocyte Nuclear Degeneration",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-2-2-1",
-                  "text": "Neutrophil pyknosis, detached lobes",
+                  "text": "Neutrophil Pyknosis Detached Lobes",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-2-2-2",
-                  "text": "Lymphocyte nuclear clefting",
+                  "text": "Lymphocyte Nuclear Clefting",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-2-2-3",
-                  "text": "Monocyte clover-leaf lobulation",
+                  "text": "Monocyte Clover-Leaf Lobulation",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -495,17 +1079,20 @@
               "id": "node-1-2-3",
               "text": "Erythrocyte Crenation",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-2-3-1",
-                  "text": "ATP depletion & membrane shifts",
+                  "text": "ATP Depletion Membrane Shifts",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-2-3-2",
-                  "text": "Echinocyte formation",
+                  "text": "Artifactual Echinocyte Formation",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -514,24 +1101,28 @@
         },
         {
           "id": "sub-1-3",
-          "text": "Underfilling Tube Artifacts (< 50%)",
+          "text": "Tube Underfilling Artifacts (<50%)",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-1-3-1",
-              "text": "Excess Liquid/Spray EDTA",
+              "text": "Excess EDTA Concentration",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-3-1-1",
-                  "text": "Hypertonic plasma environment",
+                  "text": "Hypertonic Plasma Environment",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-1-3-1-2",
-                  "text": "RBC water loss & shrinkage",
+                  "text": "RBC Shrinkage Water Loss",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -540,17 +1131,20 @@
               "id": "node-1-3-2",
               "text": "Analyzer Index Distortion",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-1-3-2-1",
-                  "text": "Falsely decreased MCV",
+                  "text": "Falsely Decreased MCV",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-1-3-2-2",
-                  "text": "Falsely elevated MCHC",
+                  "text": "Falsely Elevated MCHC",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -563,34 +1157,40 @@
       "id": "sec-2",
       "text": "Push-Wedge Smear Mechanics",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-2-1",
           "text": "Equipment & Materials",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-2-1-1",
-              "text": "1.0 mm beveled glass slides",
+              "text": "Beveled 1.0mm Glass Slides",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-1-2",
-              "text": "Smooth, unchipped spreader slide",
+              "text": "Smooth Unchipped Spreader Slide",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-1-3",
-              "text": "5-10 uL blood drop",
+              "text": "5-10 \u00b5L Blood Drop",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-1-4",
-              "text": "Graphite pencil labeling",
+              "text": "Graphite Pencil Labeling",
               "level": 3,
+              "high_yield": false,
               "children": []
             }
           ]
@@ -599,35 +1199,41 @@
           "id": "sub-2-2",
           "text": "Push-Wedge Protocol Steps",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-2-1",
-              "text": "Invert EDTA tube 8-10 times",
+              "text": "Invert Tube 8-10 Times",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-2-2",
-              "text": "Place drop 1/2 inch from end",
+              "text": "Drop Placed Near End",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-2-3",
-              "text": "Spreader at 30-45\u00b0 angle",
+              "text": "Spreader Angle 30-45 Degrees",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-2-2-4",
-              "text": "Pull back to spread 80% width",
+              "text": "Spread 80% Slide Width",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-2-5",
-              "text": "Push forward smoothly & continuously",
+              "text": "Smooth Continuous Forward Push",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -636,35 +1242,41 @@
           "id": "sub-2-3",
           "text": "Ideal Smear Morphology",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-3-1",
-              "text": "Length: 2/3-3/4 slide length",
+              "text": "Smear Length Two-Thirds Slide",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-3-2",
-              "text": "Clear 1-2 mm lateral margins",
+              "text": "Lateral Margins 1-2 mm",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-2-3-3",
-              "text": "Smooth bullet / thumbprint shape",
+              "text": "Smooth Bullet Thumbprint Shape",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-2-3-4",
-              "text": "Straight, square feathered edge",
+              "text": "Straight Square Feathered Edge",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-2-3-5",
-              "text": "Translucent pink-purple sheen",
+              "text": "Translucent Pink-Purple Sheen",
               "level": 3,
+              "high_yield": false,
               "children": []
             }
           ]
@@ -673,84 +1285,98 @@
           "id": "sub-2-4",
           "text": "Hematocrit Adjustments",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-4-1",
-              "text": "Severe Anemia (< 30% Hct)",
+              "text": "Low HCT (< 35%)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-2-4-1-1",
-                  "text": "Low viscosity blood dynamics",
+                  "text": "Low Viscosity Blood Dynamics",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-1-2",
-                  "text": "Steep angle: > 45\u00b0",
+                  "text": "Steep Spreader Angle >45\u00b0",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-1-3",
-                  "text": "Rapid push speed",
+                  "text": "Rapid Push Speed",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-1-4",
-                  "text": "Prevents excessively thin film",
+                  "text": "Prevents Excessively Thin Film",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-2-4-2",
-              "text": "Normal Blood (36-50% Hct)",
+              "text": "Normal HCT (35-50%)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-2-4-2-1",
-                  "text": "Standard angle: 30-45\u00b0",
+                  "text": "Standard Angle 30-45 Degrees",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-2-2",
-                  "text": "Moderate push speed",
+                  "text": "Moderate Push Speed",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-2-4-3",
-              "text": "Polycythemia / Neonates (> 55% Hct)",
+              "text": "High HCT (> 50%)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-2-4-3-1",
-                  "text": "High viscosity blood dynamics",
+                  "text": "High Viscosity Blood Dynamics",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-3-2",
-                  "text": "Flat angle: < 30\u00b0",
+                  "text": "Low Spreader Angle <30\u00b0",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-3-3",
-                  "text": "Slow push speed",
+                  "text": "Slow Push Speed",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-4-3-4",
-                  "text": "Allows single-cell separation",
+                  "text": "Allows Single-Cell Separation",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -761,16 +1387,19 @@
           "id": "sub-2-5",
           "text": "Technical Defect Troubleshooting",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-2-5-1",
               "text": "Washboard Ridges",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-2-5-1-1",
-                  "text": "Hesitation or jerky motion",
+                  "text": "Hesitation or Jerky Motion",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -779,17 +1408,20 @@
               "id": "node-2-5-2",
               "text": "Longitudinal Streaks / Tails",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-2-5-2-1",
-                  "text": "Chipped spreader edge",
+                  "text": "Chipped Spreader Edge",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-2-5-2-2",
-                  "text": "Drags monocytes & neutrophils",
+                  "text": "Drags Monocytes and Neutrophils",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -798,11 +1430,13 @@
               "id": "node-2-5-3",
               "text": "No Monolayer Zone",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-2-5-3-1",
-                  "text": "Drop too large: > 10 uL",
+                  "text": "Large Drop >10 \u00b5L",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -811,11 +1445,13 @@
               "id": "node-2-5-4",
               "text": "Smear Too Short",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-2-5-4-1",
-                  "text": "Drop too small: < 5 uL",
+                  "text": "Small Drop <5 \u00b5L",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -824,11 +1460,13 @@
               "id": "node-2-5-5",
               "text": "Tail Clumping / Rouleaux",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-2-5-5-1",
-                  "text": "Delay in spreading drop",
+                  "text": "Delay in Spreading Drop",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -837,11 +1475,13 @@
               "id": "node-2-5-6",
               "text": "Smudge / Basket Cells",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-2-5-6-1",
-                  "text": "Excessive downward pressure",
+                  "text": "Excessive Downward Pressure",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -854,22 +1494,26 @@
       "id": "sec-3",
       "text": "Buffy Coat Smear Preparation",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-3-1",
           "text": "Clinical Indication",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-3-1-1",
-              "text": "Severe leukopenia: WBC < 2.0x10^3/uL",
+              "text": "Severe Leukopenia (<2.0x10^3/\u00b5L)",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-1-2",
-              "text": "Rare circulating blasts detection",
+              "text": "Detect Rare Circulating Blasts",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -878,42 +1522,49 @@
           "id": "sub-3-2",
           "text": "Preparation Protocol",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-3-2-1",
-              "text": "Wintrobe tube centrifugation",
+              "text": "Wintrobe Tube Centrifugation",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-3-2-1-1",
-                  "text": "2000 RPM (800-1000 x g)",
+                  "text": "Centrifuge 800-1000 x g",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-3-2-1-2",
-                  "text": "Spin duration: 5-10 min",
+                  "text": "Centrifuge Time 5-10 Minutes",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-3-2-2",
-              "text": "Plasma aspiration to 1 mm above buffy",
+              "text": "Aspirate Plasma Near Layer",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-3-2-3",
-              "text": "Harvest leukocyte/platelet layer",
+              "text": "Harvest Leukocyte Platelet Layer",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-2-4",
-              "text": "Push-wedge smear, fix, & stain",
+              "text": "Smear Fix and Stain",
               "level": 3,
+              "high_yield": false,
               "children": []
             }
           ]
@@ -922,22 +1573,26 @@
           "id": "sub-3-3",
           "text": "Diagnostic Caveats",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-3-3-1",
-              "text": "WBC differential strictly qualitative",
+              "text": "WBC Differential Strictly Qualitative",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-3-3-2",
-              "text": "NEVER report RBC morphology",
+              "text": "NEVER Report RBC Morphology",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-3-3-2-1",
-                  "text": "Severe packing & distortion artifacts",
+                  "text": "Packing and Distortion Artifacts",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -950,109 +1605,127 @@
       "id": "sec-4",
       "text": "Romanowsky Staining Chemistry",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-4-1",
           "text": "Reagent Chemistry & Targets",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-4-1-1",
-              "text": "Methanol Base (>= 99.8%)",
+              "text": "Anhydrous Methanol Fixative (\u226599.8%)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-1-1-1",
-                  "text": "Anhydrous chemical fixative",
+                  "text": "Anhydrous Chemical Fixative",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-1-1-2",
-                  "text": "Dehydrates & preserves cellular proteins",
+                  "text": "Fixes Cellular Protein Structures",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-4-1-2",
-              "text": "Methylene Blue / Azures (Dye+)",
+              "text": "Methylene Blue Azure Dyes",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-1-2-1",
-                  "text": "Basic cationic dye",
+                  "text": "Basic Cationic Dye",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-1-2-2",
-                  "text": "Binds acidic polyanions",
+                  "text": "Binds Acidic Polyanions",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
                       "id": "subleaf-4-1-2-2-1",
-                      "text": "DNA phosphate backbones",
+                      "text": "DNA Phosphate Backbones",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
                       "id": "subleaf-4-1-2-2-2",
-                      "text": "Ribosomal & nucleolar RNA",
+                      "text": "Ribosomal and Nucleolar RNA",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
                       "id": "subleaf-4-1-2-2-3",
-                      "text": "Basophil heparin mucopolysaccharides",
+                      "text": "Basophil Heparin Mucopolysaccharides",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
                   "id": "leaf-4-1-2-3",
-                  "text": "Stains deep blue / purple",
+                  "text": "Stains Deep Blue Purple",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-4-1-3",
-              "text": "Eosin Y / B (Dye-)",
+              "text": "Eosin Anionic Acid Dye",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-1-3-1",
-                  "text": "Acidic anionic dye",
+                  "text": "Acidic Anionic Dye",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-1-3-2",
-                  "text": "Binds basic polycations",
+                  "text": "Binds Basic Polycations",
                   "level": 4,
+                  "high_yield": true,
                   "children": [
                     {
                       "id": "subleaf-4-1-3-2-1",
-                      "text": "Hemoglobin amine groups",
+                      "text": "Hemoglobin Amine Groups",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     },
                     {
                       "id": "subleaf-4-1-3-2-2",
-                      "text": "Eosinophil major basic protein",
+                      "text": "Eosinophil Major Basic Protein",
                       "level": 5,
+                      "high_yield": false,
                       "children": []
                     }
                   ]
                 },
                 {
                   "id": "leaf-4-1-3-3",
-                  "text": "Stains pink to red-orange",
+                  "text": "Stains Pink to Orange",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1061,17 +1734,20 @@
               "id": "node-4-1-4",
               "text": "Undissociated Dye Complexes",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-4-1-4-1",
-                  "text": "Binds neutral protein matrices",
+                  "text": "Binds Neutral Protein Matrices",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-1-4-2",
-                  "text": "Stains pale lilac / pink",
+                  "text": "Stains Pale Lilac Pink",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1082,22 +1758,26 @@
           "id": "sub-4-2",
           "text": "Phosphate Buffer Dynamics",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-4-2-1",
               "text": "Optimal Buffer: pH 6.4-6.7",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-2-1-1",
-                  "text": "Target setpoint: pH 6.60",
+                  "text": "Target Buffer pH 6.6",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-1-2",
-                  "text": "Controls dye ionization equilibrium",
+                  "text": "Controls Dye Ionization Equilibrium",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1106,35 +1786,41 @@
               "id": "node-4-2-2",
               "text": "Acidic Shift (pH < 6.4)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-2-2-1",
-                  "text": "Excess H+ ion concentration",
+                  "text": "Excess H+ Ion Concentration",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-2-2",
-                  "text": "Accelerated Eosin binding",
+                  "text": "Accelerated Eosin Binding",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-2-3",
-                  "text": "Bright red/orange RBCs",
+                  "text": "Bright Red Orange RBCs",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-2-4",
-                  "text": "Pale washed-out nuclei",
+                  "text": "Pale Washed-Out Nuclei",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-2-5",
-                  "text": "Causes: Formic acid, over-washing",
+                  "text": "Formic Acid or Overwashing",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1143,35 +1829,41 @@
               "id": "node-4-2-3",
               "text": "Alkaline Shift (pH > 6.8)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-2-3-1",
-                  "text": "Excess OH- ion concentration",
+                  "text": "Excess OH- Ion Concentration",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-3-2",
-                  "text": "Accelerated Methylene Blue binding",
+                  "text": "Accelerated Methylene Blue Binding",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-3-3",
-                  "text": "Slate-blue / gray RBCs",
+                  "text": "Slate Blue Gray RBCs",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-3-4",
-                  "text": "Dark purple-black nuclei",
+                  "text": "Dark Purple-Black Nuclei",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-2-3-5",
-                  "text": "Causes: High pH, unaged Wright stain",
+                  "text": "High pH or Precipitate",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1182,28 +1874,33 @@
           "id": "sub-4-3",
           "text": "Staining Artifact Troubleshooting",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-4-3-1",
               "text": "Water Artifact (Refractile Rings)",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-3-1-1",
-                  "text": "Glassy ring inside RBCs",
+                  "text": "Refractile Rings Inside RBCs",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-3-1-2",
-                  "text": "Causes: High humidity, breath blowing",
+                  "text": "High Humidity or Moisture",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-3-1-3",
-                  "text": "Fix: Fan dry, anhydrous methanol",
+                  "text": "Air Dry Anhydrous Methanol",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1212,23 +1909,27 @@
               "id": "node-4-3-2",
               "text": "Stain Precipitate",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-4-3-2-1",
-                  "text": "Dark particulate grit on smear",
+                  "text": "Dark Particulate Stain Grit",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-4-3-2-2",
-                  "text": "Causes: Unfiltered stain, slide drying",
+                  "text": "Unfiltered Stain or Evaporation",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-4-3-2-3",
-                  "text": "Fix: Daily filter, flooded slides",
+                  "text": "Daily Filtration Flooded Staining",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1241,39 +1942,46 @@
       "id": "sec-5",
       "text": "Microscopic Smear Evaluation",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-5-1",
           "text": "Zone of Optimum Morphology",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-5-1-1",
-              "text": "Located behind feathered edge",
+              "text": "Located Behind Feathered Edge",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-5-1-2",
-              "text": "RBC monolayer criteria",
+              "text": "RBC Monolayer Criteria",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-5-1-2-1",
-                  "text": "Single layer, touching edge-to-edge",
+                  "text": "Single Layer Touching Edges",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-5-1-2-2",
-                  "text": "No overlapping or rouleaux",
+                  "text": "No Overlapping or Rouleaux",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-5-1-2-3",
-                  "text": "Central pallor = 1/3 cell diameter",
+                  "text": "Central Pallor One-Third Diameter",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1282,17 +1990,20 @@
               "id": "node-5-1-3",
               "text": "Leukocyte & Platelet Quality",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-5-1-3-1",
-                  "text": "Crisp chromatin & granules",
+                  "text": "Crisp Chromatin and Granules",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-5-1-3-2",
-                  "text": "Even platelet distribution",
+                  "text": "Even Platelet Distribution",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1301,17 +2012,20 @@
               "id": "node-5-1-4",
               "text": "Non-Evaluable Slide Regions",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-5-1-4-1",
-                  "text": "Thick body: Overlapping stacked cells",
+                  "text": "Thick Body Overlapping Cells",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-5-1-4-2",
-                  "text": "Feathered edge: Lost central pallor",
+                  "text": "Feathered Edge Distorted Pallor",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1322,28 +2036,33 @@
           "id": "sub-5-2",
           "text": "Microscopic Color Reference Matrix",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-5-2-1",
-              "text": "Erythrocytes: Salmon-pink / buff",
+              "text": "Erythrocytes Salmon Pink",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-5-2-2",
               "text": "Neutrophils",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-5-2-2-1",
-                  "text": "Nuclei: Deep purple-violet",
+                  "text": "Neutrophil Nuclei Purple Violet",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-5-2-2-2",
-                  "text": "Cytoplasm: Pale pink/lilac with granules",
+                  "text": "Pale Pink Granular Cytoplasm",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1352,37 +2071,43 @@
               "id": "node-5-2-3",
               "text": "Lymphocytes",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-5-2-3-1",
-                  "text": "Nuclei: Rich dark purple",
+                  "text": "Lymphocyte Nuclei Dark Purple",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-5-2-3-2",
-                  "text": "Cytoplasm: Robin's egg blue",
+                  "text": "Cytoplasm Robins Egg Blue",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
             },
             {
               "id": "node-5-2-4",
-              "text": "Eosinophils: Bright red-orange granules",
+              "text": "Eosinophils Red Orange Granules",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-5-2-5",
-              "text": "Basophils: Dark purple-black granules",
+              "text": "Basophils Purple Black Granules",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-5-2-6",
-              "text": "Platelets: Violet-purple chromomere",
+              "text": "Platelets Violet Purple Granules",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -1391,41 +2116,48 @@
     },
     {
       "id": "sec-6",
-      "text": "Confirmatory Stains for RBC Inclusions",
+      "text": "RBC Inclusion Confirmatory Stains",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-6-1",
           "text": "Pappenheimer Bodies",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-6-1-1",
-              "text": "Composition: Ferric iron (Fe3+)",
+              "text": "Composition: Ferric Iron",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-1-2",
-              "text": "Wright's: Pale blue-purple dots",
+              "text": "Wrights Pale Blue Dots",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-6-1-3",
               "text": "Prussian Blue Stain: POSITIVE",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-6-1-3-1",
-                  "text": "Forms bright blue siderotic granules",
+                  "text": "Bright Blue Siderotic Granules",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 },
                 {
                   "id": "leaf-6-1-3-2",
-                  "text": "Perls' acid ferrocyanide reaction",
+                  "text": "Perls Acid Ferrocyanide Reaction",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1436,23 +2168,27 @@
           "id": "sub-6-2",
           "text": "Howell-Jolly Bodies",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-6-2-1",
-              "text": "Composition: DNA fragments",
+              "text": "Composition: DNA Fragments",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-2-2",
-              "text": "Wright's: Round, dark-purple dot",
+              "text": "Wrights Round Purple Dot",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-2-3",
               "text": "Prussian Blue Stain: NEGATIVE",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -1461,23 +2197,27 @@
           "id": "sub-6-3",
           "text": "Basophilic Stippling",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-6-3-1",
-              "text": "Composition: Ribosomal RNA aggregates",
+              "text": "Composition: Ribosomal RNA Aggregates",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-3-2",
-              "text": "Wright's: Diffuse blue stippling",
+              "text": "Wrights Diffuse Blue Stippling",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-3-3",
               "text": "Prussian Blue Stain: NEGATIVE",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -1486,22 +2226,26 @@
           "id": "sub-6-4",
           "text": "Heinz Bodies",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-6-4-1",
-              "text": "Composition: Precipitated hemoglobin",
+              "text": "Composition: Precipitated Hemoglobin",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-4-2",
-              "text": "Wright's Stain: INVISIBLE",
+              "text": "Wright Stain: INVISIBLE",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-6-4-2-1",
-                  "text": "Methanol dissolves denatured Hb",
+                  "text": "Methanol Dissolves Denatured Hb",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1510,17 +2254,20 @@
               "id": "node-6-4-3",
               "text": "Prussian Blue Stain: NEGATIVE",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-6-4-4",
-              "text": "Supravital Stain (NMB): POSITIVE",
+              "text": "Supravital Stain: POSITIVE",
               "level": 3,
+              "high_yield": true,
               "children": [
                 {
                   "id": "leaf-6-4-4-1",
-                  "text": "Non-acidified live dye precipitates Hb",
+                  "text": "New Methylene Blue Positive",
                   "level": 4,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -1533,28 +2280,33 @@
       "id": "sec-7",
       "text": "Quality Control & Biosafety",
       "level": 1,
+      "high_yield": true,
       "children": [
         {
           "id": "sub-7-1",
           "text": "Daily Quality Control Protocol",
           "level": 2,
+          "high_yield": true,
           "children": [
             {
               "id": "node-7-1-1",
-              "text": "Stain normal control slide daily",
+              "text": "Daily Normal Control Staining",
               "level": 3,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "node-7-1-2",
-              "text": "Evaluate monolayer & pallor criteria",
+              "text": "Verify Monolayer Morphology Criteria",
               "level": 3,
+              "high_yield": false,
               "children": []
             },
             {
               "id": "node-7-1-3",
-              "text": "Verify buffer pH at 6.60",
+              "text": "Verify Buffer pH 6.6",
               "level": 3,
+              "high_yield": true,
               "children": []
             }
           ]
@@ -1563,22 +2315,26 @@
           "id": "sub-7-2",
           "text": "Laboratory Biosafety & Hazards",
           "level": 2,
+          "high_yield": false,
           "children": [
             {
               "id": "node-7-2-1",
               "text": "Universal PPE Precautions",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-7-2-1-1",
-                  "text": "Gloves, lab coat, eye protection",
+                  "text": "Gloves Lab Coat Goggles",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-7-2-1-2",
-                  "text": "Protection against HBV, HCV, HIV",
+                  "text": "Bloodborne Pathogen Protection",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1587,17 +2343,20 @@
               "id": "node-7-2-2",
               "text": "Chemical Hazard Controls",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-7-2-2-1",
-                  "text": "Methanol flammability & toxicity",
+                  "text": "Methanol Flammability and Toxicity",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-7-2-2-2",
-                  "text": "Handle in ventilated fume area",
+                  "text": "Fume Hood Solvent Handling",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1606,17 +2365,20 @@
               "id": "node-7-2-3",
               "text": "Rigid Sharps Waste Disposal",
               "level": 3,
+              "high_yield": false,
               "children": [
                 {
                   "id": "leaf-7-2-3-1",
-                  "text": "Glass slides into puncture-proof bins",
+                  "text": "Puncture-Resistant Sharps Bins",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 },
                 {
                   "id": "leaf-7-2-3-2",
-                  "text": "Never dispose glass in bags",
+                  "text": "Never Bag Glass Sharps",
                   "level": 4,
+                  "high_yield": false,
                   "children": []
                 }
               ]
@@ -1627,6 +2389,7 @@
     }
   ]
 };
+    window.mindMapData = mindMapData;
 
     // State Variables
     let scale = 1.0;
@@ -1647,26 +2410,33 @@
     setInitialCollapsedState(mindMapData);
 
     const LEVEL_X_GAP = 320;
-    const NODE_Y_GAP = 54;
+    const NODE_MIN_GAP = 20;
 
     const viewport = document.getElementById('viewport');
     const nodesContainer = document.getElementById('nodes-container');
     const svgPathsGroup = document.getElementById('svg-paths-group');
 
     // --- LAYOUT ENGINE ---
-    function computeVerticalLayout(node, depth = 0, yOffset = { val: 0 }) {
+    function computeVerticalLayout(node, depth = 0, tracker = { lastCenterY: null, lastHalfH: 0 }) {
       node.depth = depth;
 
       const isCollapsed = collapsedNodes.has(node.id);
       const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+      const rectH = node.domEl ? (node.domEl.offsetHeight || 38) : 38;
+      const halfH = rectH / 2;
 
       if (visibleChildren.length === 0) {
-        node.y = yOffset.val;
-        yOffset.val += NODE_Y_GAP;
+        if (tracker.lastCenterY === null) {
+          node.y = halfH;
+        } else {
+          node.y = tracker.lastCenterY + tracker.lastHalfH + NODE_MIN_GAP + halfH;
+        }
+        tracker.lastCenterY = node.y;
+        tracker.lastHalfH = halfH;
       } else {
         const childYs = [];
         visibleChildren.forEach(child => {
-          computeVerticalLayout(child, depth + 1, yOffset);
+          computeVerticalLayout(child, depth + 1, tracker);
           childYs.push(child.y);
         });
         node.y = (childYs[0] + childYs[childYs.length - 1]) / 2;
@@ -1688,6 +2458,24 @@
       }
     }
 
+    // High-Yield Filter State
+    let isHighYieldOnly = false;
+
+    // Determine if a node is High Yield or contains High Yield descendants (ancestor path)
+    function computeHighYieldFlags(node) {
+      let hasHY = (node.high_yield === true || node.high_yield === 'true');
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          if (computeHighYieldFlags(child)) {
+            hasHY = true;
+          }
+        });
+      }
+      node._isHYBranch = hasHY;
+      return hasHY;
+    }
+    computeHighYieldFlags(mindMapData);
+
     function flattenNodes(node, list = []) {
       list.push(node);
       const isCollapsed = collapsedNodes.has(node.id);
@@ -1700,32 +2488,26 @@
     let isInitialLoad = true;
 
     function renderMindMap() {
-      // 1. Compute Y positions
-      const yOffset = { val: 0 };
-      computeVerticalLayout(mindMapData, 0, yOffset);
+      // Re-compute high-yield branch flags
+      computeHighYieldFlags(mindMapData);
 
-      // Center layout vertically relative to origin
       const allVisible = flattenNodes(mindMapData);
-      if (allVisible.length > 0) {
-        const minY = Math.min(...allVisible.map(n => n.y));
-        const maxY = Math.max(...allVisible.map(n => n.y));
-        const midY = (minY + maxY) / 2;
-        allVisible.forEach(n => n.y -= midY);
-      }
 
-      // 2. Initial pass node rendering (positioned vertically, temporary X=0)
+      // 1. Initial pass DOM rendering (temporary positioned, measured for height)
       nodesContainer.innerHTML = '';
       svgPathsGroup.innerHTML = '';
 
       allVisible.forEach(node => {
         const hasChildren = node.children && node.children.length > 0;
         const isCollapsed = collapsedNodes.has(node.id);
+        const isHYNode = (node.high_yield === true || node.high_yield === 'true');
+        const isHYBranch = !!node._isHYBranch;
 
         const el = document.createElement('div');
-        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''}`;
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''} ${isHYNode ? 'high-yield-node' : ''} ${isHYBranch ? 'is-high-yield-branch' : ''}`;
         
         el.style.left = `0px`;
-        el.style.top = `${node.y}px`;
+        el.style.top = `0px`;
         el.dataset.id = node.id;
         el.innerText = node.text;
 
@@ -1751,6 +2533,23 @@
         nodesContainer.appendChild(el);
         node.domEl = el;
       });
+
+      // 2. Compute dynamic vertical layout using actual measured node heights + minimum vertical gap
+      const yTracker = { lastCenterY: null, lastHalfH: 0 };
+      computeVerticalLayout(mindMapData, 0, yTracker);
+
+      // Center layout vertically relative to origin & position top
+      if (allVisible.length > 0) {
+        const minY = Math.min(...allVisible.map(n => n.y));
+        const maxY = Math.max(...allVisible.map(n => n.y));
+        const midY = (minY + maxY) / 2;
+        allVisible.forEach(n => {
+          n.y -= midY;
+          if (n.domEl) {
+            n.domEl.style.top = `${n.y}px`;
+          }
+        });
+      }
 
       // 3. Compute dynamic X positions based on measured DOM widths & position nodes/curves
       requestAnimationFrame(() => {
@@ -1801,7 +2600,8 @@
       
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', pathD);
-      path.setAttribute('class', 'connection-line');
+      const isHYPath = !!child._isHYBranch;
+      path.setAttribute('class', `connection-line ${isHYPath ? 'is-high-yield-path' : ''}`);
 
       svgPathsGroup.appendChild(path);
     }
@@ -2044,19 +2844,24 @@
         }
       });
 
-      // High contrast level color palette up to Level 10
+      // High contrast level color palette with fallback for deeper levels
       const levelColors = {
         0: { bg: '#b4acf0', text: '#1e1945', weight: '800', size: 15 },
         1: { bg: '#aebdf5', text: '#111a45', weight: '700', size: 14 },
-        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13.5 },
-        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13.5 },
-        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13.5 },
-        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13.5 },
-        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13.5 },
-        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13.5 },
-        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13.5 },
-        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13.5 },
-        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13.5 }
+        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13 },
+        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13 },
+        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13 },
+        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13 },
+        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13 },
+        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13 },
+        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13 },
+        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13 },
+        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13 },
+        11: { bg: '#818cf8', text: '#1e1b4b', weight: '600', size: 13 },
+        12: { bg: '#38bdf8', text: '#082f49', weight: '600', size: 13 },
+        13: { bg: '#2dd4bf', text: '#134e4a', weight: '600', size: 13 },
+        14: { bg: '#4ade80', text: '#14532d', weight: '600', size: 13 },
+        15: { bg: '#a3e635', text: '#1a2e05', weight: '600', size: 13 }
       };
 
       // 3. Draw Pill Nodes onto 4x Canvas
@@ -2068,10 +2873,10 @@
         const nx = node.x + offsetX;
         const ny = (node.y - (h / 2)) + offsetY;
 
-        const styleConfig = levelColors[Math.min(node.level, 10)] || levelColors[10];
+        const styleConfig = levelColors[node.level] || levelColors[10 + (node.level % 6)] || levelColors[10];
 
         // Draw pill background
-        const radius = h / 2;
+        const radius = Math.min(18, h / 2);
         ctx.beginPath();
         ctx.roundRect(nx, ny, w, h, radius);
         ctx.fillStyle = styleConfig.bg;
@@ -2089,12 +2894,33 @@
           displayText += isCollapsed ? '  +' : '  −';
         }
 
-        // Draw crystal-clear text on 4x supersampled canvas
+        // Draw crystal-clear text on 4x supersampled canvas with word wrapping support
         ctx.fillStyle = styleConfig.text;
         ctx.font = `${styleConfig.weight} ${styleConfig.size}px Inter, system-ui, sans-serif`;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillText(displayText, nx + 18, ny + (h / 2));
+
+        const maxTextW = w - 32;
+        const words = displayText.split(' ');
+        const lines = [];
+        let currentLine = words[0] || '';
+
+        for (let i = 1; i < words.length; i++) {
+          const testLine = currentLine + ' ' + words[i];
+          if (ctx.measureText(testLine).width <= maxTextW) {
+            currentLine = testLine;
+          } else {
+            lines.push(currentLine);
+            currentLine = words[i];
+          }
+        }
+        lines.push(currentLine);
+
+        const lineHeight = styleConfig.size * 1.35;
+        const startTextY = ny + (h / 2) - ((lines.length - 1) * lineHeight / 2);
+        lines.forEach((line, lineIdx) => {
+          ctx.fillText(line, nx + 16, startTextY + (lineIdx * lineHeight));
+        });
       });
 
       // Format download filename as "Mind_Map_[topic].png"
@@ -2167,6 +2993,30 @@
       setTimeout(() => centerInitialView(true), 50);
     });
 
+    // High-Yield Only Toggle Button Listener
+    const btnHighYield = document.getElementById('btn-high-yield');
+    btnHighYield.addEventListener('click', () => {
+      isHighYieldOnly = !isHighYieldOnly;
+      if (isHighYieldOnly) {
+        btnHighYield.classList.add('active');
+        document.body.classList.add('high-yield-mode');
+
+        // Automatically expand high-yield pathways so they are visible
+        function expandHighYieldPaths(node) {
+          if (node._isHYBranch && node.children && node.children.length > 0) {
+            collapsedNodes.delete(node.id);
+            node.children.forEach(expandHighYieldPaths);
+          }
+        }
+        expandHighYieldPaths(mindMapData);
+        renderMindMap();
+      } else {
+        btnHighYield.classList.remove('active');
+        document.body.classList.remove('high-yield-mode');
+        renderMindMap();
+      }
+    });
+
     document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
     document.getElementById('zoom-reset').addEventListener('click', resetZoomToInitial);
     document.getElementById('download-png-btn').addEventListener('click', downloadMindMapPNG);
@@ -2231,7 +3081,271 @@
     if (titleEl && mindMapData && mindMapData.text) {
       titleEl.textContent = mindMapData.text;
     }
+
+    // Expose MindMapBridge for Quiz Engine and Interactive Tooling
+    window.MindMapBridge = {
+      mindMapData: mindMapData,
+      collapsedNodes: collapsedNodes,
+      renderMindMap: renderMindMap,
+      updateTransform: updateTransform,
+      getScale: () => scale,
+      setScale: (s) => { scale = s; },
+      getTranslateX: () => translateX,
+      setTranslateX: (tx) => { translateX = tx; },
+      getTranslateY: () => translateY,
+      setTranslateY: (ty) => { translateY = ty; },
+      setTransform: (s, tx, ty, animated = false) => {
+        scale = s;
+        translateX = tx;
+        translateY = ty;
+        updateTransform(animated);
+      },
+      fitToWindow: fitToWindow,
+      centerInitialView: centerInitialView,
+      nodesContainer: nodesContainer,
+      svgPathsGroup: svgPathsGroup
+    };
+
+    // Quiz Trigger Card Event Listener
+    const btnQuizMe = document.getElementById('btn-quiz-me');
+    if (btnQuizMe) {
+      btnQuizMe.addEventListener('click', () => {
+        if (window.MindMapQuiz) {
+          window.MindMapQuiz.startQuiz();
+        } else {
+          alert('Quiz Game engine (mindmap_quiz.js) is not loaded for this standalone file.');
+        }
+      });
+    }
+
+    if (window.MindMapQuiz) {
+      window.MindMapQuiz.init(mindMapData, window.MindMapBridge);
+    }
+
+    // --- COURSE MIND MAPS SIDEBAR LOGIC ---
+    const relSharedPath = "../../../../shared";
+    const btnOpenSidebar = document.getElementById('btn-open-sidebar');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarDrawer = document.getElementById('sidebar-drawer');
+    const sidebarListContainer = document.getElementById('sidebar-list-container');
+    const sidebarSubfolderSelect = document.getElementById('sidebar-subfolder-select');
+    const sidebarSearchInput = document.getElementById('sidebar-search-input');
+    const filterTypeGroup = document.getElementById('filter-type-group');
+
+    let currentTypeFilter = 'all';
+    let currentSubfolderFilter = 'all';
+    let currentSearchQuery = '';
+    let currentSortMode = 'lesson'; // 'lesson' (L# alternating lec/lab) or 'alpha' (A-Z)
+    const sidebarSortToggle = document.getElementById('sidebar-sort-toggle');
+    const sidebarSortLabel = document.getElementById('sidebar-sort-label');
+
+    function openSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.add('active');
+        sidebarBackdrop.classList.add('active');
+        populateSubfoldersDropdown();
+        renderSidebarList();
+        setTimeout(() => {
+          if (sidebarSearchInput) sidebarSearchInput.focus();
+        }, 150);
+      }
+    }
+
+    function closeSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.remove('active');
+        sidebarBackdrop.classList.remove('active');
+      }
+    }
+
+    if (btnOpenSidebar) btnOpenSidebar.addEventListener('click', openSidebar);
+    if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', closeSidebar);
+    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebarDrawer && sidebarDrawer.classList.contains('active')) {
+        closeSidebar();
+      }
+    });
+
+    function getMindMapsList() {
+      return (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) ? window.COURSE_MINDMAPS : [];
+    }
+
+    function populateSubfoldersDropdown() {
+      if (!sidebarSubfolderSelect) return;
+      const maps = getMindMapsList();
+      const subfolders = new Set();
+      maps.forEach(m => {
+        if (m.subfolder) subfolders.add(m.subfolder);
+      });
+
+      const currentVal = sidebarSubfolderSelect.value;
+      sidebarSubfolderSelect.innerHTML = '<option value="all">All Subfolders & Modules</option>';
+      Array.from(subfolders).sort().forEach(sf => {
+        const opt = document.createElement('option');
+        opt.value = sf;
+        opt.textContent = sf;
+        sidebarSubfolderSelect.appendChild(opt);
+      });
+      if (subfolders.has(currentVal)) {
+        sidebarSubfolderSelect.value = currentVal;
+      }
+    }
+
+    function updateCounts() {
+      const maps = getMindMapsList();
+      const allCount = maps.length;
+      const lectureCount = maps.filter(m => m.type === 'lecture').length;
+      const labCount = maps.filter(m => m.type === 'lab').length;
+
+      const elAll = document.getElementById('count-all');
+      const elLec = document.getElementById('count-lecture');
+      const elLab = document.getElementById('count-lab');
+
+      if (elAll) elAll.textContent = allCount;
+      if (elLec) elLec.textContent = lectureCount;
+      if (elLab) elLab.textContent = labCount;
+    }
+
+    function renderSidebarList() {
+      if (!sidebarListContainer) return;
+      updateCounts();
+
+      const maps = getMindMapsList();
+      const currentFilename = window.location.pathname.split('/').pop().toLowerCase();
+      const currentTitle = (mindMapData && mindMapData.text) ? mindMapData.text.toLowerCase().trim() : '';
+
+      let filtered = maps.filter(item => {
+        // Type filter
+        if (currentTypeFilter !== 'all' && item.type !== currentTypeFilter) {
+          return false;
+        }
+        // Subfolder filter
+        if (currentSubfolderFilter !== 'all' && item.subfolder !== currentSubfolderFilter) {
+          return false;
+        }
+        // Search filter
+        if (currentSearchQuery) {
+          const textToSearch = `${item.title} ${item.subfolder} ${item.filename}`.toLowerCase();
+          if (!textToSearch.includes(currentSearchQuery)) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      // Sort filtered items based on currentSortMode
+      filtered.sort((a, b) => {
+        if (currentSortMode === 'alpha') {
+          return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+        } else {
+          // Default: Lesson / L# alternating lecture then lab
+          const numA = (typeof a.number === 'number') ? a.number : 9999;
+          const numB = (typeof b.number === 'number') ? b.number : 9999;
+          if (numA !== numB) return numA - numB;
+          const typeOrderA = a.type === 'lecture' ? 0 : (a.type === 'lab' ? 1 : 2);
+          const typeOrderB = b.type === 'lecture' ? 0 : (b.type === 'lab' ? 1 : 2);
+          if (typeOrderA !== typeOrderB) return typeOrderA - typeOrderB;
+          return a.title.localeCompare(b.title);
+        }
+      });
+
+      sidebarListContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        sidebarListContainer.innerHTML = `
+          <div class="sidebar-empty-state">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 8px; display: block; opacity: 0.6;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            ${maps.length === 0 ? 'No manifest data found. Please run the course manifest builder.' : 'No matching mind maps found.'}
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('a');
+        card.className = 'mindmap-item-card';
+
+        // Resolve direct link from current file to target mind map using relSharedPath
+        const targetHref = `${relSharedPath}/${item.rel_path_from_shared}`;
+        card.href = targetHref;
+
+        const isCurrent = (item.filename && item.filename.toLowerCase() === currentFilename) ||
+                          (item.title && item.title.toLowerCase().trim() === currentTitle);
+
+        if (isCurrent) {
+          card.classList.add('current');
+        }
+
+        const typeClass = item.type === 'lecture' ? 'lecture' : (item.type === 'lab' ? 'lab' : 'other');
+        const typeLabel = item.type === 'lecture' ? 'Lecture' : (item.type === 'lab' ? 'Lab' : 'General');
+        const numLabel = (item.number && item.number < 9000) ? `L${item.number}` : '';
+
+        card.innerHTML = `
+          <div class="mindmap-item-title">${item.title} ${isCurrent ? ' (Current)' : ''}</div>
+          <div class="mindmap-item-meta">
+            ${numLabel ? `<span class="badge-type ${typeClass}">${numLabel}</span>` : ''}
+            <span class="badge-type ${typeClass}">${typeLabel}</span>
+            <span>${item.subfolder || 'General'}</span>
+          </div>
+        `;
+
+        sidebarListContainer.appendChild(card);
+      });
+    }
+
+    if (sidebarSortToggle) {
+      sidebarSortToggle.addEventListener('click', () => {
+        if (currentSortMode === 'lesson') {
+          currentSortMode = 'alpha';
+          sidebarSortToggle.classList.add('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'L#';
+          sidebarSortToggle.title = 'Switch to Lesson Order (L# alternating Lec/Lab)';
+        } else {
+          currentSortMode = 'lesson';
+          sidebarSortToggle.classList.remove('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'A-Z';
+          sidebarSortToggle.title = 'Switch to Alphabetical (A-Z)';
+        }
+        renderSidebarList();
+      });
+    }
+
+    if (filterTypeGroup) {
+      filterTypeGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-type-btn');
+        if (!btn) return;
+        filterTypeGroup.querySelectorAll('.filter-type-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTypeFilter = btn.dataset.type || 'all';
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSubfolderSelect) {
+      sidebarSubfolderSelect.addEventListener('change', (e) => {
+        currentSubfolderFilter = e.target.value;
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSearchInput) {
+      sidebarSearchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.toLowerCase().trim();
+        renderSidebarList();
+      });
+    }
+
+    // Initialize counts and initial sidebar state on load
+    updateCounts();
+
     renderMindMap();
   </script>
+  <script src="../../../../shared/mindmap_quiz.js"></script>
 </body>
 </html>
