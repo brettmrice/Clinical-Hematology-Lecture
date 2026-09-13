@@ -435,6 +435,29 @@ function buildHierarchy(files) {
     return domains;
 }
 
+function getMindMapUrlWithStats(filePath) {
+    if (!filePath || !filePath.includes('Mind_Map.html')) return filePath;
+    try {
+        let statsJson = '';
+        if (window.name) {
+            try {
+                const parsed = JSON.parse(window.name);
+                if (parsed && (parsed.stats || parsed.__chgh_quiz_signature__)) {
+                    statsJson = JSON.stringify(parsed.stats || parsed);
+                }
+            } catch(e) {}
+        }
+        if (!statsJson) {
+            statsJson = localStorage.getItem('CHGH_MINDMAP_QUIZ_STATS_V2') || sessionStorage.getItem('CHGH_MINDMAP_QUIZ_STATS_V2') || '';
+        }
+        if (statsJson) {
+            const enc = encodeURIComponent(btoa(unescape(encodeURIComponent(statsJson))));
+            return filePath + '#mmq=' + enc;
+        }
+    } catch(e) {}
+    return filePath;
+}
+
 // Render Card Grid
 function renderCardGrid(container, files) {
     const hierarchy = buildHierarchy(files);
@@ -556,6 +579,7 @@ function renderCardGrid(container, files) {
                         const catFormatted = formatCategory(file.category);
                         const badgeLabel = getBadgeLabel(file);
 
+                        const mindMapHref = file.type === 'Mind Map' ? getMindMapUrlWithStats(file.path) : file.path;
                         html += `
                             <div class="card" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                                 <div>
@@ -573,7 +597,7 @@ function renderCardGrid(container, files) {
                                         </svg>
                                         Preview
                                     </button>
-                                    <a class="btn btn-open" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" title="Open in new tab" onclick="event.stopPropagation();">
+                                    <a class="btn btn-open" href="${encodeURI(mindMapHref)}" target="_blank" rel="opener" title="Open in new tab" onclick="event.stopPropagation();">
                                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                         </svg>
@@ -693,6 +717,7 @@ function renderTree(container, files) {
                         const cardDomId = 'card-' + file.name.replace(/[^a-zA-Z0-9_-]/g, '_');
                         const badgeLabel = getBadgeLabel(file);
 
+                        const mindMapHref = file.type === 'Mind Map' ? getMindMapUrlWithStats(file.path) : file.path;
                         html += `
                             <div class="tree-item" id="${cardDomId}" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}')">
                                 <div class="tree-item-left">
@@ -701,7 +726,7 @@ function renderTree(container, files) {
                                 </div>
                                 <div class="tree-item-actions">
                                     <button class="btn btn-preview" style="padding: 4px 10px; font-size: 0.775rem;" onclick="openPreview('${encodeURIComponent(file.path)}', '${escapeJsString(displayTitle)}'); event.stopPropagation();">Preview</button>
-                                    <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(file.path)}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">Open ↗</a>
+                                    <a class="btn btn-open" style="padding: 4px 10px; font-size: 0.775rem;" href="${encodeURI(mindMapHref)}" target="_blank" rel="opener" onclick="event.stopPropagation();">Open ↗</a>
                                     <button class="btn btn-share btn-icon-only" style="padding: 4px; width: 28px; height: 28px;" title="Copy shareable link" onclick="copyShareLink('${escapeJsString(file.name)}'); event.stopPropagation();">
                                         <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
@@ -885,7 +910,8 @@ function getYouTubeId(url) {
 
 // Modal Viewport Controller
 function openPreview(encodedPath, title) {
-    const path = decodeURIComponent(encodedPath);
+    const rawPath = decodeURIComponent(encodedPath);
+    const path = getMindMapUrlWithStats(rawPath);
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalTitle = document.getElementById('modalTitle');
     const modalBody = document.querySelector('.modal-body');

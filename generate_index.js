@@ -11,6 +11,7 @@ const EXCLUDED_DIRS = ['.git', '.gemini', 'node_modules', '__pycache__', 'scratc
 const EXCLUDED_FILES = [
     'generate_index.py',
     'generate_index.js',
+    'update_course_files.py',
     'files_index.json',
     'files_data.js',
     'video_links.json',
