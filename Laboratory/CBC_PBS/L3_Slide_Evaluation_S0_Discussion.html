@@ -285,53 +285,61 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="slide-eval-complete-discussion">Slide Eval | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>Hematology Laboratory Testing (Cell Counts, Differentials, and Morphology Evaluation)</strong>:<ul>
-<li>Manual differential methodology: Battlement pattern, 100-cell differential, smudge cell handling, and inclusion evaluation</li>
-<li>Cell counts and field estimates: Low-power ($10\times$) architecture survey, high-dry ($40\times$) total WBC estimation ($\pm 20\%$ validation), and oil immersion ($100\times$) platelet estimation</li>
-<li>Spurious automated counts and interferences: Cold autoagglutination, EDTA-dependent platelet satellitism/clumping, and nucleated red blood cell ($\text{nRBC}$) automated count interference</li>
-<li>Erythrocyte morphology and poikilocytosis: Mechanical trauma (schistocytes), membrane defects (spherocytes, acanthocytes, echinocytes), hemoglobin/metabolic defects (drepanocytes, codocytes, degmacytes, dacrocytes), and erythrocyte inclusions (Howell-Jolly bodies, coarse basophilic stippling, Pappenheimer bodies, Heinz bodies, Hb C crystals)</li>
-<li>Leukocyte morphology and maturation: Granulocytic lineage maturation (myeloblast through segmented neutrophil), reactive toxic changes (toxic granulation, Döhle bodies, toxic vacuolization), dysplasias/congenital anomalies (Pelger-Huët, May-Hegglin, Alder-Reilly, Chediak-Higashi, hypersegmentation), and reactive vs. malignant mononuclear cells (reactive Downey lymphocytes, CLL lymphocytes, prolymphocytes, hairy cells, plasma cells)</li>
-<li>Thrombocyte morphology: Macrothrombocytes (giant platelets), hypogranular forms, and circulating megakaryocyte fragments</li>
-<li>Blood parasites: Intraerythrocytic (<em>Plasmodium</em> spp., <em>Babesia microti</em>) and intracellular/extracellular pathogens (<em>Borrelia</em> spp., <em>Anaplasma</em>, <em>Ehrlichia</em>)</li>
-</ul>
-</li>
-<li><strong>Hematology Disease States</strong>:<ul>
-<li>Microangiopathic hemolytic anemia (MAHA, TTP, DIC, HUS)</li>
-<li>Hemoglobinopathies and thalassemias (Hb SS, Hb CC, Hb SC)</li>
-<li>Myeloid and lymphoid neoplasms (AML, APL, CML, MDS, CLL, HCL, multiple myeloma, primary myelofibrosis)</li>
-<li>Benign and reactive leukocyte disorders (leukemoid reaction, infectious mononucleosis, toxic changes)</li>
-</ul>
-</li>
-</ul>
-<h3 id="laboratory-operations">Laboratory Operations</h3>
-<ul>
-<li><strong>Laboratory Mathematics</strong>:<ul>
-<li>Corrected WBC count when $>10\text{ nRBCs}/100\text{ WBCs}$ are present</li>
-<li>Absolute leukocyte concentration calculations from relative differential percentages</li>
-<li>Anticoagulant dilution correction factor ($1.11\times$) for sodium citrate redraws</li>
-<li>High-dry WBC field estimation factor ($2,000$) and oil immersion platelet field estimation factor ($20,000$)</li>
-</ul>
-</li>
-<li><strong>Quality Assessment, Safety, and Troubleshooting</strong>:<ul>
-<li>Microscopic versus automated analyzer data cross-checks ($\pm 20\%$ WBC correlation, RBC indices correlation)</li>
-<li>Specimen acceptability, rejection criteria (fibrin microclots), and storage artifact identification</li>
-<li>Pre-warming and saline replacement protocols for cold autoagglutinins ($\text{MCHC} > 36.0\text{ g/dL}$)</li>
-<li>Standard universal precautions, biohazard waste handling, and critical value escalation protocols</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
-<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#pbs-evaluation">PBS Evaluation</a><ul>
 <li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
 <li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
@@ -346,6 +354,7 @@
 <li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="pbs-evaluation">PBS Evaluation</h1>
@@ -1721,9 +1730,52 @@ flowchart TD
 <li><strong>Cold Agglutinin Recognition &amp; MCHC Correction</strong>: High-titer cold IgM antibodies cause gross, irregular, three-dimensional RBC agglutination, resulting in spurious automated indices (falsely low RBC count $<4.00 \times 10^6/\mu\text{L}$, falsely high MCV $>100\text{ fL}$, and an impossible $\text{MCHC} > 36.0\text{ g/dL}$). This artifact is resolved by incubating the specimen at 37°C for 15 to 30 minutes and immediately re-running the warmed sample.</li>
 <li><strong>Platelet Artifacts &amp; Parasite Confirmation</strong>: Platelet satellitism is an in vitro EDTA-induced artifact causing spurious automated thrombocytopenia that is corrected by recollecting blood in a sodium citrate tube (multiplying the result by $1.11$). Intraerythrocytic parasites (<em>Plasmodium</em>, <em>Babesia</em> Maltese cross) must be distinguished from overlying platelets, stain precipitates, and refractile water drying artifacts by confirming true chromatin dots and blue cytoplasm in the same focal plane.</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>Hematology Laboratory Testing (Cell Counts, Differentials, and Morphology Evaluation)</strong>:<ul>
+<li>Manual differential methodology: Battlement pattern, 100-cell differential, smudge cell handling, and inclusion evaluation</li>
+<li>Cell counts and field estimates: Low-power ($10\times$) architecture survey, high-dry ($40\times$) total WBC estimation ($\pm 20\%$ validation), and oil immersion ($100\times$) platelet estimation</li>
+<li>Spurious automated counts and interferences: Cold autoagglutination, EDTA-dependent platelet satellitism/clumping, and nucleated red blood cell ($\text{nRBC}$) automated count interference</li>
+<li>Erythrocyte morphology and poikilocytosis: Mechanical trauma (schistocytes), membrane defects (spherocytes, acanthocytes, echinocytes), hemoglobin/metabolic defects (drepanocytes, codocytes, degmacytes, dacrocytes), and erythrocyte inclusions (Howell-Jolly bodies, coarse basophilic stippling, Pappenheimer bodies, Heinz bodies, Hb C crystals)</li>
+<li>Leukocyte morphology and maturation: Granulocytic lineage maturation (myeloblast through segmented neutrophil), reactive toxic changes (toxic granulation, Döhle bodies, toxic vacuolization), dysplasias/congenital anomalies (Pelger-Huët, May-Hegglin, Alder-Reilly, Chediak-Higashi, hypersegmentation), and reactive vs. malignant mononuclear cells (reactive Downey lymphocytes, CLL lymphocytes, prolymphocytes, hairy cells, plasma cells)</li>
+<li>Thrombocyte morphology: Macrothrombocytes (giant platelets), hypogranular forms, and circulating megakaryocyte fragments</li>
+<li>Blood parasites: Intraerythrocytic (<em>Plasmodium</em> spp., <em>Babesia microti</em>) and intracellular/extracellular pathogens (<em>Borrelia</em> spp., <em>Anaplasma</em>, <em>Ehrlichia</em>)</li>
+</ul>
+</li>
+<li><strong>Hematology Disease States</strong>:<ul>
+<li>Microangiopathic hemolytic anemia (MAHA, TTP, DIC, HUS)</li>
+<li>Hemoglobinopathies and thalassemias (Hb SS, Hb CC, Hb SC)</li>
+<li>Myeloid and lymphoid neoplasms (AML, APL, CML, MDS, CLL, HCL, multiple myeloma, primary myelofibrosis)</li>
+<li>Benign and reactive leukocyte disorders (leukemoid reaction, infectious mononucleosis, toxic changes)</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>Laboratory Mathematics</strong>:<ul>
+<li>Corrected WBC count when $>10\text{ nRBCs}/100\text{ WBCs}$ are present</li>
+<li>Absolute leukocyte concentration calculations from relative differential percentages</li>
+<li>Anticoagulant dilution correction factor ($1.11\times$) for sodium citrate redraws</li>
+<li>High-dry WBC field estimation factor ($2,000$) and oil immersion platelet field estimation factor ($20,000$)</li>
+</ul>
+</li>
+<li><strong>Quality Assessment, Safety, and Troubleshooting</strong>:<ul>
+<li>Microscopic versus automated analyzer data cross-checks ($\pm 20\%$ WBC correlation, RBC indices correlation)</li>
+<li>Specimen acceptability, rejection criteria (fibrin microclots), and storage artifact identification</li>
+<li>Pre-warming and saline replacement protocols for cold autoagglutinins ($\text{MCHC} > 36.0\text{ g/dL}$)</li>
+<li>Standard universal precautions, biohazard waste handling, and critical value escalation protocols</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1737,6 +1789,32 @@ flowchart TD
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

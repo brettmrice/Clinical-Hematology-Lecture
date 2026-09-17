@@ -285,42 +285,59 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="hemocytometer-complete-discussion">Hemocytometer | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="hematology">Hematology</h3>
-<ul>
-<li><strong>Hematology Laboratory Testing</strong><ul>
-<li><strong>Cell Counts (Blood and Body Fluids)</strong>: Manual hemocytometer cell counts (WBC, Platelet, RBC counting grids, chamber dimensions, dilution calculation, depth factor), automated correlation, spurious results</li>
-<li><strong>Hematocrit</strong>: Spun microhematocrit methodology, packed cell volume (PCV), phase separation (plasma, buffy coat, packed erythrocytes), reading rules, intercellular trapped plasma phenomenon, duplicate precision criteria</li>
-<li><strong>Differentials and Morphology Evaluation</strong>: Blood smear WBC and platelet estimates, nucleated red blood cell (nRBC) interference and mathematical WBC correction, EDTA-dependent pseudothrombocytopenia, platelet satellitosis, sodium citrate recollection factor ($1.1\times$)</li>
-<li><strong>Hemolytic Indicators &amp; Erythrocyte Pathophysiology</strong>: Deformability defects affecting spun hematocrit (sickle cells, spherocytes, hypochromia, macrocytosis)</li>
-</ul>
-</li>
-</ul>
-<h3 id="laboratory-operations">Laboratory Operations</h3>
-<ul>
-<li><strong>Laboratory Mathematics</strong><ul>
-<li>Concentration, Volume, and Dilutions: Manual hemocytometer volumetric formula ($\text{Cells}/\mu\text{L} = \frac{\text{Total Cells Counted} \times \text{Dilution Factor}}{\text{Squares Counted} \times 0.1\text{ mm}}$), dilution factor calculations ($1:20$ Leuko-TIC, $1:100$ Thrombo-TIC)</li>
-<li>Corrected WBC count calculation for $> 10\text{ nRBCs}/100\text{ WBCs}$</li>
-<li>Sodium citrate anticoagulation volume correction ($1.1\times$)</li>
-</ul>
-</li>
-<li><strong>Quality Assessment / Troubleshooting</strong><ul>
-<li>Pre-analytical, analytical, and post-analytical sources of error in manual cell counting and microhematocrit centrifugation</li>
-<li>Duplicate acceptance limits ($\pm 1.0\%$ for microhematocrit) and quality control failure protocols</li>
-</ul>
-</li>
-<li><strong>Safety</strong><ul>
-<li>Safe work practices, prevention of bloodborne pathogen exposure, aerosolization hazards</li>
-<li>Microhematocrit centrifugation safety mandates (strict prohibition of manual braking / mechanical stopping)</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
 <li><a href="#hemocytometer">Hemocytometer</a><ul>
@@ -337,6 +354,7 @@
 <li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="hemocytometer">Hemocytometer</h1>
@@ -1423,9 +1441,44 @@ mindmap
 <li>The reading line must intersect strictly at the <strong>junction of the packed RBC column and the buffy coat</strong>, rigorously excluding the leukocyte/platelet layer to avoid false elevation.</li>
 <li>Decelerating the microhematocrit centrifuge by manual pressure on the rotor or lid is strictly prohibited; it causes the red cell layer to <strong>sling forward</strong> (falsely elevating the HCT) and presents an immediate risk of glass breakage, aerosol exposure, and traumatic physical injury.</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="hematology">Hematology</h3>
+<ul>
+<li><strong>Hematology Laboratory Testing</strong><ul>
+<li><strong>Cell Counts (Blood and Body Fluids)</strong>: Manual hemocytometer cell counts (WBC, Platelet, RBC counting grids, chamber dimensions, dilution calculation, depth factor), automated correlation, spurious results</li>
+<li><strong>Hematocrit</strong>: Spun microhematocrit methodology, packed cell volume (PCV), phase separation (plasma, buffy coat, packed erythrocytes), reading rules, intercellular trapped plasma phenomenon, duplicate precision criteria</li>
+<li><strong>Differentials and Morphology Evaluation</strong>: Blood smear WBC and platelet estimates, nucleated red blood cell (nRBC) interference and mathematical WBC correction, EDTA-dependent pseudothrombocytopenia, platelet satellitosis, sodium citrate recollection factor ($1.1\times$)</li>
+<li><strong>Hemolytic Indicators &amp; Erythrocyte Pathophysiology</strong>: Deformability defects affecting spun hematocrit (sickle cells, spherocytes, hypochromia, macrocytosis)</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>Laboratory Mathematics</strong><ul>
+<li>Concentration, Volume, and Dilutions: Manual hemocytometer volumetric formula ($\text{Cells}/\mu\text{L} = \frac{\text{Total Cells Counted} \times \text{Dilution Factor}}{\text{Squares Counted} \times 0.1\text{ mm}}$), dilution factor calculations ($1:20$ Leuko-TIC, $1:100$ Thrombo-TIC)</li>
+<li>Corrected WBC count calculation for $> 10\text{ nRBCs}/100\text{ WBCs}$</li>
+<li>Sodium citrate anticoagulation volume correction ($1.1\times$)</li>
+</ul>
+</li>
+<li><strong>Quality Assessment / Troubleshooting</strong><ul>
+<li>Pre-analytical, analytical, and post-analytical sources of error in manual cell counting and microhematocrit centrifugation</li>
+<li>Duplicate acceptance limits ($\pm 1.0\%$ for microhematocrit) and quality control failure protocols</li>
+</ul>
+</li>
+<li><strong>Safety</strong><ul>
+<li>Safe work practices, prevention of bloodborne pathogen exposure, aerosolization hazards</li>
+<li>Microhematocrit centrifugation safety mandates (strict prohibition of manual braking / mechanical stopping)</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1439,6 +1492,32 @@ mindmap
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

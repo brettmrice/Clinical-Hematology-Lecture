@@ -285,62 +285,61 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="hemoglobinopathy---complete-discussion">Hemoglobinopathy | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>Hematology Disease States (Erythrocytes)</strong>:<ul>
-<li>Microcytic anemias: Thalassemia syndromes ($\alpha$- and $\beta$-thalassemia), iron deficiency anemia differential, hemoglobin E syndromes</li>
-<li>Normocytic anemias: Hemoglobinopathies, sickle cell disorders, acute hemorrhage, hemolytic processes</li>
-<li>Hemoglobinopathies: Structural beta-chain variants ($\text{HbS}$, $\text{HbC}$, $\text{HbE}$, $\text{HbD}$), unstable hemoglobins, compound heterozygous states ($\text{HbSC}$, sickle-$\beta$ thalassemia)</li>
-</ul>
-</li>
-<li><strong>Hematology Laboratory Testing</strong>:<ul>
-<li>Automated and manual cell counts: Red blood cell count (RBC), reticulocyte quantification (relative and absolute), spurious counts</li>
-<li>Leukocyte count correction for nucleated red blood cells (nRBCs)</li>
-<li>Red blood cell indices: Mean corpuscular volume (MCV), mean corpuscular hemoglobin (MCH), mean corpuscular hemoglobin concentration (MCHC), red cell distribution width (RDW)</li>
-<li>Morphology evaluation: Drepanocytes, codocytes (target cells), hemoglobin C crystals, hemoglobin SC crystals, basophilic stippling, Howell-Jolly bodies, nucleated RBCs</li>
-<li>Qualitative and quantitative hemoglobin determinations:</li>
-<li>Sickle solubility testing (sodium dithionite reduction principle and interferences)</li>
-<li>Hemoglobin electrophoresis: Dual-matrix cellulose acetate (alkaline pH 8.4–8.6) and citrate agar (acid pH 6.0–6.2)</li>
-<li>Cation-exchange high-performance liquid chromatography (HPLC) retention windows and capillary zone electrophoresis (CE)</li>
-<li>Special stains: Kleihauer-Betke acid elution test (principle, pancellular vs. heterocellular distribution, calculation of fetomaternal hemorrhage)</li>
-<li>Other red cell studies: Supravital staining for Hemoglobin H inclusions ("golf-ball" appearance) vs. Heinz bodies</li>
-</ul>
-</li>
-</ul>
-<h3 id="blood-banking-immunohematology">Blood Banking / Immunohematology</h3>
-<ul>
-<li><strong>Physiology and Pathophysiology</strong>:<ul>
-<li>Hemolytic Disease of the Fetus and Newborn (HDFN): Detection, fetal-maternal hemorrhage assessment, and prevention</li>
-</ul>
-</li>
-<li><strong>Transfusion Practice</strong>:<ul>
-<li>Patient Blood Management and therapeutic interventions: Indications for Rh-immune globulin ($\text{RhIG}$) prophylaxis dosing based on acid elution quantification</li>
-</ul>
-</li>
-</ul>
-<h3 id="laboratory-operations">Laboratory Operations</h3>
-<ul>
-<li><strong>Laboratory Mathematics</strong>:<ul>
-<li>Dilution factors, percentage solutions, Mentzer Index calculation, Corrected WBC calculation for circulating nRBCs, fetomaternal hemorrhage and vial dosing calculations</li>
-</ul>
-</li>
-<li><strong>Manual / Automated Methodology and Instrumentation</strong>:<ul>
-<li>Electrophoresis principles (support media, buffer pH, charge vs. agaropectin binding)</li>
-<li>High-performance liquid chromatography and capillary electrophoresis instrumentation</li>
-<li>Hematology analyzer principles and Quality Control rule validation (Rule of Three)</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
-<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#qualitative-variants-hemoglobin-diagnostics">Qualitative Variants &amp; Hemoglobin Diagnostics</a><ul>
 <li><a href="#learning-objectives">Learning Objectives</a></li>
 <li><a href="#globin-gene-architecture-developmental-ontogeny-structural-principles">Globin Gene Architecture, Developmental Ontogeny &amp; Structural Principles</a></li>
@@ -359,6 +358,7 @@
 <li><a href="#master-comparative-summary-of-hemoglobinopathies-and-thalassemias">Master Comparative Summary of Hemoglobinopathies and Thalassemias</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="qualitative-variants-hemoglobin-diagnostics">Qualitative Variants &amp; Hemoglobin Diagnostics</h1>
@@ -1585,9 +1585,61 @@ $$\%\text{ Transferrin Saturation} = \left(\frac{\text{Serum Iron}}{\text{TIBC}}
 <li><strong>WBC Count Correction:</strong> Must be initiated whenever $> 10\text{ nRBCs}/100\text{ WBCs}$ are observed on the blood smear to prevent artifactual reported leukocytosis:<br />
 $$\text{Corrected WBC} = \text{Uncorrected WBC} \times \left(\frac{100}{100 + \text{nRBC}}\right)$$</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>Hematology Disease States (Erythrocytes)</strong>:<ul>
+<li>Microcytic anemias: Thalassemia syndromes ($\alpha$- and $\beta$-thalassemia), iron deficiency anemia differential, hemoglobin E syndromes</li>
+<li>Normocytic anemias: Hemoglobinopathies, sickle cell disorders, acute hemorrhage, hemolytic processes</li>
+<li>Hemoglobinopathies: Structural beta-chain variants ($\text{HbS}$, $\text{HbC}$, $\text{HbE}$, $\text{HbD}$), unstable hemoglobins, compound heterozygous states ($\text{HbSC}$, sickle-$\beta$ thalassemia)</li>
+</ul>
+</li>
+<li><strong>Hematology Laboratory Testing</strong>:<ul>
+<li>Automated and manual cell counts: Red blood cell count (RBC), reticulocyte quantification (relative and absolute), spurious counts</li>
+<li>Leukocyte count correction for nucleated red blood cells (nRBCs)</li>
+<li>Red blood cell indices: Mean corpuscular volume (MCV), mean corpuscular hemoglobin (MCH), mean corpuscular hemoglobin concentration (MCHC), red cell distribution width (RDW)</li>
+<li>Morphology evaluation: Drepanocytes, codocytes (target cells), hemoglobin C crystals, hemoglobin SC crystals, basophilic stippling, Howell-Jolly bodies, nucleated RBCs</li>
+<li>Qualitative and quantitative hemoglobin determinations:</li>
+<li>Sickle solubility testing (sodium dithionite reduction principle and interferences)</li>
+<li>Hemoglobin electrophoresis: Dual-matrix cellulose acetate (alkaline pH 8.4–8.6) and citrate agar (acid pH 6.0–6.2)</li>
+<li>Cation-exchange high-performance liquid chromatography (HPLC) retention windows and capillary zone electrophoresis (CE)</li>
+<li>Special stains: Kleihauer-Betke acid elution test (principle, pancellular vs. heterocellular distribution, calculation of fetomaternal hemorrhage)</li>
+<li>Other red cell studies: Supravital staining for Hemoglobin H inclusions ("golf-ball" appearance) vs. Heinz bodies</li>
+</ul>
+</li>
+</ul>
+<h3 id="blood-banking-immunohematology">Blood Banking / Immunohematology</h3>
+<ul>
+<li><strong>Physiology and Pathophysiology</strong>:<ul>
+<li>Hemolytic Disease of the Fetus and Newborn (HDFN): Detection, fetal-maternal hemorrhage assessment, and prevention</li>
+</ul>
+</li>
+<li><strong>Transfusion Practice</strong>:<ul>
+<li>Patient Blood Management and therapeutic interventions: Indications for Rh-immune globulin ($\text{RhIG}$) prophylaxis dosing based on acid elution quantification</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>Laboratory Mathematics</strong>:<ul>
+<li>Dilution factors, percentage solutions, Mentzer Index calculation, Corrected WBC calculation for circulating nRBCs, fetomaternal hemorrhage and vial dosing calculations</li>
+</ul>
+</li>
+<li><strong>Manual / Automated Methodology and Instrumentation</strong>:<ul>
+<li>Electrophoresis principles (support media, buffer pH, charge vs. agaropectin binding)</li>
+<li>High-performance liquid chromatography and capillary electrophoresis instrumentation</li>
+<li>Hematology analyzer principles and Quality Control rule validation (Rule of Three)</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1601,6 +1653,32 @@ $$\text{Corrected WBC} = \text{Uncorrected WBC} \times \left(\frac{100}{100 + \t
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

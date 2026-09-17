@@ -285,41 +285,59 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="03-bce-wbc-plt-complete-discussion">03 BCE WBC-PLT - Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>I. Hematology Physiology</strong>: Production, destruction, and kinetics of leukocytes and platelets; marrow compartments (mitotic vs. post-mitotic storage reserve); circulating vs. marginating granulocyte and monocyte pools; splenic sequestration and platelet lifespan.</li>
-<li><strong>II. Hematology Disease States</strong>:<ul>
-<li><em>Leukocytes</em>: Benign leukocyte alterations (neutrophilia, neutropenia, reactive lymphocytosis, eosinophilia, agranulocytosis); morphological anomalies (hyposegmentation, hypersegmentation, toxic granulation); plasma cell dyscrasia morphologies (flame cells, Mott cells).</li>
-<li><em>Platelets</em>: Quantitative abnormalities and spurious counts (pseudothrombocytopenia, EDTA-dependent satellitosis and clumping, reticulated platelets in accelerated destruction).</li>
-</ul>
-</li>
-<li><strong>III. Hematology Laboratory Testing</strong>:<ul>
-<li><em>Cell Counts &amp; Differentials</em>: Automated and manual absolute and relative leukocyte counts; standard adult reference intervals; age-related inverted neutrophil-to-lymphocyte (N:L) ratios.</li>
-<li><em>Morphology Evaluation</em>: Granulocyte maturation continuum (myeloblast to segmented neutrophil); monocytic maturation and tissue macrophage differentiation; resting vs. reactive lymphocytes and plasma cells.</li>
-<li><em>Spurious Results</em>: Pre-analytical and analytical EDTA-induced artifacts.</li>
-</ul>
-</li>
-<li><strong>IV. Hemostasis</strong>:<ul>
-<li><em>Physiology</em>: Primary hemostatic mechanisms (platelet adhesion via GPIb-vWF interaction, shape change, granule secretion, and aggregation via GPIIb/IIIa-fibrinogen crosslinking).</li>
-</ul>
-</li>
-</ul>
-<h3 id="immunology">Immunology</h3>
-<ul>
-<li><strong>I. Principles of Immunology</strong>:<ul>
-<li><em>Immune System Physiology</em>: Innate immunity (phagocytosis, PAMPs, DAMPs, oxygen-dependent microbicidal killing via MPO) vs. adaptive immunity (B cells, T cells).</li>
-<li><em>Lymphocyte Subsets</em>: Immunophenotypic classification of B cells (CD10, CD19, CD20), T helper cells (CD3, CD4, MHC Class II), T cytotoxic cells (CD3, CD8, MHC Class I), and NK cells (CD16, CD56).</li>
-<li><em>Immunoglobulins</em>: Structural composition (heavy and light chains); primary response (pentameric IgM) vs. secondary memory response (monomeric IgG); terminal plasma cell differentiation.</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
 <li><a href="#granulocytes">Granulocytes</a><ul>
@@ -343,6 +361,7 @@
 <li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="granulocytes">Granulocytes</h1>
@@ -1606,9 +1625,43 @@ graph LR
 <li><strong>Pre-Analytical Pseudothrombocytopenia:</strong> Pre-analytical EDTA-induced artifacts (platelet clumping and platelet satellitosis around neutrophils) cause false automated undercounts (pseudothrombocytopenia) by causing automated analyzers to misclassify aggregates as individual leukocytes.</li>
 <li><strong>Hemostatic Receptor Milestones:</strong> Primary hemostasis requires distinct membrane receptor interactions: Glycoprotein Ib (GPIb) binds von Willebrand factor (vWF) to mediate initial subendothelial <strong>adhesion</strong>, whereas Glycoprotein IIb/IIIa (GPIIb/IIIa) binds fibrinogen to crosslink adjacent platelets during <strong>aggregation</strong>.</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>I. Hematology Physiology</strong>: Production, destruction, and kinetics of leukocytes and platelets; marrow compartments (mitotic vs. post-mitotic storage reserve); circulating vs. marginating granulocyte and monocyte pools; splenic sequestration and platelet lifespan.</li>
+<li><strong>II. Hematology Disease States</strong>:<ul>
+<li><em>Leukocytes</em>: Benign leukocyte alterations (neutrophilia, neutropenia, reactive lymphocytosis, eosinophilia, agranulocytosis); morphological anomalies (hyposegmentation, hypersegmentation, toxic granulation); plasma cell dyscrasia morphologies (flame cells, Mott cells).</li>
+<li><em>Platelets</em>: Quantitative abnormalities and spurious counts (pseudothrombocytopenia, EDTA-dependent satellitosis and clumping, reticulated platelets in accelerated destruction).</li>
+</ul>
+</li>
+<li><strong>III. Hematology Laboratory Testing</strong>:<ul>
+<li><em>Cell Counts &amp; Differentials</em>: Automated and manual absolute and relative leukocyte counts; standard adult reference intervals; age-related inverted neutrophil-to-lymphocyte (N:L) ratios.</li>
+<li><em>Morphology Evaluation</em>: Granulocyte maturation continuum (myeloblast to segmented neutrophil); monocytic maturation and tissue macrophage differentiation; resting vs. reactive lymphocytes and plasma cells.</li>
+<li><em>Spurious Results</em>: Pre-analytical and analytical EDTA-induced artifacts.</li>
+</ul>
+</li>
+<li><strong>IV. Hemostasis</strong>:<ul>
+<li><em>Physiology</em>: Primary hemostatic mechanisms (platelet adhesion via GPIb-vWF interaction, shape change, granule secretion, and aggregation via GPIIb/IIIa-fibrinogen crosslinking).</li>
+</ul>
+</li>
+</ul>
+<h3 id="immunology">Immunology</h3>
+<ul>
+<li><strong>I. Principles of Immunology</strong>:<ul>
+<li><em>Immune System Physiology</em>: Innate immunity (phagocytosis, PAMPs, DAMPs, oxygen-dependent microbicidal killing via MPO) vs. adaptive immunity (B cells, T cells).</li>
+<li><em>Lymphocyte Subsets</em>: Immunophenotypic classification of B cells (CD10, CD19, CD20), T helper cells (CD3, CD4, MHC Class II), T cytotoxic cells (CD3, CD8, MHC Class I), and NK cells (CD16, CD56).</li>
+<li><em>Immunoglobulins</em>: Structural composition (heavy and light chains); primary response (pentameric IgM) vs. secondary memory response (monomeric IgG); terminal plasma cell differentiation.</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1622,6 +1675,32 @@ graph LR
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

@@ -285,59 +285,61 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="macrocytic---hypoproliferative---complete-discussion">Macrocytic & Hypoproliferative | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>II. Hematology Disease States</strong><ul>
-<li><strong>A. Erythrocytes</strong>: </li>
-<li>Anemia: Macrocytic (Megaloblastic: cobalamin and folate deficiencies; Non-megaloblastic: liver disease, chronic alcoholism, shift reticulocytosis); Normocytic and hypoproliferative (Aplastic anemia, pure red cell aplasia, anemia of chronic kidney disease, myelophthisic anemia)</li>
-<li><strong>B. Leukocytes</strong>: </li>
-<li>Benign and reactive morphological alterations: Neutrophil hypersegmentation, leukoerythroblastic reaction, Pseudo-Pelger-Huët anomaly</li>
-<li><strong>C. Platelets</strong>: </li>
-<li>Quantitative abnormalities: Pancytopenia, aplastic thrombocytopenia, splenic sequestration (hypersplenism)</li>
-</ul>
-</li>
-<li><strong>III. Hematology Laboratory Testing</strong><ul>
-<li><strong>A. Cell Counts</strong>: </li>
-<li>Automated and manual counts; Reticulocytes (Absolute Reticulocyte Count [ARC], Corrected Reticulocyte Count [CRC], Reticulocyte Production Index [RPI]); Spurious results and automated analyzer interferences (Cold agglutinins, extreme hyperglycemia)</li>
-<li><strong>B. Differentials and Morphology Evaluation</strong>: </li>
-<li>Peripheral blood and bone marrow smear examination; Macro-ovalocytes, round macrocytes, Howell-Jolly bodies, dacrocytes (teardrop cells), echinocytes (burr cells), nucleated RBCs (nRBCs), megaloblasts, giant bands/metamyelocytes</li>
-<li><strong>E. Indices</strong>: </li>
-<li>Derivation, calculations, and clinical interpretation of MCV, MCH, MCHC, and RDW</li>
-<li><strong>F. Hemolytic Indicators</strong>: </li>
-<li>Haptoglobin, lactate dehydrogenase (LD/LDH), and bilirubin correlations with ineffective hematopoiesis</li>
-</ul>
-</li>
-</ul>
-<h3 id="chemistry">Chemistry</h3>
-<ul>
-<li><strong>I. General Chemistry</strong><ul>
-<li><strong>C. Heme Derivatives</strong>: </li>
-<li>Bilirubin metabolism; Intramedullary hemolysis, unconjugated (indirect) and conjugated (direct) bilirubin fractions</li>
-</ul>
-</li>
-<li><strong>II. Proteins and Enzymes</strong><ul>
-<li><strong>A. Enzymes</strong>: </li>
-<li>Lactate dehydrogenase (LDH) and isoenzyme patterns ($\text{LDH-1} > \text{LDH-2}$ flipped pattern)</li>
-<li><strong>B. Proteins and Other Nitrogen-Containing Compounds</strong>: </li>
-<li>Renal function markers: Blood Urea Nitrogen (BUN) and Creatinine in hypoproliferative anemia of chronic kidney disease</li>
-</ul>
-</li>
-<li><strong>IV. Special Chemistry</strong><ul>
-<li><strong>B. Vitamins and Nutrition</strong>: </li>
-<li>Cobalamin (Vitamin B12), Folic acid (Vitamin B9), Methylmalonic acid (MMA), Homocysteine, and Formiminoglutamic acid (FIGLU) metabolic pathways and differential diagnostics</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
-<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#macrocytic-anemias--maturation-defects">Macrocytic Anemias &amp; Maturation Defects</a><ul>
 <li><a href="#learning-objectives">Learning Objectives</a></li>
 <li><a href="#pathophysiologic-mechanisms-of-macrocytosis">Pathophysiologic Mechanisms of Macrocytosis</a></li>
@@ -359,6 +361,7 @@
 <li><a href="#module-diagnostic-pearls">Module Diagnostic Pearls</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="macrocytic-anemias-maturation-defects">Macrocytic Anemias &amp; Maturation Defects</h1>
@@ -1514,9 +1517,58 @@ flowchart TD
 <li><strong>Lineage-Restricted Failure Patterns</strong>: Pure Red Cell Aplasia depletes marrow erythroblasts ($< 1\%$) with high compensatory $\text{EPO}$, whereas the anemia of Chronic Kidney Disease results from an absolute or relative $\text{EPO}$ deficiency driven by damaged peritubular fibroblasts, presenting with azotemia (BUN $> 20\text{ mg/dL}$, Creatinine $> 1.2\text{ mg/dL}$) and peripheral echinocytes.</li>
 <li><strong>Laboratory Correction Protocol for Cold Agglutinins</strong>: Suspect cold agglutinin interference when the automated analyzer flags an impossible $\text{MCHC} > 36.0\text{ g/dL}$ (reference interval: $32\text{--}36\text{ g/dL}$) alongside a falsely low red cell count and high $\text{MCV}$. Incubate the whole blood EDTA collection tube at $37^\circ\text{C}$ for $15\text{--}30\text{ minutes}$ and re-analyze immediately while warm to break antibody lattices and restore true biometric indices.</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>II. Hematology Disease States</strong><ul>
+<li><strong>A. Erythrocytes</strong>: </li>
+<li>Anemia: Macrocytic (Megaloblastic: cobalamin and folate deficiencies; Non-megaloblastic: liver disease, chronic alcoholism, shift reticulocytosis); Normocytic and hypoproliferative (Aplastic anemia, pure red cell aplasia, anemia of chronic kidney disease, myelophthisic anemia)</li>
+<li><strong>B. Leukocytes</strong>: </li>
+<li>Benign and reactive morphological alterations: Neutrophil hypersegmentation, leukoerythroblastic reaction, Pseudo-Pelger-Huët anomaly</li>
+<li><strong>C. Platelets</strong>: </li>
+<li>Quantitative abnormalities: Pancytopenia, aplastic thrombocytopenia, splenic sequestration (hypersplenism)</li>
+</ul>
+</li>
+<li><strong>III. Hematology Laboratory Testing</strong><ul>
+<li><strong>A. Cell Counts</strong>: </li>
+<li>Automated and manual counts; Reticulocytes (Absolute Reticulocyte Count [ARC], Corrected Reticulocyte Count [CRC], Reticulocyte Production Index [RPI]); Spurious results and automated analyzer interferences (Cold agglutinins, extreme hyperglycemia)</li>
+<li><strong>B. Differentials and Morphology Evaluation</strong>: </li>
+<li>Peripheral blood and bone marrow smear examination; Macro-ovalocytes, round macrocytes, Howell-Jolly bodies, dacrocytes (teardrop cells), echinocytes (burr cells), nucleated RBCs (nRBCs), megaloblasts, giant bands/metamyelocytes</li>
+<li><strong>E. Indices</strong>: </li>
+<li>Derivation, calculations, and clinical interpretation of MCV, MCH, MCHC, and RDW</li>
+<li><strong>F. Hemolytic Indicators</strong>: </li>
+<li>Haptoglobin, lactate dehydrogenase (LD/LDH), and bilirubin correlations with ineffective hematopoiesis</li>
+</ul>
+</li>
+</ul>
+<h3 id="chemistry">Chemistry</h3>
+<ul>
+<li><strong>I. General Chemistry</strong><ul>
+<li><strong>C. Heme Derivatives</strong>: </li>
+<li>Bilirubin metabolism; Intramedullary hemolysis, unconjugated (indirect) and conjugated (direct) bilirubin fractions</li>
+</ul>
+</li>
+<li><strong>II. Proteins and Enzymes</strong><ul>
+<li><strong>A. Enzymes</strong>: </li>
+<li>Lactate dehydrogenase (LDH) and isoenzyme patterns ($\text{LDH-1} > \text{LDH-2}$ flipped pattern)</li>
+<li><strong>B. Proteins and Other Nitrogen-Containing Compounds</strong>: </li>
+<li>Renal function markers: Blood Urea Nitrogen (BUN) and Creatinine in hypoproliferative anemia of chronic kidney disease</li>
+</ul>
+</li>
+<li><strong>IV. Special Chemistry</strong><ul>
+<li><strong>B. Vitamins and Nutrition</strong>: </li>
+<li>Cobalamin (Vitamin B12), Folic acid (Vitamin B9), Methylmalonic acid (MMA), Homocysteine, and Formiminoglutamic acid (FIGLU) metabolic pathways and differential diagnostics</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1530,6 +1582,32 @@ flowchart TD
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

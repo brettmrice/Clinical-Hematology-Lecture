@@ -285,46 +285,61 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="slide-prep-complete-discussion">Slide Prep | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>Hematology Laboratory Testing</strong><ul>
-<li>Differentials and Morphology Evaluation: Peripheral blood smear (PBS) preparation, wedge-smear mechanics, monolayer identification, macroscopic/microscopic examination criteria, leukocyte, erythrocyte, and platelet morphological assessment</li>
-<li>Special Stains: Prussian blue (Perls' reaction) for ferric iron ($\text{Fe}^{3+}$) and siderotic granules (Pappenheimer bodies)</li>
-<li>Other Studies: Supravital staining (new methylene blue) for Heinz bodies and reticulocyte precipitation</li>
-<li>Hematocrit and Red Blood Cell Indices: Relationship of hematocrit ($35\text{--}50\%$) to blood viscosity, technical compensations, and anticoagulant artifact impacts on MCV ($76\text{--}100\text{ fL}$) and MCHC ($32\text{--}36\text{ g/dL}$)</li>
-</ul>
-</li>
-</ul>
-<h3 id="laboratory-operations">Laboratory Operations</h3>
-<ul>
-<li><strong>Quality Assessment / Troubleshooting</strong><ul>
-<li>Preanalytical, analytical, and postanalytical variables: Anticoagulant ratio, storage time limits ($0\text{--}3\text{ hours}$), and Romanowsky stain buffer $\text{pH}$ equilibrium ($\text{pH } 6.4\text{--}6.7$)</li>
-<li>Quality Control: Daily normal control smear evaluation and systematic microscopic troubleshooting of staining defects and preparation artifacts</li>
-</ul>
-</li>
-<li><strong>Safety</strong><ul>
-<li>Universal Precautions and bloodborne pathogen protection (HBV, HCV, HIV)</li>
-<li>Personal protective equipment (PPE) requirements</li>
-<li>Chemical hygiene: Handling and storage of toxic and flammable absolute methanol fixatives</li>
-<li>Sharps management: Puncture-resistant disposal of glass slides and capillary tools</li>
-</ul>
-</li>
-<li><strong>Manual / Automated Methodology and Instrumentation</strong><ul>
-<li>Manual techniques: Push-wedge blood film preparation, buffy coat concentration for severe leukopenia ($\text{WBC} < 2.0 \times 10^3/\mu\text{L}\ [2.0 \times 10^9/\text{L}]$)</li>
-<li>Automated slide stainers: Continuous-feed mechanics, timing, and reagent delivery cycles</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
-<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#pbs-preparation">PBS Preparation</a><ul>
 <li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
 <li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
@@ -332,6 +347,7 @@
 <li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="pbs-preparation">PBS Preparation</h1>
@@ -1108,9 +1124,45 @@ flowchart TD
 <li>Confirmatory stains resolve inclusion ambiguities: Prussian blue confirms iron-containing Pappenheimer bodies (bright blue), while supravital new methylene blue stains reticulocyte RNA ($0.5\text{--}2.5\%$ relative [$0.005\text{--}0.025$] or $20\text{--}115 \times 10^3/\mu\text{L}$ absolute [$20\text{--}115 \times 10^9/\text{L}$]) and reveals Heinz bodies, which are invisible on standard Wright-stained smears.</li>
 </ul>
 <hr />
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>Hematology Laboratory Testing</strong><ul>
+<li>Differentials and Morphology Evaluation: Peripheral blood smear (PBS) preparation, wedge-smear mechanics, monolayer identification, macroscopic/microscopic examination criteria, leukocyte, erythrocyte, and platelet morphological assessment</li>
+<li>Special Stains: Prussian blue (Perls' reaction) for ferric iron ($\text{Fe}^{3+}$) and siderotic granules (Pappenheimer bodies)</li>
+<li>Other Studies: Supravital staining (new methylene blue) for Heinz bodies and reticulocyte precipitation</li>
+<li>Hematocrit and Red Blood Cell Indices: Relationship of hematocrit ($35\text{--}50\%$) to blood viscosity, technical compensations, and anticoagulant artifact impacts on MCV ($76\text{--}100\text{ fL}$) and MCHC ($32\text{--}36\text{ g/dL}$)</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>Quality Assessment / Troubleshooting</strong><ul>
+<li>Preanalytical, analytical, and postanalytical variables: Anticoagulant ratio, storage time limits ($0\text{--}3\text{ hours}$), and Romanowsky stain buffer $\text{pH}$ equilibrium ($\text{pH } 6.4\text{--}6.7$)</li>
+<li>Quality Control: Daily normal control smear evaluation and systematic microscopic troubleshooting of staining defects and preparation artifacts</li>
+</ul>
+</li>
+<li><strong>Safety</strong><ul>
+<li>Universal Precautions and bloodborne pathogen protection (HBV, HCV, HIV)</li>
+<li>Personal protective equipment (PPE) requirements</li>
+<li>Chemical hygiene: Handling and storage of toxic and flammable absolute methanol fixatives</li>
+<li>Sharps management: Puncture-resistant disposal of glass slides and capillary tools</li>
+</ul>
+</li>
+<li><strong>Manual / Automated Methodology and Instrumentation</strong><ul>
+<li>Manual techniques: Push-wedge blood film preparation, buffy coat concentration for severe leukopenia ($\text{WBC} < 2.0 \times 10^3/\mu\text{L}\ [2.0 \times 10^9/\text{L}]$)</li>
+<li>Automated slide stainers: Continuous-feed mechanics, timing, and reagent delivery cycles</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1124,6 +1176,32 @@ flowchart TD
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');

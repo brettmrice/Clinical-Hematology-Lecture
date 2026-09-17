@@ -285,71 +285,61 @@
             height: 100% !important;
             max-width: none !important;
         }
+
+        /* Floating Jump to Navigation Button */
+        .jump-to-nav-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            background-color: var(--color-canvas-default);
+            color: #0969da;
+            border: 1px solid var(--color-border-default);
+        }
+
+        .jump-to-nav-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .jump-to-nav-btn:hover {
+            background-color: var(--color-modal-btn-bg);
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(9, 105, 218, 0.2);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .jump-to-nav-btn {
+                background-color: #21262d;
+                color: #58a6ff;
+                border-color: #30363d;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+            .jump-to-nav-btn:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+                box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+            }
+        }
     </style>
 </head>
 <body>
     <article class="markdown-body">
 <h1 id="cbc-analysis-complete-discussion">CBC Analysis | Complete Discussion</h1>
-<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
-<ul>
-<li><strong>III. Hematology Laboratory Testing</strong><ul>
-<li><strong>A. Cell Counts (Blood and Body Fluids)</strong></li>
-<li>
-<ol>
-<li>Manual hemocytometer counts and calculation formulas</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>Automated cell counting (electrical impedance, radiofrequency, optical light scatter)</li>
-</ol>
-</li>
-<li>
-<ol start="4">
-<li>Spurious results and corrective action protocols (cold agglutinins, lipemia, icterus, in vitro hemolysis, platelet clumping/satellitism)</li>
-</ol>
-</li>
-<li><strong>B. Differentials and Morphology Evaluation</strong></li>
-<li>Monolayer evaluation and slide estimations (WBC estimate, platelet estimate)</li>
-<li>Absolute and relative WBC subpopulation calculations</li>
-<li><strong>C. Hemoglobin</strong></li>
-<li>
-<ol>
-<li>Quantitative spectrophotometric measurement (525 nm / cyanmethemoglobin and SLS methods) and interferences</li>
-</ol>
-</li>
-<li><strong>D. Hematocrit</strong></li>
-<li>Automated pulse-height summation and manual spun microhematocrit</li>
-<li><strong>E. Indices</strong></li>
-<li>Mathematical derivation and diagnostic utility of MCV, MCH, MCHC, and RDW</li>
-<li>Internal quality control verification (Rule of Threes)</li>
-</ul>
-</li>
-</ul>
-<h3 id="laboratory-operations">Laboratory Operations</h3>
-<ul>
-<li><strong>I. Quality Assessment / Troubleshooting</strong><ul>
-<li>Analytical linearity limits, dilution protocols, background counts, and Westgard multi-rule application</li>
-</ul>
-</li>
-<li><strong>II. Safety</strong><ul>
-<li>OSHA Bloodborne Pathogens Standard, engineering controls, PPE, and biohazard disposal</li>
-</ul>
-</li>
-<li><strong>III. Laboratory Mathematics</strong><ul>
-<li>Red blood cell indices formulas, corrected WBC count for nRBCs, manual hemocytometer calculation, relative-to-absolute differentials, and manual out-of-linearity dilution factors</li>
-</ul>
-</li>
-<li><strong>IV. Manual/Automated Methodology and Instrumentation</strong><ul>
-<li><strong>M. Hematology Instrumentation</strong> (Aperture impedance, hydrodynamic focusing, flow cell maintenance, error codes, and troubleshooting)</li>
-</ul>
-</li>
-</ul>
-<hr />
 <h1 id="navigation">Navigation</h1>
 <ul>
-<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 <li><a href="#parameters">Parameters</a><ul>
 <li><a href="#summary-clinical-synthesis">Summary &amp; Clinical Synthesis</a></li>
 <li><a href="#visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</a></li>
@@ -357,6 +347,7 @@
 <li><a href="#key-clinical-takeaways">Key Clinical Takeaways</a></li>
 </ul>
 </li>
+<li><a href="#ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</a></li>
 </ul>
 <hr />
 <h1 id="parameters">Parameters</h1>
@@ -1063,9 +1054,70 @@ flowchart TD
 <li><strong>Corrective Procedures for Common Interferences</strong>: Manage lipemia and extreme icterus by performing a saline plasma replacement to correct falsely elevated HGB and MCHC. For cold agglutinins, warm the specimen at $37^\circ\text{C}$ for $10 - 15\text{ minutes}$ and re-analyze immediately. When platelet clumping or satellitism occurs in EDTA, redraw the specimen in sodium citrate (multiplying the result by $1.1$).</li>
 <li><strong>Slide Estimates for Automated Result Validation</strong>: Validate automated results using peripheral blood smear evaluations in the monolayer zone: WBC count is estimated by multiplying the average number of leukocytes per $40\times$ field by $2,000$, and platelet count is estimated by multiplying the average number of platelets per $100\times$ oil-immersion field by $20,000$.</li>
 </ul>
+    
+<hr />
+<h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
+<h3 id="clinical-hematology">Clinical Hematology</h3>
+<ul>
+<li><strong>III. Hematology Laboratory Testing</strong><ul>
+<li><strong>A. Cell Counts (Blood and Body Fluids)</strong></li>
+<li>
+<ol>
+<li>Manual hemocytometer counts and calculation formulas</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Automated cell counting (electrical impedance, radiofrequency, optical light scatter)</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Spurious results and corrective action protocols (cold agglutinins, lipemia, icterus, in vitro hemolysis, platelet clumping/satellitism)</li>
+</ol>
+</li>
+<li><strong>B. Differentials and Morphology Evaluation</strong></li>
+<li>Monolayer evaluation and slide estimations (WBC estimate, platelet estimate)</li>
+<li>Absolute and relative WBC subpopulation calculations</li>
+<li><strong>C. Hemoglobin</strong></li>
+<li>
+<ol>
+<li>Quantitative spectrophotometric measurement (525 nm / cyanmethemoglobin and SLS methods) and interferences</li>
+</ol>
+</li>
+<li><strong>D. Hematocrit</strong></li>
+<li>Automated pulse-height summation and manual spun microhematocrit</li>
+<li><strong>E. Indices</strong></li>
+<li>Mathematical derivation and diagnostic utility of MCV, MCH, MCHC, and RDW</li>
+<li>Internal quality control verification (Rule of Threes)</li>
+</ul>
+</li>
+</ul>
+<h3 id="laboratory-operations">Laboratory Operations</h3>
+<ul>
+<li><strong>I. Quality Assessment / Troubleshooting</strong><ul>
+<li>Analytical linearity limits, dilution protocols, background counts, and Westgard multi-rule application</li>
+</ul>
+</li>
+<li><strong>II. Safety</strong><ul>
+<li>OSHA Bloodborne Pathogens Standard, engineering controls, PPE, and biohazard disposal</li>
+</ul>
+</li>
+<li><strong>III. Laboratory Mathematics</strong><ul>
+<li>Red blood cell indices formulas, corrected WBC count for nRBCs, manual hemocytometer calculation, relative-to-absolute differentials, and manual out-of-linearity dilution factors</li>
+</ul>
+</li>
+<li><strong>IV. Manual/Automated Methodology and Instrumentation</strong><ul>
+<li><strong>M. Hematology Instrumentation</strong> (Aperture impedance, hydrodynamic focusing, flow cell maintenance, error codes, and troubleshooting)</li>
+</ul>
+</li>
+</ul>
     </article>
 
-    <!-- Fullscreen Mermaid Diagram Viewer Modal -->
+        <!-- Floating Jump to Navigation Button -->
+    <button id="jump-to-nav-btn" class="jump-to-nav-btn" aria-label="Jump to Navigation">Navigation</button>
+
+<!-- Fullscreen Mermaid Diagram Viewer Modal -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-header">
             <span class="mermaid-modal-title">🔍 Click and drag to pan • Scroll mouse wheel to zoom</span>
@@ -1079,6 +1131,32 @@ flowchart TD
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // Jump to Navigation Button & Observer
+            const navBtn = document.getElementById('jump-to-nav-btn');
+            const navElement = document.getElementById('navigation');
+
+            if (navBtn && navElement) {
+                navBtn.addEventListener('click', () => {
+                    navElement.scrollIntoView({ behavior: 'smooth' });
+                });
+
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            navBtn.classList.remove('visible');
+                        } else {
+                            navBtn.classList.add('visible');
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navElement);
+            }
+
             let panZoomInstance = null;
             const modal = document.getElementById('mermaid-modal');
             const modalBody = document.getElementById('mermaid-modal-body');
