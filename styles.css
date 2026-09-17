@@ -21,6 +21,7 @@
   --accent-pdf: #D97706;
   --accent-map: #059669;
   --accent-doc: #2563EB;
+  --accent-flowchart: #4F46E5;
   --accent-video: #DC2626;
   --accent-demo: #7C3AED;
   --accent-tool: #0891B2;
@@ -29,6 +30,7 @@
   --accent-bg-pdf: #FFFBEB;
   --accent-bg-map: #ECFDF5;
   --accent-bg-doc: #EFF6FF;
+  --accent-bg-flowchart: #EEF2FF;
   --accent-bg-video: #FEF2F2;
   --accent-bg-demo: #F5F3FF;
   --accent-bg-tool: #ECFEFF;
@@ -57,12 +59,14 @@
   --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.5);
 
+  --accent-flowchart: #818CF8;
   --accent-demo: #C4B5FD;
   --accent-tool: #67E8F9;
   --accent-trainer: #F0ABFC;
   --accent-bg-pdf: rgba(217, 119, 6, 0.15);
   --accent-bg-map: rgba(5, 150, 105, 0.15);
   --accent-bg-doc: rgba(37, 99, 235, 0.15);
+  --accent-bg-flowchart: rgba(79, 70, 229, 0.18);
   --accent-bg-video: rgba(220, 38, 38, 0.15);
   --accent-bg-demo: rgba(124, 58, 237, 0.18);
   --accent-bg-tool: rgba(8, 145, 178, 0.18);
@@ -280,17 +284,30 @@ header {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
-  min-width: 52px;
+  width: 60px;
+  min-width: 60px;
   flex-shrink: 0;
+  align-self: center;
+  text-align: left;
 }
 
 .chips-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-  scrollbar-width: thin;
+  flex: 1;
+}
+
+.chip-all {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.chips-wrap-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
   flex: 1;
 }
 
@@ -311,7 +328,7 @@ header {
   user-select: none;
 }
 
-.chip:hover {
+.chip:hover:not(:disabled):not(.is-disabled) {
   border-color: var(--theme-first-color);
   color: var(--text-primary);
   background-color: var(--theme-first-color-light);
@@ -327,6 +344,35 @@ header {
 .chip.active .chip-count {
   background: rgba(239, 225, 206, 0.25);
   color: var(--theme-second-color);
+}
+
+.chip:disabled,
+.chip.is-disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.chip:disabled .chip-count,
+.chip.is-disabled .chip-count {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .chip:disabled,
+[data-theme="dark"] .chip.is-disabled {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-color);
+  opacity: 0.3;
+}
+
+[data-theme="dark"] .chip:disabled .chip-count,
+[data-theme="dark"] .chip.is-disabled .chip-count {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
 }
 
 .chip-domain {
@@ -588,6 +634,11 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
   border-color: var(--accent-doc);
 }
 
+.card:hover:has(.badge-flowchart),
+.card:has(.badge-flowchart):hover {
+  border-color: var(--accent-flowchart);
+}
+
 /* Hovering over card or tree-item highlights preview button */
 .card:hover .btn-preview,
 .tree-item:hover .btn-preview {
@@ -670,6 +721,11 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
 .badge-doc {
   background-color: var(--accent-bg-doc);
   color: var(--accent-doc);
+}
+
+.badge-flowchart {
+  background-color: var(--accent-bg-flowchart);
+  color: var(--accent-flowchart);
 }
 
 .card-category {

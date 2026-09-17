@@ -47,6 +47,8 @@ TOPIC_TITLE_MAP = {
 def get_file_type(filename):
     ext = os.path.splitext(filename)[1].lower()
     lower_name = filename.lower()
+    if "flow_chart" in lower_name or "flowchart" in lower_name:
+        return "Flow Chart"
     if ext == ".pdf":
         return "Slide Deck"
     if "mind_map" in lower_name:
@@ -85,10 +87,16 @@ def extract_display_title(full_path, filename, file_type):
                 return topic
             m = re.search(r"_S\d+_+(.*)\.pdf$", filename, re.IGNORECASE)
             if m:
-                return m.group(1).replace("_", " ").replace("-", " & ").strip()
+                parsed_title = m.group(1).replace("_", " ").replace("-", " & ").strip()
+                if file_type == "Flow Chart":
+                    parsed_title = re.sub(r"^Flow\s*Chart\s*", "", parsed_title, flags=re.IGNORECASE)
+                    parsed_title = re.sub(r"\s*Flow\s*Chart$", "", parsed_title, flags=re.IGNORECASE).strip()
+                return parsed_title
 
     clean = os.path.splitext(filename)[0]
     clean = re.sub(r"^L\d+_[A-Za-z0-9_-]+?_S\d+_?", "", clean)
+    if file_type == "Flow Chart":
+        clean = re.sub(r"flow_?chart", "", clean, flags=re.IGNORECASE).strip()
     return clean.replace("_", " ").strip()
 
 def format_bytes(size):
@@ -190,7 +198,7 @@ def scan_dir():
                 }
                 raw_files.append(item_entry)
 
-                if file_type == "Slide Deck" or file.lower().endswith(".pdf"):
+                if file_type == "Slide Deck":
                     scanned_slide_decks.append(item_entry)
                     deck_category_map[file] = cat
 

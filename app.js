@@ -173,6 +173,7 @@ function setupEventListeners() {
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             currentSearch = e.target.value.toLowerCase().trim();
+            updateCategoryCounts();
             render();
         });
     }
@@ -187,6 +188,7 @@ function setupEventListeners() {
     const domainChips = document.querySelectorAll('.chip-domain');
     domainChips.forEach(chip => {
         chip.addEventListener('click', () => {
+            if (chip.disabled || chip.classList.contains('is-disabled')) return;
             domainChips.forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
             currentSection = chip.getAttribute('data-domain');
@@ -199,6 +201,7 @@ function setupEventListeners() {
     const moduleChips = document.querySelectorAll('.chip-module');
     moduleChips.forEach(chip => {
         chip.addEventListener('click', () => {
+            if (chip.disabled || chip.classList.contains('is-disabled')) return;
             moduleChips.forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
             currentModule = chip.getAttribute('data-module');
@@ -211,9 +214,11 @@ function setupEventListeners() {
     const typeChips = document.querySelectorAll('.chip-type');
     typeChips.forEach(chip => {
         chip.addEventListener('click', () => {
+            if (chip.disabled || chip.classList.contains('is-disabled')) return;
             typeChips.forEach(c => c.classList.remove('active'));
             chip.classList.add('active');
             currentFilter = chip.getAttribute('data-filter');
+            updateCategoryCounts();
             render();
         });
     });
@@ -256,71 +261,189 @@ function setupEventListeners() {
     window.addEventListener('hashchange', checkUrlHashTarget);
 }
 
-// Count items for domain chips, module chips, and type chips
+// Check if a file matches text search query
+function fileMatchesSearch(file, searchStr) {
+    if (!searchStr) return true;
+    const topicInfo = getTopicInfo(file);
+    const matchName = (file.name || '').toLowerCase().includes(searchStr);
+    const matchTitle = (file.title || '').toLowerCase().includes(searchStr);
+    const matchCat = (file.category || '').toLowerCase().includes(searchStr);
+    const matchType = (file.type || '').toLowerCase().includes(searchStr);
+    const matchTopic = (topicInfo.title || '').toLowerCase().includes(searchStr);
+    return matchName || matchTitle || matchCat || matchType || matchTopic;
+}
+
+// Update count and disabled state for a specific chip
+function updateChipState(chipEl, countEl, count) {
+    if (countEl) countEl.textContent = count;
+    if (!chipEl) return;
+    const isDisabled = count === 0;
+    chipEl.disabled = isDisabled;
+    if (isDisabled) {
+        chipEl.classList.add('is-disabled');
+    } else {
+        chipEl.classList.remove('is-disabled');
+    }
+}
+
+// Count items for domain chips, module chips, and type chips with dynamic 0-count disabling & auto-reset
 function updateCategoryCounts() {
-    const countDomainAll = filesData.length;
-    const countDomainLecture = filesData.filter(f => getDomainKey(f) === 'lecture').length;
-    const countDomainLab = filesData.filter(f => getDomainKey(f) === 'laboratory').length;
+    // 1. Files matching current search
+    const searchFiles = filesData.filter(f => fileMatchesSearch(f, currentSearch));
 
-    const elDomAll = document.getElementById('countDomainAll');
-    const elDomLec = document.getElementById('countDomainLecture');
-    const elDomLab = document.getElementById('countDomainLab');
-    if (elDomAll) elDomAll.textContent = countDomainAll;
-    if (elDomLec) elDomLec.textContent = countDomainLecture;
-    if (elDomLab) elDomLab.textContent = countDomainLab;
+    // Type filter mapping
+    const typeFilters = {
+        'discussion': 'Discussion',
+        'flowchart': 'Flow Chart',
+        'pdf': 'Slide Deck',
+        'video': 'Video',
+        'demonstration': 'Demonstration',
+        'tool': 'Tool',
+        'trainer': 'Trainer',
+        'mindmap': 'Mind Map'
+    };
 
-    // Files scoped to the active domain for module counts
-    const domainScopedFiles = currentSection === 'all'
-        ? filesData
-        : filesData.filter(f => getDomainKey(f) === currentSection);
+    // Helper to test if file matches current type filter
+    const matchesCurrentType = (f) => {
+        if (currentFilter === 'all') return true;
+        const targetType = typeFilters[currentFilter];
+        return targetType ? f.type === targetType : true;
+    };
 
-    const countModAll = domainScopedFiles.length;
-    const countModPhys = domainScopedFiles.filter(f => getModuleKey(f) === 'Physiology').length;
-    const countModCBC = domainScopedFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
-    const countModEryth = domainScopedFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
-
-    const elModAll = document.getElementById('countModuleAll');
-    const elModPhys = document.getElementById('countModulePhysiology');
-    const elModCBC = document.getElementById('countModuleCBC');
-    const elModEryth = document.getElementById('countModuleErythrocyte');
-
-    if (elModAll) elModAll.textContent = countModAll;
-    if (elModPhys) elModPhys.textContent = countModPhys;
-    if (elModCBC) elModCBC.textContent = countModCBC;
-    if (elModEryth) elModEryth.textContent = countModEryth;
-
-    // Files scoped to active domain and active module for the type chip counts
-    const scopedFiles = domainScopedFiles.filter(f => {
+    // Helper to test if file matches current module filter
+    const matchesCurrentModule = (f) => {
         if (currentModule === 'all') return true;
         return getModuleKey(f) === currentModule;
+    };
+
+    // Helper to test if file matches current domain filter
+    const matchesCurrentDomain = (f) => {
+        if (currentSection === 'all') return true;
+        return getDomainKey(f) === currentSection;
+    };
+
+    // --- DOMAIN / FOLDER CHIPS ---
+    // Scoped to: Search + Module + Type
+    const domainCandidateFiles = searchFiles.filter(f => matchesCurrentModule(f) && matchesCurrentType(f));
+    const countDomainAll = domainCandidateFiles.length;
+    const countDomainLecture = domainCandidateFiles.filter(f => getDomainKey(f) === 'lecture').length;
+    const countDomainLab = domainCandidateFiles.filter(f => getDomainKey(f) === 'laboratory').length;
+
+    // Check if active domain has 0 items and auto-reset to 'all' if needed
+    if (currentSection === 'lecture' && countDomainLecture === 0) {
+        currentSection = 'all';
+    } else if (currentSection === 'laboratory' && countDomainLab === 0) {
+        currentSection = 'all';
+    }
+
+    const chipDomAll = document.getElementById('tabDomainAll');
+    const chipDomLec = document.getElementById('tabDomainLecture');
+    const chipDomLab = document.getElementById('tabDomainLab');
+
+    updateChipState(chipDomAll, document.getElementById('countDomainAll'), countDomainAll);
+    updateChipState(chipDomLec, document.getElementById('countDomainLecture'), countDomainLecture);
+    updateChipState(chipDomLab, document.getElementById('countDomainLab'), countDomainLab);
+
+    // Sync active classes for domain chips
+    const domainChips = document.querySelectorAll('.chip-domain');
+    domainChips.forEach(c => {
+        if (c.getAttribute('data-domain') === currentSection) {
+            c.classList.add('active');
+        } else {
+            c.classList.remove('active');
+        }
     });
 
-    const countAll = scopedFiles.length;
-    const countDisc = scopedFiles.filter(f => f.type === 'Discussion').length;
-    const countPdf = scopedFiles.filter(f => f.type === 'Slide Deck').length;
-    const countVideo = scopedFiles.filter(f => f.type === 'Video').length;
-    const countDemo = scopedFiles.filter(f => f.type === 'Demonstration').length;
-    const countTool = scopedFiles.filter(f => f.type === 'Tool').length;
-    const countTrainer = scopedFiles.filter(f => f.type === 'Trainer').length;
-    const countMaps = scopedFiles.filter(f => f.type === 'Mind Map').length;
+    // --- MODULE CHIPS ---
+    // Scoped to: Search + Active Domain + Type
+    const moduleCandidateFiles = searchFiles.filter(f => matchesCurrentDomain(f) && matchesCurrentType(f));
+    const countModAll = moduleCandidateFiles.length;
+    const countModPhys = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Physiology').length;
+    const countModCBC = moduleCandidateFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
+    const countModEryth = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
 
-    const elAll = document.getElementById('countAll');
-    const elDisc = document.getElementById('countDisc');
-    const elPdf = document.getElementById('countPdf');
-    const elVideo = document.getElementById('countVideo');
-    const elDemo = document.getElementById('countDemo');
-    const elTool = document.getElementById('countTool');
-    const elTrainer = document.getElementById('countTrainer');
-    const elMaps = document.getElementById('countMaps');
+    // Check if active module has 0 items and auto-reset to 'all' if needed
+    if (currentModule === 'Physiology' && countModPhys === 0) {
+        currentModule = 'all';
+    } else if (currentModule === 'CBC_PBS' && countModCBC === 0) {
+        currentModule = 'all';
+    } else if (currentModule === 'Erythrocyte' && countModEryth === 0) {
+        currentModule = 'all';
+    }
 
-    if (elAll) elAll.textContent = countAll;
-    if (elDisc) elDisc.textContent = countDisc;
-    if (elPdf) elPdf.textContent = countPdf;
-    if (elVideo) elVideo.textContent = countVideo;
-    if (elDemo) elDemo.textContent = countDemo;
-    if (elTool) elTool.textContent = countTool;
-    if (elTrainer) elTrainer.textContent = countTrainer;
-    if (elMaps) elMaps.textContent = countMaps;
+    const chipModAll = document.getElementById('tabModuleAll');
+    const chipModPhys = document.getElementById('tabModulePhysiology');
+    const chipModCBC = document.getElementById('tabModuleCBC');
+    const chipModEryth = document.getElementById('tabModuleErythrocyte');
+
+    updateChipState(chipModAll, document.getElementById('countModuleAll'), countModAll);
+    updateChipState(chipModPhys, document.getElementById('countModulePhysiology'), countModPhys);
+    updateChipState(chipModCBC, document.getElementById('countModuleCBC'), countModCBC);
+    updateChipState(chipModEryth, document.getElementById('countModuleErythrocyte'), countModEryth);
+
+    // Sync active classes for module chips
+    const moduleChips = document.querySelectorAll('.chip-module');
+    moduleChips.forEach(c => {
+        if (c.getAttribute('data-module') === currentModule) {
+            c.classList.add('active');
+        } else {
+            c.classList.remove('active');
+        }
+    });
+
+    // --- RESOURCE TYPE CHIPS ---
+    // Scoped to: Search + Active Domain + Active Module
+    const typeCandidateFiles = searchFiles.filter(f => matchesCurrentDomain(f) && matchesCurrentModule(f));
+    const countTypeAll = typeCandidateFiles.length;
+    const countDisc = typeCandidateFiles.filter(f => f.type === 'Discussion').length;
+    const countFlowChart = typeCandidateFiles.filter(f => f.type === 'Flow Chart').length;
+    const countPdf = typeCandidateFiles.filter(f => f.type === 'Slide Deck').length;
+    const countVideo = typeCandidateFiles.filter(f => f.type === 'Video').length;
+    const countDemo = typeCandidateFiles.filter(f => f.type === 'Demonstration').length;
+    const countTool = typeCandidateFiles.filter(f => f.type === 'Tool').length;
+    const countTrainer = typeCandidateFiles.filter(f => f.type === 'Trainer').length;
+    const countMaps = typeCandidateFiles.filter(f => f.type === 'Mind Map').length;
+
+    // Check if active type has 0 items and auto-reset to 'all' if needed
+    const activeTypeCounts = {
+        'discussion': countDisc,
+        'flowchart': countFlowChart,
+        'pdf': countPdf,
+        'video': countVideo,
+        'demonstration': countDemo,
+        'tool': countTool,
+        'trainer': countTrainer,
+        'mindmap': countMaps
+    };
+    if (currentFilter !== 'all' && (activeTypeCounts[currentFilter] || 0) === 0) {
+        currentFilter = 'all';
+    }
+
+    const typeChipMap = {
+        'all': { chip: document.querySelector('.chip-type[data-filter="all"]'), countEl: document.getElementById('countAll'), count: countTypeAll },
+        'discussion': { chip: document.querySelector('.chip-type[data-filter="discussion"]'), countEl: document.getElementById('countDisc'), count: countDisc },
+        'flowchart': { chip: document.querySelector('.chip-type[data-filter="flowchart"]'), countEl: document.getElementById('countFlowChart'), count: countFlowChart },
+        'pdf': { chip: document.querySelector('.chip-type[data-filter="pdf"]'), countEl: document.getElementById('countPdf'), count: countPdf },
+        'video': { chip: document.querySelector('.chip-type[data-filter="video"]'), countEl: document.getElementById('countVideo'), count: countVideo },
+        'demonstration': { chip: document.querySelector('.chip-type[data-filter="demonstration"]'), countEl: document.getElementById('countDemo'), count: countDemo },
+        'tool': { chip: document.querySelector('.chip-type[data-filter="tool"]'), countEl: document.getElementById('countTool'), count: countTool },
+        'trainer': { chip: document.querySelector('.chip-type[data-filter="trainer"]'), countEl: document.getElementById('countTrainer'), count: countTrainer },
+        'mindmap': { chip: document.querySelector('.chip-type[data-filter="mindmap"]'), countEl: document.getElementById('countMaps'), count: countMaps }
+    };
+
+    for (const item of Object.values(typeChipMap)) {
+        updateChipState(item.chip, item.countEl, item.count);
+    }
+
+    // Sync active classes for type chips
+    const typeChips = document.querySelectorAll('.chip-type');
+    typeChips.forEach(c => {
+        if (c.getAttribute('data-filter') === currentFilter) {
+            c.classList.add('active');
+        } else {
+            c.classList.remove('active');
+        }
+    });
 }
 
 // Filter logic
@@ -339,6 +462,7 @@ function getFilteredFiles() {
 
         // 3. Resource type filter chip
         if (currentFilter === 'discussion' && file.type !== 'Discussion') return false;
+        if (currentFilter === 'flowchart' && file.type !== 'Flow Chart') return false;
         if (currentFilter === 'pdf' && file.type !== 'Slide Deck') return false;
         if (currentFilter === 'video' && file.type !== 'Video') return false;
         if (currentFilter === 'demonstration' && file.type !== 'Demonstration') return false;
@@ -347,14 +471,8 @@ function getFilteredFiles() {
         if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
 
         // 4. Search text query
-        if (currentSearch) {
-            const topicInfo = getTopicInfo(file);
-            const matchName = file.name.toLowerCase().includes(currentSearch);
-            const matchTitle = (file.title || '').toLowerCase().includes(currentSearch);
-            const matchCat = (file.category || '').toLowerCase().includes(currentSearch);
-            const matchType = (file.type || '').toLowerCase().includes(currentSearch);
-            const matchTopic = topicInfo.title.toLowerCase().includes(currentSearch);
-            return matchName || matchTitle || matchCat || matchType || matchTopic;
+        if (currentSearch && !fileMatchesSearch(file, currentSearch)) {
+            return false;
         }
 
         return true;
@@ -516,6 +634,7 @@ function renderCardGrid(container, files) {
                 // Group files within topic into type sub-rows
                 const typeSubgroups = {
                     'Discussion': [],
+                    'Flow Chart': [],
                     'Slide Deck': [],
                     'Video': [],
                     'Demonstration': [],
@@ -543,12 +662,13 @@ function renderCardGrid(container, files) {
                         </div>
                 `;
 
-                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
+                const typeOrder = ['Discussion', 'Flow Chart', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
                 typeOrder.forEach(typeKey => {
                     const subFiles = typeSubgroups[typeKey];
                     if (!subFiles || subFiles.length === 0) return;
 
                     let typeLabel = typeKey;
+                    if (typeKey === 'Flow Chart') typeLabel = 'Flow Charts';
                     if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
                     if (typeKey === 'Video') typeLabel = 'Videos';
                     if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
@@ -567,6 +687,7 @@ function renderCardGrid(container, files) {
 
                     subFiles.forEach(file => {
                         let badgeClass = 'badge-doc';
+                        if (file.type === 'Flow Chart') badgeClass = 'badge-flowchart';
                         if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
                         if (file.type === 'Video') badgeClass = 'badge-video';
                         if (file.type === 'Demonstration') badgeClass = 'badge-demo';
@@ -655,6 +776,7 @@ function renderTree(container, files) {
 
                 const typeSubgroups = {
                     'Discussion': [],
+                    'Flow Chart': [],
                     'Slide Deck': [],
                     'Video': [],
                     'Demonstration': [],
@@ -684,12 +806,13 @@ function renderTree(container, files) {
                         <div class="tree-folder-items" style="padding-left: 8px;">
                 `;
 
-                const typeOrder = ['Discussion', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
+                const typeOrder = ['Discussion', 'Flow Chart', 'Slide Deck', 'Video', 'Demonstration', 'Tool', 'Trainer', 'Mind Map', 'Other'];
                 typeOrder.forEach(typeKey => {
                     const subFiles = typeSubgroups[typeKey];
                     if (!subFiles || subFiles.length === 0) return;
 
                     let typeLabel = typeKey;
+                    if (typeKey === 'Flow Chart') typeLabel = 'Flow Charts';
                     if (typeKey === 'Slide Deck') typeLabel = 'Slide Decks';
                     if (typeKey === 'Video') typeLabel = 'Videos';
                     if (typeKey === 'Demonstration') typeLabel = 'Demonstrations';
@@ -706,6 +829,7 @@ function renderTree(container, files) {
 
                     subFiles.forEach(file => {
                         let badgeClass = 'badge-doc';
+                        if (file.type === 'Flow Chart') badgeClass = 'badge-flowchart';
                         if (file.type === 'Slide Deck') badgeClass = 'badge-pdf';
                         if (file.type === 'Video') badgeClass = 'badge-video';
                         if (file.type === 'Demonstration') badgeClass = 'badge-demo';

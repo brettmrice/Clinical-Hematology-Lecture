@@ -46,6 +46,7 @@ const TOPIC_TITLE_MAP = {
 function getFileType(filename) {
     const ext = path.extname(filename).toLowerCase();
     const lowerName = filename.toLowerCase();
+    if (lowerName.includes('flow_chart') || lowerName.includes('flowchart')) return 'Flow Chart';
     if (ext === '.pdf') return 'Slide Deck';
     if (lowerName.includes('mind_map')) return 'Mind Map';
     if (lowerName.includes('discussion') || lowerName.includes('laboratory_investigation') || lowerName.includes('investigation')) return 'Discussion';
@@ -84,13 +85,20 @@ function extractDisplayTitle(fullPath, filename, fileType) {
             }
             const m = filename.match(/_S\d+_+(.*)\.pdf$/i);
             if (m) {
-                return m[1].replace(/_/g, ' ').replace(/-/g, ' & ').trim();
+                let parsedTitle = m[1].replace(/_/g, ' ').replace(/-/g, ' & ').trim();
+                if (fileType === 'Flow Chart') {
+                    parsedTitle = parsedTitle.replace(/^Flow\s*Chart\s*/i, '').replace(/\s*Flow\s*Chart$/i, '').trim();
+                }
+                return parsedTitle;
             }
         }
     }
 
     let clean = path.parse(filename).name;
     clean = clean.replace(/^L\d+_[A-Za-z0-9_-]+?_S\d+_?/, '');
+    if (fileType === 'Flow Chart') {
+        clean = clean.replace(/flow_?chart/gi, '').trim();
+    }
     return clean.replace(/_/g, ' ').trim();
 }
 
@@ -192,7 +200,7 @@ function scanDir() {
 
                 rawFiles.push(itemEntry);
 
-                if (fileType === 'Slide Deck' || item.toLowerCase().endsWith('.pdf')) {
+                if (fileType === 'Slide Deck') {
                     scannedSlideDecks.push(itemEntry);
                     deckCategoryMap[item] = category;
                 }

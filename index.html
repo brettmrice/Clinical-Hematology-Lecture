@@ -78,24 +78,17 @@
         <div class="filter-group">
             <span class="filter-label">Folder:</span>
             <div class="chips-row domain-chips-row">
-                <button class="chip chip-domain active" data-domain="all" id="tabDomainAll">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                    </svg>
+                <button class="chip chip-domain chip-all active" data-domain="all" id="tabDomainAll">
                     All Folders <span class="chip-count" id="countDomainAll">0</span>
                 </button>
-                <button class="chip chip-domain" data-domain="lecture" id="tabDomainLecture">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                    </svg>
-                    Lecture <span class="chip-count" id="countDomainLecture">0</span>
-                </button>
-                <button class="chip chip-domain" data-domain="laboratory" id="tabDomainLab">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                    </svg>
-                    Laboratory <span class="chip-count" id="countDomainLab">0</span>
-                </button>
+                <div class="chips-wrap-group">
+                    <button class="chip chip-domain" data-domain="lecture" id="tabDomainLecture">
+                        Lecture <span class="chip-count" id="countDomainLecture">0</span>
+                    </button>
+                    <button class="chip chip-domain" data-domain="laboratory" id="tabDomainLab">
+                        Laboratory <span class="chip-count" id="countDomainLab">0</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -103,18 +96,20 @@
         <div class="filter-group">
             <span class="filter-label">Module:</span>
             <div class="chips-row module-chips-row">
-                <button class="chip chip-module active" data-module="all" id="tabModuleAll">
+                <button class="chip chip-module chip-all active" data-module="all" id="tabModuleAll">
                     All Modules <span class="chip-count" id="countModuleAll">0</span>
                 </button>
-                <button class="chip chip-module" data-module="Physiology" id="tabModulePhysiology">
-                    Physiology <span class="chip-count" id="countModulePhysiology">0</span>
-                </button>
-                <button class="chip chip-module" data-module="CBC_PBS" id="tabModuleCBC">
-                    CBC & PBS <span class="chip-count" id="countModuleCBC">0</span>
-                </button>
-                <button class="chip chip-module" data-module="Erythrocyte" id="tabModuleErythrocyte">
-                    Erythrocyte <span class="chip-count" id="countModuleErythrocyte">0</span>
-                </button>
+                <div class="chips-wrap-group">
+                    <button class="chip chip-module" data-module="Physiology" id="tabModulePhysiology">
+                        Physiology <span class="chip-count" id="countModulePhysiology">0</span>
+                    </button>
+                    <button class="chip chip-module" data-module="CBC_PBS" id="tabModuleCBC">
+                        CBC & PBS <span class="chip-count" id="countModuleCBC">0</span>
+                    </button>
+                    <button class="chip chip-module" data-module="Erythrocyte" id="tabModuleErythrocyte">
+                        Erythrocyte <span class="chip-count" id="countModuleErythrocyte">0</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -122,37 +117,43 @@
         <div class="filter-group">
             <span class="filter-label">Type:</span>
             <div class="chips-row type-chips-row">
-                <button class="chip chip-type active" data-filter="all">
+                <button class="chip chip-type chip-all active" data-filter="all">
                     All Types <span class="chip-count" id="countAll">0</span>
                 </button>
-                <button class="chip chip-type" data-filter="discussion">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-doc)" stroke="var(--accent-doc)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-doc)"/></svg>
-                    Discussions <span class="chip-count" id="countDisc">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="pdf">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-pdf)" stroke="var(--accent-pdf)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-pdf)"/></svg>
-                    Slide Decks <span class="chip-count" id="countPdf">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="video">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-video)" stroke="var(--accent-video)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-video)"/></svg>
-                    Videos <span class="chip-count" id="countVideo">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="demonstration">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-demo)" stroke="var(--accent-demo)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-demo)"/></svg>
-                    Demonstrations <span class="chip-count" id="countDemo">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="tool">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-tool)" stroke="var(--accent-tool)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-tool)"/></svg>
-                    Tools <span class="chip-count" id="countTool">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="trainer">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-trainer)" stroke="var(--accent-trainer)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-trainer)"/></svg>
-                    Trainers <span class="chip-count" id="countTrainer">0</span>
-                </button>
-                <button class="chip chip-type" data-filter="mindmap">
-                    <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-map)" stroke="var(--accent-map)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-map)"/></svg>
-                    Mind Maps <span class="chip-count" id="countMaps">0</span>
-                </button>
+                <div class="chips-wrap-group">
+                    <button class="chip chip-type" data-filter="discussion">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-doc)" stroke="var(--accent-doc)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-doc)"/></svg>
+                        Discussions <span class="chip-count" id="countDisc">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="flowchart">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-flowchart)" stroke="var(--accent-flowchart)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-flowchart)"/></svg>
+                        Flow Charts <span class="chip-count" id="countFlowChart">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="pdf">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-pdf)" stroke="var(--accent-pdf)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-pdf)"/></svg>
+                        Slide Decks <span class="chip-count" id="countPdf">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="video">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-video)" stroke="var(--accent-video)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-video)"/></svg>
+                        Videos <span class="chip-count" id="countVideo">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="demonstration">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-demo)" stroke="var(--accent-demo)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-demo)"/></svg>
+                        Demonstrations <span class="chip-count" id="countDemo">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="tool">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-tool)" stroke="var(--accent-tool)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-tool)"/></svg>
+                        Tools <span class="chip-count" id="countTool">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="trainer">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-trainer)" stroke="var(--accent-trainer)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-trainer)"/></svg>
+                        Trainers <span class="chip-count" id="countTrainer">0</span>
+                    </button>
+                    <button class="chip chip-type" data-filter="mindmap">
+                        <svg width="14" height="14" viewBox="0 0 14 14" style="vertical-align: middle;"><circle cx="7" cy="7" r="6.5" fill="var(--accent-bg-map)" stroke="var(--accent-map)" stroke-width="1"/><circle cx="7" cy="7" r="3" fill="var(--accent-map)"/></svg>
+                        Mind Maps <span class="chip-count" id="countMaps">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
