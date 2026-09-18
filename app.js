@@ -1012,6 +1012,16 @@ function checkUrlHashTarget() {
 
             targetEl.addEventListener('mouseenter', clearHighlight, { once: true });
             targetEl.addEventListener('click', clearHighlight, { once: true });
+
+            // Clean hash from address bar without page reload
+            try {
+                if (window.history && window.history.replaceState) {
+                    const cleanUrl = window.location.pathname + window.location.search;
+                    window.history.replaceState(null, document.title, cleanUrl);
+                }
+            } catch (e) {
+                // Ignore potential sandbox/security restrictions
+            }
         }
         isInitialHashCheck = false;
     }, delay);
