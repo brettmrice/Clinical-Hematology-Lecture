@@ -1,27 +1,42 @@
 let filesData = [];
 let currentSection = 'all'; // 'all', 'lecture', or 'laboratory'
-let currentModule = 'all';  // 'all', 'Physiology', 'CBC_PBS', or 'Erythrocyte'
+let currentModule = 'all';  // 'all', 'Physiology', 'CBC_PBS', 'Erythrocyte', or 'Leukocyte'
 let currentFilter = 'all';   // 'all', 'discussion', 'pdf', 'video', or 'mindmap'
 let currentSearch = '';
 let currentView = 'grid';   // 'grid' or 'tree'
 
 const TOPIC_CONFIG = {
-    'L1_Hematopoiesis': { title: 'L1 · Hematopoiesis', domain: 'lecture' },
-    'L2_BCE_RBC-HGB': { title: 'L2 · Erythrocytes & Hemoglobin', domain: 'lecture' },
-    'L3_BCE_WBC-PLT': { title: 'L3 · Leukocytes & Platelets', domain: 'lecture' },
-    'L4_RBC_Analysis': { title: 'L4 · RBC Analysis', domain: 'lecture' },
-    'L5_Iron_and_Heme': { title: 'L5 · Iron & Heme', domain: 'lecture' },
-    'L6_Hemoglobinopathies': { title: 'L6 · Hemoglobinopathy & Thalassemia', domain: 'lecture' },
-    'L7_Macros_Hypos': { title: 'L7 · Macrocytic & Hypoproliferative', domain: 'lecture' },
-    'L8_Hemolytic': { title: 'L8 · Hemolytic', domain: 'lecture' },
-    'L1_Manual_Counts': { title: 'L1 · Manual Counts', domain: 'laboratory' },
-    'L2_Slide_Preparation': { title: 'L2 · Slide Preparation', domain: 'laboratory' },
-    'L3_Slide_Evaluation': { title: 'L3 · Slide Evaluation', domain: 'laboratory' },
-    'L4_CBC_Analysis': { title: 'L4 · CBC Analysis', domain: 'laboratory' },
-    'L5_Microcytic': { title: 'L5 · Microcytic Anemias', domain: 'laboratory' },
-    'L6_Hemoglobinopathy': { title: 'L6 · Hemoglobinopathy', domain: 'laboratory' },
-    'L7_Macrocytic': { title: 'L7 · Macrocytic', domain: 'laboratory' },
-    'L8_Normocytic': { title: 'L8 · Normocytic', domain: 'laboratory' }
+    lecture: {
+        'L1_Hematopoiesis': 'Hematopoiesis',
+        'L2_BCE_RBC-HGB': 'Erythrocytes & Hemoglobin',
+        'L3_BCE_WBC-PLT': 'Leukocytes & Platelets',
+        'L4_RBC_Analysis': 'RBC Analysis',
+        'L5_Iron_and_Heme': 'Iron & Heme',
+        'L5_Iron_Heme': 'Iron & Heme',
+        'L6_Hemoglobinopathy': 'Hemoglobinopathy',
+        'L7_Macros_Hypos': 'Macrocytic & Hypoproliferative',
+        'L8_Hemolytic': 'Hemolytic',
+        'L9_Benign': 'Benign Disorders',
+        'L10_AML': 'Acute Myeloid Neoplasms',
+        'L11_MPN_MDS': 'Chronic Myeloid Neoplasms',
+        'L12_ALL': 'Lymphoid Neoplasms',
+        'L13_BM_Flow': 'Bone Marrow & Flow Cytometry'
+    },
+    laboratory: {
+        'L1_Manual_Counts': 'Manual Counts',
+        'L2_Slide_Preparation': 'Slide Preparation',
+        'L3_Slide_Evaluation': 'Slide Evaluation',
+        'L4_CBC_Analysis': 'CBC Analysis',
+        'L5_Microcytic': 'Microcytic',
+        'L6_Hemoglobinopathy': 'Hemoglobinopathy',
+        'L7_Macrocytic': 'Macrocytic',
+        'L8_Normocytic': 'Normocytic',
+        'L9_Benign': 'Benign Disorders',
+        'L10_AML': 'Acute Myeloid Neoplasms',
+        'L11_MPN_MDS': 'Chronic Myeloid Neoplasms',
+        'L12_LACLN': 'Lymphoid Neoplasms',
+        'L13_BM_Flow': 'Bone Marrow & Flow Cytometry'
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,33 +114,34 @@ async function loadFilesIndex() {
 
 // Topic & Category Helpers
 function getTopicInfo(file) {
-    for (const [prefix, conf] of Object.entries(TOPIC_CONFIG)) {
+    const domain = getDomainKey(file);
+    const domainConfig = TOPIC_CONFIG[domain] || {};
+
+    for (const [prefix, title] of Object.entries(domainConfig)) {
         if (file.name.startsWith(prefix)) {
             return {
                 key: prefix,
-                title: conf.title,
-                domain: conf.domain
+                title: title,
+                domain: domain
             };
         }
     }
 
-    const match = file.name.match(/^(L\d+)_([A-Za-z0-9_-]+?)(?:_S\d+|_Demo_\d+|_Tool_\d+|_Demo_|_Tool_|$)/i);
+    const match = file.name.match(/^(L0?\d+)_([A-Za-z0-9_-]+?)(?:_S\d+|_Demo_\d+|_Tool_\d+|_Demo_|_Tool_|$)/i);
     if (match) {
-        const unitNum = match[1].toUpperCase();
+        const unitNum = match[1].toUpperCase().replace(/^L0/, 'L');
         const topicRaw = match[2].replace(/_/g, ' ').replace(/-/g, ' & ');
-        const isLab = (file.category || '').toLowerCase().includes('laboratory') || (file.category || '').toLowerCase().includes('lab');
         return {
             key: `${unitNum}_${match[2]}`,
             title: `${unitNum} · ${topicRaw}`,
-            domain: isLab ? 'laboratory' : 'lecture'
+            domain: domain
         };
     }
 
-    const isLab = (file.category || '').toLowerCase().includes('laboratory') || (file.category || '').toLowerCase().includes('lab');
     return {
         key: 'Other',
         title: 'General Resources',
-        domain: isLab ? 'laboratory' : 'lecture'
+        domain: domain
     };
 }
 
@@ -149,6 +165,7 @@ function getModuleKey(file) {
     if (cat.includes('physiology') || path.includes('/physiology/')) return 'Physiology';
     if (cat.includes('cbc_pbs') || cat.includes('cbc & pbs') || path.includes('/cbc_pbs/')) return 'CBC_PBS';
     if (cat.includes('erythrocyte') || path.includes('/erythrocytes/') || path.includes('/erythrocyte/')) return 'Erythrocyte';
+    if (cat.includes('leukocyte') || path.includes('/leukocytes/') || path.includes('/leukocyte/')) return 'Leukocyte';
     return 'Other';
 }
 
@@ -361,6 +378,7 @@ function updateCategoryCounts() {
     const countModPhys = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Physiology').length;
     const countModCBC = moduleCandidateFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
     const countModEryth = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
+    const countModLeuk = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Leukocyte').length;
 
     // Check if active module has 0 items and auto-reset to 'all' if needed
     if (currentModule === 'Physiology' && countModPhys === 0) {
@@ -369,17 +387,21 @@ function updateCategoryCounts() {
         currentModule = 'all';
     } else if (currentModule === 'Erythrocyte' && countModEryth === 0) {
         currentModule = 'all';
+    } else if (currentModule === 'Leukocyte' && countModLeuk === 0) {
+        currentModule = 'all';
     }
 
     const chipModAll = document.getElementById('tabModuleAll');
     const chipModPhys = document.getElementById('tabModulePhysiology');
     const chipModCBC = document.getElementById('tabModuleCBC');
     const chipModEryth = document.getElementById('tabModuleErythrocyte');
+    const chipModLeuk = document.getElementById('tabModuleLeukocyte');
 
     updateChipState(chipModAll, document.getElementById('countModuleAll'), countModAll);
     updateChipState(chipModPhys, document.getElementById('countModulePhysiology'), countModPhys);
     updateChipState(chipModCBC, document.getElementById('countModuleCBC'), countModCBC);
     updateChipState(chipModEryth, document.getElementById('countModuleErythrocyte'), countModEryth);
+    updateChipState(chipModLeuk, document.getElementById('countModuleLeukocyte'), countModLeuk);
 
     // Sync active classes for module chips
     const moduleChips = document.querySelectorAll('.chip-module');
