@@ -562,7 +562,7 @@
         .table-wrapper:not(.is-collapsed) .table-header-card,
         .table-wrapper:not(.is-collapsed) .table-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -571,14 +571,15 @@
         }
 
         .table-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .table-wrapper:not(.is-collapsed) .table-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -767,18 +768,24 @@
 
         .formula-wrapper:not(.is-collapsed) .formula-header-card,
         .formula-wrapper:not(.is-collapsed) .formula-preview-card {
-            position: relative;
+            position: sticky;
+            bottom: 12px;
+            z-index: 30;
             background: var(--color-canvas-default);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .formula-wrapper:not(.is-collapsed) {
+            margin-top: 1.2em;
             margin-bottom: 1.2em;
         }
 
         .formula-wrapper:not(.is-collapsed) .formula-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
+            margin-top: 0 !important;
             margin-bottom: 8px !important;
             pointer-events: auto !important;
             visibility: visible !important;
@@ -1105,7 +1112,7 @@
         .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
         .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1114,14 +1121,15 @@
         }
 
         .flowchart-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .flowchart-wrapper:not(.is-collapsed) .flowchart-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -1913,7 +1921,7 @@
         .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
         .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1922,14 +1930,15 @@
         }
 
         .graphic-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .graphic-wrapper:not(.is-collapsed) .graphic-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -2242,42 +2251,6 @@
 
 <p><em>(ASCP BOC Reference Ranges: MCV: $76\text{--}100\text{ fL}$; MCH: $26\text{--}34\text{ pg}$; MCHC: $32\text{--}36\text{ g/dL}$ [$320\text{--}360\text{ g/L}$]; RDW: $11.5\text{--}14.5\text{%}$ [$0.115\text{--}0.145$])</em></p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="1">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2312,23 +2285,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="mean-corpuscular-volume-mcv-as-a-differential-filter">Mean Corpuscular Volume (MCV) as a Differential Filter</h3>
-<ul>
-<li><strong>Marked Elevation ($>115\text{ to }130\text{ fL}$):</strong> Strongly correlates with a megaloblastic process driven by defective DNA synthesis (Vitamin B12 or folate deficiency) or profound primary dyserythropoiesis (e.g., severe myelodysplastic syndromes, cytotoxic chemotherapy).</li>
-<li><strong>Mild-to-Moderate Elevation ($100\text{ to }110\text{ fL}$):</strong> Characterizes non-megaloblastic conditions where DNA replication remains intact, such as chronic liver disease, chronic alcohol consumption, or endocrine disturbances (hypothyroidism). Non-megaloblastic MCVs rarely exceed $115\text{ fL}$ unless complicated by marked reticulocytosis.</li>
-</ul>
-<h3 id="mean-corpuscular-hemoglobin-mch-hemoglobin-concentration-mchc">Mean Corpuscular Hemoglobin (MCH) &amp; Hemoglobin Concentration (MCHC)</h3>
-<p>Because macrocytic erythrocytes possess an expanded cytoplasmic volume, they synthesize and accommodate a greater absolute mass of cytoplasmic hemoglobin. Consequently, the <strong>MCH is elevated ($>34\text{ pg}$)</strong> concordantly with the MCV. </p>
-<p>Conversely, the <strong>MCHC typically remains within the official ASCP BOC reference interval of $32\text{--}36\text{ g/dL}$ ($320\text{--}360\text{ g/L}$)</strong>. The internal cellular concentration of hemoglobin is limited by intracellular solubility and crystallization kinetics; an MCHC exceeding $36\text{ g/dL}$ (or $>360\text{ g/L}$) is physiologically implausible and signals analytical interference rather than true cellular hyperchromia.</p>
-<h3 id="red-cell-distribution-width-rdw">Red Cell Distribution Width (RDW)</h3>
-<p>The RDW quantifies anisocytosis (variation in erythrocyte volume; official ASCP BOC reference range: $11.5\text{--}14.5\text{%}$). In megaloblastic anemia, dysplastic precursors undergo variable mitotic delays and intramedullary breakdown, generating a heterogeneous population of microcytic schistocytes, residual normocytes, and macro-ovalocytes. This broadens the erythrocyte volume histogram, generating a <strong>markedly elevated RDW ($>14.5\text{%}$)</strong>. </p>
-<p>In contrast, uncomplicated non-megaloblastic macrocytosis (e.g., alcohol-induced lipid loading) expands erythrocyte membranes uniformly, yielding a <strong>normal ($11.5\text{--}14.5\text{%}$) or only mildly elevated RDW</strong>.</p>
-<hr />
-<h2 id="pre-analytical-analytical-artifacts-resolving-spurious-macrocytosis">Pre-Analytical &amp; Analytical Artifacts: Resolving Spurious Macrocytosis</h2>
-<p>Before reporting an elevated MCV, laboratory scientists must rule out pre-analytical and analytical interferences. Automated impedance and optical counters size cells by measuring electrical resistance pulses or light displacement as cells pass single-file through an aperture. Physical clumping or rapid osmotic shifts distort these physical measurements.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="2">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2365,6 +2321,23 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="mean-corpuscular-volume-mcv-as-a-differential-filter">Mean Corpuscular Volume (MCV) as a Differential Filter</h3>
+<ul>
+<li><strong>Marked Elevation ($>115\text{ to }130\text{ fL}$):</strong> Strongly correlates with a megaloblastic process driven by defective DNA synthesis (Vitamin B12 or folate deficiency) or profound primary dyserythropoiesis (e.g., severe myelodysplastic syndromes, cytotoxic chemotherapy).</li>
+<li><strong>Mild-to-Moderate Elevation ($100\text{ to }110\text{ fL}$):</strong> Characterizes non-megaloblastic conditions where DNA replication remains intact, such as chronic liver disease, chronic alcohol consumption, or endocrine disturbances (hypothyroidism). Non-megaloblastic MCVs rarely exceed $115\text{ fL}$ unless complicated by marked reticulocytosis.</li>
+</ul>
+<h3 id="mean-corpuscular-hemoglobin-mch-hemoglobin-concentration-mchc">Mean Corpuscular Hemoglobin (MCH) &amp; Hemoglobin Concentration (MCHC)</h3>
+<p>Because macrocytic erythrocytes possess an expanded cytoplasmic volume, they synthesize and accommodate a greater absolute mass of cytoplasmic hemoglobin. Consequently, the <strong>MCH is elevated ($>34\text{ pg}$)</strong> concordantly with the MCV. </p>
+<p>Conversely, the <strong>MCHC typically remains within the official ASCP BOC reference interval of $32\text{--}36\text{ g/dL}$ ($320\text{--}360\text{ g/L}$)</strong>. The internal cellular concentration of hemoglobin is limited by intracellular solubility and crystallization kinetics; an MCHC exceeding $36\text{ g/dL}$ (or $>360\text{ g/L}$) is physiologically implausible and signals analytical interference rather than true cellular hyperchromia.</p>
+<h3 id="red-cell-distribution-width-rdw">Red Cell Distribution Width (RDW)</h3>
+<p>The RDW quantifies anisocytosis (variation in erythrocyte volume; official ASCP BOC reference range: $11.5\text{--}14.5\text{%}$). In megaloblastic anemia, dysplastic precursors undergo variable mitotic delays and intramedullary breakdown, generating a heterogeneous population of microcytic schistocytes, residual normocytes, and macro-ovalocytes. This broadens the erythrocyte volume histogram, generating a <strong>markedly elevated RDW ($>14.5\text{%}$)</strong>. </p>
+<p>In contrast, uncomplicated non-megaloblastic macrocytosis (e.g., alcohol-induced lipid loading) expands erythrocyte membranes uniformly, yielding a <strong>normal ($11.5\text{--}14.5\text{%}$) or only mildly elevated RDW</strong>.</p>
+<hr />
+<h2 id="pre-analytical-analytical-artifacts-resolving-spurious-macrocytosis">Pre-Analytical &amp; Analytical Artifacts: Resolving Spurious Macrocytosis</h2>
+<p>Before reporting an elevated MCV, laboratory scientists must rule out pre-analytical and analytical interferences. Automated impedance and optical counters size cells by measuring electrical resistance pulses or light displacement as cells pass single-file through an aperture. Physical clumping or rapid osmotic shifts distort these physical measurements.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="2">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2426,6 +2399,42 @@ flowchart TD
             </div>
         </div>
     </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 <h3 id="cold-agglutinin-interference">Cold Agglutinin Interference</h3>
@@ -2466,6 +2475,40 @@ flowchart TD
 <h2 id="morphologic-differentiation-on-peripheral-blood-smear">Morphologic Differentiation on Peripheral Blood Smear</h2>
 <p>Microscopic review of a Romanowsky-stained (Wright or Wright-Giemsa) peripheral blood film serves as the decisive morphological standard for classifying macrocytic anemias into <strong>megaloblastic</strong> or <strong>non-megaloblastic</strong> processes.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="3">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    A[&quot;Peripheral Blood Smear&lt;br/&gt;Review Under 100x Oil&lt;br/&gt;Immersion&quot;] --&gt; B[&quot;Systematic Dual-Lineage&lt;br/&gt;Morphologic Survey&quot;]
+    B --&gt; C[&quot;Erythroid Lineage&lt;br/&gt;Assessment&quot;]
+    B --&gt; D[&quot;Myeloid Lineage Assessment&quot;]
+    C --&gt; E{&quot;Erythrocyte Geometry &amp;&lt;br/&gt;Inclusions&quot;}
+    E --&gt;|&quot;Oval Macrocytes&lt;br/&gt;(Macro-ovalocytes) +&lt;br/&gt;Howell-Jolly Bodies&quot;| F[&quot;Megaloblastic Morphology&quot;]
+    E --&gt;|&quot;Round Macrocytes + Target&lt;br/&gt;Cells (Codocytes) /&lt;br/&gt;Acanthocytes&quot;| G[&quot;Non-Megaloblastic&lt;br/&gt;Morphology&quot;]
+    D --&gt; H{&quot;Neutrophil Lobulation&lt;br/&gt;(Count 100 PMNs)&quot;}
+    H --&gt;|&quot;&gt;= 1 Neutrophil with &gt;= 6&lt;br/&gt;Lobes OR &gt;= 5% with 5&lt;br/&gt;Lobes&quot;| F
+    H --&gt;|&quot;Normal Segmentation:&lt;br/&gt;Strictly 3–4 Lobes&lt;br/&gt;(Neutrophils 50–70%)&quot;| G" data-original-code="flowchart TD
+    A[&quot;Peripheral Blood Smear&lt;br/&gt;Review Under 100x Oil&lt;br/&gt;Immersion&quot;] --&gt; B[&quot;Systematic Dual-Lineage&lt;br/&gt;Morphologic Survey&quot;]
+    B --&gt; C[&quot;Erythroid Lineage&lt;br/&gt;Assessment&quot;]
+    B --&gt; D[&quot;Myeloid Lineage Assessment&quot;]
+    C --&gt; E{&quot;Erythrocyte Geometry &amp;&lt;br/&gt;Inclusions&quot;}
+    E --&gt;|&quot;Oval Macrocytes&lt;br/&gt;(Macro-ovalocytes) +&lt;br/&gt;Howell-Jolly Bodies&quot;| F[&quot;Megaloblastic Morphology&quot;]
+    E --&gt;|&quot;Round Macrocytes + Target&lt;br/&gt;Cells (Codocytes) /&lt;br/&gt;Acanthocytes&quot;| G[&quot;Non-Megaloblastic&lt;br/&gt;Morphology&quot;]
+    D --&gt; H{&quot;Neutrophil Lobulation&lt;br/&gt;(Count 100 PMNs)&quot;}
+    H --&gt;|&quot;&gt;= 1 Neutrophil with &gt;= 6&lt;br/&gt;Lobes OR &gt;= 5% with 5&lt;br/&gt;Lobes&quot;| F
+    H --&gt;|&quot;Normal Segmentation:&lt;br/&gt;Strictly 3–4 Lobes&lt;br/&gt;(Neutrophils 50–70%)&quot;| G" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    A["Peripheral Blood Smear<br/>Review Under 100x Oil<br/>Immersion"] --> B["Systematic Dual-Lineage<br/>Morphologic Survey"]
+    B --> C["Erythroid Lineage<br/>Assessment"]
+    B --> D["Myeloid Lineage Assessment"]
+    C --> E{"Erythrocyte Geometry &<br/>Inclusions"}
+    E -->|"Oval Macrocytes<br/>(Macro-ovalocytes) +<br/>Howell-Jolly Bodies"| F["Megaloblastic Morphology"]
+    E -->|"Round Macrocytes + Target<br/>Cells (Codocytes) /<br/>Acanthocytes"| G["Non-Megaloblastic<br/>Morphology"]
+    D --> H{"Neutrophil Lobulation<br/>(Count 100 PMNs)"}
+    H -->|">= 1 Neutrophil with >= 6<br/>Lobes OR >= 5% with 5<br/>Lobes"| F
+    H -->|"Normal Segmentation:<br/>Strictly 3–4 Lobes<br/>(Neutrophils 50–70%)"| G
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2502,40 +2545,6 @@ flowchart TD
             </button>
         </div>
     </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    A[&quot;Peripheral Blood Smear&lt;br/&gt;Review Under 100x Oil&lt;br/&gt;Immersion&quot;] --&gt; B[&quot;Systematic Dual-Lineage&lt;br/&gt;Morphologic Survey&quot;]
-    B --&gt; C[&quot;Erythroid Lineage&lt;br/&gt;Assessment&quot;]
-    B --&gt; D[&quot;Myeloid Lineage Assessment&quot;]
-    C --&gt; E{&quot;Erythrocyte Geometry &amp;&lt;br/&gt;Inclusions&quot;}
-    E --&gt;|&quot;Oval Macrocytes&lt;br/&gt;(Macro-ovalocytes) +&lt;br/&gt;Howell-Jolly Bodies&quot;| F[&quot;Megaloblastic Morphology&quot;]
-    E --&gt;|&quot;Round Macrocytes + Target&lt;br/&gt;Cells (Codocytes) /&lt;br/&gt;Acanthocytes&quot;| G[&quot;Non-Megaloblastic&lt;br/&gt;Morphology&quot;]
-    D --&gt; H{&quot;Neutrophil Lobulation&lt;br/&gt;(Count 100 PMNs)&quot;}
-    H --&gt;|&quot;&gt;= 1 Neutrophil with &gt;= 6&lt;br/&gt;Lobes OR &gt;= 5% with 5&lt;br/&gt;Lobes&quot;| F
-    H --&gt;|&quot;Normal Segmentation:&lt;br/&gt;Strictly 3–4 Lobes&lt;br/&gt;(Neutrophils 50–70%)&quot;| G" data-original-code="flowchart TD
-    A[&quot;Peripheral Blood Smear&lt;br/&gt;Review Under 100x Oil&lt;br/&gt;Immersion&quot;] --&gt; B[&quot;Systematic Dual-Lineage&lt;br/&gt;Morphologic Survey&quot;]
-    B --&gt; C[&quot;Erythroid Lineage&lt;br/&gt;Assessment&quot;]
-    B --&gt; D[&quot;Myeloid Lineage Assessment&quot;]
-    C --&gt; E{&quot;Erythrocyte Geometry &amp;&lt;br/&gt;Inclusions&quot;}
-    E --&gt;|&quot;Oval Macrocytes&lt;br/&gt;(Macro-ovalocytes) +&lt;br/&gt;Howell-Jolly Bodies&quot;| F[&quot;Megaloblastic Morphology&quot;]
-    E --&gt;|&quot;Round Macrocytes + Target&lt;br/&gt;Cells (Codocytes) /&lt;br/&gt;Acanthocytes&quot;| G[&quot;Non-Megaloblastic&lt;br/&gt;Morphology&quot;]
-    D --&gt; H{&quot;Neutrophil Lobulation&lt;br/&gt;(Count 100 PMNs)&quot;}
-    H --&gt;|&quot;&gt;= 1 Neutrophil with &gt;= 6&lt;br/&gt;Lobes OR &gt;= 5% with 5&lt;br/&gt;Lobes&quot;| F
-    H --&gt;|&quot;Normal Segmentation:&lt;br/&gt;Strictly 3–4 Lobes&lt;br/&gt;(Neutrophils 50–70%)&quot;| G" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    A["Peripheral Blood Smear<br/>Review Under 100x Oil<br/>Immersion"] --> B["Systematic Dual-Lineage<br/>Morphologic Survey"]
-    B --> C["Erythroid Lineage<br/>Assessment"]
-    B --> D["Myeloid Lineage Assessment"]
-    C --> E{"Erythrocyte Geometry &<br/>Inclusions"}
-    E -->|"Oval Macrocytes<br/>(Macro-ovalocytes) +<br/>Howell-Jolly Bodies"| F["Megaloblastic Morphology"]
-    E -->|"Round Macrocytes + Target<br/>Cells (Codocytes) /<br/>Acanthocytes"| G["Non-Megaloblastic<br/>Morphology"]
-    D --> H{"Neutrophil Lobulation<br/>(Count 100 PMNs)"}
-    H -->|">= 1 Neutrophil with >= 6<br/>Lobes OR >= 5% with 5<br/>Lobes"| F
-    H -->|"Normal Segmentation:<br/>Strictly 3–4 Lobes<br/>(Neutrophils 50–70%)"| G
-            </div>
-        </div>
-    </div>
 </div>
 
 <h3 id="morphological-hallmarks-of-megaloblastic-anemia">Morphological Hallmarks of Megaloblastic Anemia</h3>
@@ -2570,39 +2579,6 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="1">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -2655,6 +2631,39 @@ flowchart TD
 </table>
         </div>
     </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 
@@ -2662,42 +2671,6 @@ flowchart TD
 <h2 id="erythropoietic-dynamics-reticulocyte-analysis">Erythropoietic Dynamics &amp; Reticulocyte Analysis</h2>
 <p>Reticulocytes are immature, non-nucleated erythrocytes recently released from the bone marrow that retain residual polyribosomal RNA and mitochondria. Quantifying and characterizing these cells allows the clinical laboratory to distinguish between <strong>marrow production failure (hypoproliferation/ineffective erythropoiesis)</strong> and <strong>accelerated peripheral consumption or loss (hyperproliferation)</strong>.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="4">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -2736,6 +2709,42 @@ flowchart LR
     F --> I["HFR: High Fluorescence<br/>(Shift Retics)"]
     H & I --> J["Immature Reticulocyte<br/>Fraction: IRF = MFR + HFR"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -2789,42 +2798,6 @@ flowchart LR
 <h3 id="manual-reticulocyte-enumeration-via-the-miller-disc-method">Manual Reticulocyte Enumeration via the Miller Disc Method</h3>
 <p>When automated flow cytometric platforms require manual verification or are unavailable, supravital staining using brightfield microscopy and a calibrated ocular reticle is performed.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="5">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2887,6 +2860,42 @@ flowchart TD
         J --> K["Calculate Reticulocyte<br/>Production Index (RPI)"]
     end
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -3092,6 +3101,36 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="2">
+    <div class="table-expanded-view">
+        <div class="table-expanded-inner">
+            <table>
+<thead>
+<tr>
+<th style="text-align: left;">Patient Hematocrit (Hct %) <em>(Ref: $35\text{--}50\text{%}$)</em></th>
+<th style="text-align: left;">Shift Reticulocyte Maturation Time (Correction Factor)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>$40\text{%}\text{ to }45\text{%}$</strong></td>
+<td style="text-align: left;">$1.0\text{ day}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>$30\text{%}\text{ to }39\text{%}$</strong></td>
+<td style="text-align: left;">$1.5\text{ days}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>$20\text{%}\text{ to }29\text{%}$</strong></td>
+<td style="text-align: left;">$2.0\text{ days}$</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>$<20\text{%}$</strong></td>
+<td style="text-align: left;">$2.5\text{ days}$</td>
+</tr>
+</tbody>
+</table>
+        </div>
+    </div>
     <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
         <div class="table-mini-graphic" title="Table preview">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3125,76 +3164,10 @@ flowchart TD
             </button>
         </div>
     </div>
-    <div class="table-expanded-view">
-        <div class="table-expanded-inner">
-            <table>
-<thead>
-<tr>
-<th style="text-align: left;">Patient Hematocrit (Hct %) <em>(Ref: $35\text{--}50\text{%}$)</em></th>
-<th style="text-align: left;">Shift Reticulocyte Maturation Time (Correction Factor)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>$40\text{%}\text{ to }45\text{%}$</strong></td>
-<td style="text-align: left;">$1.0\text{ day}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>$30\text{%}\text{ to }39\text{%}$</strong></td>
-<td style="text-align: left;">$1.5\text{ days}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>$20\text{%}\text{ to }29\text{%}$</strong></td>
-<td style="text-align: left;">$2.0\text{ days}$</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>$<20\text{%}$</strong></td>
-<td style="text-align: left;">$2.5\text{ days}$</td>
-</tr>
-</tbody>
-</table>
-        </div>
-    </div>
 </div>
 
 
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="6">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3226,27 +3199,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h4 id="diagnostic-application-of-erythropoietic-dynamics">Diagnostic Application of Erythropoietic Dynamics</h4>
-<ul>
-<li><strong>Hypoproliferative Pattern ($\text{RPI} < 2.0$):</strong> Indicates an inadequate, suppressed, or ineffective marrow response. In megaloblastic anemia, although the bone marrow shows marked erythroid hyperplasia, precursors undergo intramedullary destruction due to defective DNA replication. This produces a characteristically low or inappropriately normal ARC ($< 115 \times 10^3/\mu\text{L}$ [$< 115 \times 10^9\text{/L}$]) and an $\text{RPI} < 2.0$.</li>
-<li><strong>Hyperproliferative Pattern ($\text{RPI} > 3.0$):</strong> Indicates an appropriately responding bone marrow. When seen with an elevated MCV ($>100\text{ fL}$), the macrocytosis is driven by large, RNA-rich shift reticulocytes rather than a defect in DNA synthesis (accompanied by $\text{ARC} > 115 \times 10^3/\mu\text{L}$ [$> 115 \times 10^9\text{/L}$]), directing the workup toward acute blood loss or active peripheral hemolysis.</li>
-</ul>
-<hr />
-<h1 id="reflex-confirmatory-testing-pathways">Reflex &amp; Confirmatory Testing Pathways</h1>
-<h2 id="learning-objectives_1">Learning Objectives</h2>
-<ul>
-<li>Construct a sequential reflex testing cascade initiated by an automated finding of an elevated MCV ($>100\text{ fL}$) and confirmed peripheral blood smear morphology.</li>
-<li>Differentiate Vitamin B12 and folate deficiencies by evaluating the intracellular pathways for Methylmalonyl-CoA mutase and Methionine synthase.</li>
-<li>Interpret the combined patterns of serum Vitamin B12, serum folate, methylmalonic acid (MMA), and homocysteine assays to resolve indeterminate or borderline results.</li>
-<li>Contrast the clinical sensitivity and specificity of Intrinsic Factor Blocking Antibodies (IFBA) and Anti-Parietal Cell Antibodies (APCA) in the diagnosis of autoimmune pernicious anemia.</li>
-<li>Coordinate inter-laboratory referrals across Clinical Chemistry, Clinical Immunology, Reference Mass Spectrometry, and Multidisciplinary Hematopathology to identify the etiology of macrocytic anemias.</li>
-</ul>
-<hr />
-<h2 id="algorithmic-decision-cascade-for-macrocytic-anemias">Algorithmic Decision Cascade for Macrocytic Anemias</h2>
-<p>An automated flag of $\text{MCV} > 100\text{ fL}$ initiates a tiered reflex algorithm that incorporates quantitative indices, peripheral blood smear morphology, and ancillary laboratory disciplines.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="7">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3283,6 +3235,27 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h4 id="diagnostic-application-of-erythropoietic-dynamics">Diagnostic Application of Erythropoietic Dynamics</h4>
+<ul>
+<li><strong>Hypoproliferative Pattern ($\text{RPI} < 2.0$):</strong> Indicates an inadequate, suppressed, or ineffective marrow response. In megaloblastic anemia, although the bone marrow shows marked erythroid hyperplasia, precursors undergo intramedullary destruction due to defective DNA replication. This produces a characteristically low or inappropriately normal ARC ($< 115 \times 10^3/\mu\text{L}$ [$< 115 \times 10^9\text{/L}$]) and an $\text{RPI} < 2.0$.</li>
+<li><strong>Hyperproliferative Pattern ($\text{RPI} > 3.0$):</strong> Indicates an appropriately responding bone marrow. When seen with an elevated MCV ($>100\text{ fL}$), the macrocytosis is driven by large, RNA-rich shift reticulocytes rather than a defect in DNA synthesis (accompanied by $\text{ARC} > 115 \times 10^3/\mu\text{L}$ [$> 115 \times 10^9\text{/L}$]), directing the workup toward acute blood loss or active peripheral hemolysis.</li>
+</ul>
+<hr />
+<h1 id="reflex-confirmatory-testing-pathways">Reflex &amp; Confirmatory Testing Pathways</h1>
+<h2 id="learning-objectives_1">Learning Objectives</h2>
+<ul>
+<li>Construct a sequential reflex testing cascade initiated by an automated finding of an elevated MCV ($>100\text{ fL}$) and confirmed peripheral blood smear morphology.</li>
+<li>Differentiate Vitamin B12 and folate deficiencies by evaluating the intracellular pathways for Methylmalonyl-CoA mutase and Methionine synthase.</li>
+<li>Interpret the combined patterns of serum Vitamin B12, serum folate, methylmalonic acid (MMA), and homocysteine assays to resolve indeterminate or borderline results.</li>
+<li>Contrast the clinical sensitivity and specificity of Intrinsic Factor Blocking Antibodies (IFBA) and Anti-Parietal Cell Antibodies (APCA) in the diagnosis of autoimmune pernicious anemia.</li>
+<li>Coordinate inter-laboratory referrals across Clinical Chemistry, Clinical Immunology, Reference Mass Spectrometry, and Multidisciplinary Hematopathology to identify the etiology of macrocytic anemias.</li>
+</ul>
+<hr />
+<h2 id="algorithmic-decision-cascade-for-macrocytic-anemias">Algorithmic Decision Cascade for Macrocytic Anemias</h2>
+<p>An automated flag of $\text{MCV} > 100\text{ fL}$ initiates a tiered reflex algorithm that incorporates quantitative indices, peripheral blood smear morphology, and ancillary laboratory disciplines.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="7">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3356,12 +3329,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h2 id="biochemical-metabolic-confirmation-the-megaloblastic-pathway">Biochemical &amp; Metabolic Confirmation: The Megaloblastic Pathway</h2>
-<p>Serum measurements of Vitamin B12 and folate can yield ambiguous, "low-normal" borderline results that do not reliably reflect tissue-level metabolic status. In these cases, functional testing of downstream enzymatic intermediates confirms or excludes deficiency.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="8">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3398,6 +3365,12 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h2 id="biochemical-metabolic-confirmation-the-megaloblastic-pathway">Biochemical &amp; Metabolic Confirmation: The Megaloblastic Pathway</h2>
+<p>Serum measurements of Vitamin B12 and folate can yield ambiguous, "low-normal" borderline results that do not reliably reflect tissue-level metabolic status. In these cases, functional testing of downstream enzymatic intermediates confirms or excludes deficiency.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="8">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3441,6 +3414,42 @@ flowchart TD
             </div>
         </div>
     </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 <h3 id="intracellular-enzymatic-pathways">Intracellular Enzymatic Pathways</h3>
@@ -3462,39 +3471,6 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="3">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -3533,6 +3509,39 @@ flowchart TD
 </table>
         </div>
     </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 
@@ -3548,6 +3557,25 @@ flowchart TD
 <h2 id="autoantibody-serology-pernicious-anemia-evaluation">Autoantibody Serology &amp; Pernicious Anemia Evaluation</h2>
 <p>Pernicious anemia—an autoimmune chronic gastritis resulting in loss of intrinsic factor production—is the primary cause of Vitamin B12 malabsorption in adult populations. Once Vitamin B12 deficiency is established, serological testing is indicated to identify an autoimmune etiology.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="9">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart LR
+    AutoimmuneTrigger[&quot;Autoimmune Gastritis&lt;br/&gt;(Anti-Parietal Cell&lt;br/&gt;Antibodies)&quot;] --&gt; ParietalDestruction[&quot;Destruction of Oxyntic&lt;br/&gt;Mucosa &amp; Parietal Cells&quot;]
+    ParietalDestruction --&gt; SecretionFailure[&quot;Achlorhydria &amp; Deficient&lt;br/&gt;Intrinsic Factor Secretion&quot;]
+    SecretionFailure --&gt; BindingInhibition[&quot;Intrinsic Factor Blocking&lt;br/&gt;Antibodies (IFBA)&quot;]
+    BindingInhibition --&gt; Malabsorption[&quot;Inability to Form B12-IF&lt;br/&gt;Complex -&amp;gt; Terminal Ileal&lt;br/&gt;Malabsorption&quot;]" data-original-code="flowchart LR
+    AutoimmuneTrigger[&quot;Autoimmune Gastritis&lt;br/&gt;(Anti-Parietal Cell&lt;br/&gt;Antibodies)&quot;] --&gt; ParietalDestruction[&quot;Destruction of Oxyntic&lt;br/&gt;Mucosa &amp; Parietal Cells&quot;]
+    ParietalDestruction --&gt; SecretionFailure[&quot;Achlorhydria &amp; Deficient&lt;br/&gt;Intrinsic Factor Secretion&quot;]
+    SecretionFailure --&gt; BindingInhibition[&quot;Intrinsic Factor Blocking&lt;br/&gt;Antibodies (IFBA)&quot;]
+    BindingInhibition --&gt; Malabsorption[&quot;Inability to Form B12-IF&lt;br/&gt;Complex -&amp;gt; Terminal Ileal&lt;br/&gt;Malabsorption&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart LR
+    AutoimmuneTrigger["Autoimmune Gastritis<br/>(Anti-Parietal Cell<br/>Antibodies)"] --> ParietalDestruction["Destruction of Oxyntic<br/>Mucosa & Parietal Cells"]
+    ParietalDestruction --> SecretionFailure["Achlorhydria & Deficient<br/>Intrinsic Factor Secretion"]
+    SecretionFailure --> BindingInhibition["Intrinsic Factor Blocking<br/>Antibodies (IFBA)"]
+    BindingInhibition --> Malabsorption["Inability to Form B12-IF<br/>Complex -&gt; Terminal Ileal<br/>Malabsorption"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3584,25 +3612,6 @@ flowchart TD
             </button>
         </div>
     </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart LR
-    AutoimmuneTrigger[&quot;Autoimmune Gastritis&lt;br/&gt;(Anti-Parietal Cell&lt;br/&gt;Antibodies)&quot;] --&gt; ParietalDestruction[&quot;Destruction of Oxyntic&lt;br/&gt;Mucosa &amp; Parietal Cells&quot;]
-    ParietalDestruction --&gt; SecretionFailure[&quot;Achlorhydria &amp; Deficient&lt;br/&gt;Intrinsic Factor Secretion&quot;]
-    SecretionFailure --&gt; BindingInhibition[&quot;Intrinsic Factor Blocking&lt;br/&gt;Antibodies (IFBA)&quot;]
-    BindingInhibition --&gt; Malabsorption[&quot;Inability to Form B12-IF&lt;br/&gt;Complex -&amp;gt; Terminal Ileal&lt;br/&gt;Malabsorption&quot;]" data-original-code="flowchart LR
-    AutoimmuneTrigger[&quot;Autoimmune Gastritis&lt;br/&gt;(Anti-Parietal Cell&lt;br/&gt;Antibodies)&quot;] --&gt; ParietalDestruction[&quot;Destruction of Oxyntic&lt;br/&gt;Mucosa &amp; Parietal Cells&quot;]
-    ParietalDestruction --&gt; SecretionFailure[&quot;Achlorhydria &amp; Deficient&lt;br/&gt;Intrinsic Factor Secretion&quot;]
-    SecretionFailure --&gt; BindingInhibition[&quot;Intrinsic Factor Blocking&lt;br/&gt;Antibodies (IFBA)&quot;]
-    BindingInhibition --&gt; Malabsorption[&quot;Inability to Form B12-IF&lt;br/&gt;Complex -&amp;gt; Terminal Ileal&lt;br/&gt;Malabsorption&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart LR
-    AutoimmuneTrigger["Autoimmune Gastritis<br/>(Anti-Parietal Cell<br/>Antibodies)"] --> ParietalDestruction["Destruction of Oxyntic<br/>Mucosa & Parietal Cells"]
-    ParietalDestruction --> SecretionFailure["Achlorhydria & Deficient<br/>Intrinsic Factor Secretion"]
-    SecretionFailure --> BindingInhibition["Intrinsic Factor Blocking<br/>Antibodies (IFBA)"]
-    BindingInhibition --> Malabsorption["Inability to Form B12-IF<br/>Complex -&gt; Terminal Ileal<br/>Malabsorption"]
-            </div>
-        </div>
-    </div>
 </div>
 
 <h3 id="autoantibody-performance-characteristics">Autoantibody Performance Characteristics</h3>
@@ -3623,6 +3632,37 @@ flowchart LR
 
 
 <div class="table-wrapper is-collapsed" data-table-index="4">
+    <div class="table-expanded-view">
+        <div class="table-expanded-inner">
+            <table>
+<thead>
+<tr>
+<th style="text-align: left;">Serological Autoantibody</th>
+<th style="text-align: left;">Primary Antigen Target</th>
+<th style="text-align: left;">Clinical Sensitivity</th>
+<th style="text-align: left;">Clinical Specificity</th>
+<th style="text-align: left;">Interpretive Role in Clinical Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Intrinsic Factor Blocking Antibody (IFBA)</strong></td>
+<td style="text-align: left;">Vitamin B12-binding site of Intrinsic Factor</td>
+<td style="text-align: left;">$50\text{%}\text{--}70\text{%}$ (Moderate)</td>
+<td style="text-align: left;">$\approx 99\text{%}$ (Very High)</td>
+<td style="text-align: left;"><strong>Confirmatory:</strong> Positive test establishes diagnosis of Pernicious Anemia. Negative test does not rule it out.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Anti-Parietal Cell Antibody (APCA)</strong></td>
+<td style="text-align: left;">Gastric parietal cell $\text{H}^+/\text{K}^+$-ATPase pump</td>
+<td style="text-align: left;">$\approx 90\text{%}$ (High)</td>
+<td style="text-align: left;">$50\text{%}\text{--}70\text{%}$ (Low-Moderate)</td>
+<td style="text-align: left;"><strong>Screening / Negative Predictor:</strong> Highly sensitive for autoimmune gastritis; non-specific; negative test argues strongly against Pernicious Anemia.</td>
+</tr>
+</tbody>
+</table>
+        </div>
+    </div>
     <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
         <div class="table-mini-graphic" title="Table preview">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3654,37 +3694,6 @@ flowchart LR
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="table-expanded-view">
-        <div class="table-expanded-inner">
-            <table>
-<thead>
-<tr>
-<th style="text-align: left;">Serological Autoantibody</th>
-<th style="text-align: left;">Primary Antigen Target</th>
-<th style="text-align: left;">Clinical Sensitivity</th>
-<th style="text-align: left;">Clinical Specificity</th>
-<th style="text-align: left;">Interpretive Role in Clinical Practice</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Intrinsic Factor Blocking Antibody (IFBA)</strong></td>
-<td style="text-align: left;">Vitamin B12-binding site of Intrinsic Factor</td>
-<td style="text-align: left;">$50\text{%}\text{--}70\text{%}$ (Moderate)</td>
-<td style="text-align: left;">$\approx 99\text{%}$ (Very High)</td>
-<td style="text-align: left;"><strong>Confirmatory:</strong> Positive test establishes diagnosis of Pernicious Anemia. Negative test does not rule it out.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Anti-Parietal Cell Antibody (APCA)</strong></td>
-<td style="text-align: left;">Gastric parietal cell $\text{H}^+/\text{K}^+$-ATPase pump</td>
-<td style="text-align: left;">$\approx 90\text{%}$ (High)</td>
-<td style="text-align: left;">$50\text{%}\text{--}70\text{%}$ (Low-Moderate)</td>
-<td style="text-align: left;"><strong>Screening / Negative Predictor:</strong> Highly sensitive for autoimmune gastritis; non-specific; negative test argues strongly against Pernicious Anemia.</td>
-</tr>
-</tbody>
-</table>
         </div>
     </div>
 </div>
@@ -3727,6 +3736,40 @@ flowchart LR
 <li><strong>Diagnostic Referrals (Multidisciplinary Specialized Sections):</strong></li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="10">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    BM_Proc[&quot;Bone Marrow Sampling&lt;br/&gt;(Aspirate &amp; Trephine Core&lt;br/&gt;Biopsy)&quot;] --&gt; Routing{&quot;Specimen Partitioning &amp;&lt;br/&gt;Laboratory Routing&quot;}
+    Routing --&gt;|&quot;Aspirate Smears &amp; Core&lt;br/&gt;Biopsy&quot;| HemPath[&quot;Hematopathology Bench:&lt;br/&gt;Wright-Giemsa, H&amp;E, Iron&lt;br/&gt;(Perls) Stain&quot;]
+    Routing --&gt;|&quot;Heparinized Liquid&lt;br/&gt;Aspirate&quot;| FlowLab[&quot;Flow Cytometry:&lt;br/&gt;Immunophenotyping (CD34,&lt;br/&gt;CD117, Lineage Markers)&quot;]
+    Routing --&gt;|&quot;Sodium Heparin Aspirate&quot;| CytoLab[&quot;Cytogenetics: Karyotype &amp;&lt;br/&gt;FISH (del(5q), -7/del(7q),&lt;br/&gt;+8, del(20q))&quot;]
+    Routing --&gt;|&quot;EDTA Aspirate / Whole&lt;br/&gt;Blood&quot;| MolLab[&quot;Molecular Diagnostics:&lt;br/&gt;Targeted Myeloid NGS Panel&lt;br/&gt;(SF3B1, TET2, ASXL1, TP53)&quot;]
+    HemPath --&gt; DiagMDS[&quot;Morphologic&lt;br/&gt;Dyserythropoiesis, Ring&lt;br/&gt;Sideroblasts (MDS) vs.&lt;br/&gt;Hypocellularity (Aplastic&lt;br/&gt;Anemia)&quot;]
+    FlowLab --&gt; DiagBlast[&quot;Quantify Aberrant Blasts,&lt;br/&gt;Lineage Derailment&quot;]
+    CytoLab --&gt; DiagClonality[&quot;Clonal Chromosomal&lt;br/&gt;Alterations &amp; Risk&lt;br/&gt;Stratification&quot;]
+    MolLab --&gt; DiagMutations[&quot;Identify Somatic Clonal&lt;br/&gt;Driver Mutations&quot;]" data-original-code="flowchart TD
+    BM_Proc[&quot;Bone Marrow Sampling&lt;br/&gt;(Aspirate &amp; Trephine Core&lt;br/&gt;Biopsy)&quot;] --&gt; Routing{&quot;Specimen Partitioning &amp;&lt;br/&gt;Laboratory Routing&quot;}
+    Routing --&gt;|&quot;Aspirate Smears &amp; Core&lt;br/&gt;Biopsy&quot;| HemPath[&quot;Hematopathology Bench:&lt;br/&gt;Wright-Giemsa, H&amp;E, Iron&lt;br/&gt;(Perls) Stain&quot;]
+    Routing --&gt;|&quot;Heparinized Liquid&lt;br/&gt;Aspirate&quot;| FlowLab[&quot;Flow Cytometry:&lt;br/&gt;Immunophenotyping (CD34,&lt;br/&gt;CD117, Lineage Markers)&quot;]
+    Routing --&gt;|&quot;Sodium Heparin Aspirate&quot;| CytoLab[&quot;Cytogenetics: Karyotype &amp;&lt;br/&gt;FISH (del(5q), -7/del(7q),&lt;br/&gt;+8, del(20q))&quot;]
+    Routing --&gt;|&quot;EDTA Aspirate / Whole&lt;br/&gt;Blood&quot;| MolLab[&quot;Molecular Diagnostics:&lt;br/&gt;Targeted Myeloid NGS Panel&lt;br/&gt;(SF3B1, TET2, ASXL1, TP53)&quot;]
+    HemPath --&gt; DiagMDS[&quot;Morphologic&lt;br/&gt;Dyserythropoiesis, Ring&lt;br/&gt;Sideroblasts (MDS) vs.&lt;br/&gt;Hypocellularity (Aplastic&lt;br/&gt;Anemia)&quot;]
+    FlowLab --&gt; DiagBlast[&quot;Quantify Aberrant Blasts,&lt;br/&gt;Lineage Derailment&quot;]
+    CytoLab --&gt; DiagClonality[&quot;Clonal Chromosomal&lt;br/&gt;Alterations &amp; Risk&lt;br/&gt;Stratification&quot;]
+    MolLab --&gt; DiagMutations[&quot;Identify Somatic Clonal&lt;br/&gt;Driver Mutations&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    BM_Proc["Bone Marrow Sampling<br/>(Aspirate & Trephine Core<br/>Biopsy)"] --> Routing{"Specimen Partitioning &<br/>Laboratory Routing"}
+    Routing -->|"Aspirate Smears & Core<br/>Biopsy"| HemPath["Hematopathology Bench:<br/>Wright-Giemsa, H&E, Iron<br/>(Perls) Stain"]
+    Routing -->|"Heparinized Liquid<br/>Aspirate"| FlowLab["Flow Cytometry:<br/>Immunophenotyping (CD34,<br/>CD117, Lineage Markers)"]
+    Routing -->|"Sodium Heparin Aspirate"| CytoLab["Cytogenetics: Karyotype &<br/>FISH (del(5q), -7/del(7q),<br/>+8, del(20q))"]
+    Routing -->|"EDTA Aspirate / Whole<br/>Blood"| MolLab["Molecular Diagnostics:<br/>Targeted Myeloid NGS Panel<br/>(SF3B1, TET2, ASXL1, TP53)"]
+    HemPath --> DiagMDS["Morphologic<br/>Dyserythropoiesis, Ring<br/>Sideroblasts (MDS) vs.<br/>Hypocellularity (Aplastic<br/>Anemia)"]
+    FlowLab --> DiagBlast["Quantify Aberrant Blasts,<br/>Lineage Derailment"]
+    CytoLab --> DiagClonality["Clonal Chromosomal<br/>Alterations & Risk<br/>Stratification"]
+    MolLab --> DiagMutations["Identify Somatic Clonal<br/>Driver Mutations"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3763,40 +3806,6 @@ flowchart LR
             </button>
         </div>
     </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    BM_Proc[&quot;Bone Marrow Sampling&lt;br/&gt;(Aspirate &amp; Trephine Core&lt;br/&gt;Biopsy)&quot;] --&gt; Routing{&quot;Specimen Partitioning &amp;&lt;br/&gt;Laboratory Routing&quot;}
-    Routing --&gt;|&quot;Aspirate Smears &amp; Core&lt;br/&gt;Biopsy&quot;| HemPath[&quot;Hematopathology Bench:&lt;br/&gt;Wright-Giemsa, H&amp;E, Iron&lt;br/&gt;(Perls) Stain&quot;]
-    Routing --&gt;|&quot;Heparinized Liquid&lt;br/&gt;Aspirate&quot;| FlowLab[&quot;Flow Cytometry:&lt;br/&gt;Immunophenotyping (CD34,&lt;br/&gt;CD117, Lineage Markers)&quot;]
-    Routing --&gt;|&quot;Sodium Heparin Aspirate&quot;| CytoLab[&quot;Cytogenetics: Karyotype &amp;&lt;br/&gt;FISH (del(5q), -7/del(7q),&lt;br/&gt;+8, del(20q))&quot;]
-    Routing --&gt;|&quot;EDTA Aspirate / Whole&lt;br/&gt;Blood&quot;| MolLab[&quot;Molecular Diagnostics:&lt;br/&gt;Targeted Myeloid NGS Panel&lt;br/&gt;(SF3B1, TET2, ASXL1, TP53)&quot;]
-    HemPath --&gt; DiagMDS[&quot;Morphologic&lt;br/&gt;Dyserythropoiesis, Ring&lt;br/&gt;Sideroblasts (MDS) vs.&lt;br/&gt;Hypocellularity (Aplastic&lt;br/&gt;Anemia)&quot;]
-    FlowLab --&gt; DiagBlast[&quot;Quantify Aberrant Blasts,&lt;br/&gt;Lineage Derailment&quot;]
-    CytoLab --&gt; DiagClonality[&quot;Clonal Chromosomal&lt;br/&gt;Alterations &amp; Risk&lt;br/&gt;Stratification&quot;]
-    MolLab --&gt; DiagMutations[&quot;Identify Somatic Clonal&lt;br/&gt;Driver Mutations&quot;]" data-original-code="flowchart TD
-    BM_Proc[&quot;Bone Marrow Sampling&lt;br/&gt;(Aspirate &amp; Trephine Core&lt;br/&gt;Biopsy)&quot;] --&gt; Routing{&quot;Specimen Partitioning &amp;&lt;br/&gt;Laboratory Routing&quot;}
-    Routing --&gt;|&quot;Aspirate Smears &amp; Core&lt;br/&gt;Biopsy&quot;| HemPath[&quot;Hematopathology Bench:&lt;br/&gt;Wright-Giemsa, H&amp;E, Iron&lt;br/&gt;(Perls) Stain&quot;]
-    Routing --&gt;|&quot;Heparinized Liquid&lt;br/&gt;Aspirate&quot;| FlowLab[&quot;Flow Cytometry:&lt;br/&gt;Immunophenotyping (CD34,&lt;br/&gt;CD117, Lineage Markers)&quot;]
-    Routing --&gt;|&quot;Sodium Heparin Aspirate&quot;| CytoLab[&quot;Cytogenetics: Karyotype &amp;&lt;br/&gt;FISH (del(5q), -7/del(7q),&lt;br/&gt;+8, del(20q))&quot;]
-    Routing --&gt;|&quot;EDTA Aspirate / Whole&lt;br/&gt;Blood&quot;| MolLab[&quot;Molecular Diagnostics:&lt;br/&gt;Targeted Myeloid NGS Panel&lt;br/&gt;(SF3B1, TET2, ASXL1, TP53)&quot;]
-    HemPath --&gt; DiagMDS[&quot;Morphologic&lt;br/&gt;Dyserythropoiesis, Ring&lt;br/&gt;Sideroblasts (MDS) vs.&lt;br/&gt;Hypocellularity (Aplastic&lt;br/&gt;Anemia)&quot;]
-    FlowLab --&gt; DiagBlast[&quot;Quantify Aberrant Blasts,&lt;br/&gt;Lineage Derailment&quot;]
-    CytoLab --&gt; DiagClonality[&quot;Clonal Chromosomal&lt;br/&gt;Alterations &amp; Risk&lt;br/&gt;Stratification&quot;]
-    MolLab --&gt; DiagMutations[&quot;Identify Somatic Clonal&lt;br/&gt;Driver Mutations&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    BM_Proc["Bone Marrow Sampling<br/>(Aspirate & Trephine Core<br/>Biopsy)"] --> Routing{"Specimen Partitioning &<br/>Laboratory Routing"}
-    Routing -->|"Aspirate Smears & Core<br/>Biopsy"| HemPath["Hematopathology Bench:<br/>Wright-Giemsa, H&E, Iron<br/>(Perls) Stain"]
-    Routing -->|"Heparinized Liquid<br/>Aspirate"| FlowLab["Flow Cytometry:<br/>Immunophenotyping (CD34,<br/>CD117, Lineage Markers)"]
-    Routing -->|"Sodium Heparin Aspirate"| CytoLab["Cytogenetics: Karyotype &<br/>FISH (del(5q), -7/del(7q),<br/>+8, del(20q))"]
-    Routing -->|"EDTA Aspirate / Whole<br/>Blood"| MolLab["Molecular Diagnostics:<br/>Targeted Myeloid NGS Panel<br/>(SF3B1, TET2, ASXL1, TP53)"]
-    HemPath --> DiagMDS["Morphologic<br/>Dyserythropoiesis, Ring<br/>Sideroblasts (MDS) vs.<br/>Hypocellularity (Aplastic<br/>Anemia)"]
-    FlowLab --> DiagBlast["Quantify Aberrant Blasts,<br/>Lineage Derailment"]
-    CytoLab --> DiagClonality["Clonal Chromosomal<br/>Alterations & Risk<br/>Stratification"]
-    MolLab --> DiagMutations["Identify Somatic Clonal<br/>Driver Mutations"]
-            </div>
-        </div>
-    </div>
 </div>
 
 <hr />
@@ -3805,39 +3814,6 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="5">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -3930,6 +3906,39 @@ flowchart TD
 </tr>
 </tbody>
 </table>
+        </div>
+    </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -4185,78 +4194,47 @@ flowchart TD
             function expandFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.flowchart-header-card') || wrapper.querySelector('.flowchart-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const svg = wrapper.querySelector('.mermaid svg');
-                
-                const article = document.querySelector('.markdown-body');
-                const containerW = (article ? article.clientWidth : 0) || (wrapper.parentElement ? wrapper.parentElement.clientWidth : 0) || window.innerWidth || 800;
-                
-                let chartHeight = 0;
-                if (svg) {
-                    const vb = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width > 0 ? svg.viewBox.baseVal : null;
-                    if (vb) {
-                        chartHeight = containerW * (vb.height / vb.width);
-                    } else {
-                        const viewBoxAttr = svg.getAttribute('viewBox');
-                        if (viewBoxAttr) {
-                            const parts = viewBoxAttr.trim().split(/[\s,]+/);
-                            if (parts.length >= 4) {
-                                const vbW = parseFloat(parts[2]);
-                                const vbH = parseFloat(parts[3]);
-                                chartHeight = vbW > 0 ? containerW * (vbH / vbW) : vbH;
-                            }
-                        }
-                    }
-                    if (!chartHeight || isNaN(chartHeight)) {
-                        chartHeight = svg.getBoundingClientRect().height || svg.clientHeight || 0;
-                    }
-                }
-                if (!chartHeight) {
-                    const inner = wrapper.querySelector('.flowchart-expanded-inner') || wrapper.querySelector('.mermaid');
-                    chartHeight = inner ? (inner.scrollHeight || inner.offsetHeight || 0) : 0;
-                }
-
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (chartHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Chart exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Chart fits in window but overflows bottom: scroll south to reveal chart bottom + sequential text
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fcWrappers.forEach((wrapper) => {
@@ -4506,51 +4484,47 @@ flowchart TD
             function expandTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.table-header-card') || wrapper.querySelector('.table-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const tableEl = wrapper.querySelector('table');
-                
-                const tableHeight = tableEl ? (tableEl.scrollHeight || tableEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (tableHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Table exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Table fits in window but overflows bottom: scroll south
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             tblWrappers.forEach((wrapper) => {
@@ -4584,19 +4558,26 @@ flowchart TD
             function expandFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const windowHeight = window.innerHeight;
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
                 if (!skipScroll) {
                     requestAnimationFrame(() => {
-                        const newRect = wrapper.getBoundingClientRect();
-                        if (newRect.top < 15) {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        } else if (newRect.bottom > windowHeight) {
-                            const scrollDown = Math.min(newRect.top - 15, newRect.bottom - windowHeight + 20);
-                            if (scrollDown > 2) {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
                             }
                         }
                     });
@@ -4606,17 +4587,18 @@ flowchart TD
             function collapseFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isPastTop = rect.top < 12;
-
-                if (!skipScroll && isPastTop) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fmlWrappers.forEach((wrapper) => {
@@ -4913,49 +4895,47 @@ flowchart TD
             function expandGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.graphic-header-card') || wrapper.querySelector('.graphic-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const figureEl = wrapper.querySelector('figure') || wrapper.querySelector('img');
-                
-                const figureHeight = figureEl ? (figureEl.scrollHeight || figureEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (figureHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             grpWrappers.forEach((wrapper) => {

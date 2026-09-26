@@ -562,7 +562,7 @@
         .table-wrapper:not(.is-collapsed) .table-header-card,
         .table-wrapper:not(.is-collapsed) .table-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -571,14 +571,15 @@
         }
 
         .table-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .table-wrapper:not(.is-collapsed) .table-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -767,18 +768,24 @@
 
         .formula-wrapper:not(.is-collapsed) .formula-header-card,
         .formula-wrapper:not(.is-collapsed) .formula-preview-card {
-            position: relative;
+            position: sticky;
+            bottom: 12px;
+            z-index: 30;
             background: var(--color-canvas-default);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .formula-wrapper:not(.is-collapsed) {
+            margin-top: 1.2em;
             margin-bottom: 1.2em;
         }
 
         .formula-wrapper:not(.is-collapsed) .formula-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
+            margin-top: 0 !important;
             margin-bottom: 8px !important;
             pointer-events: auto !important;
             visibility: visible !important;
@@ -1105,7 +1112,7 @@
         .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
         .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1114,14 +1121,15 @@
         }
 
         .flowchart-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .flowchart-wrapper:not(.is-collapsed) .flowchart-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -1913,7 +1921,7 @@
         .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
         .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1922,14 +1930,15 @@
         }
 
         .graphic-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .graphic-wrapper:not(.is-collapsed) .graphic-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -2092,42 +2101,6 @@
 <h2 id="summary-clinical-synthesis">Summary &amp; Clinical Synthesis</h2>
 <p>The peripheral blood smear (PBS) evaluation serves as the definitive diagnostic reflex and gold-standard confirmatory method in clinical hematology. Automated hematology analyzers process whole blood specimens rapidly using impedance, optical scatter, and fluorescence flow cytometry; however, instrumentation alerts, abnormal cell distributions, critical parameter flags, and suspected hematologic malignancies mandate manual slide review. A systematic smear evaluation correlates automated quantitative indices with direct qualitative and semi-quantitative microscopic observations across three distinct optical tiers: low-power ($10\times$), high-dry ($40\times$), and oil immersion ($100\times$).</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="1">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2193,6 +2166,42 @@ flowchart TD
     I -- "Yes (Blasts,<br/>Microorganisms, >1%<br/>Schistocytes)" --> J["Critical Escalation /<br/>Pathologist Review"]
     I -- "No" --> K["Final Review & Electronic<br/>Verification"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -2279,42 +2288,6 @@ flowchart TD
 <h2 id="visual-diagrams-comparative-data">Visual Diagrams &amp; Comparative Data</h2>
 <h3 id="leukocyte-maturation-and-differential-classification">Leukocyte Maturation and Differential Classification</h3>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="2">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -2364,10 +2337,6 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="pre-analytical-interference-and-corrective-workflows">Pre-Analytical Interference and Corrective Workflows</h3>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="3">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2404,6 +2373,10 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="pre-analytical-interference-and-corrective-workflows">Pre-Analytical Interference and Corrective Workflows</h3>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="3">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2444,45 +2417,48 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="reference-intervals-adult-leukocyte-differentials-ascp-boc-standards">Reference Intervals: Adult Leukocyte Differentials (ASCP BOC Standards)</h3>
-
-
-<div class="table-wrapper is-collapsed" data-table-index="1">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
             </svg>
         </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
                 </svg>
                 <span>Inline</span>
             </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
                 </svg>
                 <span>Collapse</span>
             </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
                 </svg>
                 <span>Full</span>
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="reference-intervals-adult-leukocyte-differentials-ascp-boc-standards">Reference Intervals: Adult Leukocyte Differentials (ASCP BOC Standards)</h3>
+
+
+<div class="table-wrapper is-collapsed" data-table-index="1">
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -2541,13 +2517,6 @@ flowchart TD
 </table>
         </div>
     </div>
-</div>
-
-
-<h3 id="semi-quantitative-morphology-grading-matrix">Semi-Quantitative Morphology Grading Matrix</h3>
-
-
-<div class="table-wrapper is-collapsed" data-table-index="2">
     <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
         <div class="table-mini-graphic" title="Table preview">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2581,6 +2550,13 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+
+<h3 id="semi-quantitative-morphology-grading-matrix">Semi-Quantitative Morphology Grading Matrix</h3>
+
+
+<div class="table-wrapper is-collapsed" data-table-index="2">
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -2633,6 +2609,39 @@ flowchart TD
 </table>
         </div>
     </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 
@@ -2646,6 +2655,31 @@ flowchart TD
 <li><strong>Microscope Alignment and Hygiene</strong>: Proper Köhler illumination must be set by adjusting the field diaphragm, centering the substage condenser, and focusing the condenser lens to ensure uniform, glare-free field illumination and optimal resolution. Lenses must be maintained strictly with dedicated lens paper; immersion oil (Type A or B) must never contact non-oil objectives ($10\times$ and $40\times$).</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="4">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1[&quot;10x Objective (100x Total)&lt;br/&gt;| Air Medium\nSmear&lt;br/&gt;architecture, stain quality,&lt;br/&gt;fibrin microclots, rouleaux,&lt;br/&gt;platelet clumps, margin&lt;br/&gt;scanning&quot;]
+        OPT2[&quot;40x Objective (400x Total)&lt;br/&gt;| Air Medium\nMonolayer&lt;br/&gt;identification, WBC field&lt;br/&gt;estimation, automated&lt;br/&gt;verification&quot;]
+        OPT3[&quot;100x Objective (1000x&lt;br/&gt;Total) | Type A/B&lt;br/&gt;Oil\n100-cell WBC&lt;br/&gt;differential, cell inclusion&lt;br/&gt;morphology, platelet&lt;br/&gt;estimates, RBC&lt;br/&gt;poikilocytosis grading&quot;]
+    end" data-original-code="flowchart TD
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1[&quot;10x Objective (100x Total)&lt;br/&gt;| Air Medium\nSmear&lt;br/&gt;architecture, stain quality,&lt;br/&gt;fibrin microclots, rouleaux,&lt;br/&gt;platelet clumps, margin&lt;br/&gt;scanning&quot;]
+        OPT2[&quot;40x Objective (400x Total)&lt;br/&gt;| Air Medium\nMonolayer&lt;br/&gt;identification, WBC field&lt;br/&gt;estimation, automated&lt;br/&gt;verification&quot;]
+        OPT3[&quot;100x Objective (1000x&lt;br/&gt;Total) | Type A/B&lt;br/&gt;Oil\n100-cell WBC&lt;br/&gt;differential, cell inclusion&lt;br/&gt;morphology, platelet&lt;br/&gt;estimates, RBC&lt;br/&gt;poikilocytosis grading&quot;]
+    end" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    subgraph Optical Tier Setup
+        direction TD
+        OPT1["10x Objective (100x Total)<br/>| Air Medium\nSmear<br/>architecture, stain quality,<br/>fibrin microclots, rouleaux,<br/>platelet clumps, margin<br/>scanning"]
+        OPT2["40x Objective (400x Total)<br/>| Air Medium\nMonolayer<br/>identification, WBC field<br/>estimation, automated<br/>verification"]
+        OPT3["100x Objective (1000x<br/>Total) | Type A/B<br/>Oil\n100-cell WBC<br/>differential, cell inclusion<br/>morphology, platelet<br/>estimates, RBC<br/>poikilocytosis grading"]
+    end
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2680,31 +2714,6 @@ flowchart TD
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    subgraph Optical Tier Setup
-        direction TD
-        OPT1[&quot;10x Objective (100x Total)&lt;br/&gt;| Air Medium\nSmear&lt;br/&gt;architecture, stain quality,&lt;br/&gt;fibrin microclots, rouleaux,&lt;br/&gt;platelet clumps, margin&lt;br/&gt;scanning&quot;]
-        OPT2[&quot;40x Objective (400x Total)&lt;br/&gt;| Air Medium\nMonolayer&lt;br/&gt;identification, WBC field&lt;br/&gt;estimation, automated&lt;br/&gt;verification&quot;]
-        OPT3[&quot;100x Objective (1000x&lt;br/&gt;Total) | Type A/B&lt;br/&gt;Oil\n100-cell WBC&lt;br/&gt;differential, cell inclusion&lt;br/&gt;morphology, platelet&lt;br/&gt;estimates, RBC&lt;br/&gt;poikilocytosis grading&quot;]
-    end" data-original-code="flowchart TD
-    subgraph Optical Tier Setup
-        direction TD
-        OPT1[&quot;10x Objective (100x Total)&lt;br/&gt;| Air Medium\nSmear&lt;br/&gt;architecture, stain quality,&lt;br/&gt;fibrin microclots, rouleaux,&lt;br/&gt;platelet clumps, margin&lt;br/&gt;scanning&quot;]
-        OPT2[&quot;40x Objective (400x Total)&lt;br/&gt;| Air Medium\nMonolayer&lt;br/&gt;identification, WBC field&lt;br/&gt;estimation, automated&lt;br/&gt;verification&quot;]
-        OPT3[&quot;100x Objective (1000x&lt;br/&gt;Total) | Type A/B&lt;br/&gt;Oil\n100-cell WBC&lt;br/&gt;differential, cell inclusion&lt;br/&gt;morphology, platelet&lt;br/&gt;estimates, RBC&lt;br/&gt;poikilocytosis grading&quot;]
-    end" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    subgraph Optical Tier Setup
-        direction TD
-        OPT1["10x Objective (100x Total)<br/>| Air Medium\nSmear<br/>architecture, stain quality,<br/>fibrin microclots, rouleaux,<br/>platelet clumps, margin<br/>scanning"]
-        OPT2["40x Objective (400x Total)<br/>| Air Medium\nMonolayer<br/>identification, WBC field<br/>estimation, automated<br/>verification"]
-        OPT3["100x Objective (1000x<br/>Total) | Type A/B<br/>Oil\n100-cell WBC<br/>differential, cell inclusion<br/>morphology, platelet<br/>estimates, RBC<br/>poikilocytosis grading"]
-    end
-            </div>
         </div>
     </div>
 </div>
@@ -2805,6 +2814,28 @@ flowchart TD
 <h3 id="oil-immersion-mathinlinex93x-100-cell-leukocyte-differential-protocol">Oil Immersion ($100\times$) 100-Cell Leukocyte Differential Protocol</h3>
 <p>High-resolution morphological classification is performed under Type A or B immersion oil ($1000\times$ total magnification) using a standardized battlement scanning pattern:</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="5">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart LR
+    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
+    B --&gt; C[&quot;Move 3 Fields Vertically&lt;br/&gt;Inward&quot;]
+    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
+    D --&gt; E[&quot;Move 3 Fields Vertically&lt;br/&gt;Outward&quot;]
+    E --&gt; F[&quot;Repeat Meander / Battlement&lt;br/&gt;Pattern&quot;]" data-original-code="flowchart LR
+    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
+    B --&gt; C[&quot;Move 3 Fields Vertically&lt;br/&gt;Inward&quot;]
+    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
+    D --&gt; E[&quot;Move 3 Fields Vertically&lt;br/&gt;Outward&quot;]
+    E --&gt; F[&quot;Repeat Meander / Battlement&lt;br/&gt;Pattern&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart LR
+    A["Begin at Monolayer Border"] --> B["Move 3 Fields Horizontally"]
+    B --> C["Move 3 Fields Vertically<br/>Inward"]
+    C --> D["Move 3 Fields Horizontally"]
+    D --> E["Move 3 Fields Vertically<br/>Outward"]
+    E --> F["Repeat Meander / Battlement<br/>Pattern"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2839,28 +2870,6 @@ flowchart TD
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart LR
-    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
-    B --&gt; C[&quot;Move 3 Fields Vertically&lt;br/&gt;Inward&quot;]
-    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
-    D --&gt; E[&quot;Move 3 Fields Vertically&lt;br/&gt;Outward&quot;]
-    E --&gt; F[&quot;Repeat Meander / Battlement&lt;br/&gt;Pattern&quot;]" data-original-code="flowchart LR
-    A[&quot;Begin at Monolayer Border&quot;] --&gt; B[&quot;Move 3 Fields Horizontally&quot;]
-    B --&gt; C[&quot;Move 3 Fields Vertically&lt;br/&gt;Inward&quot;]
-    C --&gt; D[&quot;Move 3 Fields Horizontally&quot;]
-    D --&gt; E[&quot;Move 3 Fields Vertically&lt;br/&gt;Outward&quot;]
-    E --&gt; F[&quot;Repeat Meander / Battlement&lt;br/&gt;Pattern&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart LR
-    A["Begin at Monolayer Border"] --> B["Move 3 Fields Horizontally"]
-    B --> C["Move 3 Fields Vertically<br/>Inward"]
-    C --> D["Move 3 Fields Horizontally"]
-    D --> E["Move 3 Fields Vertically<br/>Outward"]
-    E --> F["Repeat Meander / Battlement<br/>Pattern"]
-            </div>
         </div>
     </div>
 </div>
@@ -2956,6 +2965,37 @@ flowchart LR
 <h3 id="nucleated-red-blood-cell-mathinlinex102x-count-correction">Nucleated Red Blood Cell ($\text{nRBC}$) Count Correction</h3>
 <p>Automated hematology analyzers measure white blood cells by lysing non-nucleated erythrocytes and counting the remaining intact nuclei using impedance or optical methods. Because $\text{nRBCs}$ retain their rigid, condensed chromatin nuclei, automated instruments cannot distinguish them from small intact leukocytes, generating a falsely elevated total WBC count.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="6">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    A[&quot;Circulating nRBCs in Whole&lt;br/&gt;Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse&lt;br/&gt;Reagent Applied&quot;]
+    B --&gt; C[&quot;Mature RBCs Lysed; nRBC&lt;br/&gt;Nuclei Remain Intact&quot;]
+    C --&gt; D[&quot;Analyzer Senses Intact nRBC&lt;br/&gt;Nuclei as Leukocytes&quot;]
+    D --&gt; E[&quot;Spuriously Elevated&lt;br/&gt;Automated WBC Count&quot;]
+    E --&gt; F{&quot;Manual Differential: nRBCs&lt;br/&gt;&gt; 10 per 100 WBCs?&quot;}
+    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction&lt;br/&gt;Formula&quot;]
+    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol&lt;br/&gt;/ Report Count&quot;]
+    G --&gt; I[&quot;Release Clinically&lt;br/&gt;Validated Corrected WBC&lt;br/&gt;Count&quot;]" data-original-code="flowchart TD
+    A[&quot;Circulating nRBCs in Whole&lt;br/&gt;Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse&lt;br/&gt;Reagent Applied&quot;]
+    B --&gt; C[&quot;Mature RBCs Lysed; nRBC&lt;br/&gt;Nuclei Remain Intact&quot;]
+    C --&gt; D[&quot;Analyzer Senses Intact nRBC&lt;br/&gt;Nuclei as Leukocytes&quot;]
+    D --&gt; E[&quot;Spuriously Elevated&lt;br/&gt;Automated WBC Count&quot;]
+    E --&gt; F{&quot;Manual Differential: nRBCs&lt;br/&gt;&gt; 10 per 100 WBCs?&quot;}
+    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction&lt;br/&gt;Formula&quot;]
+    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol&lt;br/&gt;/ Report Count&quot;]
+    G --&gt; I[&quot;Release Clinically&lt;br/&gt;Validated Corrected WBC&lt;br/&gt;Count&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    A["Circulating nRBCs in Whole<br/>Blood"] --> B["Automated Analyzer Lyse<br/>Reagent Applied"]
+    B --> C["Mature RBCs Lysed; nRBC<br/>Nuclei Remain Intact"]
+    C --> D["Analyzer Senses Intact nRBC<br/>Nuclei as Leukocytes"]
+    D --> E["Spuriously Elevated<br/>Automated WBC Count"]
+    E --> F{"Manual Differential: nRBCs<br/>> 10 per 100 WBCs?"}
+    F -- "Yes" --> G["Apply nRBC WBC Correction<br/>Formula"]
+    F -- "No (<= 10 nRBCs)" --> H["Follow Laboratory Protocol<br/>/ Report Count"]
+    G --> I["Release Clinically<br/>Validated Corrected WBC<br/>Count"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2990,37 +3030,6 @@ flowchart LR
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    A[&quot;Circulating nRBCs in Whole&lt;br/&gt;Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse&lt;br/&gt;Reagent Applied&quot;]
-    B --&gt; C[&quot;Mature RBCs Lysed; nRBC&lt;br/&gt;Nuclei Remain Intact&quot;]
-    C --&gt; D[&quot;Analyzer Senses Intact nRBC&lt;br/&gt;Nuclei as Leukocytes&quot;]
-    D --&gt; E[&quot;Spuriously Elevated&lt;br/&gt;Automated WBC Count&quot;]
-    E --&gt; F{&quot;Manual Differential: nRBCs&lt;br/&gt;&gt; 10 per 100 WBCs?&quot;}
-    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction&lt;br/&gt;Formula&quot;]
-    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol&lt;br/&gt;/ Report Count&quot;]
-    G --&gt; I[&quot;Release Clinically&lt;br/&gt;Validated Corrected WBC&lt;br/&gt;Count&quot;]" data-original-code="flowchart TD
-    A[&quot;Circulating nRBCs in Whole&lt;br/&gt;Blood&quot;] --&gt; B[&quot;Automated Analyzer Lyse&lt;br/&gt;Reagent Applied&quot;]
-    B --&gt; C[&quot;Mature RBCs Lysed; nRBC&lt;br/&gt;Nuclei Remain Intact&quot;]
-    C --&gt; D[&quot;Analyzer Senses Intact nRBC&lt;br/&gt;Nuclei as Leukocytes&quot;]
-    D --&gt; E[&quot;Spuriously Elevated&lt;br/&gt;Automated WBC Count&quot;]
-    E --&gt; F{&quot;Manual Differential: nRBCs&lt;br/&gt;&gt; 10 per 100 WBCs?&quot;}
-    F -- &quot;Yes&quot; --&gt; G[&quot;Apply nRBC WBC Correction&lt;br/&gt;Formula&quot;]
-    F -- &quot;No (&lt;= 10 nRBCs)&quot; --&gt; H[&quot;Follow Laboratory Protocol&lt;br/&gt;/ Report Count&quot;]
-    G --&gt; I[&quot;Release Clinically&lt;br/&gt;Validated Corrected WBC&lt;br/&gt;Count&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    A["Circulating nRBCs in Whole<br/>Blood"] --> B["Automated Analyzer Lyse<br/>Reagent Applied"]
-    B --> C["Mature RBCs Lysed; nRBC<br/>Nuclei Remain Intact"]
-    C --> D["Analyzer Senses Intact nRBC<br/>Nuclei as Leukocytes"]
-    D --> E["Spuriously Elevated<br/>Automated WBC Count"]
-    E --> F{"Manual Differential: nRBCs<br/>> 10 per 100 WBCs?"}
-    F -- "Yes" --> G["Apply nRBC WBC Correction<br/>Formula"]
-    F -- "No (<= 10 nRBCs)" --> H["Follow Laboratory Protocol<br/>/ Report Count"]
-    G --> I["Release Clinically<br/>Validated Corrected WBC<br/>Count"]
-            </div>
         </div>
     </div>
 </div>
@@ -3160,42 +3169,6 @@ flowchart TD
 <h3 id="morphology-grading-tiers-inclusions-and-matrix-standards">Morphology Grading Tiers, Inclusions, and Matrix Standards</h3>
 <p>Morphology evaluation involves standardized semi-quantitative reporting of red cell variations, white cell reactive/toxic alterations, and intracellular inclusions:</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="7">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3236,29 +3209,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<ul>
-<li><strong>Leukocyte Morphological Alterations &amp; Inclusions</strong>:<ul>
-<li><em>Auer Rods</em>: Fused lysosomal primary granules forming pink/red rod-shaped structures in the cytoplasm of myeloblasts and promyelocytes; pathognomonic for acute myeloid leukemia.</li>
-<li><em>Döhle Bodies</em>: Single or multiple round-to-oval, light blue/gray peripheral cytoplasmic inclusions composed of aggregated rough endoplasmic reticulum, seen in sepsis, severe burns, and toxic states.</li>
-<li><em>Toxic Granulation</em>: Prominent, dark blue-to-purple azurophilic primary granules retained in bands and segmented neutrophils during severe infection or cytokine stimulation.</li>
-<li><em>Intracellular Microorganisms</em>: Ingested bacterial rods/cocci, fungal yeast forms, or rickettsial morulae (<em>Anaplasma phagocytophilum</em> in neutrophils, <em>Ehrlichia chaffeensis</em> in monocytes).</li>
-</ul>
-</li>
-<li><strong>Erythrocyte Inclusions &amp; Poikilocytes</strong>:<ul>
-<li><em>Howell-Jolly Bodies</em>: Smooth, round, dark purple nuclear DNA remnants ($~1\,\mu\text{m}$), typically single, observed post-splenectomy, in hyposplenism, or in megaloblastic anemia.</li>
-<li><em>Basophilic Stippling (Coarse)</em>: Diffuse, coarse blue-black granules composed of aggregated ribosomes and polyribosomes; indicates disordered hemoglobin synthesis (lead poisoning, thalassemia, sideroblastic anemia).</li>
-<li><em>Pappenheimer Bodies</em>: Small, irregular, dark purple iron-protein aggregates located at the RBC periphery, confirming siderocytes via Prussian blue staining.</li>
-<li><em>Hemoglobin C Crystals</em>: Dense, dark, hexagonal or rectangular "Washington Monument" shaped crystals formed inside red cells in hemoglobin CC or SC disease.</li>
-<li><em>Schistocytes &amp; Spherocytes</em>: Graded strictly under specialized criteria (SL: $1\text{--}4\text{%}$, MOD: $5\text{--}20\text{%}$, MK: $>20\text{%}$). Schistocytes indicate microangiopathic hemolytic anemia (TTP, DIC, HUS).</li>
-</ul>
-</li>
-</ul>
-<hr />
-<h3 id="pre-analytical-pitfalls-and-technical-interferences">Pre-Analytical Pitfalls and Technical Interferences</h3>
-<p>Pre-analytical errors distort blood smear morphology and cause severe automated instrument measurement artifacts:</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="8">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3295,6 +3245,29 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<ul>
+<li><strong>Leukocyte Morphological Alterations &amp; Inclusions</strong>:<ul>
+<li><em>Auer Rods</em>: Fused lysosomal primary granules forming pink/red rod-shaped structures in the cytoplasm of myeloblasts and promyelocytes; pathognomonic for acute myeloid leukemia.</li>
+<li><em>Döhle Bodies</em>: Single or multiple round-to-oval, light blue/gray peripheral cytoplasmic inclusions composed of aggregated rough endoplasmic reticulum, seen in sepsis, severe burns, and toxic states.</li>
+<li><em>Toxic Granulation</em>: Prominent, dark blue-to-purple azurophilic primary granules retained in bands and segmented neutrophils during severe infection or cytokine stimulation.</li>
+<li><em>Intracellular Microorganisms</em>: Ingested bacterial rods/cocci, fungal yeast forms, or rickettsial morulae (<em>Anaplasma phagocytophilum</em> in neutrophils, <em>Ehrlichia chaffeensis</em> in monocytes).</li>
+</ul>
+</li>
+<li><strong>Erythrocyte Inclusions &amp; Poikilocytes</strong>:<ul>
+<li><em>Howell-Jolly Bodies</em>: Smooth, round, dark purple nuclear DNA remnants ($~1\,\mu\text{m}$), typically single, observed post-splenectomy, in hyposplenism, or in megaloblastic anemia.</li>
+<li><em>Basophilic Stippling (Coarse)</em>: Diffuse, coarse blue-black granules composed of aggregated ribosomes and polyribosomes; indicates disordered hemoglobin synthesis (lead poisoning, thalassemia, sideroblastic anemia).</li>
+<li><em>Pappenheimer Bodies</em>: Small, irregular, dark purple iron-protein aggregates located at the RBC periphery, confirming siderocytes via Prussian blue staining.</li>
+<li><em>Hemoglobin C Crystals</em>: Dense, dark, hexagonal or rectangular "Washington Monument" shaped crystals formed inside red cells in hemoglobin CC or SC disease.</li>
+<li><em>Schistocytes &amp; Spherocytes</em>: Graded strictly under specialized criteria (SL: $1\text{--}4\text{%}$, MOD: $5\text{--}20\text{%}$, MK: $>20\text{%}$). Schistocytes indicate microangiopathic hemolytic anemia (TTP, DIC, HUS).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="pre-analytical-pitfalls-and-technical-interferences">Pre-Analytical Pitfalls and Technical Interferences</h3>
+<p>Pre-analytical errors distort blood smear morphology and cause severe automated instrument measurement artifacts:</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="8">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -3321,6 +3294,42 @@ flowchart LR
         PS5 --> PS6["Multiply Citrate PLT/WBC by<br/>1.11 Factor"]
     end
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -3409,42 +3418,6 @@ flowchart LR
 <p>The diagnostic workflow begins with systematic scanning in the evaluative area (the monolayer where red cells are evenly spaced, just touching without significant overlapping). Pathologic identification spans myeloid maturation (from primitive myeloblasts characterized by fine chromatin and potential Auer rods through intermediate promyelocytes, myelocytes, and metamyelocytes to mature segmented neutrophils and bands), reactive and dysplastic neutrophil alterations (toxic granulation, Döhle bodies, vacuolization, Pelger-Huët anomaly, hypersegmentation, and necrobiotic cell death), lymphoid and monocytic lineages (monocytes with folded cerebriform nuclei, polymorphic reactive Downey lymphocytes, smudge/basket cells, and clonal malignancies including chronic lymphocytic leukemia, prolymphocytes, hairy cell leukemia, and plasma cells), erythrocyte poikilocytosis and inclusions (schistocytes, spherocytes, acanthocytes, echinocytes, drepanocytes, codocytes, degmacytes, dacrocytes, Howell-Jolly bodies, basophilic stippling, Pappenheimer bodies, Heinz bodies, and hemoglobin C crystals), distribution artifacts (rouleaux versus cold IgM agglutination causing spurious MCHC elevations exceeding the upper reference limit of $36\text{ g/dL}$), platelet morphological variants (giant platelets, hypogranular "ghost" forms, and circulating megakaryocyte fragments), and intra- and extracellular blood parasites (such as <em>Plasmodium</em>, <em>Babesia</em>, and <em>Borrelia</em> spirochetes).</p>
 <p>All critical morphological abnormalities—including circulating blasts, schistocytes (&gt;1%), intracellular microorganisms, and unexplained high-titer agglutination—trigger immediate protocol-defined quality assurance actions, correlation with automated hematological indices, and path-directed review.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="9">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3491,12 +3464,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h2 id="visual-diagrams-comparative-data_1">Visual Diagrams &amp; Comparative Data</h2>
-<h3 id="granulocytic-maturation-sequence">Granulocytic Maturation Sequence</h3>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="10">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3533,6 +3500,12 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h2 id="visual-diagrams-comparative-data_1">Visual Diagrams &amp; Comparative Data</h2>
+<h3 id="granulocytic-maturation-sequence">Granulocytic Maturation Sequence</h3>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="10">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -3555,45 +3528,48 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="comparative-morphologic-characteristics-of-peripheral-blood-leukocytes">Comparative Morphologic Characteristics of Peripheral Blood Leukocytes</h3>
-
-
-<div class="table-wrapper is-collapsed" data-table-index="3">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
             </svg>
         </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
                 </svg>
                 <span>Inline</span>
             </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
                 </svg>
                 <span>Collapse</span>
             </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
                 </svg>
                 <span>Full</span>
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="comparative-morphologic-characteristics-of-peripheral-blood-leukocytes">Comparative Morphologic Characteristics of Peripheral Blood Leukocytes</h3>
+
+
+<div class="table-wrapper is-collapsed" data-table-index="3">
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -3692,14 +3668,6 @@ flowchart LR
 </table>
         </div>
     </div>
-</div>
-
-
-<hr />
-<h3 id="comparative-red-blood-cell-poikilocytosis-inclusion-differential">Comparative Red Blood Cell Poikilocytosis &amp; Inclusion Differential</h3>
-
-
-<div class="table-wrapper is-collapsed" data-table-index="4">
     <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
         <div class="table-mini-graphic" title="Table preview">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3733,6 +3701,14 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+
+<hr />
+<h3 id="comparative-red-blood-cell-poikilocytosis-inclusion-differential">Comparative Red Blood Cell Poikilocytosis &amp; Inclusion Differential</h3>
+
+
+<div class="table-wrapper is-collapsed" data-table-index="4">
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -3834,6 +3810,39 @@ flowchart LR
 </table>
         </div>
     </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 
@@ -3848,42 +3857,6 @@ flowchart LR
 <li><strong>Metamyelocyte</strong>: The earliest post-mitotic myeloid precursor, measuring 10–18 µm with an N:C ratio of 1.5:1 to 1:1. The nucleus exhibits a distinct indentation or reniform (kidney-bean) contour. By strict definition, the nuclear indentation measures <strong>less than 50%</strong> of the maximal nuclear diameter. Chromatin is heavily clumped and condensed. The cytoplasm is completely amphophilic, containing fine lilac specific granules with only rare primary granules visible.</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="11">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3918,25 +3891,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="mature-neutrophils-reactive-toxic-changes">Mature Neutrophils &amp; Reactive "Toxic" Changes</h3>
-<p>Mature peripheral neutrophils and their post-mitotic precursors undergo profound morphological alterations under cytokine stimulation (such as G-CSF, TNF-alpha, and IL-1) during acute bacterial infections, systemic inflammation, trauma, and burn injuries.</p>
-<ul>
-<li><strong>Band Neutrophils versus Segmented Neutrophils</strong>:<ul>
-<li><strong>Band Neutrophil</strong>: Measures 10–18 µm with an N:C ratio of 1:1.5 to 1:2. The nucleus is indented to <strong>greater than 50%</strong> of the nuclear width, forming a continuous sausage-, C-, or U-shaped band without chromatin condensation into an acellular thread.</li>
-<li><strong>Segmented Neutrophil</strong>: Measures 10–15 µm with an N:C ratio of 1:3. Characterized by 2 to 5 distinct nuclear lobes connected by a dark, solid, thread-like filament devoid of internal chromatin. Total neutrophil ASCP BOC reference range: $50\text{--}70\text{%}$ relative, $1.7\text{--}7.5 \times 10^3/\mu\text{L}$ ($1.7\text{--}7.5 \times 10^9/\text{L}$) absolute.</li>
-</ul>
-</li>
-<li><strong>Reactive "Toxic" Neutrophil Changes</strong>:<ul>
-<li><strong>Toxic Granulation</strong>: Presence of coarse, dark purple-to-blue primary azurophilic granules persisting in bands and segmented neutrophils. These represent peroxidase-rich primary granules that retain azurophilia due to shortened bone marrow transit time during accelerated granulopoiesis.</li>
-<li><strong>Döhle Bodies</strong>: Single or multiple, discrete, round-to-oval, light blue-gray inclusions (0.1–5.0 µm) located at the periphery of the neutrophil cytoplasm. Ultrastructurally, they represent lamellar aggregates of rough endoplasmic reticulum retaining ribosomal RNA.</li>
-<li><strong>Toxic Vacuolization</strong>: Clear, round, unstained circular pockets within the cytoplasm indicating active endocytosis and phagocytosis. When accompanied by toxic granules and Döhle bodies, vacuolization is pathognomonic for severe sepsis or systemic bacteremia. Artifactual vacuolization from prolonged EDTA storage appears as small, isolated, punched-out vacuoles without associated toxic granulation.</li>
-</ul>
-</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="12">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3973,6 +3927,25 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="mature-neutrophils-reactive-toxic-changes">Mature Neutrophils &amp; Reactive "Toxic" Changes</h3>
+<p>Mature peripheral neutrophils and their post-mitotic precursors undergo profound morphological alterations under cytokine stimulation (such as G-CSF, TNF-alpha, and IL-1) during acute bacterial infections, systemic inflammation, trauma, and burn injuries.</p>
+<ul>
+<li><strong>Band Neutrophils versus Segmented Neutrophils</strong>:<ul>
+<li><strong>Band Neutrophil</strong>: Measures 10–18 µm with an N:C ratio of 1:1.5 to 1:2. The nucleus is indented to <strong>greater than 50%</strong> of the nuclear width, forming a continuous sausage-, C-, or U-shaped band without chromatin condensation into an acellular thread.</li>
+<li><strong>Segmented Neutrophil</strong>: Measures 10–15 µm with an N:C ratio of 1:3. Characterized by 2 to 5 distinct nuclear lobes connected by a dark, solid, thread-like filament devoid of internal chromatin. Total neutrophil ASCP BOC reference range: $50\text{--}70\text{%}$ relative, $1.7\text{--}7.5 \times 10^3/\mu\text{L}$ ($1.7\text{--}7.5 \times 10^9/\text{L}$) absolute.</li>
+</ul>
+</li>
+<li><strong>Reactive "Toxic" Neutrophil Changes</strong>:<ul>
+<li><strong>Toxic Granulation</strong>: Presence of coarse, dark purple-to-blue primary azurophilic granules persisting in bands and segmented neutrophils. These represent peroxidase-rich primary granules that retain azurophilia due to shortened bone marrow transit time during accelerated granulopoiesis.</li>
+<li><strong>Döhle Bodies</strong>: Single or multiple, discrete, round-to-oval, light blue-gray inclusions (0.1–5.0 µm) located at the periphery of the neutrophil cytoplasm. Ultrastructurally, they represent lamellar aggregates of rough endoplasmic reticulum retaining ribosomal RNA.</li>
+<li><strong>Toxic Vacuolization</strong>: Clear, round, unstained circular pockets within the cytoplasm indicating active endocytosis and phagocytosis. When accompanied by toxic granules and Döhle bodies, vacuolization is pathognomonic for severe sepsis or systemic bacteremia. Artifactual vacuolization from prolonged EDTA storage appears as small, isolated, punched-out vacuoles without associated toxic granulation.</li>
+</ul>
+</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="12">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -3990,6 +3963,42 @@ flowchart LR
     A --> C["Döhle Bodies (Peripheral<br/>Lamellar Aggregates of Rough<br/>ER)"]
     A --> D["Toxic Vacuolization<br/>(Phagocytic Secondary<br/>Lysosomes)"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -4012,42 +4021,6 @@ flowchart LR
 <li><strong>Neutrophil Necrobiosis (Apoptosis / Cell Death)</strong>: Non-specific finding in severe infections and malignancies characterized by nuclear <strong>pyknosis</strong> (condensation of chromatin into an ink-drop-like dark sphere) followed by <strong>karyorrhexis</strong> (nuclear fragmentation into multiple discrete, structureless spherical chromatin balls).</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="13">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4082,22 +4055,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="monocytes-reactive-lymphocytes-smudge-cells">Monocytes, Reactive Lymphocytes &amp; Smudge Cells</h3>
-<p>Accurate differentiation between reactive mononuclear cells, benign monocytes, and fragile neoplastic lymphocytes is essential for distinguishing viral syndromes from hematologic neoplasms.</p>
-<ul>
-<li><strong>Monocytes</strong>: Sizing 12–20 µm with an N:C ratio of 4:1 to 2:1. Characterized by abundant, opaque, blue-gray "ground-glass" cytoplasm containing dust-like azurophilic granules, irregular outer cytoplasmic borders with blunt pseudopodia, and prominent cytoplasmic phagocytic vacuoles. The nucleus is folded, indented, kidney-bean-shaped, or cerebriform with loose, linear, rope-like chromatin strands. Normal reference intervals: $2\text{--}11\text{%}$ relative, $0.1\text{--}1.3 \times 10^3/\mu\text{L}$ ($0.1\text{--}1.3 \times 10^9/\text{L}$) absolute.</li>
-<li><strong>Reactive Lymphocytes (Downey Cells)</strong>: Antigen-stimulated lymphocytes characterized by extreme morphological <strong>heterogeneity (pleomorphism)</strong> on a single smear.<ul>
-<li><strong>Downey Type II (Classic Reactive Lymphocyte)</strong>: Large (10–25 µm) with a low N:C ratio (3:1 to 1:2), abundant pale blue-gray cytoplasm that dramatically <strong>furls, scallops, and indents around adjacent red blood cells</strong>, accompanied by intensified dark-blue basophilic borders. Chromatin is moderately condensed but loose and streaked. Classically seen in Infectious Mononucleosis (Epstein-Barr Virus), Cytomegalovirus (CMV), and acute viral hepatitis.</li>
-<li><strong>Downey Type I</strong>: Indented, folded nucleus with condensed chromatin and vacuolated cytoplasm.</li>
-<li><strong>Downey Type III (Immunoblasts)</strong>: Large cells (15–20 µm) with deeply basophilic cytoplasm, high N:C ratio, and fine chromatin containing prominent nucleoli.</li>
-</ul>
-</li>
-<li><strong>Smudge Cells (Basket Cells)</strong>: Fragile, bare nuclear remnants lacking intact cytoplasm that rupture during the mechanical shear of glass slide preparation. While occasionally seen in normal blood, high numbers of smudge cells are classically associated with <strong>Chronic Lymphocytic Leukemia (CLL)</strong> due to deficiency of the cytoskeletal protein vimentin. Smudge cells can be stabilized by preparing a smear using one drop of 22% bovine serum albumin (BSA) mixed with four drops of blood.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="14">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4134,6 +4091,22 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="monocytes-reactive-lymphocytes-smudge-cells">Monocytes, Reactive Lymphocytes &amp; Smudge Cells</h3>
+<p>Accurate differentiation between reactive mononuclear cells, benign monocytes, and fragile neoplastic lymphocytes is essential for distinguishing viral syndromes from hematologic neoplasms.</p>
+<ul>
+<li><strong>Monocytes</strong>: Sizing 12–20 µm with an N:C ratio of 4:1 to 2:1. Characterized by abundant, opaque, blue-gray "ground-glass" cytoplasm containing dust-like azurophilic granules, irregular outer cytoplasmic borders with blunt pseudopodia, and prominent cytoplasmic phagocytic vacuoles. The nucleus is folded, indented, kidney-bean-shaped, or cerebriform with loose, linear, rope-like chromatin strands. Normal reference intervals: $2\text{--}11\text{%}$ relative, $0.1\text{--}1.3 \times 10^3/\mu\text{L}$ ($0.1\text{--}1.3 \times 10^9/\text{L}$) absolute.</li>
+<li><strong>Reactive Lymphocytes (Downey Cells)</strong>: Antigen-stimulated lymphocytes characterized by extreme morphological <strong>heterogeneity (pleomorphism)</strong> on a single smear.<ul>
+<li><strong>Downey Type II (Classic Reactive Lymphocyte)</strong>: Large (10–25 µm) with a low N:C ratio (3:1 to 1:2), abundant pale blue-gray cytoplasm that dramatically <strong>furls, scallops, and indents around adjacent red blood cells</strong>, accompanied by intensified dark-blue basophilic borders. Chromatin is moderately condensed but loose and streaked. Classically seen in Infectious Mononucleosis (Epstein-Barr Virus), Cytomegalovirus (CMV), and acute viral hepatitis.</li>
+<li><strong>Downey Type I</strong>: Indented, folded nucleus with condensed chromatin and vacuolated cytoplasm.</li>
+<li><strong>Downey Type III (Immunoblasts)</strong>: Large cells (15–20 µm) with deeply basophilic cytoplasm, high N:C ratio, and fine chromatin containing prominent nucleoli.</li>
+</ul>
+</li>
+<li><strong>Smudge Cells (Basket Cells)</strong>: Fragile, bare nuclear remnants lacking intact cytoplasm that rupture during the mechanical shear of glass slide preparation. While occasionally seen in normal blood, high numbers of smudge cells are classically associated with <strong>Chronic Lymphocytic Leukemia (CLL)</strong> due to deficiency of the cytoskeletal protein vimentin. Smudge cells can be stabilized by preparing a smear using one drop of 22% bovine serum albumin (BSA) mixed with four drops of blood.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="14">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4162,23 +4135,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="malignant-lymphoid-plasma-cell-morphologies">Malignant Lymphoid &amp; Plasma Cell Morphologies</h3>
-<p>Clonal lymphoproliferative disorders and plasma cell dyscrasias produce distinct, monotonous morphological patterns on peripheral blood films.</p>
-<ul>
-<li><strong>Chronic Lymphocytic Leukemia (CLL) / Small Lymphocytic Lymphoma (SLL)</strong>: Monotonous population of small, mature-appearing lymphocytes (7–15 µm) characterized by dense, coarsely clumped chromatin broken by clear parachromatin cracks, imparting a classic <strong>"soccer-ball"</strong> or "cracked-mud" pattern. Smears typically show absolute lymphocytosis ($>3.2 \times 10^3/\mu\text{L}$) and numerous smudge cells.</li>
-<li><strong>Prolymphocyte</strong>: Larger lymphoid cell (10–18 µm) with moderate, homogeneously staining pale-blue cytoplasm, condensed chromatin, and a single, central, <strong>prominent punched-out nucleolus</strong>. Prolymphocytes account for &lt;10% of cells in typical CLL, but predominate in prolymphocytic leukemia (PLL) or during Richter transformation.</li>
-<li><strong>Hairy Cell Leukemia (HCL)</strong>: Round-to-ovoid mature B-cells (12–20 µm) with abundant, pale blue-gray cytoplasm demonstrating fine, delicate, irregular, <strong>hair-like cytoplasmic projections</strong> around the entire cell circumference. The nucleus is oval, indented, or bean-shaped with spongy, homogeneous ground-glass chromatin and inconspicuous nucleoli.</li>
-<li><strong>Malignant Plasma Cells</strong>: Terminally differentiated B-lineage cells (10–20 µm) with an eccentric round nucleus exhibiting a classic <strong>"clock-face" or cartwheel</strong> pattern of alternating dense heterochromatin blocks. The cytoplasm is deeply basophilic (rich in RNA) with a prominent, distinct, pale crescent-shaped <strong>perinuclear Golgi hof</strong>. Malignant plasma cells in Multiple Myeloma may show:<ul>
-<li><strong>Russell Bodies</strong>: Round, clear-to-pink cytoplasmic immunoglobulin globules (termed a <strong>Mott cell</strong> when packed).</li>
-<li><strong>Dutcher Bodies</strong>: Periodic acid-Schiff (PAS)-positive pseudonuclear inclusions representing invagination of immunoglobulin-filled cytoplasm into the nuclear envelope.</li>
-<li><strong>Flame Cells</strong>: Plasma cells with intense flaming red-purple cytoplasm seen in IgA myeloma.</li>
-</ul>
-</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="15">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4215,6 +4171,23 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="malignant-lymphoid-plasma-cell-morphologies">Malignant Lymphoid &amp; Plasma Cell Morphologies</h3>
+<p>Clonal lymphoproliferative disorders and plasma cell dyscrasias produce distinct, monotonous morphological patterns on peripheral blood films.</p>
+<ul>
+<li><strong>Chronic Lymphocytic Leukemia (CLL) / Small Lymphocytic Lymphoma (SLL)</strong>: Monotonous population of small, mature-appearing lymphocytes (7–15 µm) characterized by dense, coarsely clumped chromatin broken by clear parachromatin cracks, imparting a classic <strong>"soccer-ball"</strong> or "cracked-mud" pattern. Smears typically show absolute lymphocytosis ($>3.2 \times 10^3/\mu\text{L}$) and numerous smudge cells.</li>
+<li><strong>Prolymphocyte</strong>: Larger lymphoid cell (10–18 µm) with moderate, homogeneously staining pale-blue cytoplasm, condensed chromatin, and a single, central, <strong>prominent punched-out nucleolus</strong>. Prolymphocytes account for &lt;10% of cells in typical CLL, but predominate in prolymphocytic leukemia (PLL) or during Richter transformation.</li>
+<li><strong>Hairy Cell Leukemia (HCL)</strong>: Round-to-ovoid mature B-cells (12–20 µm) with abundant, pale blue-gray cytoplasm demonstrating fine, delicate, irregular, <strong>hair-like cytoplasmic projections</strong> around the entire cell circumference. The nucleus is oval, indented, or bean-shaped with spongy, homogeneous ground-glass chromatin and inconspicuous nucleoli.</li>
+<li><strong>Malignant Plasma Cells</strong>: Terminally differentiated B-lineage cells (10–20 µm) with an eccentric round nucleus exhibiting a classic <strong>"clock-face" or cartwheel</strong> pattern of alternating dense heterochromatin blocks. The cytoplasm is deeply basophilic (rich in RNA) with a prominent, distinct, pale crescent-shaped <strong>perinuclear Golgi hof</strong>. Malignant plasma cells in Multiple Myeloma may show:<ul>
+<li><strong>Russell Bodies</strong>: Round, clear-to-pink cytoplasmic immunoglobulin globules (termed a <strong>Mott cell</strong> when packed).</li>
+<li><strong>Dutcher Bodies</strong>: Periodic acid-Schiff (PAS)-positive pseudonuclear inclusions representing invagination of immunoglobulin-filled cytoplasm into the nuclear envelope.</li>
+<li><strong>Flame Cells</strong>: Plasma cells with intense flaming red-purple cytoplasm seen in IgA myeloma.</li>
+</ul>
+</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="15">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -4234,18 +4207,6 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="erythrocyte-poikilocytosis-mechanical-membrane-defects">Erythrocyte Poikilocytosis: Mechanical &amp; Membrane Defects</h3>
-<p>Alterations in erythrocyte membrane surface area, lipid composition, and intravascular mechanical forces generate distinct poikilocytes indicative of life-threatening microangiopathies and systemic organ failure.</p>
-<ul>
-<li><strong>Schistocytes (Helmet Cells / Keratocytes)</strong>: Rigid, irregularly pointed, triangular erythrocyte fragments formed when intact RBCs are sheared across intravascular fibrin meshes in the microvasculature. Schistocytes lack central pallor. They are the critical morphological marker of <strong>Microangiopathic Hemolytic Anemia (MAHA)</strong>, including Disseminated Intravascular Coagulation (DIC), Thrombotic Thrombocytopenic Purpura (TTP), Hemolytic Uremic Syndrome (HUS), and mechanical shear from prosthetic heart valves.</li>
-<li><strong>Spherocytes</strong>: Deeply staining, perfectly round, dense erythrocytes with reduced diameter (&lt;6.5 µm) and a complete absence of central pallor. Spherocytes arise from the direct loss of cell membrane surface area without a corresponding loss of intracellular volume (low surface area-to-volume ratio), resulting in spherical shape, increased cellular rigidity, high MCHC exceeding the normal reference range of $32\text{--}36\text{ g/dL}$ ($>36.0\text{ g/dL}$), and decreased osmotic resistance. Classically observed in <strong>Hereditary Spherocytosis</strong> (spectrin/ankyrin gene mutations) and <strong>Warm Autoimmune Hemolytic Anemia (AIHA)</strong> (splenic macrophage partial phagocytosis of IgG-opsonized membrane).</li>
-<li><strong>Acanthocytes (Spur Cells)</strong>: Spheroidal, densely stained erythrocytes lacking central pallor that exhibit 3 to 20 irregular, sharp, thorn-like spicules of variable lengths and uneven spacing. Acanthocytes result from abnormal lipid incorporation (excess cholesterol-to-phospholipid ratio) into the outer leaflet of the erythrocyte lipid bilayer. Classically associated with severe end-stage liver disease (spur cell anemia), abetalipoproteinemia, and McLeod phenotype.</li>
-<li><strong>Echinocytes (Burr Cells / Crenated Cells)</strong>: Erythrocytes displaying 10 to 30 short, blunt, uniform spicules distributed symmetrically across the entire surface while maintaining normal central pallor. True in vivo echinocytosis is associated with uremia, renal failure, and pyruvate kinase deficiency. More frequently, echinocytes represent an in vitro artifact caused by slow air-drying, high slide pH, or aged EDTA blood.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="16">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4282,6 +4243,18 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="erythrocyte-poikilocytosis-mechanical-membrane-defects">Erythrocyte Poikilocytosis: Mechanical &amp; Membrane Defects</h3>
+<p>Alterations in erythrocyte membrane surface area, lipid composition, and intravascular mechanical forces generate distinct poikilocytes indicative of life-threatening microangiopathies and systemic organ failure.</p>
+<ul>
+<li><strong>Schistocytes (Helmet Cells / Keratocytes)</strong>: Rigid, irregularly pointed, triangular erythrocyte fragments formed when intact RBCs are sheared across intravascular fibrin meshes in the microvasculature. Schistocytes lack central pallor. They are the critical morphological marker of <strong>Microangiopathic Hemolytic Anemia (MAHA)</strong>, including Disseminated Intravascular Coagulation (DIC), Thrombotic Thrombocytopenic Purpura (TTP), Hemolytic Uremic Syndrome (HUS), and mechanical shear from prosthetic heart valves.</li>
+<li><strong>Spherocytes</strong>: Deeply staining, perfectly round, dense erythrocytes with reduced diameter (&lt;6.5 µm) and a complete absence of central pallor. Spherocytes arise from the direct loss of cell membrane surface area without a corresponding loss of intracellular volume (low surface area-to-volume ratio), resulting in spherical shape, increased cellular rigidity, high MCHC exceeding the normal reference range of $32\text{--}36\text{ g/dL}$ ($>36.0\text{ g/dL}$), and decreased osmotic resistance. Classically observed in <strong>Hereditary Spherocytosis</strong> (spectrin/ankyrin gene mutations) and <strong>Warm Autoimmune Hemolytic Anemia (AIHA)</strong> (splenic macrophage partial phagocytosis of IgG-opsonized membrane).</li>
+<li><strong>Acanthocytes (Spur Cells)</strong>: Spheroidal, densely stained erythrocytes lacking central pallor that exhibit 3 to 20 irregular, sharp, thorn-like spicules of variable lengths and uneven spacing. Acanthocytes result from abnormal lipid incorporation (excess cholesterol-to-phospholipid ratio) into the outer leaflet of the erythrocyte lipid bilayer. Classically associated with severe end-stage liver disease (spur cell anemia), abetalipoproteinemia, and McLeod phenotype.</li>
+<li><strong>Echinocytes (Burr Cells / Crenated Cells)</strong>: Erythrocytes displaying 10 to 30 short, blunt, uniform spicules distributed symmetrically across the entire surface while maintaining normal central pallor. True in vivo echinocytosis is associated with uremia, renal failure, and pyruvate kinase deficiency. More frequently, echinocytes represent an in vitro artifact caused by slow air-drying, high slide pH, or aged EDTA blood.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="16">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4310,18 +4283,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="erythrocyte-poikilocytosis-metabolic-hemoglobin-defects">Erythrocyte Poikilocytosis: Metabolic &amp; Hemoglobin Defects</h3>
-<p>Structural hemoglobin mutations and bone marrow microarchitectural disruptions distort red cell shape through intracellular polymer formation and mechanical remodeling.</p>
-<ul>
-<li><strong>Drepanocytes (Sickle Cells)</strong>: Elongated, crescent-shaped erythrocytes with sharply pointed, tapered ends that lack central pallor. Sickling results from the deoxygenation and subsequent non-covalent polymerization of mutant <strong>Hemoglobin S</strong> ($\beta 6 \text{ Glu}\to\text{Val}$) into rigid, crystalline fibers that deform the cytoskeleton. Irreversibly sickled cells cause microvascular occlusion and acute vaso-occlusive crises in homozygous Sickle Cell Anemia (Hb SS), Hb SC disease, and Hb S-$\beta$ thalassemia.</li>
-<li><strong>Codocytes (Target Cells / Sombrero Cells)</strong>: Erythrocytes demonstrating a central area of hemoglobinization surrounded by a clear ring of pallor, which is encircled by an outer rim of hemoglobin, resembling a bull's-eye or Mexican sombrero. Target cells result from an <strong>increased membrane surface area-to-intracellular volume ratio</strong>, caused either by excess membrane surface area (e.g., obstructive jaundice, liver disease, post-splenectomy) or decreased intracellular hemoglobin content (e.g., thalassemia, hemoglobin C disease, severe iron deficiency).</li>
-<li><strong>Degmacytes (Bite Cells)</strong>: Erythrocytes exhibiting semicircular, scooped-out peripheral defects as if a portion of the edge was bitten off. Degmacytes are generated in the splenic microcirculation, where splenic cords and sinuses pit out rigid, oxidized, insoluble hemoglobin precipitates (<strong>Heinz bodies</strong>). They are the diagnostic hallmark of acute oxidative hemolysis in <strong>Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency</strong> following exposure to oxidant drugs (e.g., primaquine, dapsone, rasburicase), fava beans, or severe infection.</li>
-<li><strong>Dacrocytes (Teardrop Cells)</strong>: Pear-shaped or teardrop erythrocytes possessing a single elongated, blunted tail. Dacrocytes are formed when erythrocytes undergo severe mechanical distortion and pinching as they are squeezed through the tight, collagen-choked sinuses of a fibrotic bone marrow. They are pathognomonic for <strong>Primary Myelofibrosis (PMF)</strong> and marrow replacement (myelophthisic processes). In vitro preparation artifacts can mimic teardrops, but artifactual tails all align in the same direction across the smear.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="17">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4358,6 +4319,18 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="erythrocyte-poikilocytosis-metabolic-hemoglobin-defects">Erythrocyte Poikilocytosis: Metabolic &amp; Hemoglobin Defects</h3>
+<p>Structural hemoglobin mutations and bone marrow microarchitectural disruptions distort red cell shape through intracellular polymer formation and mechanical remodeling.</p>
+<ul>
+<li><strong>Drepanocytes (Sickle Cells)</strong>: Elongated, crescent-shaped erythrocytes with sharply pointed, tapered ends that lack central pallor. Sickling results from the deoxygenation and subsequent non-covalent polymerization of mutant <strong>Hemoglobin S</strong> ($\beta 6 \text{ Glu}\to\text{Val}$) into rigid, crystalline fibers that deform the cytoskeleton. Irreversibly sickled cells cause microvascular occlusion and acute vaso-occlusive crises in homozygous Sickle Cell Anemia (Hb SS), Hb SC disease, and Hb S-$\beta$ thalassemia.</li>
+<li><strong>Codocytes (Target Cells / Sombrero Cells)</strong>: Erythrocytes demonstrating a central area of hemoglobinization surrounded by a clear ring of pallor, which is encircled by an outer rim of hemoglobin, resembling a bull's-eye or Mexican sombrero. Target cells result from an <strong>increased membrane surface area-to-intracellular volume ratio</strong>, caused either by excess membrane surface area (e.g., obstructive jaundice, liver disease, post-splenectomy) or decreased intracellular hemoglobin content (e.g., thalassemia, hemoglobin C disease, severe iron deficiency).</li>
+<li><strong>Degmacytes (Bite Cells)</strong>: Erythrocytes exhibiting semicircular, scooped-out peripheral defects as if a portion of the edge was bitten off. Degmacytes are generated in the splenic microcirculation, where splenic cords and sinuses pit out rigid, oxidized, insoluble hemoglobin precipitates (<strong>Heinz bodies</strong>). They are the diagnostic hallmark of acute oxidative hemolysis in <strong>Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency</strong> following exposure to oxidant drugs (e.g., primaquine, dapsone, rasburicase), fava beans, or severe infection.</li>
+<li><strong>Dacrocytes (Teardrop Cells)</strong>: Pear-shaped or teardrop erythrocytes possessing a single elongated, blunted tail. Dacrocytes are formed when erythrocytes undergo severe mechanical distortion and pinching as they are squeezed through the tight, collagen-choked sinuses of a fibrotic bone marrow. They are pathognomonic for <strong>Primary Myelofibrosis (PMF)</strong> and marrow replacement (myelophthisic processes). In vitro preparation artifacts can mimic teardrops, but artifactual tails all align in the same direction across the smear.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="17">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -4377,19 +4350,6 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="erythrocyte-inclusions-differential-identification">Erythrocyte Inclusions &amp; Differential Identification</h3>
-<p>Erythrocyte inclusions represent intracellular remnants of organelles, nuclear fragments, precipitated globin chains, or iron deposits. Differentiating inclusions requires systematic evaluation of staining characteristics, morphology, and special cytochemical stains.</p>
-<ul>
-<li><strong>Howell-Jolly Bodies</strong>: Smooth, round, dark purple-to-black non-refractile spheres (approximately 1 µm in diameter) located eccentrically within the RBC. They are composed of <strong>nuclear DNA</strong> remnants resulting from incomplete nuclear extrusion or chromosome fragments separated from the mitotic spindle. Howell-Jolly bodies are normally pitted by the spleen; their presence indicates <strong>asplenia, hyposplenism, or post-splenectomy states</strong>. Multiple Howell-Jolly bodies per cell are characteristic of megaloblastic anemia.</li>
-<li><strong>Basophilic Stippling</strong>: Fine or coarse, dark blue-to-purple punctate granules distributed evenly throughout the entire red blood cell. They represent abnormal cytoplasmic aggregates of <strong>ribosomes and polyribosomal RNA</strong>. Coarse stippling is clinically significant, serving as a key diagnostic marker for <strong>lead poisoning (plumbism)</strong> (due to inhibition of pyrimidine 5'-nucleotidase), thalassemia, and sideroblastic anemia. They are negative on Prussian blue iron stains.</li>
-<li><strong>Pappenheimer Bodies (Siderocytes)</strong>: Small, dark purple, irregular, angular inclusions occurring in small clusters (typically 2 to 5 dots) near the erythrocyte periphery. Pappenheimer bodies represent autophagosomes containing <strong>abnormal iron-laden mitochondrial remnants</strong>. While Wright-Giemsa stains the surrounding protein matrix, true identification is confirmed by a positive <strong>Prussian blue (Perls') iron stain</strong>, which confirms iron content. Seen in sideroblastic anemia, severe iron overload (hemochromatosis), thalassemia, and post-splenectomy.</li>
-<li><strong>Heinz Bodies</strong>: Discrete, round, rigid inclusions consisting of <strong>precipitated, denatured hemoglobin</strong> resulting from severe oxidant stress. Heinz bodies are completely <strong>invisible on standard Wright-Giemsa stains</strong>; they require vital or supravital stains (<strong>New Methylene Blue, Crystal Violet, or Brilliant Cresyl Blue</strong>) to be visualized as blue-purple precipitates attached to the internal red cell membrane. Splenic pitting of Heinz bodies creates degmacytes (bite cells).</li>
-<li><strong>Hemoglobin C (Hb C) Crystals</strong>: Dense, dark-red, hexagonal, rod-shaped, or tetragonal crystals ("Washington Monument" appearance) formed within erythrocytes in homozygous <strong>Hemoglobin CC disease</strong> or <strong>Hemoglobin SC disease</strong> (especially post-splenectomy). Crystallization occurs as insoluble hemoglobin C precipitates within the red cell, often leaving a clear membrane blister devoid of cytoplasm.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="18">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4426,6 +4386,19 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="erythrocyte-inclusions-differential-identification">Erythrocyte Inclusions &amp; Differential Identification</h3>
+<p>Erythrocyte inclusions represent intracellular remnants of organelles, nuclear fragments, precipitated globin chains, or iron deposits. Differentiating inclusions requires systematic evaluation of staining characteristics, morphology, and special cytochemical stains.</p>
+<ul>
+<li><strong>Howell-Jolly Bodies</strong>: Smooth, round, dark purple-to-black non-refractile spheres (approximately 1 µm in diameter) located eccentrically within the RBC. They are composed of <strong>nuclear DNA</strong> remnants resulting from incomplete nuclear extrusion or chromosome fragments separated from the mitotic spindle. Howell-Jolly bodies are normally pitted by the spleen; their presence indicates <strong>asplenia, hyposplenism, or post-splenectomy states</strong>. Multiple Howell-Jolly bodies per cell are characteristic of megaloblastic anemia.</li>
+<li><strong>Basophilic Stippling</strong>: Fine or coarse, dark blue-to-purple punctate granules distributed evenly throughout the entire red blood cell. They represent abnormal cytoplasmic aggregates of <strong>ribosomes and polyribosomal RNA</strong>. Coarse stippling is clinically significant, serving as a key diagnostic marker for <strong>lead poisoning (plumbism)</strong> (due to inhibition of pyrimidine 5'-nucleotidase), thalassemia, and sideroblastic anemia. They are negative on Prussian blue iron stains.</li>
+<li><strong>Pappenheimer Bodies (Siderocytes)</strong>: Small, dark purple, irregular, angular inclusions occurring in small clusters (typically 2 to 5 dots) near the erythrocyte periphery. Pappenheimer bodies represent autophagosomes containing <strong>abnormal iron-laden mitochondrial remnants</strong>. While Wright-Giemsa stains the surrounding protein matrix, true identification is confirmed by a positive <strong>Prussian blue (Perls') iron stain</strong>, which confirms iron content. Seen in sideroblastic anemia, severe iron overload (hemochromatosis), thalassemia, and post-splenectomy.</li>
+<li><strong>Heinz Bodies</strong>: Discrete, round, rigid inclusions consisting of <strong>precipitated, denatured hemoglobin</strong> resulting from severe oxidant stress. Heinz bodies are completely <strong>invisible on standard Wright-Giemsa stains</strong>; they require vital or supravital stains (<strong>New Methylene Blue, Crystal Violet, or Brilliant Cresyl Blue</strong>) to be visualized as blue-purple precipitates attached to the internal red cell membrane. Splenic pitting of Heinz bodies creates degmacytes (bite cells).</li>
+<li><strong>Hemoglobin C (Hb C) Crystals</strong>: Dense, dark-red, hexagonal, rod-shaped, or tetragonal crystals ("Washington Monument" appearance) formed within erythrocytes in homozygous <strong>Hemoglobin CC disease</strong> or <strong>Hemoglobin SC disease</strong> (especially post-splenectomy). Crystallization occurs as insoluble hemoglobin C precipitates within the red cell, often leaving a clear membrane blister devoid of cytoplasm.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="18">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4460,27 +4433,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="rbc-distribution-artifacts-agglutination">RBC Distribution Artifacts &amp; Agglutination</h3>
-<p>Abnormal erythrocyte distribution patterns in the evaluative area reflect high concentrations of circulating macromolecules or autoantibodies, altering automated analyzer indices and requiring specific laboratory corrective actions.</p>
-<ul>
-<li><strong>Rouleaux Formation</strong>: Erythrocytes aligned in linear, parallel stacks resembling "rolls of coins." Rouleaux formation occurs when elevated concentrations of positively charged plasma proteins (such as <strong>fibrinogen</strong> or monoclonal <strong>immunoglobulins</strong>) neutralize the negative surface electrical charge (<strong>zeta potential</strong>) of normal erythrocytes, allowing cells to stack together. <ul>
-<li><em>Clinical Significance</em>: True rouleaux (observed in the monolayer, often with a blue proteinaceous background) is indicative of <strong>Multiple Myeloma</strong>, Waldenström macroglobulinemia, and severe chronic inflammatory disorders.</li>
-<li><em>Laboratory Distinction</em>: Rouleaux disperses upon the addition of isotonic saline (saline replacement procedure).</li>
-</ul>
-</li>
-<li><strong>RBC Agglutination (Cold Autoagglutination)</strong>: Erythrocytes clumped into irregular, disorganized, three-dimensional grape-like clusters across the thin monolayer. Agglutination is mediated by <strong>Cold Agglutinins</strong> (high-titer IgM antibodies directed against RBC I/i carbohydrate antigens) that bind erythrocyte surfaces at temperatures below 37°C.<ul>
-<li><em>Automated Instrument Impact &amp; Spurious Lab Indices</em>: Cold agglutinins cause automated hematology analyzers to count multi-cell clusters as single large erythrocytes, generating a <strong>falsely decreased RBC count</strong> (below reference range $4.00\text{--}6.00 \times 10^6/\mu\text{L}$), <strong>falsely elevated Mean Corpuscular Volume (MCV)</strong> (exceeding normal $76\text{--}100\text{ fL}$), and a physiologically <strong>impossible Mean Corpuscular Hemoglobin Concentration ($\text{MCHC} > 36.0\text{ g/dL}$)</strong> (exceeding standard range $32\text{--}36\text{ g/dL}$, often exceeding 40–50 g/dL).</li>
-<li><em>Mandatory Corrective Action Protocol</em>:<br />
-1. Incubate the EDTA specimen tube in a calibrated <strong>37°C water bath for 15 to 30 minutes</strong>.<br />
-2. Immediately re-run the warmed specimen on the automated analyzer to obtain accurate, non-aggregated indices.<br />
-3. If the MCHC fails to normalize ($\le 36.0\text{ g/dL}$), perform a 37°C saline wash and replacement protocol prior to re-analysis.</li>
-</ul>
-</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="19">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4517,6 +4469,27 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="rbc-distribution-artifacts-agglutination">RBC Distribution Artifacts &amp; Agglutination</h3>
+<p>Abnormal erythrocyte distribution patterns in the evaluative area reflect high concentrations of circulating macromolecules or autoantibodies, altering automated analyzer indices and requiring specific laboratory corrective actions.</p>
+<ul>
+<li><strong>Rouleaux Formation</strong>: Erythrocytes aligned in linear, parallel stacks resembling "rolls of coins." Rouleaux formation occurs when elevated concentrations of positively charged plasma proteins (such as <strong>fibrinogen</strong> or monoclonal <strong>immunoglobulins</strong>) neutralize the negative surface electrical charge (<strong>zeta potential</strong>) of normal erythrocytes, allowing cells to stack together. <ul>
+<li><em>Clinical Significance</em>: True rouleaux (observed in the monolayer, often with a blue proteinaceous background) is indicative of <strong>Multiple Myeloma</strong>, Waldenström macroglobulinemia, and severe chronic inflammatory disorders.</li>
+<li><em>Laboratory Distinction</em>: Rouleaux disperses upon the addition of isotonic saline (saline replacement procedure).</li>
+</ul>
+</li>
+<li><strong>RBC Agglutination (Cold Autoagglutination)</strong>: Erythrocytes clumped into irregular, disorganized, three-dimensional grape-like clusters across the thin monolayer. Agglutination is mediated by <strong>Cold Agglutinins</strong> (high-titer IgM antibodies directed against RBC I/i carbohydrate antigens) that bind erythrocyte surfaces at temperatures below 37°C.<ul>
+<li><em>Automated Instrument Impact &amp; Spurious Lab Indices</em>: Cold agglutinins cause automated hematology analyzers to count multi-cell clusters as single large erythrocytes, generating a <strong>falsely decreased RBC count</strong> (below reference range $4.00\text{--}6.00 \times 10^6/\mu\text{L}$), <strong>falsely elevated Mean Corpuscular Volume (MCV)</strong> (exceeding normal $76\text{--}100\text{ fL}$), and a physiologically <strong>impossible Mean Corpuscular Hemoglobin Concentration ($\text{MCHC} > 36.0\text{ g/dL}$)</strong> (exceeding standard range $32\text{--}36\text{ g/dL}$, often exceeding 40–50 g/dL).</li>
+<li><em>Mandatory Corrective Action Protocol</em>:<br />
+1. Incubate the EDTA specimen tube in a calibrated <strong>37°C water bath for 15 to 30 minutes</strong>.<br />
+2. Immediately re-run the warmed specimen on the automated analyzer to obtain accurate, non-aggregated indices.<br />
+3. If the MCHC fails to normalize ($\le 36.0\text{ g/dL}$), perform a 37°C saline wash and replacement protocol prior to re-analysis.</li>
+</ul>
+</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="19">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4557,19 +4530,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="platelet-morphologies-anomalies">Platelet Morphologies &amp; Anomalies</h3>
-<p>Platelet size, granularity, and cytoplasmic fragmentation provide vital insight into megakaryocytopoiesis, accelerated consumption, myelodysplasia, and in vitro pre-analytical artifacts.</p>
-<ul>
-<li><strong>Normal Platelets</strong>: Small, discoid cytoplasmic fragments measuring 1.5–3.0 µm in diameter, featuring pale blue-gray cytoplasm filled with fine, evenly distributed purple-red <strong>alpha granules</strong> (ASCP BOC reference interval: $150\text{--}450 \times 10^3/\mu\text{L}$ or $150\text{--}450 \times 10^9/\text{L}$).</li>
-<li><strong>Giant Platelets (Macrothrombocytes)</strong>: Platelets exceeding the diameter of normal red blood cells (<strong>&gt;7.0 µm</strong>, typically 10–20 µm). Giant platelets indicate accelerated bone marrow megakaryocytopoiesis and premature release of young stress platelets in high-turnover states (such as <strong>Immune Thrombocytopenia [ITP]</strong> and recovery from myelosuppressive chemotherapy) or congenital macrothrombocytopenias (such as <strong>May-Hegglin Anomaly</strong> and <strong>Bernard-Soulier Syndrome</strong>).</li>
-<li><strong>Hypogranular / Agranular "Ghost" Platelets</strong>: Platelets that appear as pale, slate-blue or clear cytoplasmic discs lacking normal purple alpha granules. Hypogranularity is a characteristic marker of platelet dysplasia in <strong>Myelodysplastic Syndromes (MDS)</strong> and Chronic Myeloid Leukemia (CML), or the rare congenital <strong>Gray Platelet Syndrome</strong> (alpha granule deficiency).</li>
-<li><strong>Megakaryocyte Nuclear Fragments</strong>: Bare, multi-lobulated, densely clumped, smudged nuclear masses surrounded by a narrow rim of wispy, frilly cytoplasm with budding blebs and attached platelets. Circulating megakaryocyte fragments indicate profound marrow stress, bone marrow architecture breakdown, or neoplastic proliferation in <strong>Primary Myelofibrosis (PMF)</strong>, chronic myeloproliferative neoplasms, and severe leukoerythroblastic reactions.</li>
-<li><strong>Platelet Satellitism</strong>: An in vitro artifact where four or more platelets adhere to the outer membrane of segmented neutrophils (and rarely monocytes), forming distinct rosettes. Satellitism is caused by an EDTA-dependent IgG autoantibody directed against the glycoprotein IIb/IIIa complex and neutrophil Fc receptors. This causes automated cell counters to register the rosetted platelets as leukocytes, producing <strong>spurious thrombocytopenia</strong> and falsely elevated WBC counts. It is resolved by collecting a fresh specimen in a <strong>sodium citrate (light blue-top) tube</strong>, multiplying the measured platelet count by $1.11$ to correct for citrate dilution.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="20">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4606,6 +4566,19 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="platelet-morphologies-anomalies">Platelet Morphologies &amp; Anomalies</h3>
+<p>Platelet size, granularity, and cytoplasmic fragmentation provide vital insight into megakaryocytopoiesis, accelerated consumption, myelodysplasia, and in vitro pre-analytical artifacts.</p>
+<ul>
+<li><strong>Normal Platelets</strong>: Small, discoid cytoplasmic fragments measuring 1.5–3.0 µm in diameter, featuring pale blue-gray cytoplasm filled with fine, evenly distributed purple-red <strong>alpha granules</strong> (ASCP BOC reference interval: $150\text{--}450 \times 10^3/\mu\text{L}$ or $150\text{--}450 \times 10^9/\text{L}$).</li>
+<li><strong>Giant Platelets (Macrothrombocytes)</strong>: Platelets exceeding the diameter of normal red blood cells (<strong>&gt;7.0 µm</strong>, typically 10–20 µm). Giant platelets indicate accelerated bone marrow megakaryocytopoiesis and premature release of young stress platelets in high-turnover states (such as <strong>Immune Thrombocytopenia [ITP]</strong> and recovery from myelosuppressive chemotherapy) or congenital macrothrombocytopenias (such as <strong>May-Hegglin Anomaly</strong> and <strong>Bernard-Soulier Syndrome</strong>).</li>
+<li><strong>Hypogranular / Agranular "Ghost" Platelets</strong>: Platelets that appear as pale, slate-blue or clear cytoplasmic discs lacking normal purple alpha granules. Hypogranularity is a characteristic marker of platelet dysplasia in <strong>Myelodysplastic Syndromes (MDS)</strong> and Chronic Myeloid Leukemia (CML), or the rare congenital <strong>Gray Platelet Syndrome</strong> (alpha granule deficiency).</li>
+<li><strong>Megakaryocyte Nuclear Fragments</strong>: Bare, multi-lobulated, densely clumped, smudged nuclear masses surrounded by a narrow rim of wispy, frilly cytoplasm with budding blebs and attached platelets. Circulating megakaryocyte fragments indicate profound marrow stress, bone marrow architecture breakdown, or neoplastic proliferation in <strong>Primary Myelofibrosis (PMF)</strong>, chronic myeloproliferative neoplasms, and severe leukoerythroblastic reactions.</li>
+<li><strong>Platelet Satellitism</strong>: An in vitro artifact where four or more platelets adhere to the outer membrane of segmented neutrophils (and rarely monocytes), forming distinct rosettes. Satellitism is caused by an EDTA-dependent IgG autoantibody directed against the glycoprotein IIb/IIIa complex and neutrophil Fc receptors. This causes automated cell counters to register the rosetted platelets as leukocytes, producing <strong>spurious thrombocytopenia</strong> and falsely elevated WBC counts. It is resolved by collecting a fresh specimen in a <strong>sodium citrate (light blue-top) tube</strong>, multiplying the measured platelet count by $1.11$ to correct for citrate dilution.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="20">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -4626,6 +4599,42 @@ flowchart LR
     A --> E["Megakaryocyte Fragments<br/>(Marrow Fibrosis / PMF /<br/>Leukoerythroblastosis)"]
     A --> F["Platelet Satellitism (EDTA<br/>In Vitro Rosetting -&gt;<br/>Resolve via Citrate Tube x<br/>1.11)"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -4653,42 +4662,6 @@ flowchart LR
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="21">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4720,23 +4693,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<hr />
-<h3 id="microscopic-artifacts-false-positive-look-alikes">Microscopic Artifacts &amp; False Positive Look-Alikes</h3>
-<p>Distinguishing true pathological entities from in vitro pre-analytical and staining artifacts is critical to prevent erroneous clinical diagnoses and inappropriate therapies.</p>
-<ul>
-<li><strong>Water / Drying Artifact (Refractile Rings)</strong>: Water contamination of methanol fixative or slow air-drying under high humidity causes water droplets to settle onto the red cell membrane, producing shiny, highly refractile, hollow round rings with sharp inner borders within erythrocytes. These refractile rings can be mistaken for malaria ring forms, <em>Babesia</em>, or stomatocytes. True intraerythrocytic parasites exhibit a distinct dark-red chromatin dot and pale-blue cytoplasmic ring in the same focal plane as the red cell, whereas drying artifacts refract light and change from bright to dark as the fine focus is adjusted.</li>
-<li><strong>Precipitated Stain</strong>: Oxidized, precipitated Wright-Giemsa stain manifests as irregular, dense, dark purple-to-blue crystalline granules scattered irregularly across and between blood cells. Stain precipitate is easily misidentified as:<ul>
-<li>Intracellular basophilic stippling or Pappenheimer bodies when overlying red blood cells.</li>
-<li>Toxic granulation, bacteria, or fungal yeast when overlying leukocytes.</li>
-<li>Extracellular bacteria or <em>Babesia</em> when lying in the background.</li>
-<li><em>Differentiation</em>: Stain precipitate is focal, highly variable in size and geometry, lies in a different focal plane above the cell surface, and is accompanied by identical crystalline debris in cell-free areas of the slide.</li>
-</ul>
-</li>
-<li><strong>Platelets Overlying Red Blood Cells</strong>: A normal platelet superimposed directly on top of an erythrocyte can mimic an intraerythrocytic parasite (<em>Plasmodium</em> or <em>Babesia</em>) or a Howell-Jolly body. A superimposed platelet is distinguished by its characteristic pale-purple granular center, its surrounding clear halo (caused by membrane displacement), and its different focal plane relative to the underlying RBC.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="22">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4773,6 +4729,23 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<hr />
+<h3 id="microscopic-artifacts-false-positive-look-alikes">Microscopic Artifacts &amp; False Positive Look-Alikes</h3>
+<p>Distinguishing true pathological entities from in vitro pre-analytical and staining artifacts is critical to prevent erroneous clinical diagnoses and inappropriate therapies.</p>
+<ul>
+<li><strong>Water / Drying Artifact (Refractile Rings)</strong>: Water contamination of methanol fixative or slow air-drying under high humidity causes water droplets to settle onto the red cell membrane, producing shiny, highly refractile, hollow round rings with sharp inner borders within erythrocytes. These refractile rings can be mistaken for malaria ring forms, <em>Babesia</em>, or stomatocytes. True intraerythrocytic parasites exhibit a distinct dark-red chromatin dot and pale-blue cytoplasmic ring in the same focal plane as the red cell, whereas drying artifacts refract light and change from bright to dark as the fine focus is adjusted.</li>
+<li><strong>Precipitated Stain</strong>: Oxidized, precipitated Wright-Giemsa stain manifests as irregular, dense, dark purple-to-blue crystalline granules scattered irregularly across and between blood cells. Stain precipitate is easily misidentified as:<ul>
+<li>Intracellular basophilic stippling or Pappenheimer bodies when overlying red blood cells.</li>
+<li>Toxic granulation, bacteria, or fungal yeast when overlying leukocytes.</li>
+<li>Extracellular bacteria or <em>Babesia</em> when lying in the background.</li>
+<li><em>Differentiation</em>: Stain precipitate is focal, highly variable in size and geometry, lies in a different focal plane above the cell surface, and is accompanied by identical crystalline debris in cell-free areas of the slide.</li>
+</ul>
+</li>
+<li><strong>Platelets Overlying Red Blood Cells</strong>: A normal platelet superimposed directly on top of an erythrocyte can mimic an intraerythrocytic parasite (<em>Plasmodium</em> or <em>Babesia</em>) or a Howell-Jolly body. A superimposed platelet is distinguished by its characteristic pale-purple granular center, its surrounding clear halo (caused by membrane displacement), and its different focal plane relative to the underlying RBC.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="22">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4802,6 +4775,42 @@ flowchart TD
         B -->|"True chromatin dot + blue<br/>cytoplasm in identical<br/>focal plane"| F["True Intraerythrocytic<br/>Parasite (Plasmodium /<br/>Babesia)"]
     end
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -4841,42 +4850,6 @@ flowchart TD
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="23">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -4915,6 +4888,42 @@ flowchart TD
         D -->|"No Critical Flags /<br/>Normal Correlation"| G["Verify & Release Validated<br/>CBC and Differential"]
     end
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -5184,78 +5193,47 @@ flowchart TD
             function expandFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.flowchart-header-card') || wrapper.querySelector('.flowchart-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const svg = wrapper.querySelector('.mermaid svg');
-                
-                const article = document.querySelector('.markdown-body');
-                const containerW = (article ? article.clientWidth : 0) || (wrapper.parentElement ? wrapper.parentElement.clientWidth : 0) || window.innerWidth || 800;
-                
-                let chartHeight = 0;
-                if (svg) {
-                    const vb = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width > 0 ? svg.viewBox.baseVal : null;
-                    if (vb) {
-                        chartHeight = containerW * (vb.height / vb.width);
-                    } else {
-                        const viewBoxAttr = svg.getAttribute('viewBox');
-                        if (viewBoxAttr) {
-                            const parts = viewBoxAttr.trim().split(/[\s,]+/);
-                            if (parts.length >= 4) {
-                                const vbW = parseFloat(parts[2]);
-                                const vbH = parseFloat(parts[3]);
-                                chartHeight = vbW > 0 ? containerW * (vbH / vbW) : vbH;
-                            }
-                        }
-                    }
-                    if (!chartHeight || isNaN(chartHeight)) {
-                        chartHeight = svg.getBoundingClientRect().height || svg.clientHeight || 0;
-                    }
-                }
-                if (!chartHeight) {
-                    const inner = wrapper.querySelector('.flowchart-expanded-inner') || wrapper.querySelector('.mermaid');
-                    chartHeight = inner ? (inner.scrollHeight || inner.offsetHeight || 0) : 0;
-                }
-
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (chartHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Chart exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Chart fits in window but overflows bottom: scroll south to reveal chart bottom + sequential text
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fcWrappers.forEach((wrapper) => {
@@ -5505,51 +5483,47 @@ flowchart TD
             function expandTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.table-header-card') || wrapper.querySelector('.table-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const tableEl = wrapper.querySelector('table');
-                
-                const tableHeight = tableEl ? (tableEl.scrollHeight || tableEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (tableHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Table exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Table fits in window but overflows bottom: scroll south
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             tblWrappers.forEach((wrapper) => {
@@ -5583,19 +5557,26 @@ flowchart TD
             function expandFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const windowHeight = window.innerHeight;
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
                 if (!skipScroll) {
                     requestAnimationFrame(() => {
-                        const newRect = wrapper.getBoundingClientRect();
-                        if (newRect.top < 15) {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        } else if (newRect.bottom > windowHeight) {
-                            const scrollDown = Math.min(newRect.top - 15, newRect.bottom - windowHeight + 20);
-                            if (scrollDown > 2) {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
                             }
                         }
                     });
@@ -5605,17 +5586,18 @@ flowchart TD
             function collapseFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isPastTop = rect.top < 12;
-
-                if (!skipScroll && isPastTop) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fmlWrappers.forEach((wrapper) => {
@@ -5912,49 +5894,47 @@ flowchart TD
             function expandGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.graphic-header-card') || wrapper.querySelector('.graphic-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const figureEl = wrapper.querySelector('figure') || wrapper.querySelector('img');
-                
-                const figureHeight = figureEl ? (figureEl.scrollHeight || figureEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (figureHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             grpWrappers.forEach((wrapper) => {

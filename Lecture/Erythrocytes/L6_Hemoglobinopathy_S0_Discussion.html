@@ -562,7 +562,7 @@
         .table-wrapper:not(.is-collapsed) .table-header-card,
         .table-wrapper:not(.is-collapsed) .table-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -571,14 +571,15 @@
         }
 
         .table-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .table-wrapper:not(.is-collapsed) .table-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -767,18 +768,24 @@
 
         .formula-wrapper:not(.is-collapsed) .formula-header-card,
         .formula-wrapper:not(.is-collapsed) .formula-preview-card {
-            position: relative;
+            position: sticky;
+            bottom: 12px;
+            z-index: 30;
             background: var(--color-canvas-default);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .formula-wrapper:not(.is-collapsed) {
+            margin-top: 1.2em;
             margin-bottom: 1.2em;
         }
 
         .formula-wrapper:not(.is-collapsed) .formula-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
+            margin-top: 0 !important;
             margin-bottom: 8px !important;
             pointer-events: auto !important;
             visibility: visible !important;
@@ -1105,7 +1112,7 @@
         .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
         .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1114,14 +1121,15 @@
         }
 
         .flowchart-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .flowchart-wrapper:not(.is-collapsed) .flowchart-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -1913,7 +1921,7 @@
         .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
         .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
             position: sticky;
-            top: 12px;
+            bottom: 12px;
             z-index: 30;
             background: var(--color-canvas-default);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -1922,14 +1930,15 @@
         }
 
         .graphic-wrapper:not(.is-collapsed) {
-            margin-bottom: calc(1.2em + 50px);
+            margin-top: 1.2em;
+            margin-bottom: 1.2em;
         }
 
         .graphic-wrapper:not(.is-collapsed) .graphic-expanded-view {
             grid-template-rows: 1fr !important;
             opacity: 1 !important;
-            margin-top: 10px !important;
-            margin-bottom: -50px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
@@ -2109,42 +2118,6 @@
 <li><strong>Quantitative Defects (Thalassemias):</strong> Mutations (promoter defects, splice-site errors, nonsense mutations, or large gene deletions) that suppress or abolish the rate of globin chain synthesis, resulting in a stoichiometric imbalance between alpha-like and beta-like chains with morphologically normal individual globin chains.</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="1">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2188,16 +2161,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h4 id="genetic-architecture">Genetic Architecture</h4>
-<p>The structural genes governing globin synthesis reside in two distinct clusters on separate chromosomes:</p>
-<ul>
-<li><strong>Alpha ($\alpha$)-Globin Gene Cluster (Chromosome 16p13.3):</strong> Organized in tandem duplicate loci per haploid genome ($\alpha_2$ and $\alpha_1$), providing four functional $\alpha$-globin gene copies ($\alpha\alpha/\alpha\alpha$) in a normal diploid individual. The cluster also contains the embryonic zeta ($\zeta$) gene.</li>
-<li><strong>Beta ($\beta$)-Globin Gene Cluster (Chromosome 11p15.5):</strong> Organized as a single functional $\beta$-globin gene per haploid genome, conferring two functional $\beta$-globin gene copies ($\beta/\beta$) in a normal diploid individual. This locus also contains embryonic epsilon ($\epsilon$), fetal gamma ($G_\gamma, A_\gamma$), and minor adult delta ($\delta$) genes.</li>
-</ul>
-<p>Because four genetic loci encode $\alpha$-chains while only two encode $\beta$-chains, a heterozygous point mutation in the $\beta$-globin cluster affects approximately $50\text{%}$ of the total adult non-$\alpha$ output. Conversely, a single-gene mutation in the $\alpha$-cluster alters only $\sim 25\text{%}$ of total $\alpha$-chain output. As a result, qualitative $\beta$-chain variants present with significantly greater clinical severity and higher circulating variant fractions than $\alpha$-chain variants.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="2">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2234,6 +2197,16 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h4 id="genetic-architecture">Genetic Architecture</h4>
+<p>The structural genes governing globin synthesis reside in two distinct clusters on separate chromosomes:</p>
+<ul>
+<li><strong>Alpha ($\alpha$)-Globin Gene Cluster (Chromosome 16p13.3):</strong> Organized in tandem duplicate loci per haploid genome ($\alpha_2$ and $\alpha_1$), providing four functional $\alpha$-globin gene copies ($\alpha\alpha/\alpha\alpha$) in a normal diploid individual. The cluster also contains the embryonic zeta ($\zeta$) gene.</li>
+<li><strong>Beta ($\beta$)-Globin Gene Cluster (Chromosome 11p15.5):</strong> Organized as a single functional $\beta$-globin gene per haploid genome, conferring two functional $\beta$-globin gene copies ($\beta/\beta$) in a normal diploid individual. This locus also contains embryonic epsilon ($\epsilon$), fetal gamma ($G_\gamma, A_\gamma$), and minor adult delta ($\delta$) genes.</li>
+</ul>
+<p>Because four genetic loci encode $\alpha$-chains while only two encode $\beta$-chains, a heterozygous point mutation in the $\beta$-globin cluster affects approximately $50\text{%}$ of the total adult non-$\alpha$ output. Conversely, a single-gene mutation in the $\alpha$-cluster alters only $\sim 25\text{%}$ of total $\alpha$-chain output. As a result, qualitative $\beta$-chain variants present with significantly greater clinical severity and higher circulating variant fractions than $\alpha$-chain variants.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="2">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="gantt
@@ -2277,20 +2250,6 @@ gantt
             </div>
         </div>
     </div>
-</div>
-
-<h4 id="developmental-globin-switching">Developmental Globin Switching</h4>
-<ul>
-<li><strong>Embryonic Stage (Gestational Weeks 0–10):</strong> Hemopoiesis in the yolk sac produces embryonic hemoglobins: Gower 1 ($\zeta_2\epsilon_2$), Gower 2 ($\alpha_2\epsilon_2$), and Portland ($\zeta_2\gamma_2$).</li>
-<li><strong>Fetal Stage (Gestational Weeks 10–38):</strong> As hematopoiesis transitions to the fetal liver and spleen, $\alpha$-globin synthesis pairs with $\gamma$-globin to generate fetal hemoglobin ($\text{HbF}: \alpha_2\gamma_2$). $\alpha$-chain synthesis begins around 5–6 weeks of gestation and remains obligatory throughout fetal and postnatal life.</li>
-<li><strong>Adult Switch (Perinatal to 6 Months Postpartum):</strong> During the third trimester, transcription factors (including BCL11A and ZBTB7A/LRF) repress the $\gamma$-globin promoters and activate $\beta$-globin transcription. At birth, red blood cells contain $60\text{%}–80\text{%}\ \text{HbF}$ and $20\text{%}–40\text{%}\ \text{HbA}$. By 6 months of age, $\text{HbF}$ decays below $1\text{%}–2\text{%}$, and adult hemoglobin tetramers reach stable physiological distributions:<ul>
-<li><strong>Hemoglobin A ($\text{HbA}, \alpha_2\beta_2$):</strong> $95\text{%}–98\text{%}$</li>
-<li><strong>Hemoglobin $\text{A}_2$ ($\text{HbA}_2, \alpha_2\delta_2$):</strong> $1.5\text{%}–3.5\text{%}$</li>
-<li><strong>Hemoglobin F ($\text{HbF}, \alpha_2\gamma_2$):</strong> $< 1.0\text{%}–2.0\text{%}$</li>
-</ul>
-</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="3">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2327,6 +2286,20 @@ gantt
             </button>
         </div>
     </div>
+</div>
+
+<h4 id="developmental-globin-switching">Developmental Globin Switching</h4>
+<ul>
+<li><strong>Embryonic Stage (Gestational Weeks 0–10):</strong> Hemopoiesis in the yolk sac produces embryonic hemoglobins: Gower 1 ($\zeta_2\epsilon_2$), Gower 2 ($\alpha_2\epsilon_2$), and Portland ($\zeta_2\gamma_2$).</li>
+<li><strong>Fetal Stage (Gestational Weeks 10–38):</strong> As hematopoiesis transitions to the fetal liver and spleen, $\alpha$-globin synthesis pairs with $\gamma$-globin to generate fetal hemoglobin ($\text{HbF}: \alpha_2\gamma_2$). $\alpha$-chain synthesis begins around 5–6 weeks of gestation and remains obligatory throughout fetal and postnatal life.</li>
+<li><strong>Adult Switch (Perinatal to 6 Months Postpartum):</strong> During the third trimester, transcription factors (including BCL11A and ZBTB7A/LRF) repress the $\gamma$-globin promoters and activate $\beta$-globin transcription. At birth, red blood cells contain $60\text{%}–80\text{%}\ \text{HbF}$ and $20\text{%}–40\text{%}\ \text{HbA}$. By 6 months of age, $\text{HbF}$ decays below $1\text{%}–2\text{%}$, and adult hemoglobin tetramers reach stable physiological distributions:<ul>
+<li><strong>Hemoglobin A ($\text{HbA}, \alpha_2\beta_2$):</strong> $95\text{%}–98\text{%}$</li>
+<li><strong>Hemoglobin $\text{A}_2$ ($\text{HbA}_2, \alpha_2\delta_2$):</strong> $1.5\text{%}–3.5\text{%}$</li>
+<li><strong>Hemoglobin F ($\text{HbF}, \alpha_2\gamma_2$):</strong> $< 1.0\text{%}–2.0\text{%}$</li>
+</ul>
+</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="3">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -2355,28 +2328,6 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="clinical-correlations-diagnostics-qc">Clinical Correlations, Diagnostics &amp; QC</h3>
-<ul>
-<li><strong>Malaria Hypothesis and Balanced Polymorphism:</strong> Deleterious globin mutations remain common in tropical and subtropical regions due to heterozygote advantage. Heterozygous states ($\text{HbAS}$, $\text{HbAC}$, $\text{HbAE}$, and thalassemia traits) confer natural resistance against severe cerebral malaria caused by <em>Plasmodium falciparum</em>. Parasitized erythrocytes sickling prematurely under low microvascular oxygen tension are cleared rapidly by splenic macrophages before the parasite completes schizogony.</li>
-<li><strong>Geographic Heterogeneity:</strong><ul>
-<li>African Ancestry: High prevalence of $\text{HbS}$, $\text{HbC}$, and trans-deletional $\alpha$-thalassemia ($-\alpha/-\alpha$).</li>
-<li>Mediterranean Basin: High prevalence of severe $\beta$-thalassemia point mutations and $\alpha^0$-thalassemia.</li>
-<li>Southeast Asian Ancestry: High prevalence of $\text{HbE}$, $\text{Hb Constant Spring}$, and cis-deletional $\alpha^0$-thalassemia ($--/\alpha\alpha$).</li>
-</ul>
-</li>
-</ul>
-<h3 id="key-takeaways-diagnostic-pearls">Key Takeaways &amp; Diagnostic Pearls</h3>
-<ul>
-<li>Qualitative hemoglobinopathies alter the structural integrity of the globin monomer; quantitative thalassemias decrease total globin synthesis.</li>
-<li>Severe $\alpha$-chain defects manifest in utero because functional $\alpha$-chains are required to assemble $\text{HbF}$ ($\alpha_2\gamma_2$).</li>
-<li>Severe $\beta$-chain defects remain clinically silent until 3 to 6 months of age, when the developmental switch from $\gamma$- to $\beta$-globin synthesis reduces protective fetal hemoglobin levels.</li>
-</ul>
-<hr />
-<h2 id="multi-tiered-laboratory-diagnostic-methodologies">Multi-Tiered Laboratory Diagnostic Methodologies</h2>
-<p>Suspecting and confirming a hemoglobinopathy requires an integrated diagnostic sequence: automated complete blood count (CBC) screening, peripheral smear morphologic review, sickle solubility testing, and definitive separation/quantification via high-performance liquid chromatography (HPLC), capillary electrophoresis (CE), or dual-matrix gel electrophoresis.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="4">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2413,6 +2364,28 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="clinical-correlations-diagnostics-qc">Clinical Correlations, Diagnostics &amp; QC</h3>
+<ul>
+<li><strong>Malaria Hypothesis and Balanced Polymorphism:</strong> Deleterious globin mutations remain common in tropical and subtropical regions due to heterozygote advantage. Heterozygous states ($\text{HbAS}$, $\text{HbAC}$, $\text{HbAE}$, and thalassemia traits) confer natural resistance against severe cerebral malaria caused by <em>Plasmodium falciparum</em>. Parasitized erythrocytes sickling prematurely under low microvascular oxygen tension are cleared rapidly by splenic macrophages before the parasite completes schizogony.</li>
+<li><strong>Geographic Heterogeneity:</strong><ul>
+<li>African Ancestry: High prevalence of $\text{HbS}$, $\text{HbC}$, and trans-deletional $\alpha$-thalassemia ($-\alpha/-\alpha$).</li>
+<li>Mediterranean Basin: High prevalence of severe $\beta$-thalassemia point mutations and $\alpha^0$-thalassemia.</li>
+<li>Southeast Asian Ancestry: High prevalence of $\text{HbE}$, $\text{Hb Constant Spring}$, and cis-deletional $\alpha^0$-thalassemia ($--/\alpha\alpha$).</li>
+</ul>
+</li>
+</ul>
+<h3 id="key-takeaways-diagnostic-pearls">Key Takeaways &amp; Diagnostic Pearls</h3>
+<ul>
+<li>Qualitative hemoglobinopathies alter the structural integrity of the globin monomer; quantitative thalassemias decrease total globin synthesis.</li>
+<li>Severe $\alpha$-chain defects manifest in utero because functional $\alpha$-chains are required to assemble $\text{HbF}$ ($\alpha_2\gamma_2$).</li>
+<li>Severe $\beta$-chain defects remain clinically silent until 3 to 6 months of age, when the developmental switch from $\gamma$- to $\beta$-globin synthesis reduces protective fetal hemoglobin levels.</li>
+</ul>
+<hr />
+<h2 id="multi-tiered-laboratory-diagnostic-methodologies">Multi-Tiered Laboratory Diagnostic Methodologies</h2>
+<p>Suspecting and confirming a hemoglobinopathy requires an integrated diagnostic sequence: automated complete blood count (CBC) screening, peripheral smear morphologic review, sickle solubility testing, and definitive separation/quantification via high-performance liquid chromatography (HPLC), capillary electrophoresis (CE), or dual-matrix gel electrophoresis.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="4">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2450,18 +2423,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="sickle-solubility-screening-test">Sickle Solubility Screening Test</h3>
-<ul>
-<li><strong>Physical Principle:</strong> Whole blood is introduced to a concentrated, hypertonic phosphate buffer system containing a hemolytic surfactant (e.g., saponin) and a potent reducing agent (sodium dithionite, $\text{Na}_2\text{S}_2\text{O}_4$). The surfactant lyses red cell membranes, releasing hemoglobin into solution. Sodium dithionite deoxygenates the hemoglobin molecules. Deoxygenated normal adult hemoglobin ($\text{HbA}$) remains entirely soluble, producing a clear, transparent pink liquid. Deoxygenated sickle hemoglobin ($\text{HbS}$) polymerizes into insoluble crystalline aggregates (tactoids). These tactoids refract and scatter transmitted light, rendering the suspension opaque and turbid.</li>
-<li><strong>Interpretation Criteria:</strong> Tubes are positioned $2.5\text{ cm}$ in front of a white card ruled with bold black lines:<ul>
-<li><strong>Positive Result:</strong> Bold black lines cannot be viewed through the turbid suspension. Indicates presence of an insoluble sickling hemoglobin variant ($\text{HbS}$, $\text{HbC-Harlem}$).</li>
-<li><strong>Negative Result:</strong> Bold black lines are sharply visible through the transparent solution.</li>
-</ul>
-</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="5">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2498,6 +2459,18 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="sickle-solubility-screening-test">Sickle Solubility Screening Test</h3>
+<ul>
+<li><strong>Physical Principle:</strong> Whole blood is introduced to a concentrated, hypertonic phosphate buffer system containing a hemolytic surfactant (e.g., saponin) and a potent reducing agent (sodium dithionite, $\text{Na}_2\text{S}_2\text{O}_4$). The surfactant lyses red cell membranes, releasing hemoglobin into solution. Sodium dithionite deoxygenates the hemoglobin molecules. Deoxygenated normal adult hemoglobin ($\text{HbA}$) remains entirely soluble, producing a clear, transparent pink liquid. Deoxygenated sickle hemoglobin ($\text{HbS}$) polymerizes into insoluble crystalline aggregates (tactoids). These tactoids refract and scatter transmitted light, rendering the suspension opaque and turbid.</li>
+<li><strong>Interpretation Criteria:</strong> Tubes are positioned $2.5\text{ cm}$ in front of a white card ruled with bold black lines:<ul>
+<li><strong>Positive Result:</strong> Bold black lines cannot be viewed through the turbid suspension. Indicates presence of an insoluble sickling hemoglobin variant ($\text{HbS}$, $\text{HbC-Harlem}$).</li>
+<li><strong>Negative Result:</strong> Bold black lines are sharply visible through the transparent solution.</li>
+</ul>
+</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="5">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -2515,6 +2488,42 @@ flowchart LR
     C -->|Suspension Opaque: Lines<br/>Obscured| D["POSITIVE: Insoluble<br/>Polymerization (HbS)"]
     C -->|Suspension Clear: Lines<br/>Visible| E["NEGATIVE: Soluble<br/>Hemoglobins Present"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -2540,39 +2549,6 @@ flowchart LR
 
 
 <div class="table-wrapper is-collapsed" data-table-index="1">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -2618,46 +2594,43 @@ flowchart LR
 </table>
         </div>
     </div>
-</div>
-
-
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="6">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
             </svg>
         </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
                 </svg>
                 <span>Inline</span>
             </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
                 </svg>
                 <span>Collapse</span>
             </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
                 </svg>
                 <span>Full</span>
             </button>
         </div>
     </div>
+</div>
+
+
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="6">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2713,30 +2686,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="high-performance-liquid-chromatography-hplc-capillary-electrophoresis">High-Performance Liquid Chromatography (HPLC) &amp; Capillary Electrophoresis</h3>
-<p>In modern clinical reference laboratories, manual dual-matrix gel electrophoresis is largely supplemented or replaced by automated cation-exchange HPLC and capillary zone electrophoresis (CE).</p>
-<ul>
-<li><strong>Cation-Exchange HPLC Mechanics:</strong> Hemoglobin variants are bound to a negatively charged silica resin stationary phase and eluted using a continuous buffer gradient of increasing sodium phosphate concentration and ionic strength.</li>
-<li><strong>Retention Time (RT):</strong> The time elapsed between sample injection and maximum peak elution is characteristic for specific globin chains. Elution profiles are categorized into precise retention windows:<ul>
-<li>$\text{HbA}_2$ Window: Retention time $3.60–3.90\text{ minutes}$. Crucial for resolving elevated $\text{HbA}_2$ in $\beta$-thalassemia minor and distinguishing it from $\text{HbE}$ (which elutes within the same window but usually represents $>25\text{%}$ of total hemoglobin).</li>
-<li>$\text{HbS}$ Window: Retention time $4.40–4.80\text{ minutes}$.</li>
-<li>$\text{HbC}$ Window: Retention time $4.90–5.30\text{ minutes}$.</li>
-</ul>
-</li>
-<li><strong>Capillary Electrophoresis (CE):</strong> Uses high-voltage separation in narrow silica capillaries filled with an alkaline buffer, yielding high resolution between $\text{HbA}_2$, $\text{HbE}$, and $\text{HbC}$ without the manual processing required by gel electrophoresis.</li>
-</ul>
-<h3 id="key-takeaways-diagnostic-pearls_1">Key Takeaways &amp; Diagnostic Pearls</h3>
-<ul>
-<li>The sickle solubility screen relies on sodium dithionite reduction to induce $\text{HbS}$ tactoid polymerization; it cannot differentiate sickle cell trait ($\text{HbAS}$) from sickle cell anemia ($\text{HbSS}$).</li>
-<li>On alkaline cellulose acetate (pH 8.6), $\text{HbS}$ co-migrates with $\text{HbD}$ and $\text{HbG}$. Confirmation of $\text{HbS}$ requires acid citrate agar (pH 6.2), where $\text{HbD}$ and $\text{HbG}$ migrate with $\text{HbA}$, while $\text{HbS}$ separates cleanly.</li>
-<li>On alkaline cellulose acetate, $\text{HbC}$ co-migrates with $\text{HbA}_2$, $\text{HbE}$, and $\text{HbO-Arab}$. Acid citrate agar isolates $\text{HbC}$ cathodally away from $\text{HbA}_2$ and $\text{HbE}$.</li>
-</ul>
-<hr />
-<h2 id="major-qualitative-beta-chain-hemoglobinopathies">Major Qualitative Beta-Chain Hemoglobinopathies</h2>
-<p>Structural beta-chain variants arise from single amino acid substitutions, primarily affecting the surface charge or internal architecture of the folded $\beta$-globin subunit.</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="7">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2773,6 +2722,30 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="high-performance-liquid-chromatography-hplc-capillary-electrophoresis">High-Performance Liquid Chromatography (HPLC) &amp; Capillary Electrophoresis</h3>
+<p>In modern clinical reference laboratories, manual dual-matrix gel electrophoresis is largely supplemented or replaced by automated cation-exchange HPLC and capillary zone electrophoresis (CE).</p>
+<ul>
+<li><strong>Cation-Exchange HPLC Mechanics:</strong> Hemoglobin variants are bound to a negatively charged silica resin stationary phase and eluted using a continuous buffer gradient of increasing sodium phosphate concentration and ionic strength.</li>
+<li><strong>Retention Time (RT):</strong> The time elapsed between sample injection and maximum peak elution is characteristic for specific globin chains. Elution profiles are categorized into precise retention windows:<ul>
+<li>$\text{HbA}_2$ Window: Retention time $3.60–3.90\text{ minutes}$. Crucial for resolving elevated $\text{HbA}_2$ in $\beta$-thalassemia minor and distinguishing it from $\text{HbE}$ (which elutes within the same window but usually represents $>25\text{%}$ of total hemoglobin).</li>
+<li>$\text{HbS}$ Window: Retention time $4.40–4.80\text{ minutes}$.</li>
+<li>$\text{HbC}$ Window: Retention time $4.90–5.30\text{ minutes}$.</li>
+</ul>
+</li>
+<li><strong>Capillary Electrophoresis (CE):</strong> Uses high-voltage separation in narrow silica capillaries filled with an alkaline buffer, yielding high resolution between $\text{HbA}_2$, $\text{HbE}$, and $\text{HbC}$ without the manual processing required by gel electrophoresis.</li>
+</ul>
+<h3 id="key-takeaways-diagnostic-pearls_1">Key Takeaways &amp; Diagnostic Pearls</h3>
+<ul>
+<li>The sickle solubility screen relies on sodium dithionite reduction to induce $\text{HbS}$ tactoid polymerization; it cannot differentiate sickle cell trait ($\text{HbAS}$) from sickle cell anemia ($\text{HbSS}$).</li>
+<li>On alkaline cellulose acetate (pH 8.6), $\text{HbS}$ co-migrates with $\text{HbD}$ and $\text{HbG}$. Confirmation of $\text{HbS}$ requires acid citrate agar (pH 6.2), where $\text{HbD}$ and $\text{HbG}$ migrate with $\text{HbA}$, while $\text{HbS}$ separates cleanly.</li>
+<li>On alkaline cellulose acetate, $\text{HbC}$ co-migrates with $\text{HbA}_2$, $\text{HbE}$, and $\text{HbO-Arab}$. Acid citrate agar isolates $\text{HbC}$ cathodally away from $\text{HbA}_2$ and $\text{HbE}$.</li>
+</ul>
+<hr />
+<h2 id="major-qualitative-beta-chain-hemoglobinopathies">Major Qualitative Beta-Chain Hemoglobinopathies</h2>
+<p>Structural beta-chain variants arise from single amino acid substitutions, primarily affecting the surface charge or internal architecture of the folded $\beta$-globin subunit.</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="7">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -2802,6 +2775,42 @@ flowchart TD
         F["Normal Beta Chain: Codon<br/>121 = GAA"] -->|GAA -> CAA Mutation| G["HbD-Punjab: Glutamine<br/>Substitution (beta-121<br/>Glu-&gt;Gln)"]
     end
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -2858,6 +2867,31 @@ flowchart TD
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="8">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart LR
+    A[&quot;Deoxygenation (Hypoxia,&lt;br/&gt;Acidosis, Hypothermia)&quot;] --&gt; B[&quot;T-State Conformation&lt;br/&gt;Exposes Phe 85 / Leu 88&lt;br/&gt;Pocket&quot;]
+    B --&gt; C[&quot;Valine 6 Binds Hydrophobic&lt;br/&gt;Pocket on Adjacent Tetramer&quot;]
+    C --&gt; D[&quot;Polymerization into&lt;br/&gt;14-Strand Helical Polymers&lt;br/&gt;(Tactoids)&quot;]
+    D --&gt; E[&quot;Cellular Distortion:&lt;br/&gt;Dynamic Sickle Red Blood&lt;br/&gt;Cell&quot;]
+    E --&gt; F[&quot;Membrane Shear, Gardos&lt;br/&gt;Activation, Ca2+ Influx,&lt;br/&gt;K+/H2O Loss&quot;]
+    F --&gt; G[&quot;Irreversibly Sickled Cell&lt;br/&gt;(ISC): Vaso-occlusion &amp;&lt;br/&gt;Hemolysis&quot;]" data-original-code="flowchart LR
+    A[&quot;Deoxygenation (Hypoxia,&lt;br/&gt;Acidosis, Hypothermia)&quot;] --&gt; B[&quot;T-State Conformation&lt;br/&gt;Exposes Phe 85 / Leu 88&lt;br/&gt;Pocket&quot;]
+    B --&gt; C[&quot;Valine 6 Binds Hydrophobic&lt;br/&gt;Pocket on Adjacent Tetramer&quot;]
+    C --&gt; D[&quot;Polymerization into&lt;br/&gt;14-Strand Helical Polymers&lt;br/&gt;(Tactoids)&quot;]
+    D --&gt; E[&quot;Cellular Distortion:&lt;br/&gt;Dynamic Sickle Red Blood&lt;br/&gt;Cell&quot;]
+    E --&gt; F[&quot;Membrane Shear, Gardos&lt;br/&gt;Activation, Ca2+ Influx,&lt;br/&gt;K+/H2O Loss&quot;]
+    F --&gt; G[&quot;Irreversibly Sickled Cell&lt;br/&gt;(ISC): Vaso-occlusion &amp;&lt;br/&gt;Hemolysis&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart LR
+    A["Deoxygenation (Hypoxia,<br/>Acidosis, Hypothermia)"] --> B["T-State Conformation<br/>Exposes Phe 85 / Leu 88<br/>Pocket"]
+    B --> C["Valine 6 Binds Hydrophobic<br/>Pocket on Adjacent Tetramer"]
+    C --> D["Polymerization into<br/>14-Strand Helical Polymers<br/>(Tactoids)"]
+    D --> E["Cellular Distortion:<br/>Dynamic Sickle Red Blood<br/>Cell"]
+    E --> F["Membrane Shear, Gardos<br/>Activation, Ca2+ Influx,<br/>K+/H2O Loss"]
+    F --> G["Irreversibly Sickled Cell<br/>(ISC): Vaso-occlusion &<br/>Hemolysis"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2892,31 +2926,6 @@ flowchart TD
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart LR
-    A[&quot;Deoxygenation (Hypoxia,&lt;br/&gt;Acidosis, Hypothermia)&quot;] --&gt; B[&quot;T-State Conformation&lt;br/&gt;Exposes Phe 85 / Leu 88&lt;br/&gt;Pocket&quot;]
-    B --&gt; C[&quot;Valine 6 Binds Hydrophobic&lt;br/&gt;Pocket on Adjacent Tetramer&quot;]
-    C --&gt; D[&quot;Polymerization into&lt;br/&gt;14-Strand Helical Polymers&lt;br/&gt;(Tactoids)&quot;]
-    D --&gt; E[&quot;Cellular Distortion:&lt;br/&gt;Dynamic Sickle Red Blood&lt;br/&gt;Cell&quot;]
-    E --&gt; F[&quot;Membrane Shear, Gardos&lt;br/&gt;Activation, Ca2+ Influx,&lt;br/&gt;K+/H2O Loss&quot;]
-    F --&gt; G[&quot;Irreversibly Sickled Cell&lt;br/&gt;(ISC): Vaso-occlusion &amp;&lt;br/&gt;Hemolysis&quot;]" data-original-code="flowchart LR
-    A[&quot;Deoxygenation (Hypoxia,&lt;br/&gt;Acidosis, Hypothermia)&quot;] --&gt; B[&quot;T-State Conformation&lt;br/&gt;Exposes Phe 85 / Leu 88&lt;br/&gt;Pocket&quot;]
-    B --&gt; C[&quot;Valine 6 Binds Hydrophobic&lt;br/&gt;Pocket on Adjacent Tetramer&quot;]
-    C --&gt; D[&quot;Polymerization into&lt;br/&gt;14-Strand Helical Polymers&lt;br/&gt;(Tactoids)&quot;]
-    D --&gt; E[&quot;Cellular Distortion:&lt;br/&gt;Dynamic Sickle Red Blood&lt;br/&gt;Cell&quot;]
-    E --&gt; F[&quot;Membrane Shear, Gardos&lt;br/&gt;Activation, Ca2+ Influx,&lt;br/&gt;K+/H2O Loss&quot;]
-    F --&gt; G[&quot;Irreversibly Sickled Cell&lt;br/&gt;(ISC): Vaso-occlusion &amp;&lt;br/&gt;Hemolysis&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart LR
-    A["Deoxygenation (Hypoxia,<br/>Acidosis, Hypothermia)"] --> B["T-State Conformation<br/>Exposes Phe 85 / Leu 88<br/>Pocket"]
-    B --> C["Valine 6 Binds Hydrophobic<br/>Pocket on Adjacent Tetramer"]
-    C --> D["Polymerization into<br/>14-Strand Helical Polymers<br/>(Tactoids)"]
-    D --> E["Cellular Distortion:<br/>Dynamic Sickle Red Blood<br/>Cell"]
-    E --> F["Membrane Shear, Gardos<br/>Activation, Ca2+ Influx,<br/>K+/H2O Loss"]
-    F --> G["Irreversibly Sickled Cell<br/>(ISC): Vaso-occlusion &<br/>Hemolysis"]
-            </div>
         </div>
     </div>
 </div>
@@ -2952,6 +2961,31 @@ flowchart LR
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="9">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    A[&quot;HbS Variant Laboratory&lt;br/&gt;Differentiation&quot;] --&gt; B{&quot;Sickle Cells on Routine&lt;br/&gt;Smear?&quot;}
+    B --&gt;|Present| C[&quot;Homozygous HbSS or Compound&lt;br/&gt;HbSC/S-Thal&quot;]
+    C --&gt; D[&quot;Quantitative Analysis: HbA&lt;br/&gt;= 0%&quot;]
+    B --&gt;|Absent| E[&quot;Heterozygous HbAS (Sickle&lt;br/&gt;Cell Trait)&quot;]
+    E --&gt; F[&quot;Quantitative Analysis: HbA&lt;br/&gt;&amp;gt; HbS (60:40 Ratio)&quot;]
+    E --&gt; G[&quot;Sickle Solubility: POSITIVE&quot;]" data-original-code="flowchart TD
+    A[&quot;HbS Variant Laboratory&lt;br/&gt;Differentiation&quot;] --&gt; B{&quot;Sickle Cells on Routine&lt;br/&gt;Smear?&quot;}
+    B --&gt;|Present| C[&quot;Homozygous HbSS or Compound&lt;br/&gt;HbSC/S-Thal&quot;]
+    C --&gt; D[&quot;Quantitative Analysis: HbA&lt;br/&gt;= 0%&quot;]
+    B --&gt;|Absent| E[&quot;Heterozygous HbAS (Sickle&lt;br/&gt;Cell Trait)&quot;]
+    E --&gt; F[&quot;Quantitative Analysis: HbA&lt;br/&gt;&amp;gt; HbS (60:40 Ratio)&quot;]
+    E --&gt; G[&quot;Sickle Solubility: POSITIVE&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    A["HbS Variant Laboratory<br/>Differentiation"] --> B{"Sickle Cells on Routine<br/>Smear?"}
+    B -->|Present| C["Homozygous HbSS or Compound<br/>HbSC/S-Thal"]
+    C --> D["Quantitative Analysis: HbA<br/>= 0%"]
+    B -->|Absent| E["Heterozygous HbAS (Sickle<br/>Cell Trait)"]
+    E --> F["Quantitative Analysis: HbA<br/>&gt; HbS (60:40 Ratio)"]
+    E --> G["Sickle Solubility: POSITIVE"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -2986,31 +3020,6 @@ flowchart LR
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    A[&quot;HbS Variant Laboratory&lt;br/&gt;Differentiation&quot;] --&gt; B{&quot;Sickle Cells on Routine&lt;br/&gt;Smear?&quot;}
-    B --&gt;|Present| C[&quot;Homozygous HbSS or Compound&lt;br/&gt;HbSC/S-Thal&quot;]
-    C --&gt; D[&quot;Quantitative Analysis: HbA&lt;br/&gt;= 0%&quot;]
-    B --&gt;|Absent| E[&quot;Heterozygous HbAS (Sickle&lt;br/&gt;Cell Trait)&quot;]
-    E --&gt; F[&quot;Quantitative Analysis: HbA&lt;br/&gt;&amp;gt; HbS (60:40 Ratio)&quot;]
-    E --&gt; G[&quot;Sickle Solubility: POSITIVE&quot;]" data-original-code="flowchart TD
-    A[&quot;HbS Variant Laboratory&lt;br/&gt;Differentiation&quot;] --&gt; B{&quot;Sickle Cells on Routine&lt;br/&gt;Smear?&quot;}
-    B --&gt;|Present| C[&quot;Homozygous HbSS or Compound&lt;br/&gt;HbSC/S-Thal&quot;]
-    C --&gt; D[&quot;Quantitative Analysis: HbA&lt;br/&gt;= 0%&quot;]
-    B --&gt;|Absent| E[&quot;Heterozygous HbAS (Sickle&lt;br/&gt;Cell Trait)&quot;]
-    E --&gt; F[&quot;Quantitative Analysis: HbA&lt;br/&gt;&amp;gt; HbS (60:40 Ratio)&quot;]
-    E --&gt; G[&quot;Sickle Solubility: POSITIVE&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    A["HbS Variant Laboratory<br/>Differentiation"] --> B{"Sickle Cells on Routine<br/>Smear?"}
-    B -->|Present| C["Homozygous HbSS or Compound<br/>HbSC/S-Thal"]
-    C --> D["Quantitative Analysis: HbA<br/>= 0%"]
-    B -->|Absent| E["Heterozygous HbAS (Sickle<br/>Cell Trait)"]
-    E --> F["Quantitative Analysis: HbA<br/>&gt; HbS (60:40 Ratio)"]
-    E --> G["Sickle Solubility: POSITIVE"]
-            </div>
         </div>
     </div>
 </div>
@@ -3180,6 +3189,28 @@ flowchart TD
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="10">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    A[&quot;Alkaline Band Detected in&lt;br/&gt;&#x27;S&#x27; Position&quot;] --&gt; B[&quot;Sickle Solubility Test&quot;]
+    B --&gt;|Positive| C[&quot;Hemoglobin S Confirmed&lt;br/&gt;(HbSS or HbAS)&quot;]
+    B --&gt;|Negative| D[&quot;Perform Acid Citrate Agar&lt;br/&gt;Electrophoresis&quot;]
+    D --&gt;|Migrates with HbA at&lt;br/&gt;Origin| E[&quot;Hemoglobin D or HbG&quot;]
+    D --&gt;|Migrates Independently| F[&quot;Other Non-Sickling Variant&quot;]" data-original-code="flowchart TD
+    A[&quot;Alkaline Band Detected in&lt;br/&gt;&#x27;S&#x27; Position&quot;] --&gt; B[&quot;Sickle Solubility Test&quot;]
+    B --&gt;|Positive| C[&quot;Hemoglobin S Confirmed&lt;br/&gt;(HbSS or HbAS)&quot;]
+    B --&gt;|Negative| D[&quot;Perform Acid Citrate Agar&lt;br/&gt;Electrophoresis&quot;]
+    D --&gt;|Migrates with HbA at&lt;br/&gt;Origin| E[&quot;Hemoglobin D or HbG&quot;]
+    D --&gt;|Migrates Independently| F[&quot;Other Non-Sickling Variant&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    A["Alkaline Band Detected in<br/>'S' Position"] --> B["Sickle Solubility Test"]
+    B -->|Positive| C["Hemoglobin S Confirmed<br/>(HbSS or HbAS)"]
+    B -->|Negative| D["Perform Acid Citrate Agar<br/>Electrophoresis"]
+    D -->|Migrates with HbA at<br/>Origin| E["Hemoglobin D or HbG"]
+    D -->|Migrates Independently| F["Other Non-Sickling Variant"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3214,28 +3245,6 @@ flowchart TD
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    A[&quot;Alkaline Band Detected in&lt;br/&gt;&#x27;S&#x27; Position&quot;] --&gt; B[&quot;Sickle Solubility Test&quot;]
-    B --&gt;|Positive| C[&quot;Hemoglobin S Confirmed&lt;br/&gt;(HbSS or HbAS)&quot;]
-    B --&gt;|Negative| D[&quot;Perform Acid Citrate Agar&lt;br/&gt;Electrophoresis&quot;]
-    D --&gt;|Migrates with HbA at&lt;br/&gt;Origin| E[&quot;Hemoglobin D or HbG&quot;]
-    D --&gt;|Migrates Independently| F[&quot;Other Non-Sickling Variant&quot;]" data-original-code="flowchart TD
-    A[&quot;Alkaline Band Detected in&lt;br/&gt;&#x27;S&#x27; Position&quot;] --&gt; B[&quot;Sickle Solubility Test&quot;]
-    B --&gt;|Positive| C[&quot;Hemoglobin S Confirmed&lt;br/&gt;(HbSS or HbAS)&quot;]
-    B --&gt;|Negative| D[&quot;Perform Acid Citrate Agar&lt;br/&gt;Electrophoresis&quot;]
-    D --&gt;|Migrates with HbA at&lt;br/&gt;Origin| E[&quot;Hemoglobin D or HbG&quot;]
-    D --&gt;|Migrates Independently| F[&quot;Other Non-Sickling Variant&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    A["Alkaline Band Detected in<br/>'S' Position"] --> B["Sickle Solubility Test"]
-    B -->|Positive| C["Hemoglobin S Confirmed<br/>(HbSS or HbAS)"]
-    B -->|Negative| D["Perform Acid Citrate Agar<br/>Electrophoresis"]
-    D -->|Migrates with HbA at<br/>Origin| E["Hemoglobin D or HbG"]
-    D -->|Migrates Independently| F["Other Non-Sickling Variant"]
-            </div>
         </div>
     </div>
 </div>
@@ -3264,42 +3273,6 @@ flowchart TD
 <p>Thalassemias are hereditary, quantitative anemias caused by mutations or deletions that reduce or abolish the transcription or translation of globin chains. The underlying globin chains are structurally normal, but their unbalanced production disrupts normal hemoglobin stoichiometry.</p>
 <p>In a normal individual, alpha and non-alpha globin synthesis maintains a strict $1:1$ stoichiometric ratio. When production of a specific globin chain is suppressed, the unaffected reciprocal chain continues to synthesize at normal rates, generating an intracellular pool of orphan, unpaired chains. <strong>The clinical severity of any thalassemic syndrome is directly proportional to the magnitude of this chain imbalance.</strong></p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="11">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3346,6 +3319,42 @@ flowchart TD
             </div>
         </div>
     </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 <h4 id="cellular-destinies-unpaired-alpha-vs-beta-chains">Cellular Destinies: Unpaired Alpha vs. Beta Chains</h4>
@@ -3374,42 +3383,6 @@ flowchart TD
 </li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="12">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -3438,20 +3411,6 @@ flowchart LR
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="systemic-pathophysiology-and-iron-overload">Systemic Pathophysiology and Iron Overload</h3>
-<p>The resulting tissue hypoxia stimulates high levels of erythropoietin (EPO), driving marked bone marrow expansion:</p>
-<ul>
-<li><strong>Marrow Expansion:</strong> The myeloid-to-erythroid (M:E) ratio inverts from a normal $3:1$ down to $1:10$ or $1:20$. The expanding erythroid marrow thins cortical bone, causing facial bone deformities ("chipmunk facies"), frontal bossing, and a radiographic "hair-on-end" appearance of the skull diploic space.</li>
-<li><strong>Extramedullary Hematopoiesis:</strong> Erythropoietic niches reactivate within the spleen and liver, producing marked hepatosplenomegaly.</li>
-<li><strong>Secondary Hemochromatosis:</strong> High, ineffective erythropoietic activity drives secretion of erythroferrone (ERFE), which suppresses hepatic hepcidin synthesis. Suppressed hepcidin increases ferroportin activity in duodenal enterocytes, accelerating dietary iron absorption. Compounded by lifelong transfusion support, excess iron deposits in cardiac myocytes, hepatocytes, and endocrine glands, making <strong>cardiac siderosis</strong> and heart failure a leading cause of mortality in untransfused or inadequately chelated patients.</li>
-</ul>
-<hr />
-<h2 id="four-tier-classification-of-alpha-thalassemias">Four-Tier Classification of Alpha-Thalassemias</h2>
-<p>Alpha-globin synthesis is governed by four functional genes on chromosome 16 ($\alpha_2$ and $\alpha_1$ on each homologue, denoted $\alpha\alpha/\alpha\alpha$). Alpha-thalassemias are caused predominantly by <strong>large gene deletions</strong> resulting from misaligned, unequal crossing-over during meiosis.</p>
-<p>The clinical syndromes are classified by the number of functional $\alpha$-globin genes deleted:</p>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="13">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3488,6 +3447,20 @@ flowchart LR
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="systemic-pathophysiology-and-iron-overload">Systemic Pathophysiology and Iron Overload</h3>
+<p>The resulting tissue hypoxia stimulates high levels of erythropoietin (EPO), driving marked bone marrow expansion:</p>
+<ul>
+<li><strong>Marrow Expansion:</strong> The myeloid-to-erythroid (M:E) ratio inverts from a normal $3:1$ down to $1:10$ or $1:20$. The expanding erythroid marrow thins cortical bone, causing facial bone deformities ("chipmunk facies"), frontal bossing, and a radiographic "hair-on-end" appearance of the skull diploic space.</li>
+<li><strong>Extramedullary Hematopoiesis:</strong> Erythropoietic niches reactivate within the spleen and liver, producing marked hepatosplenomegaly.</li>
+<li><strong>Secondary Hemochromatosis:</strong> High, ineffective erythropoietic activity drives secretion of erythroferrone (ERFE), which suppresses hepatic hepcidin synthesis. Suppressed hepcidin increases ferroportin activity in duodenal enterocytes, accelerating dietary iron absorption. Compounded by lifelong transfusion support, excess iron deposits in cardiac myocytes, hepatocytes, and endocrine glands, making <strong>cardiac siderosis</strong> and heart failure a leading cause of mortality in untransfused or inadequately chelated patients.</li>
+</ul>
+<hr />
+<h2 id="four-tier-classification-of-alpha-thalassemias">Four-Tier Classification of Alpha-Thalassemias</h2>
+<p>Alpha-globin synthesis is governed by four functional genes on chromosome 16 ($\alpha_2$ and $\alpha_1$ on each homologue, denoted $\alpha\alpha/\alpha\alpha$). Alpha-thalassemias are caused predominantly by <strong>large gene deletions</strong> resulting from misaligned, unequal crossing-over during meiosis.</p>
+<p>The clinical syndromes are classified by the number of functional $\alpha$-globin genes deleted:</p>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="13">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="graph TD
@@ -3561,6 +3534,42 @@ graph TD
             </div>
         </div>
     </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 <h3 id="1-silent-carrier-mathinlinex347x-thalassemia-2-trait-mathinlinex348x">1. Silent Carrier ($\alpha$-Thalassemia-2 Trait; $-\alpha/\alpha\alpha$)</h3>
@@ -3608,42 +3617,6 @@ graph TD
 <h2 id="beta-thalassemia-syndromes-and-diagnostic-hallmarks">Beta-Thalassemia Syndromes and Diagnostic Hallmarks</h2>
 <p>Beta-thalassemias are caused by deficient ($\beta^+$) or absent ($\beta^0$) synthesis of $\beta$-globin chains. The genetic locus comprises two genes on chromosome 11 ($\beta/\beta$). Unlike alpha-thalassemias, beta-thalassemias are caused almost exclusively by <strong>point mutations</strong> (promoter mutations, splice-site mutations, frameshifts, and premature stop codons) rather than large deletions.</p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="14">
-    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
-        <div class="flowchart-mini-graphic" title="Flowchart diagram">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
-                <path d="M20 16H29" class="fc-line" />
-                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
-                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
-                <path d="M53 16H62" class="fc-line" />
-                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
-                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
-                <path d="M43 26V28H79V20" class="fc-line" />
-                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
-                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
-            </svg>
-        </div>
-        <div class="flowchart-header-actions flowchart-preview-actions">
-            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart TD
@@ -3672,14 +3645,6 @@ flowchart TD
             </div>
         </div>
     </div>
-</div>
-
-<h3 id="1-beta-thalassemia-major-cooleys-anemia-mathinlinex440x-or-severe-mathinlinex441x">1. Beta-Thalassemia Major (Cooley's Anemia; $\beta^0/\beta^0$ or Severe $\beta^+/\beta^+$)</h3>
-<ul>
-<li><strong>Pathophysiology:</strong> Complete absence or marked reduction of $\beta$-chain synthesis causes a severe excess of free $\alpha$-chains, which precipitate inside marrow erythroblasts and drive intense <strong>ineffective erythropoiesis</strong> and extravascular hemolysis.</li>
-<li><strong>Chronology of Onset (The Gamma-to-Beta Switch):</strong> <strong>Beta-thalassemia major is clinically silent at birth.</strong> In utero and during the early neonatal period, $\text{HbF}$ ($\alpha_2\gamma_2$) predominates. Symptoms appear only between <strong>3 and 6 months of age</strong>, as the gamma-to-beta developmental switch decreases protective $\text{HbF}$ and leaves the beta-chain deficiency uncompensated.</li>
-</ul>
-<div class="flowchart-wrapper is-collapsed" data-flowchart-index="15">
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3716,6 +3681,14 @@ flowchart TD
             </button>
         </div>
     </div>
+</div>
+
+<h3 id="1-beta-thalassemia-major-cooleys-anemia-mathinlinex440x-or-severe-mathinlinex441x">1. Beta-Thalassemia Major (Cooley's Anemia; $\beta^0/\beta^0$ or Severe $\beta^+/\beta^+$)</h3>
+<ul>
+<li><strong>Pathophysiology:</strong> Complete absence or marked reduction of $\beta$-chain synthesis causes a severe excess of free $\alpha$-chains, which precipitate inside marrow erythroblasts and drive intense <strong>ineffective erythropoiesis</strong> and extravascular hemolysis.</li>
+<li><strong>Chronology of Onset (The Gamma-to-Beta Switch):</strong> <strong>Beta-thalassemia major is clinically silent at birth.</strong> In utero and during the early neonatal period, $\text{HbF}$ ($\alpha_2\gamma_2$) predominates. Symptoms appear only between <strong>3 and 6 months of age</strong>, as the gamma-to-beta developmental switch decreases protective $\text{HbF}$ and leaves the beta-chain deficiency uncompensated.</li>
+</ul>
+<div class="flowchart-wrapper is-collapsed" data-flowchart-index="15">
     <div class="flowchart-expanded-view">
         <div class="flowchart-expanded-inner">
             <div class="mermaid" data-original-source="flowchart LR
@@ -3733,6 +3706,42 @@ flowchart LR
     C --> D["Precipitation of Free Alpha<br/>Chains"]
     D --> E["Onset of Cooley's Anemia:<br/>Pallor, Failure to Thrive,<br/>Splenomegaly"]
             </div>
+        </div>
+    </div>
+    <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
+        <div class="flowchart-mini-graphic" title="Flowchart diagram">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                <path d="M20 16H29" class="fc-line" />
+                <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                <path d="M53 16H62" class="fc-line" />
+                <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                <path d="M43 26V28H79V20" class="fc-line" />
+                <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+            </svg>
+        </div>
+        <div class="flowchart-header-actions flowchart-preview-actions">
+            <button type="button" class="flowchart-btn-inline" title="Expand diagram inline" aria-label="Expand Inline">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="flowchart-btn-collapse" title="Collapse flowchart" aria-label="Collapse diagram">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="flowchart-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -3760,6 +3769,28 @@ flowchart LR
 <li><strong>Diagnostic Caution:</strong> If $\text{HbA}_2$ exceeds $7.0\text{%}–8.0\text{%}$, the result usually indicates co-elution of a structural variant (such as $\text{HbE}$ or $\text{HbC}$) rather than isolated $\beta$-thalassemia minor. Conversely, concurrent severe iron deficiency can depress $\text{HbA}_2$ into the normal range, masking beta-thalassemia trait; iron repletion should precede definitive diagnostic quantification.</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="16">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart LR
+    A[&quot;Patient: Microcytosis (MCV&lt;br/&gt;&amp;lt; 76 fL) &amp; Normal/High&lt;br/&gt;RBC&quot;] --&gt; B[&quot;Assess Iron Status &amp;&lt;br/&gt;HPLC/CE Analysis&quot;]
+    B --&gt; C{&quot;Check HbA2 Level&quot;}
+    C --&gt;|&quot;HbA2 between 3.5% and&lt;br/&gt;7.0%&quot;| D[&quot;Beta-Thalassemia Minor&lt;br/&gt;Confirmed&quot;]
+    C --&gt;|&quot;HbA2 &gt; 8.0%&quot;| E[&quot;Co-eluting Variant&lt;br/&gt;Suspected (e.g., HbE, HbC)&quot;]
+    C --&gt;|&quot;HbA2 Normal or Low (1.5%&lt;br/&gt;- 3.5%)&quot;| F[&quot;Evaluate Alpha-Thalassemia&lt;br/&gt;Minor or Concomitant Iron&lt;br/&gt;Deficiency&quot;]" data-original-code="flowchart LR
+    A[&quot;Patient: Microcytosis (MCV&lt;br/&gt;&amp;lt; 76 fL) &amp; Normal/High&lt;br/&gt;RBC&quot;] --&gt; B[&quot;Assess Iron Status &amp;&lt;br/&gt;HPLC/CE Analysis&quot;]
+    B --&gt; C{&quot;Check HbA2 Level&quot;}
+    C --&gt;|&quot;HbA2 between 3.5% and&lt;br/&gt;7.0%&quot;| D[&quot;Beta-Thalassemia Minor&lt;br/&gt;Confirmed&quot;]
+    C --&gt;|&quot;HbA2 &gt; 8.0%&quot;| E[&quot;Co-eluting Variant&lt;br/&gt;Suspected (e.g., HbE, HbC)&quot;]
+    C --&gt;|&quot;HbA2 Normal or Low (1.5%&lt;br/&gt;- 3.5%)&quot;| F[&quot;Evaluate Alpha-Thalassemia&lt;br/&gt;Minor or Concomitant Iron&lt;br/&gt;Deficiency&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart LR
+    A["Patient: Microcytosis (MCV<br/>&lt; 76 fL) & Normal/High<br/>RBC"] --> B["Assess Iron Status &<br/>HPLC/CE Analysis"]
+    B --> C{"Check HbA2 Level"}
+    C -->|"HbA2 between 3.5% and<br/>7.0%"| D["Beta-Thalassemia Minor<br/>Confirmed"]
+    C -->|"HbA2 > 8.0%"| E["Co-eluting Variant<br/>Suspected (e.g., HbE, HbC)"]
+    C -->|"HbA2 Normal or Low (1.5%<br/>- 3.5%)"| F["Evaluate Alpha-Thalassemia<br/>Minor or Concomitant Iron<br/>Deficiency"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3794,28 +3825,6 @@ flowchart LR
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart LR
-    A[&quot;Patient: Microcytosis (MCV&lt;br/&gt;&amp;lt; 76 fL) &amp; Normal/High&lt;br/&gt;RBC&quot;] --&gt; B[&quot;Assess Iron Status &amp;&lt;br/&gt;HPLC/CE Analysis&quot;]
-    B --&gt; C{&quot;Check HbA2 Level&quot;}
-    C --&gt;|&quot;HbA2 between 3.5% and&lt;br/&gt;7.0%&quot;| D[&quot;Beta-Thalassemia Minor&lt;br/&gt;Confirmed&quot;]
-    C --&gt;|&quot;HbA2 &gt; 8.0%&quot;| E[&quot;Co-eluting Variant&lt;br/&gt;Suspected (e.g., HbE, HbC)&quot;]
-    C --&gt;|&quot;HbA2 Normal or Low (1.5%&lt;br/&gt;- 3.5%)&quot;| F[&quot;Evaluate Alpha-Thalassemia&lt;br/&gt;Minor or Concomitant Iron&lt;br/&gt;Deficiency&quot;]" data-original-code="flowchart LR
-    A[&quot;Patient: Microcytosis (MCV&lt;br/&gt;&amp;lt; 76 fL) &amp; Normal/High&lt;br/&gt;RBC&quot;] --&gt; B[&quot;Assess Iron Status &amp;&lt;br/&gt;HPLC/CE Analysis&quot;]
-    B --&gt; C{&quot;Check HbA2 Level&quot;}
-    C --&gt;|&quot;HbA2 between 3.5% and&lt;br/&gt;7.0%&quot;| D[&quot;Beta-Thalassemia Minor&lt;br/&gt;Confirmed&quot;]
-    C --&gt;|&quot;HbA2 &gt; 8.0%&quot;| E[&quot;Co-eluting Variant&lt;br/&gt;Suspected (e.g., HbE, HbC)&quot;]
-    C --&gt;|&quot;HbA2 Normal or Low (1.5%&lt;br/&gt;- 3.5%)&quot;| F[&quot;Evaluate Alpha-Thalassemia&lt;br/&gt;Minor or Concomitant Iron&lt;br/&gt;Deficiency&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart LR
-    A["Patient: Microcytosis (MCV<br/>&lt; 76 fL) & Normal/High<br/>RBC"] --> B["Assess Iron Status &<br/>HPLC/CE Analysis"]
-    B --> C{"Check HbA2 Level"}
-    C -->|"HbA2 between 3.5% and<br/>7.0%"| D["Beta-Thalassemia Minor<br/>Confirmed"]
-    C -->|"HbA2 > 8.0%"| E["Co-eluting Variant<br/>Suspected (e.g., HbE, HbC)"]
-    C -->|"HbA2 Normal or Low (1.5%<br/>- 3.5%)"| F["Evaluate Alpha-Thalassemia<br/>Minor or Concomitant Iron<br/>Deficiency"]
-            </div>
         </div>
     </div>
 </div>
@@ -4260,6 +4269,31 @@ The Rule of Three fails by $7.5\text{ g/dL}$. Rather than indicating an instrume
 <li><strong>Physiological Principle:</strong> A thin peripheral blood smear is fixed with ethanol and immersed in an acidic buffer ($\text{pH } 3.2–3.3$). Adult hemoglobin ($\text{HbA}$) is acid-soluble and elutes out through the cell membrane, leaving empty, unstained erythrocyte "ghosts." Fetal hemoglobin ($\text{HbF}$) is acid-resistant, remaining inside the cell and staining deep pink with carbolfuchsin or eosin counterstains.</li>
 </ul>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="17">
+    <div class="flowchart-expanded-view">
+        <div class="flowchart-expanded-inner">
+            <div class="mermaid" data-original-source="flowchart TD
+    A[&quot;Elevated HbF Detected on&lt;br/&gt;HPLC or Traumatic Delivery&quot;] --&gt; B[&quot;Perform Kleihauer-Betke&lt;br/&gt;Acid Elution Stain&quot;]
+    B --&gt; C{&quot;Intracellular Staining&lt;br/&gt;Pattern&quot;}
+    C --&gt;|Uniform pink in all red&lt;br/&gt;cells| D[&quot;Pancellular: Hereditary&lt;br/&gt;Persistence of Fetal&lt;br/&gt;Hemoglobin (HPFH)&quot;]
+    C --&gt;|Heterogeneous: Dark pink&lt;br/&gt;cells mixed with ghosts| E[&quot;Heterocellular: Beta-Thal,&lt;br/&gt;Sickle Cell Anemia&quot;]
+    C --&gt;|Isolated fetal cells in&lt;br/&gt;sea of adult ghosts| F[&quot;Fetomaternal Hemorrhage&lt;br/&gt;(FMH)&quot;]
+    F --&gt; G[&quot;Calculate FMH Volume &amp; Dose&lt;br/&gt;Rh-Immune Globulin&quot;]" data-original-code="flowchart TD
+    A[&quot;Elevated HbF Detected on&lt;br/&gt;HPLC or Traumatic Delivery&quot;] --&gt; B[&quot;Perform Kleihauer-Betke&lt;br/&gt;Acid Elution Stain&quot;]
+    B --&gt; C{&quot;Intracellular Staining&lt;br/&gt;Pattern&quot;}
+    C --&gt;|Uniform pink in all red&lt;br/&gt;cells| D[&quot;Pancellular: Hereditary&lt;br/&gt;Persistence of Fetal&lt;br/&gt;Hemoglobin (HPFH)&quot;]
+    C --&gt;|Heterogeneous: Dark pink&lt;br/&gt;cells mixed with ghosts| E[&quot;Heterocellular: Beta-Thal,&lt;br/&gt;Sickle Cell Anemia&quot;]
+    C --&gt;|Isolated fetal cells in&lt;br/&gt;sea of adult ghosts| F[&quot;Fetomaternal Hemorrhage&lt;br/&gt;(FMH)&quot;]
+    F --&gt; G[&quot;Calculate FMH Volume &amp; Dose&lt;br/&gt;Rh-Immune Globulin&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
+flowchart TD
+    A["Elevated HbF Detected on<br/>HPLC or Traumatic Delivery"] --> B["Perform Kleihauer-Betke<br/>Acid Elution Stain"]
+    B --> C{"Intracellular Staining<br/>Pattern"}
+    C -->|Uniform pink in all red<br/>cells| D["Pancellular: Hereditary<br/>Persistence of Fetal<br/>Hemoglobin (HPFH)"]
+    C -->|Heterogeneous: Dark pink<br/>cells mixed with ghosts| E["Heterocellular: Beta-Thal,<br/>Sickle Cell Anemia"]
+    C -->|Isolated fetal cells in<br/>sea of adult ghosts| F["Fetomaternal Hemorrhage<br/>(FMH)"]
+    F --> G["Calculate FMH Volume & Dose<br/>Rh-Immune Globulin"]
+            </div>
+        </div>
+    </div>
     <div class="flowchart-header-card flowchart-preview-card" title="Click to expand flowchart inline" aria-label="Expand flowchart diagram" tabindex="0">
         <div class="flowchart-mini-graphic" title="Flowchart diagram">
             <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -4294,31 +4328,6 @@ The Rule of Three fails by $7.5\text{ g/dL}$. Rather than indicating an instrume
                 </svg>
                 <span>Full</span>
             </button>
-        </div>
-    </div>
-    <div class="flowchart-expanded-view">
-        <div class="flowchart-expanded-inner">
-            <div class="mermaid" data-original-source="flowchart TD
-    A[&quot;Elevated HbF Detected on&lt;br/&gt;HPLC or Traumatic Delivery&quot;] --&gt; B[&quot;Perform Kleihauer-Betke&lt;br/&gt;Acid Elution Stain&quot;]
-    B --&gt; C{&quot;Intracellular Staining&lt;br/&gt;Pattern&quot;}
-    C --&gt;|Uniform pink in all red&lt;br/&gt;cells| D[&quot;Pancellular: Hereditary&lt;br/&gt;Persistence of Fetal&lt;br/&gt;Hemoglobin (HPFH)&quot;]
-    C --&gt;|Heterogeneous: Dark pink&lt;br/&gt;cells mixed with ghosts| E[&quot;Heterocellular: Beta-Thal,&lt;br/&gt;Sickle Cell Anemia&quot;]
-    C --&gt;|Isolated fetal cells in&lt;br/&gt;sea of adult ghosts| F[&quot;Fetomaternal Hemorrhage&lt;br/&gt;(FMH)&quot;]
-    F --&gt; G[&quot;Calculate FMH Volume &amp; Dose&lt;br/&gt;Rh-Immune Globulin&quot;]" data-original-code="flowchart TD
-    A[&quot;Elevated HbF Detected on&lt;br/&gt;HPLC or Traumatic Delivery&quot;] --&gt; B[&quot;Perform Kleihauer-Betke&lt;br/&gt;Acid Elution Stain&quot;]
-    B --&gt; C{&quot;Intracellular Staining&lt;br/&gt;Pattern&quot;}
-    C --&gt;|Uniform pink in all red&lt;br/&gt;cells| D[&quot;Pancellular: Hereditary&lt;br/&gt;Persistence of Fetal&lt;br/&gt;Hemoglobin (HPFH)&quot;]
-    C --&gt;|Heterogeneous: Dark pink&lt;br/&gt;cells mixed with ghosts| E[&quot;Heterocellular: Beta-Thal,&lt;br/&gt;Sickle Cell Anemia&quot;]
-    C --&gt;|Isolated fetal cells in&lt;br/&gt;sea of adult ghosts| F[&quot;Fetomaternal Hemorrhage&lt;br/&gt;(FMH)&quot;]
-    F --&gt; G[&quot;Calculate FMH Volume &amp; Dose&lt;br/&gt;Rh-Immune Globulin&quot;]" title="Click diagram to open Fullscreen Pan & Zoom Modal">
-flowchart TD
-    A["Elevated HbF Detected on<br/>HPLC or Traumatic Delivery"] --> B["Perform Kleihauer-Betke<br/>Acid Elution Stain"]
-    B --> C{"Intracellular Staining<br/>Pattern"}
-    C -->|Uniform pink in all red<br/>cells| D["Pancellular: Hereditary<br/>Persistence of Fetal<br/>Hemoglobin (HPFH)"]
-    C -->|Heterogeneous: Dark pink<br/>cells mixed with ghosts| E["Heterocellular: Beta-Thal,<br/>Sickle Cell Anemia"]
-    C -->|Isolated fetal cells in<br/>sea of adult ghosts| F["Fetomaternal Hemorrhage<br/>(FMH)"]
-    F --> G["Calculate FMH Volume & Dose<br/>Rh-Immune Globulin"]
-            </div>
         </div>
     </div>
 </div>
@@ -4438,39 +4447,6 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="2">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -4561,6 +4537,39 @@ flowchart TD
 </table>
         </div>
     </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
 </div>
 
 
@@ -4638,39 +4647,6 @@ flowchart TD
 
 
 <div class="table-wrapper is-collapsed" data-table-index="3">
-    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
-        <div class="table-mini-graphic" title="Table preview">
-            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
-                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
-                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
-                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
-                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
-                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
-                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
-            </svg>
-        </div>
-        <div class="table-header-actions table-preview-actions">
-            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
-                </svg>
-                <span>Inline</span>
-            </button>
-            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
-                </svg>
-                <span>Collapse</span>
-            </button>
-            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
-                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
-                </svg>
-                <span>Full</span>
-            </button>
-        </div>
-    </div>
     <div class="table-expanded-view">
         <div class="table-expanded-inner">
             <table>
@@ -4799,6 +4775,39 @@ flowchart TD
 </tr>
 </tbody>
 </table>
+        </div>
+    </div>
+    <div class="table-header-card table-preview-card" title="Click to expand table inline" aria-label="Expand table" tabindex="0">
+        <div class="table-mini-graphic" title="Table preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+            </svg>
+        </div>
+        <div class="table-header-actions table-preview-actions">
+            <button type="button" class="table-btn-inline" title="Expand table inline" aria-label="Expand Inline">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="table-btn-collapse" title="Collapse table" aria-label="Collapse table">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="table-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
         </div>
     </div>
 </div>
@@ -5109,78 +5118,47 @@ flowchart TD
             function expandFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.flowchart-header-card') || wrapper.querySelector('.flowchart-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const svg = wrapper.querySelector('.mermaid svg');
-                
-                const article = document.querySelector('.markdown-body');
-                const containerW = (article ? article.clientWidth : 0) || (wrapper.parentElement ? wrapper.parentElement.clientWidth : 0) || window.innerWidth || 800;
-                
-                let chartHeight = 0;
-                if (svg) {
-                    const vb = svg.viewBox && svg.viewBox.baseVal && svg.viewBox.baseVal.width > 0 ? svg.viewBox.baseVal : null;
-                    if (vb) {
-                        chartHeight = containerW * (vb.height / vb.width);
-                    } else {
-                        const viewBoxAttr = svg.getAttribute('viewBox');
-                        if (viewBoxAttr) {
-                            const parts = viewBoxAttr.trim().split(/[\s,]+/);
-                            if (parts.length >= 4) {
-                                const vbW = parseFloat(parts[2]);
-                                const vbH = parseFloat(parts[3]);
-                                chartHeight = vbW > 0 ? containerW * (vbH / vbW) : vbH;
-                            }
-                        }
-                    }
-                    if (!chartHeight || isNaN(chartHeight)) {
-                        chartHeight = svg.getBoundingClientRect().height || svg.clientHeight || 0;
-                    }
-                }
-                if (!chartHeight) {
-                    const inner = wrapper.querySelector('.flowchart-expanded-inner') || wrapper.querySelector('.mermaid');
-                    chartHeight = inner ? (inner.scrollHeight || inner.offsetHeight || 0) : 0;
-                }
-
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (chartHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Chart exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Chart fits in window but overflows bottom: scroll south to reveal chart bottom + sequential text
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseFlowchartWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fcWrappers.forEach((wrapper) => {
@@ -5430,51 +5408,47 @@ flowchart TD
             function expandTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.table-header-card') || wrapper.querySelector('.table-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const tableEl = wrapper.querySelector('table');
-                
-                const tableHeight = tableEl ? (tableEl.scrollHeight || tableEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (tableHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        // Table exceeds window height: scroll header directly to sticky top (top: 12px)
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        // Table fits in window but overflows bottom: scroll south
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseTableWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             tblWrappers.forEach((wrapper) => {
@@ -5508,19 +5482,26 @@ flowchart TD
             function expandFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const windowHeight = window.innerHeight;
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
                 if (!skipScroll) {
                     requestAnimationFrame(() => {
-                        const newRect = wrapper.getBoundingClientRect();
-                        if (newRect.top < 15) {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        } else if (newRect.bottom > windowHeight) {
-                            const scrollDown = Math.min(newRect.top - 15, newRect.bottom - windowHeight + 20);
-                            if (scrollDown > 2) {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
                             }
                         }
                     });
@@ -5530,17 +5511,18 @@ flowchart TD
             function collapseFormulaWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isPastTop = rect.top < 12;
-
-                if (!skipScroll && isPastTop) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             fmlWrappers.forEach((wrapper) => {
@@ -5837,49 +5819,47 @@ flowchart TD
             function expandGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || !wrapper.classList.contains('is-collapsed')) return;
 
-                const card = wrapper.querySelector('.graphic-header-card') || wrapper.querySelector('.graphic-preview-card') || wrapper;
-                const cardRect = card.getBoundingClientRect();
-                const figureEl = wrapper.querySelector('figure') || wrapper.querySelector('img');
-                
-                const figureHeight = figureEl ? (figureEl.scrollHeight || figureEl.offsetHeight || 0) : 0;
-                const totalExpandedHeight = (card.offsetHeight || 44) + 10 + (figureHeight || 0);
-                const windowHeight = window.innerHeight;
-                const projectedBottom = cardRect.top + totalExpandedHeight;
-                const overflowsWindow = projectedBottom > windowHeight;
-
                 wrapper.classList.remove('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
 
-                if (!skipScroll && overflowsWindow) {
-                    if (totalExpandedHeight > (windowHeight - 40) && cardRect.top > 15) {
-                        requestAnimationFrame(() => {
-                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        });
-                    } else {
-                        const scrollDown = Math.min(Math.max(0, cardRect.top - 12), Math.max(0, projectedBottom - windowHeight + 180));
-                        if (scrollDown > 2) {
-                            requestAnimationFrame(() => {
-                                window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                            });
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        const isLong = rect.height > (windowHeight - 40);
+
+                        if (isLong) {
+                            const scrollOffset = rect.top - 16;
+                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+                        } else {
+                            if (rect.top < 16) {
+                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                            } else if (rect.bottom > windowHeight) {
+                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
+                                if (scrollDown > 2) {
+                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
+                                }
+                            }
                         }
-                    }
+                    });
                 }
             }
 
             function collapseGraphicWrapper(wrapper, skipScroll = false) {
                 if (!wrapper || wrapper.classList.contains('is-collapsed')) return;
 
-                const rect = wrapper.getBoundingClientRect();
-                const isStickyOrPast = rect.top < 12;
-
-                if (!skipScroll && isStickyOrPast) {
-                    const wrapperDocTop = rect.top + (window.scrollY || window.pageYOffset || 0);
-                    const targetScrollY = Math.max(0, wrapperDocTop - 12);
-                    window.scrollTo({ top: targetScrollY, behavior: 'instant' });
-                }
-
                 wrapper.classList.add('is-collapsed');
                 if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+
+                if (!skipScroll) {
+                    requestAnimationFrame(() => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top < 16 || rect.bottom > windowHeight) {
+                            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    });
+                }
             }
 
             grpWrappers.forEach((wrapper) => {
