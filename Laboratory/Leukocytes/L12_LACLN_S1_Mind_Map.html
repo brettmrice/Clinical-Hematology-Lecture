@@ -1,0 +1,3614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lymphoid Neoplasms - Interactive Mind Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../shared/mindmap_quiz.css">
+  <script src="../../../../shared/mindmaps_manifest.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f7f9fc;
+      color: #2d3748;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Floating Glassmorphism Panels */
+    .floating-panel {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 10;
+      position: absolute;
+    }
+
+    /* Top Left Title Button Card */
+    .top-title-card {
+      top: 20px;
+      left: 24px;
+      padding: 8px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.96);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+      text-align: left;
+    }
+
+    .top-title-card:hover {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .top-title-card:active {
+      transform: translateY(0);
+    }
+
+    .top-title-card .menu-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6366f1;
+      transition: transform 0.2s ease;
+    }
+
+    .top-title-card:hover .menu-icon {
+      transform: scale(1.1);
+    }
+
+    .top-title-card h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a202c;
+      white-space: nowrap;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .top-title-card .badge {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: #eef2ff;
+      color: #4f46e5;
+      letter-spacing: 0.02em;
+    }
+
+    /* Slide-out Sidebar Drawer & Backdrop */
+    .sidebar-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(3px);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 380px;
+      max-width: 88vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.16);
+      z-index: 101;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      user-select: auto;
+    }
+
+    .sidebar-drawer.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+    }
+
+    .sidebar-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-header-left svg {
+      color: #6366f1;
+    }
+
+    .sidebar-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }
+
+    .sidebar-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #64748b;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    .sidebar-controls {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #ffffff;
+    }
+
+    /* Type Filter Toggle Group */
+    .filter-type-group {
+      display: flex;
+      background: #f1f5f9;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+    }
+
+    .filter-type-btn {
+      flex: 1;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .filter-type-btn.active {
+      background: #ffffff;
+      color: #4f46e5;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Subfolder & Search row */
+    .sidebar-search-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .sidebar-search-box input {
+      width: 100%;
+      padding: 8px 12px 8px 34px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #f8fafc;
+    }
+
+    .sidebar-search-box input:focus {
+      border-color: #6366f1;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+    .sidebar-search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+
+    .sidebar-sort-btn {
+      height: 35px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-sort-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .sidebar-sort-btn.active {
+      background: #eef2ff;
+      border-color: #6366f1;
+      color: #4f46e5;
+    }
+
+    .subfolder-select {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .subfolder-select:focus {
+      border-color: #6366f1;
+    }
+
+    /* List Container */
+    .sidebar-list-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar-list-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .mindmap-item-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .mindmap-item-card:hover {
+      border-color: #c7d2fe;
+      background: #f8faff;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(99, 102, 241, 0.08);
+    }
+
+    .mindmap-item-card.current {
+      border-color: #6366f1;
+      background: #eef2ff;
+      box-shadow: 0 0 0 1px #6366f1, 0 3px 10px rgba(99, 102, 241, 0.1);
+    }
+
+    .mindmap-item-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+
+    .mindmap-item-card.current .mindmap-item-title {
+      color: #4338ca;
+    }
+
+    .mindmap-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    .badge-type {
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .badge-type.lecture {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .badge-type.lab {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .badge-type.other {
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .sidebar-empty-state {
+      padding: 32px 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    /* Bottom Left Search Card */
+    .bottom-search-card {
+      bottom: 24px;
+      left: 24px;
+      padding: 6px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      padding: 8px 14px 8px 36px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-size: 13.5px;
+      width: 290px;
+      outline: none;
+      transition: all 0.25s ease;
+      background: transparent;
+    }
+
+    .search-box input:focus {
+      background: #ffffff;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+      width: 350px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    /* Top Right Floating Cards */
+    .top-collapse-card {
+      top: 20px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-expand-card {
+      top: 68px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #475569;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-highyield-card {
+      top: 116px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #b45309;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #fde68a;
+      background: rgba(254, 252, 232, 0.95);
+    }
+
+    .top-highyield-card:hover {
+      background: #fef08a;
+      color: #78350f;
+      border-color: #f59e0b;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.2);
+    }
+
+    .top-highyield-card.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.35), 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    .top-quiz-card {
+      top: 164px;
+      right: 24px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #4f46e5;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid #c7d2fe;
+      background: rgba(238, 242, 255, 0.95);
+    }
+
+    .top-quiz-card:hover {
+      background: #e0e7ff;
+      color: #3730a3;
+      border-color: #6366f1;
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+    }
+
+    .top-collapse-card:hover, .top-expand-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Main Canvas & SVG Area */
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      cursor: grab;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #viewport:active {
+      cursor: grabbing;
+    }
+
+    #mindmap-svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    #nodes-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+    }
+
+    /* Smooth animated transitions for pan & zoom */
+    .animated-transform {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    /* Node Styles - High contrast crisp typography */
+    .node {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: normal;
+      width: max-content;
+      max-width: 320px;
+      line-height: 1.35;
+      word-break: normal;
+      overflow-wrap: break-word;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transform: translateY(-50%);
+      pointer-events: auto;
+      border: 1.5px solid transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      box-sizing: border-box;
+    }
+
+    .node:hover {
+      transform: translateY(-50%) scale(1.04);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+      z-index: 5;
+    }
+
+    /* Indicator: '+' if collapsed, '-' if expanded, none if no children */
+    .node.has-children.collapsed::after {
+      content: '+';
+      display: inline-block;
+      flex-shrink: 0;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    .node.has-children:not(.collapsed)::after {
+      content: '−';
+      display: inline-block;
+      flex-shrink: 0;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 8px;
+      opacity: 0.9;
+    }
+
+    /* Exact Node Match Highlight */
+    .node.highlighted {
+      animation: pulseHighlight 1.5s infinite alternate;
+    }
+
+    /* Collapsed Parent contains matching children highlight */
+    .node.parent-match-highlighted {
+      animation: pulseParentHighlight 1.5s infinite alternate;
+      border-color: #d97706 !important;
+    }
+
+    @keyframes pulseHighlight {
+      0% { box-shadow: 0 0 0 2px #d97706; }
+      100% { box-shadow: 0 0 0 8px rgba(217, 119, 6, 0); }
+    }
+
+    @keyframes pulseParentHighlight {
+      0% { box-shadow: 0 0 0 3px #d97706, 0 0 12px rgba(217, 119, 6, 0.4); }
+      100% { box-shadow: 0 0 0 7px rgba(217, 119, 6, 0.2), 0 0 4px rgba(217, 119, 6, 0.1); }
+    }
+
+    /* Level Color Schemes matching NotebookLM PNG with darker high contrast text */
+    .node-level-0 {
+      background-color: #b4acf0;
+      color: #1e1945;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 24px;
+    }
+
+    .node-level-1 {
+      background-color: #aebdf5;
+      color: #111a45;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .node-level-2 {
+      background-color: #9fd4cb;
+      color: #082d28;
+      font-weight: 600;
+    }
+
+    .node-level-3 {
+      background-color: #aaeec0;
+      color: #09381b;
+      font-weight: 600;
+    }
+
+    .node-level-4 {
+      background-color: #c9f88c;
+      color: #1b3602;
+      font-weight: 600;
+    }
+
+    .node-level-5 {
+      background-color: #fde047;
+      color: #713f12;
+      font-weight: 600;
+    }
+
+    .node-level-6 {
+      background-color: #fdba74;
+      color: #7c2d12;
+      font-weight: 600;
+    }
+
+    .node-level-7 {
+      background-color: #fca5a5;
+      color: #7f1d1d;
+      font-weight: 600;
+    }
+
+    .node-level-8 {
+      background-color: #f472b6;
+      color: #831843;
+      font-weight: 600;
+    }
+
+    .node-level-9 {
+      background-color: #e879f9;
+      color: #701a75;
+      font-weight: 600;
+    }
+
+    .node-level-10 {
+      background-color: #c084fc;
+      color: #581c87;
+      font-weight: 600;
+    }
+
+    .node-level-11 {
+      background-color: #818cf8;
+      color: #1e1b4b;
+      font-weight: 600;
+    }
+
+    .node-level-12 {
+      background-color: #38bdf8;
+      color: #082f49;
+      font-weight: 600;
+    }
+
+    .node-level-13 {
+      background-color: #2dd4bf;
+      color: #134e4a;
+      font-weight: 600;
+    }
+
+    .node-level-14 {
+      background-color: #4ade80;
+      color: #14532d;
+      font-weight: 600;
+    }
+
+    .node-level-15, .node-level-16, .node-level-17, .node-level-18, .node-level-19, .node-level-20 {
+      background-color: #a3e635;
+      color: #1a2e05;
+      font-weight: 600;
+    }
+
+    /* High-Yield Filter Styling */
+    .node.high-yield-node::before {
+      content: '⚡';
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    body.high-yield-mode .node:not(.is-high-yield-branch) {
+      opacity: 0.22 !important;
+      filter: grayscale(65%);
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.is-high-yield-branch {
+      opacity: 1.0 !important;
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
+    }
+
+    body.high-yield-mode .node.high-yield-node {
+      box-shadow: 0 0 0 2.5px #f59e0b, 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+      border-color: #d97706 !important;
+      font-weight: 700;
+    }
+
+    body.high-yield-mode .connection-line:not(.is-high-yield-path) {
+      opacity: 0.15 !important;
+      stroke: #cbd5e1 !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease;
+    }
+
+    body.high-yield-mode .connection-line.is-high-yield-path {
+      opacity: 1.0 !important;
+      stroke: #d97706 !important;
+      stroke-width: 2.5px !important;
+      transition: opacity 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease;
+    }
+
+    /* SVG Connecting Lines */
+    .connection-line {
+      fill: none;
+      stroke: #8094ae;
+      stroke-width: 2px;
+    }
+
+    /* Bottom Right Zoom Cards */
+    .zoom-card {
+      width: 38px;
+      height: 38px;
+      right: 24px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #download-png-btn { bottom: 24px; }
+    #zoom-reset       { bottom: 70px; }
+    #zoom-fit-btn     { bottom: 116px; }
+    #zoom-out         { bottom: 162px; }
+    #zoom-in          { bottom: 208px; }
+
+    .zoom-card:hover {
+      background: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Floating Element 1: Title Card / Sidebar Toggle Button -->
+  <button class="floating-panel top-title-card" id="btn-open-sidebar" title="Click to view all course mind maps">
+    <div class="menu-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
+    <h1 id="topic-title">Lymphoid Neoplasms</h1>
+    <span class="badge">Mind Maps</span>
+  </button>
+
+  <!-- Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- Slide-out Sidebar Drawer -->
+  <aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Course Mind Maps Navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-header-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <h2>Course Mind Maps</h2>
+      </div>
+      <button class="sidebar-close-btn" id="btn-close-sidebar" title="Close Sidebar (Esc)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="sidebar-controls">
+      <!-- Tier 1: Type Filter Buttons -->
+      <div class="filter-type-group" id="filter-type-group">
+        <button class="filter-type-btn active" data-type="all">All (<span id="count-all">0</span>)</button>
+        <button class="filter-type-btn" data-type="lecture">Lectures (<span id="count-lecture">0</span>)</button>
+        <button class="filter-type-btn" data-type="lab">Labs (<span id="count-lab">0</span>)</button>
+      </div>
+
+      <!-- Tier 2: Subfolder / Module Dropdown -->
+      <select class="subfolder-select" id="sidebar-subfolder-select">
+        <option value="all">All Subfolders & Modules</option>
+      </select>
+
+      <!-- Quick Search Bar & A-Z Sort Toggle -->
+      <div class="sidebar-search-row">
+        <div class="sidebar-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="sidebar-search-input" placeholder="Search mind maps by title...">
+        </div>
+        <button class="sidebar-sort-btn" id="sidebar-sort-toggle" title="Toggle Lesson Order vs Alphabetical (A-Z)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18H9M19 12H5M21 6H3"/>
+          </svg>
+          <span id="sidebar-sort-label">A-Z</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mind Maps Card List -->
+    <div class="sidebar-list-container" id="sidebar-list-container">
+      <!-- Items dynamically populated via JS -->
+    </div>
+  </aside>
+
+  <!-- Bottom Left Floating Element 2: Search Box Card -->
+  <div class="floating-panel bottom-search-card">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search Mind Map concepts...">
+    </div>
+  </div>
+
+  <!-- Top Floating Element 3: Collapse All Card -->
+  <div class="floating-panel top-collapse-card" id="btn-collapse-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 11l-5-5-5 5M17 18l-5-5-5 5"/></svg>
+    Collapse All
+  </div>
+
+  <!-- Top Floating Element 4: Expand All Card -->
+  <div class="floating-panel top-expand-card" id="btn-expand-all">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    Expand All
+  </div>
+
+  <!-- Top Floating Element 5: High-Yield Toggle Card -->
+  <div class="floating-panel top-highyield-card" id="btn-high-yield">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    High-Yield Only
+  </div>
+
+  <!-- Top Floating Element 6: Quiz Game Trigger Card -->
+  <div class="floating-panel top-quiz-card" id="btn-quiz-me" title="Launch Mind Map Quiz Game (? Me)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    ? Me
+  </div>
+
+  <!-- Canvas Viewport -->
+  <div id="viewport">
+    <svg id="mindmap-svg">
+      <g id="svg-paths-group"></g>
+    </svg>
+    <div id="nodes-container"></div>
+  </div>
+
+  <!-- Bottom Right Zoom Controls -->
+  <div class="floating-panel zoom-card" id="zoom-in" title="Zoom In">+</div>
+  <div class="floating-panel zoom-card" id="zoom-out" title="Zoom Out">−</div>
+  <div class="floating-panel zoom-card" id="zoom-fit-btn" title="Fit to Window">⛶</div>
+  <div class="floating-panel zoom-card" id="zoom-reset" title="Reset Zoom">⟲</div>
+  <div class="floating-panel zoom-card" id="download-png-btn" title="Download PNG Screenshot">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  </div>
+
+  <script>
+    // --- MIND MAP DATA STRUCTURE ---
+    const mindMapData = {
+  "id": "root",
+  "text": "Lymphoid Neoplasms",
+  "level": 0,
+  "high_yield": true,
+  "children": [
+    {
+      "id": "sec-precursor-vs-mature",
+      "text": "Acute vs Mature Neoplasms",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-all-pathophysiology",
+          "text": "ALL Pathophysiology",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-differentiation-arrest",
+              "text": "Lymphoid Differentiation Arrest",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-clonal-proliferation",
+                  "text": "Clonal Blast Proliferation",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-marrow-failure",
+              "text": "Acute Marrow Failure",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-severe-anemia",
+                  "text": "Normocytic Normochromic Anemia",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-severe-thrombocytopenia",
+                  "text": "Thrombocytopenia <150x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-platelet-critical",
+                      "text": "Platelets Frequently <20x10^3/uL",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-severe-neutropenia",
+                  "text": "Neutropenia <1.7x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-anc-critical",
+                      "text": "ANC Often <0.5x10^3/uL",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-automated-cbc-flags",
+          "text": "Automated Hematology Flags",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-wbc-variation",
+              "text": "Total WBC Variability",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-leukopenia-aleukemic",
+                  "text": "Aleukemic WBC <3.6x10^3/uL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-marked-leukocytosis",
+                  "text": "Hyperleukocytosis >100.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-analyzer-flags",
+              "text": "Analyzer Flagging Messages",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-flag-blasts",
+                  "text": "Blasts Flag",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-flag-abn-lymph",
+                  "text": "Abnormal Lymph Flag",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-flag-dimorphic",
+                  "text": "Dimorphic Population Flag",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-scattergram-properties",
+              "text": "Optical Scattergram Characteristics",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-intermediate-fsc",
+                  "text": "Intermediate Forward Scatter",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-low-ssc",
+                  "text": "Low Side Scatter",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-cytomorphologic-diff",
+          "text": "Blast Cytomorphology Distinction",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-lymphoblast-features",
+              "text": "Precursor Lymphoblast Morphology",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-lymphoblast-size",
+                  "text": "Size 1.5-2.5x RBC",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-lymphoblast-nc-ratio",
+                  "text": "Extremely High N:C Ratio",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-lymphoblast-chromatin",
+                  "text": "Delicate Powdery Chromatin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-lymphoblast-nucleoli",
+                  "text": "Inconspicuous Nucleoli 1-2",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-lymphoblast-cytoplasm",
+                  "text": "Scant Agranular Cytoplasm",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-lymphoblast-auer-rods",
+                  "text": "Auer Rods Strictly Absent",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-myeloblast-features",
+              "text": "Acute Myeloblast Morphology",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-myeloblast-size",
+                  "text": "Size 2.0-4.0x RBC",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-myeloblast-chromatin",
+                  "text": "Stippled Dispersed Chromatin",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-myeloblast-nucleoli",
+                  "text": "Prominent Nucleoli 2-5",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-myeloblast-auer-rods",
+                  "text": "Auer Rods Subset Present",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-cll-lymph-features",
+              "text": "Mature Neoplastic Lymphocyte",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cll-size",
+                  "text": "Size 1.0-1.2x RBC",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-cll-chromatin",
+                  "text": "Soccer-Ball Clumped Chromatin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cll-nucleoli",
+                  "text": "Absent Inconspicuous Nucleoli",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-hematology-qc-calculations",
+          "text": "Hematology QC Calculations",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-corrected-wbc-formula",
+              "text": "Corrected WBC Count Formula",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-nrbc-threshold",
+                  "text": "Trigger >10 nRBC/100 WBC",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-wbc-equation",
+                  "text": "Uncorrected WBC*(100/(100+nRBC))",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-absolute-differential-calc",
+              "text": "Absolute Differential Calculation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-absolute-formula",
+                  "text": "WBC*(Relative %/100)",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-morphology-neoplasms",
+      "text": "Pathognomonic Smear Morphology",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-mature-b-neoplasms",
+          "text": "Mature B-Cell Malignancies",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-cll-sll-morphology",
+              "text": "CLL and SLL",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-absolute-lymphocytosis",
+                  "text": "Lymphocytosis >5.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cracked-mud-chromatin",
+                  "text": "Cracked-Mud Dense Chromatin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-smudge-cells",
+                  "text": "Abundant Smudge Cells",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-vimentin-defect",
+                      "text": "Deficient Cytoskeletal Vimentin",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-bpll-morphology",
+              "text": "B-Cell Prolymphocytic Leukemia",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-prolymphocyte-count",
+                  "text": "Prolymphocytes Exceed 55%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-prominent-nucleolus",
+                  "text": "Prominent Central Nucleolus",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-hcl-morphology",
+              "text": "Hairy Cell Leukemia",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hcl-pancytopenia",
+                  "text": "Classic Pancytopenia",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hcl-monocytopenia",
+                  "text": "Monocytopenia <0.1x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hair-projections",
+                  "text": "Circumferential Hair Projections",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-spongy-nucleus",
+                  "text": "Spongy Chromatin Nucleus",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-burkitt-morphology",
+              "text": "Burkitt Lymphoma Smear",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-royal-blue-cytoplasm",
+                  "text": "Deep Royal-Blue Cytoplasm",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-lipid-vacuoles",
+                  "text": "Punched-Out Lipid Vacuoles",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-tissue-starry-sky",
+                  "text": "Starry Sky Tissue Only",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-follicular-morphology",
+              "text": "Follicular Lymphoma Cells",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-buttockoid-cells",
+                  "text": "Clefted Buttockoid Centrocytes",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mantle-cell-morphology",
+              "text": "Mantle Cell Lymphoma",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-notched-nuclei",
+                  "text": "Notched Cleaved Nuclei",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-plasma-cell-dyscrasias",
+          "text": "Plasma Cell Neoplasms",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-multiple-myeloma-smear",
+              "text": "Multiple Myeloma",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-marked-rouleaux",
+                  "text": "Marked RBC Rouleaux",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-zeta-potential-loss",
+                      "text": "Zeta Potential Neutralization",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-blue-background",
+                  "text": "Blue-Gray Background Staining",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-plasma-cell-structure",
+                  "text": "Malignant Plasma Cell",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-eccentric-spokewheel",
+                      "text": "Eccentric Spoke-Wheel Nucleus",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-perinuclear-hof",
+                      "text": "Perinuclear Golgi Hof",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-spurious-mchc",
+                  "text": "Spurious MCHC >36.0 g/dL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-turbid-cyanmethemoglobin",
+                      "text": "Paraprotein Cyanmethemoglobin Turbidity",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-plasma-cell-leukemia",
+              "text": "Plasma Cell Leukemia",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-pcl-threshold",
+                  "text": "Circulating Plasma Cells >20%",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mgus-features",
+              "text": "MGUS Characteristics",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-mgus-paraprotein",
+                  "text": "Paraprotein <3.0 g/dL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-mgus-normal-pbs",
+                  "text": "Normal Smear Background",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-mature-t-nk-neoplasms",
+          "text": "Mature T/NK-Cell Malignancies",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-tlgl-leukemia",
+              "text": "T-Cell LGL Leukemia",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-coarse-azurophilic-granules",
+                  "text": "Coarse Azurophilic Granules",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-tlgl-severe-neutropenia",
+                  "text": "Chronic Neutropenia <0.5x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-sezary-syndrome",
+              "text": "S\u00e9zary Syndrome",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cerebriform-nuclei",
+                  "text": "Hyperchromatic Cerebriform Nuclei",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-sezary-count-cutoff",
+                  "text": "S\u00e9zary Count >=1.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-tpll-morphology",
+              "text": "T-Cell Prolymphocytic Leukemia",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-tpll-cleaved",
+                  "text": "Irregular Folded Nuclei",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-hodgkin-reactive",
+          "text": "Classic Hodgkin Smear",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-rs-cell-confinement",
+              "text": "Reed-Sternberg Cells Non-Circulating",
+              "level": 3,
+              "high_yield": true,
+              "children": []
+            },
+            {
+              "id": "node-hl-reactive-smear",
+              "text": "Cytokine Reactive Smear",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hl-eosinophilia",
+                  "text": "Eosinophilia >0.3x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hl-lymphopenia",
+                  "text": "Lymphopenia <1.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hl-thrombocytosis",
+                  "text": "Thrombocytosis >450x10^3/uL",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-bench-remediations",
+          "text": "Bench Remediation Protocols",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-albumin-smear-protocol",
+              "text": "Albumin Smear Protocol",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-albumin-ratio",
+                  "text": "1 Drop 22% Albumin",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-albumin-blood-volume",
+                      "text": "Mix 4-5 Drops Blood",
+                      "level": 5,
+                      "high_yield": false,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-membrane-stabilization",
+                  "text": "Membrane Fragility Stabilization",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-saline-replacement-protocol",
+              "text": "Saline Replacement Procedure",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-centrifuge-step",
+                  "text": "Centrifuge 2500 rpm",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-aspirate-plasma",
+                  "text": "Aspirate Paraprotein Plasma",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-replace-saline",
+                  "text": "Add Equal 0.85% Saline",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-mchc-normalization",
+                  "text": "Normalize MCHC 32-36 g/dL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-rouleaux-dilution-test",
+              "text": "Saline Dilution Slide Test",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-rouleaux-dispersal",
+                  "text": "Rouleaux Disperses in Saline",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cold-agglutinin-persists",
+                  "text": "Cold Agglutination Persists",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-marrow-cytochemistry",
+      "text": "Bone Marrow & Cytochemistry",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-core-biopsy-patterns",
+          "text": "Trephine Infiltration Patterns",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-interstitial-pattern",
+              "text": "Interstitial Pattern",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-interstitial-features",
+                  "text": "Infiltrates Between Adipocytes",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-interstitial-diseases",
+                  "text": "Early CLL, HCL, T-LGL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-nodular-pattern",
+              "text": "Nodular Focal Pattern",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-nodular-features",
+                  "text": "Central Discrete Aggregates",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-paratrabecular-pattern",
+              "text": "Paratrabecular Pattern",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-paratrabecular-location",
+                  "text": "Adjacent to Bone Trabeculae",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-follicular-pathognomonic",
+                  "text": "Pathognomonic Follicular Lymphoma",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-diffuse-pattern",
+              "text": "Diffuse Pattern",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-diffuse-features",
+                  "text": "Total Marrow Effacement",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-diffuse-diseases",
+                  "text": "ALL, Burkitt, Advanced Myeloma",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-bench-cytochemistry",
+          "text": "Bench Cytochemical Staining",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-mpo-stain",
+              "text": "Myeloperoxidase Stain",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-mpo-principle",
+                  "text": "Primary Azurophilic Granule Peroxidase",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-mpo-all-negative",
+                  "text": "ALL Strictly MPO Negative",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-mpo-aml-positive",
+                  "text": "Brown-Black Precipitate in AML",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-tdt-stain",
+              "text": "Terminal Deoxynucleotidyl Transferase",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-tdt-principle",
+                  "text": "Template-Independent DNA Polymerase",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-tdt-vdj-recomb",
+                  "text": "Early V(D)J Recombination",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-tdt-all-positive",
+                  "text": "ALL Strong Nuclear Positive",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-tdt-mature-negative",
+                  "text": "Mature Lymphoid Negative",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-trap-stain",
+              "text": "Tartrate-Resistant Acid Phosphatase",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-trap-isoenzyme-5",
+                  "text": "Tartrate-Resistant Isoenzyme 5",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-trap-hcl-positive",
+                  "text": "Red Granular Staining HCL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-dry-tap-phenomenon",
+          "text": "The Dry Tap Phenomenon",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-dry-tap-cause",
+              "text": "Fibronectin Induces Reticulin Fibrosis",
+              "level": 3,
+              "high_yield": true,
+              "children": []
+            },
+            {
+              "id": "node-dry-tap-hcl",
+              "text": "Frequent In HCL",
+              "level": 3,
+              "high_yield": true,
+              "children": []
+            },
+            {
+              "id": "node-dry-tap-touch-prep",
+              "text": "Utilize Core Touch Imprints",
+              "level": 3,
+              "high_yield": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-flow-cytometry",
+      "text": "Flow Cytometric Immunophenotyping",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-lineage-markers",
+          "text": "Lineage Differentiation Antigens",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-pan-b-markers",
+              "text": "Pan-B-Cell Markers",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cd19-cd20",
+                  "text": "CD19 and CD20",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cd22-sig",
+                  "text": "CD22 and Surface Ig",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-pan-t-markers",
+              "text": "Pan-T-Cell Markers",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cd3-lineage",
+                  "text": "Lineage-Specific CD3",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cd2-cd5-cd7",
+                  "text": "CD2, CD5, CD7",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-cd4-cd8-subsets",
+                  "text": "CD4 Helper, CD8 Cytotoxic",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-nk-markers",
+              "text": "Natural Killer Markers",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cd16-cd56",
+                  "text": "CD16+ and CD56+",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-surface-cd3-neg",
+                  "text": "Surface CD3 Strictly Negative",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-precursor-markers",
+              "text": "Immature Precursor Markers",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cd34-stem",
+                  "text": "CD34 Progenitor Antigen",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-tdt-flow",
+                  "text": "Nuclear TdT Marker",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cd10-calla",
+                  "text": "CD10 CALLA Antigen",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-clonality-assessment",
+          "text": "Clonality Demonstration",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-b-cell-clonality",
+              "text": "B-Cell Light Chain Restriction",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-normal-kappa-lambda",
+                  "text": "Normal Ratio 1.0-2.0:1",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-skewed-ratio",
+                  "text": "Restricted Ratio >3:1 or <0.5:1",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-t-cell-clonality",
+              "text": "T-Cell Antigen Aberrancy",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-pan-t-loss",
+                  "text": "Loss of CD7 or CD5",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-cd4-cd8-skewing",
+                  "text": "Ratio >10:1 or <0.2:1",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-specific-immunophenotypes",
+          "text": "Diagnostic Immunophenotypes",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-ball-profile",
+              "text": "B-ALL Immunophenotype",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-ball-markers",
+                  "text": "TdT+, CD34+, CD19+, CD10+",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-tall-profile",
+              "text": "T-ALL Immunophenotype",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-tall-markers",
+                  "text": "TdT+, Cytoplasmic CD3+, CD7+",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-cll-profile",
+              "text": "CLL and SLL Profile",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cll-markers",
+                  "text": "CD19+, CD5+, CD23+, CD20dim",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mcl-profile",
+              "text": "Mantle Cell Profile",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-mcl-markers",
+                  "text": "CD19+, CD5+, CD23-, CD20bright",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-hcl-profile",
+              "text": "Hairy Cell Quad-Positive Profile",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hcl-markers",
+                  "text": "CD11c+, CD25+, CD103+, CD123+",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-follicular-profile",
+              "text": "Follicular Lymphoma Profile",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-follicular-markers",
+                  "text": "CD19+, CD10+, CD5-, BCL2+",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-tlgl-profile",
+              "text": "T-LGL Profile",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-tlgl-markers",
+                  "text": "CD3+, CD8+, CD57+, CD16+",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-flow-preanalytics",
+          "text": "Flow Cytometry Pre-Analytics",
+          "level": 2,
+          "high_yield": false,
+          "children": [
+            {
+              "id": "node-anticoagulant-temp",
+              "text": "Sodium Heparin or EDTA",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-ambient-temp",
+                  "text": "Ambient Storage 20-25 C",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mrd-sensitivity",
+              "text": "MRD Flow Sensitivity 10^-4",
+              "level": 3,
+              "high_yield": true,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-chemistry-genetics-who",
+      "text": "Chemistry, Genetics & WHO",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-chemistry-diagnostics",
+          "text": "Diagnostic Chemistry Profiles",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-spep-ife",
+              "text": "Electrophoresis Assays",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-spep-m-spike",
+                  "text": "Gamma-Region Monoclonal M-Spike",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-ife-isotyping",
+                  "text": "IFE Monospecific Heavy/Light Isotyping",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-sflc-assay",
+              "text": "Serum Free Light Chains",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-sflc-normal-ratio",
+                  "text": "Normal Ratio 0.26-1.65",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-sflc-renal-ratio",
+                  "text": "Renal Failure Baseline ~3.0",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-crab-criteria",
+              "text": "Myeloma CRAB Criteria",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-crab-calcium",
+                  "text": "Calcium >11.0 mg/dL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-crab-renal",
+                  "text": "Creatinine >2.0 mg/dL",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-crab-anemia",
+                  "text": "Hgb >2.0 g/dL Below Normal",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-crab-bone",
+                  "text": "Lytic Punched-Out Bone Lesions",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-b2m-ldh",
+              "text": "Tumor Burden Biomarkers",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-b2m-staging",
+                  "text": "Beta-2 Microglobulin ISS Staging",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-ldh-turnover",
+                  "text": "LDH Indicates Cellular Turnover",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-cytogenetic-translocations",
+          "text": "Cytogenetic Translocations",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-ball-cytogenetics",
+              "text": "B-ALL Cytogenetic Profiles",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-t12-21",
+                  "text": "t(12;21) ETV6-RUNX1 Favorable",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hyperdiploidy",
+                  "text": "Hyperdiploidy >50 Chr Favorable",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-t9-22-ph",
+                  "text": "t(9;22) BCR-ABL1 Unfavorable",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-hypodiploidy",
+                  "text": "Hypodiploidy <44 Chr Unfavorable",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-mature-b-translocations",
+              "text": "Mature B Translocations",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-t8-14-burkitt",
+                  "text": "t(8;14) MYC-IGH Burkitt",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-t11-14-mcl",
+                  "text": "t(11;14) CCND1-IGH Mantle",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-t14-18-fl",
+                  "text": "t(14;18) BCL2-IGH Follicular",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-cll-fish-panel",
+              "text": "CLL FISH Prognostic Panel",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-del17p-tp53",
+                  "text": "del(17p) TP53 Poorest Prognosis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-del11q-atm",
+                  "text": "del(11q) ATM Poor Prognosis",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-trisomy12",
+                  "text": "Trisomy 12 Intermediate Prognosis",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                },
+                {
+                  "id": "node-del13q-favorable",
+                  "text": "Sole del(13q) Most Favorable",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-molecular-assays",
+          "text": "Molecular Diagnostic Assays",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-pcr-clonality",
+              "text": "Gene Rearrangement PCR",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-clonal-band",
+                  "text": "Clonal Sharp Amplicon Band",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                },
+                {
+                  "id": "node-polyclonal-smear",
+                  "text": "Polyclonal Diffuse Smear",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "node-qpcr-mrd",
+              "text": "Quantitative RT-PCR MRD",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-bcr-abl1-monitoring",
+                  "text": "BCR-ABL1 Transcript Monitoring",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-sensitivity-10-6",
+                      "text": "High Sensitivity 10^-6",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-ngs-panels",
+              "text": "Targeted NGS Panels",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-ighv-mutation-status",
+                  "text": "CLL IGHV Mutation Status",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-unmutated-ighv",
+                      "text": "Unmutated <2% Aggressive Course",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    },
+                    {
+                      "id": "node-mutated-ighv",
+                      "text": "Mutated >2% Indolent Course",
+                      "level": 5,
+                      "high_yield": true,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "node-myd88-mutation",
+                  "text": "MYD88 L265P Waldenstr\u00f6m Mutation",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-who-reflex-pathway",
+          "text": "Integrated Reflex Diagnostics",
+          "level": 2,
+          "high_yield": false,
+          "children": [
+            {
+              "id": "node-reflex-step-1",
+              "text": "CBC Flagged Blasts Review",
+              "level": 3,
+              "high_yield": false,
+              "children": []
+            },
+            {
+              "id": "node-reflex-step-2",
+              "text": "Reflex Multi-Color Flow Cytometry",
+              "level": 3,
+              "high_yield": false,
+              "children": []
+            },
+            {
+              "id": "node-reflex-step-3",
+              "text": "Reflex SPEP IFE Chemistry",
+              "level": 3,
+              "high_yield": false,
+              "children": []
+            },
+            {
+              "id": "node-reflex-step-4",
+              "text": "Reflex FISH and NGS",
+              "level": 3,
+              "high_yield": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+    window.mindMapData = mindMapData;
+
+    // State Variables
+    let scale = 1.0;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX, startY;
+    
+    let collapsedNodes = new Set();
+    function setInitialCollapsedState(node) {
+      if (node.level >= 1 && node.children && node.children.length > 0) {
+        collapsedNodes.add(node.id);
+      }
+      if (node.children) {
+        node.children.forEach(setInitialCollapsedState);
+      }
+    }
+    setInitialCollapsedState(mindMapData);
+
+    const LEVEL_X_GAP = 320;
+    const NODE_MIN_GAP = 20;
+
+    const viewport = document.getElementById('viewport');
+    const nodesContainer = document.getElementById('nodes-container');
+    const svgPathsGroup = document.getElementById('svg-paths-group');
+
+    // --- LAYOUT ENGINE ---
+    function computeVerticalLayout(node, depth = 0, tracker = { lastCenterY: null, lastHalfH: 0 }) {
+      node.depth = depth;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+      const rectH = node.domEl ? (node.domEl.offsetHeight || 38) : 38;
+      const halfH = rectH / 2;
+
+      if (visibleChildren.length === 0) {
+        if (tracker.lastCenterY === null) {
+          node.y = halfH;
+        } else {
+          node.y = tracker.lastCenterY + tracker.lastHalfH + NODE_MIN_GAP + halfH;
+        }
+        tracker.lastCenterY = node.y;
+        tracker.lastHalfH = halfH;
+      } else {
+        const childYs = [];
+        visibleChildren.forEach(child => {
+          computeVerticalLayout(child, depth + 1, tracker);
+          childYs.push(child.y);
+        });
+        node.y = (childYs[0] + childYs[childYs.length - 1]) / 2;
+      }
+    }
+
+    function computeHorizontalLayout(node, currentX = 0) {
+      node.x = currentX;
+
+      const isCollapsed = collapsedNodes.has(node.id);
+      const visibleChildren = (!isCollapsed && node.children) ? node.children : [];
+
+      if (visibleChildren.length > 0) {
+        const nodeWidth = node.domEl ? (node.domEl.getBoundingClientRect().width / scale) : 220;
+        const nextX = currentX + Math.max(LEVEL_X_GAP, nodeWidth + 60);
+        visibleChildren.forEach(child => {
+          computeHorizontalLayout(child, nextX);
+        });
+      }
+    }
+
+    // High-Yield Filter State
+    let isHighYieldOnly = false;
+
+    // Determine if a node is High Yield or contains High Yield descendants (ancestor path)
+    function computeHighYieldFlags(node) {
+      let hasHY = (node.high_yield === true || node.high_yield === 'true');
+      if (node.children && node.children.length > 0) {
+        node.children.forEach(child => {
+          if (computeHighYieldFlags(child)) {
+            hasHY = true;
+          }
+        });
+      }
+      node._isHYBranch = hasHY;
+      return hasHY;
+    }
+    computeHighYieldFlags(mindMapData);
+
+    function flattenNodes(node, list = []) {
+      list.push(node);
+      const isCollapsed = collapsedNodes.has(node.id);
+      if (!isCollapsed && node.children) {
+        node.children.forEach(child => flattenNodes(child, list));
+      }
+      return list;
+    }
+
+    let isInitialLoad = true;
+
+    function renderMindMap() {
+      // Re-compute high-yield branch flags
+      computeHighYieldFlags(mindMapData);
+
+      const allVisible = flattenNodes(mindMapData);
+
+      // 1. Initial pass DOM rendering (temporary positioned, measured for height)
+      nodesContainer.innerHTML = '';
+      svgPathsGroup.innerHTML = '';
+
+      allVisible.forEach(node => {
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+        const isHYNode = (node.high_yield === true || node.high_yield === 'true');
+        const isHYBranch = !!node._isHYBranch;
+
+        const el = document.createElement('div');
+        el.className = `node node-level-${node.level} ${hasChildren ? 'has-children' : ''} ${isCollapsed ? 'collapsed' : ''} ${isHYNode ? 'high-yield-node' : ''} ${isHYBranch ? 'is-high-yield-branch' : ''}`;
+        
+        el.style.left = `0px`;
+        el.style.top = `0px`;
+        el.dataset.id = node.id;
+        el.innerText = node.text;
+
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (hasChildren) {
+            const wasCollapsed = collapsedNodes.has(node.id);
+            if (wasCollapsed) {
+              collapsedNodes.delete(node.id);
+            } else {
+              collapsedNodes.add(node.id);
+            }
+            renderMindMap();
+
+            if (wasCollapsed) {
+              panAndZoomToNodeBranchSmooth(node);
+            } else {
+              panAndZoomOnCollapseSmooth(node);
+            }
+          }
+        });
+
+        nodesContainer.appendChild(el);
+        node.domEl = el;
+      });
+
+      // 2. Compute dynamic vertical layout using actual measured node heights + minimum vertical gap
+      const yTracker = { lastCenterY: null, lastHalfH: 0 };
+      computeVerticalLayout(mindMapData, 0, yTracker);
+
+      // Center layout vertically relative to origin & position top
+      if (allVisible.length > 0) {
+        const minY = Math.min(...allVisible.map(n => n.y));
+        const maxY = Math.max(...allVisible.map(n => n.y));
+        const midY = (minY + maxY) / 2;
+        allVisible.forEach(n => {
+          n.y -= midY;
+          if (n.domEl) {
+            n.domEl.style.top = `${n.y}px`;
+          }
+        });
+      }
+
+      // 3. Compute dynamic X positions based on measured DOM widths & position nodes/curves
+      requestAnimationFrame(() => {
+        computeHorizontalLayout(mindMapData, 0);
+
+        allVisible.forEach(node => {
+          if (node.domEl) {
+            node.domEl.style.left = `${node.x}px`;
+          }
+        });
+
+        allVisible.forEach(node => {
+          const isCollapsed = collapsedNodes.has(node.id);
+          if (!isCollapsed && node.children) {
+            node.children.forEach(child => {
+              if (allVisible.includes(child)) {
+                drawCurvePath(node, child);
+              }
+            });
+          }
+        });
+
+        if (isInitialLoad) {
+          isInitialLoad = false;
+          centerInitialView();
+        }
+
+        performSearchHighlight();
+      });
+
+      updateTransform();
+    }
+
+    function drawCurvePath(parent, child) {
+      if (!parent.domEl || !child.domEl) return;
+
+      const parentRect = parent.domEl.getBoundingClientRect();
+
+      const startX = parent.x + (parentRect.width / scale);
+      const startY = parent.y;
+      
+      const endX = child.x;
+      const endY = child.y;
+
+      const controlDist = Math.max(30, (endX - startX) * 0.5);
+
+      const pathD = `M ${startX} ${startY} C ${startX + controlDist} ${startY}, ${endX - controlDist} ${endY}, ${endX} ${endY}`;
+      
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', pathD);
+      const isHYPath = !!child._isHYBranch;
+      path.setAttribute('class', `connection-line ${isHYPath ? 'is-high-yield-path' : ''}`);
+
+      svgPathsGroup.appendChild(path);
+    }
+
+    function updateTransform(animated = false) {
+      if (animated) {
+        nodesContainer.classList.add('animated-transform');
+        svgPathsGroup.classList.add('animated-transform');
+        setTimeout(() => {
+          nodesContainer.classList.remove('animated-transform');
+          svgPathsGroup.classList.remove('animated-transform');
+        }, 450);
+      }
+      
+      nodesContainer.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      svgPathsGroup.setAttribute('transform', `translate(${translateX}, ${translateY}) scale(${scale})`);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom when expanding a node branch
+    function panAndZoomToNodeBranchSmooth(node) {
+      setTimeout(() => {
+        const branchNodes = flattenNodes(node);
+        if (branchNodes.length <= 1) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        branchNodes.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        if (node.x < minX) minX = node.x;
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const branchW = maxX - minX;
+        const branchH = maxY - minY;
+
+        let neededScale = scale;
+        if (branchW * scale > availW || branchH * scale > availH) {
+          const scaleX = availW / branchW;
+          const scaleY = availH / branchH;
+          neededScale = Math.min(scaleX, scaleY);
+          neededScale = Math.max(0.2, Math.min(neededScale, scale));
+        }
+
+        scale = neededScale;
+
+        const targetMidX = (minX + maxX) / 2;
+        const targetMidY = (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetMidX * scale);
+        translateY = (window.innerHeight / 2) - (targetMidY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // Smooth Animated Auto-Pan & Zoom Correction when COLLAPSING a node branch
+    function panAndZoomOnCollapseSmooth(collapsedNode) {
+      setTimeout(() => {
+        const allVisible = flattenNodes(mindMapData);
+        if (allVisible.length === 0) return;
+
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        allVisible.forEach(n => {
+          const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+          const h = 40;
+          if (n.x < minX) minX = n.x;
+          if (n.x + w > maxX) maxX = n.x + w;
+          if (n.y - h/2 < minY) minY = n.y - h/2;
+          if (n.y + h/2 > maxY) maxY = n.y + h/2;
+        });
+
+        const padding = 80;
+        const availW = window.innerWidth - padding * 2;
+        const availH = window.innerHeight - padding * 2;
+
+        const contentW = maxX - minX;
+        const contentH = maxY - minY;
+
+        let newScale = scale;
+        if (contentW * scale < availW * 0.5 && contentH * scale < availH * 0.5 && scale < 1.0) {
+          const scaleX = availW * 0.75 / contentW;
+          const scaleY = availH * 0.75 / contentH;
+          newScale = Math.min(Math.min(scaleX, scaleY), 1.0);
+        }
+
+        scale = newScale;
+
+        const targetX = collapsedNode ? collapsedNode.x : (minX + maxX) / 2;
+        const targetY = collapsedNode ? collapsedNode.y : (minY + maxY) / 2;
+
+        translateX = (window.innerWidth / 2) - (targetX * scale);
+        translateY = (window.innerHeight / 2) - (targetY * scale);
+
+        updateTransform(true);
+      }, 50);
+    }
+
+    // --- VIEW CALCULATIONS & CENTERING ---
+    function centerInitialView(animated = false) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y < minY) minY = n.y;
+        if (n.y > maxY) maxY = n.y;
+      });
+
+      const viewW = window.innerWidth;
+      const viewH = window.innerHeight;
+
+      const contentW = maxX - minX;
+
+      scale = 1.0;
+      translateX = (viewW - contentW) / 2 - minX;
+      translateY = viewH / 2;
+
+      updateTransform(animated);
+    }
+
+    // Fit to window scales to fit the ENTIRE diagram in the window with no cutoff
+    function fitToWindow(animated = true) {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 180;
+        const h = 40;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 80;
+      const availableW = window.innerWidth - (padding * 2);
+      const availableH = window.innerHeight - (padding * 2);
+
+      const contentW = maxX - minX;
+      const contentH = maxY - minY;
+
+      const scaleX = availableW / contentW;
+      const scaleY = availableH / contentH;
+
+      scale = Math.min(scaleX, scaleY);
+
+      const midX = (minX + maxX) / 2;
+      const midY = (minY + maxY) / 2;
+
+      translateX = (window.innerWidth / 2) - (targetMidX = midX) * scale;
+      translateX = (window.innerWidth / 2) - (midX * scale);
+      translateY = (window.innerHeight / 2) - (midY * scale);
+
+      updateTransform(animated);
+    }
+
+    function resetZoomToInitial() {
+      collapsedNodes.clear();
+      setInitialCollapsedState(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    }
+
+    // --- ULTRA-HIGH RESOLUTION PNG EXPORT (4X Crystal-Clear Vector Rendering) ---
+    function downloadMindMapPNG() {
+      const allVisible = flattenNodes(mindMapData);
+      if (allVisible.length === 0) return;
+
+      // Calculate absolute bounds of all visible nodes
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      allVisible.forEach(n => {
+        const w = n.domEl ? (n.domEl.getBoundingClientRect().width / scale) : 200;
+        const h = 46;
+        if (n.x < minX) minX = n.x;
+        if (n.x + w > maxX) maxX = n.x + w;
+        if (n.y - h/2 < minY) minY = n.y - h/2;
+        if (n.y + h/2 > maxY) maxY = n.y + h/2;
+      });
+
+      const padding = 100;
+      const unscaledW = (maxX - minX) + (padding * 2);
+      const unscaledH = (maxY - minY) + (padding * 2);
+
+      // Render canvas at 4x resolution scale (dpr = 4) for vector-grade crispness
+      const dpr = 4;
+      const canvasW = Math.ceil(unscaledW * dpr);
+      const canvasH = Math.ceil(unscaledH * dpr);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = canvasW;
+      canvas.height = canvasH;
+      const ctx = canvas.getContext('2d');
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // 1. Draw clean background
+      ctx.fillStyle = '#f7f9fc';
+      ctx.fillRect(0, 0, canvasW, canvasH);
+
+      // Scale canvas context to 4x supersampling
+      ctx.scale(dpr, dpr);
+
+      const offsetX = padding - minX;
+      const offsetY = padding - minY;
+
+      // 2. Draw SVG Connecting Lines onto Canvas
+      allVisible.forEach(node => {
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (!isCollapsed && node.children) {
+          node.children.forEach(child => {
+            if (allVisible.includes(child) && node.domEl && child.domEl) {
+              const nodeWidth = node.domEl.getBoundingClientRect().width / scale;
+              const sx = node.x + nodeWidth + offsetX;
+              const sy = node.y + offsetY;
+              const ex = child.x + offsetX;
+              const ey = child.y + offsetY;
+              const ctrl = Math.max(30, (ex - sx) * 0.5);
+
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.bezierCurveTo(sx + ctrl, sy, ex - ctrl, ey, ex, ey);
+              ctx.strokeStyle = '#8094ae';
+              ctx.lineWidth = 2;
+              ctx.stroke();
+            }
+          });
+        }
+      });
+
+      // High contrast level color palette with fallback for deeper levels
+      const levelColors = {
+        0: { bg: '#b4acf0', text: '#1e1945', weight: '800', size: 15 },
+        1: { bg: '#aebdf5', text: '#111a45', weight: '700', size: 14 },
+        2: { bg: '#9fd4cb', text: '#082d28', weight: '600', size: 13 },
+        3: { bg: '#aaeec0', text: '#09381b', weight: '600', size: 13 },
+        4: { bg: '#c9f88c', text: '#1b3602', weight: '600', size: 13 },
+        5: { bg: '#fde047', text: '#713f12', weight: '600', size: 13 },
+        6: { bg: '#fdba74', text: '#7c2d12', weight: '600', size: 13 },
+        7: { bg: '#fca5a5', text: '#7f1d1d', weight: '600', size: 13 },
+        8: { bg: '#f472b6', text: '#831843', weight: '600', size: 13 },
+        9: { bg: '#e879f9', text: '#701a75', weight: '600', size: 13 },
+        10: { bg: '#c084fc', text: '#581c87', weight: '600', size: 13 },
+        11: { bg: '#818cf8', text: '#1e1b4b', weight: '600', size: 13 },
+        12: { bg: '#38bdf8', text: '#082f49', weight: '600', size: 13 },
+        13: { bg: '#2dd4bf', text: '#134e4a', weight: '600', size: 13 },
+        14: { bg: '#4ade80', text: '#14532d', weight: '600', size: 13 },
+        15: { bg: '#a3e635', text: '#1a2e05', weight: '600', size: 13 }
+      };
+
+      // 3. Draw Pill Nodes onto 4x Canvas
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        const rect = node.domEl.getBoundingClientRect();
+        const w = rect.width / scale;
+        const h = rect.height / scale;
+        const nx = node.x + offsetX;
+        const ny = (node.y - (h / 2)) + offsetY;
+
+        const styleConfig = levelColors[node.level] || levelColors[10 + (node.level % 6)] || levelColors[10];
+
+        // Draw pill background
+        const radius = Math.min(18, h / 2);
+        ctx.beginPath();
+        ctx.roundRect(nx, ny, w, h, radius);
+        ctx.fillStyle = styleConfig.bg;
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.08)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+
+        // Format pill text with indicators
+        let displayText = node.text;
+        const hasChildren = node.children && node.children.length > 0;
+        const isCollapsed = collapsedNodes.has(node.id);
+        if (hasChildren) {
+          displayText += isCollapsed ? '  +' : '  −';
+        }
+
+        // Draw crystal-clear text on 4x supersampled canvas with word wrapping support
+        ctx.fillStyle = styleConfig.text;
+        ctx.font = `${styleConfig.weight} ${styleConfig.size}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+
+        const maxTextW = w - 32;
+        const words = displayText.split(' ');
+        const lines = [];
+        let currentLine = words[0] || '';
+
+        for (let i = 1; i < words.length; i++) {
+          const testLine = currentLine + ' ' + words[i];
+          if (ctx.measureText(testLine).width <= maxTextW) {
+            currentLine = testLine;
+          } else {
+            lines.push(currentLine);
+            currentLine = words[i];
+          }
+        }
+        lines.push(currentLine);
+
+        const lineHeight = styleConfig.size * 1.35;
+        const startTextY = ny + (h / 2) - ((lines.length - 1) * lineHeight / 2);
+        lines.forEach((line, lineIdx) => {
+          ctx.fillText(line, nx + 16, startTextY + (lineIdx * lineHeight));
+        });
+      });
+
+      // Format download filename as "Mind_Map_[topic].png"
+      const rawTopic = document.getElementById('topic-title')?.innerText || mindMapData.text || 'Topic';
+      const formattedTopic = rawTopic.trim().replace(/\s+/g, '_');
+      const filename = `Mind_Map_${formattedTopic}.png`;
+
+      // Trigger ultra-high resolution PNG download with formatted filename
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+    }
+
+    // --- PAN & ZOOM TOWARDS POINTER ---
+    viewport.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform(false);
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Double-click in blank canvas space triggers Fit to Window
+    viewport.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.node') || e.target.closest('.floating-panel')) return;
+      fitToWindow(true);
+    });
+
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      const newScale = Math.min(Math.max(0.1, scale * zoomFactor), 2.5);
+
+      translateX = mouseX - (mouseX - translateX) * (newScale / scale);
+      translateY = mouseY - (mouseY - translateY) * (newScale / scale);
+
+      scale = newScale;
+      updateTransform(false);
+    }, { passive: false });
+
+    // --- BUTTON HANDLERS ---
+    document.getElementById('btn-expand-all').addEventListener('click', () => {
+      collapsedNodes.clear();
+      renderMindMap();
+      setTimeout(() => fitToWindow(true), 50);
+    });
+
+    document.getElementById('btn-collapse-all').addEventListener('click', () => {
+      function collapseAll(node) {
+        if (node.children && node.children.length > 0) {
+          collapsedNodes.add(node.id);
+          node.children.forEach(collapseAll);
+        }
+      }
+      collapseAll(mindMapData);
+      renderMindMap();
+      setTimeout(() => centerInitialView(true), 50);
+    });
+
+    // High-Yield Only Toggle Button Listener
+    const btnHighYield = document.getElementById('btn-high-yield');
+    btnHighYield.addEventListener('click', () => {
+      isHighYieldOnly = !isHighYieldOnly;
+      if (isHighYieldOnly) {
+        btnHighYield.classList.add('active');
+        document.body.classList.add('high-yield-mode');
+      } else {
+        btnHighYield.classList.remove('active');
+        document.body.classList.remove('high-yield-mode');
+      }
+    });
+
+    document.getElementById('zoom-fit-btn').addEventListener('click', () => fitToWindow(true));
+    document.getElementById('zoom-reset').addEventListener('click', resetZoomToInitial);
+    document.getElementById('download-png-btn').addEventListener('click', downloadMindMapPNG);
+
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.min(2.5, scale * 1.15);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const newScale = Math.max(0.1, scale * 0.85);
+      translateX = centerX - (centerX - translateX) * (newScale / scale);
+      translateY = centerY - (centerY - translateY) * (newScale / scale);
+      scale = newScale;
+      updateTransform(true);
+    });
+
+    // Recursively check if descendant node text matches search query
+    function hasMatchingDescendant(node, query) {
+      if (!node.children || node.children.length === 0) return false;
+      for (let child of node.children) {
+        if (child.text.toLowerCase().includes(query)) return true;
+        if (hasMatchingDescendant(child, query)) return true;
+      }
+      return false;
+    }
+
+    // Perform Search & Highlight logic
+    function performSearchHighlight() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const allVisible = flattenNodes(mindMapData);
+
+      allVisible.forEach(node => {
+        if (!node.domEl) return;
+        node.domEl.classList.remove('highlighted', 'parent-match-highlighted');
+
+        if (!query) return;
+
+        const isExactMatch = node.text.toLowerCase().includes(query);
+        const isCollapsed = collapsedNodes.has(node.id);
+        const hasHiddenMatch = isCollapsed && hasMatchingDescendant(node, query);
+
+        if (isExactMatch) {
+          node.domEl.classList.add('highlighted');
+        } else if (hasHiddenMatch) {
+          node.domEl.classList.add('parent-match-highlighted');
+        }
+      });
+    }
+
+    document.getElementById('search-input').addEventListener('input', performSearchHighlight);
+
+    // Initial Render & Dynamic Title Sync
+    const titleEl = document.getElementById('topic-title');
+    if (titleEl && mindMapData && mindMapData.text) {
+      titleEl.textContent = mindMapData.text;
+    }
+
+    // Expose MindMapBridge for Quiz Engine and Interactive Tooling
+    window.MindMapBridge = {
+      mindMapData: mindMapData,
+      collapsedNodes: collapsedNodes,
+      renderMindMap: renderMindMap,
+      updateTransform: updateTransform,
+      getScale: () => scale,
+      setScale: (s) => { scale = s; },
+      getTranslateX: () => translateX,
+      setTranslateX: (tx) => { translateX = tx; },
+      getTranslateY: () => translateY,
+      setTranslateY: (ty) => { translateY = ty; },
+      setTransform: (s, tx, ty, animated = false) => {
+        scale = s;
+        translateX = tx;
+        translateY = ty;
+        updateTransform(animated);
+      },
+      fitToWindow: fitToWindow,
+      centerInitialView: centerInitialView,
+      nodesContainer: nodesContainer,
+      svgPathsGroup: svgPathsGroup
+    };
+
+    // Quiz Trigger Card Event Listener
+    const btnQuizMe = document.getElementById('btn-quiz-me');
+    if (btnQuizMe) {
+      btnQuizMe.addEventListener('click', () => {
+        if (window.MindMapQuiz) {
+          window.MindMapQuiz.startQuiz();
+        } else {
+          alert('Quiz Game engine (mindmap_quiz.js) is not loaded for this standalone file.');
+        }
+      });
+    }
+
+    if (window.MindMapQuiz) {
+      window.MindMapQuiz.init(mindMapData, window.MindMapBridge);
+    }
+
+    // --- COURSE MIND MAPS SIDEBAR LOGIC ---
+    const relSharedPath = "../../../../shared";
+    const btnOpenSidebar = document.getElementById('btn-open-sidebar');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarDrawer = document.getElementById('sidebar-drawer');
+    const sidebarListContainer = document.getElementById('sidebar-list-container');
+    const sidebarSubfolderSelect = document.getElementById('sidebar-subfolder-select');
+    const sidebarSearchInput = document.getElementById('sidebar-search-input');
+    const filterTypeGroup = document.getElementById('filter-type-group');
+
+    let currentTypeFilter = 'all';
+    let currentSubfolderFilter = 'all';
+    let currentSearchQuery = '';
+    let currentSortMode = 'lesson'; // 'lesson' (L# alternating lec/lab) or 'alpha' (A-Z)
+    const sidebarSortToggle = document.getElementById('sidebar-sort-toggle');
+    const sidebarSortLabel = document.getElementById('sidebar-sort-label');
+
+    function openSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.add('active');
+        sidebarBackdrop.classList.add('active');
+        populateSubfoldersDropdown();
+        renderSidebarList();
+        setTimeout(() => {
+          if (sidebarSearchInput) sidebarSearchInput.focus();
+        }, 150);
+      }
+    }
+
+    function closeSidebar() {
+      if (sidebarDrawer && sidebarBackdrop) {
+        sidebarDrawer.classList.remove('active');
+        sidebarBackdrop.classList.remove('active');
+      }
+    }
+
+    if (btnOpenSidebar) btnOpenSidebar.addEventListener('click', openSidebar);
+    if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', closeSidebar);
+    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebarDrawer && sidebarDrawer.classList.contains('active')) {
+        closeSidebar();
+      }
+    });
+
+    function getMindMapsList() {
+      return (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) ? window.COURSE_MINDMAPS : [];
+    }
+
+    function populateSubfoldersDropdown() {
+      if (!sidebarSubfolderSelect) return;
+      const maps = getMindMapsList();
+      const subfolders = new Set();
+      maps.forEach(m => {
+        if (m.subfolder) subfolders.add(m.subfolder);
+      });
+
+      const currentVal = sidebarSubfolderSelect.value;
+      sidebarSubfolderSelect.innerHTML = '<option value="all">All Subfolders & Modules</option>';
+      Array.from(subfolders).sort().forEach(sf => {
+        const opt = document.createElement('option');
+        opt.value = sf;
+        opt.textContent = sf;
+        sidebarSubfolderSelect.appendChild(opt);
+      });
+      if (subfolders.has(currentVal)) {
+        sidebarSubfolderSelect.value = currentVal;
+      }
+    }
+
+    function updateCounts() {
+      const maps = getMindMapsList();
+      const allCount = maps.length;
+      const lectureCount = maps.filter(m => m.type === 'lecture').length;
+      const labCount = maps.filter(m => m.type === 'lab').length;
+
+      const elAll = document.getElementById('count-all');
+      const elLec = document.getElementById('count-lecture');
+      const elLab = document.getElementById('count-lab');
+
+      if (elAll) elAll.textContent = allCount;
+      if (elLec) elLec.textContent = lectureCount;
+      if (elLab) elLab.textContent = labCount;
+    }
+
+    function renderSidebarList() {
+      if (!sidebarListContainer) return;
+      updateCounts();
+
+      const maps = getMindMapsList();
+      const currentFilename = window.location.pathname.split('/').pop().toLowerCase();
+      const currentTitle = (mindMapData && mindMapData.text) ? mindMapData.text.toLowerCase().trim() : '';
+
+      let filtered = maps.filter(item => {
+        // Type filter
+        if (currentTypeFilter !== 'all' && item.type !== currentTypeFilter) {
+          return false;
+        }
+        // Subfolder filter
+        if (currentSubfolderFilter !== 'all' && item.subfolder !== currentSubfolderFilter) {
+          return false;
+        }
+        // Search filter
+        if (currentSearchQuery) {
+          const textToSearch = `${item.title} ${item.subfolder} ${item.filename}`.toLowerCase();
+          if (!textToSearch.includes(currentSearchQuery)) {
+            return false;
+          }
+        }
+        return true;
+      });
+
+      // Sort filtered items based on currentSortMode
+      filtered.sort((a, b) => {
+        if (currentSortMode === 'alpha') {
+          return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+        } else {
+          // Default: Lesson / L# alternating lecture then lab
+          const numA = (typeof a.number === 'number') ? a.number : 9999;
+          const numB = (typeof b.number === 'number') ? b.number : 9999;
+          if (numA !== numB) return numA - numB;
+          const typeOrderA = a.type === 'lecture' ? 0 : (a.type === 'lab' ? 1 : 2);
+          const typeOrderB = b.type === 'lecture' ? 0 : (b.type === 'lab' ? 1 : 2);
+          if (typeOrderA !== typeOrderB) return typeOrderA - typeOrderB;
+          return a.title.localeCompare(b.title);
+        }
+      });
+
+      sidebarListContainer.innerHTML = '';
+
+      if (filtered.length === 0) {
+        sidebarListContainer.innerHTML = `
+          <div class="sidebar-empty-state">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 8px; display: block; opacity: 0.6;">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            ${maps.length === 0 ? 'No manifest data found. Please run the course manifest builder.' : 'No matching mind maps found.'}
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement('a');
+        card.className = 'mindmap-item-card';
+
+        // Resolve direct link from current file to target mind map using relSharedPath
+        const targetHref = `${relSharedPath}/${item.rel_path_from_shared}`;
+        card.href = targetHref;
+
+        const isCurrent = (item.filename && item.filename.toLowerCase() === currentFilename) ||
+                          (item.title && item.title.toLowerCase().trim() === currentTitle);
+
+        if (isCurrent) {
+          card.classList.add('current');
+        }
+
+        const typeClass = item.type === 'lecture' ? 'lecture' : (item.type === 'lab' ? 'lab' : 'other');
+        const typeLabel = item.type === 'lecture' ? 'Lecture' : (item.type === 'lab' ? 'Lab' : 'General');
+        const numLabel = (item.number && item.number < 9000) ? `L${item.number}` : '';
+
+        card.innerHTML = `
+          <div class="mindmap-item-title">${item.title} ${isCurrent ? ' (Current)' : ''}</div>
+          <div class="mindmap-item-meta">
+            ${numLabel ? `<span class="badge-type ${typeClass}">${numLabel}</span>` : ''}
+            <span class="badge-type ${typeClass}">${typeLabel}</span>
+            <span>${item.subfolder || 'General'}</span>
+          </div>
+        `;
+
+        sidebarListContainer.appendChild(card);
+      });
+    }
+
+    if (sidebarSortToggle) {
+      sidebarSortToggle.addEventListener('click', () => {
+        if (currentSortMode === 'lesson') {
+          currentSortMode = 'alpha';
+          sidebarSortToggle.classList.add('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'L#';
+          sidebarSortToggle.title = 'Switch to Lesson Order (L# alternating Lec/Lab)';
+        } else {
+          currentSortMode = 'lesson';
+          sidebarSortToggle.classList.remove('active');
+          if (sidebarSortLabel) sidebarSortLabel.textContent = 'A-Z';
+          sidebarSortToggle.title = 'Switch to Alphabetical (A-Z)';
+        }
+        renderSidebarList();
+      });
+    }
+
+    if (filterTypeGroup) {
+      filterTypeGroup.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-type-btn');
+        if (!btn) return;
+        filterTypeGroup.querySelectorAll('.filter-type-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTypeFilter = btn.dataset.type || 'all';
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSubfolderSelect) {
+      sidebarSubfolderSelect.addEventListener('change', (e) => {
+        currentSubfolderFilter = e.target.value;
+        renderSidebarList();
+      });
+    }
+
+    if (sidebarSearchInput) {
+      sidebarSearchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.toLowerCase().trim();
+        renderSidebarList();
+      });
+    }
+
+    // Initialize counts and initial sidebar state on load
+    updateCounts();
+
+    renderMindMap();
+  </script>
+  <script src="../../../../shared/mindmap_quiz.js"></script>
+</body>
+</html>
