@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../shared/mindmap_quiz.css">
-  <script src="../../shared/mindmaps_manifest.js"></script>
+  <link rel="stylesheet" href="../../../../shared/mindmap_quiz.css">
+  <script src="../../../../shared/mindmaps_manifest.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -983,7 +983,7 @@
               "id": "mcv-formula",
               "text": "(Hct% x 10) / RBC",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": []
             },
             {
@@ -1073,13 +1073,13 @@
           "id": "mch-core",
           "text": "Mean Corpuscular Hemoglobin (MCH)",
           "level": 2,
-          "high_yield": false,
+          "high_yield": true,
           "children": [
             {
               "id": "mch-formula",
               "text": "(Hgb x 10) / RBC",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": []
             },
             {
@@ -1109,14 +1109,14 @@
               "id": "mchc-formula",
               "text": "(Hgb / Hct) x 100",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": []
             },
             {
               "id": "mchc-normal",
               "text": "Normal (32-36 g/dL)",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": []
             },
             {
@@ -1236,7 +1236,7 @@
                   "id": "ca-target",
                   "text": "Erythrocyte I/i Antigen",
                   "level": 4,
-                  "high_yield": false,
+                  "high_yield": true,
                   "children": []
                 },
                 {
@@ -1566,7 +1566,7 @@
                       "id": "hj-nature",
                       "text": "DNA Nuclear Remnants",
                       "level": 5,
-                      "high_yield": false,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -1575,13 +1575,13 @@
                   "id": "inc-stippling",
                   "text": "Basophilic Stippling",
                   "level": 4,
-                  "high_yield": false,
+                  "high_yield": true,
                   "children": [
                     {
                       "id": "stippling-nature",
                       "text": "Precipitated Ribosomal RNA",
                       "level": 5,
-                      "high_yield": false,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -1590,7 +1590,7 @@
                   "id": "inc-cabot",
                   "text": "Cabot Rings",
                   "level": 4,
-                  "high_yield": false,
+                  "high_yield": true,
                   "children": [
                     {
                       "id": "cabot-nature",
@@ -1861,7 +1861,7 @@
               "id": "miller-stain",
               "text": "New Methylene Blue (1:1)",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": []
             },
             {
@@ -1905,7 +1905,7 @@
               "id": "miller-formulas",
               "text": "Manual Reticulocyte Calculations",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": [
                 {
                   "id": "calc-pct",
@@ -1922,9 +1922,9 @@
                   "children": [
                     {
                       "id": "arc-ref",
-                      "text": "Reference: 25-75 x 10^9/L",
+                      "text": "Reference: 20-115 x 10^9/L",
                       "level": 5,
-                      "high_yield": false,
+                      "high_yield": true,
                       "children": []
                     }
                   ]
@@ -1933,7 +1933,7 @@
                   "id": "calc-crc",
                   "text": "CRC = Retic% x (Hct / 45)",
                   "level": 4,
-                  "high_yield": false,
+                  "high_yield": true,
                   "children": []
                 }
               ]
@@ -3524,7 +3524,7 @@
     }
 
     // --- COURSE MIND MAPS SIDEBAR LOGIC ---
-    const relSharedPath = "../../shared";
+    const relSharedPath = "../../../../shared";
     const btnOpenSidebar = document.getElementById('btn-open-sidebar');
     const btnCloseSidebar = document.getElementById('btn-close-sidebar');
     const sidebarBackdrop = document.getElementById('sidebar-backdrop');
@@ -3747,6 +3747,6 @@
 
     renderMindMap();
   </script>
-  <script src="../../shared/mindmap_quiz.js"></script>
+  <script src="../../../../shared/mindmap_quiz.js"></script>
 </body>
 </html>
