@@ -360,7 +360,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1790454796.600948
+    "mtime": 1790461555.4472501
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
@@ -498,12 +498,12 @@ window.FILES_DATA = [
     "name": "L10_AML_S0_Discussion.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L10_AML_S0_Discussion.html",
-    "size": 372878,
-    "sizeFormatted": "364.1 KB",
+    "size": 330733,
+    "sizeFormatted": "323.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790457642.873537
+    "mtime": 1790461333.844735
   },
   {
     "name": "L10_AML_S1_Mind_Map.html",
@@ -520,12 +520,12 @@ window.FILES_DATA = [
     "name": "L11_MPN_MDS_S0_Discussion.html",
     "title": "Chronic Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L11_MPN_MDS_S0_Discussion.html",
-    "size": 353082,
-    "sizeFormatted": "344.8 KB",
+    "size": 348550,
+    "sizeFormatted": "340.4 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790457663.6798346
+    "mtime": 1790461348.3791604
   },
   {
     "name": "L11_MPN_MDS_S1_Mind_Map.html",
@@ -542,12 +542,12 @@ window.FILES_DATA = [
     "name": "L12_ALL_S0_Discussion.html",
     "title": "Lymphoid Neoplasms",
     "path": "Lecture/Leukocytes/L12_ALL_S0_Discussion.html",
-    "size": 303577,
-    "sizeFormatted": "296.5 KB",
+    "size": 334539,
+    "sizeFormatted": "326.7 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790457678.7160478
+    "mtime": 1790461366.5754213
   },
   {
     "name": "L12_ALL_S1_Mind_Map.html",
@@ -564,12 +564,12 @@ window.FILES_DATA = [
     "name": "L13_BM_Flow_S0_Discussion.html",
     "title": "Bone Marrow & Flow Cytometry",
     "path": "Lecture/Leukocytes/L13_BM_Flow_S0_Discussion.html",
-    "size": 338446,
-    "sizeFormatted": "330.5 KB",
+    "size": 335233,
+    "sizeFormatted": "327.4 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790457694.4872096
+    "mtime": 1790461381.9198096
   },
   {
     "name": "L13_BM_Flow_S1_Mind_Map.html",
@@ -586,12 +586,12 @@ window.FILES_DATA = [
     "name": "L9_Benign_S0_Discussion.html",
     "title": "Benign Disorders",
     "path": "Lecture/Leukocytes/L9_Benign_S0_Discussion.html",
-    "size": 392944,
-    "sizeFormatted": "383.7 KB",
+    "size": 417827,
+    "sizeFormatted": "408.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790454561.1577668
+    "mtime": 1790461319.894788
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
