@@ -234,12 +234,12 @@ window.FILES_DATA = [
     "name": "L8_Normocytic_S0_Discussion.html",
     "title": "Normocytic",
     "path": "Laboratory/Erythrocytes/L8_Normocytic_S0_Discussion.html",
-    "size": 289186,
-    "sizeFormatted": "282.4 KB",
+    "size": 325648,
+    "sizeFormatted": "318.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1790386047.455267
+    "mtime": 1790388394.579545
   },
   {
     "name": "L8_Normocytic_S1_Mind_Map.html",
