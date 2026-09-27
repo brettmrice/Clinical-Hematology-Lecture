@@ -113,6 +113,7 @@ async function loadFilesIndex() {
 
 // Topic & Category Helpers
 function getTopicInfo(file) {
+    if (!file || !file.name) return null;
     const domain = getDomainKey(file);
     const domainConfig = TOPIC_CONFIG[domain] || {};
 
@@ -137,11 +138,7 @@ function getTopicInfo(file) {
         };
     }
 
-    return {
-        key: 'Other',
-        title: 'General Resources',
-        domain: domain
-    };
+    return null;
 }
 
 function formatCategory(cat) {
@@ -334,8 +331,9 @@ function setupHeaderScroll() {
 
 // Check if a file matches text search query
 function fileMatchesSearch(file, searchStr) {
-    if (!searchStr) return true;
     const topicInfo = getTopicInfo(file);
+    if (!topicInfo) return false;
+    if (!searchStr) return true;
     const matchName = (file.name || '').toLowerCase().includes(searchStr);
     const matchTitle = (file.title || '').toLowerCase().includes(searchStr);
     const matchCat = (file.category || '').toLowerCase().includes(searchStr);
@@ -598,9 +596,10 @@ function buildHierarchy(files) {
     };
 
     files.forEach(file => {
+        const topicInfo = getTopicInfo(file);
+        if (!topicInfo) return;
         const dKey = getDomainKey(file);
         const catKey = file.category || 'General';
-        const topicInfo = getTopicInfo(file);
 
         if (!domains[dKey]) {
             domains[dKey] = { title: `${dKey.toUpperCase()} Modules`, badge: dKey, icon: 'lecture', categories: {} };

@@ -8,7 +8,8 @@ JSON_FILE = os.path.join(ROOT_DIR, "files_index.json")
 JS_FILE = os.path.join(ROOT_DIR, "files_data.js")
 VIDEO_CONFIG_FILE = os.path.join(ROOT_DIR, "video_links.json")
 
-EXCLUDED_DIRS = {".git", ".gemini", "node_modules", "__pycache__", "scratch"}
+EXCLUDED_DIRS = {".git", ".gemini", "node_modules", "__pycache__", "scratch", "graphics", "images", "assets"}
+EXCLUDED_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".ico", ".bmp", ".tiff"}
 EXCLUDED_FILES = {
     "generate_index.py",
     "generate_index.js",
@@ -180,6 +181,10 @@ def scan_dir():
             
             for file in files:
                 if file in EXCLUDED_FILES:
+                    continue
+                
+                ext = os.path.splitext(file)[1].lower()
+                if ext in EXCLUDED_EXTENSIONS:
                     continue
                 
                 full_path = os.path.join(root, file)

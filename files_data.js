@@ -253,17 +253,6 @@ window.FILES_DATA = [
     "mtime": 1790452709.363518
   },
   {
-    "name": "oft_graph_output.png",
-    "title": "oft graph output",
-    "path": "Laboratory/Erythrocytes/graphics/oft_graph_output.png",
-    "size": 654683,
-    "sizeFormatted": "639.3 KB",
-    "extension": "png",
-    "type": "Document",
-    "category": "Laboratory / Erythrocytes / graphics",
-    "mtime": 1790366033.5020528
-  },
-  {
     "name": "L10_AML_S0_Discussion.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Laboratory/Leukocytes/L10_AML_S0_Discussion.html",

@@ -7,7 +7,8 @@ const jsFilePath = path.join(rootDir, 'files_data.js');
 const videoConfigFile = path.join(rootDir, 'video_links.json');
 const videoJsFile = path.join(rootDir, 'video_links.js');
 
-const EXCLUDED_DIRS = ['.git', '.gemini', 'node_modules', '__pycache__', 'scratch'];
+const EXCLUDED_DIRS = ['.git', '.gemini', 'node_modules', '__pycache__', 'scratch', 'graphics', 'images', 'assets'];
+const EXCLUDED_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.bmp', '.tiff'];
 const EXCLUDED_FILES = [
     'generate_index.py',
     'generate_index.js',
@@ -189,6 +190,8 @@ function scanDir() {
                 walk(fullPath, relPath);
             } else {
                 if (EXCLUDED_FILES.includes(relPath)) continue;
+                const ext = path.extname(item).toLowerCase();
+                if (EXCLUDED_EXTENSIONS.includes(ext)) continue;
 
                 const fileType = getFileType(item);
                 const displayTitle = extractDisplayTitle(fullPath, item, fileType);
