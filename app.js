@@ -1,9 +1,35 @@
 let filesData = [];
-let currentSection = 'all'; // 'all', 'lecture', or 'laboratory'
-let currentModule = 'all';  // 'all', 'Physiology', 'CBC_PBS', 'Erythrocyte', or 'Leukocyte'
-let currentFilter = 'all';   // 'all', 'discussion', 'pdf', 'video', or 'mindmap'
+let selectedDomains = new Set(['all']); // Set containing 'all' and/or domain keys ('lecture', 'laboratory')
+let selectedModules = new Set(['all']); // Set containing 'all' and/or module keys ('Physiology', 'CBC_PBS', 'Erythrocyte', 'Leukocyte')
+let selectedTypes = new Set(['all']);   // Set containing 'all' and/or type keys ('discussion', 'flowchart', 'pdf', 'video', 'demonstration', 'tool', 'trainer', 'mindmap')
 let currentSearch = '';
 let currentView = 'grid';   // 'grid' or 'tree'
+
+const DOMAIN_KEYS = ['lecture', 'laboratory'];
+const MODULE_KEYS = ['Physiology', 'CBC_PBS', 'Erythrocyte', 'Leukocyte'];
+const TYPE_KEYS = ['discussion', 'flowchart', 'pdf', 'video', 'demonstration', 'tool', 'trainer', 'mindmap'];
+
+const TYPE_KEY_TO_NAME = {
+    'discussion': 'Discussion',
+    'flowchart': 'Flow Chart',
+    'pdf': 'Slide Deck',
+    'video': 'Video',
+    'demonstration': 'Demonstration',
+    'tool': 'Tool',
+    'trainer': 'Trainer',
+    'mindmap': 'Mind Map'
+};
+
+const TYPE_NAME_TO_KEY = {
+    'Discussion': 'discussion',
+    'Flow Chart': 'flowchart',
+    'Slide Deck': 'pdf',
+    'Video': 'video',
+    'Demonstration': 'demonstration',
+    'Tool': 'tool',
+    'Trainer': 'trainer',
+    'Mind Map': 'mindmap'
+};
 
 const TOPIC_CONFIG = {
     lecture: {
@@ -202,22 +228,20 @@ function setupEventListeners() {
     domainChips.forEach(chip => {
         chip.addEventListener('click', () => {
             if (chip.disabled || chip.classList.contains('is-disabled')) return;
-            domainChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentSection = chip.getAttribute('data-domain');
+            const domainKey = chip.getAttribute('data-domain');
+            toggleFilterGroup(selectedDomains, domainKey);
             updateCategoryCounts();
             render();
         });
     });
 
-    // Module / Subfolder Filter Chips (All, Physiology, CBC & PBS, Erythrocyte)
+    // Module / Subfolder Filter Chips (All, Physiology, CBC & PBS, Erythrocyte, Leukocyte)
     const moduleChips = document.querySelectorAll('.chip-module');
     moduleChips.forEach(chip => {
         chip.addEventListener('click', () => {
             if (chip.disabled || chip.classList.contains('is-disabled')) return;
-            moduleChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentModule = chip.getAttribute('data-module');
+            const moduleKey = chip.getAttribute('data-module');
+            toggleFilterGroup(selectedModules, moduleKey);
             updateCategoryCounts();
             render();
         });
@@ -228,9 +252,8 @@ function setupEventListeners() {
     typeChips.forEach(chip => {
         chip.addEventListener('click', () => {
             if (chip.disabled || chip.classList.contains('is-disabled')) return;
-            typeChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentFilter = chip.getAttribute('data-filter');
+            const filterKey = chip.getAttribute('data-filter');
+            toggleFilterGroup(selectedTypes, filterKey);
             updateCategoryCounts();
             render();
         });
@@ -342,6 +365,89 @@ function fileMatchesSearch(file, searchStr) {
     return matchName || matchTitle || matchCat || matchType || matchTopic;
 }
 
+// Toggle helper for multi-select chip groups
+function toggleFilterGroup(selectedSet, clickedKey) {
+    if (clickedKey === 'all') {
+        selectedSet.clear();
+        selectedSet.add('all');
+    } else {
+        if (selectedSet.has('all')) {
+            if (selectedSet.size === 1) {
+                // If previously only 'all' was active, selecting an individual chip focuses on that one
+                selectedSet.clear();
+                selectedSet.add(clickedKey);
+            } else {
+                // All items were active, user is toggling OFF this specific item
+                selectedSet.delete('all');
+                selectedSet.delete(clickedKey);
+                if (selectedSet.size === 0) {
+                    selectedSet.add('all');
+                }
+            }
+        } else {
+            if (selectedSet.has(clickedKey)) {
+                selectedSet.delete(clickedKey);
+                // If last one toggled off, automatically revert to 'all'
+                if (selectedSet.size === 0) {
+                    selectedSet.add('all');
+                }
+            } else {
+                selectedSet.add(clickedKey);
+            }
+        }
+    }
+}
+
+// Visual sync helper for active classes in chip groups
+function syncChipGroupActive(chipsNodeList, selectedSet) {
+    const isAllActive = selectedSet.has('all') && selectedSet.size === 1;
+
+    chipsNodeList.forEach(chip => {
+        const key = chip.getAttribute('data-domain') || chip.getAttribute('data-module') || chip.getAttribute('data-filter');
+        if (key === 'all') {
+            if (selectedSet.has('all')) {
+                chip.classList.add('active');
+            } else {
+                chip.classList.remove('active');
+            }
+            chip.classList.remove('active-outline');
+        } else {
+            if (isAllActive) {
+                // When 'All' is active, respective available/enabled chips get darker border without fill
+                chip.classList.remove('active');
+                if (!chip.disabled && !chip.classList.contains('is-disabled')) {
+                    chip.classList.add('active-outline');
+                } else {
+                    chip.classList.remove('active-outline');
+                }
+            } else {
+                chip.classList.remove('active-outline');
+                if (selectedSet.has(key)) {
+                    chip.classList.add('active');
+                } else {
+                    chip.classList.remove('active');
+                }
+            }
+        }
+    });
+}
+
+function matchesDomain(file) {
+    if (selectedDomains.has('all')) return true;
+    return selectedDomains.has(getDomainKey(file));
+}
+
+function matchesModule(file) {
+    if (selectedModules.has('all')) return true;
+    return selectedModules.has(getModuleKey(file));
+}
+
+function matchesType(file) {
+    if (selectedTypes.has('all')) return true;
+    const typeKey = TYPE_NAME_TO_KEY[file.type] || (file.type ? file.type.toLowerCase() : '');
+    return selectedTypes.has(typeKey);
+}
+
 // Update count and disabled state for a specific chip
 function updateChipState(chipEl, countEl, count) {
     if (countEl) countEl.textContent = count;
@@ -360,50 +466,12 @@ function updateCategoryCounts() {
     // 1. Files matching current search
     const searchFiles = filesData.filter(f => fileMatchesSearch(f, currentSearch));
 
-    // Type filter mapping
-    const typeFilters = {
-        'discussion': 'Discussion',
-        'flowchart': 'Flow Chart',
-        'pdf': 'Slide Deck',
-        'video': 'Video',
-        'demonstration': 'Demonstration',
-        'tool': 'Tool',
-        'trainer': 'Trainer',
-        'mindmap': 'Mind Map'
-    };
-
-    // Helper to test if file matches current type filter
-    const matchesCurrentType = (f) => {
-        if (currentFilter === 'all') return true;
-        const targetType = typeFilters[currentFilter];
-        return targetType ? f.type === targetType : true;
-    };
-
-    // Helper to test if file matches current module filter
-    const matchesCurrentModule = (f) => {
-        if (currentModule === 'all') return true;
-        return getModuleKey(f) === currentModule;
-    };
-
-    // Helper to test if file matches current domain filter
-    const matchesCurrentDomain = (f) => {
-        if (currentSection === 'all') return true;
-        return getDomainKey(f) === currentSection;
-    };
-
     // --- DOMAIN / FOLDER CHIPS ---
     // Scoped to: Search + Module + Type
-    const domainCandidateFiles = searchFiles.filter(f => matchesCurrentModule(f) && matchesCurrentType(f));
+    const domainCandidateFiles = searchFiles.filter(f => matchesModule(f) && matchesType(f));
     const countDomainAll = domainCandidateFiles.length;
     const countDomainLecture = domainCandidateFiles.filter(f => getDomainKey(f) === 'lecture').length;
     const countDomainLab = domainCandidateFiles.filter(f => getDomainKey(f) === 'laboratory').length;
-
-    // Check if active domain has 0 items and auto-reset to 'all' if needed
-    if (currentSection === 'lecture' && countDomainLecture === 0) {
-        currentSection = 'all';
-    } else if (currentSection === 'laboratory' && countDomainLab === 0) {
-        currentSection = 'all';
-    }
 
     const chipDomAll = document.getElementById('tabDomainAll');
     const chipDomLec = document.getElementById('tabDomainLecture');
@@ -413,35 +481,30 @@ function updateCategoryCounts() {
     updateChipState(chipDomLec, document.getElementById('countDomainLecture'), countDomainLecture);
     updateChipState(chipDomLab, document.getElementById('countDomainLab'), countDomainLab);
 
-    // Sync active classes for domain chips
-    const domainChips = document.querySelectorAll('.chip-domain');
-    domainChips.forEach(c => {
-        if (c.getAttribute('data-domain') === currentSection) {
-            c.classList.add('active');
-        } else {
-            c.classList.remove('active');
-        }
+    // Auto-trigger 'all' if all available (count > 0) domain filters are selected
+    const availableDomainKeys = DOMAIN_KEYS.filter(k => {
+        if (k === 'lecture') return countDomainLecture > 0;
+        if (k === 'laboratory') return countDomainLab > 0;
+        return false;
     });
+    if (!selectedDomains.has('all') || selectedDomains.size > 1) {
+        if (availableDomainKeys.length > 0 && availableDomainKeys.every(k => selectedDomains.has(k))) {
+            selectedDomains.clear();
+            selectedDomains.add('all');
+        }
+    }
+
+    const domainChips = document.querySelectorAll('.chip-domain');
+    syncChipGroupActive(domainChips, selectedDomains);
 
     // --- MODULE CHIPS ---
     // Scoped to: Search + Active Domain + Type
-    const moduleCandidateFiles = searchFiles.filter(f => matchesCurrentDomain(f) && matchesCurrentType(f));
+    const moduleCandidateFiles = searchFiles.filter(f => matchesDomain(f) && matchesType(f));
     const countModAll = moduleCandidateFiles.length;
     const countModPhys = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Physiology').length;
     const countModCBC = moduleCandidateFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
     const countModEryth = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
     const countModLeuk = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Leukocyte').length;
-
-    // Check if active module has 0 items and auto-reset to 'all' if needed
-    if (currentModule === 'Physiology' && countModPhys === 0) {
-        currentModule = 'all';
-    } else if (currentModule === 'CBC_PBS' && countModCBC === 0) {
-        currentModule = 'all';
-    } else if (currentModule === 'Erythrocyte' && countModEryth === 0) {
-        currentModule = 'all';
-    } else if (currentModule === 'Leukocyte' && countModLeuk === 0) {
-        currentModule = 'all';
-    }
 
     const chipModAll = document.getElementById('tabModuleAll');
     const chipModPhys = document.getElementById('tabModulePhysiology');
@@ -455,19 +518,27 @@ function updateCategoryCounts() {
     updateChipState(chipModEryth, document.getElementById('countModuleErythrocyte'), countModEryth);
     updateChipState(chipModLeuk, document.getElementById('countModuleLeukocyte'), countModLeuk);
 
-    // Sync active classes for module chips
-    const moduleChips = document.querySelectorAll('.chip-module');
-    moduleChips.forEach(c => {
-        if (c.getAttribute('data-module') === currentModule) {
-            c.classList.add('active');
-        } else {
-            c.classList.remove('active');
+    // Auto-trigger 'all' if all available (count > 0) module filters are selected
+    const modCountMap = {
+        'Physiology': countModPhys,
+        'CBC_PBS': countModCBC,
+        'Erythrocyte': countModEryth,
+        'Leukocyte': countModLeuk
+    };
+    const availableModuleKeys = MODULE_KEYS.filter(k => (modCountMap[k] || 0) > 0);
+    if (!selectedModules.has('all') || selectedModules.size > 1) {
+        if (availableModuleKeys.length > 0 && availableModuleKeys.every(k => selectedModules.has(k))) {
+            selectedModules.clear();
+            selectedModules.add('all');
         }
-    });
+    }
+
+    const moduleChips = document.querySelectorAll('.chip-module');
+    syncChipGroupActive(moduleChips, selectedModules);
 
     // --- RESOURCE TYPE CHIPS ---
     // Scoped to: Search + Active Domain + Active Module
-    const typeCandidateFiles = searchFiles.filter(f => matchesCurrentDomain(f) && matchesCurrentModule(f));
+    const typeCandidateFiles = searchFiles.filter(f => matchesDomain(f) && matchesModule(f));
     const countTypeAll = typeCandidateFiles.length;
     const countDisc = typeCandidateFiles.filter(f => f.type === 'Discussion').length;
     const countFlowChart = typeCandidateFiles.filter(f => f.type === 'Flow Chart').length;
@@ -477,21 +548,6 @@ function updateCategoryCounts() {
     const countTool = typeCandidateFiles.filter(f => f.type === 'Tool').length;
     const countTrainer = typeCandidateFiles.filter(f => f.type === 'Trainer').length;
     const countMaps = typeCandidateFiles.filter(f => f.type === 'Mind Map').length;
-
-    // Check if active type has 0 items and auto-reset to 'all' if needed
-    const activeTypeCounts = {
-        'discussion': countDisc,
-        'flowchart': countFlowChart,
-        'pdf': countPdf,
-        'video': countVideo,
-        'demonstration': countDemo,
-        'tool': countTool,
-        'trainer': countTrainer,
-        'mindmap': countMaps
-    };
-    if (currentFilter !== 'all' && (activeTypeCounts[currentFilter] || 0) === 0) {
-        currentFilter = 'all';
-    }
 
     const typeChipMap = {
         'all': { chip: document.querySelector('.chip-type[data-filter="all"]'), countEl: document.getElementById('countAll'), count: countTypeAll },
@@ -506,43 +562,43 @@ function updateCategoryCounts() {
     };
 
     for (const item of Object.values(typeChipMap)) {
-        updateChipState(item.chip, item.countEl, item.count);
+        if (item.chip) updateChipState(item.chip, item.countEl, item.count);
     }
 
-    // Sync active classes for type chips
-    const typeChips = document.querySelectorAll('.chip-type');
-    typeChips.forEach(c => {
-        if (c.getAttribute('data-filter') === currentFilter) {
-            c.classList.add('active');
-        } else {
-            c.classList.remove('active');
+    // Auto-trigger 'all' if all available (count > 0) type filters are selected
+    const typeCountMap = {
+        'discussion': countDisc,
+        'flowchart': countFlowChart,
+        'pdf': countPdf,
+        'video': countVideo,
+        'demonstration': countDemo,
+        'tool': countTool,
+        'trainer': countTrainer,
+        'mindmap': countMaps
+    };
+    const availableTypeKeys = TYPE_KEYS.filter(k => (typeCountMap[k] || 0) > 0);
+    if (!selectedTypes.has('all') || selectedTypes.size > 1) {
+        if (availableTypeKeys.length > 0 && availableTypeKeys.every(k => selectedTypes.has(k))) {
+            selectedTypes.clear();
+            selectedTypes.add('all');
         }
-    });
+    }
+
+    const typeChips = document.querySelectorAll('.chip-type');
+    syncChipGroupActive(typeChips, selectedTypes);
 }
 
 // Filter logic
 function getFilteredFiles() {
     const filtered = filesData.filter(file => {
         // 1. Folder / Domain filter (All, Lecture, Laboratory)
-        const domain = getDomainKey(file);
-        if (currentSection === 'lecture' && domain !== 'lecture') return false;
-        if (currentSection === 'laboratory' && domain !== 'laboratory') return false;
+        if (!matchesDomain(file)) return false;
 
-        // 2. Module / Subfolder filter (All, Physiology, CBC & PBS, Erythrocyte)
-        if (currentModule !== 'all') {
-            const mod = getModuleKey(file);
-            if (mod !== currentModule) return false;
-        }
+        // 2. Module / Subfolder filter (All, Physiology, CBC & PBS, Erythrocyte, Leukocyte)
+        if (!matchesModule(file)) return false;
 
         // 3. Resource type filter chip
-        if (currentFilter === 'discussion' && file.type !== 'Discussion') return false;
-        if (currentFilter === 'flowchart' && file.type !== 'Flow Chart') return false;
-        if (currentFilter === 'pdf' && file.type !== 'Slide Deck') return false;
-        if (currentFilter === 'video' && file.type !== 'Video') return false;
-        if (currentFilter === 'demonstration' && file.type !== 'Demonstration') return false;
-        if (currentFilter === 'tool' && file.type !== 'Tool') return false;
-        if (currentFilter === 'trainer' && file.type !== 'Trainer') return false;
-        if (currentFilter === 'mindmap' && file.type !== 'Mind Map') return false;
+        if (!matchesType(file)) return false;
 
         // 4. Search text query
         if (currentSearch && !fileMatchesSearch(file, currentSearch)) {
@@ -1015,23 +1071,20 @@ function checkUrlHashTarget() {
             let needReRender = false;
             const targetDomain = getDomainKey(targetFile);
 
-            if (currentSection !== 'all' && currentSection !== targetDomain) {
-                currentSection = 'all';
-                const sectionTabs = document.querySelectorAll('.section-tab');
-                sectionTabs.forEach(t => {
-                    if (t.getAttribute('data-section') === 'all') t.classList.add('active');
-                    else t.classList.remove('active');
-                });
+            if (!selectedDomains.has('all') && !selectedDomains.has(targetDomain)) {
+                selectedDomains = new Set(['all']);
                 needReRender = true;
             }
 
-            if (currentFilter !== 'all') {
-                currentFilter = 'all';
-                const chips = document.querySelectorAll('.chip');
-                chips.forEach(c => {
-                    if (c.getAttribute('data-filter') === 'all') c.classList.add('active');
-                    else c.classList.remove('active');
-                });
+            const targetModule = getModuleKey(targetFile);
+            if (!selectedModules.has('all') && !selectedModules.has(targetModule)) {
+                selectedModules = new Set(['all']);
+                needReRender = true;
+            }
+
+            const targetTypeKey = TYPE_NAME_TO_KEY[targetFile.type] || '';
+            if (!selectedTypes.has('all') && !selectedTypes.has(targetTypeKey)) {
+                selectedTypes = new Set(['all']);
                 needReRender = true;
             }
 

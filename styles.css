@@ -369,11 +369,13 @@ header.header-shrunk .header-top-btn {
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all var(--transition-fast);
-  display: flex;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   user-select: none;
+  box-sizing: border-box;
+  line-height: 1.2;
 }
 
 .chip:hover:not(:disabled):not(.is-disabled) {
@@ -386,12 +388,67 @@ header.header-shrunk .header-top-btn {
   background-color: var(--theme-first-color);
   color: var(--theme-second-color);
   border-color: var(--theme-first-color);
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.chip.active:hover:not(:disabled):not(.is-disabled) {
+  background-color: #272a33;
+  border-color: #272a33;
+  color: #FFFFFF;
 }
 
 .chip.active .chip-count {
   background: rgba(239, 225, 206, 0.25);
   color: var(--theme-second-color);
+}
+
+.chip.active-outline:not(:disabled):not(.is-disabled) {
+  border-color: var(--theme-second-color);
+  background-color: transparent;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.chip.active-outline:hover:not(:disabled):not(.is-disabled) {
+  border-color: var(--theme-first-color);
+  background-color: rgba(239, 225, 206, 0.35);
+  color: var(--text-primary);
+}
+
+.chip.active-outline:not(:disabled):not(.is-disabled) .chip-count {
+  background: rgba(239, 225, 206, 0.4);
+  color: var(--text-primary);
+}
+
+.chip.active-outline:hover:not(:disabled):not(.is-disabled) .chip-count {
+  background: rgba(239, 225, 206, 0.7);
+}
+
+[data-theme="dark"] .chip.active:hover:not(:disabled):not(.is-disabled) {
+  background-color: #434756;
+  border-color: #434756;
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .chip.active-outline:not(:disabled):not(.is-disabled) {
+  border-color: var(--theme-second-color);
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .chip.active-outline:hover:not(:disabled):not(.is-disabled) {
+  border-color: var(--theme-second-color-hover);
+  background-color: rgba(239, 225, 206, 0.14);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .chip.active-outline:not(:disabled):not(.is-disabled) .chip-count {
+  background: rgba(239, 225, 206, 0.15);
+  color: var(--theme-second-color);
+}
+
+[data-theme="dark"] .chip.active-outline:hover:not(:disabled):not(.is-disabled) .chip-count {
+  background: rgba(239, 225, 206, 0.25);
 }
 
 .chip:disabled,
@@ -432,6 +489,11 @@ header.header-shrunk .header-top-btn {
   padding: 2px 6px;
   border-radius: 10px;
   font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  min-width: 18px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .chip-count {
