@@ -321,9 +321,8 @@ header.header-shrunk .header-top-btn {
 /* Filter Groups & Rows */
 .filter-group {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
   width: 100%;
 }
 
@@ -333,16 +332,18 @@ header.header-shrunk .header-top-btn {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
-  width: 100%;
+  width: 60px;
+  min-width: 60px;
+  flex-shrink: 0;
+  align-self: center;
   text-align: left;
 }
 
 .chips-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 8px;
-  width: 100%;
+  flex: 1;
 }
 
 .chip-all {
@@ -354,9 +355,8 @@ header.header-shrunk .header-top-btn {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  width: 100%;
+  flex: 1;
 }
 
 .chip {
@@ -1146,6 +1146,28 @@ footer {
   }
   .grid-view {
     grid-template-columns: 1fr;
+  }
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .filter-label {
+    width: 100%;
+    text-align: left;
+  }
+  .chips-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .chip-all {
+    align-self: center;
+  }
+  .chips-wrap-group {
+    justify-content: center;
+    width: 100%;
   }
   .modal-container {
     width: 100vw;
