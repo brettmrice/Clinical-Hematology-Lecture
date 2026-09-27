@@ -308,6 +308,23 @@ function setupHeaderScroll() {
         if (currentHeight > 0) {
             document.documentElement.style.setProperty('--header-height', `${currentHeight}px`);
         }
+
+        // Dynamically sync --domain-header-height so sticky topic titles dock flush with no gap or clipping
+        const domainHeader = document.querySelector('.domain-header');
+        if (domainHeader) {
+            const domainHeight = domainHeader.offsetHeight;
+            if (domainHeight > 0) {
+                document.documentElement.style.setProperty('--domain-header-height', `${domainHeight}px`);
+            }
+        }
+
+        // Toggle .is-stickied to transition border-radius to square when pinned
+        const stickyLabels = document.querySelectorAll('.domain-header, .tree-folder-title');
+        stickyLabels.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const isStuck = rect.top <= (currentHeight + 2);
+            el.classList.toggle('is-stickied', isStuck);
+        });
     };
 
     window.addEventListener('scroll', updateHeaderState, { passive: true });
@@ -673,11 +690,13 @@ function renderCardGrid(container, files) {
         html += `
             <div class="domain-section">
                 <div class="domain-header">
-                    <div class="domain-title">
-                        ${domainIconSvg}
-                        <span>${escapeHtml(domain.title)}</span>
+                    <div class="domain-header-inner">
+                        <div class="domain-title">
+                            ${domainIconSvg}
+                            <span>${escapeHtml(domain.title)}</span>
+                        </div>
+                        <span class="domain-badge">${escapeHtml(domain.badge)} · ${domainFileCount} items</span>
                     </div>
-                    <span class="domain-badge">${escapeHtml(domain.badge)} · ${domainFileCount} items</span>
                 </div>
         `;
 

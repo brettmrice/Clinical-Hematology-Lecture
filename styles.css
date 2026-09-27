@@ -8,7 +8,9 @@
   --theme-second-color-hover: #e5d3ba;
   
   --bg-primary: #F7F8FA;
+  --bg-primary-blur: rgba(247, 248, 250, 0.85);
   --bg-surface: #FFFFFF;
+  --bg-surface-blur: rgba(255, 255, 255, 0.85);
   --text-primary: #363945;
   --text-secondary: #64748B;
   --border-color: #E2E8F0;
@@ -52,7 +54,9 @@ body:has(.header-shrunk) {
 
 [data-theme="dark"] {
   --bg-primary: #18191E;
+  --bg-primary-blur: rgba(24, 25, 30, 0.85);
   --bg-surface: #22242D;
+  --bg-surface-blur: rgba(34, 36, 45, 0.85);
   --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
   --border-color: #333745;
@@ -97,7 +101,9 @@ body, html {
 
 /* Header & Navigation */
 header {
-  background-color: var(--bg-surface);
+  background-color: var(--bg-surface-blur);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
@@ -459,30 +465,82 @@ main {
 
 .domain-header {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--sticky-gap, 12px));
+  top: var(--header-height, 73px);
   z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
-  background: var(--bg-surface);
+  gap: 12px;
+  padding: 10px 16px 10px 18px;
+  background-color: var(--bg-surface-blur);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
-  border-left: 4px solid var(--theme-first-color);
   border-radius: var(--radius-md);
   margin-bottom: 16px;
   box-shadow: var(--shadow-sm);
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  transition: border-radius var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.domain-header.is-stickied {
+  border-radius: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+/* Full window width frosted wings */
+.domain-header::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-surface-blur);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: left var(--transition-fast), right var(--transition-fast), opacity var(--transition-fast);
+}
+
+.domain-header.is-stickied::after {
+  opacity: 1;
+  left: calc(50% - 50vw);
+  right: calc(50% - 50vw);
+}
+
+.domain-header-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
 }
 
 .domain-header::before {
   content: "";
   position: absolute;
-  top: calc(-1 * (var(--sticky-gap, 12px) + 2px));
-  left: -24px;
-  right: -24px;
-  height: calc(var(--sticky-gap, 12px) + 2px);
-  background-color: var(--bg-primary);
-  pointer-events: none;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--theme-first-color);
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+  transition: border-radius var(--transition-fast), left var(--transition-fast);
+  z-index: 2;
+}
+
+.domain-header.is-stickied::before {
+  border-radius: 0;
+  left: calc(50% - 50vw);
 }
 
 .domain-title {
@@ -493,6 +551,7 @@ main {
   align-items: center;
   gap: 10px;
   letter-spacing: -0.2px;
+  white-space: nowrap;
 }
 
 .domain-badge {
@@ -504,6 +563,8 @@ main {
   color: var(--theme-first-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 [data-theme="dark"] .domain-badge {
@@ -517,9 +578,11 @@ main {
 
 .topic-title {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--sticky-gap, 12px) + var(--domain-header-height, 48px));
-  z-index: 20;
-  background-color: var(--bg-primary);
+  top: calc(var(--header-height, 73px) + var(--domain-header-height, 46px));
+  z-index: 25;
+  background-color: var(--bg-primary-blur);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -531,7 +594,8 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background-color var(--transition-fast);
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 /* Indent card sub-rows for clear hierarchy under topic titles */
@@ -860,13 +924,15 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
 
 .tree-folder-title {
   position: sticky;
-  top: calc(var(--header-height, 73px) + var(--sticky-gap, 12px));
+  top: var(--header-height, 73px);
   z-index: 20;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
   padding: 8px 12px;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-surface-blur);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   display: flex;
@@ -874,18 +940,12 @@ body.has-card-highlight .tree-item.card-persistent-highlight,
   gap: 8px;
   margin-bottom: 6px;
   box-shadow: var(--shadow-sm);
-  transition: background-color var(--transition-fast);
+  transition: border-radius var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.tree-folder-title::before {
-  content: "";
-  position: absolute;
-  top: calc(-1 * (var(--sticky-gap, 12px) + 2px));
-  left: -24px;
-  right: -24px;
-  height: calc(var(--sticky-gap, 12px) + 2px);
-  background-color: var(--bg-primary);
-  pointer-events: none;
+.tree-folder-title.is-stickied {
+  border-radius: 0;
+  box-shadow: var(--shadow-md);
 }
 
 .tree-item {
@@ -1035,9 +1095,41 @@ footer {
 @media (max-width: 768px) {
   :root {
     --header-height: 65px;
+    --domain-header-height: 40px;
   }
   .header-container {
     padding: 12px 16px;
+  }
+  header.header-shrunk .header-container {
+    padding: 6px 16px;
+  }
+  .domain-header {
+    padding: 8px 12px 8px 14px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .domain-header-inner {
+    width: 100%;
+    padding: 0;
+    gap: 8px;
+  }
+  .domain-title {
+    font-size: 0.95rem;
+    gap: 6px;
+  }
+  .domain-title svg {
+    width: 18px;
+    height: 18px;
+  }
+  .domain-badge {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+  }
+  .topic-title {
+    font-size: 0.95rem;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
   }
   .controls-bar {
     padding: 16px;
