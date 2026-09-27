@@ -4,6 +4,8 @@ let selectedModules = new Set(['all']); // Set containing 'all' and/or module ke
 let selectedTypes = new Set(['all']);   // Set containing 'all' and/or type keys ('discussion', 'flowchart', 'pdf', 'video', 'demonstration', 'tool', 'trainer', 'mindmap')
 let currentSearch = '';
 let currentView = 'grid';   // 'grid' or 'tree'
+let isPreviewModalOpen = false;
+let savedIndexScrollY = 0;
 
 const DOMAIN_KEYS = ['lecture', 'laboratory'];
 const MODULE_KEYS = ['Physiology', 'CBC_PBS', 'Erythrocyte', 'Leukocyte'];
@@ -286,6 +288,12 @@ function setupEventListeners() {
         modalBackdrop.addEventListener('click', (e) => {
             if (e.target === modalBackdrop) closeModal();
         });
+        modalBackdrop.addEventListener('wheel', (e) => {
+            if (e.target === modalBackdrop) e.preventDefault();
+        }, { passive: false });
+        modalBackdrop.addEventListener('touchmove', (e) => {
+            if (e.target === modalBackdrop) e.preventDefault();
+        }, { passive: false });
     }
 
     // Keydown for Modal ESC
@@ -315,6 +323,11 @@ function setupHeaderScroll() {
     if (!header) return;
 
     const updateHeaderState = () => {
+        // In preview modes, no scrolling should be detected in index
+        if (isPreviewModalOpen || document.getElementById('modalBackdrop')?.classList.contains('active')) {
+            return;
+        }
+
         const scrollPos = window.scrollY || window.pageYOffset || 0;
         // Shrink header as soon as user scrolls down from the top
         if (scrollPos > 10) {
@@ -1221,16 +1234,42 @@ function openPreview(encodedPath, title) {
     }
 
     modalBackdrop.classList.add('active');
+    isPreviewModalOpen = true;
+    savedIndexScrollY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
 }
 
 function closeModal() {
+    isPreviewModalOpen = false;
     const modalBackdrop = document.getElementById('modalBackdrop');
     const modalBody = document.querySelector('.modal-body');
 
     modalBackdrop.classList.remove('active');
     modalBody.innerHTML = '';
+    
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    document.body.style.touchAction = '';
+
+    if (savedIndexScrollY !== undefined && Math.abs((window.scrollY || window.pageYOffset || 0) - savedIndexScrollY) > 0) {
+        window.scrollTo({ top: savedIndexScrollY, behavior: 'instant' });
+    }
+
+    const header = document.getElementById('mainHeader') || document.querySelector('header');
+    if (header) {
+        const scrollPos = window.scrollY || window.pageYOffset || 0;
+        if (scrollPos > 10) {
+            header.classList.add('header-shrunk');
+        } else {
+            header.classList.remove('header-shrunk');
+        }
+    }
 }
 
 // Helper utilities
