@@ -3,6 +3,42 @@
    Clean Minimalist Glassmorphism with Mermaid Connections & Color Hierarchy
    ========================================================================== */
 
+/* Overlay Embed Mode - Hide unwanted controls when embedded in discussion modal */
+body.is-overlay-embed #btn-open-sidebar,
+body.is-overlay-embed #btn-quiz-me,
+body.is-overlay-embed #btn-collapse-all,
+body.is-overlay-embed #btn-expand-all,
+body.is-overlay-embed #btn-high-yield,
+body.is-overlay-embed #btn-download-png,
+body.is-overlay-embed .bottom-search-card,
+body.is-overlay-embed .top-collapse-card,
+body.is-overlay-embed .top-expand-card,
+body.is-overlay-embed .top-highyield-card,
+body.is-overlay-embed .top-quiz-card,
+body.is-overlay-embed .top-title-card,
+body.is-overlay-embed .sidebar-drawer,
+body.is-overlay-embed .sidebar-backdrop,
+body.is-overlay-embed #sidebar-drawer,
+body.is-overlay-embed #sidebar-backdrop {
+  display: none !important;
+}
+
+/* Active Target Topic Glow in Overlay Mode */
+.node.active-topic-target {
+  box-shadow: 0 0 0 3px #10b981, 0 0 24px rgba(16, 185, 129, 0.75) !important;
+  border-color: #059669 !important;
+  animation: pulse-topic-glow 2s infinite ease-in-out !important;
+}
+
+@keyframes pulse-topic-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 3px #10b981, 0 0 16px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px #059669, 0 0 32px rgba(16, 185, 129, 0.95);
+  }
+}
+
 /* Floating '? Me' Launch Button */
 .top-quiz-card {
   top: 116px;

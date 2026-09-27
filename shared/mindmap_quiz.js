@@ -142,19 +142,328 @@
       this.injectUI();
       this.bindEvents();
       this.updateStatsDisplay();
+      this.handleOverlayMode();
+    }
+
+    /**
+     * Handle Topic Synchronization & Overlay Embed Mode from Discussion files
+     */
+    handleOverlayMode() {
+      const params = new URLSearchParams(window.location.search);
+      const isOverlay = params.get('overlay') === '1' || window.self !== window.top;
+      if (isOverlay) {
+        document.body.classList.add('is-overlay-embed');
+      }
+
+      const STOP_WORDS = new Set([
+        'and', 'or', 'the', 'a', 'an', 'in', 'on', 'of', 'for', 'to', 'with', 'by',
+        'at', 'from', 'complete', 'discussion', 'protocols', 'foundations', 'overview',
+        'introduction', 'summary', 'key', 'points', 'review', 'vs', 'versus', 'section',
+        'practical', 'verification', 'analysis', 'guide', 'notes'
+      ]);
+
+      const GENERIC_TOKENS = new Set(['aml', 'all', 'leukemia', 'neoplasm', 'neoplasms', 'acute', 'chronic', 'syndrome']);
+
+      const SYNONYM_MAP = {
+        'leukocyte': 'wbc',
+        'leukocytes': 'wbc',
+        'white blood cell': 'wbc',
+        'white blood cells': 'wbc',
+        'white': 'wbc',
+        'erythrocyte': 'rbc',
+        'erythrocytes': 'rbc',
+        'red blood cell': 'rbc',
+        'red blood cells': 'rbc',
+        'red cell': 'rbc',
+        'red cells': 'rbc',
+        'nucleated rbc': 'nrbc',
+        'nucleated rbcs': 'nrbc',
+        'nucleated red blood cell': 'nrbc',
+        'nucleated red blood cells': 'nrbc',
+        'nrbcs': 'nrbc',
+        'platelet': 'plt',
+        'platelets': 'plt',
+        'thrombocyte': 'plt',
+        'thrombocytes': 'plt',
+        'hemoglobin': 'hgb',
+        'hb': 'hgb',
+        'hematocrit': 'hct',
+        'cbcd': 'cbc',
+        'indices': 'cbc',
+        'morphology': 'smear',
+        'smear': 'smear',
+        'blood smear': 'smear',
+        'peripheral smear': 'smear',
+        'peripheral blood smear': 'smear',
+        'quality control': 'qc',
+        'quality assurance': 'qc',
+        'calculation': 'calc',
+        'calculations': 'calc',
+        'formula': 'calc',
+        'formulas': 'calc',
+        'differential': 'diff',
+        'differentials': 'diff',
+        'bone marrow': 'bm',
+        'marrow': 'bm',
+        'aspirate': 'aspirate',
+        'biopsy': 'biopsy',
+        'cytochemical': 'stain',
+        'staining': 'stain',
+        'ancillary': 'flow',
+        'immunophenotyping': 'flow',
+        'flow cytometry': 'flow',
+        'acute myeloid leukemia': 'aml',
+        'acute lymphoblastic leukemia': 'all',
+        'myeloproliferative': 'mpn',
+        'myelodysplastic': 'mds'
+      };
+
+      function normalizeAndCanonicalize(str) {
+        if (!str) return [];
+        let clean = str.toLowerCase().replace(/['"“”]/g, '');
+        
+        // Multi-word synonym replacement first
+        for (const [k, v] of Object.entries(SYNONYM_MAP)) {
+          if (k.includes(' ')) {
+            clean = clean.split(k).join(` ${v} `);
+          }
+        }
+
+        clean = clean.replace(/[^\w\s]/g, ' ');
+        const tokens = clean.split(/\s+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+        return tokens.map(t => SYNONYM_MAP[t] || t);
+      }
+
+      const self = this;
+      function syncTopic(topicQuery, contextData = null) {
+        const bridge = self.bridge || window.MindMapBridge;
+        const treeData = self.treeData || (bridge ? bridge.mindMapData : null) || window.mindMapData;
+        if (!treeData || !bridge || !bridge.collapsedNodes) {
+          setTimeout(() => {
+            const b = self.bridge || window.MindMapBridge;
+            const t = self.treeData || (b ? b.mindMapData : null) || window.mindMapData;
+            if (t && b && b.collapsedNodes) syncTopic(topicQuery, contextData);
+          }, 120);
+          return;
+        }
+
+        const queryStr = topicQuery || (contextData ? contextData.topic : '') || '';
+        if (!queryStr && !contextData) return;
+
+        const qTokens = normalizeAndCanonicalize(queryStr);
+        const h1Tokens = contextData && contextData.h1 ? normalizeAndCanonicalize(contextData.h1) : [];
+        const h2Tokens = contextData && contextData.h2 ? normalizeAndCanonicalize(contextData.h2) : [];
+        const breadcrumbTokens = contextData && Array.isArray(contextData.breadcrumbs) 
+          ? contextData.breadcrumbs.flatMap(b => normalizeAndCanonicalize(b)) 
+          : [];
+
+        let matchedNode = null;
+        let bestScore = -1;
+
+        function searchTree(node, ancestors = []) {
+          node._ancestors = ancestors;
+          const nodeTokens = normalizeAndCanonicalize(node.text || '');
+          const normNodeStr = nodeTokens.join(' ');
+          const normQueryStr = qTokens.join(' ');
+
+          let score = 0;
+
+          // 1. Direct Topic Match
+          if (normNodeStr && normQueryStr) {
+            if (normNodeStr === normQueryStr) {
+              score += 4000;
+            } else if (normQueryStr.includes(normNodeStr)) {
+              score += 2000 + (normNodeStr.length * 15);
+            } else if (normNodeStr.includes(normQueryStr)) {
+              score += 1500 + (normQueryStr.length * 15);
+            } else {
+              const common = qTokens.filter(w => nodeTokens.includes(w));
+              if (common.length > 0) {
+                common.forEach(w => {
+                  const weight = GENERIC_TOKENS.has(w) ? 100 : (w.length > 3 ? 800 : 500);
+                  score += weight;
+                });
+                const ratio = common.length / Math.max(qTokens.length, 1);
+                score += (ratio * 600);
+              }
+            }
+          }
+
+          // 2. Breadcrumb / Major Section Alignment Bonus
+          const level1Ancestor = ancestors.length > 1 ? ancestors[1] : (node.level === 1 ? node : null);
+          if (level1Ancestor && (h1Tokens.length > 0 || h2Tokens.length > 0 || breadcrumbTokens.length > 0)) {
+            const l1Tokens = normalizeAndCanonicalize(level1Ancestor.text || '');
+            const h1Common = h1Tokens.filter(t => l1Tokens.includes(t) && !GENERIC_TOKENS.has(t));
+            const h2Common = h2Tokens.filter(t => l1Tokens.includes(t) && !GENERIC_TOKENS.has(t));
+            const bcCommon = breadcrumbTokens.filter(t => l1Tokens.includes(t) && !GENERIC_TOKENS.has(t));
+            if (h1Common.length > 0) {
+              score += h1Common.length * 300;
+            }
+            if (h2Common.length > 0) {
+              score += h2Common.length * 250;
+            } else if (bcCommon.length > 0) {
+              score += bcCommon.length * 120;
+            }
+          }
+
+          // 3. Deeper node specificity bonus
+          if (score > 100 && node.level > 0) {
+            score += node.level * 25;
+          }
+
+          if (score > bestScore) {
+            bestScore = score;
+            matchedNode = node;
+          }
+
+          if (Array.isArray(node.children)) {
+            node.children.forEach(c => searchTree(c, [...ancestors, node]));
+          }
+        }
+
+        searchTree(treeData, []);
+
+        if (matchedNode && bridge.collapsedNodes) {
+          window.isInitialLoad = false;
+
+          // Collapse all level >= 1 nodes initially
+          function setCollapsed(n) {
+            if (n.level >= 1 && n.children && n.children.length > 0) {
+              bridge.collapsedNodes.add(n.id);
+            }
+            if (n.children) n.children.forEach(setCollapsed);
+          }
+          bridge.collapsedNodes.clear();
+          setCollapsed(treeData);
+
+          // Expand all ancestors of matched node
+          if (matchedNode._ancestors) {
+            matchedNode._ancestors.forEach(anc => {
+              bridge.collapsedNodes.delete(anc.id);
+            });
+          }
+          // Expand matched node itself so its immediate branches are visible
+          bridge.collapsedNodes.delete(matchedNode.id);
+
+          if (typeof bridge.renderMindMap === 'function') {
+            bridge.renderMindMap();
+          }
+
+          // Animate focus, fit whole visible tree to window, and highlight node
+          setTimeout(() => {
+            document.querySelectorAll('.active-topic-target').forEach(el => el.classList.remove('active-topic-target'));
+            if (matchedNode.domEl) {
+              matchedNode.domEl.classList.add('active-topic-target');
+            }
+
+            // Fit whole visible tree to modal window so everything is centered and legible
+            if (typeof bridge.fitToWindow === 'function') {
+              bridge.fitToWindow(true);
+            } else if (typeof fitToWindow === 'function') {
+              fitToWindow(true);
+            } else {
+              // Direct bounding-box focus calculation across all visible nodes
+              const allVisibleEls = Array.from(document.querySelectorAll('.node')).filter(el => el.offsetParent !== null);
+              let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+              const curScale = typeof bridge.getScale === 'function' ? bridge.getScale() : 1;
+              const curTx = typeof bridge.getTranslateX === 'function' ? bridge.getTranslateX() : 0;
+              const curTy = typeof bridge.getTranslateY === 'function' ? bridge.getTranslateY() : 0;
+
+              allVisibleEls.forEach(el => {
+                if (!el) return;
+                const r = el.getBoundingClientRect();
+                const x = (r.left - curTx) / curScale;
+                const y = (r.top - curTy) / curScale;
+                const w = r.width / curScale;
+                const h = r.height / curScale;
+                if (x < minX) minX = x;
+                if (x + w > maxX) maxX = x + w;
+                if (y < minY) minY = y;
+                if (y + h > maxY) maxY = y + h;
+              });
+
+              if (isFinite(minX) && typeof bridge.setTransform === 'function') {
+                const availW = window.innerWidth - 120;
+                const availH = window.innerHeight - 120;
+                const branchW = Math.max(120, maxX - minX);
+                const branchH = Math.max(80, maxY - minY);
+                let targetScale = Math.min(availW / branchW, availH / branchH);
+                targetScale = Math.max(0.35, Math.min(targetScale, 1.0));
+
+                const midX = (minX + maxX) / 2;
+                const midY = (minY + maxY) / 2;
+                const tx = (window.innerWidth / 2) - (midX * targetScale);
+                const ty = (window.innerHeight / 2) - (midY * targetScale);
+
+                bridge.setTransform(targetScale, tx, ty, true);
+              }
+            }
+          }, 90);
+        }
+      }
+
+      const initialTopic = params.get('topic');
+      const initialH2 = params.get('h2');
+      if (initialTopic || initialH2) {
+        const initialContext = {
+          topic: initialTopic,
+          h2: initialH2,
+          breadcrumbs: [initialH2, initialTopic].filter(Boolean)
+        };
+        setTimeout(() => syncTopic(initialTopic, initialContext), 150);
+        setTimeout(() => syncTopic(initialTopic, initialContext), 400);
+      }
+
+      window.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'SYNC_TOPIC') {
+          syncTopic(e.data.topic, e.data.context || null);
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage({ type: 'DISMISS_MINDMAP_MODAL' }, '*');
+          }
+        }
+      });
     }
 
     /**
      * Identify which mind map file is currently loaded
      */
     detectCurrentMap() {
-      const pagePath = (window.location.pathname || '').replace(/\\/g, '/');
+      const pagePath = decodeURIComponent(window.location.pathname || '').replace(/\\/g, '/').toLowerCase();
       const pageTitle = (document.title || '').trim();
       
-      let matched = ALL_MIND_MAPS.find(m => {
-        const baseName = m.path.split('/').pop();
-        return pagePath.includes(baseName);
-      });
+      let matched = null;
+      if (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) {
+        const found = window.COURSE_MINDMAPS.find(m => {
+          const cleanRel = (m.rel_path_from_shared || '').replace(/^(\.\.\/)+/, '').toLowerCase();
+          return cleanRel && pagePath.endsWith(cleanRel);
+        });
+        if (found) {
+          matched = {
+            id: found.id,
+            title: stripLNumber(found.title),
+            path: found.rel_path_from_shared
+          };
+        }
+      }
+
+      if (!matched) {
+        matched = ALL_MIND_MAPS.find(m => {
+          const cleanPath = (m.path || '').replace(/^(\.\.\/)+/, '').toLowerCase();
+          return cleanPath && pagePath.endsWith(cleanPath);
+        });
+      }
+
+      if (!matched) {
+        matched = ALL_MIND_MAPS.find(m => {
+          const baseName = m.path.split('/').pop().toLowerCase();
+          return pagePath.includes(baseName);
+        });
+      }
 
       if (!matched) {
         matched = {
