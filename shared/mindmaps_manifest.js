@@ -15,7 +15,7 @@ window.COURSE_MINDMAPS = [
     "title": "Manual Counts",
     "type": "lab",
     "number": 1,
-    "subfolder": "CBC PBS",
+    "subfolder": "CBC & PBS",
     "raw_subfolder": "CBC_PBS",
     "filename": "L1_Manual_Counts_S3_Mind_Map.html",
     "rel_path_from_shared": "../Laboratory/CBC_PBS/L1_Manual_Counts_S3_Mind_Map.html"
@@ -35,7 +35,7 @@ window.COURSE_MINDMAPS = [
     "title": "Slide Preparation",
     "type": "lab",
     "number": 2,
-    "subfolder": "CBC PBS",
+    "subfolder": "CBC & PBS",
     "raw_subfolder": "CBC_PBS",
     "filename": "L2_Slide_Preparation_S2_Mind_Map.html",
     "rel_path_from_shared": "../Laboratory/CBC_PBS/L2_Slide_Preparation_S2_Mind_Map.html"
@@ -55,7 +55,7 @@ window.COURSE_MINDMAPS = [
     "title": "Slide Evaluation",
     "type": "lab",
     "number": 3,
-    "subfolder": "CBC PBS",
+    "subfolder": "CBC & PBS",
     "raw_subfolder": "CBC_PBS",
     "filename": "L3_Slide_Evaluation_S3_Mind_Map.html",
     "rel_path_from_shared": "../Laboratory/CBC_PBS/L3_Slide_Evaluation_S3_Mind_Map.html"
@@ -75,14 +75,14 @@ window.COURSE_MINDMAPS = [
     "title": "CBC Analysis",
     "type": "lab",
     "number": 4,
-    "subfolder": "CBC PBS",
+    "subfolder": "CBC & PBS",
     "raw_subfolder": "CBC_PBS",
     "filename": "L4_CBC_Analysis_S3_Mind_Map.html",
     "rel_path_from_shared": "../Laboratory/CBC_PBS/L4_CBC_Analysis_S3_Mind_Map.html"
   },
   {
     "id": "L5_Iron_Heme_S1_Mind_Map",
-    "title": "Iron Heme",
+    "title": "Iron & Heme",
     "type": "lecture",
     "number": 5,
     "subfolder": "Erythrocytes",
@@ -102,7 +102,7 @@ window.COURSE_MINDMAPS = [
   },
   {
     "id": "L6_Hemoglobinopathy_S1_Mind_Map",
-    "title": "Hemoglobinopathies",
+    "title": "Hemoglobinopathy",
     "type": "lecture",
     "number": 6,
     "subfolder": "Erythrocytes",
@@ -121,14 +121,14 @@ window.COURSE_MINDMAPS = [
     "rel_path_from_shared": "../Laboratory/Erythrocytes/L6_Hemoglobinopathy_S1_Mind_Map.html"
   },
   {
-    "id": "L7_Macros_Hypos_S1_Mind_Map",
-    "title": "Macros Hypos",
+    "id": "L7_Macros_Hypos_S4_Mind_Map",
+    "title": "Macrocytic & Hypoproliferative",
     "type": "lecture",
     "number": 7,
     "subfolder": "Erythrocytes",
     "raw_subfolder": "Erythrocytes",
-    "filename": "L7_Macros_Hypos_S1_Mind_Map.html",
-    "rel_path_from_shared": "../Lecture/Erythrocytes/L7_Macros_Hypos_S1_Mind_Map.html"
+    "filename": "L7_Macros_Hypos_S4_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Erythrocytes/L7_Macros_Hypos_S4_Mind_Map.html"
   },
   {
     "id": "L7_Macrocytic_S1_Mind_Map",
@@ -159,5 +159,105 @@ window.COURSE_MINDMAPS = [
     "raw_subfolder": "Erythrocytes",
     "filename": "L8_Normocytic_S1_Mind_Map.html",
     "rel_path_from_shared": "../Laboratory/Erythrocytes/L8_Normocytic_S1_Mind_Map.html"
+  },
+  {
+    "id": "L9_Benign_S1_Mind_Map",
+    "title": "Benign Disorders",
+    "type": "lecture",
+    "number": 9,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L9_Benign_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Leukocytes/L9_Benign_S1_Mind_Map.html"
+  },
+  {
+    "id": "L9_Benign_S1_Mind_Map",
+    "title": "Benign Disorders",
+    "type": "lab",
+    "number": 9,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L9_Benign_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Laboratory/Leukocytes/L9_Benign_S1_Mind_Map.html"
+  },
+  {
+    "id": "L10_AML_S1_Mind_Map",
+    "title": "Acute Myeloid Neoplasms",
+    "type": "lecture",
+    "number": 10,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L10_AML_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Leukocytes/L10_AML_S1_Mind_Map.html"
+  },
+  {
+    "id": "L10_AML_S1_Mind_Map",
+    "title": "Acute Myeloid Neoplasms",
+    "type": "lab",
+    "number": 10,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L10_AML_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Laboratory/Leukocytes/L10_AML_S1_Mind_Map.html"
+  },
+  {
+    "id": "L11_MPN_MDS_S1_Mind_Map",
+    "title": "Chronic Myeloid Neoplasms",
+    "type": "lecture",
+    "number": 11,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L11_MPN_MDS_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Leukocytes/L11_MPN_MDS_S1_Mind_Map.html"
+  },
+  {
+    "id": "L11_MPN_MDS_S1_Mind_Map",
+    "title": "Chronic Myeloid Neoplasms",
+    "type": "lab",
+    "number": 11,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L11_MPN_MDS_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Laboratory/Leukocytes/L11_MPN_MDS_S1_Mind_Map.html"
+  },
+  {
+    "id": "L12_ALL_S1_Mind_Map",
+    "title": "Lymphoid Neoplasms",
+    "type": "lecture",
+    "number": 12,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L12_ALL_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Leukocytes/L12_ALL_S1_Mind_Map.html"
+  },
+  {
+    "id": "L12_LACLN_S1_Mind_Map",
+    "title": "Lymphoid Neoplasms",
+    "type": "lab",
+    "number": 12,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L12_LACLN_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Laboratory/Leukocytes/L12_LACLN_S1_Mind_Map.html"
+  },
+  {
+    "id": "L13_BM_Flow_S1_Mind_Map",
+    "title": "Bone Marrow & Flow Cytometry",
+    "type": "lecture",
+    "number": 13,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L13_BM_Flow_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Lecture/Leukocytes/L13_BM_Flow_S1_Mind_Map.html"
+  },
+  {
+    "id": "L13_BM_Flow_S1_Mind_Map",
+    "title": "Bone Marrow & Flow Cytometry",
+    "type": "lab",
+    "number": 13,
+    "subfolder": "Leukocytes",
+    "raw_subfolder": "Leukocytes",
+    "filename": "L13_BM_Flow_S1_Mind_Map.html",
+    "rel_path_from_shared": "../Laboratory/Leukocytes/L13_BM_Flow_S1_Mind_Map.html"
   }
 ];
