@@ -540,25 +540,25 @@ window.FILES_DATA = [
   },
   {
     "name": "L12_ALL_S0_Discussion.html",
-    "title": "Lymphoid Neoplasms",
+    "title": "ALL",
     "path": "Lecture/Leukocytes/L12_ALL_S0_Discussion.html",
-    "size": 336212,
-    "sizeFormatted": "328.3 KB",
+    "size": 325825,
+    "sizeFormatted": "318.2 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790467105.845856
+    "mtime": 1790467800.1225774
   },
   {
     "name": "L12_ALL_S1_Mind_Map.html",
-    "title": "Lymphoid Neoplasms",
+    "title": "ALL",
     "path": "Lecture/Leukocytes/L12_ALL_S1_Mind_Map.html",
-    "size": 131489,
-    "sizeFormatted": "128.4 KB",
+    "size": 126283,
+    "sizeFormatted": "123.3 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790457678.7188709
+    "mtime": 1790467890.8203814
   },
   {
     "name": "L13_BM_Flow_S0_Discussion.html",
