@@ -45,6 +45,11 @@
   --sticky-gap: 12px;
 }
 
+:root:has(.header-shrunk),
+body:has(.header-shrunk) {
+  --header-height: 53px;
+}
+
 [data-theme="dark"] {
   --bg-primary: #18191E;
   --bg-surface: #22242D;
@@ -98,6 +103,7 @@ header {
   top: 0;
   z-index: 100;
   box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .header-container {
@@ -108,7 +114,13 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  flex-wrap: wrap;
+  position: relative;
+  transition: padding var(--transition-fast);
+}
+
+/* Shrunk / Compact Header state */
+header.header-shrunk .header-container {
+  padding: 6px 24px;
 }
 
 .brand {
@@ -117,6 +129,35 @@ header {
   gap: 12px;
   text-decoration: none;
   color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+header.header-shrunk .brand-text {
+  display: none;
+}
+
+/* Center 'Back to top' button in shrunk header */
+.header-top-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast), background-color var(--transition-fast);
+}
+
+header.header-shrunk .header-top-btn {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .brand-icon {
@@ -131,6 +172,7 @@ header {
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: -0.5px;
+  transition: width var(--transition-fast), height var(--transition-fast);
 }
 
 .brand-title {

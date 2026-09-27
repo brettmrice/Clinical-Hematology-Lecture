@@ -27,16 +27,22 @@
 <body>
 
     <!-- Header Navigation -->
-    <header>
+    <header id="mainHeader">
         <div class="header-container">
             <a href="#" class="brand">
-                <div class="brand-icon">CH</div>
-                <div>
+                <div class="brand-icon">H</div>
+                <div class="brand-text">
                     <div class="brand-title">Clinical Hematology</div>
                     <div class="brand-subtitle">Resource Explorer</div>
                 </div>
             </a>
             
+            <button class="btn btn-icon-only header-top-btn" id="headerTopBtn" aria-label="Back to top" title="Back to top">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7"/>
+                </svg>
+            </button>
+
             <div class="header-actions">
                 <button class="btn btn-icon-only" id="themeToggleBtn" aria-label="Toggle Dark Mode" title="Toggle Theme">
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">

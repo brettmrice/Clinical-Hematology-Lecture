@@ -275,6 +275,44 @@ function setupEventListeners() {
 
     // Hash change for shareable link targeting
     window.addEventListener('hashchange', checkUrlHashTarget);
+
+    // Header scroll shrinking & Top button setup
+    setupHeaderScroll();
+}
+
+// Sticky header shrink on any scroll from the very top
+function setupHeaderScroll() {
+    const header = document.getElementById('mainHeader') || document.querySelector('header');
+    const headerTopBtn = document.getElementById('headerTopBtn');
+
+    if (headerTopBtn) {
+        headerTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    if (!header) return;
+
+    const updateHeaderState = () => {
+        const scrollPos = window.scrollY || window.pageYOffset || 0;
+        // Shrink header as soon as user scrolls down from the top
+        if (scrollPos > 10) {
+            header.classList.add('header-shrunk');
+        } else {
+            header.classList.remove('header-shrunk');
+        }
+
+        // Dynamically sync --header-height so sticky domain headers & tree headers stick without any gap
+        const currentHeight = header.offsetHeight;
+        if (currentHeight > 0) {
+            document.documentElement.style.setProperty('--header-height', `${currentHeight}px`);
+        }
+    };
+
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState, { passive: true });
+    updateHeaderState();
 }
 
 // Check if a file matches text search query
