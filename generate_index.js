@@ -171,10 +171,64 @@ function syncVideoConfigs(scannedSlideDecks) {
     return updatedConfigs;
 }
 
+function ensureDiscussionAssets(fullPath) {
+    try {
+        let content = fs.readFileSync(fullPath, 'utf8');
+        let modified = false;
+
+        const fileDir = path.dirname(fullPath);
+        const relToShared = path.relative(fileDir, path.join(rootDir, 'shared')).replace(/\\/g, '/');
+
+        const cssHref = `${relToShared}/discussion_mindmap.css`;
+        const dataJsSrc = `${relToShared}/course_mindmaps_data.js`;
+        const mindmapJsSrc = `${relToShared}/discussion_mindmap.js`;
+
+        const cssTag = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${cssHref}">`;
+        const jsTags = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${dataJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`;
+
+        if (!content.includes('discussion_mindmap.css')) {
+            if (content.includes('github-markdown.min.css">')) {
+                content = content.replace(
+                    'github-markdown.min.css">\n',
+                    'github-markdown.min.css">\n' + cssTag + '\n'
+                );
+                modified = true;
+            } else if (content.includes('</head>')) {
+                content = content.replace('</head>', cssTag + '\n</head>');
+                modified = true;
+            }
+        }
+
+        if (!content.includes('course_mindmaps_data.js') && content.includes('discussion_mindmap.js')) {
+            content = content.replace(
+                /<script\s+src="[^"]*discussion_mindmap\.js"><\/script>/,
+                `<script src="${dataJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`
+            );
+            modified = true;
+        } else if (!content.includes('discussion_mindmap.js')) {
+            if (content.includes('</body>')) {
+                content = content.replace('</body>', jsTags + '\n</body>');
+                modified = true;
+            }
+        }
+
+        if (modified) {
+            fs.writeFileSync(fullPath, content, 'utf8');
+            return true;
+        }
+        return false;
+    } catch (e) {
+        console.error(`Error ensuring discussion assets for ${fullPath}:`, e);
+        return false;
+    }
+}
+
 function scanDir() {
     const rawFiles = [];
     const scannedSlideDecks = [];
     const deckCategoryMap = {};
+    let discussionChecked = 0;
+    let discussionUpdated = 0;
 
     function walk(dirPath, relativeAcc = '') {
         const items = fs.readdirSync(dirPath);
@@ -184,7 +238,7 @@ function scanDir() {
 
             const fullPath = path.join(dirPath, item);
             const relPath = path.join(relativeAcc, item);
-            const stat = fs.statSync(fullPath);
+            let stat = fs.statSync(fullPath);
 
             if (stat.isDirectory()) {
                 walk(fullPath, relPath);
@@ -196,6 +250,14 @@ function scanDir() {
                 const fileType = getFileType(item);
                 const displayTitle = extractDisplayTitle(fullPath, item, fileType);
                 const category = getCategory(relPath);
+
+                if (fileType === 'Discussion' || item.endsWith('_Discussion.html') || item.endsWith('_Discussion.htm')) {
+                    discussionChecked++;
+                    if (ensureDiscussionAssets(fullPath)) {
+                        discussionUpdated++;
+                        stat = fs.statSync(fullPath);
+                    }
+                }
 
                 const itemEntry = {
                     name: item,
@@ -345,15 +407,17 @@ function scanDir() {
         }
     }
 
-    return { filesData: results, videoConfigs };
+    return { filesData: results, videoConfigs, discussionChecked, discussionUpdated };
 }
 
 try {
-    const { filesData, videoConfigs } = scanDir();
+    const { filesData, videoConfigs, discussionChecked, discussionUpdated } = scanDir();
     fs.writeFileSync(jsonFilePath, JSON.stringify(filesData, null, 2), 'utf8');
     fs.writeFileSync(jsFilePath, 'window.FILES_DATA = ' + JSON.stringify(filesData, null, 2) + ';\n', 'utf8');
     fs.writeFileSync(videoJsFile, 'window.VIDEO_LINKS = ' + JSON.stringify(videoConfigs, null, 2) + ';\n', 'utf8');
     console.log(`Successfully synced video_links.json (${videoConfigs.length} entries) and indexed ${filesData.length} files to files_index.json, files_data.js, and video_links.js`);
+    console.log(`Discussion assets verified: ${discussionChecked} checked, ${discussionUpdated} updated.`);
 } catch (err) {
     console.error('Error scanning files:', err);
 }
+

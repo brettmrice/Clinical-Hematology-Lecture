@@ -180,8 +180,208 @@
         }
     }
 
+    // HTML escape utility
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // Resolve relative path to index.html
+    function getRelativeIndexPath() {
+        const path = window.location.pathname.replace(/\\/g, '/');
+        const parts = path.split('/').filter(Boolean);
+        let depth = 0;
+        for (let i = parts.length - 1; i >= 0; i--) {
+            const p = parts[i].toLowerCase();
+            if (p === 'lecture' || p === 'laboratory') {
+                depth = parts.length - 1 - i + 1;
+                break;
+            }
+        }
+        if (depth === 0) return '../../index.html';
+        return '../'.repeat(depth) + 'index.html';
+    }
+
+    // Extract title & subtitle from first H1 header in markdown or document title
+    function getDiscussionTitleInfo() {
+        const firstH1 = document.querySelector('.markdown-body h1, h1');
+        let title = '';
+        let subtitle = 'Complete Discussion';
+
+        if (firstH1) {
+            const fullText = firstH1.textContent.trim();
+            if (fullText.includes('|')) {
+                const parts = fullText.split('|').map(s => s.trim());
+                title = parts[0];
+                subtitle = parts[1] || 'Complete Discussion';
+            } else if (fullText.includes(' - ')) {
+                const parts = fullText.split(' - ').map(s => s.trim());
+                title = parts[0];
+                subtitle = parts[1] || 'Complete Discussion';
+            } else {
+                title = fullText;
+                subtitle = 'Clinical Hematology Discussion';
+            }
+        }
+
+        if (!title) {
+            const docTitle = (document.title || 'Clinical Hematology').replace(/\s*\|\s*Complete Discussion.*/i, '').trim();
+            title = docTitle || 'Clinical Hematology';
+        }
+
+        return { title, subtitle };
+    }
+
+    // Manage light / dark theme synchronized with index.html localStorage
+    function initThemeToggle() {
+        const savedTheme = localStorage.getItem('chgh_theme') || 
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.setAttribute('data-color-mode', theme);
+            if (document.body) {
+                document.body.setAttribute('data-theme', theme);
+            }
+            localStorage.setItem('chgh_theme', theme);
+            updateToggleIcon(theme);
+        }
+
+        function updateToggleIcon(theme) {
+            const btn = document.getElementById('discussionThemeToggleBtn');
+            if (!btn) return;
+            if (theme === 'dark') {
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>`;
+                btn.setAttribute('title', 'Switch to Light Mode');
+                btn.setAttribute('aria-label', 'Switch to Light Mode');
+            } else {
+                btn.innerHTML = `
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>`;
+                btn.setAttribute('title', 'Switch to Dark Mode');
+                btn.setAttribute('aria-label', 'Switch to Dark Mode');
+            }
+        }
+
+        applyTheme(savedTheme);
+
+        const btn = document.getElementById('discussionThemeToggleBtn');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+        }
+    }
+
+    // Inject portable discussion header (solo / non-preview mode only)
+    function injectDiscussionHeader() {
+        const isIframe = window.self !== window.top;
+        if (isIframe) return; // Hide header in index preview modal iframe
+
+        if (document.getElementById('discussionMainHeader')) return;
+        if (!document.body) {
+            window.addEventListener('DOMContentLoaded', injectDiscussionHeader);
+            return;
+        }
+
+        document.body.classList.add('has-discussion-header');
+
+        const firstH1 = document.querySelector('.markdown-body h1, h1');
+        if (firstH1) {
+            firstH1.classList.add('discussion-first-heading-hidden');
+            firstH1.style.setProperty('display', 'none', 'important');
+        }
+
+        const { title, subtitle } = getDiscussionTitleInfo();
+        const indexPath = getRelativeIndexPath();
+
+        const header = document.createElement('header');
+        header.id = 'discussionMainHeader';
+        header.innerHTML = `
+            <div class="discussion-header-container">
+                <a href="${indexPath}" class="discussion-brand" title="Return to Index Explorer">
+                    <div class="discussion-brand-icon">
+                        <svg class="discussion-brand-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 14 4 9 9 4"></polyline>
+                            <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                        </svg>
+                    </div>
+                    <div class="discussion-brand-text">
+                        <div class="discussion-brand-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
+                        <div class="discussion-brand-subtitle">${escapeHtml(subtitle)}</div>
+                    </div>
+                </a>
+
+                <div class="discussion-header-actions">
+                    <button class="discussion-header-top-btn" id="discussionHeaderTopBtn" aria-label="Back to top" title="Back to top">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7"/>
+                        </svg>
+                    </button>
+                    <button class="discussion-theme-btn" id="discussionThemeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.body.insertBefore(header, document.body.firstChild);
+        initThemeToggle();
+        initHeaderScroll();
+    }
+
+    // Scroll state observer for header shrinking & back-to-top button
+    function initHeaderScroll() {
+        const header = document.getElementById('discussionMainHeader');
+        const headerTopBtn = document.getElementById('discussionHeaderTopBtn');
+
+        if (headerTopBtn) {
+            headerTopBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        if (!header) return;
+
+        function updateHeaderState() {
+            const scrollPos = window.scrollY || window.pageYOffset || 0;
+            if (scrollPos > 20) {
+                header.classList.add('header-shrunk');
+            } else {
+                header.classList.remove('header-shrunk');
+            }
+
+            const currentHeight = header.offsetHeight || 53;
+            document.documentElement.style.setProperty('--discussion-header-height', `${currentHeight}px`);
+        }
+
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+        window.addEventListener('resize', updateHeaderState, { passive: true });
+        updateHeaderState();
+    }
+
     // Initialization
     function init() {
+        injectDiscussionHeader();
         injectOverlayDOM();
         initVisibilityObserver();
 
@@ -200,3 +400,4 @@
         init();
     }
 })();
+

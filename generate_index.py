@@ -164,10 +164,69 @@ def sync_video_configs(scanned_slide_decks):
 
     return updated_configs
 
+def ensure_discussion_assets(full_path):
+    """
+    Checks and injects shared discussion CSS/JS assets (portable header and mind map overlay)
+    into discussion HTML files if missing, dynamically calculating relative paths to shared/.
+    """
+    try:
+        with open(full_path, "r", encoding="utf-8") as f:
+            content = f.read()
+    except Exception as e:
+        print(f"Error reading discussion file {full_path}: {e}")
+        return False
+
+    modified = False
+    file_dir = os.path.dirname(full_path)
+    rel_to_shared = os.path.relpath(os.path.join(ROOT_DIR, "shared"), file_dir).replace("\\", "/")
+    
+    css_href = f"{rel_to_shared}/discussion_mindmap.css"
+    data_js_src = f"{rel_to_shared}/course_mindmaps_data.js"
+    mindmap_js_src = f"{rel_to_shared}/discussion_mindmap.js"
+
+    css_tag = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{css_href}">'
+    js_tags = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{data_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>'
+
+    # 1. Check CSS tag
+    if "discussion_mindmap.css" not in content:
+        if 'github-markdown.min.css">' in content:
+            content = content.replace(
+                'github-markdown.min.css">\n',
+                'github-markdown.min.css">\n' + css_tag + '\n'
+            )
+            modified = True
+        elif '</head>' in content:
+            content = content.replace('</head>', css_tag + '\n</head>')
+            modified = True
+
+    # 2. Check JS tags
+    if "course_mindmaps_data.js" not in content and "discussion_mindmap.js" in content:
+        content = re.sub(
+            r'<script\s+src="[^"]*discussion_mindmap\.js"></script>',
+            f'<script src="{data_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>',
+            content
+        )
+        modified = True
+    elif "discussion_mindmap.js" not in content:
+        if '</body>' in content:
+            content = content.replace('</body>', js_tags + '\n</body>')
+            modified = True
+
+    if modified:
+        try:
+            with open(full_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            return True
+        except Exception as e:
+            print(f"Error writing discussion file {full_path}: {e}")
+    return False
+
 def scan_dir():
     raw_files = []
     scanned_slide_decks = []
     deck_category_map = {}
+    discussion_checked = 0
+    discussion_updated = 0
 
     target_dirs = ["Laboratory", "Lecture"]
 
@@ -198,6 +257,12 @@ def scan_dir():
                 display_title = extract_display_title(full_path, file, file_type)
                 cat = get_category(rel_path)
                 
+                if file_type == "Discussion" or file.endswith(("_Discussion.html", "_Discussion.htm")):
+                    discussion_checked += 1
+                    if ensure_discussion_assets(full_path):
+                        discussion_updated += 1
+                        stat = os.stat(full_path)
+
                 item_entry = {
                     "name": file,
                     "title": display_title,
@@ -331,10 +396,10 @@ def scan_dir():
                 "mtime": 0
             })
 
-    return results, video_configs
+    return results, video_configs, discussion_checked, discussion_updated
 
 if __name__ == "__main__":
-    files_data, video_configs = scan_dir()
+    files_data, video_configs, disc_checked, disc_updated = scan_dir()
     
     with open(JSON_FILE, "w", encoding="utf-8") as f:
         json.dump(files_data, f, indent=2)
@@ -346,4 +411,6 @@ if __name__ == "__main__":
     with open(video_js_file, "w", encoding="utf-8") as f:
         f.write("window.VIDEO_LINKS = " + json.dumps(video_configs, indent=2) + ";\n")
         
-    print(f"Successfully synced video_links.json ({len(video_configs)} entries) and indexed {len(files_data)} files to files_index.json, files_data.js, and video_links.js")
+    print(f"Successfully synced video_links.json ({len(video_configs)} entries) and indexed {len(files_data)} files.")
+    print(f"Discussion assets verified: {disc_checked} checked, {disc_updated} updated.")
+
