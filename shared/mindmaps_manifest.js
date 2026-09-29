@@ -42,7 +42,7 @@ window.COURSE_MINDMAPS = [
   },
   {
     "id": "L3_BCE_WBC-PLT_S4_Mind_Map",
-    "title": "Leukocytes & Platelets",
+    "title": "Leukocytes & Thrombocytes",
     "type": "lecture",
     "number": 3,
     "subfolder": "Physiology",
@@ -112,7 +112,7 @@ window.COURSE_MINDMAPS = [
   },
   {
     "id": "L6_Hemoglobinopathy_S1_Mind_Map",
-    "title": "Hemoglobinopathy & Thalassemia",
+    "title": "Hemoglobinopathy",
     "type": "lab",
     "number": 6,
     "subfolder": "Erythrocytes",
@@ -132,7 +132,7 @@ window.COURSE_MINDMAPS = [
   },
   {
     "id": "L7_Macrocytic_S1_Mind_Map",
-    "title": "Macrocytic",
+    "title": "Macrocytic & Hypoproliferative",
     "type": "lab",
     "number": 7,
     "subfolder": "Erythrocytes",
