@@ -2,12 +2,12 @@
    Discussion Portable Mind Map Overlay CSS
    ========================================================================= */
 
-/* Floating Trigger Buttons: Bottom-Left (Mind Map) & Bottom-Right (Navigation) */
+/* Floating Trigger Buttons: Bottom-Right Stack (Quiz Me [120px] -> Mind Map [72px] -> Navigation [24px]) */
 .discussion-mindmap-fab {
     position: fixed !important;
-    bottom: 24px !important;
-    right: auto !important;
-    left: calc(50% - 540px - 140px) !important;
+    bottom: 72px !important;
+    left: auto !important;
+    right: 24px !important;
     width: auto;
     padding: 8px 16px !important;
     box-sizing: border-box;
@@ -60,12 +60,12 @@
     transform: translateY(0) !important;
 }
 
-/* Floating Bottom-Right Trigger Button (styled symmetrically to discussion-mindmap-fab) */
+/* Floating Bottom-Right Navigation Button */
 .jump-to-nav-btn {
     position: fixed !important;
     bottom: 24px !important;
     left: auto !important;
-    right: calc(50% - 540px - 140px) !important;
+    right: 24px !important;
     width: auto;
     padding: 8px 16px !important;
     box-sizing: border-box;
@@ -112,17 +112,30 @@
     transform: translateY(0) !important;
 }
 
+@media (min-width: 1401px) {
+    .discussion-mindmap-fab {
+        right: calc(50% - 540px - 140px) !important;
+        left: auto !important;
+    }
+    .jump-to-nav-btn {
+        right: calc(50% - 540px - 140px) !important;
+        left: auto !important;
+    }
+}
+
 /* Responsive adjustments for Floating Action Buttons */
 @media (max-width: 1400px) {
     .discussion-mindmap-fab {
-        left: 24px !important;
-        right: auto !important;
+        right: 24px !important;
+        left: auto !important;
+        bottom: 72px !important;
         padding: 8px 14px !important;
         font-size: 12px !important;
     }
     .jump-to-nav-btn {
         right: 24px !important;
         left: auto !important;
+        bottom: 24px !important;
         padding: 8px 14px !important;
         font-size: 12px !important;
     }
@@ -130,8 +143,9 @@
 
 @media (max-width: 768px) {
     .discussion-mindmap-fab {
-        bottom: 24px !important;
-        left: 12px !important;
+        bottom: 70px !important;
+        right: 12px !important;
+        left: auto !important;
         width: 38px !important;
         height: 38px !important;
         min-width: 38px !important;
@@ -153,6 +167,7 @@
     .jump-to-nav-btn {
         bottom: 24px !important;
         right: 12px !important;
+        left: auto !important;
         width: 38px !important;
         height: 38px !important;
         min-width: 38px !important;
@@ -527,13 +542,20 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
 }
 
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 .discussion-brand {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
     color: var(--hdr-text-primary);
-    flex-shrink: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
     cursor: pointer;
     user-select: none;
     transition: opacity var(--hdr-transition-fast);
@@ -586,6 +608,9 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
 .discussion-brand-text {
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
 }
 
 .discussion-brand-title {
@@ -597,14 +622,14 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 650px;
-    transition: font-size var(--hdr-transition-fast), color var(--hdr-transition-fast), max-width var(--hdr-transition-fast);
+    max-width: 100%;
+    transition: font-size var(--hdr-transition-fast), color var(--hdr-transition-fast);
 }
 
 #discussionMainHeader.header-shrunk .discussion-brand-title {
     font-size: 1rem;
     font-weight: 600;
-    max-width: 750px;
+    max-width: 100%;
 }
 
 .discussion-brand-subtitle {
@@ -612,12 +637,17 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
     font-size: 0.75rem;
     color: var(--hdr-text-secondary);
     font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .discussion-header-actions {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .discussion-theme-btn {
@@ -653,24 +683,44 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
 @media (max-width: 768px) {
     body.has-discussion-header {
         padding-top: 75px !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
     }
     .discussion-header-container {
-        padding: 12px 16px;
+        padding: 10px 14px;
+        gap: 8px;
     }
     #discussionMainHeader.header-shrunk .discussion-header-container {
-        padding: 6px 16px;
+        padding: 6px 14px;
+    }
+    .discussion-brand {
+        gap: 8px;
+    }
+    .discussion-brand-icon {
+        width: 34px;
+        height: 34px;
+    }
+    .discussion-brand-svg {
+        width: 17px;
+        height: 17px;
     }
     .discussion-brand-title {
         font-size: 1.05rem;
-        max-width: calc(100vw - 140px);
     }
     #discussionMainHeader.header-shrunk .discussion-brand-title {
         font-size: 0.95rem;
-        max-width: calc(100vw - 170px);
     }
     .discussion-brand-subtitle {
         font-size: 0.7rem;
+    }
+    .discussion-header-top-btn,
+    .discussion-theme-btn {
+        width: 34px;
+        height: 34px;
+        padding: 6px;
+    }
+    .discussion-theme-btn svg {
+        width: 17px;
+        height: 17px;
     }
 }

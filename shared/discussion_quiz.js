@@ -200,7 +200,7 @@
       btn.className = 'discussion-quiz-fab';
       btn.setAttribute('aria-label', 'Open Quiz Me Activity');
       btn.setAttribute('title', 'Launch Discussion Quiz Me');
-      btn.innerHTML = `<span>? Me</span>`;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fab-icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span class="fab-text">? Me</span>`;
 
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -211,41 +211,37 @@
       this.fabBtn = btn;
     }
 
-    // Visibility Observer: Quiz button appears after TOC is completely above viewport
+    // Visibility Observer: Quiz button appears in sync with Navigation & Mind Map buttons
     initFABObserver() {
       if (!this.fabBtn) return;
 
-      const isTOCAboveViewport = () => {
-        const navHeading = document.getElementById('navigation') || 
-                           document.getElementById('table-of-contents') || 
-                           document.querySelector('h1#navigation');
-        if (!navHeading) {
-          return window.scrollY > 400;
-        }
-
-        // Calculate bottom of TOC (heading and list items)
-        let tocBottom = navHeading.getBoundingClientRect().bottom;
-        let nextEl = navHeading.nextElementSibling;
-        while (nextEl && (nextEl.tagName === 'UL' || nextEl.tagName === 'OL' || nextEl.tagName === 'NAV')) {
-          tocBottom = Math.max(tocBottom, nextEl.getBoundingClientRect().bottom);
-          nextEl = nextEl.nextElementSibling;
-        }
-
-        // Appears once the bottom of the TOC is scrolled above the top of the viewport
-        return tocBottom <= 0;
-      };
-
-      const updateVis = () => {
-        if (isTOCAboveViewport()) {
-          this.fabBtn.classList.add('visible');
-        } else {
-          this.fabBtn.classList.remove('visible');
-        }
-      };
-
-      window.addEventListener('scroll', updateVis, { passive: true });
-      window.addEventListener('resize', updateVis);
-      updateVis();
+      const navElement = document.getElementById('navigation');
+      if (navElement && typeof IntersectionObserver !== 'undefined') {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.fabBtn.classList.remove('visible');
+            } else {
+              this.fabBtn.classList.add('visible');
+            }
+          });
+        }, {
+          root: null,
+          threshold: 0
+        });
+        navObserver.observe(navElement);
+      } else {
+        const updateVis = () => {
+          if (window.scrollY > 80) {
+            this.fabBtn.classList.add('visible');
+          } else {
+            this.fabBtn.classList.remove('visible');
+          }
+        };
+        window.addEventListener('scroll', updateVis, { passive: true });
+        window.addEventListener('resize', updateVis);
+        updateVis();
+      }
     }
 
     // Clean raw LaTeX & MathJax markdown into readable prose

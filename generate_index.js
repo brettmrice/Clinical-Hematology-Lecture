@@ -180,11 +180,11 @@ function ensureDiscussionAssets(fullPath) {
         const relToShared = path.relative(fileDir, path.join(rootDir, 'shared')).replace(/\\/g, '/');
 
         const cssHref = `${relToShared}/discussion_mindmap.css`;
-        const dataJsSrc = `${relToShared}/course_mindmaps_data.js`;
+        const manifestJsSrc = `${relToShared}/mindmaps_manifest.js`;
         const mindmapJsSrc = `${relToShared}/discussion_mindmap.js`;
 
         const cssTag = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${cssHref}">`;
-        const jsTags = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${dataJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`;
+        const jsTags = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${manifestJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`;
 
         if (!content.includes('discussion_mindmap.css')) {
             if (content.includes('github-markdown.min.css">')) {
@@ -199,10 +199,22 @@ function ensureDiscussionAssets(fullPath) {
             }
         }
 
-        if (!content.includes('course_mindmaps_data.js') && content.includes('discussion_mindmap.js')) {
+        if (content.includes('course_mindmaps_data.js')) {
+            content = content.replace(
+                `<script src="${relToShared}/course_mindmaps_data.js"></script>`,
+                `<script src="${manifestJsSrc}"></script>`
+            );
+            content = content.replace(
+                /<script\s+src="[^"]*course_mindmaps_data\.js"><\/script>/g,
+                `<script src="${manifestJsSrc}"></script>`
+            );
+            modified = true;
+        }
+
+        if (!content.includes('mindmaps_manifest.js') && content.includes('discussion_mindmap.js')) {
             content = content.replace(
                 /<script\s+src="[^"]*discussion_mindmap\.js"><\/script>/,
-                `<script src="${dataJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`
+                `<script src="${manifestJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`
             );
             modified = true;
         } else if (!content.includes('discussion_mindmap.js')) {

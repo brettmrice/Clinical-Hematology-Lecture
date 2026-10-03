@@ -181,11 +181,11 @@ def ensure_discussion_assets(full_path):
     rel_to_shared = os.path.relpath(os.path.join(ROOT_DIR, "shared"), file_dir).replace("\\", "/")
     
     css_href = f"{rel_to_shared}/discussion_mindmap.css"
-    data_js_src = f"{rel_to_shared}/course_mindmaps_data.js"
+    manifest_js_src = f"{rel_to_shared}/mindmaps_manifest.js"
     mindmap_js_src = f"{rel_to_shared}/discussion_mindmap.js"
 
     css_tag = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{css_href}">'
-    js_tags = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{data_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>'
+    js_tags = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{manifest_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>'
 
     # 1. Check CSS tag
     if "discussion_mindmap.css" not in content:
@@ -199,11 +199,23 @@ def ensure_discussion_assets(full_path):
             content = content.replace('</head>', css_tag + '\n</head>')
             modified = True
 
-    # 2. Check JS tags
-    if "course_mindmaps_data.js" not in content and "discussion_mindmap.js" in content:
+    # 2. Check JS tags (migrate from course_mindmaps_data.js to mindmaps_manifest.js)
+    if "course_mindmaps_data.js" in content:
+        content = content.replace(
+            f'<script src="{rel_to_shared}/course_mindmaps_data.js"></script>',
+            f'<script src="{manifest_js_src}"></script>'
+        )
+        content = re.sub(
+            r'<script\s+src="[^"]*course_mindmaps_data\.js"></script>',
+            f'<script src="{manifest_js_src}"></script>',
+            content
+        )
+        modified = True
+
+    if "mindmaps_manifest.js" not in content and "discussion_mindmap.js" in content:
         content = re.sub(
             r'<script\s+src="[^"]*discussion_mindmap\.js"></script>',
-            f'<script src="{data_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>',
+            f'<script src="{manifest_js_src}"></script>\n    <script src="{mindmap_js_src}"></script>',
             content
         )
         modified = True

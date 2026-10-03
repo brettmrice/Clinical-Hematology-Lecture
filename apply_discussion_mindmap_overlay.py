@@ -4,7 +4,7 @@ import re
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 CSS_TAG = '    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="../../shared/discussion_mindmap.css">'
-JS_TAGS = '    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="../../shared/course_mindmaps_data.js"></script>\n    <script src="../../shared/discussion_mindmap.js"></script>'
+JS_TAGS = '    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="../../shared/mindmaps_manifest.js"></script>\n    <script src="../../shared/discussion_mindmap.js"></script>'
 
 def update_discussion_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -24,11 +24,24 @@ def update_discussion_file(file_path):
             content = content.replace('</head>', CSS_TAG + '\n</head>')
             modified = True
 
-    # Check course_mindmaps_data.js & discussion_mindmap.js
-    if 'course_mindmaps_data.js' not in content and 'discussion_mindmap.js' in content:
+    # Migrate course_mindmaps_data.js to mindmaps_manifest.js
+    if 'course_mindmaps_data.js' in content:
         content = content.replace(
-            '<script src="../../shared/discussion_mindmap.js"></script>',
-            '<script src="../../shared/course_mindmaps_data.js"></script>\n    <script src="../../shared/discussion_mindmap.js"></script>'
+            '<script src="../../shared/course_mindmaps_data.js"></script>',
+            '<script src="../../shared/mindmaps_manifest.js"></script>'
+        )
+        content = re.sub(
+            r'<script\s+src="[^"]*course_mindmaps_data\.js"></script>',
+            '<script src="../../shared/mindmaps_manifest.js"></script>',
+            content
+        )
+        modified = True
+
+    if 'mindmaps_manifest.js' not in content and 'discussion_mindmap.js' in content:
+        content = re.sub(
+            r'<script\s+src="[^"]*discussion_mindmap\.js"></script>',
+            '<script src="../../shared/mindmaps_manifest.js"></script>\n    <script src="../../shared/discussion_mindmap.js"></script>',
+            content
         )
         modified = True
     elif 'discussion_mindmap.js' not in content:

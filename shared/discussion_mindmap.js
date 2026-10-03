@@ -1,22 +1,44 @@
 /**
  * Portable Discussion Mind Map Overlay & Knowledge Processing Engine
- * Synchronizes real-time discussion scroll position with companion Mind Map branches.
+ * Synchronizes discussion navigation and header controls with companion Mind Maps.
  */
 
 (function () {
     'use strict';
 
-    let activeHeadingText = '';
-    let isModalOpen = false;
     let companionMindMapFilename = '';
-    let savedScrollY = 0;
+
+    // Direct mapping dictionary for 100% immediate zero-latency resolution
+    const DIRECT_MINDMAP_MAP = {
+        'l1_manual_counts': 'L1_Manual_Counts_S3_Mind_Map.html',
+        'l2_slide_preparation': 'L2_Slide_Preparation_S2_Mind_Map.html',
+        'l3_slide_evaluation': 'L3_Slide_Evaluation_S3_Mind_Map.html',
+        'l4_cbc_analysis': 'L4_CBC_Analysis_S3_Mind_Map.html',
+        'l5_microcytic': 'L5_Microcytic_S1_Mind_Map.html',
+        'l6_hemoglobinopathy': 'L6_Hemoglobinopathy_S1_Mind_Map.html',
+        'l7_macrocytic': 'L7_Macrocytic_S1_Mind_Map.html',
+        'l8_normocytic': 'L8_Normocytic_S1_Mind_Map.html',
+        'l9_benign': 'L9_Benign_S1_Mind_Map.html',
+        'l10_aml': 'L10_AML_S1_Mind_Map.html',
+        'l11_mpn_mds': 'L11_MPN_MDS_S1_Mind_Map.html',
+        'l12_lacln': 'L12_LACLN_S1_Mind_Map.html',
+        'l12_all': 'L12_ALL_S1_Mind_Map.html',
+        'l13_bm_flow': 'L13_BM_Flow_S1_Mind_Map.html',
+        'l1_hematopoiesis': 'L1_Hematopoiesis_S4_Mind_Map.html',
+        'l2_bce_rbc-hgb': 'L2_BCE_RBC-HGB_S3_Mind_Map.html',
+        'l3_bce_wbc-plt': 'L3_BCE_WBC-PLT_S4_Mind_Map.html',
+        'l4_rbc_analysis': 'L4_RBC_Analysis_S4_Mind_Map.html',
+        'l5_iron_heme': 'L5_Iron_Heme_S1_Mind_Map.html',
+        'l7_macros_hypos': 'L7_Macros_Hypos_S4_Mind_Map.html',
+        'l8_hemolytic': 'L8_Hemolytic_S1_Mind_Map.html'
+    };
 
     // Determine candidate lookup keys from URL/path
     function getLookupKeys() {
-        const path = window.location.pathname.replace(/\\/g, '/');
+        const path = decodeURIComponent(window.location.pathname).replace(/\\/g, '/');
         const parts = path.split('/').filter(Boolean);
         const filename = parts.pop() || '';
-        const rawName = filename.replace('.html', '');
+        const rawName = filename.replace(/\.html$/i, '');
         
         let folder = '';
         let subfolder = '';
@@ -32,13 +54,16 @@
             }
         }
 
-        const match = rawName.match(/^(L\d+_[^_]+(?:_[^_]+)*?)(?:_S\d+)?(?:_Discussion|_Mind_Map)?$/i);
-        const lessonKey = match ? match[1].toLowerCase() : rawName.toLowerCase();
+        // Clean lesson key: strip _Discussion, __Discussion, _S0_, etc.
+        const cleaned = rawName.replace(/_{1,2}Discussion/i, '').replace(/_S\d+$/i, '').toLowerCase();
+        const match = rawName.match(/^(L\d+_[^_]+(?:_[^_]+)*?)(?:_S\d+)?(?:_{1,2}Discussion|_Mind_Map)?$/i);
+        const lessonKey = match ? match[1].toLowerCase() : cleaned;
 
         const candidates = [];
         if (folder && subfolder) candidates.push(`${folder}/${subfolder}/${lessonKey}`);
         if (folder) candidates.push(`${folder}/${lessonKey}`);
         candidates.push(lessonKey);
+        candidates.push(cleaned);
         candidates.push(rawName.toLowerCase());
 
         return candidates;
@@ -49,7 +74,7 @@
         const scripts = document.querySelectorAll('script[src]');
         for (const s of scripts) {
             const src = s.getAttribute('src') || '';
-            if (src.includes('discussion_mindmap.js')) {
+            if (src.includes('discussion_mindmap.js') || src.includes('mindmaps_manifest.js') || src.includes('discussion_quiz.js')) {
                 const idx = src.lastIndexOf('/');
                 if (idx !== -1) return src.substring(0, idx);
             }
@@ -61,58 +86,83 @@
         return './shared';
     }
 
-    // Ensure data is loaded to get companion filename
+    // Ensure manifest data is loaded if needed
     function ensureMindMapData(callback) {
+        if (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) {
+            callback(window.COURSE_MINDMAPS);
+            return;
+        }
         if (window.COURSE_MINDMAPS_DATA) {
             callback(window.COURSE_MINDMAPS_DATA);
             return;
         }
 
         const script = document.createElement('script');
-        script.src = `${getSharedPath()}/course_mindmaps_data.js`;
+        script.src = `${getSharedPath()}/mindmaps_manifest.js`;
         script.onload = () => {
-            callback(window.COURSE_MINDMAPS_DATA || {});
+            callback(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || []);
         };
         script.onerror = () => {
-            console.warn('Could not load course_mindmaps_data.js from', script.src);
-            callback({});
+            callback([]);
         };
         document.head.appendChild(script);
     }
 
-    // Resolve companion filename in the same directory
+    // Synchronously resolve companion filename
     function resolveCompanionFilename(allMindMaps) {
         const candidates = getLookupKeys();
-        let matchedEntry = null;
 
-        for (const key of candidates) {
-            if (allMindMaps[key]) {
-                matchedEntry = allMindMaps[key];
-                break;
+        // 1. Direct map check
+        for (const cand of candidates) {
+            const normalized = cand.split('/').pop();
+            if (DIRECT_MINDMAP_MAP[normalized]) {
+                return DIRECT_MINDMAP_MAP[normalized];
             }
         }
 
-        if (!matchedEntry) {
+        // 2. Check COURSE_MINDMAPS array (from mindmaps_manifest.js)
+        if (Array.isArray(allMindMaps)) {
+            for (const cand of candidates) {
+                const candNorm = cand.replace(/[^a-z0-9]/g, '');
+                const found = allMindMaps.find(m => {
+                    const idNorm = (m.id || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const fileNorm = (m.filename || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    return idNorm.includes(candNorm) || fileNorm.includes(candNorm) || candNorm.includes(idNorm);
+                });
+                if (found && found.filename) {
+                    return found.filename;
+                }
+            }
+        } else if (allMindMaps && typeof allMindMaps === 'object') {
+            // 3. Check COURSE_MINDMAPS_DATA object if present
+            for (const key of candidates) {
+                if (allMindMaps[key] && allMindMaps[key].file) {
+                    return allMindMaps[key].file.split('/').pop();
+                }
+            }
             const keys = Object.keys(allMindMaps);
             for (const cand of candidates) {
                 const found = keys.find(k => k.toLowerCase() === cand || k.toLowerCase().includes(cand));
-                if (found) {
-                    matchedEntry = allMindMaps[found];
-                    break;
+                if (found && allMindMaps[found] && allMindMaps[found].file) {
+                    return allMindMaps[found].file.split('/').pop();
                 }
             }
         }
 
-        if (matchedEntry && matchedEntry.file) {
-            return matchedEntry.file.split('/').pop();
+        // 4. Clean filename fallback
+        const currentFile = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').split('/').pop() || '';
+        const base = currentFile.replace(/_S\d+_{1,2}Discussion\.html|_Discussion\.html/i, '');
+        if (base) {
+            return `${base}_S1_Mind_Map.html`;
         }
 
-        // Fallback: Infer from current discussion filename
-        const currentFile = window.location.pathname.replace(/\\/g, '/').split('/').pop() || '';
-        return currentFile.replace(/_S\d+_Discussion|_Discussion/i, '_S1_Mind_Map');
+        return 'index.html';
     }
 
-    // Build DOM elements (Pill Button linking directly to companion Mind Map in new tab with default view)
+    // Initial immediate sync resolution
+    companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || null);
+
+    // Build DOM elements (Pill Button linking directly to companion Mind Map in new tab)
     function injectOverlayDOM() {
         if (document.getElementById('discussion-mindmap-fab')) return;
         if (!document.body) {
@@ -120,7 +170,7 @@
             return;
         }
 
-        // Floating Action Button (FAB) - Styled as Navigation Button, opening Mind Map in new tab
+        // Floating Action Button (FAB)
         const fab = document.createElement('a');
         fab.id = 'discussion-mindmap-fab';
         fab.className = 'discussion-mindmap-fab';
@@ -141,21 +191,16 @@
         }
 
         fab.addEventListener('click', (e) => {
-            if (companionMindMapFilename) {
+            if (!companionMindMapFilename || companionMindMapFilename === '#') {
+                companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || null);
+            }
+            if (companionMindMapFilename && companionMindMapFilename !== '#') {
                 fab.href = companionMindMapFilename;
-            } else {
-                e.preventDefault();
-                ensureMindMapData((allMindMaps) => {
-                    companionMindMapFilename = resolveCompanionFilename(allMindMaps);
-                    if (companionMindMapFilename) {
-                        window.open(companionMindMapFilename, '_blank', 'noopener,noreferrer');
-                    }
-                });
             }
         });
     }
 
-    // Visibility observer matching navigation button pattern
+    // Visibility observer matching navigation button pattern directly
     function initVisibilityObserver() {
         const fab = document.getElementById('discussion-mindmap-fab');
         if (!fab) return;
@@ -176,14 +221,15 @@
             });
             navObserver.observe(navElement);
         } else {
-            function updateVisibility() {
-                if (window.scrollY > 150) {
+            const updateVisibility = () => {
+                if (window.scrollY > 80) {
                     fab.classList.add('visible');
                 } else {
                     fab.classList.remove('visible');
                 }
-            }
+            };
             window.addEventListener('scroll', updateVisibility, { passive: true });
+            window.addEventListener('resize', updateVisibility);
             updateVisibility();
         }
     }
@@ -197,22 +243,6 @@
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
-    }
-
-    // Resolve relative path to index.html
-    function getRelativeIndexPath() {
-        const path = window.location.pathname.replace(/\\/g, '/');
-        const parts = path.split('/').filter(Boolean);
-        let depth = 0;
-        for (let i = parts.length - 1; i >= 0; i--) {
-            const p = parts[i].toLowerCase();
-            if (p === 'lecture' || p === 'laboratory') {
-                depth = parts.length - 1 - i + 1;
-                break;
-            }
-        }
-        if (depth === 0) return '../../index.html';
-        return '../'.repeat(depth) + 'index.html';
     }
 
     // Extract title & subtitle from first H1 header in markdown or document title
@@ -389,15 +419,19 @@
 
     // Initialization
     function init() {
+        companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || null);
+
         injectDiscussionHeader();
         injectOverlayDOM();
         initVisibilityObserver();
 
+        // Asynchronously confirm / refine mapping from manifest if available
         ensureMindMapData((allMindMaps) => {
-            companionMindMapFilename = resolveCompanionFilename(allMindMaps);
-            const fab = document.getElementById('discussion-mindmap-fab');
-            if (fab && companionMindMapFilename) {
-                fab.href = companionMindMapFilename;
+            const resolved = resolveCompanionFilename(allMindMaps);
+            if (resolved && resolved !== '#' && resolved !== companionMindMapFilename) {
+                companionMindMapFilename = resolved;
+                const fab = document.getElementById('discussion-mindmap-fab');
+                if (fab) fab.href = companionMindMapFilename;
             }
         });
     }
@@ -408,4 +442,3 @@
         init();
     }
 })();
-
