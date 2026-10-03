@@ -86,6 +86,17 @@
         return './shared';
     }
 
+    // Auto-inject CSS stylesheet if not present
+    function ensureCSS() {
+        const existing = document.querySelector('link[href*="discussion_mindmap.css"]');
+        if (!existing) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `${getSharedPath()}/discussion_mindmap.css?v=2`;
+            document.head.appendChild(link);
+        }
+    }
+
     // Ensure manifest data is loaded if needed
     function ensureMindMapData(callback) {
         if (window.COURSE_MINDMAPS && Array.isArray(window.COURSE_MINDMAPS)) {
@@ -98,7 +109,7 @@
         }
 
         const script = document.createElement('script');
-        script.src = `${getSharedPath()}/mindmaps_manifest.js`;
+        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=2`;
         script.onload = () => {
             callback(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || []);
         };
@@ -220,18 +231,28 @@
                 threshold: 0
             });
             navObserver.observe(navElement);
-        } else {
-            const updateVisibility = () => {
+        }
+
+        const updateVisibility = () => {
+            if (navElement) {
+                const rect = navElement.getBoundingClientRect();
+                const inView = (rect.top <= window.innerHeight && rect.bottom >= 0);
+                if (inView) {
+                    fab.classList.remove('visible');
+                } else {
+                    fab.classList.add('visible');
+                }
+            } else {
                 if (window.scrollY > 80) {
                     fab.classList.add('visible');
                 } else {
                     fab.classList.remove('visible');
                 }
-            };
-            window.addEventListener('scroll', updateVisibility, { passive: true });
-            window.addEventListener('resize', updateVisibility);
-            updateVisibility();
-        }
+            }
+        };
+        window.addEventListener('scroll', updateVisibility, { passive: true });
+        window.addEventListener('resize', updateVisibility);
+        updateVisibility();
     }
 
     // HTML escape utility
@@ -419,6 +440,7 @@
 
     // Initialization
     function init() {
+        ensureCSS();
         companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || null);
 
         injectDiscussionHeader();

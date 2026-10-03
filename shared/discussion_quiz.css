@@ -97,7 +97,7 @@
   font-family: inherit !important;
   border-radius: 20px !important;
   cursor: pointer;
-  z-index: 1000 !important;
+  z-index: 1002 !important;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15) !important;
   transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s !important;
   opacity: 0;

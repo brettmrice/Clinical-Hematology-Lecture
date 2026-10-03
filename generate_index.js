@@ -174,57 +174,56 @@ function syncVideoConfigs(scannedSlideDecks) {
 function ensureDiscussionAssets(fullPath) {
     try {
         let content = fs.readFileSync(fullPath, 'utf8');
-        let modified = false;
+        const original = content;
 
         const fileDir = path.dirname(fullPath);
         const relToShared = path.relative(fileDir, path.join(rootDir, 'shared')).replace(/\\/g, '/');
 
-        const cssHref = `${relToShared}/discussion_mindmap.css`;
-        const manifestJsSrc = `${relToShared}/mindmaps_manifest.js`;
-        const mindmapJsSrc = `${relToShared}/discussion_mindmap.js`;
+        const cssMindmap = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=2">`;
+        const cssQuiz = `    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=2">`;
 
-        const cssTag = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${cssHref}">`;
-        const jsTags = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${manifestJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`;
+        // Clean and standardize CSS/JS tags with ?v=2
+        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=2">`);
+        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=2">`);
 
+        content = content.replace(/<script\s+src="[^"]*course_mindmaps_data\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=2"></script>`);
+        content = content.replace(/<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=2"></script>`);
+        content = content.replace(/<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_mindmap.js?v=2"></script>`);
+        content = content.replace(/<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_quiz.js?v=2"></script>`);
+
+        // Ensure CSS tags exist
         if (!content.includes('discussion_mindmap.css')) {
             if (content.includes('github-markdown.min.css">')) {
                 content = content.replace(
                     'github-markdown.min.css">\n',
-                    'github-markdown.min.css">\n' + cssTag + '\n'
+                    'github-markdown.min.css">\n' + cssMindmap + '\n'
                 );
-                modified = true;
             } else if (content.includes('</head>')) {
-                content = content.replace('</head>', cssTag + '\n</head>');
-                modified = true;
+                content = content.replace('</head>', cssMindmap + '\n</head>');
             }
         }
 
-        if (content.includes('course_mindmaps_data.js')) {
-            content = content.replace(
-                `<script src="${relToShared}/course_mindmaps_data.js"></script>`,
-                `<script src="${manifestJsSrc}"></script>`
-            );
-            content = content.replace(
-                /<script\s+src="[^"]*course_mindmaps_data\.js"><\/script>/g,
-                `<script src="${manifestJsSrc}"></script>`
-            );
-            modified = true;
+        if (!content.includes('discussion_quiz.css')) {
+            if (content.includes('discussion_mindmap.css')) {
+                content = content.replace(
+                    /(<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css[^"]*">)/,
+                    `$1\n${cssQuiz}`
+                );
+            } else if (content.includes('</head>')) {
+                content = content.replace('</head>', cssQuiz + '\n</head>');
+            }
         }
 
-        if (!content.includes('mindmaps_manifest.js') && content.includes('discussion_mindmap.js')) {
-            content = content.replace(
-                /<script\s+src="[^"]*discussion_mindmap\.js"><\/script>/,
-                `<script src="${manifestJsSrc}"></script>\n    <script src="${mindmapJsSrc}"></script>`
-            );
-            modified = true;
-        } else if (!content.includes('discussion_mindmap.js')) {
+        // Ensure JS tags exist
+        const jsStack = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${relToShared}/mindmaps_manifest.js?v=2"></script>\n    <script src="${relToShared}/discussion_mindmap.js?v=2"></script>\n    <script src="${relToShared}/discussion_quiz.js?v=2"></script>`;
+
+        if (!content.includes('discussion_mindmap.js')) {
             if (content.includes('</body>')) {
-                content = content.replace('</body>', jsTags + '\n</body>');
-                modified = true;
+                content = content.replace('</body>', jsStack + '\n</body>');
             }
         }
 
-        if (modified) {
+        if (content !== original) {
             fs.writeFileSync(fullPath, content, 'utf8');
             return true;
         }

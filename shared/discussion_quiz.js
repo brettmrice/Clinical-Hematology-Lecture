@@ -35,7 +35,7 @@
     if (!existing) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = `${getSharedPath()}/discussion_quiz.css`;
+      link.href = `${getSharedPath()}/discussion_quiz.css?v=2`;
       document.head.appendChild(link);
     }
   }
@@ -230,18 +230,28 @@
           threshold: 0
         });
         navObserver.observe(navElement);
-      } else {
-        const updateVis = () => {
+      }
+
+      const updateVis = () => {
+        if (navElement) {
+          const rect = navElement.getBoundingClientRect();
+          const inView = (rect.top <= window.innerHeight && rect.bottom >= 0);
+          if (inView) {
+            this.fabBtn.classList.remove('visible');
+          } else {
+            this.fabBtn.classList.add('visible');
+          }
+        } else {
           if (window.scrollY > 80) {
             this.fabBtn.classList.add('visible');
           } else {
             this.fabBtn.classList.remove('visible');
           }
-        };
-        window.addEventListener('scroll', updateVis, { passive: true });
-        window.addEventListener('resize', updateVis);
-        updateVis();
-      }
+        }
+      };
+      window.addEventListener('scroll', updateVis, { passive: true });
+      window.addEventListener('resize', updateVis);
+      updateVis();
     }
 
     // Clean raw LaTeX & MathJax markdown into readable prose
