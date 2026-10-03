@@ -961,396 +961,376 @@
   "high_yield": true,
   "children": [
     {
-      "id": "sec-path",
-      "text": "Pathophysiology and Classification",
+      "id": "sec-1",
+      "text": "Neoplastic Kinetics and Classification",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "path-neoplasm",
-          "text": "Neoplasm Pathogenesis",
+          "id": "sub-1-1",
+          "text": "Hematopoietic Homeostasis",
           "level": 2,
-          "high_yield": true,
+          "high_yield": false,
           "children": [
             {
-              "id": "path-clonal",
-              "text": "Autonomous Clonal Proliferation",
+              "id": "node-1-1-1",
+              "text": "Regulated Proliferation",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "path-progenitor",
-                  "text": "Transformed Myeloid Progenitor",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "path-arrest",
-                  "text": "Blocked Terminal Differentiation",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
+              "high_yield": false
             },
             {
-              "id": "path-proto-onc",
-              "text": "Proto-oncogene Activation",
+              "id": "node-1-1-2",
+              "text": "Lineage Differentiation",
+              "level": 3,
+              "high_yield": false
+            },
+            {
+              "id": "node-1-1-3",
+              "text": "Apoptosis Program",
+              "level": 3,
+              "high_yield": false
+            }
+          ]
+        },
+        {
+          "id": "sub-1-2",
+          "text": "Malignant Transformation Drivers",
+          "level": 2,
+          "high_yield": false,
+          "children": [
+            {
+              "id": "node-1-2-1",
+              "text": "Activated Oncogenes",
               "level": 3,
               "high_yield": false,
               "children": [
                 {
-                  "id": "path-gof",
-                  "text": "Gain-of-Function Mutations",
+                  "id": "node-1-2-1-1",
+                  "text": "Autonomous Proliferation",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "path-fusion",
-                  "text": "Chimeric Fusion Oncoproteins",
+                  "id": "node-1-2-1-2",
+                  "text": "Cytokine Independence",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "path-tumor-supp",
-              "text": "Tumor Suppressor Loss",
+              "id": "node-1-2-2",
+              "text": "Inactivated Tumor Suppressors",
               "level": 3,
               "high_yield": false,
               "children": [
                 {
-                  "id": "path-tp53",
-                  "text": "TP53 Inactivation",
+                  "id": "node-1-2-2-1",
+                  "text": "TP53 Mutations",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "path-rb1",
-                  "text": "RB1 Inactivation",
+                  "id": "node-1-2-2-2",
+                  "text": "RB1 Deletions",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "path-g1s",
-                  "text": "G1/S Checkpoint Evasion",
+                  "id": "node-1-2-2-3",
+                  "text": "Loss of Checkpoints",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "path-acute-vs-chronic",
-          "text": "Precursor vs Mature Neoplasms",
+          "id": "sub-1-3",
+          "text": "Kinetic Divergence",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "acute-features",
-              "text": "Acute Neoplasms (AML/ALL)",
+              "id": "node-1-3-1",
+              "text": "Acute Leukemias",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "acute-blasts",
-                  "text": "Blasts >= 20%",
+                  "id": "node-1-3-1-1",
+                  "text": "Maturation Arrest",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "acute-onset",
-                  "text": "Fulminant Abrupt Onset",
+                  "id": "node-1-3-1-2",
+                  "text": "Primitive Blast Accumulation",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "acute-smear",
-                  "text": "Monomorphic Immature Blasts",
+                  "id": "node-1-3-1-3",
+                  "text": "Abrupt Rapid Onset",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "chronic-features",
-              "text": "Chronic Neoplasms (CML/CLL)",
+              "id": "node-1-3-2",
+              "text": "Chronic Neoplasms",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "chronic-blasts",
+                  "id": "node-1-3-2-1",
+                  "text": "Preserved Terminal Maturation",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-3-2-2",
                   "text": "Blasts < 20%",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "chronic-diff",
-                  "text": "Intact Terminal Differentiation",
+                  "id": "node-1-3-2-3",
+                  "text": "Full Maturation Spectrum",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "chronic-onset",
-                  "text": "Indolent Insidious Course",
+                  "id": "node-1-3-2-4",
+                  "text": "Insidious Clinical Course",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "path-epidemiology",
-              "text": "Demographic Incidence",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "epi-adults",
-                  "text": "Adults: AML Predominance",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "epi-age",
-                      "text": "Peak Sixth-Eighth Decades",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "epi-peds",
-                  "text": "Pediatrics (2-5y): B-ALL",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "path-presentation",
-          "text": "Myelophthisic Bone Marrow Failure",
+          "id": "sub-1-4",
+          "text": "Classification Frameworks",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "pres-erythro",
-              "text": "Erythroid Lineage Failure",
+              "id": "node-1-4-1",
+              "text": "FAB Classification",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "pres-anemia",
+                  "id": "node-1-4-1-1",
+                  "text": "Blast Cutoff >= 30%",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-4-1-2",
+                  "text": "Romanowsky Morphology",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-1-4-1-3",
+                  "text": "Cytochemical Profiling",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-1-4-1-4",
+                  "text": "Subtypes M0 to M7",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-1-4-2",
+              "text": "WHO and ICC Frameworks",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-4-2-1",
+                  "text": "Blast Cutoff >= 20%",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-4-2-2",
+                  "text": "Genetic Abnormalities Primary",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-4-2-3",
+                  "text": "Recurrent Translocation Override",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-1-4-2-3-1",
+                      "text": "Diagnostic With < 20% Blasts",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-1-4-2-4",
+                  "text": "Multiparameter Flow Cytometry",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-1-5",
+          "text": "Bone Marrow Failure",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-1-5-1",
+              "text": "Stem Cell Crowding",
+              "level": 3,
+              "high_yield": false
+            },
+            {
+              "id": "node-1-5-2",
+              "text": "Erythropoiesis Suppression",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-5-2-1",
                   "text": "Normocytic Normochromic Anemia",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "pres-mcv",
-                  "text": "MCV 76-100 fL",
+                  "id": "node-1-5-2-2",
+                  "text": "HGB < 12.0 g/dL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "pres-mchc",
-                  "text": "MCHC 32-36 g/dL",
+                  "id": "node-1-5-2-3",
+                  "text": "Reticulocytes < 20 x 10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-5-2-4",
+                  "text": "Fatigue and Pallor",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "pres-megakaryo",
-              "text": "Platelet Lineage Failure",
+              "id": "node-1-5-3",
+              "text": "Megakaryopoiesis Suppression",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "pres-thrombocytopenia",
+                  "id": "node-1-5-3-1",
                   "text": "Severe Thrombocytopenia",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "pres-plt-count",
-                      "text": "Platelets < 150x10^3/\u00b5L",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": true
                 },
                 {
-                  "id": "pres-bleeding",
+                  "id": "node-1-5-3-2",
+                  "text": "Platelets < 150 x 10^3/uL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-5-3-3",
                   "text": "Petechiae and Ecchymoses",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "pres-granulo",
-              "text": "Granulocytic Lineage Failure",
+              "id": "node-1-5-4",
+              "text": "Granulopoiesis Suppression",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "pres-neutropenia",
-                  "text": "Absolute Neutropenia",
+                  "id": "node-1-5-4-1",
+                  "text": "Severe Neutropenia",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-5-4-2",
+                  "text": "ANC < 1.7 x 10^3/uL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-1-5-4-3",
+                  "text": "Recurrent Severe Infections",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
+            },
+            {
+              "id": "node-1-5-5",
+              "text": "Variable WBC Counts",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-1-5-5-1",
+                  "text": "Marked Leukocytosis",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "pres-anc-ref",
-                      "text": "ANC < 1.7x10^3/\u00b5L",
+                      "id": "node-1-5-5-1-1",
+                      "text": "WBC > 100 x 10^3/uL",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-1-5-5-1-2",
+                      "text": "Vascular Leukostasis Risk",
+                      "level": 5,
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "pres-fevers",
-                  "text": "Recurrent Opportunistic Infections",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "pres-wbc",
-              "text": "Total WBC Variability",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "pres-aleukemic",
-                  "text": "Aleukemic Pancytopenia",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "pres-leukocytosis",
-                  "text": "Marked Extravasating Leukocytosis",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "class-evolution",
-          "text": "Classification System Evolution",
-          "level": 2,
-          "high_yield": true,
-          "children": [
-            {
-              "id": "class-fab",
-              "text": "FAB Classification Framework",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "fab-basis",
-                  "text": "Morphology and Cytochemistry",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "fab-cutoff",
-                  "text": "Blasts >= 30%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "fab-subtypes",
-                  "text": "Subtypes M0 Through M7",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "class-who",
-              "text": "WHO / ICC Framework",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "who-basis",
-                  "text": "Multimodal Genetic Integration",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "who-cutoff",
-                  "text": "Blasts >= 20%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "who-exception",
-                  "text": "Genetic Threshold Exceptions",
+                  "id": "node-1-5-5-2",
+                  "text": "Aleukemic Leukemia",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "who-any-blast",
-                      "text": "AML Regardless Blast Count",
+                      "id": "node-1-5-5-2-1",
+                      "text": "WBC < 3.6 x 10^3/uL",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "ex-t821",
-                          "text": "t(8;21)(q22;q22.1)",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "ex-inv16",
-                          "text": "inv(16)(p13.1q22)",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "ex-t1517",
-                          "text": "t(15;17)(q24.1;q21.2)",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-1-5-5-2-2",
+                      "text": "No Circulating Blasts",
+                      "level": 5,
+                      "high_yield": true
                     }
                   ]
                 }
@@ -1361,630 +1341,548 @@
       ]
     },
     {
-      "id": "sec-workup",
-      "text": "Multimodal Diagnostic Workup",
+      "id": "sec-2",
+      "text": "Cell Morphology and Cytochemistry",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "diag-bm-eval",
-          "text": "Bone Marrow Evaluation",
+          "id": "sub-2-1",
+          "text": "Blast Morphology Differential",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "bm-cellularity",
-              "text": "Cellularity Assessment",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "bm-calc",
-                  "text": "(100 - Patient Age) \u00b1 10%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "bm-hyper",
-                  "text": "Marrow Hypercellularity (90-100%)",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "bm-me-ratio",
-              "text": "M:E Ratio Evaluation",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "me-ref",
-                  "text": "Normal Ratio 1.5-4.0:1",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "me-aml",
-                  "text": "AML Elevation (> 10:1)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "me-m6",
-                  "text": "Reversal in Pure Erythroleukemia",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "bm-diff",
-              "text": "Blast Enumeration",
-              "level": 3,
-              "high_yield": false,
-              "children": [
-                {
-                  "id": "bm-count-size",
-                  "text": "200-500 Marrow Cells Counted",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "diag-morphology",
-          "text": "Morphological Differentiation",
-          "level": 2,
-          "high_yield": true,
-          "children": [
-            {
-              "id": "morph-myeloblast",
+              "id": "node-2-1-1",
               "text": "Myeloblast Features",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "blast-size",
-                  "text": "Diameter 12-20 \u00b5m",
+                  "id": "node-2-1-1-1",
+                  "text": "Diameter 15-20 um",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "blast-nc",
-                  "text": "High N:C Ratio (80:20)",
+                  "id": "node-2-1-1-2",
+                  "text": "High N:C Ratio",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "blast-chromatin",
-                  "text": "Delicate Lace-Like Chromatin",
+                  "id": "node-2-1-1-3",
+                  "text": "Finely Dispersed Lacy Chromatin",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "blast-nucleoli",
-                  "text": "2-5 Pale Nucleoli",
+                  "id": "node-2-1-1-4",
+                  "text": "2-5 Distinct Nucleoli",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "blast-granules",
-                  "text": "<= 20 Azurophilic Granules",
+                  "id": "node-2-1-1-5",
+                  "text": "< 20 Azurophilic Granules",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "morph-promyelo",
-              "text": "Abnormal Promyelocyte Features",
+              "id": "node-2-1-2",
+              "text": "Promyelocyte Features",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "pro-size",
-                  "text": "Diameter 15-25 \u00b5m",
+                  "id": "node-2-1-2-1",
+                  "text": "Diameter 16-25 um",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "pro-golgi",
-                  "text": "Perinuclear Clear Halo",
+                  "id": "node-2-1-2-2",
+                  "text": ">= 20 Coarse Granules",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "pro-granules",
-                  "text": "> 20 Coarse Granules",
+                  "id": "node-2-1-2-3",
+                  "text": "Prominent Golgi Hof",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "pro-chromatin",
-                  "text": "Early Chromatin Clumping",
+                  "id": "node-2-1-2-4",
+                  "text": "Condensing Chromatin",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "morph-auer",
-              "text": "Auer Rod Ultrastructure",
+              "id": "node-2-1-3",
+              "text": "Lymphoblast Features",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "auer-origin",
-                  "text": "Fused Primary Lysosomal Granules",
+                  "id": "node-2-1-3-1",
+                  "text": "Diameter 10-18 um",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "auer-enzyme",
-                  "text": "Myeloperoxidase (MPO) Crystallization",
+                  "id": "node-2-1-3-2",
+                  "text": "Very High N:C Ratio",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "auer-pathognomonic",
-                  "text": "Pathognomonic for Myeloid Lineage",
+                  "id": "node-2-1-3-3",
+                  "text": "Dense Condensed Chromatin",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "auer-all-ruleout",
-                      "text": "Never Present in ALL",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": false
+                },
+                {
+                  "id": "node-2-1-3-4",
+                  "text": "1-2 Indistinct Nucleoli",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-2-1-3-5",
+                  "text": "Granules Completely Absent",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "diag-cytochem",
-          "text": "Cytochemical Profiling",
+          "id": "sub-2-2",
+          "text": "Pathognomonic Inclusions",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "cyto-mpo",
+              "id": "node-2-2-1",
+              "text": "Auer Rods",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-2-1-1",
+                  "text": "Fused Primary Granules",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-2-1-2",
+                  "text": "Crystallized Myeloperoxidase",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-2-1-3",
+                  "text": "Confirms Myeloid Lineage",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-2-1-4",
+                  "text": "Never in ALL",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-2-2-2",
+              "text": "Faggot Cells",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-2-2-1",
+                  "text": "Bundles of Auer Rods",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-2-2-2",
+                  "text": "Diagnostic of APL",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-2-3",
+          "text": "Cytochemical Panels",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-2-3-1",
               "text": "Myeloperoxidase (MPO)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "mpo-myeloid",
-                  "text": "Granulocytic Lineage Positive",
+                  "id": "node-2-3-1-1",
+                  "text": "Detects Granulocyte Peroxidase",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "mpo-all",
-                  "text": "Lymphoid Lineage Negative",
+                  "id": "node-2-3-1-2",
+                  "text": "Positive Cutoff >= 3%",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-1-3",
+                  "text": "Negative in ALL",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "cyto-sbb",
+              "id": "node-2-3-2",
               "text": "Sudan Black B (SBB)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "sbb-target",
-                  "text": "Intracellular Lipids and Sterols",
+                  "id": "node-2-3-2-1",
+                  "text": "Stains Lipids and Sterols",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "sbb-parallel",
+                  "id": "node-2-3-2-2",
                   "text": "Parallels MPO Staining",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-2-3",
+                  "text": "Effective on Old Smears",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "cyto-esterases",
-              "text": "Dual Esterase Differentiation",
+              "id": "node-2-3-3",
+              "text": "Specific Esterase (SE / CAE)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "esterase-se",
-                  "text": "Specific Esterase (SE / CAED)",
+                  "id": "node-2-3-3-1",
+                  "text": "Naphthol AS-D Chloroacetate",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "se-grans",
-                      "text": "Granulocytic Positive",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "se-monos",
-                      "text": "Monocytic Negative",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": false
                 },
                 {
-                  "id": "esterase-nse",
-                  "text": "Non-Specific Esterase (NSE)",
+                  "id": "node-2-3-3-2",
+                  "text": "Positive in Granulocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-3-3",
+                  "text": "Negative in Monocytes",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-2-3-4",
+              "text": "Non-Specific Esterase (NSE)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-3-4-1",
+                  "text": "Alpha-Naphthyl Substrate",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-2-3-4-2",
+                  "text": "Strongly Positive in Monocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-4-3",
+                  "text": "Sodium Fluoride Inhibition",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "nse-mono",
-                      "text": "Monocytic Strongly Positive",
+                      "id": "node-2-3-4-3-1",
+                      "text": "Inhibits Monocytic NSE",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "nse-naf",
-                      "text": "Sodium Fluoride (NaF) Inhibition",
+                      "id": "node-2-3-4-3-2",
+                      "text": "Granulocytic NSE Resistant",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "naf-abolished",
-                          "text": "Monocytic Staining Completely Abolished",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": false
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "cyto-tdt",
-              "text": "Terminal deoxynucleotidyl Transferase (TDT)",
+              "id": "node-2-3-5",
+              "text": "TdT Polymerase",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "tdt-type",
-                  "text": "Nuclear DNA Polymerase Marker",
+                  "id": "node-2-3-5-1",
+                  "text": "Nuclear Marker",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "tdt-all",
-                  "text": "Positive in ALL (> 90%)",
+                  "id": "node-2-3-5-2",
+                  "text": "Positive in ALL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "tdt-aml",
+                  "id": "node-2-3-5-3",
                   "text": "Negative in AML",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "cyto-pas",
+              "id": "node-2-3-6",
               "text": "Periodic Acid-Schiff (PAS)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "pas-all",
-                  "text": "ALL: Coarse Chunky Block+",
+                  "id": "node-2-3-6-1",
+                  "text": "Stains Glycogen",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "pas-m6",
-                  "text": "M6 Erythroleukemia: Coarse Block+",
+                  "id": "node-2-3-6-2",
+                  "text": "Block Positivity in ALL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-6-3",
+                  "text": "Chunky Positivity in M6",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-2-3-7",
+              "text": "Leukocyte Alkaline Phosphatase (LAP)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-2-3-7-1",
+                  "text": "Secondary Granule Enzyme",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-2-3-7-2",
+                  "text": "Reference Score 20-130",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-7-3",
+                  "text": "Elevated in Leukemoid Reaction",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-2-3-7-4",
+                  "text": "Decreased in CML",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "diag-flow",
-          "text": "Flow Cytometric Immunophenotyping",
+          "id": "sub-2-4",
+          "text": "Multiparameter Flow Cytometry",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "flow-gating",
-              "text": "CD45 vs SSC Gating",
+              "id": "node-2-4-1",
+              "text": "Gating Strategy",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "gate-blast",
-                  "text": "Blast Gate (Low SSC / CD45-dim)",
+                  "id": "node-2-4-1-1",
+                  "text": "CD45 vs Side Scatter",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "gate-lymphs",
-                  "text": "Lymphocytes (Low SSC / CD45-bright)",
+                  "id": "node-2-4-1-2",
+                  "text": "Dim CD45 Expression",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "gate-monos",
-                  "text": "Monocytes (Mod SSC / CD45-bright)",
+                  "id": "node-2-4-1-3",
+                  "text": "Low Side Scatter (SSC)",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "gate-grans",
-                  "text": "Granulocytes (High SSC / CD45-mod)",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "flow-stem",
-              "text": "Progenitor Markers",
+              "id": "node-2-4-2",
+              "text": "Stem and Progenitor Markers",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "marker-cd34",
+                  "id": "node-2-4-2-1",
                   "text": "CD34+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-cd117",
-                  "text": "CD117+ (c-KIT)",
+                  "id": "node-2-4-2-2",
+                  "text": "CD117+ (c-kit)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-hladr",
+                  "id": "node-2-4-2-3",
                   "text": "HLA-DR+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "marker-cd38",
-                  "text": "CD38+",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "flow-myeloid",
-              "text": "Pan-Myeloid Markers",
+              "id": "node-2-4-3",
+              "text": "Myeloid Lineage Antigens",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "marker-cd13",
+                  "id": "node-2-4-3-1",
                   "text": "CD13+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-cd33",
+                  "id": "node-2-4-3-2",
                   "text": "CD33+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-cympo",
-                  "text": "Cytoplasmic cyMPO+",
+                  "id": "node-2-4-3-3",
+                  "text": "Cytoplasmic MPO+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "flow-monocytic",
-              "text": "Monocytic Markers",
+              "id": "node-2-4-4",
+              "text": "Monocytic Lineage Antigens",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "marker-cd14",
+                  "id": "node-2-4-4-1",
                   "text": "CD14+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-cd64",
+                  "id": "node-2-4-4-2",
                   "text": "CD64+",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "marker-cd11b",
+                  "id": "node-2-4-4-3",
                   "text": "CD11b+",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "marker-cd36",
+                  "id": "node-2-4-4-4",
                   "text": "CD36+",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "flow-megakaryo",
-              "text": "Megakaryocytic Markers",
+              "id": "node-2-4-5",
+              "text": "Erythroid and Megakaryocyte Markers",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "marker-cd41",
-                  "text": "CD41+ (GPIIb/IIIa)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "marker-cd61",
-                  "text": "CD61+ (GPIIIa)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "flow-erythroid",
-              "text": "Erythroid Markers",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "marker-cd71",
+                  "id": "node-2-4-5-1",
                   "text": "CD71+ (Transferrin Receptor)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "marker-glyca",
-                  "text": "Glycophorin A+ (CD235a)",
+                  "id": "node-2-4-5-2",
+                  "text": "CD235a+ (Glycophorin A)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "diag-qc",
-          "text": "Pre-Analytical and Quality Control",
-          "level": 2,
-          "high_yield": false,
-          "children": [
-            {
-              "id": "qc-spicules",
-              "text": "Marrow Spicule Confirmation",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "qc-hemodilution",
-                  "text": "Rule Out Peripheral Hemodilution",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "qc-viability",
-              "text": "Viability Assessment",
-              "level": 3,
-              "high_yield": false,
-              "children": [
-                {
-                  "id": "qc-viab-thresh",
-                  "text": "Viability > 85%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "qc-7aad",
-                  "text": "7-AAD / PI Dye Exclusion",
+                  "id": "node-2-4-5-3",
+                  "text": "CD41+ (GPIIb/IIIa)",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "qc-stain-ctrl",
-              "text": "Cytochemical Stain Controls",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "ctrl-mpo-pos",
-                  "text": "Mature Segs: MPO Positive",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "ctrl-mpo-neg",
-                  "text": "Lymphocytes: MPO Negative",
+                  "id": "node-2-4-5-4",
+                  "text": "CD61+ (GPIIIa)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "ctrl-naf-split",
-                  "text": "Duplicate Slides for NaF",
+                  "id": "node-2-4-5-5",
+                  "text": "CD42b+ (GPIb)",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
@@ -1993,410 +1891,372 @@
       ]
     },
     {
-      "id": "sec-genetics",
-      "text": "Recurrent Genetics and Molecular Mutations",
+      "id": "sec-3",
+      "text": "Recurrent Genetics and Emergencies",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "gen-t821",
-          "text": "t(8;21)(q22;q22.1)",
+          "id": "sub-3-1",
+          "text": "Recurrent Balanced Translocations",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "t821-gene",
-              "text": "RUNX1::RUNX1T1 Fusion",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "t821-fab",
-              "text": "FAB M2 AML Maturation",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "t821-morph",
-              "text": "Prominent Solitary Auer Rods",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "t821-prognosis",
-              "text": "Favorable Prognosis",
+              "id": "node-3-1-1",
+              "text": "t(8;21)(q22;q22.1)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "t821-tx",
-                  "text": "High Cytarabine Sensitivity",
+                  "id": "node-3-1-1-1",
+                  "text": "RUNX1::RUNX1T1 Gene Fusion",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-1-2",
+                  "text": "Correlates FAB M2",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-1-3",
+                  "text": "Solitary Auer Rods",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-1-4",
+                  "text": "Favorable Prognostic Risk",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-3-1-2",
+              "text": "inv(16)(p13.1q22) or t(16;16)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-3-1-2-1",
+                  "text": "CBFB::MYH11 Gene Fusion",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-2-2",
+                  "text": "Correlates FAB M4eo",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-2-3",
+                  "text": "Abnormal Bone Marrow Eosinophils",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-3-1-2-3-1",
+                      "text": "Mixed Orange-Violet Granules",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-3-1-2-3-2",
+                      "text": "Positive Specific Esterase",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-3-1-2-4",
+                  "text": "Favorable Prognostic Risk",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-3-1-3",
+              "text": "t(15;17)(q22;q12) (APL)",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-3-1-3-1",
+                  "text": "PML::RARA Gene Fusion",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-3-2",
+                  "text": "Correlates FAB M3",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-1-3-3",
+                  "text": "Butterfly-Wing Nuclei",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-1-3-4",
+                  "text": "Heavy Primary Granulation",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-1-3-5",
+                  "text": "Unique Flow Signature",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-3-1-3-5-1",
+                      "text": "HLA-DR Negative",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-3-1-3-5-2",
+                      "text": "CD34 Negative",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-3-1-3-5-3",
+                      "text": "CD33 Strongly Positive",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "id": "gen-inv16",
-          "text": "inv(16)(p13.1q22) / t(16;16)",
+          "id": "sub-3-2",
+          "text": "APL Coagulopathy Emergency",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "inv16-gene",
-              "text": "CBFB::MYH11 Fusion",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "inv16-fab",
-              "text": "FAB M4eo AMML Eosinophilia",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "inv16-morph",
-              "text": "Dysplastic Marrow Eosinophils",
+              "id": "node-3-2-1",
+              "text": "Pathophysiologic Mechanism",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "inv16-granules",
-                  "text": "Purple-Black Basophilic Granules",
+                  "id": "node-3-2-1-1",
+                  "text": "Tissue Factor Release",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "inv16-pas",
-                  "text": "Granules Stain PAS Positive",
+                  "id": "node-3-2-1-2",
+                  "text": "Annexin A2 Expression",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-1-3",
+                  "text": "Primary Hyperfibrinolysis",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-1-4",
+                  "text": "Widespread Microvascular Thrombosis",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "inv16-prognosis",
-              "text": "Favorable Prognosis",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "gen-t1517",
-          "text": "t(15;17)(q24.1;q21.2) - APL",
-          "level": 2,
-          "high_yield": true,
-          "children": [
-            {
-              "id": "t1517-gene",
-              "text": "PML::RARA Fusion",
+              "id": "node-3-2-2",
+              "text": "Emergency DIC Coagulation Panel",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "rara-arrest",
-                  "text": "Arrest at Promyelocyte Stage",
+                  "id": "node-3-2-2-1",
+                  "text": "Severely Prolonged PT",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-2-2",
+                  "text": "Severely Prolonged aPTT",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-2-3",
+                  "text": "Fibrinogen < 100 mg/dL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-2-4",
+                  "text": "Elevated D-Dimer > 20 ug/mL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-2-5",
+                  "text": "Platelets < 50 x 10^3/uL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-2-6",
+                  "text": "Schistocytes on Smear",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "t1517-morph-types",
-              "text": "Morphologic Variants",
+              "id": "node-3-2-3",
+              "text": "Critical Action Protocol",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "apl-hyper",
-                  "text": "Hypergranular APL (M3)",
+                  "id": "node-3-2-3-1",
+                  "text": "Immediate Critical Value Call",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-2-3-2",
+                  "text": "Avoid Cytotoxic Monotherapy",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-2-3-3",
+                  "text": "All-Trans Retinoic Acid (ATRA)",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "apl-folded",
-                      "text": "Butterfly-Wing Folded Nuclei",
+                      "id": "node-3-2-3-3-1",
+                      "text": "Displaces Co-Repressors",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": false
                     },
                     {
-                      "id": "apl-faggot",
-                      "text": "Faggot Cells (Stacked Auer)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "apl-hypo",
-                  "text": "Hypogranular APL (M3v)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "m3v-gran",
-                      "text": "Submicroscopic Granules",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "m3v-wbc",
-                      "text": "Rapid Marked Leukocytosis",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "m3v-nuclei",
-                      "text": "Figure-Eight Folded Nuclei",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "apl-flow",
-              "text": "Unique Flow Immunophenotype",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "apl-cd34-neg",
-                  "text": "CD34-",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "apl-hladr-neg",
-                  "text": "HLA-DR-",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "apl-myeloid-pos",
-                  "text": "CD13+, CD33+, cyMPO+",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "apl-dic",
-              "text": "Coagulation Emergency (DIC)",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "dic-path",
-                  "text": "Procoagulant Release",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "dic-tf",
-                      "text": "Tissue Factor Expression",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "dic-annexin",
-                      "text": "Surface Annexin II Upregulation",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "dic-plasmin",
-                      "text": "Hyperactivation of Plasmin",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "dic-labs",
-                  "text": "Consumptive Coagulation Profile",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "lab-pt-ptt",
-                      "text": "Markedly Prolonged PT/aPTT",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "lab-fib",
-                      "text": "Fibrinogen Depletion (< 100 mg/dL)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "lab-ddimer",
-                      "text": "Markedly Elevated D-Dimer",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "lab-plt",
-                      "text": "Severe Consumptive Thrombocytopenia",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "lab-schisto",
-                      "text": "Schistocytes on Peripheral Film",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "dic-tx",
-                  "text": "Emergency Differentiation Therapy",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "tx-atra",
-                      "text": "All-Trans Retinoic Acid (ATRA)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "tx-ato",
-                      "text": "Arsenic Trioxide (ATO)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "tx-mech",
+                      "id": "node-3-2-3-3-2",
                       "text": "Terminal Granulocytic Differentiation",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     }
                   ]
+                },
+                {
+                  "id": "node-3-2-3-4",
+                  "text": "Arsenic Trioxide Therapy",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "gen-somatic",
-          "text": "Somatic Molecular Mutations",
+          "id": "sub-3-3",
+          "text": "Cytogenetically Normal AML (CN-AML)",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "mol-flt3",
-              "text": "FLT3 Mutations",
+              "id": "node-3-3-1",
+              "text": "FLT3 Mutations (FLT3-ITD)",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "flt3-itd",
-                  "text": "FLT3-ITD (Tandem Duplication)",
+                  "id": "node-3-3-1-1",
+                  "text": "Internal Tandem Duplication",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "flt3-prog",
-                      "text": "Adverse / Poor Prognosis",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "flt3-tx",
-                      "text": "Targeted Tyrosine Kinase Inhibitors",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": false
                 },
                 {
-                  "id": "flt3-tkd",
-                  "text": "FLT3-TKD (Point Mutation D835)",
+                  "id": "node-3-3-1-2",
+                  "text": "Constitutive Tyrosine Kinase Activation",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-3-1-3",
+                  "text": "High Peripheral Leukocytosis",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-3-1-4",
+                  "text": "Adverse Poor Prognosis",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "mol-npm1",
-              "text": "NPM1 Mutation",
+              "id": "node-3-3-2",
+              "text": "NPM1 Mutations",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "npm1-mech",
-                  "text": "Aberrant Cytoplasmic Nucleophosmin Localization",
+                  "id": "node-3-3-2-1",
+                  "text": "Cytoplasmic Translocation",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "npm1-prog",
-                  "text": "Favorable Prognosis Without FLT3-ITD",
+                  "id": "node-3-3-2-2",
+                  "text": "Favorable Prognosis Without FLT3",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-3-3-2-3",
+                  "text": "High Complete Remission Rates",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "mol-cebpa",
-              "text": "CEBPA Mutation",
+              "id": "node-3-3-3",
+              "text": "CEBPA Mutations",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "cebpa-prog",
-                  "text": "Favorable Prognosis (Biallelic)",
+                  "id": "node-3-3-3-1",
+                  "text": "Biallelic Mutations Required",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "cebpa-tx",
-                  "text": "High Standard Chemotherapy Cure",
+                  "id": "node-3-3-3-2",
+                  "text": "Disrupted Myeloid Transcription Factor",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
+                },
+                {
+                  "id": "node-3-3-3-3",
+                  "text": "Favorable Overall Prognosis",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
@@ -2405,414 +2265,266 @@
       ]
     },
     {
-      "id": "sec-subtypes",
-      "text": "AML Lineage Subtypes and Secondary Neoplasms",
+      "id": "sec-4",
+      "text": "AML Not Otherwise Specified",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "sub-nos",
-          "text": "AML Not Otherwise Specified (NOS)",
+          "id": "sub-4-1",
+          "text": "Diagnostic Baseline",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "nos-m0",
-              "text": "AML Minimally Differentiated (M0)",
+              "id": "node-4-1-1",
+              "text": "Bone Marrow Blasts >= 20%",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m0-morph",
-                  "text": "Agranular Primitive Blasts",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "m0-cyto",
-                  "text": "MPO and SBB < 3%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m0-flow",
-                  "text": "CD13+, CD33+, CD117+",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
+              "high_yield": true
             },
             {
-              "id": "nos-m1",
-              "text": "AML Without Maturation (M1)",
+              "id": "node-4-1-2",
+              "text": "Recurrent Translocations Absent",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m1-morph",
-                  "text": "Myeloblasts >= 90% Non-Erythroid",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m1-mat",
-                  "text": "Granulocytic Maturation < 10%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m1-cyto",
-                  "text": "MPO and SBB >= 3%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
+              "high_yield": true
+            }
+          ]
+        },
+        {
+          "id": "sub-4-2",
+          "text": "FAB M0 (Minimally Differentiated)",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-4-2-1",
+              "text": "Agranular Blast Morphology",
+              "level": 3,
+              "high_yield": false
             },
             {
-              "id": "nos-m2",
-              "text": "AML With Maturation (M2)",
+              "id": "node-4-2-2",
+              "text": "MPO and SBB < 3%",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m2-blasts",
-                  "text": "Blasts >= 20%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m2-mat",
-                  "text": "Maturing Granulocytes > 10%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m2-monos",
-                  "text": "Monocytic Lineage < 20%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m2-stain",
-                  "text": "MPO+, SBB+, SE+",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
+              "high_yield": true
             },
             {
-              "id": "nos-m4",
-              "text": "Acute Myelomonocytic Leukemia (M4)",
+              "id": "node-4-2-3",
+              "text": "Flow Positive Cytoplasmic MPO",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m4-myelo",
-                  "text": "Neutrophilic Precursors >= 20%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m4-mono",
-                  "text": "Monocytic Precursors >= 20%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m4-dual-cyto",
-                  "text": "Dual Positivity SE+ / NSE+",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m4-monocytosis",
-                  "text": "Absolute Monocytes > 5.0x10^3/\u00b5L",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
+              "high_yield": true
             },
             {
-              "id": "nos-m5",
-              "text": "Acute Monocytic Leukemia (M5)",
+              "id": "node-4-2-4",
+              "text": "Positive CD13 and CD33",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m5-thresh",
-                  "text": "Monocytic Lineage >= 80%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m5a-diff",
-                  "text": "M5a: Monoblasts >= 80%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m5b-diff",
-                  "text": "M5b: Monoblasts < 80%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m5-cyto",
-                  "text": "Diffuse NSE+ (NaF Inhibited)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m5-clin",
-                  "text": "Extramedullary Manifestations",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "m5-gingival",
-                      "text": "Gingival Hyperplasia",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "m5-cutis",
-                      "text": "Leukemia Cutis Infiltrates",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "m5-lysozyme",
-                      "text": "Elevated Muramidase (Lysozyme)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "lyso-renal",
-                          "text": "Renal Tubular Damage",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "lyso-k",
-                          "text": "Severe Hypokalemia (< 3.5 mmol/L)",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
+              "high_yield": true
+            }
+          ]
+        },
+        {
+          "id": "sub-4-3",
+          "text": "FAB M1 (Without Maturation)",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-4-3-1",
+              "text": "Marrow Blasts >= 90%",
+              "level": 3,
+              "high_yield": true
             },
             {
-              "id": "nos-m6",
-              "text": "Pure Erythroid Leukemia (M6)",
+              "id": "node-4-3-2",
+              "text": "Granulocytic Maturation < 10%",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "m6-erythro",
-                  "text": "Erythroid Precursors >= 80%",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m6-pas",
-                  "text": "Coarse Block PAS Positivity",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "m6-flow",
-                  "text": "Glycophorin A+ / CD71+",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
+              "high_yield": true
             },
             {
-              "id": "nos-m7",
-              "text": "Acute Megakaryoblastic Leukemia (M7)",
+              "id": "node-4-3-3",
+              "text": "MPO or SBB >= 3%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-3-4",
+              "text": "Rare Single Auer Rods",
+              "level": 3,
+              "high_yield": false
+            }
+          ]
+        },
+        {
+          "id": "sub-4-4",
+          "text": "FAB M2 (With Maturation)",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-4-4-1",
+              "text": "Marrow Blasts >= 20%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-4-2",
+              "text": "Granulocytic Maturation >= 10%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-4-3",
+              "text": "Monocytic Lineage < 20%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-4-4",
+              "text": "Frequent Auer Rods",
+              "level": 3,
+              "high_yield": false
+            }
+          ]
+        },
+        {
+          "id": "sub-4-5",
+          "text": "FAB M4 (Acute Myelomonocytic)",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-4-5-1",
+              "text": "Marrow Blasts >= 20%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-5-2",
+              "text": "Myeloid Lineage >= 20%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-5-3",
+              "text": "Monocytic Lineage >= 20%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-5-4",
+              "text": "Peripheral Monocytes > 5.0 x 10^3/uL",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-5-5",
+              "text": "Dual Esterase Positivity",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "m7-flow",
-                  "text": "CD41+ and CD61+ Expression",
+                  "id": "node-4-5-5-1",
+                  "text": "SE Positive Granulocytes",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "m7-fibrosis",
-                  "text": "Marrow Reticulin Myelofibrosis",
+                  "id": "node-4-5-5-2",
+                  "text": "NSE Positive Monocytes",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "m7-drytap",
-                      "text": "Presents as Dry Tap",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "m7-down",
-                  "text": "Associated With Down Syndrome",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-secondary",
-          "text": "Therapy-Related Myeloid Neoplasms",
+          "id": "sub-4-6",
+          "text": "FAB M5 (Acute Monoblastic/Monocytic)",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "t-alkyl",
-              "text": "Alkylating Agent / Radiation Induced",
+              "id": "node-4-6-1",
+              "text": "Monocytic Precursors >= 80%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-4-6-2",
+              "text": "M5a Monoblastic",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "alkyl-latency",
-                  "text": "Latency 5-10 Years",
+                  "id": "node-4-6-2-1",
+                  "text": "Monoblasts >= 80%",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "alkyl-mds",
-                  "text": "Antecedent Dysplastic Phase",
+                  "id": "node-4-6-2-2",
+                  "text": "Vesicular Nuclei and Pseudopodia",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "alkyl-cyto",
-                  "text": "-5, del(5q), -7, del(7q)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "t-topo",
-              "text": "Topoisomerase II Inhibitor Induced",
+              "id": "node-4-6-3",
+              "text": "M5b Monocytic",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "topo-latency",
-                  "text": "Latency 1-3 Years",
+                  "id": "node-4-6-3-1",
+                  "text": "Monoblasts < 80%",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "topo-no-mds",
-                  "text": "No Antecedent Dysplasia",
+                  "id": "node-4-6-3-2",
+                  "text": "Predominance of Promonocytes",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "topo-cyto",
-                  "text": "11q23 (KMT2A / MLL) Rearrangements",
+                  "id": "node-4-6-3-3",
+                  "text": "Cerebriform Folded Nuclei",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "t-dysplasia",
-              "text": "Multilineage Dysplasia Criteria",
+              "id": "node-4-6-4",
+              "text": "Clinical and Biochemical Hallmarks",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "dys-thresh",
-                  "text": ">= 50% Cells in >= 2 Lineages",
+                  "id": "node-4-6-4-1",
+                  "text": "Extramedullary Infiltration",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "dys-erythro",
-                  "text": "Dyserythropoiesis (Ring Sideroblasts)",
+                  "id": "node-4-6-4-2",
+                  "text": "Gingival Hyperplasia",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "dys-granulo",
-                  "text": "Dysgranulopoiesis (Pseudo-Pelger-Hu\u00ebt)",
+                  "id": "node-4-6-4-3",
+                  "text": "Elevated Muramidase (Lysozyme)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "dys-mega",
-                  "text": "Dysmegakaryopoiesis (Micromegakaryocytes)",
+                  "id": "node-4-6-4-4",
+                  "text": "Renal Hypokalemic Toxicity",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "t-strat",
-              "text": "Blast Threshold Stratification",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "strat-tmds",
-                  "text": "Blasts < 20%: t-MDS",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "strat-taml",
-                  "text": "Blasts >= 20%: t-AML",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
@@ -2821,273 +2533,400 @@
       ]
     },
     {
-      "id": "sec-calcs",
-      "text": "Laboratory Calculations and Verification",
+      "id": "sec-5",
+      "text": "Therapy-Related Myeloid Neoplasms",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "calc-cwbc",
+          "id": "sub-5-1",
+          "text": "Etiological Subtypes",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-5-1-1",
+              "text": "Alkylating Agent Exposure",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-5-1-1-1",
+                  "text": "Latency Interval 5-7 Years",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-1-1-2",
+                  "text": "Preceding MDS Phase",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-1-1-3",
+                  "text": "Unbalanced Chromosomal Losses",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-5-1-1-3-1",
+                      "text": "-5 or del(5q)",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-5-1-1-3-2",
+                      "text": "-7 or del(7q)",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-5-1-1-3-3",
+                      "text": "TP53 Complex Mutations",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-5-1-2",
+              "text": "Topoisomerase II Inhibitor Exposure",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-5-1-2-1",
+                  "text": "Latency Interval 1-3 Years",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-1-2-2",
+                  "text": "No Preceding Dysplasia",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-5-1-2-3",
+                  "text": "Balanced 11q23 (KMT2A) Translocations",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-5-2",
+          "text": "Multilineage Dysplasia Features",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-5-2-1",
+              "text": "Dysplastic Threshold >= 50%",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-5-2-2",
+              "text": "Dyserythropoiesis",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-5-2-2-1",
+                  "text": "Megaloblastoid Chromatin",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-2-2-2",
+                  "text": "Nuclear Budding and Bridging",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-5-2-2-3",
+                  "text": "Ring Sideroblasts (Prussian Blue)",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-2-2-4",
+                  "text": "Erythroid PAS Block Positivity",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-5-2-3",
+              "text": "Dysgranulopoiesis",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-5-2-3-1",
+                  "text": "Pseudo-Pelger-Huet Anomaly",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-5-2-3-1-1",
+                      "text": "Bilobed Pince-Nez Nuclei",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-5-2-3-1-2",
+                      "text": "Densely Clumped Chromatin",
+                      "level": 5,
+                      "high_yield": false
+                    }
+                  ]
+                },
+                {
+                  "id": "node-5-2-3-2",
+                  "text": "Cytoplasmic Hypogranulation",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-2-3-3",
+                  "text": "Hypersegmentation (> 5 Lobes)",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
+            },
+            {
+              "id": "node-5-2-4",
+              "text": "Dysmegakaryopoiesis",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-5-2-4-1",
+                  "text": "Micromegakaryocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-2-4-2",
+                  "text": "Monolobular Megakaryocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-5-2-4-3",
+                  "text": "Separated Pawn-Broker Nuclei",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-5-3",
+          "text": "Marrow Blast Classification",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-5-3-1",
+              "text": "t-MDS (< 20% Blasts)",
+              "level": 3,
+              "high_yield": true
+            },
+            {
+              "id": "node-5-3-2",
+              "text": "t-AML (>= 20% Blasts)",
+              "level": 3,
+              "high_yield": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-6",
+      "text": "Calculations and Laboratory Quality",
+      "level": 1,
+      "high_yield": true,
+      "children": [
+        {
+          "id": "sub-6-1",
           "text": "Corrected WBC Count",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "cwbc-trigger",
-              "text": "Trigger: >= 10 nRBC/100 WBC",
+              "id": "node-6-1-1",
+              "text": "Trigger >= 10 nRBC/100 WBC",
               "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": true
             },
             {
-              "id": "cwbc-formula",
-              "text": "Uncorrected WBC x [100/(100+nRBC)]",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "cwbc-error",
-              "text": "Prevents False Absolute Leukocytosis",
+              "id": "node-6-1-2",
+              "text": "Pseudoleukocytosis Mechanism",
               "level": 3,
               "high_yield": false,
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "calc-abs",
-          "text": "Absolute Differential Calculations",
-          "level": 2,
-          "high_yield": true,
-          "children": [
-            {
-              "id": "abs-formula",
-              "text": "Corrected WBC x (Relative%/100)",
-              "level": 3,
-              "high_yield": true,
-              "children": []
+              "children": [
+                {
+                  "id": "node-6-1-2-1",
+                  "text": "Resistant Non-Lysed Nuclei",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-6-1-2-2",
+                  "text": "Impedance Aperture Interference",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-6-1-2-3",
+                  "text": "Falsely Counts as Lymphocyte",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
             },
             {
-              "id": "abs-anc",
-              "text": "Absolute Neutrophil Count (ANC)",
+              "id": "node-6-1-3",
+              "text": "Correction Formula",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "anc-calc",
-                  "text": "WBC x [(%Segs + %Bands)/100]",
+                  "id": "node-6-1-3-1",
+                  "text": "Uncorrected WBC x [100/(100+nRBC)]",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "anc-interval",
-                  "text": "Reference: 1.7-7.5x10^3/\u00b5L",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "anc-critical",
-                  "text": "Severe Neutropenia < 0.5x10^3/\u00b5L",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "calc-indices",
-          "text": "RBC Indices Calculations",
+          "id": "sub-6-2",
+          "text": "Rule of Three Validation",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "idx-mcv",
-              "text": "MCV = [HCT(%) x 10]/RBC",
+              "id": "node-6-2-1",
+              "text": "Formula Verification",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "mcv-ref-range",
-                  "text": "Reference: 76-100 fL",
+                  "id": "node-6-2-1-1",
+                  "text": "HGB = RBC x 3",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-6-2-1-2",
+                  "text": "HCT = HGB x 3 +/- 3%",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "idx-mch",
-              "text": "MCH = [HGB(g/dL) x 10]/RBC",
+              "id": "node-6-2-2",
+              "text": "Analytical Blast Interference",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "mch-ref-range",
-                  "text": "Reference: 26-34 pg",
+                  "id": "node-6-2-2-1",
+                  "text": "Blast Lysis Lipids",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "idx-mchc",
-              "text": "MCHC = [HGB(g/dL) x 100]/HCT(%)",
-              "level": 3,
-              "high_yield": true,
-              "children": [
+                  "high_yield": false
+                },
                 {
-                  "id": "mchc-ref-range",
-                  "text": "Reference: 32-36 g/dL",
+                  "id": "node-6-2-2-2",
+                  "text": "Optical Spectrophotometric Turbidity",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
+                },
+                {
+                  "id": "node-6-2-2-3",
+                  "text": "False Hemoglobin Elevation",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-6-2-2-4",
+                  "text": "MCHC > 36.0 g/dL",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "calc-rule-of-three",
-          "text": "Rule of Three Verification",
+          "id": "sub-6-3",
+          "text": "Bone Marrow M:E Ratio",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "r3-eq",
-              "text": "HGB x 3 = HCT \u00b1 3%",
+              "id": "node-6-3-1",
+              "text": "Reference Range 1.5:1-3.5:1",
               "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": true
             },
             {
-              "id": "r3-failure",
-              "text": "MCHC > 36 g/dL Discrepancy",
+              "id": "node-6-3-2",
+              "text": "Count 500 Aspirate Cells",
               "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "r3-cold",
-                  "text": "Cold Agglutinin Interference",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "cold-fix",
-                      "text": "Warm at 37\u00b0C for 15-30min",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "r3-lipemia",
-                  "text": "Lipemia / Icterus Turbidity",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "lip-fix",
-                      "text": "Saline Replacement Protocol",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "r3-leukocytosis",
-                  "text": "Extreme Leukocytosis (> 100x10^3/\u00b5L)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "leuko-fix",
-                      "text": "Blast Turbidity Plasma Blank",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
+              "high_yield": false
+            },
+            {
+              "id": "node-6-3-3",
+              "text": "Skewed In AML (10:1-20:1)",
+              "level": 3,
+              "high_yield": true
             }
           ]
         },
         {
-          "id": "calc-ref-standards",
-          "text": "Authoritative Reference Intervals",
+          "id": "sub-6-4",
+          "text": "Automated Morphology Flags",
           "level": 2,
-          "high_yield": true,
+          "high_yield": false,
           "children": [
             {
-              "id": "ref-wbc",
-              "text": "WBC: 3.6-10.6x10^3/\u00b5L",
+              "id": "node-6-4-1",
+              "text": "Blasts / Abnormal Lymphs",
               "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": true
             },
             {
-              "id": "ref-rbc",
-              "text": "RBC: 4.00-6.00x10^6/\u00b5L",
+              "id": "node-6-4-2",
+              "text": "Immature Granulocytes Flag",
               "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": false
             },
             {
-              "id": "ref-hgb",
-              "text": "HGB: 12.0-18.0 g/dL",
+              "id": "node-6-4-3",
+              "text": "Differential Interrupted",
               "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": false
             },
             {
-              "id": "ref-hct",
-              "text": "HCT: 35-50%",
+              "id": "node-6-4-4",
+              "text": "Mandatory Manual Smear Review",
               "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "ref-plt",
-              "text": "Platelets: 150-450x10^3/\u00b5L",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "ref-fib",
-              "text": "Fibrinogen: 200-400 mg/dL",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "ref-pt",
-              "text": "PT: 11.0-13.5 seconds",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "ref-aptt",
-              "text": "aPTT: 25-35 seconds",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "ref-k",
-              "text": "Potassium: 3.5-5.1 mmol/L",
-              "level": 3,
-              "high_yield": true,
-              "children": []
+              "high_yield": true
             }
           ]
         }

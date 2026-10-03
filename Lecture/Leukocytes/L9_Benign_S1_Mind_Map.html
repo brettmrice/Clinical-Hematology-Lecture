@@ -962,865 +962,955 @@
   "children": [
     {
       "id": "sec-gran",
-      "text": "Granulocyte Disorders",
+      "text": "Granulocytic Alterations",
       "level": 1,
       "high_yield": true,
       "children": [
         {
           "id": "sub-gran-kinetics",
-          "text": "Leukocyte Kinetics",
+          "text": "Granulocyte Kinetics",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-gran-pools",
-              "text": "Vascular Compartments",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-cgp",
-                  "text": "Circulating Granulocyte Pool (CGP)",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-cgp-flow",
-                      "text": "Central Axial Stream",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-cgp-phleb",
-                      "text": "Sampled by Phlebotomy",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-mgp",
-                  "text": "Marginating Granulocyte Pool (MGP)",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-mgp-endoth",
-                      "text": "Postcapillary Endothelium",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-mgp-integrin",
-                      "text": "CD11b/CD18 Integrin Adhesion",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-pool-ratio",
-                  "text": "CGP:MGP Ratio (1:1)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-gran-calcs",
-              "text": "Laboratory Calculations",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-calc-anc",
-                  "text": "Absolute Differential Formula",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "node-anc-eq",
-                      "text": "WBC x Relative %",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-calc-wbc-corr",
-                  "text": "Corrected WBC Count",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "node-nrbc-thresh",
-                      "text": "Trigger > 10 nRBC/100 WBC",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-nrbc-formula",
-                      "text": "Uncorrected x 100/(100 + nRBC)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "node-ref-ranges-gran",
-              "text": "Standard Reference Intervals",
+              "id": "node-gran-ref-intervals",
+              "text": "Reference Intervals",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
                   "id": "node-ref-wbc",
-                  "text": "Total WBC (3.6-10.6x10^3/\u00b5L)",
+                  "text": "WBC 3.6-10.6x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ref-segs",
+                  "text": "Relative Neutrophils 50-70%",
+                  "level": 4,
+                  "high_yield": true
                 },
                 {
                   "id": "node-ref-anc",
-                  "text": "ANC (1.7-7.5x10^3/\u00b5L)",
+                  "text": "ANC 1.7-7.5x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-ref-rel-neut",
-                  "text": "Relative Neutrophils (50-70%)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": "sub-neutrophilia",
-          "text": "Reactive Neutrophilia",
-          "level": 2,
-          "high_yield": true,
-          "children": [
+            },
             {
-              "id": "node-neutrophilia-stages",
-              "text": "Kinetic Progression",
+              "id": "node-gran-pools",
+              "text": "Intravascular Pools",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-neut-stage1",
-                  "text": "Immediate (Pseudo-neutrophilia)",
+                  "id": "node-pool-ratio",
+                  "text": "1:1 Dynamic Equilibrium",
                   "level": 4,
-                  "high_yield": true,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-pool-cgp",
+                  "text": "Circulating Pool (CGP)",
+                  "level": 4,
+                  "high_yield": false,
                   "children": [
                     {
-                      "id": "node-stage1-stim",
-                      "text": "Epinephrine or Stress Surge",
+                      "id": "node-cgp-axial",
+                      "text": "Axial Blood Flow",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": false
                     },
                     {
-                      "id": "node-stage1-mech",
-                      "text": "MGP to CGP Demargination",
+                      "id": "node-cgp-venipuncture",
+                      "text": "Measured by Venipuncture",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-stage1-morph",
-                      "text": "No Left Shift",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     }
                   ]
                 },
                 {
-                  "id": "node-neut-stage2",
+                  "id": "node-pool-mgp",
+                  "text": "Marginating Pool (MGP)",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-mgp-endothelial",
+                      "text": "Endothelial Adhesion",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-mgp-selectins",
+                      "text": "Selectins & Integrins",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-mgp-diapedesis",
+                      "text": "Poised for Diapedesis",
+                      "level": 5,
+                      "high_yield": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-gran-phases",
+              "text": "Neutrophilia Kinetic Phases",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-phase-immediate",
+                  "text": "Immediate Neutrophilia",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-imm-mech",
+                      "text": "Demargination from MGP",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-imm-trigger",
+                      "text": "Epinephrine or Stress",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-imm-smear",
+                      "text": "Mature Segs Only",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-imm-no-shift",
+                      "text": "No Left Shift",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-phase-acute",
                   "text": "Acute Neutrophilia",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-stage2-onset",
-                      "text": "4-24 Hours Post-Invasion",
+                      "id": "node-acute-mech",
+                      "text": "Marrow Storage Mobilization",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-stage2-mech",
-                      "text": "Marrow Storage Pool Egress",
+                      "id": "node-acute-onset",
+                      "text": "4-6 Hours",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": false
                     },
                     {
-                      "id": "node-stage2-morph",
-                      "text": "Left Shift Present",
+                      "id": "node-acute-smear",
+                      "text": "Bands and Metamyelocytes",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-acute-left-shift",
+                      "text": "Acute Left Shift",
+                      "level": 5,
+                      "high_yield": true
                     }
                   ]
                 },
                 {
-                  "id": "node-neut-stage3",
+                  "id": "node-phase-chronic",
                   "text": "Chronic Neutrophilia",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-stage3-stim",
-                      "text": "Days to Weeks Sepsis",
+                      "id": "node-chron-mech",
+                      "text": "Mitotic Hyperplasia Expansion",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-stage3-mech",
-                      "text": "Marrow Mitotic Acceleration",
+                      "id": "node-chron-smear",
+                      "text": "Promyelocytes and Myelocytes",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-stage3-morph",
-                      "text": "Prominent Toxic Changes",
+                      "id": "node-chron-trigger",
+                      "text": "Persistent Severe Sepsis",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": false
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-leukemoid-diff",
+              "id": "node-gran-histogram",
+              "text": "WBC Volume Histograms",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-histo-peaks",
+                  "text": "Trimodal Volume Peaks",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-peak-lymph",
+                      "text": "Lymphocytes 35-90 fL",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-peak-mono",
+                      "text": "Mononuclears 90-160 fL",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-peak-gran",
+                      "text": "Granulocytes 160-450 fL",
+                      "level": 5,
+                      "high_yield": false
+                    }
+                  ]
+                },
+                {
+                  "id": "node-histo-left-skew",
+                  "text": "Left Valley Extension",
+                  "level": 4,
+                  "high_yield": false,
+                  "children": [
+                    {
+                      "id": "node-histo-ig-flag",
+                      "text": "Immature Granulocyte Flag",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-histo-review",
+                      "text": "Manual Smear Review",
+                      "level": 5,
+                      "high_yield": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-gran-leukemoid",
+          "text": "Leukemoid Reactions & Differentials",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-diff-table",
               "text": "Leukemoid vs CML",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-leukemoid-hallmarks",
-                  "text": "Leukemoid Reaction",
+                  "id": "node-diff-lr",
+                  "text": "Benign Leukemoid Reaction",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
                       "id": "node-lr-lap",
-                      "text": "LAP Score High (> 130)",
+                      "text": "High LAP Score (>100)",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
                       "id": "node-lr-toxic",
-                      "text": "Toxic Granulation and D\u00f6hle",
+                      "text": "Prominent Toxic Triad",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-lr-bcr",
-                      "text": "BCR-ABL1 Negative",
+                      "id": "node-lr-basos",
+                      "text": "Normal Basophils",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-lr-baso",
-                      "text": "Basophils Normal or Low",
+                      "id": "node-lr-cyto",
+                      "text": "Ph Chromosome Negative",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-lr-spleen",
+                      "text": "No Splenomegaly",
+                      "level": 5,
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "node-cml-hallmarks",
-                  "text": "Chronic Myeloid Leukemia (CML)",
+                  "id": "node-diff-cml",
+                  "text": "Chronic Myelogenous Leukemia",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
                       "id": "node-cml-lap",
-                      "text": "LAP Score Low (< 20)",
+                      "text": "Low LAP Score (<20)",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-cml-baso",
+                      "id": "node-cml-toxic",
+                      "text": "Toxic Triad Absent",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-cml-basos",
                       "text": "Prominent Basophilia",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-cml-bcr",
-                      "text": "Positive t(9;22) BCR-ABL1",
+                      "id": "node-cml-cyto",
+                      "text": "BCR-ABL1 / t(9;22)+",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-cml-bulge",
-                      "text": "Myelocyte Bulge",
+                      "id": "node-cml-spleen",
+                      "text": "Massive Splenomegaly",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-leukoerythro",
-                  "text": "Leukoerythroblastic Reaction",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "node-ler-morph",
-                      "text": "Circulating nRBCs Present",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-ler-dacryo",
-                      "text": "Teardrop Cells (Dacrocytes)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-ler-etiol",
-                      "text": "Myelophthisic Marrow Infiltration",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": false
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-lap-scoring",
-              "text": "LAP Assay Protocol",
+              "id": "node-lap-protocol",
+              "text": "LAP Cytochemical Staining",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-lap-cell-count",
+                  "id": "node-lap-target",
+                  "text": "Secondary Granule Alkaline Phosphatase",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-lap-cells",
                   "text": "100 Neutrophils/Bands Evaluated",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-lap-grading",
+                  "id": "node-lap-scores",
                   "text": "Graded 0 to 4+",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "node-lap-ref",
-                  "text": "Normal Score (20-130)",
+                  "id": "node-lap-calc",
+                  "text": "Score Sum 0-400",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-lap-normal",
+                  "text": "Normal Range 20-100",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-lap-anti",
+                  "text": "Specimen Collection Protocol",
                   "level": 4,
                   "high_yield": true,
-                  "children": []
+                  "children": [
+                    {
+                      "id": "node-lap-heparin",
+                      "text": "Heparin or Capillary Allowed",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-lap-no-edta",
+                      "text": "EDTA Strictly Forbidden",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-lap-chelation",
+                      "text": "Chelates Mg2+ and Zn2+",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-lap-false-neg",
+                      "text": "Causes False-Negative LAP",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-leukoerythro",
+              "text": "Leukoerythroblastic Reactions",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-leuko-def",
+                  "text": "Left Shift with nRBCs",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-leuko-etiology",
+                  "text": "Marrow Myelophthisis / Infiltration",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-leuko-interference",
+                  "text": "Lyse-Resistant nRBC Interference",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-leuko-correction",
+                  "text": "Corrected WBC Formula",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-leuko-threshold",
+                      "text": "Triggered if >=10 nRBCs/100WBC",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-leuko-formula",
+                      "text": "WBC x [100/(100+nRBC)]",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-neutropenia",
+          "id": "sub-gran-neutropenia",
           "text": "Neutropenia & Agranulocytosis",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-neutropenia-defs",
-              "text": "Diagnostic Thresholds",
+              "id": "node-neutro-thresholds",
+              "text": "Severity Stratification",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-neut-mild",
-                  "text": "Mild (1.0-1.5x10^3/\u00b5L)",
+                  "id": "node-neutro-def",
+                  "text": "ANC < 1.7x10^3/uL",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-neut-mod",
-                  "text": "Moderate (0.5-1.0x10^3/\u00b5L)",
+                  "id": "node-neutro-mild",
+                  "text": "Mild: 1.0-1.5x10^3/uL",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "node-neut-severe",
-                  "text": "Agranulocytosis (< 0.5x10^3/\u00b5L)",
+                  "id": "node-neutro-mod",
+                  "text": "Moderate: 0.5-1.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-agran-def",
+                  "text": "Agranulocytosis <0.5x10^3/uL",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-agran-risk",
-                      "text": "Critical Infection Risk",
+                      "id": "node-agran-crit",
+                      "text": "Urgent Critical Alert",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
                       "id": "node-agran-pus",
-                      "text": "Absence of Purulent Exudate",
+                      "text": "Cannot Form Pus Exudate",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-agran-sepsis",
+                      "text": "Fatal Endogenous Flora Sepsis",
+                      "level": 5,
+                      "high_yield": false
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-neutropenia-etiol",
-              "text": "Etiological Mechanisms",
+              "id": "node-buffy-coat",
+              "text": "Buffy Coat Smear Technique",
               "level": 3,
-              "high_yield": false,
+              "high_yield": true,
               "children": [
                 {
-                  "id": "node-neut-dec-prod",
-                  "text": "Decreased Marrow Production",
+                  "id": "node-buffy-trigger",
+                  "text": "Triggered if WBC <1.0x10^3/uL",
                   "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-dec-chemo",
-                      "text": "Cytotoxic Chemotherapy",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-dec-aplasia",
-                      "text": "Aplastic Anemia",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-dec-b12",
-                      "text": "Cobalamin or Folate Deficiency",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": true
                 },
                 {
-                  "id": "node-neut-inc-dest",
-                  "text": "Accelerated Destruction",
+                  "id": "node-buffy-proc",
+                  "text": "Centrifugation at 500-1000g",
                   "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-dest-sepsis",
-                      "text": "Severe Sepsis Depletion",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-dest-immune",
-                      "text": "Anti-Neutrophil Antibodies (HNA)",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-dest-felty",
-                      "text": "Felty Syndrome Triad",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": false
+                },
+                {
+                  "id": "node-buffy-layer",
+                  "text": "Aspirate Interface Layer",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-buffy-morph",
+                  "text": "Evaluate Dysplasia and Blasts",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-gran-morph",
-          "text": "Granulocyte Morphology",
+          "id": "sub-gran-nuclear",
+          "text": "Qualitative Nuclear Anomalies",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-nuclear-variants",
-              "text": "Nuclear Abnormalities",
+              "id": "node-nuc-pha",
+              "text": "Pelger-Hu\u00ebt Anomaly",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-pha",
-                  "text": "Pelger-Hu\u00ebt Anomaly",
+                  "id": "node-pha-genetics",
+                  "text": "LBR Gene Mutation",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-pha-hered",
+                  "text": "Autosomal Dominant Laminopathy",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-pha-morph",
+                  "text": "Nuclear Morphology",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-pha-gene",
-                      "text": "LBR Gene Mutation",
+                      "id": "node-pha-hetero",
+                      "text": "Heterozygous Bilobed Pince-Nez",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-pha-morph",
-                      "text": "Bilobed Pince-Nez Nuclei",
+                      "id": "node-pha-homo",
+                      "text": "Homozygous Unsegmented Ovals",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-pha-chrom",
-                      "text": "Mature Condensed Chromatin",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-pha-func",
-                      "text": "Normal Bactericidal Function",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-pseudo-pha",
-                      "text": "Acquired Pseudo-Pelger-Hu\u00ebt",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-pseudo-pha-assoc",
-                          "text": "Myelodysplastic Syndromes (MDS)",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-pseudo-pha-hypo",
-                          "text": "Concurrent Hypogranulation",
-                          "level": 6,
-                          "high_yield": false,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "node-hypersegmentation",
-                  "text": "Neutrophil Hypersegmentation",
+                  "id": "node-pha-chromatin",
+                  "text": "Deeply Condensed Coarse Chromatin",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-pha-reporting",
+                  "text": "Normal Phagocytic Function",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-hyperseg-crit",
-                      "text": ">= 5 Lobes in > 5%",
+                      "id": "node-pha-rep-class",
+                      "text": "Count as Segmented Neutrophils",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-hyperseg-megalo",
-                      "text": "Megaloblastic Anemia Marker",
+                      "id": "node-pha-rep-comment",
+                      "text": "Smear Comment Mandatory",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-pyknosis",
-                  "text": "Nuclear Pyknosis",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-pyknosis-morph",
-                      "text": "Ink-Drop Condensation",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-pyknosis-apop",
-                      "text": "Terminal Apoptosis",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-cytoplasmic-variants",
-              "text": "Cytoplasmic Abnormalities",
+              "id": "node-nuc-ppha",
+              "text": "Pseudo-Pelger-Hu\u00ebt Anomaly",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-toxic-triad",
-                  "text": "Reactive Toxic Triad",
+                  "id": "node-ppha-acquired",
+                  "text": "Acquired Somatic Dysplasia",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ppha-causes",
+                  "text": "Associated with MDS / AML",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ppha-mosaic",
+                  "text": "Mosaic Penetrance (<50%)",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ppha-hypo",
+                  "text": "Hypogranular Neutrophils Co-exist",
+                  "level": 4,
+                  "high_yield": false
+                }
+              ]
+            },
+            {
+              "id": "node-nuc-hyper",
+              "text": "Neutrophil Hypersegmentation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hyper-def",
+                  "text": "Criteria: >=5% with >=5 Lobes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-hyper-single",
+                  "text": "Criteria: Any 6 Lobes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-hyper-etiology",
+                  "text": "B12 / Folate Deficiency",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-hyper-mech",
+                  "text": "Nuclear-Cytoplasmic Asynchrony",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-hyper-macro",
+                  "text": "Accompanies Oval Macrocytes",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-nuc-pyknosis",
+              "text": "Apoptotic Pyknosis",
+              "level": 3,
+              "high_yield": false,
+              "children": [
+                {
+                  "id": "node-pyk-morph",
+                  "text": "Dense Glassy Ink-Drop Spheres",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-pyk-rule",
+                  "text": "Exclude from 100-WBC Count",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-gran-cytoplasmic",
+          "text": "Cytoplasmic Inclusions & Changes",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-cyto-triad",
+              "text": "Reactive Toxic Triad",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-triad-tg",
+                  "text": "Toxic Granulation",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-dohle",
-                      "text": "D\u00f6hle Bodies",
+                      "id": "node-tg-mpo",
+                      "text": "Persistent MPO-Rich Primaries",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-dohle-struct",
-                          "text": "Rough ER Aggregates",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-dohle-color",
-                          "text": "Pale Blue Peripheral Inclusions",
-                          "level": 6,
-                          "high_yield": false,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": true
                     },
                     {
-                      "id": "node-toxic-gran",
-                      "text": "Toxic Granulation",
+                      "id": "node-tg-color",
+                      "text": "Dark Purple-Blue Granules",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-tg-struct",
-                          "text": "Retained Primary Granules",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-tg-mpo",
-                          "text": "High Myeloperoxidase (MPO)",
-                          "level": 6,
-                          "high_yield": false,
-                          "children": []
-                        }
-                      ]
-                    },
-                    {
-                      "id": "node-toxic-vac",
-                      "text": "Cytoplasmic Vacuolation",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-vac-mech",
-                          "text": "Phagocytic Endocytosis",
-                          "level": 6,
-                          "high_yield": false,
-                          "children": []
-                        },
-                        {
-                          "id": "node-vac-sepsis",
-                          "text": "Marker of Sepsis/Bacteremia",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "node-inherited-anomalies",
-                  "text": "Inherited Granule Anomalies",
+                  "id": "node-triad-dohle",
+                  "text": "D\u00f6hle Bodies",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-alder-riley",
-                      "text": "Alder-Riley Anomaly",
+                      "id": "node-dohle-rer",
+                      "text": "Aggregated Rough Endoplasmic Reticulum",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-ar-defect",
-                          "text": "Mucopolysaccharide Catabolism Defect",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ar-morph",
-                          "text": "Coarse Granules with Halos",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ar-stain",
-                          "text": "Toluidine Blue Metachromasia",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ar-func",
-                          "text": "Leukocyte Function Normal",
-                          "level": 6,
-                          "high_yield": false,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": true
                     },
                     {
-                      "id": "node-chediak-higashi",
-                      "text": "Ch\u00e9diak-Higashi Syndrome",
+                      "id": "node-dohle-color",
+                      "text": "Pale Blue-Gray Periphery",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-ch-gene",
-                          "text": "LYST Gene Mutation",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ch-morph",
-                          "text": "Giant Fused Lysosomes",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ch-defect",
-                          "text": "Defective Phagolysosomal Fusion",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-ch-clin",
-                          "text": "Albinism and Bleeding Diathesis",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
-                    },
-                    {
-                      "id": "node-may-hegglin",
-                      "text": "May-Hegglin Anomaly",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-mh-gene",
-                          "text": "MYH9 Gene Mutation",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        },
-                        {
-                          "id": "node-mh-triad",
-                          "text": "May-Hegglin Diagnostic Triad",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": [
-                            {
-                              "id": "node-mh-inclusions",
-                              "text": "D\u00f6hle-like Myosin Inclusions",
-                              "level": 7,
-                              "high_yield": true,
-                              "children": []
-                            },
-                            {
-                              "id": "node-mh-macro",
-                              "text": "Giant Platelets (Macrothrombocytes)",
-                              "level": 7,
-                              "high_yield": true,
-                              "children": []
-                            },
-                            {
-                              "id": "node-mh-thrombocyt",
-                              "text": "Marked Thrombocytopenia",
-                              "level": 7,
-                              "high_yield": true,
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "node-morulae",
-                  "text": "Intracellular Pathogens",
+                  "id": "node-triad-vac",
+                  "text": "Cytoplasmic Vacuolation",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-anaplasma",
-                      "text": "Anaplasma phagocytophilum",
+                      "id": "node-vac-phago",
+                      "text": "Phagolysosomes of Active Sepsis",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-vac-edta",
+                      "text": "EDTA Storage Artifact Check",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-cyto-microorg",
+              "text": "Intracellular Microorganisms",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-micro-anaplasma",
+                  "text": "Anaplasma phagocytophilum",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-anaplasma-cell",
+                      "text": "Morulae in Neutrophils",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-micro-ehrlichia",
+                  "text": "Ehrlichia chaffeensis",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ehrlichia-cell",
+                      "text": "Morulae in Monocytes",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "node-cyto-hereditary",
+              "text": "Hereditary Granulocytic Inclusions",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hered-ar",
+                  "text": "Alder-Riley Anomaly",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ar-etiology",
+                      "text": "Mucopolysaccharide Degradation Defect",
+                      "level": 5,
+                      "high_yield": false
+                    },
+                    {
+                      "id": "node-ar-morph",
+                      "text": "Dense Granules with Halos",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ar-stain",
+                      "text": "Toluidine Blue Metachromatic",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ar-function",
+                      "text": "Intact Leukocyte Function",
+                      "level": 5,
+                      "high_yield": false
+                    }
+                  ]
+                },
+                {
+                  "id": "node-hered-ch",
+                  "text": "Ch\u00e9diak-Higashi Syndrome",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-ch-genetics",
+                      "text": "LYST Gene Mutation",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ch-morph",
+                      "text": "Massive Giant Lysosomal Granules",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ch-stain",
+                      "text": "MPO Strongly Positive",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ch-defects",
+                      "text": "Defective Degranulation & Chemotaxis",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ch-clinical",
+                      "text": "Partial Albinism & Sepsis",
+                      "level": 5,
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-hered-mh",
+                  "text": "May-Hegglin Anomaly",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-mh-genetics",
+                      "text": "MYH9 Gene Mutation",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-mh-triad",
+                      "text": "Classic Diagnostic Triad",
                       "level": 5,
                       "high_yield": true,
                       "children": [
                         {
-                          "id": "node-ana-target",
-                          "text": "Neutrophil Morulae",
+                          "id": "node-mh-spindle",
+                          "text": "Spindle-Shaped RNA Inclusions",
                           "level": 6,
-                          "high_yield": true,
-                          "children": []
+                          "high_yield": true
+                        },
+                        {
+                          "id": "node-mh-platelets",
+                          "text": "Giant Macrothrombocytes",
+                          "level": 6,
+                          "high_yield": true
+                        },
+                        {
+                          "id": "node-mh-thrombocyto",
+                          "text": "True Thrombocytopenia",
+                          "level": 6,
+                          "high_yield": true
                         }
                       ]
                     },
                     {
-                      "id": "node-ehrlichia",
-                      "text": "Ehrlichia chaffeensis",
+                      "id": "node-mh-pseudo",
+                      "text": "Analyzer Artifact Pseudothrombocytopenia",
                       "level": 5,
-                      "high_yield": true,
-                      "children": [
-                        {
-                          "id": "node-ehr-target",
-                          "text": "Monocyte Morulae",
-                          "level": 6,
-                          "high_yield": true,
-                          "children": []
-                        }
-                      ]
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-mh-manual",
+                      "text": "Manual Smear Platelet Estimate",
+                      "level": 5,
+                      "high_yield": true
                     }
                   ]
                 }
@@ -1832,503 +1922,591 @@
     },
     {
       "id": "sec-lymph",
-      "text": "Lymphocyte Disorders",
+      "text": "Lymphocyte Alterations & Immunodeficiency",
       "level": 1,
       "high_yield": true,
       "children": [
         {
           "id": "sub-lymph-kinetics",
-          "text": "Lymphocyte Dynamics",
+          "text": "Lymphocyte Kinetics & Intervals",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-ped-inversion",
-              "text": "Pediatric Inverted Differential",
+              "id": "node-lymph-adult",
+              "text": "Adult Reference Intervals",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-ped-age",
-                  "text": "2 Weeks to 4-6 Years",
+                  "id": "node-lymph-rel",
+                  "text": "Relative Lymphocytes 18-42%",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-ped-predom",
-                  "text": "Lymphocyte Predominance (40-70%)",
+                  "id": "node-lymph-alc",
+                  "text": "ALC 1.0-3.2x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-ped-abs",
-                  "text": "Normal Abs (3.0-8.0x10^3/\u00b5L)",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "node-adult-lymph-ranges",
-              "text": "Adult Reference Ranges",
+              "id": "node-lymph-pediatric",
+              "text": "Pediatric Physiological Inversion",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-alc-ref",
-                  "text": "Absolute (1.0-3.2x10^3/\u00b5L)",
+                  "id": "node-peds-timeline",
+                  "text": "2 Weeks to 4-6 Years",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-rel-lymph-ref",
-                  "text": "Relative (18-42%)",
+                  "id": "node-peds-predom",
+                  "text": "Lymphocyte Dominance Over Segs",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-peds-rel",
+                  "text": "Relative Counts 50-70%",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-peds-alc",
+                  "text": "ALC up to 8.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-reactive-lymph",
-          "text": "Reactive Lymphocytosis",
+          "id": "sub-lymph-morph",
+          "text": "Reactive Lymphocyte Morphology",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-reactive-morph",
-              "text": "Reactive Morphology",
+              "id": "node-reactive-features",
+              "text": "Activated Lymphocyte Features",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-react-size",
-                  "text": "Enlarged Size (15-30 \u00b5m)",
+                  "id": "node-rx-size",
+                  "text": "Enlarged (15-30 um)",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "node-react-scallop",
-                  "text": "Scalloping Around RBC Borders",
+                  "id": "node-rx-nc",
+                  "text": "Low N:C Ratio (2:1-1:1)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-react-baso",
-                  "text": "Radial Peripheral Basophilia",
+                  "id": "node-rx-radial",
+                  "text": "Peripheral Radial Basophilia",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-react-lineage",
-                  "text": "Activated CD8+ Cytotoxic T-Cells",
+                  "id": "node-rx-scallop",
+                  "text": "Scalloping Around RBCs",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-rx-chromatin",
+                  "text": "Patchy Heterogeneous Chromatin",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-rx-clonality",
+                  "text": "Polyclonal Population",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             },
             {
-              "id": "node-downey-classes",
-              "text": "Downey Morphological Classes",
+              "id": "node-rx-vs-blast",
+              "text": "Reactive Lymphs vs Blasts",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-blast-nc",
+                  "text": "Blast N:C Ratio >=4:1",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-blast-chromatin",
+                  "text": "Finely Dispersed Stippled Chromatin",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-blast-nucleoli",
+                  "text": "Prominent Sharp Nucleoli",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-blast-rigid",
+                  "text": "Rigid Non-Scalloping Borders",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-blast-clonality",
+                  "text": "Monoclonal Population",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-downey-types",
+              "text": "Downey Classifications",
               "level": 3,
               "high_yield": false,
               "children": [
                 {
                   "id": "node-downey-1",
-                  "text": "Type I (Plasmacytoid)",
+                  "text": "Type I: Indented Nucleus",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 },
                 {
                   "id": "node-downey-2",
-                  "text": "Type II (Classic Mononucleosis)",
+                  "text": "Type II: Mononucleosis Skirt",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
                   "id": "node-downey-3",
-                  "text": "Type III (Blast-like)",
+                  "text": "Type III: Blast-Like",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-pertussis-morph",
-              "text": "Bordetella pertussis Lymphocytosis",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-pert-toxin",
-                  "text": "Pertussis Toxin Gi Inactivation",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-pert-trap",
-                  "text": "Extravasation Chemokine Blockade",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "node-pert-cleft",
-                  "text": "Small Cleaved Nuclei",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-pert-no-atypia",
-                  "text": "No Reactive Atypia",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-mono-syndromes",
-          "text": "Mononucleosis Syndromes",
+          "id": "sub-lymph-ebv",
+          "text": "Infectious Mononucleosis & Serology",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-ebv-mono",
-              "text": "Heterophile-Positive (EBV)",
+              "id": "node-ebv-patho",
+              "text": "EBV Pathogenesis",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-ebv-target",
-                  "text": "CD21/CR2 Receptor Target",
+                  "id": "node-ebv-virus",
+                  "text": "HHV-4 Double-Stranded DNA",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "node-ebv-b-activ",
-                  "text": "Polyclonal B-Cell Activation",
+                  "id": "node-ebv-cd21",
+                  "text": "Infects B-Cells via CD21",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-davidsohn-diff",
-                  "text": "Davidsohn Differential Absorption",
+                  "id": "node-ebv-cd8",
+                  "text": "Reactive Cells Are CD8+ T-Cells",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ebv-smear",
+                  "text": "Shows >20% Reactive Lymphocytes",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-ebv-serology",
+              "text": "Serological Profiling",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-ebv-heterophile",
+                  "text": "Heterophile Antibody (Monospot)",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-dav-gp",
-                      "text": "Guinea Pig Kidney (NOT Absorbed)",
+                      "id": "node-het-horse",
+                      "text": "Agglutinates Horse/Sheep RBCs",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": false
                     },
                     {
-                      "id": "node-dav-beef",
-                      "text": "Beef RBCs (Completely Absorbed)",
+                      "id": "node-het-peds",
+                      "text": "False-Negative in Children <4",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     }
                   ]
                 },
                 {
-                  "id": "node-forssman-diff",
-                  "text": "Forssman Heterophile Pattern",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": [
-                    {
-                      "id": "node-forss-gp",
-                      "text": "Absorbed by Guinea Pig",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-forss-beef",
-                      "text": "NOT Absorbed by Beef",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
-                },
-                {
-                  "id": "node-ebv-serology",
-                  "text": "EBV Specific Serology",
+                  "id": "node-ebv-specific",
+                  "text": "EBV-Specific Antibodies",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
                       "id": "node-vca-igm",
-                      "text": "Anti-VCA IgM (Acute Infection)",
+                      "text": "Anti-VCA IgM: Acute Marker",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
                       "id": "node-vca-igg",
-                      "text": "Anti-VCA IgG (Past Exposure)",
+                      "text": "Anti-VCA IgG: Lifelong Marker",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ea",
+                      "text": "Anti-EA: Active Replication",
+                      "level": 5,
+                      "high_yield": false
                     },
                     {
                       "id": "node-ebna",
-                      "text": "Anti-EBNA (Late Convalescence)",
+                      "text": "Anti-EBNA: Convalescent Marker",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-ebv-diag-rule",
-                      "text": "Anti-VCA IgM(+) & Anti-EBNA(-)",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-hetero-neg-mono",
+              "id": "node-heterophile-neg",
               "text": "Heterophile-Negative Syndromes",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-cmv",
-                  "text": "Cytomegalovirus (CMV)",
+                  "id": "node-hetneg-cmv",
+                  "text": "Cytomegalovirus (Most Common)",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-toxo",
+                  "id": "node-hetneg-toxo",
                   "text": "Toxoplasma gondii",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 },
                 {
-                  "id": "node-acute-hiv",
+                  "id": "node-hetneg-hiv",
                   "text": "Acute HIV Seroconversion",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-lymphopenia",
-          "text": "Lymphocytopenia & Immunodeficiency",
+          "id": "sub-lymph-pertussis",
+          "text": "Bordetella pertussis Lymphocytosis",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-lymphopenia-def",
-              "text": "Adult Cutoff (< 1.0x10^3/\u00b5L)",
-              "level": 3,
-              "high_yield": true,
-              "children": []
-            },
-            {
-              "id": "node-hiv-aids",
-              "text": "HIV / AIDS",
+              "id": "node-pert-ptx",
+              "text": "Pertussis Toxin (PTx) Mechanism",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-hiv-entry",
-                  "text": "gp120 to CD4 Receptor",
+                  "id": "node-ptx-ribosylation",
+                  "text": "ADP-Ribosylation of Gai Proteins",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-hiv-coreceptor",
-                  "text": "CXCR4 and CCR5 Co-Receptors",
+                  "id": "node-ptx-chemokine",
+                  "text": "Inactivates CXCR4 and CCR7",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-cd4-cd8-ratio",
-                  "text": "Inverted CD4:CD8 Ratio (< 1.0)",
+                  "id": "node-ptx-extravasation",
+                  "text": "Blocks Lymphocyte Tissue Homing",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-ptx-trapping",
+                  "text": "Intravascular Mechanical Trapping",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-pert-morph",
+              "text": "Buttock Cell Smear Morphology",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-buttock-size",
+                  "text": "Small Mature Lymphocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-buttock-cleft",
+                  "text": "Deep Clefts and Grooves",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-buttock-no-rx",
+                  "text": "Lacks Toxic/Reactive Features",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-buttock-count",
+                  "text": "WBC 30.0-100.0x10^3/uL",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-pert-diff-cll",
+              "text": "Differentiation from CLL",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-cll-age",
+                  "text": "CLL: Older Adults (>60)",
+                  "level": 4,
+                  "high_yield": false
+                },
+                {
+                  "id": "node-cll-smudge",
+                  "text": "CLL: Prominent Smudge Cells",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-cll-clonality",
+                  "text": "CLL: Monoclonal B-Cells",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-lymph-deficiencies",
+          "text": "Lymphocyte Deficiencies & Flow Cytometry",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-def-hiv",
+              "text": "HIV / AIDS Immunodeficiency",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-hiv-target",
+                  "text": "gp120 Binds CD4 Receptor",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-hiv-depletion",
+                  "text": "Selective CD4+ T-Cell Depletion",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-hiv-ratio",
+                  "text": "CD4:CD8 Ratio Inversion",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-cd4-normal-ratio",
-                      "text": "Normal Ratio (~2:1)",
+                      "id": "node-ratio-normal",
+                      "text": "Normal Ratio 2:1",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-ratio-inverted",
+                      "text": "Inverted Ratio <1.0",
+                      "level": 5,
+                      "high_yield": true
                     }
                   ]
                 },
                 {
-                  "id": "node-aids-criteria",
-                  "text": "AIDS Diagnostic Threshold",
+                  "id": "node-aids-cutoff",
+                  "text": "AIDS Absolute CD4 <200/uL",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-cd4-formula",
+                  "text": "Absolute CD4 Calculation Formula",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-cd4-abs-thresh",
-                      "text": "CD4 < 200/\u00b5L",
+                      "id": "node-cd4-calc",
+                      "text": "WBC x %Lymphs x %CD4",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
+                    }
+                  ]
+                },
+                {
+                  "id": "node-flow-qc",
+                  "text": "Flow Gating Quality Control",
+                  "level": 4,
+                  "high_yield": true,
+                  "children": [
+                    {
+                      "id": "node-flow-gate",
+                      "text": "CD45 Bright vs Low SSC",
+                      "level": 5,
+                      "high_yield": true
                     },
                     {
-                      "id": "node-cd4-rel-thresh",
-                      "text": "CD4 < 14%",
+                      "id": "node-flow-purity",
+                      "text": "Lymphocyte Purity >95%",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-flow-mono-contam",
+                      "text": "Exclude CD4-Dim Monocytes",
+                      "level": 5,
+                      "high_yield": true
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "node-primary-immunodef",
+              "id": "node-def-congenital",
               "text": "Congenital Immunodeficiencies",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-digeorge",
+                  "id": "node-cong-digeorge",
                   "text": "DiGeorge Syndrome",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
-                      "id": "node-dg-genetic",
+                      "id": "node-dg-deletion",
                       "text": "22q11.2 Microdeletion",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
                       "id": "node-dg-thymus",
-                      "text": "Thymic Hypoplasia/Aplasia",
+                      "text": "Thymic Hypoplasia / Aplasia",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-dg-tcell",
-                      "text": "Profound T-Cell Deficiency",
+                      "id": "node-dg-pan-t",
+                      "text": "Decreased / Absent T-Cells",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
+                      "high_yield": true
                     },
                     {
-                      "id": "node-dg-hypocalc",
-                      "text": "Hypocalcemia and Tetany",
+                      "id": "node-dg-calcium",
+                      "text": "Hypocalcemia and Cardiac Defects",
                       "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": false
                     }
                   ]
                 },
                 {
-                  "id": "node-wiskott-aldrich",
+                  "id": "node-cong-was",
                   "text": "Wiskott-Aldrich Syndrome",
                   "level": 4,
                   "high_yield": true,
                   "children": [
                     {
                       "id": "node-was-gene",
-                      "text": "WASP Gene Mutation",
+                      "text": "X-Linked WAS Gene Mutation",
                       "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-was-actin",
-                      "text": "Actin Cytoskeleton Defect",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
+                      "high_yield": true
                     },
                     {
                       "id": "node-was-triad",
-                      "text": "WAS Diagnostic Triad",
+                      "text": "Diagnostic Clinical Triad",
                       "level": 5,
                       "high_yield": true,
                       "children": [
                         {
                           "id": "node-was-microthromb",
-                          "text": "Micro-thrombocytopenia (Low MPV)",
+                          "text": "Microthrombocytopenia (Small Platelets)",
                           "level": 6,
-                          "high_yield": true,
-                          "children": []
+                          "high_yield": true
                         },
                         {
                           "id": "node-was-eczema",
-                          "text": "Severe Eczema",
+                          "text": "Refractory Severe Eczema",
                           "level": 6,
-                          "high_yield": false,
-                          "children": []
+                          "high_yield": false
                         },
                         {
-                          "id": "node-was-infections",
+                          "id": "node-was-infection",
                           "text": "Recurrent Pyogenic Infections",
                           "level": 6,
-                          "high_yield": false,
-                          "children": []
+                          "high_yield": false
                         }
                       ]
+                    },
+                    {
+                      "id": "node-was-low-mpv",
+                      "text": "Extremely Low MPV (3-5 fL)",
+                      "level": 5,
+                      "high_yield": true
+                    },
+                    {
+                      "id": "node-was-lymphopenia",
+                      "text": "Progressive Absolute Lymphocytopenia",
+                      "level": 5,
+                      "high_yield": false
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "node-steroid-lymphopenia",
-              "text": "Corticosteroid Effects",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-steroid-redist",
-                  "text": "Lymphocyte Tissue Sequestration",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "node-steroid-pair",
-                  "text": "Neutrophilia Paired with Lymphopenia",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
                 }
               ]
             }
@@ -2337,299 +2515,238 @@
       ]
     },
     {
-      "id": "sec-mono-other",
-      "text": "Storage Diseases & Other Variations",
+      "id": "sec-mononuclear",
+      "text": "Mononuclear & Storage Disorders",
       "level": 1,
       "high_yield": true,
       "children": [
         {
-          "id": "sub-storage-diseases",
-          "text": "Lysosomal Storage Diseases",
+          "id": "sub-myeloid-secondary",
+          "text": "Secondary Myeloid Alterations",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-gaucher",
-              "text": "Gaucher Disease",
+              "id": "node-mono-reactive",
+              "text": "Monocytosis",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-gaucher-enzyme",
-                  "text": "Beta-Glucocerebrosidase Deficiency",
+                  "id": "node-mono-cutoff",
+                  "text": "Count > 1.3x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-gaucher-sub",
-                  "text": "Glucocerebroside Accumulation",
+                  "id": "node-mono-causes",
+                  "text": "Tuberculosis, SBE, Marrow Recovery",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-gaucher-morph",
-                  "text": "Wrinkled Tissue Paper Cytoplasm",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-gaucher-trap",
-                  "text": "TRAP Stain Positive",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-gaucher-bone",
-                  "text": "Erlenmeyer Flask Deformity",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "node-niemann-pick",
-              "text": "Niemann-Pick Disease",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-np-enzyme",
-                  "text": "Acid Sphingomyelinase Deficiency",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-np-sub",
-                  "text": "Sphingomyelin Accumulation",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-np-morph",
-                  "text": "Foamy Bubbly Cytoplasm",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-np-cherry",
-                  "text": "Macular Cherry-Red Spot",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-pseudo-gaucher",
-              "text": "Pseudo-Gaucher Cells",
-              "level": 3,
-              "high_yield": true,
-              "children": [
-                {
-                  "id": "node-pg-cause",
-                  "text": "Massive Cellular Turnover",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "node-pg-assoc",
-                  "text": "Associated with CML/Thalassemia",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-pg-normal-enz",
-                  "text": "Enzyme Activity Normal",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "sub-eos-baso",
-          "text": "Eosinophil & Basophil Variations",
-          "level": 2,
-          "high_yield": true,
-          "children": [
-            {
-              "id": "node-eosinophils",
+              "id": "node-eos-reactive",
               "text": "Eosinophilia",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-eos-ref",
-                  "text": "Abs Ref (0-0.3x10^3/\u00b5L)",
+                  "id": "node-eos-cutoff",
+                  "text": "Count > 0.3x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
-                },
-                {
-                  "id": "node-eos-mediator",
-                  "text": "IL-5 Th2 Mediation",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
                   "id": "node-eos-causes",
-                  "text": "Common Causes",
+                  "text": "Allergies and Helminth Infections",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "node-eos-parasites",
-                      "text": "Tissue-Invasive Helminths",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    },
-                    {
-                      "id": "node-eos-allergies",
-                      "text": "Allergies and Asthma",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    },
-                    {
-                      "id": "node-eos-dress",
-                      "text": "DRESS Syndrome",
-                      "level": 5,
-                      "high_yield": false,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": true
                 },
                 {
-                  "id": "node-eos-gran-tox",
-                  "text": "Major Basic Protein (MBP)",
+                  "id": "node-eos-proteins",
+                  "text": "Major Basic Protein Release",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "node-basophils",
+              "id": "node-baso-reactive",
               "text": "Basophilia",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-baso-ref",
-                  "text": "Abs Ref (0-0.2x10^3/\u00b5L)",
+                  "id": "node-baso-cutoff",
+                  "text": "Count > 0.2x10^3/uL",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-baso-fce",
-                  "text": "Fc-epsilon-RI Crosslinking",
+                  "id": "node-baso-malignant",
+                  "text": "Count >1.0 Suggests Neoplasm",
                   "level": 4,
-                  "high_yield": false,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-baso-cml",
-                  "text": "Persistent Basophilia Flags CML",
+                  "id": "node-baso-mpn",
+                  "text": "Hallmark Marker of CML",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 }
               ]
             }
           ]
         },
         {
-          "id": "sub-bench-qa",
-          "text": "Bench Technical Performance",
+          "id": "sub-storage-diseases",
+          "text": "Lysosomal Lipidoses",
           "level": 2,
           "high_yield": true,
           "children": [
             {
-              "id": "node-qa-edta-clump",
-              "text": "EDTA Leukoagglutination",
+              "id": "node-storage-gaucher",
+              "text": "Gaucher Disease",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-edta-wbc-drop",
-                  "text": "Falsely Depressed WBC/ANC",
+                  "id": "node-gd-enzyme",
+                  "text": "Acid Beta-Glucosidase Deficiency",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-edta-remedy",
-                  "text": "Recollect in Sodium Citrate",
+                  "id": "node-gd-substrate",
+                  "text": "Glucocerebroside Accumulation",
                   "level": 4,
-                  "high_yield": true,
-                  "children": [
-                    {
-                      "id": "node-citrate-mult",
-                      "text": "Multiply Count by 1.1",
-                      "level": 5,
-                      "high_yield": true,
-                      "children": []
-                    }
-                  ]
+                  "high_yield": true
+                },
+                {
+                  "id": "node-gd-morph",
+                  "text": "Wrinkled Tissue Paper Macrophages",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-gd-stains",
+                  "text": "PAS & TRAP Positive",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-gd-clinical",
+                  "text": "Erlenmeyer Deformity & Hepatosplenomegaly",
+                  "level": 4,
+                  "high_yield": false
                 }
               ]
             },
             {
-              "id": "node-qa-aging",
-              "text": "Smear Preparation Delay",
-              "level": 3,
-              "high_yield": false,
-              "children": [
-                {
-                  "id": "node-aging-artifact",
-                  "text": "In Vitro Artifactual Vacuolation",
-                  "level": 4,
-                  "high_yield": false,
-                  "children": []
-                },
-                {
-                  "id": "node-aging-window",
-                  "text": "Prepare Within 2-4 Hours",
-                  "level": 4,
-                  "high_yield": true,
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "node-qa-cold-aggl",
-              "text": "Cold Agglutinin Interference",
+              "id": "node-storage-npd",
+              "text": "Niemann-Pick Disease",
               "level": 3,
               "high_yield": true,
               "children": [
                 {
-                  "id": "node-cold-flag",
-                  "text": "Spurious MCHC > 36 g/dL",
+                  "id": "node-npd-enzyme",
+                  "text": "Acid Sphingomyelinase Deficiency",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
                 },
                 {
-                  "id": "node-cold-warm",
-                  "text": "Incubate at 37\u00b0C",
+                  "id": "node-npd-substrate",
+                  "text": "Sphingomyelin Accumulation",
                   "level": 4,
-                  "high_yield": true,
-                  "children": []
+                  "high_yield": true
+                },
+                {
+                  "id": "node-npd-morph",
+                  "text": "Foamy Soap-Bubble Histiocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-npd-stains",
+                  "text": "Sudan Black & Oil-Red-O+",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-npd-clinical",
+                  "text": "Retinal Cherry-Red Spot",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sub-diagnostic-cases",
+          "text": "Case Correlations & Calculations",
+          "level": 2,
+          "high_yield": true,
+          "children": [
+            {
+              "id": "node-case-pancytopenia",
+              "text": "Agranulocytosis Case Evaluation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-case-anc-calc",
+                  "text": "ANC = WBC x (%Segs+%Bands)",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-case-anc-crit",
+                  "text": "ANC <500/uL Critical Call",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-case-leukoerythro",
+              "text": "Leukoerythroblastosis Case Evaluation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-case-corr-calc",
+                  "text": "WBC x [100/(100+nRBC)]",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-case-lap-eval",
+                  "text": "LAP >100 Excludes CML",
+                  "level": 4,
+                  "high_yield": true
+                }
+              ]
+            },
+            {
+              "id": "node-case-mono",
+              "text": "Mononucleosis Case Evaluation",
+              "level": 3,
+              "high_yield": true,
+              "children": [
+                {
+                  "id": "node-case-alc-calc",
+                  "text": "ALC = WBC x %Lymphocytes",
+                  "level": 4,
+                  "high_yield": true
+                },
+                {
+                  "id": "node-case-downey-smear",
+                  "text": "Confirm >20% Downey Forms",
+                  "level": 4,
+                  "high_yield": true
                 }
               ]
             }
