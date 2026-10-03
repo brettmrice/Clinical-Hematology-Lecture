@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide Preparation | Complete Discussion</title>
+    <title>Slide Prep | Complete Discussion</title>
     
     <!-- GitHub Flavored Markdown CSS Baseline -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
@@ -224,48 +224,59 @@
             flex-direction: column;
         }
 
-        /* Floating Top-Right Controls inside Modal Container */
-        .flowchart-modal-top-card {
+        /* Floating Bottom-Center Controls inside Modal Container */
+        .flowchart-modal-bottom-card {
             position: absolute;
-            top: 14px;
-            right: 16px;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 100;
             display: inline-flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 4px;
-            padding: 5px;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 10px;
+            width: fit-content;
+            max-width: calc(100% - 32px);
             background: var(--color-canvas-default);
             border: 1px solid var(--color-border-default);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
             user-select: none;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             box-sizing: border-box;
-            width: 92px;
         }
 
-        .flowchart-modal-top-card:hover {
+        .flowchart-modal-bottom-card:hover {
             border-color: #0969da;
-            box-shadow: 0 4px 14px rgba(9, 105, 218, 0.2);
+            box-shadow: 0 4px 16px rgba(9, 105, 218, 0.2);
         }
 
         .flowchart-modal-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .flowchart-modal-actions .flowchart-btn-inline,
         .flowchart-modal-actions .flowchart-btn-collapse {
-            width: 100%;
-            box-sizing: border-box;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+            border: 1px solid;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
+            gap: 5px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            line-height: 1;
+            min-width: 80px;
+            box-sizing: border-box;
             text-align: center;
-            padding: 4px 0;
         }
 
         .mermaid-modal-body {
@@ -830,47 +841,59 @@
             flex-direction: column;
         }
 
-        .table-modal-top-card {
+        /* Floating Bottom-Center Controls inside Modal Container */
+        .table-modal-bottom-card {
             position: absolute;
-            top: 14px;
-            right: 16px;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 100;
             display: inline-flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 4px;
-            padding: 5px;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 10px;
+            width: fit-content;
+            max-width: calc(100% - 32px);
             background: var(--color-canvas-default);
             border: 1px solid var(--color-border-default);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
             user-select: none;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             box-sizing: border-box;
-            width: 92px;
         }
 
-        .table-modal-top-card:hover {
+        .table-modal-bottom-card:hover {
             border-color: #0969da;
-            box-shadow: 0 4px 14px rgba(9, 105, 218, 0.2);
+            box-shadow: 0 4px 16px rgba(9, 105, 218, 0.2);
         }
 
         .table-modal-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .table-modal-actions .table-btn-inline,
         .table-modal-actions .table-btn-collapse {
-            width: 100%;
-            box-sizing: border-box;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+            border: 1px solid;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
+            gap: 5px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            line-height: 1;
+            min-width: 80px;
+            box-sizing: border-box;
             text-align: center;
-            padding: 4px 0;
         }
 
         .table-modal-body {
@@ -1412,12 +1435,12 @@
                 color: #ffffff;
                 border-color: #d97706;
             }
-            .flowchart-modal-top-card {
+            .flowchart-modal-bottom-card {
                 background: rgba(22, 27, 34, 0.85);
                 border-color: #30363d;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
             }
-            .flowchart-modal-top-card:hover {
+            .flowchart-modal-bottom-card:hover {
                 border-color: #58a6ff;
                 box-shadow: 0 4px 14px rgba(88, 166, 255, 0.25);
             }
@@ -1527,12 +1550,12 @@
                 color: #ffffff;
                 border-color: #d97706;
             }
-            .table-modal-top-card {
+            .table-modal-bottom-card {
                 background: rgba(22, 27, 34, 0.85);
                 border-color: #30363d;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
             }
-            .table-modal-top-card:hover {
+            .table-modal-bottom-card:hover {
                 border-color: #58a6ff;
                 box-shadow: 0 4px 14px rgba(88, 166, 255, 0.25);
             }
@@ -1649,12 +1672,12 @@
                 color: #ffffff;
                 border-color: #d97706;
             }
-            .graphic-modal-top-card {
+            .graphic-modal-bottom-card {
                 background: rgba(22, 27, 34, 0.85);
                 border-color: #30363d;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
             }
-            .graphic-modal-top-card:hover {
+            .graphic-modal-bottom-card:hover {
                 border-color: #58a6ff;
                 box-shadow: 0 4px 14px rgba(88, 166, 255, 0.25);
             }
@@ -1989,47 +2012,59 @@
             flex-direction: column;
         }
 
-        .graphic-modal-top-card {
+        /* Floating Bottom-Center Controls inside Modal Container */
+        .graphic-modal-bottom-card {
             position: absolute;
-            top: 14px;
-            right: 16px;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 100;
             display: inline-flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 4px;
-            padding: 5px;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 10px;
+            width: fit-content;
+            max-width: calc(100% - 32px);
             background: var(--color-canvas-default);
             border: 1px solid var(--color-border-default);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
             user-select: none;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             box-sizing: border-box;
-            width: 92px;
         }
 
-        .graphic-modal-top-card:hover {
+        .graphic-modal-bottom-card:hover {
             border-color: #0969da;
-            box-shadow: 0 4px 14px rgba(9, 105, 218, 0.2);
+            box-shadow: 0 4px 16px rgba(9, 105, 218, 0.2);
         }
 
         .graphic-modal-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .graphic-modal-actions .graphic-btn-inline,
         .graphic-modal-actions .graphic-btn-collapse {
-            width: 100%;
-            box-sizing: border-box;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+            border: 1px solid;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
+            gap: 5px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            line-height: 1;
+            min-width: 80px;
+            box-sizing: border-box;
             text-align: center;
-            padding: 4px 0;
         }
 
         .graphic-modal-body {
@@ -2069,6 +2104,492 @@
             max-width: none !important;
             max-height: none !important;
         }
+
+        /* ==========================================================================
+           Discussion Cards & Action Buttons: Warm Cream / Slate Theme Styling
+           ========================================================================== */
+
+        /* 1. Base Card Container (Light Mode - Inactive / Collapsed Default) */
+        .flowchart-header-card,
+        .flowchart-preview-card,
+        .table-header-card,
+        .table-preview-card,
+        .formula-header-card,
+        .formula-preview-card,
+        .graphic-header-card,
+        .graphic-preview-card {
+            background: rgba(175, 184, 193, 0.08) !important;
+            border: 1px solid var(--color-border-default, #D0D7DE) !important;
+            color: var(--color-fg-default, #24292F) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        /* 2. Mini-Graphic Container (Keeps light background in light mode, dark in dark mode) */
+        .flowchart-mini-graphic,
+        .table-mini-graphic,
+        .formula-mini-graphic,
+        .graphic-mini-graphic,
+        .media-global-graphic {
+            background: #FFFFFF !important;
+            border: 1px solid #D0D7DE !important;
+            border-radius: 6px !important;
+            padding: 2px 6px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s ease !important;
+        }
+
+        /* 3. Inactive State Mini-Graphic Shapes (Light Mode - Collapsed & Not Hovered) */
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-start,
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-decision,
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-proc1,
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-proc2 {
+            fill: rgba(175, 184, 193, 0.16) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-line {
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-arrow {
+            fill: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-outer,
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-hdr,
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-row1 {
+            fill: rgba(175, 184, 193, 0.16) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-line {
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-shape-outer {
+            fill: rgba(175, 184, 193, 0.1) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-text {
+            fill: var(--color-modal-title-fg, #57606A) !important;
+        }
+
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-outer {
+            fill: rgba(175, 184, 193, 0.1) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+            fill: var(--color-border-default, #D0D7DE) !important;
+        }
+
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+            stroke: var(--color-border-default, #D0D7DE) !important;
+            fill: none !important;
+        }
+
+        /* 4. Active / Hovered Mini-Graphic Theme Shapes (Light Mode) */
+        .fc-shape-start    { fill: #EFE1CE !important; stroke: #363945 !important; stroke-width: 1.5; }
+        .fc-shape-decision { fill: #FEF3C7 !important; stroke: #D97706 !important; stroke-width: 1.5; }
+        .fc-shape-proc1    { fill: #E0E7FF !important; stroke: #4F46E5 !important; stroke-width: 1.5; }
+        .fc-shape-proc2    { fill: #F3E8FF !important; stroke: #7C3AED !important; stroke-width: 1.5; }
+        .fc-line           { stroke: #64748B !important; stroke-width: 1.5; }
+        .fc-arrow          { fill: #64748B !important; }
+
+        .tbl-shape-outer   { fill: #FFFFFF !important; stroke: #94A3B8 !important; stroke-width: 1.5; }
+        .tbl-shape-hdr     { fill: #EFE1CE !important; stroke: #363945 !important; stroke-width: 1.5; }
+        .tbl-shape-row1    { fill: #FEF3C7 !important; stroke: #D97706 !important; stroke-width: 1.5; }
+        .tbl-line          { stroke: #94A3B8 !important; stroke-width: 1.2; }
+
+        .fml-shape-outer   { fill: #FFFFFF !important; stroke: #94A3B8 !important; stroke-width: 1.5; }
+        .fml-text          { fill: #363945 !important; font-weight: 700; }
+
+        .grp-shape-outer   { fill: #FFFFFF !important; stroke: #94A3B8 !important; stroke-width: 1.5; }
+        .grp-shape-sun     { fill: #D97706 !important; }
+        .grp-shape-mountain{ stroke: #363945 !important; stroke-width: 2; fill: none; }
+        .grp-shape-axis    { stroke: #94A3B8 !important; stroke-width: 1.5; }
+        .grp-shape-curve   { stroke: #363945 !important; stroke-width: 2; fill: none; }
+        .grp-shape-dot     { fill: #D97706 !important; }
+
+        /* 5. Action Buttons (Base Pill Style) */
+        .flowchart-btn-inline,
+        .flowchart-btn-full,
+        .flowchart-btn-collapse,
+        .table-btn-inline,
+        .table-btn-full,
+        .table-btn-collapse,
+        .formula-btn-inline,
+        .formula-btn-full,
+        .formula-btn-collapse,
+        .graphic-btn-inline,
+        .graphic-btn-full,
+        .graphic-btn-collapse,
+        .media-global-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+            font-size: 11.5px !important;
+            font-weight: 600 !important;
+            padding: 3px 8px !important;
+            border-radius: 6px !important;
+            background: #FFFFFF !important;
+            color: #363945 !important;
+            border: 1px solid #D0D7DE !important;
+            cursor: pointer !important;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        /* Inactive Subtle Outline for Action Buttons */
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .flowchart-btn-inline,
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .flowchart-btn-full,
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .table-btn-inline,
+        .table-wrapper.is-collapsed .table-header-card:not(:hover) .table-btn-full,
+        .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .formula-btn-inline,
+        .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .formula-btn-full,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .graphic-btn-inline,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .graphic-btn-full {
+            background: rgba(175, 184, 193, 0.1) !important;
+            color: var(--color-modal-title-fg, #57606A) !important;
+            border-color: var(--color-border-default, #D0D7DE) !important;
+            box-shadow: none !important;
+        }
+
+        /* 6. Card Hover / Active State (Light Mode: Warm Cream Background & Slate Border) */
+        .flowchart-header-card:hover,
+        .flowchart-preview-card:hover,
+        .table-header-card:hover,
+        .table-preview-card:hover,
+        .formula-header-card:hover,
+        .formula-preview-card:hover,
+        .graphic-header-card:hover,
+        .graphic-preview-card:hover,
+        .flowchart-modal-bottom-card,
+        .table-modal-bottom-card,
+        .graphic-modal-bottom-card,
+        .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+        .table-wrapper:not(.is-collapsed) .table-header-card,
+        .formula-wrapper:not(.is-collapsed) .formula-header-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+            background: #EFE1CE !important;
+            border-color: #363945 !important;
+            color: #363945 !important;
+            box-shadow: 0 4px 14px rgba(54, 57, 69, 0.16) !important;
+        }
+
+        .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+        .table-wrapper:not(.is-collapsed) .table-header-card,
+        .formula-wrapper:not(.is-collapsed) .formula-header-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+            position: sticky !important;
+            bottom: 12px !important;
+            z-index: 30 !important;
+        }
+
+        /* 7. Button Hover State & Card-Hover Sync (Light Mode: Inverts Button to Dark Slate with Cream Text) */
+        .flowchart-btn-inline:hover,
+        .flowchart-btn-full:hover,
+        .flowchart-btn-collapse:hover,
+        .table-btn-inline:hover,
+        .table-btn-full:hover,
+        .table-btn-collapse:hover,
+        .formula-btn-inline:hover,
+        .formula-btn-full:hover,
+        .formula-btn-collapse:hover,
+        .graphic-btn-inline:hover,
+        .graphic-btn-full:hover,
+        .graphic-btn-collapse:hover,
+        .media-global-btn:hover,
+        .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:has(.flowchart-btn-full:hover)):hover .flowchart-btn-inline,
+        .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card:not(:has(.flowchart-btn-full:hover)):hover .flowchart-btn-collapse,
+        .table-wrapper.is-collapsed .table-header-card:not(:has(.table-btn-full:hover)):hover .table-btn-inline,
+        .table-wrapper:not(.is-collapsed) .table-header-card:not(:has(.table-btn-full:hover)):hover .table-btn-collapse,
+        .formula-wrapper.is-collapsed .formula-header-card:not(:has(.formula-btn-full:hover)):hover .formula-btn-inline,
+        .formula-wrapper:not(.is-collapsed) .formula-header-card:not(:has(.formula-btn-full:hover)):hover .formula-btn-collapse,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:has(.graphic-btn-full:hover)):hover .graphic-btn-inline,
+        .graphic-wrapper:not(.is-collapsed) .graphic-header-card:not(:has(.graphic-btn-full:hover)):hover .graphic-btn-collapse,
+        .flowchart-modal-bottom-card:not(:has(.flowchart-btn-collapse:hover)):hover .flowchart-btn-inline,
+        .table-modal-bottom-card:not(:has(.table-btn-collapse:hover)):hover .table-btn-inline,
+        .graphic-modal-bottom-card:not(:has(.graphic-btn-collapse:hover)):hover .graphic-btn-inline {
+            background: #363945 !important;
+            border-color: #363945 !important;
+            color: #EFE1CE !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        /* 7b. Explicitly ensure inactive buttons match clean style when another button is hovered */
+        .flowchart-modal-bottom-card:has(.flowchart-btn-collapse:hover) .flowchart-btn-inline,
+        .flowchart-modal-bottom-card:has(.flowchart-btn-inline:hover) .flowchart-btn-collapse,
+        .table-modal-bottom-card:has(.table-btn-collapse:hover) .table-btn-inline,
+        .table-modal-bottom-card:has(.table-btn-inline:hover) .table-btn-collapse,
+        .graphic-modal-bottom-card:has(.graphic-btn-collapse:hover) .graphic-btn-inline,
+        .graphic-modal-bottom-card:has(.graphic-btn-inline:hover) .graphic-btn-collapse,
+        .flowchart-wrapper .flowchart-header-card:has(.flowchart-btn-full:hover) .flowchart-btn-inline,
+        .flowchart-wrapper .flowchart-header-card:has(.flowchart-btn-full:hover) .flowchart-btn-collapse,
+        .flowchart-wrapper .flowchart-preview-card:has(.flowchart-btn-full:hover) .flowchart-btn-inline,
+        .flowchart-wrapper .flowchart-preview-card:has(.flowchart-btn-full:hover) .flowchart-btn-collapse,
+        .table-wrapper .table-header-card:has(.table-btn-full:hover) .table-btn-inline,
+        .table-wrapper .table-header-card:has(.table-btn-full:hover) .table-btn-collapse,
+        .table-wrapper .table-preview-card:has(.table-btn-full:hover) .table-btn-inline,
+        .table-wrapper .table-preview-card:has(.table-btn-full:hover) .table-btn-collapse,
+        .formula-wrapper .formula-header-card:has(.formula-btn-full:hover) .formula-btn-inline,
+        .formula-wrapper .formula-header-card:has(.formula-btn-full:hover) .formula-btn-collapse,
+        .formula-wrapper .formula-preview-card:has(.formula-btn-full:hover) .formula-btn-inline,
+        .formula-wrapper .formula-preview-card:has(.formula-btn-full:hover) .formula-btn-collapse,
+        .graphic-wrapper .graphic-header-card:has(.graphic-btn-full:hover) .graphic-btn-inline,
+        .graphic-wrapper .graphic-header-card:has(.graphic-btn-full:hover) .graphic-btn-collapse,
+        .graphic-wrapper .graphic-preview-card:has(.graphic-btn-full:hover) .graphic-btn-inline,
+        .graphic-wrapper .graphic-preview-card:has(.graphic-btn-full:hover) .graphic-btn-collapse {
+            background: #FFFFFF !important;
+            border: 1px solid #D0D7DE !important;
+            color: #363945 !important;
+            box-shadow: none !important;
+        }
+
+        /* 8. Global Media Dock */
+        .media-global-section {
+            background: rgba(175, 184, 193, 0.08) !important;
+            border: 1px solid var(--color-border-default, #D0D7DE) !important;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(54, 57, 69, 0.08) !important;
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .media-global-section:hover {
+            background: #EFE1CE !important;
+            border-color: #363945 !important;
+            box-shadow: 0 4px 14px rgba(54, 57, 69, 0.16) !important;
+        }
+
+        /* ==========================================================================
+           Dark Mode Overrides
+           ========================================================================== */
+        @media (prefers-color-scheme: dark) {
+            .flowchart-header-card,
+            .flowchart-preview-card,
+            .table-header-card,
+            .table-preview-card,
+            .formula-header-card,
+            .formula-preview-card,
+            .graphic-header-card,
+            .graphic-preview-card {
+                background: rgba(110, 118, 129, 0.1) !important;
+                border-color: #30363D !important;
+                color: #8B949E !important;
+                box-shadow: none !important;
+            }
+
+            .flowchart-mini-graphic,
+            .table-mini-graphic,
+            .formula-mini-graphic,
+            .graphic-mini-graphic,
+            .media-global-graphic {
+                background: #161B22 !important;
+                border-color: #30363D !important;
+            }
+
+            /* Inactive Dark Mode Shapes */
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-start,
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-decision,
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-proc1,
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-shape-proc2,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-outer,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-hdr,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-shape-row1,
+            .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-shape-outer,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-outer {
+                fill: rgba(110, 118, 129, 0.15) !important;
+                stroke: #30363D !important;
+            }
+
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-line,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-line,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+                stroke: #484F58 !important;
+            }
+
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-arrow,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+                fill: #484F58 !important;
+            }
+
+            .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-text {
+                fill: #8B949E !important;
+            }
+
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .flowchart-btn-inline,
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .flowchart-btn-full,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .table-btn-inline,
+            .table-wrapper.is-collapsed .table-header-card:not(:hover) .table-btn-full,
+            .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .formula-btn-inline,
+            .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .formula-btn-full,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .graphic-btn-inline,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .graphic-btn-full {
+                background: #21262D !important;
+                color: #8B949E !important;
+                border-color: #30363D !important;
+            }
+
+            /* Dark Mode Hover / Active Card */
+            .flowchart-header-card:hover,
+            .flowchart-preview-card:hover,
+            .table-header-card:hover,
+            .table-preview-card:hover,
+            .formula-header-card:hover,
+            .formula-preview-card:hover,
+            .graphic-header-card:hover,
+            .graphic-preview-card:hover,
+            .flowchart-modal-bottom-card,
+            .table-modal-bottom-card,
+            .graphic-modal-bottom-card,
+            .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+            .table-wrapper:not(.is-collapsed) .table-header-card,
+            .formula-wrapper:not(.is-collapsed) .formula-header-card,
+            .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+                background: #22242D !important;
+                border-color: #EFE1CE !important;
+                color: #EFE1CE !important;
+                box-shadow: 0 4px 16px rgba(239, 225, 206, 0.35) !important;
+            }
+
+            /* Dark Mode Vibrant Shapes */
+            .fc-shape-start    { fill: #333745 !important; stroke: #EFE1CE !important; }
+            .fc-shape-decision { fill: #78350F !important; stroke: #FBBF24 !important; }
+            .fc-shape-proc1    { fill: #312E81 !important; stroke: #818CF8 !important; }
+            .fc-shape-proc2    { fill: #581C87 !important; stroke: #C084FC !important; }
+            .fc-line           { stroke: #8B949E !important; }
+            .fc-arrow          { fill: #8B949E !important; }
+
+            .tbl-shape-outer   { fill: #161B22 !important; stroke: #30363D !important; }
+            .tbl-shape-hdr     { fill: #333745 !important; stroke: #EFE1CE !important; }
+            .tbl-shape-row1    { fill: #78350F !important; stroke: #FBBF24 !important; }
+            .tbl-line          { stroke: #6E7681 !important; }
+
+            .fml-shape-outer   { fill: #161B22 !important; stroke: #30363D !important; }
+            .fml-text          { fill: #EFE1CE !important; }
+
+            .grp-shape-outer   { fill: #161B22 !important; stroke: #30363D !important; }
+            .grp-shape-sun     { fill: #FBBF24 !important; }
+            .grp-shape-mountain{ stroke: #EFE1CE !important; }
+            .grp-shape-axis    { stroke: #6E7681 !important; }
+            .grp-shape-curve   { stroke: #EFE1CE !important; }
+            .grp-shape-dot     { fill: #FBBF24 !important; }
+
+            .flowchart-btn-inline,
+            .flowchart-btn-full,
+            .flowchart-btn-collapse,
+            .table-btn-inline,
+            .table-btn-full,
+            .table-btn-collapse,
+            .formula-btn-inline,
+            .formula-btn-full,
+            .formula-btn-collapse,
+            .graphic-btn-inline,
+            .graphic-btn-full,
+            .graphic-btn-collapse,
+            .media-global-btn {
+                background: #161B22 !important;
+                border-color: #30363D !important;
+                color: #EFE1CE !important;
+            }
+
+            .flowchart-btn-inline:hover,
+            .flowchart-btn-full:hover,
+            .flowchart-btn-collapse:hover,
+            .table-btn-inline:hover,
+            .table-btn-full:hover,
+            .table-btn-collapse:hover,
+            .formula-btn-inline:hover,
+            .formula-btn-full:hover,
+            .formula-btn-collapse:hover,
+            .graphic-btn-inline:hover,
+            .graphic-btn-full:hover,
+            .graphic-btn-collapse:hover,
+            .media-global-btn:hover,
+            .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:has(.flowchart-btn-full:hover)):hover .flowchart-btn-inline,
+            .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card:not(:has(.flowchart-btn-full:hover)):hover .flowchart-btn-collapse,
+            .table-wrapper.is-collapsed .table-header-card:not(:has(.table-btn-full:hover)):hover .table-btn-inline,
+            .table-wrapper:not(.is-collapsed) .table-header-card:not(:has(.table-btn-full:hover)):hover .table-btn-collapse,
+            .formula-wrapper.is-collapsed .formula-header-card:not(:has(.formula-btn-full:hover)):hover .formula-btn-inline,
+            .formula-wrapper:not(.is-collapsed) .formula-header-card:not(:has(.formula-btn-full:hover)):hover .formula-btn-collapse,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:has(.graphic-btn-full:hover)):hover .graphic-btn-inline,
+            .graphic-wrapper:not(.is-collapsed) .graphic-header-card:not(:has(.graphic-btn-full:hover)):hover .graphic-btn-collapse,
+            .flowchart-modal-bottom-card:not(:has(.flowchart-btn-collapse:hover)):hover .flowchart-btn-inline,
+            .table-modal-bottom-card:not(:has(.table-btn-collapse:hover)):hover .table-btn-inline,
+            .graphic-modal-bottom-card:not(:has(.graphic-btn-collapse:hover)):hover .graphic-btn-inline {
+                background: #22242D !important;
+                border-color: #EFE1CE !important;
+                color: #EFE1CE !important;
+                box-shadow: 0 2px 12px rgba(239, 225, 206, 0.35) !important;
+            }
+
+            /* Match inactive style when another button is hovered in dark mode */
+            .flowchart-modal-bottom-card:has(.flowchart-btn-collapse:hover) .flowchart-btn-inline,
+            .flowchart-modal-bottom-card:has(.flowchart-btn-inline:hover) .flowchart-btn-collapse,
+            .table-modal-bottom-card:has(.table-btn-collapse:hover) .table-btn-inline,
+            .table-modal-bottom-card:has(.table-btn-inline:hover) .table-btn-collapse,
+            .graphic-modal-bottom-card:has(.graphic-btn-collapse:hover) .graphic-btn-inline,
+            .graphic-modal-bottom-card:has(.graphic-btn-inline:hover) .graphic-btn-collapse,
+            .flowchart-wrapper .flowchart-header-card:has(.flowchart-btn-full:hover) .flowchart-btn-inline,
+            .flowchart-wrapper .flowchart-header-card:has(.flowchart-btn-full:hover) .flowchart-btn-collapse,
+            .flowchart-wrapper .flowchart-preview-card:has(.flowchart-btn-full:hover) .flowchart-btn-inline,
+            .flowchart-wrapper .flowchart-preview-card:has(.flowchart-btn-full:hover) .flowchart-btn-collapse,
+            .table-wrapper .table-header-card:has(.table-btn-full:hover) .table-btn-inline,
+            .table-wrapper .table-header-card:has(.table-btn-full:hover) .table-btn-collapse,
+            .table-wrapper .table-preview-card:has(.table-btn-full:hover) .table-btn-inline,
+            .table-wrapper .table-preview-card:has(.table-btn-full:hover) .table-btn-collapse,
+            .formula-wrapper .formula-header-card:has(.formula-btn-full:hover) .formula-btn-inline,
+            .formula-wrapper .formula-header-card:has(.formula-btn-full:hover) .formula-btn-collapse,
+            .formula-wrapper .formula-preview-card:has(.formula-btn-full:hover) .formula-btn-inline,
+            .formula-wrapper .formula-preview-card:has(.formula-btn-full:hover) .formula-btn-collapse,
+            .graphic-wrapper .graphic-header-card:has(.graphic-btn-full:hover) .graphic-btn-inline,
+            .graphic-wrapper .graphic-header-card:has(.graphic-btn-full:hover) .graphic-btn-collapse,
+            .graphic-wrapper .graphic-preview-card:has(.graphic-btn-full:hover) .graphic-btn-inline,
+            .graphic-wrapper .graphic-preview-card:has(.graphic-btn-full:hover) .graphic-btn-collapse {
+                background: #161B22 !important;
+                border: 1px solid #30363D !important;
+                color: #EFE1CE !important;
+                box-shadow: none !important;
+            }
+
+            .media-global-section {
+                background: #22242D !important;
+                border-color: #333745 !important;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45) !important;
+            }
+        }
+
+        /* Explicit [data-theme="dark"] selector support */
+        [data-theme="dark"] .flowchart-header-card,
+        [data-theme="dark"] .table-header-card,
+        [data-theme="dark"] .formula-header-card,
+        [data-theme="dark"] .graphic-header-card,
+        [data-theme="dark"] .media-global-section {
+            background: #22242D !important;
+            border-color: #333745 !important;
+            color: #F1F5F9 !important;
+        }
+
+        [data-theme="dark"] .flowchart-header-card:hover,
+        [data-theme="dark"] .table-header-card:hover,
+        [data-theme="dark"] .formula-header-card:hover,
+        [data-theme="dark"] .graphic-header-card:hover {
+            border-color: #EFE1CE !important;
+            color: #EFE1CE !important;
+            box-shadow: 0 4px 16px rgba(239, 225, 206, 0.35) !important;
+        }
     </style>
 </head>
 <body>
@@ -2078,7 +2599,7 @@
     </div>
 
     <article class="markdown-body">
-<h1 id="slide-preparation---complete-discussion">Slide Preparation | Complete Discussion</h1>
+<h1 id="slide-prep-complete-discussion">Slide Prep | Complete Discussion</h1>
 <h1 id="navigation">Navigation</h1>
 <ul>
 <li><a href="#pbs-preparation">PBS Preparation</a><ul>
@@ -3457,27 +3978,28 @@ flowchart TD
 </ul>
 <hr />
 <h1 id="ascp-mls-content-guideline-alignment">ASCP MLS Content Guideline Alignment</h1>
-<h3 id="clinical-hematology">Clinical Hematology</h3>
+<h3 id="hematology">Hematology</h3>
 <ul>
-<li><strong>Hematology Laboratory Testing</strong></li>
-<li>Differentials and Morphology Evaluation: Peripheral blood smear (PBS) preparation, wedge-smear mechanics, monolayer identification, macroscopic/microscopic examination criteria, leukocyte, erythrocyte, and platelet morphological assessment</li>
-<li>Special Stains: Prussian blue (Perls' reaction) for ferric iron ($\text{Fe}^{3+}$) and siderotic granules (Pappenheimer bodies)</li>
-<li>Other Studies: Supravital staining (new methylene blue) for Heinz bodies and reticulocyte precipitation</li>
-<li>Hematocrit and Red Blood Cell Indices: Relationship of hematocrit ($35\text{--}50\text{%}$) to blood viscosity, technical compensations, and anticoagulant artifact impacts on MCV ($76\text{--}100\text{ fL}$) and MCHC ($32\text{--}36\text{ g/dL}$)</li>
+<li><strong>Hematology Laboratory Testing</strong><ul>
+<li><strong>Differentials and Morphology Evaluation (to include blood and body fluids)</strong><ul>
+<li><strong>Smear preparation methodology</strong>: Wedge-spread manual technique, spreader slide angle adjustment ($30\text{ to }45^\circ$, decreasing angle for elevated HCT/polycythemia, increasing angle for severe anemia), pusher speed, pressure modulation, and qualities of an optimal smear (covering $2/3$ of slide length, smooth lateral borders, feathered edge monolayer).</li>
+<li><strong>Staining principles</strong>: Romanowsky (Wright-Giemsa) differential staining, polychrome oxidation, chemical binding of acidic eosin (staining basic cytoplasmic structures and hemoglobin orange-red) and basic methylene blue/azure (staining acidic nucleic acids and nuclear chromatin purple-blue), buffer pH optimization ($\text{pH } 6.4\text{ to }6.8$).</li>
+<li><strong>Troubleshooting smear &amp; stain artifacts</strong>: Acidic stain artifacts (overly pink erythrocytes, pale nuclei from low buffer pH), alkaline stain artifacts (overly dark/blue erythrocytes and granules from high buffer pH or prolonged staining), precipitated stain crystals (inadequate washing), water rinse artifacts (moth-eaten erythrocytes), and 22% bovine serum albumin addition for smudge cell correction.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="laboratory-operations">Laboratory Operations</h3>
 <ul>
-<li><strong>Quality Assessment / Troubleshooting</strong></li>
-<li>Preanalytical, analytical, and postanalytical variables: Anticoagulant ratio, storage time limits ($0\text{--}3\text{ hours}$), and Romanowsky stain buffer $\text{pH}$ equilibrium ($\text{pH } 6.4\text{--}6.7$)</li>
-<li>Quality Control: Daily normal control smear evaluation and systematic microscopic troubleshooting of staining defects and preparation artifacts</li>
-<li><strong>Safety</strong></li>
-<li>Universal Precautions and bloodborne pathogen protection (HBV, HCV, HIV)</li>
-<li>Personal protective equipment (PPE) requirements</li>
-<li>Chemical hygiene: Handling and storage of toxic and flammable absolute methanol fixatives</li>
-<li>Sharps management: Puncture-resistant disposal of glass slides and capillary tools</li>
-<li><strong>Manual / Automated Methodology and Instrumentation</strong></li>
-<li>Manual techniques: Push-wedge blood film preparation, buffy coat concentration for severe leukopenia ($\text{WBC} < 2.0 \times 10^3/\mu\text{L}\ [2.0 \times 10^9/\text{L}]$)</li>
-<li>Automated slide stainers: Continuous-feed mechanics, timing, and reagent delivery cycles</li>
+<li><strong>Quality Assessment/Troubleshooting</strong><ul>
+<li><strong>Preanalytical, Analytical, Postanalytical</strong>: Timing constraints (preparing smears within 2 to 4 hours of EDTA collection to avoid standing storage vacuolation and nuclear pyknosis), proper slide drying, and stain quality control using daily normal patient smears.</li>
+</ul>
+</li>
+<li><strong>Safety</strong><ul>
+<li><strong>Safety Programs and Practices</strong>: Safe handling of bloodborne pathogens, proper slide biohazard disposal in puncture-resistant sharps containers, chemical safety with methanol-based Romanowsky fixatives.</li>
+</ul>
+</li>
 </ul>
 
     </article>
@@ -3580,7 +4102,22 @@ flowchart TD
     <!-- Fullscreen Mermaid Diagram Viewer Modal (90vw / 90vh with backdrop blur) -->
     <div id="mermaid-modal" class="mermaid-modal-overlay">
         <div class="mermaid-modal-container">
-            <div class="flowchart-modal-top-card">
+            <div id="mermaid-modal-body" class="mermaid-modal-body"></div>
+            <div class="flowchart-modal-bottom-card">
+                <div class="flowchart-mini-graphic" title="Flowchart diagram">
+                    <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="2" y="9" width="18" height="14" rx="3" class="fc-shape-start" />
+                        <path d="M20 16H29" class="fc-line" />
+                        <polygon points="29,13.5 33,16 29,18.5" class="fc-arrow" />
+                        <polygon points="43,6 53,16 43,26 33,16" class="fc-shape-decision" />
+                        <path d="M53 16H62" class="fc-line" />
+                        <polygon points="62,13.5 66,16 62,18.5" class="fc-arrow" />
+                        <rect x="66" y="5" width="26" height="10" rx="2.5" class="fc-shape-proc1" />
+                        <path d="M43 26V28H79V20" class="fc-line" />
+                        <polygon points="76.5,20 79,16.5 81.5,20" class="fc-arrow" />
+                        <rect x="66" y="17" width="26" height="10" rx="2.5" class="fc-shape-proc2" />
+                    </svg>
+                </div>
                 <div class="flowchart-modal-actions">
                     <button type="button" id="mermaid-modal-inline-btn" class="flowchart-btn-inline" title="Switch to inline expanded view" aria-label="Switch to inline view">
                         <svg class="fc-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -3596,14 +4133,25 @@ flowchart TD
                     </button>
                 </div>
             </div>
-            <div id="mermaid-modal-body" class="mermaid-modal-body"></div>
         </div>
     </div>
 
     <!-- Fullscreen Table Viewer Modal (90vw / 90vh with backdrop blur) -->
     <div id="table-modal" class="table-modal-overlay">
         <div class="table-modal-container">
-            <div class="table-modal-top-card">
+            <div id="table-modal-body" class="table-modal-body"></div>
+            <div class="table-modal-bottom-card">
+                <div class="table-mini-graphic" title="Table preview">
+                    <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="2" y="3" width="92" height="26" rx="3.5" class="tbl-shape-outer" />
+                        <rect x="2" y="3" width="92" height="8" rx="3.5" class="tbl-shape-hdr" />
+                        <rect x="2" y="11" width="92" height="9" class="tbl-shape-row1" />
+                        <line x1="2" y1="11" x2="94" y2="11" class="tbl-line" />
+                        <line x1="2" y1="20" x2="94" y2="20" class="tbl-line" />
+                        <line x1="28" y1="3" x2="28" y2="29" class="tbl-line" />
+                        <line x1="58" y1="3" x2="58" y2="29" class="tbl-line" />
+                    </svg>
+                </div>
                 <div class="table-modal-actions">
                     <button type="button" id="table-modal-inline-btn" class="table-btn-inline" title="Switch to inline expanded view" aria-label="Switch to inline view">
                         <svg class="tbl-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -3619,14 +4167,21 @@ flowchart TD
                     </button>
                 </div>
             </div>
-            <div id="table-modal-body" class="table-modal-body"></div>
         </div>
     </div>
 
     <!-- Fullscreen Graphic Viewer Modal (90vw / 90vh with backdrop blur) -->
     <div id="graphic-modal" class="graphic-modal-overlay">
         <div class="graphic-modal-container">
-            <div class="graphic-modal-top-card">
+            <div id="graphic-modal-body" class="graphic-modal-body"></div>
+            <div class="graphic-modal-bottom-card">
+                <div class="graphic-mini-graphic" title="Graphic preview">
+                    <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
+                        <circle cx="28" cy="13" r="5" class="grp-shape-sun" />
+                        <path d="M8 25L32 15L52 23L68 12L88 25" class="grp-shape-mountain" />
+                    </svg>
+                </div>
                 <div class="graphic-modal-actions">
                     <button type="button" id="graphic-modal-inline-btn" class="graphic-btn-inline" title="Switch to inline expanded view" aria-label="Switch to inline view">
                         <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -3642,7 +4197,6 @@ flowchart TD
                     </button>
                 </div>
             </div>
-            <div id="graphic-modal-body" class="graphic-modal-body"></div>
         </div>
     </div>
 
@@ -3702,19 +4256,14 @@ flowchart TD
                     requestAnimationFrame(() => {
                         const rect = wrapper.getBoundingClientRect();
                         const windowHeight = window.innerHeight;
-                        const isLong = rect.height > (windowHeight - 40);
-
-                        if (isLong) {
-                            const scrollOffset = rect.top - 16;
-                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
-                        } else {
-                            if (rect.top < 16) {
-                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
-                            } else if (rect.bottom > windowHeight) {
-                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
-                                if (scrollDown > 2) {
-                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                                }
+                        if (rect.top < 16) {
+                            window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                        } else if (rect.bottom > windowHeight) {
+                            const scrollNeeded = rect.bottom - windowHeight + 16;
+                            const maxScrollAllowed = Math.max(0, rect.top - 16);
+                            const scrollAmount = Math.min(scrollNeeded, maxScrollAllowed);
+                            if (scrollAmount > 2) {
+                                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
                             }
                         }
                     });
@@ -3890,32 +4439,37 @@ flowchart TD
                 });
             }
 
-            if (modalCollapseBtn) modalCollapseBtn.addEventListener('click', () => closeModal(true));
+            function switchFlowchartToInline() {
+                const targetWrapper = currentModalWrapper;
+                closeModal(false);
+                if (targetWrapper) {
+                    targetWrapper.classList.remove('is-collapsed');
+                    if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+                    requestAnimationFrame(() => {
+                        targetWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
+            }
+
+            if (modalCollapseBtn) modalCollapseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeModal(true);
+            });
 
             if (modalInlineBtn) {
-                modalInlineBtn.addEventListener('click', () => {
-                    const targetWrapper = currentModalWrapper;
-                    
-                    if (targetWrapper) {
-                        // Disable transition for instant switch from full to inline
-                        targetWrapper.classList.add('no-transition');
-                        targetWrapper.classList.remove('is-collapsed');
-                        
-                        // Close modal without resetting scroll position to stale top
-                        closeModal(false);
+                modalInlineBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    switchFlowchartToInline();
+                });
+            }
 
-                        // Position viewport directly centered on target flowchart instantly
-                        targetWrapper.scrollIntoView({ behavior: 'auto', block: 'center' });
-
-                        // Re-enable smooth transitions for future interactions after layout paint
-                        requestAnimationFrame(() => {
-                            requestAnimationFrame(() => {
-                                targetWrapper.classList.remove('no-transition');
-                            });
-                        });
-                        if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+            const modalBottomCard = modal ? modal.querySelector('.flowchart-modal-bottom-card') : null;
+            if (modalBottomCard) {
+                modalBottomCard.addEventListener('click', (e) => {
+                    if (e.target.closest('.flowchart-btn-collapse') || e.target.closest('#mermaid-modal-collapse-btn')) {
+                        closeModal(true);
                     } else {
-                        closeModal(false);
+                        switchFlowchartToInline();
                     }
                 });
             }
@@ -3992,19 +4546,14 @@ flowchart TD
                     requestAnimationFrame(() => {
                         const rect = wrapper.getBoundingClientRect();
                         const windowHeight = window.innerHeight;
-                        const isLong = rect.height > (windowHeight - 40);
-
-                        if (isLong) {
-                            const scrollOffset = rect.top - 16;
-                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
-                        } else {
-                            if (rect.top < 16) {
-                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
-                            } else if (rect.bottom > windowHeight) {
-                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
-                                if (scrollDown > 2) {
-                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                                }
+                        if (rect.top < 16) {
+                            window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                        } else if (rect.bottom > windowHeight) {
+                            const scrollNeeded = rect.bottom - windowHeight + 16;
+                            const maxScrollAllowed = Math.max(0, rect.top - 16);
+                            const scrollAmount = Math.min(scrollNeeded, maxScrollAllowed);
+                            if (scrollAmount > 2) {
+                                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
                             }
                         }
                     });
@@ -4066,19 +4615,14 @@ flowchart TD
                     requestAnimationFrame(() => {
                         const rect = wrapper.getBoundingClientRect();
                         const windowHeight = window.innerHeight;
-                        const isLong = rect.height > (windowHeight - 40);
-
-                        if (isLong) {
-                            const scrollOffset = rect.top - 16;
-                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
-                        } else {
-                            if (rect.top < 16) {
-                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
-                            } else if (rect.bottom > windowHeight) {
-                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
-                                if (scrollDown > 2) {
-                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                                }
+                        if (rect.top < 16) {
+                            window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                        } else if (rect.bottom > windowHeight) {
+                            const scrollNeeded = rect.bottom - windowHeight + 16;
+                            const maxScrollAllowed = Math.max(0, rect.top - 16);
+                            const scrollAmount = Math.min(scrollNeeded, maxScrollAllowed);
+                            if (scrollAmount > 2) {
+                                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
                             }
                         }
                     });
@@ -4315,27 +4859,37 @@ flowchart TD
                 });
             }
 
-            if (tableModalCollapseBtn) tableModalCollapseBtn.addEventListener('click', () => closeTableModal(true));
+            function switchTableToInline() {
+                const targetWrapper = currentTableModalWrapper;
+                closeTableModal(false);
+                if (targetWrapper) {
+                    targetWrapper.classList.remove('is-collapsed');
+                    if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+                    requestAnimationFrame(() => {
+                        targetWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
+            }
+
+            if (tableModalCollapseBtn) tableModalCollapseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeTableModal(true);
+            });
 
             if (tableModalInlineBtn) {
-                tableModalInlineBtn.addEventListener('click', () => {
-                    const targetWrapper = currentTableModalWrapper;
-                    if (targetWrapper) {
-                        targetWrapper.classList.add('no-transition');
-                        targetWrapper.classList.remove('is-collapsed');
-                        
-                        closeTableModal(false);
+                tableModalInlineBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    switchTableToInline();
+                });
+            }
 
-                        targetWrapper.scrollIntoView({ behavior: 'auto', block: 'center' });
-
-                        requestAnimationFrame(() => {
-                            requestAnimationFrame(() => {
-                                targetWrapper.classList.remove('no-transition');
-                            });
-                        });
-                        if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+            const tableModalBottomCard = tableModal ? tableModal.querySelector('.table-modal-bottom-card') : null;
+            if (tableModalBottomCard) {
+                tableModalBottomCard.addEventListener('click', (e) => {
+                    if (e.target.closest('.table-btn-collapse') || e.target.closest('#table-modal-collapse-btn')) {
+                        closeTableModal(true);
                     } else {
-                        closeTableModal(false);
+                        switchTableToInline();
                     }
                 });
             }
@@ -4403,19 +4957,14 @@ flowchart TD
                     requestAnimationFrame(() => {
                         const rect = wrapper.getBoundingClientRect();
                         const windowHeight = window.innerHeight;
-                        const isLong = rect.height > (windowHeight - 40);
-
-                        if (isLong) {
-                            const scrollOffset = rect.top - 16;
-                            window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
-                        } else {
-                            if (rect.top < 16) {
-                                window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
-                            } else if (rect.bottom > windowHeight) {
-                                const scrollDown = Math.min(rect.top - 16, rect.bottom - windowHeight + 20);
-                                if (scrollDown > 2) {
-                                    window.scrollBy({ top: scrollDown, behavior: 'smooth' });
-                                }
+                        if (rect.top < 16) {
+                            window.scrollBy({ top: rect.top - 16, behavior: 'smooth' });
+                        } else if (rect.bottom > windowHeight) {
+                            const scrollNeeded = rect.bottom - windowHeight + 16;
+                            const maxScrollAllowed = Math.max(0, rect.top - 16);
+                            const scrollAmount = Math.min(scrollNeeded, maxScrollAllowed);
+                            if (scrollAmount > 2) {
+                                window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
                             }
                         }
                     });
@@ -4654,27 +5203,37 @@ flowchart TD
                 });
             }
 
-            if (graphicModalCollapseBtn) graphicModalCollapseBtn.addEventListener('click', () => closeGraphicModal(true));
+            function switchGraphicToInline() {
+                const targetWrapper = currentGraphicModalWrapper;
+                closeGraphicModal(false);
+                if (targetWrapper) {
+                    targetWrapper.classList.remove('is-collapsed');
+                    if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+                    requestAnimationFrame(() => {
+                        targetWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
+            }
+
+            if (graphicModalCollapseBtn) graphicModalCollapseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeGraphicModal(true);
+            });
 
             if (graphicModalInlineBtn) {
-                graphicModalInlineBtn.addEventListener('click', () => {
-                    const targetWrapper = currentGraphicModalWrapper;
-                    if (targetWrapper) {
-                        targetWrapper.classList.add('no-transition');
-                        targetWrapper.classList.remove('is-collapsed');
-                        
-                        closeGraphicModal(false);
+                graphicModalInlineBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    switchGraphicToInline();
+                });
+            }
 
-                        targetWrapper.scrollIntoView({ behavior: 'auto', block: 'center' });
-
-                        requestAnimationFrame(() => {
-                            requestAnimationFrame(() => {
-                                targetWrapper.classList.remove('no-transition');
-                            });
-                        });
-                        if (typeof updateGlobalDockStates === 'function') updateGlobalDockStates();
+            const graphicModalBottomCard = graphicModal ? graphicModal.querySelector('.graphic-modal-bottom-card') : null;
+            if (graphicModalBottomCard) {
+                graphicModalBottomCard.addEventListener('click', (e) => {
+                    if (e.target.closest('.graphic-btn-collapse') || e.target.closest('#graphic-modal-collapse-btn')) {
+                        closeGraphicModal(true);
                     } else {
-                        closeGraphicModal(false);
+                        switchGraphicToInline();
                     }
                 });
             }
