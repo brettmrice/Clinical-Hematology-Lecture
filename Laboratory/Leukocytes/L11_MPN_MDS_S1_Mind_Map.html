@@ -3846,8 +3846,8 @@
       updateCounts();
 
       const maps = getMindMapsList();
-      const currentFilename = window.location.pathname.split('/').pop().toLowerCase();
-      const currentTitle = (mindMapData && mindMapData.text) ? mindMapData.text.toLowerCase().trim() : '';
+      const currentNormPath = decodeURIComponent(window.location.pathname || '').replace(/\\/g, '/').toLowerCase();
+      const currentFilename = currentNormPath.split('/').pop();
 
       let filtered = maps.filter(item => {
         // Type filter
@@ -3907,8 +3907,8 @@
         const targetHref = `${relSharedPath}/${item.rel_path_from_shared}`;
         card.href = targetHref;
 
-        const isCurrent = (item.filename && item.filename.toLowerCase() === currentFilename) ||
-                          (item.title && item.title.toLowerCase().trim() === currentTitle);
+        const itemTargetRel = item.rel_path_from_shared ? item.rel_path_from_shared.replace(/^(\.\.\/)+/, '').toLowerCase() : '';
+        const isCurrent = itemTargetRel ? currentNormPath.endsWith(itemTargetRel) : (item.filename && item.filename.toLowerCase() === currentFilename);
 
         if (isCurrent) {
           card.classList.add('current');

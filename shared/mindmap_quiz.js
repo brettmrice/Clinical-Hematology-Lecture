@@ -2407,19 +2407,99 @@
     }
   }
 
+  function injectBrandHomeButton() {
+    if (document.getElementById('mindmap-brand-home-btn')) return;
+    if (!document.body) {
+      window.addEventListener('DOMContentLoaded', injectBrandHomeButton);
+      return;
+    }
+
+    const path = window.location.pathname.replace(/\\/g, '/');
+    const parts = path.split('/').filter(Boolean);
+    let depth = 2;
+    for (let i = 0; i < parts.length; i++) {
+      const p = parts[i].toLowerCase();
+      if (p === 'lecture' || p === 'laboratory') {
+        depth = Math.max(1, parts.length - 1 - i);
+        break;
+      }
+    }
+    const indexPath = depth === 1 ? '../index.html' : (depth === 2 ? '../../index.html' : './index.html');
+
+    const brandBtn = document.createElement('a');
+    brandBtn.id = 'mindmap-brand-home-btn';
+    brandBtn.className = 'mindmap-brand-home-btn discussion-brand-icon';
+    brandBtn.href = indexPath;
+    brandBtn.title = 'Return to Index Explorer';
+    brandBtn.setAttribute('aria-label', 'Return to Index Explorer');
+    brandBtn.innerHTML = `
+      <svg class="discussion-brand-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 14 4 9 9 4"></polyline>
+        <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+      </svg>
+    `;
+
+    const titleCard = document.getElementById('btn-open-sidebar') || document.querySelector('.top-title-card');
+    if (titleCard && titleCard.parentNode) {
+      titleCard.parentNode.insertBefore(brandBtn, titleCard);
+    } else {
+      document.body.appendChild(brandBtn);
+    }
+  }
+
+  // Ensure all floating buttons have descriptive title & aria-label attributes for accessibility and tooltips
+  function ensureButtonTooltips() {
+    const collapseBtn = document.getElementById('btn-collapse-all');
+    if (collapseBtn) {
+      collapseBtn.setAttribute('title', 'Collapse All');
+      collapseBtn.setAttribute('aria-label', 'Collapse All');
+    }
+    const expandBtn = document.getElementById('btn-expand-all');
+    if (expandBtn) {
+      expandBtn.setAttribute('title', 'Expand All');
+      expandBtn.setAttribute('aria-label', 'Expand All');
+    }
+    const hyBtn = document.getElementById('btn-high-yield');
+    if (hyBtn) {
+      hyBtn.setAttribute('title', 'Toggle High-Yield Concepts Only');
+      hyBtn.setAttribute('aria-label', 'Toggle High-Yield Concepts Only');
+    }
+    const quizBtn = document.getElementById('btn-quiz-me');
+    if (quizBtn) {
+      quizBtn.setAttribute('title', 'Launch Mind Map Quiz Game (? Me)');
+      quizBtn.setAttribute('aria-label', 'Launch Mind Map Quiz Game (? Me)');
+    }
+    const titleBtn = document.getElementById('btn-open-sidebar');
+    if (titleBtn) {
+      const topicEl = document.getElementById('topic-title');
+      const topicText = topicEl ? topicEl.textContent.trim() : 'Course Mind Maps';
+      titleBtn.setAttribute('title', `${topicText} - Open Course Mind Maps`);
+      titleBtn.setAttribute('aria-label', `${topicText} - Open Course Mind Maps`);
+    }
+  }
+
   const quizInstance = new MindMapQuiz();
   window.MindMapQuiz = quizInstance;
 
   document.addEventListener('DOMContentLoaded', () => {
+    injectBrandHomeButton();
+    ensureButtonTooltips();
     if (window.mindMapData) {
       quizInstance.init(window.mindMapData);
     }
   });
 
   window.addEventListener('load', () => {
+    injectBrandHomeButton();
+    ensureButtonTooltips();
     if (window.mindMapData && !quizInstance.treeData) {
       quizInstance.init(window.mindMapData);
     }
   });
+
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    injectBrandHomeButton();
+    ensureButtonTooltips();
+  }
 
 })(window);
