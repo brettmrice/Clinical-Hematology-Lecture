@@ -320,7 +320,7 @@
         }
 
         const { title, subtitle } = getDiscussionTitleInfo();
-        const indexPath = getRelativeIndexPath();
+        const indexPath = 'https://www.brettmrice.com/Clinical-Hematology-Lecture/';
 
         const header = document.createElement('header');
         header.id = 'discussionMainHeader';

@@ -2414,17 +2414,7 @@
       return;
     }
 
-    const path = window.location.pathname.replace(/\\/g, '/');
-    const parts = path.split('/').filter(Boolean);
-    let depth = 2;
-    for (let i = 0; i < parts.length; i++) {
-      const p = parts[i].toLowerCase();
-      if (p === 'lecture' || p === 'laboratory') {
-        depth = Math.max(1, parts.length - 1 - i);
-        break;
-      }
-    }
-    const indexPath = depth === 1 ? '../index.html' : (depth === 2 ? '../../index.html' : './index.html');
+    const indexPath = 'https://www.brettmrice.com/Clinical-Hematology-Lecture/';
 
     const brandBtn = document.createElement('a');
     brandBtn.id = 'mindmap-brand-home-btn';
