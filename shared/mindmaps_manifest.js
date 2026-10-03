@@ -243,16 +243,6 @@ window.COURSE_MINDMAPS = [
   {
     "id": "L13_BM_Flow_S1_Mind_Map",
     "title": "Bone Marrow & Flow Cytometry",
-    "type": "lecture",
-    "number": 13,
-    "subfolder": "Leukocytes",
-    "raw_subfolder": "Leukocytes",
-    "filename": "L13_BM_Flow_S1_Mind_Map.html",
-    "rel_path_from_shared": "../Lecture/Leukocytes/L13_BM_Flow_S1_Mind_Map.html"
-  },
-  {
-    "id": "L13_BM_Flow_S1_Mind_Map",
-    "title": "Bone Marrow & Flow Cytometry",
     "type": "lab",
     "number": 13,
     "subfolder": "Leukocytes",
