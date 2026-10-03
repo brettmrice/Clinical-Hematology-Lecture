@@ -3345,7 +3345,23 @@
       updateTransform(false);
     });
 
-    window.addEventListener('mouseup', () => { isDragging = false; });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+
+    // Adjust viewing center point on window resize
+    let prevWindowWidth = window.innerWidth;
+    let prevWindowHeight = window.innerHeight;
+    window.addEventListener('resize', () => {
+      const currentWidth = window.innerWidth;
+      const currentHeight = window.innerHeight;
+      const deltaW = currentWidth - prevWindowWidth;
+      const deltaH = currentHeight - prevWindowHeight;
+      prevWindowWidth = currentWidth;
+      prevWindowHeight = currentHeight;
+
+      translateX += deltaW / 2;
+      translateY += deltaH / 2;
+      updateTransform(false);
+    });
 
     // Double-click in blank canvas space triggers Fit to Window
     viewport.addEventListener('dblclick', (e) => {
