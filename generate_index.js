@@ -179,17 +179,17 @@ function ensureDiscussionAssets(fullPath) {
         const fileDir = path.dirname(fullPath);
         const relToShared = path.relative(fileDir, path.join(rootDir, 'shared')).replace(/\\/g, '/');
 
-        const cssMindmap = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=2">`;
-        const cssQuiz = `    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=2">`;
+        const cssMindmap = `    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=20261004">`;
+        const cssQuiz = `    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=20261004">`;
 
-        // Clean and standardize CSS/JS tags with ?v=2
-        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=2">`);
-        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=2">`);
+        // Clean and standardize CSS/JS tags with ?v=20261004
+        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_mindmap.css?v=20261004">`);
+        content = content.replace(/<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">/g, `<link rel="stylesheet" href="${relToShared}/discussion_quiz.css?v=20261004">`);
 
-        content = content.replace(/<script\s+src="[^"]*course_mindmaps_data\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=2"></script>`);
-        content = content.replace(/<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=2"></script>`);
-        content = content.replace(/<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_mindmap.js?v=2"></script>`);
-        content = content.replace(/<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_quiz.js?v=2"></script>`);
+        content = content.replace(/<script\s+src="[^"]*course_mindmaps_data\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=20261004"></script>`);
+        content = content.replace(/<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/mindmaps_manifest.js?v=20261004"></script>`);
+        content = content.replace(/<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_mindmap.js?v=20261004"></script>`);
+        content = content.replace(/<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"><\/script>/g, `<script src="${relToShared}/discussion_quiz.js?v=20261004"></script>`);
 
         // Ensure CSS tags exist
         if (!content.includes('discussion_mindmap.css')) {
@@ -215,7 +215,7 @@ function ensureDiscussionAssets(fullPath) {
         }
 
         // Ensure JS tags exist
-        const jsStack = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${relToShared}/mindmaps_manifest.js?v=2"></script>\n    <script src="${relToShared}/discussion_mindmap.js?v=2"></script>\n    <script src="${relToShared}/discussion_quiz.js?v=2"></script>`;
+        const jsStack = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${relToShared}/mindmaps_manifest.js?v=20261004"></script>\n    <script src="${relToShared}/discussion_mindmap.js?v=20261004"></script>\n    <script src="${relToShared}/discussion_quiz.js?v=20261004"></script>`;
 
         if (!content.includes('discussion_mindmap.js')) {
             if (content.includes('</body>')) {

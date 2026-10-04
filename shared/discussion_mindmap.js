@@ -92,7 +92,7 @@
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = `${getSharedPath()}/discussion_mindmap.css?v=2`;
+            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261004`;
             document.head.appendChild(link);
         }
     }
@@ -109,7 +109,7 @@
         }
 
         const script = document.createElement('script');
-        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=2`;
+        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=20261004`;
         script.onload = () => {
             callback(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || []);
         };
@@ -234,22 +234,13 @@
         }
 
         const updateVisibility = () => {
-            if (navElement) {
-                const rect = navElement.getBoundingClientRect();
-                const inView = (rect.top <= window.innerHeight && rect.bottom >= 0);
-                if (inView) {
-                    fab.classList.remove('visible');
-                } else {
-                    fab.classList.add('visible');
-                }
-            } else {
-                if (window.scrollY > 80) {
-                    fab.classList.add('visible');
-                } else {
-                    fab.classList.remove('visible');
-                }
+            if (window.scrollY > 80) {
+                fab.classList.add('visible');
+            } else if (!navElement) {
+                fab.classList.remove('visible');
             }
         };
+
         window.addEventListener('scroll', updateVisibility, { passive: true });
         window.addEventListener('resize', updateVisibility);
         updateVisibility();

@@ -35,7 +35,7 @@
     if (!existing) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = `${getSharedPath()}/discussion_quiz.css?v=2`;
+      link.href = `${getSharedPath()}/discussion_quiz.css?v=20261004`;
       document.head.appendChild(link);
     }
   }
@@ -233,22 +233,13 @@
       }
 
       const updateVis = () => {
-        if (navElement) {
-          const rect = navElement.getBoundingClientRect();
-          const inView = (rect.top <= window.innerHeight && rect.bottom >= 0);
-          if (inView) {
-            this.fabBtn.classList.remove('visible');
-          } else {
-            this.fabBtn.classList.add('visible');
-          }
-        } else {
-          if (window.scrollY > 80) {
-            this.fabBtn.classList.add('visible');
-          } else {
-            this.fabBtn.classList.remove('visible');
-          }
+        if (window.scrollY > 80) {
+          this.fabBtn.classList.add('visible');
+        } else if (!navElement) {
+          this.fabBtn.classList.remove('visible');
         }
       };
+
       window.addEventListener('scroll', updateVis, { passive: true });
       window.addEventListener('resize', updateVis);
       updateVis();
