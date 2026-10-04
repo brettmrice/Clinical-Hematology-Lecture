@@ -211,10 +211,38 @@
       this.fabBtn = btn;
     }
 
-    // Visibility Observer: Quiz button appears in sync with Navigation & Mind Map buttons
+    // Visibility Observer: Quiz button perfectly mirrors Navigation button visibility in lockstep
     initFABObserver() {
       if (!this.fabBtn) return;
 
+      const navBtn = document.getElementById('jump-to-nav-btn');
+      if (navBtn) {
+        const syncWithNavBtn = () => {
+          if (navBtn.classList.contains('visible')) {
+            this.fabBtn.classList.add('visible');
+          } else {
+            this.fabBtn.classList.remove('visible');
+          }
+        };
+
+        syncWithNavBtn();
+
+        if (typeof MutationObserver !== 'undefined') {
+          const observer = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+              if (m.type === 'attributes' && m.attributeName === 'class') {
+                syncWithNavBtn();
+              }
+            }
+          });
+          observer.observe(navBtn, { attributes: true, attributeFilter: ['class'] });
+        }
+
+        window.addEventListener('scroll', syncWithNavBtn, { passive: true });
+        return;
+      }
+
+      // Fallback: direct IntersectionObserver on #navigation if navBtn missing
       const navElement = document.getElementById('navigation');
       if (navElement && typeof IntersectionObserver !== 'undefined') {
         const navObserver = new IntersectionObserver((entries) => {
@@ -230,19 +258,18 @@
           threshold: 0
         });
         navObserver.observe(navElement);
+      } else {
+        const updateVis = () => {
+          if (window.scrollY > 200) {
+            this.fabBtn.classList.add('visible');
+          } else {
+            this.fabBtn.classList.remove('visible');
+          }
+        };
+        window.addEventListener('scroll', updateVis, { passive: true });
+        window.addEventListener('resize', updateVis);
+        updateVis();
       }
-
-      const updateVis = () => {
-        if (window.scrollY > 80) {
-          this.fabBtn.classList.add('visible');
-        } else if (!navElement) {
-          this.fabBtn.classList.remove('visible');
-        }
-      };
-
-      window.addEventListener('scroll', updateVis, { passive: true });
-      window.addEventListener('resize', updateVis);
-      updateVis();
     }
 
     // Clean raw LaTeX & MathJax markdown into readable prose
