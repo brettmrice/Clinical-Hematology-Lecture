@@ -173,13 +173,43 @@
     // Initial immediate sync resolution
     companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || null);
 
+    // Helper to obtain or build shared FAB dock container
+    function getOrCreateFabDock() {
+        let dock = document.getElementById('discussion-fab-dock');
+        if (!dock) {
+            dock = document.createElement('div');
+            dock.id = 'discussion-fab-dock';
+            dock.className = 'discussion-fab-dock';
+            dock.setAttribute('role', 'toolbar');
+            dock.setAttribute('aria-label', 'Discussion Navigation and Quick Actions');
+            document.body.appendChild(dock);
+        }
+        return dock;
+    }
+
     // Build DOM elements (Pill Button linking directly to companion Mind Map in new tab)
     function injectOverlayDOM() {
-        if (document.getElementById('discussion-mindmap-fab')) return;
         if (!document.body) {
             window.addEventListener('DOMContentLoaded', injectOverlayDOM);
             return;
         }
+
+        const dock = getOrCreateFabDock();
+
+        // Enhance jump-to-nav-btn with SVG icon if present and adopt into dock
+        const jumpNavBtn = document.getElementById('jump-to-nav-btn');
+        if (jumpNavBtn) {
+            if (!jumpNavBtn.querySelector('svg')) {
+                const text = jumpNavBtn.textContent.trim() || 'Navigation';
+                jumpNavBtn.setAttribute('title', 'Jump to Course Navigation');
+                jumpNavBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fab-icon"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg><span class="fab-text">${escapeHtml(text)}</span>`;
+            }
+            if (jumpNavBtn.parentElement !== dock) {
+                dock.appendChild(jumpNavBtn);
+            }
+        }
+
+        if (document.getElementById('discussion-mindmap-fab')) return;
 
         // Floating Action Button (FAB)
         const fab = document.createElement('a');
@@ -191,14 +221,11 @@
         fab.setAttribute('rel', 'noopener noreferrer');
         fab.href = companionMindMapFilename || '#';
         fab.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fab-icon"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg><span class="fab-text">Mind Map</span>`;
-        document.body.appendChild(fab);
-
-        // Enhance jump-to-nav-btn with SVG icon if present
-        const jumpNavBtn = document.getElementById('jump-to-nav-btn');
-        if (jumpNavBtn && !jumpNavBtn.querySelector('svg')) {
-            const text = jumpNavBtn.textContent.trim() || 'Navigation';
-            jumpNavBtn.setAttribute('title', 'Jump to Course Navigation');
-            jumpNavBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fab-icon"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg><span class="fab-text">${escapeHtml(text)}</span>`;
+        
+        if (jumpNavBtn && jumpNavBtn.parentElement === dock) {
+            dock.insertBefore(fab, jumpNavBtn);
+        } else {
+            dock.appendChild(fab);
         }
 
         fab.addEventListener('click', (e) => {

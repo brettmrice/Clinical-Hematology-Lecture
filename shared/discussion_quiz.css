@@ -139,42 +139,33 @@
   transform: translateY(0) !important;
 }
 
-@media (min-width: 1401px) {
-  .discussion-quiz-fab {
-    right: calc(50% - 540px - 140px) !important;
+@media (min-width: 1301px) {
+  body:not(:has(.discussion-fab-dock)) .discussion-quiz-fab {
+    right: max(24px, calc(50% - 540px - 140px)) !important;
     left: auto !important;
   }
 }
 
-@media (max-width: 1400px) {
-  .discussion-quiz-fab {
-    right: 24px !important;
-    left: auto !important;
-    bottom: 120px !important;
-    padding: 8px 14px !important;
-    font-size: 12px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .discussion-quiz-fab {
-    bottom: 116px !important;
-    right: 12px !important;
+@media (max-width: 1300px) {
+  body:not(:has(.discussion-fab-dock)) .discussion-quiz-fab {
+    bottom: 20px !important;
+    right: 112px !important;
     left: auto !important;
     width: 38px !important;
     height: 38px !important;
     min-width: 38px !important;
+    max-width: 38px !important;
     padding: 0 !important;
-    border-radius: 8px !important;
+    border-radius: 50% !important;
     font-size: 0 !important;
     gap: 0 !important;
     justify-content: center !important;
   }
-  .discussion-quiz-fab span,
-  .discussion-quiz-fab .fab-text {
+  body:not(:has(.discussion-fab-dock)) .discussion-quiz-fab span,
+  body:not(:has(.discussion-fab-dock)) .discussion-quiz-fab .fab-text {
     display: none !important;
   }
-  .discussion-quiz-fab svg {
+  body:not(:has(.discussion-fab-dock)) .discussion-quiz-fab svg {
     width: 18px !important;
     height: 18px !important;
     margin: 0 !important;

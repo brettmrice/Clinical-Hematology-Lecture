@@ -195,6 +195,16 @@
     createFAB() {
       if (document.getElementById('discussion-quiz-fab')) return;
 
+      let dock = document.getElementById('discussion-fab-dock');
+      if (!dock) {
+        dock = document.createElement('div');
+        dock.id = 'discussion-fab-dock';
+        dock.className = 'discussion-fab-dock';
+        dock.setAttribute('role', 'toolbar');
+        dock.setAttribute('aria-label', 'Discussion Navigation and Quick Actions');
+        document.body.appendChild(dock);
+      }
+
       const btn = document.createElement('button');
       btn.id = 'discussion-quiz-fab';
       btn.className = 'discussion-quiz-fab';
@@ -207,7 +217,11 @@
         this.openQuiz();
       });
 
-      document.body.appendChild(btn);
+      if (dock.firstChild) {
+        dock.insertBefore(btn, dock.firstChild);
+      } else {
+        dock.appendChild(btn);
+      }
       this.fabBtn = btn;
     }
 

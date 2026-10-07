@@ -112,80 +112,96 @@
     transform: translateY(0) !important;
 }
 
-@media (min-width: 1401px) {
-    .discussion-mindmap-fab {
-        right: calc(50% - 540px - 140px) !important;
-        left: auto !important;
-    }
-    .jump-to-nav-btn {
-        right: calc(50% - 540px - 140px) !important;
-        left: auto !important;
-    }
+/* =========================================================================
+   Unified Floating Action Dock Container
+   Bottom-Right Stack (>1300px: Quiz Me [top] -> Mind Map [mid] -> Navigation [bottom])
+   Horizontal Row (<=1300px: Quiz Me -> Mind Map -> Navigation [Left to Right, Icon Only, Circular])
+   ========================================================================= */
+.discussion-fab-dock {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: max(24px, calc(50% - 540px - 140px)) !important;
+    left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 10px !important;
+    z-index: 1000 !important;
+    pointer-events: none !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    transition: right 0.25s ease, bottom 0.25s ease, gap 0.25s ease !important;
 }
 
-/* Responsive adjustments for Floating Action Buttons */
-@media (max-width: 1400px) {
-    .discussion-mindmap-fab {
-        right: 24px !important;
-        left: auto !important;
-        bottom: 72px !important;
-        padding: 8px 14px !important;
-        font-size: 12px !important;
-    }
-    .jump-to-nav-btn {
-        right: 24px !important;
-        left: auto !important;
-        bottom: 24px !important;
-        padding: 8px 14px !important;
-        font-size: 12px !important;
-    }
+/* Individual buttons reset fixed positioning when inside dock */
+.discussion-fab-dock .discussion-quiz-fab,
+.discussion-fab-dock .discussion-mindmap-fab,
+.discussion-fab-dock .jump-to-nav-btn {
+    position: static !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
 }
 
-@media (max-width: 768px) {
-    .discussion-mindmap-fab {
-        bottom: 70px !important;
-        right: 12px !important;
-        left: auto !important;
+/* Ordering: Quiz Me (1) -> Mind Map (2) -> Navigation (3) */
+.discussion-fab-dock .discussion-quiz-fab {
+    order: 1 !important;
+    z-index: 1002 !important;
+}
+.discussion-fab-dock .discussion-mindmap-fab {
+    order: 2 !important;
+    z-index: 1001 !important;
+}
+.discussion-fab-dock .jump-to-nav-btn {
+    order: 3 !important;
+    z-index: 1000 !important;
+}
+
+/* Responsive: Collapse into Horizontal Circular Icon-Only Dock when overlapping text (<= 1300px) */
+@media (max-width: 1300px) {
+    .discussion-fab-dock {
+        flex-direction: row !important;
+        align-items: center !important;
+        right: 20px !important;
+        bottom: 20px !important;
+        gap: 8px !important;
+    }
+
+    .discussion-fab-dock .discussion-quiz-fab,
+    .discussion-fab-dock .discussion-mindmap-fab,
+    .discussion-fab-dock .jump-to-nav-btn {
         width: 38px !important;
         height: 38px !important;
         min-width: 38px !important;
+        max-width: 38px !important;
         padding: 0 !important;
-        border-radius: 8px !important;
+        border-radius: 50% !important;
         font-size: 0 !important;
         gap: 0 !important;
         justify-content: center !important;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
     }
-    .discussion-mindmap-fab span,
-    .discussion-mindmap-fab .fab-text {
+
+    .discussion-fab-dock .discussion-quiz-fab span,
+    .discussion-fab-dock .discussion-mindmap-fab span,
+    .discussion-fab-dock .jump-to-nav-btn span,
+    .discussion-fab-dock .fab-text {
         display: none !important;
     }
-    .discussion-mindmap-fab svg {
+
+    .discussion-fab-dock .discussion-quiz-fab svg,
+    .discussion-fab-dock .discussion-mindmap-fab svg,
+    .discussion-fab-dock .jump-to-nav-btn svg {
         width: 18px !important;
         height: 18px !important;
         margin: 0 !important;
     }
-    .jump-to-nav-btn {
-        bottom: 24px !important;
-        right: 12px !important;
-        left: auto !important;
-        width: 38px !important;
-        height: 38px !important;
-        min-width: 38px !important;
-        padding: 0 !important;
-        border-radius: 8px !important;
-        font-size: 0 !important;
-        gap: 0 !important;
-        justify-content: center !important;
-    }
-    .jump-to-nav-btn span,
-    .jump-to-nav-btn .fab-text {
-        display: none !important;
-    }
-    .jump-to-nav-btn svg {
-        width: 18px !important;
-        height: 18px !important;
-        margin: 0 !important;
-    }
+}
     .mindmap-bottom-close-btn {
         bottom: 16px !important;
         width: 38px !important;
