@@ -478,6 +478,19 @@
         `;
 
         document.body.insertBefore(header, document.body.firstChild);
+
+        // Move scroll progress bar inside header so it docks cleanly to header bottom
+        const attachProgressBar = () => {
+            const existingProgress = document.querySelector('.scroll-progress-container');
+            if (existingProgress && existingProgress.parentElement !== header) {
+                header.appendChild(existingProgress);
+            }
+        };
+        attachProgressBar();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachProgressBar);
+        }
+
         initThemeToggle();
         initHeaderScroll();
     }

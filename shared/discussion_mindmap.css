@@ -529,6 +529,29 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
     box-sizing: border-box;
 }
 
+/* Scroll progress bar docked to bottom of header */
+#discussionMainHeader .scroll-progress-container,
+.scroll-progress-container {
+    position: fixed;
+    top: var(--discussion-header-height, 65px) !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 4px;
+    background-color: transparent;
+    z-index: 100000;
+    pointer-events: none;
+}
+
+#discussionMainHeader .scroll-progress-container {
+    position: absolute !important;
+    top: auto !important;
+    bottom: -1px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 3px;
+    z-index: 10;
+}
+
 .discussion-header-container {
     max-width: 1080px;
     margin: 0 auto;
@@ -603,7 +626,7 @@ html, body {
     color: var(--hdr-text-primary);
     flex: 1 1 auto;
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
     cursor: pointer;
     user-select: none;
     transition: opacity var(--hdr-transition-fast);
@@ -619,17 +642,18 @@ html, body {
 
 .discussion-brand-icon {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
     background: var(--hdr-icon-text);
     color: var(--hdr-icon-bg);
     border: 1px solid var(--hdr-btn-border);
     border-radius: 8px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    transition: background-color var(--hdr-transition-fast), border-color var(--hdr-transition-fast), box-shadow var(--hdr-transition-fast), color var(--hdr-transition-fast);
+    transition: all var(--hdr-transition-fast);
     box-sizing: border-box;
     flex-shrink: 0;
 }
@@ -747,6 +771,7 @@ html, body {
     .discussion-brand-icon {
         width: 34px;
         height: 34px;
+        padding: 6px;
     }
     .discussion-brand-svg {
         width: 17px;
