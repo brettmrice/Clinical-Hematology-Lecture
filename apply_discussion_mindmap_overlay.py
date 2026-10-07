@@ -11,17 +11,17 @@ def update_discussion_file(file_path):
     file_dir = os.path.dirname(file_path)
     rel_to_shared = os.path.relpath(os.path.join(ROOT_DIR, "shared"), file_dir).replace("\\", "/")
 
-    css_mindmap = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261004">'
-    css_quiz = f'    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261004">'
+    css_mindmap = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261007">'
+    css_quiz = f'    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261007">'
 
-    # Clean old links without ?v=20261004
-    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261004">', content)
-    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261004">', content)
+    # Clean old links without ?v=20261007
+    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261007">', content)
+    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261007">', content)
 
-    # Clean scripts with ?v=20261004
-    content = re.sub(r'<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/mindmaps_manifest.js?v=20261004"></script>', content)
-    content = re.sub(r'<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_mindmap.js?v=20261004"></script>', content)
-    content = re.sub(r'<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_quiz.js?v=20261004"></script>', content)
+    # Clean scripts with ?v=20261007
+    content = re.sub(r'<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>', content)
+    content = re.sub(r'<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>', content)
+    content = re.sub(r'<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>', content)
 
     # Ensure CSS exists
     if 'discussion_mindmap.css' not in content:
@@ -44,7 +44,7 @@ def update_discussion_file(file_path):
             content = content.replace('</head>', css_quiz + '\n</head>')
 
     # Ensure JS scripts exist
-    js_stack = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261004"></script>\n    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261004"></script>\n    <script src="{rel_to_shared}/discussion_quiz.js?v=20261004"></script>'
+    js_stack = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>\n    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>\n    <script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>'
 
     if 'discussion_mindmap.js' not in content:
         if '</body>' in content:

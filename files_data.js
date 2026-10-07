@@ -8,7 +8,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791124248.7140446
+    "mtime": 1791399609.036756
   },
   {
     "name": "L1_Manual_Counts_S1_Hemocytometer.pdf",
@@ -52,7 +52,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791124248.7175512
+    "mtime": 1791399609.0399213
   },
   {
     "name": "L2_Slide_Preparation_S1_PBS_Preparation.pdf",
@@ -85,7 +85,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791124248.7225523
+    "mtime": 1791399609.0449262
   },
   {
     "name": "L3_Slide_Evaluation_S1_PBS_Evaluation.pdf",
@@ -129,7 +129,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791124248.7257452
+    "mtime": 1791399609.0480614
   },
   {
     "name": "L4_CBC_Analysis_S1_Principles.pdf",
@@ -173,7 +173,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791124248.7297454
+    "mtime": 1791399609.0520613
   },
   {
     "name": "L5_Microcytic_S1_Mind_Map.html",
@@ -195,7 +195,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791124248.733965
+    "mtime": 1791399609.0565636
   },
   {
     "name": "L6_Hemoglobinopathy_S1_Mind_Map.html",
@@ -217,7 +217,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791124248.7369661
+    "mtime": 1791399609.0597315
   },
   {
     "name": "L7_Macrocytic_S1_Mind_Map.html",
@@ -239,7 +239,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791124248.7409637
+    "mtime": 1791399609.0639596
   },
   {
     "name": "L8_Normocytic_S1_Mind_Map.html",
@@ -261,7 +261,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791124248.7451048
+    "mtime": 1791399609.0680819
   },
   {
     "name": "L10_AML_S1_Mind_Map.html",
@@ -283,7 +283,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791124248.7491045
+    "mtime": 1791399609.0716734
   },
   {
     "name": "L11_MPN_MDS_S1_Mind_Map.html",
@@ -305,7 +305,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791124248.7521043
+    "mtime": 1791399609.0746734
   },
   {
     "name": "L12_LACLN_S1_Mind_Map.html",
@@ -327,7 +327,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791124248.7563097
+    "mtime": 1791399609.0788424
   },
   {
     "name": "L13_BM_Flow_S1_Mind_Map.html",
@@ -349,7 +349,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791124248.7603104
+    "mtime": 1791399609.0818462
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
@@ -371,7 +371,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791124248.6613872
+    "mtime": 1791399608.987512
   },
   {
     "name": "L5_Iron_Heme_S1_Mind_Map.html",
@@ -393,7 +393,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791124248.6663868
+    "mtime": 1791399608.9916227
   },
   {
     "name": "L6_Hemoglobinopathy_S1_Mind_Map.html",
@@ -448,7 +448,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791124248.670895
+    "mtime": 1791399608.9956224
   },
   {
     "name": "L7_Macros_Hypos_S4_Mind_Map.html",
@@ -470,7 +470,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791124248.6764467
+    "mtime": 1791399608.9998002
   },
   {
     "name": "L8_Hemolytic_S1_Mind_Map.html",
@@ -492,7 +492,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791124248.6804466
+    "mtime": 1791399609.00431
   },
   {
     "name": "L10_AML_S1_Mind_Map.html",
@@ -514,7 +514,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791124248.6845818
+    "mtime": 1791399609.008469
   },
   {
     "name": "L11_MPN_MDS_S1_Mind_Map.html",
@@ -536,7 +536,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791124248.6885836
+    "mtime": 1791399609.0124679
   },
   {
     "name": "L12_ALL_S1_Mind_Map.html",
@@ -558,7 +558,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791124248.6925817
+    "mtime": 1791399609.016467
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
@@ -580,7 +580,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791124248.697698
+    "mtime": 1791399609.0215993
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition.pdf",
@@ -635,7 +635,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791124248.7017024
+    "mtime": 1791399609.024599
   },
   {
     "name": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
@@ -679,7 +679,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791124248.7058542
+    "mtime": 1791399609.0287578
   },
   {
     "name": "L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
@@ -734,7 +734,7 @@ window.FILES_DATA = [
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791124248.7098553
+    "mtime": 1791399609.0327563
   },
   {
     "name": "L4_RBC_Analysis_S1_RBC_Indices.pdf",

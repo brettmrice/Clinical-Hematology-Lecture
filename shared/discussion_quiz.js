@@ -35,7 +35,7 @@
     if (!existing) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = `${getSharedPath()}/discussion_quiz.css?v=20261004`;
+      link.href = `${getSharedPath()}/discussion_quiz.css?v=20261007`;
       document.head.appendChild(link);
     }
   }

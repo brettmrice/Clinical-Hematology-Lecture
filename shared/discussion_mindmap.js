@@ -92,7 +92,7 @@
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261004`;
+            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261007`;
             document.head.appendChild(link);
         }
     }
@@ -109,7 +109,7 @@
         }
 
         const script = document.createElement('script');
-        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=20261004`;
+        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=20261007`;
         script.onload = () => {
             callback(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || []);
         };
