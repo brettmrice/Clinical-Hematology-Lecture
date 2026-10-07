@@ -133,7 +133,8 @@
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
-    transition: right 0.25s ease, bottom 0.25s ease, gap 0.25s ease !important;
+    transition: right 0.25s ease, bottom 0.25s ease, left 0.25s ease, transform 0.25s ease, gap 0.25s ease !important;
+    transform: none !important;
 }
 
 /* Individual buttons reset fixed positioning when inside dock */
@@ -168,6 +169,8 @@
         flex-direction: row !important;
         align-items: center !important;
         right: 20px !important;
+        left: auto !important;
+        transform: none !important;
         bottom: 20px !important;
         gap: 8px !important;
     }
@@ -200,6 +203,35 @@
         width: 18px !important;
         height: 18px !important;
         margin: 0 !important;
+    }
+}
+
+/* Mobile (Very Narrow) View: Center bottom positioning & Card Sticky Adjustment */
+@media (max-width: 768px) {
+    :root {
+        --card-sticky-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 52px);
+    }
+
+    .discussion-fab-dock {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+        gap: 8px !important;
+        z-index: 1000 !important;
+    }
+
+    /* Prevent sticky bottom preview/header cards from overlapping centered FAB dock */
+    :root html body .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+    :root html body .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card,
+    :root html body .table-wrapper:not(.is-collapsed) .table-header-card,
+    :root html body .table-wrapper:not(.is-collapsed) .table-preview-card,
+    :root html body .formula-wrapper:not(.is-collapsed) .formula-header-card,
+    :root html body .formula-wrapper:not(.is-collapsed) .formula-preview-card,
+    :root html body .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
+    :root html body .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
+        bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 52px) !important;
+        transition: bottom 0.25s ease !important;
     }
 }
     .mindmap-bottom-close-btn {
@@ -559,7 +591,7 @@ body.has-discussion-header .markdown-body > h1:first-of-type {
 }
 
 html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 

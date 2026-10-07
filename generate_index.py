@@ -213,11 +213,32 @@ def ensure_discussion_assets(full_path):
             content = content.replace('</head>', css_quiz + '\n</head>')
 
     # Ensure JS tags exist
-    js_stack = f'    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>\n    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>\n    <script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>'
+    if 'mindmaps_manifest.js' not in content:
+        manifest_tag = f'    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>'
+        if 'discussion_mindmap.js' in content:
+            content = re.sub(
+                r'([ \t]*<script\s+src="[^"]*discussion_mindmap\.js[^"]*"></script>)',
+                manifest_tag + r'\n\1',
+                content
+            )
+        elif '</body>' in content:
+            content = content.replace('</body>', manifest_tag + '\n</body>')
 
     if 'discussion_mindmap.js' not in content:
+        mindmap_tag = f'    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>'
         if '</body>' in content:
-            content = content.replace('</body>', js_stack + '\n</body>')
+            content = content.replace('</body>', mindmap_tag + '\n</body>')
+
+    if 'discussion_quiz.js' not in content:
+        quiz_tag = f'    <script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>'
+        if 'discussion_mindmap.js' in content:
+            content = re.sub(
+                r'(<script\s+src="[^"]*discussion_mindmap\.js[^"]*"></script>)',
+                r'\1\n' + quiz_tag,
+                content
+            )
+        elif '</body>' in content:
+            content = content.replace('</body>', quiz_tag + '\n</body>')
 
     if content != original:
         try:

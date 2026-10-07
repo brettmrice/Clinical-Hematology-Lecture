@@ -170,6 +170,14 @@
     height: 18px !important;
     margin: 0 !important;
   }
+@media (max-width: 768px) {
+  .discussion-fab-dock {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+    gap: 8px !important;
+  }
 }
 
 /* =========================================================================

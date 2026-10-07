@@ -215,11 +215,34 @@ function ensureDiscussionAssets(fullPath) {
         }
 
         // Ensure JS tags exist
-        const jsStack = `    <!-- Portable Discussion Mind Map Overlay Engine & Data -->\n    <script src="${relToShared}/mindmaps_manifest.js?v=20261007"></script>\n    <script src="${relToShared}/discussion_mindmap.js?v=20261007"></script>\n    <script src="${relToShared}/discussion_quiz.js?v=20261007"></script>`;
+        if (!content.includes('mindmaps_manifest.js')) {
+            const manifestTag = `    <script src="${relToShared}/mindmaps_manifest.js?v=20261007"></script>`;
+            if (content.includes('discussion_mindmap.js')) {
+                content = content.replace(
+                    /([ \t]*<script\s+src="[^"]*discussion_mindmap\.js[^"]*"><\/script>)/,
+                    `${manifestTag}\n$1`
+                );
+            } else if (content.includes('</body>')) {
+                content = content.replace('</body>', `${manifestTag}\n</body>`);
+            }
+        }
 
         if (!content.includes('discussion_mindmap.js')) {
+            const mindmapTag = `    <script src="${relToShared}/discussion_mindmap.js?v=20261007"></script>`;
             if (content.includes('</body>')) {
-                content = content.replace('</body>', jsStack + '\n</body>');
+                content = content.replace('</body>', `${mindmapTag}\n</body>`);
+            }
+        }
+
+        if (!content.includes('discussion_quiz.js')) {
+            const quizTag = `    <script src="${relToShared}/discussion_quiz.js?v=20261007"></script>`;
+            if (content.includes('discussion_mindmap.js')) {
+                content = content.replace(
+                    /(<script\s+src="[^"]*discussion_mindmap\.js[^"]*"><\/script>)/,
+                    `$1\n${quizTag}`
+                );
+            } else if (content.includes('</body>')) {
+                content = content.replace('</body>', `${quizTag}\n</body>`);
             }
         }
 

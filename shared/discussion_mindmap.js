@@ -86,14 +86,43 @@
         return './shared';
     }
 
-    // Auto-inject CSS stylesheet if not present
+    // Auto-inject CSS stylesheet and dynamic card offset styles if not present
     function ensureCSS() {
         const existing = document.querySelector('link[href*="discussion_mindmap.css"]');
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261007`;
+            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261007b`;
             document.head.appendChild(link);
+        }
+
+        // Dynamically enforce sticky bottom offset for interactive cards in mobile/centered view
+        if (!document.getElementById('chgh-sticky-card-dock-fix')) {
+            const style = document.createElement('style');
+            style.id = 'chgh-sticky-card-dock-fix';
+            style.textContent = `
+                @media (max-width: 768px) {
+                    :root {
+                        --card-sticky-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 52px) !important;
+                    }
+                    html body .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+                    html body .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card,
+                    html body .table-wrapper:not(.is-collapsed) .table-header-card,
+                    html body .table-wrapper:not(.is-collapsed) .table-preview-card,
+                    html body .formula-wrapper:not(.is-collapsed) .formula-header-card,
+                    html body .formula-wrapper:not(.is-collapsed) .formula-preview-card,
+                    html body .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
+                    html body .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
+                        bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 52px) !important;
+                        transition: bottom 0.25s ease !important;
+                    }
+                }
+            `;
+            if (document.head) {
+                document.head.appendChild(style);
+            } else {
+                document.addEventListener('DOMContentLoaded', () => document.head.appendChild(style));
+            }
         }
     }
 
@@ -194,6 +223,7 @@
             return;
         }
 
+        ensureCSS();
         const dock = getOrCreateFabDock();
 
         // Enhance jump-to-nav-btn with SVG icon if present and adopt into dock

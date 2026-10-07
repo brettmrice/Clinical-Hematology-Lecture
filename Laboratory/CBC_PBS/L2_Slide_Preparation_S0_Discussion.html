@@ -2279,9 +2279,13 @@
         .table-modal-bottom-card,
         .graphic-modal-bottom-card,
         .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+        .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card,
         .table-wrapper:not(.is-collapsed) .table-header-card,
+        .table-wrapper:not(.is-collapsed) .table-preview-card,
         .formula-wrapper:not(.is-collapsed) .formula-header-card,
-        .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+        .formula-wrapper:not(.is-collapsed) .formula-preview-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
             background: #EFE1CE !important;
             border-color: #363945 !important;
             color: #363945 !important;
@@ -2289,12 +2293,19 @@
         }
 
         .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+        .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card,
         .table-wrapper:not(.is-collapsed) .table-header-card,
+        .table-wrapper:not(.is-collapsed) .table-preview-card,
         .formula-wrapper:not(.is-collapsed) .formula-header-card,
-        .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+        .formula-wrapper:not(.is-collapsed) .formula-preview-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
+        .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
             position: sticky !important;
-            bottom: 12px !important;
+            bottom: var(--card-sticky-bottom, 12px) !important;
             z-index: 30 !important;
+            align-self: center !important;
+            margin-top: 12px !important;
+            margin-bottom: 0 !important;
         }
 
         /* 7. Button Hover State & Card-Hover Sync (Light Mode: Inverts Button to Dark Slate with Cream Text) */
@@ -2457,9 +2468,13 @@
             .table-modal-bottom-card,
             .graphic-modal-bottom-card,
             .flowchart-wrapper:not(.is-collapsed) .flowchart-header-card,
+            .flowchart-wrapper:not(.is-collapsed) .flowchart-preview-card,
             .table-wrapper:not(.is-collapsed) .table-header-card,
+            .table-wrapper:not(.is-collapsed) .table-preview-card,
             .formula-wrapper:not(.is-collapsed) .formula-header-card,
-            .graphic-wrapper:not(.is-collapsed) .graphic-header-card {
+            .formula-wrapper:not(.is-collapsed) .formula-preview-card,
+            .graphic-wrapper:not(.is-collapsed) .graphic-header-card,
+            .graphic-wrapper:not(.is-collapsed) .graphic-preview-card {
                 background: #22242D !important;
                 border-color: #EFE1CE !important;
                 color: #EFE1CE !important;
@@ -2591,6 +2606,13 @@
             border-color: #EFE1CE !important;
             color: #EFE1CE !important;
             box-shadow: 0 4px 16px rgba(239, 225, 206, 0.35) !important;
+        }
+
+        /* Mobile Card Sticky Offset */
+        @media (max-width: 768px) {
+            :root {
+                --card-sticky-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 52px);
+            }
         }
     </style>
 </head>
@@ -5506,7 +5528,6 @@ flowchart TD
             updateGlobalDockStates();
         });
     </script>
-    <!-- Portable Discussion Mind Map Overlay Engine & Data -->
     <script src="../../shared/mindmaps_manifest.js?v=20261007"></script>
     <script src="../../shared/discussion_mindmap.js?v=20261007"></script>
     <script src="../../shared/discussion_quiz.js?v=20261007"></script>
