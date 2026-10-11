@@ -1258,6 +1258,13 @@
         .grp-shape-axis { stroke: #94a3b8; stroke-width: 1.5; stroke-linecap: round; }
         .grp-shape-curve { stroke: #2563eb; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
         .grp-shape-dot { fill: #0969da; }
+        .grp-shape-palette { fill: #fef3c7; stroke: #d97706; stroke-width: 1.5; }
+        .grp-shape-hole { fill: #ffffff; stroke: #d97706; stroke-width: 1; }
+        .grp-shape-swatch1 { fill: #ef4444; }
+        .grp-shape-swatch2 { fill: #3b82f6; }
+        .grp-shape-swatch3 { fill: #10b981; }
+        .grp-shape-brush-handle { stroke: #363945; stroke-width: 2.5; stroke-linecap: round; }
+        .grp-shape-brush-tip { fill: #4f46e5; }
 
         .media-global-btn {
             display: inline-flex;
@@ -1478,6 +1485,13 @@
             .grp-shape-axis { stroke: #6e7681; }
             .grp-shape-curve { stroke: #58a6ff; fill: none; }
             .grp-shape-dot { fill: #58a6ff; }
+            .grp-shape-palette { fill: #78350f; stroke: #fbbf24; stroke-width: 1.5; }
+            .grp-shape-hole { fill: #161b22; stroke: #fbbf24; stroke-width: 1; }
+            .grp-shape-swatch1 { fill: #f87171; }
+            .grp-shape-swatch2 { fill: #60a5fa; }
+            .grp-shape-swatch3 { fill: #34d399; }
+            .grp-shape-brush-handle { stroke: #efe1ce; stroke-width: 2.5; stroke-linecap: round; }
+            .grp-shape-brush-tip { fill: #818cf8; }
 
             .media-global-btn {
                 background: #161b22;
@@ -2189,13 +2203,21 @@
         }
 
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
-        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-palette,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-hole,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch1,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch2,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch3,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-tip {
             fill: var(--color-border-default, #D0D7DE) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
         }
 
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
-        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-handle {
             stroke: var(--color-border-default, #D0D7DE) !important;
             fill: none !important;
         }
@@ -2222,6 +2244,13 @@
         .grp-shape-axis    { stroke: #94A3B8 !important; stroke-width: 1.5; }
         .grp-shape-curve   { stroke: #363945 !important; stroke-width: 2; fill: none; }
         .grp-shape-dot     { fill: #D97706 !important; }
+        .grp-shape-palette { fill: #FEF3C7 !important; stroke: #D97706 !important; stroke-width: 1.5; }
+        .grp-shape-hole    { fill: #FFFFFF !important; stroke: #D97706 !important; stroke-width: 1; }
+        .grp-shape-swatch1 { fill: #EF4444 !important; }
+        .grp-shape-swatch2 { fill: #3B82F6 !important; }
+        .grp-shape-swatch3 { fill: #10B981 !important; }
+        .grp-shape-brush-handle { stroke: #363945 !important; stroke-width: 2.5; stroke-linecap: round; }
+        .grp-shape-brush-tip    { fill: #4F46E5 !important; }
 
         /* 5. Action Buttons (Base Pill Style) */
         .flowchart-btn-inline,
@@ -2428,14 +2457,22 @@
             .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-line,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
-            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-handle {
                 stroke: #484F58 !important;
             }
 
             .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-arrow,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
-            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-palette,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-hole,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch1,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch2,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch3,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-tip {
                 fill: #484F58 !important;
+                stroke: #484F58 !important;
             }
 
             .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-text {
@@ -2503,6 +2540,13 @@
             .grp-shape-axis    { stroke: #6E7681 !important; }
             .grp-shape-curve   { stroke: #EFE1CE !important; }
             .grp-shape-dot     { fill: #FBBF24 !important; }
+            .grp-shape-palette { fill: #78350F !important; stroke: #FBBF24 !important; stroke-width: 1.5; }
+            .grp-shape-hole    { fill: #161B22 !important; stroke: #FBBF24 !important; stroke-width: 1; }
+            .grp-shape-swatch1 { fill: #F87171 !important; }
+            .grp-shape-swatch2 { fill: #60A5FA !important; }
+            .grp-shape-swatch3 { fill: #34D399 !important; }
+            .grp-shape-brush-handle { stroke: #EFE1CE !important; stroke-width: 2.5; stroke-linecap: round; }
+            .grp-shape-brush-tip    { fill: #818CF8 !important; }
 
             .flowchart-btn-inline,
             .flowchart-btn-full,
@@ -3951,42 +3995,86 @@ graph TD
 </ul>
 </li>
 </ul>
-<pre class="highlight"><code>   [ Normal Sideroblast ]            [ Pathologic Ring Sideroblast ]
+
+
+<div class="graphic-wrapper is-collapsed" data-graphic-type="illustration" data-graphic-index="1">
+    <div class="graphic-expanded-view">
+        <div class="graphic-expanded-inner">
+            <figure class="graphic-figure">
+                <img src="graphics/sideroblast_comparison_illustration.png" alt="Sideroblasts Morphology Comparison" loading="lazy" class="graphic-image" />
+                <figcaption class="graphic-caption">Sideroblasts Morphology Comparison</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="graphic-header-card graphic-preview-card" title="Click to expand illustration inline" aria-label="Expand illustration" tabindex="0">
+        <div class="graphic-mini-graphic" title="Illustration preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
+                <path d="M 33 7 C 45 7, 56 10, 56 15.5 C 56 18, 53.5 19, 52 20 C 50.5 21, 51.5 22.5, 49.5 24 C 47.5 25.5, 38 26, 30 25 C 23 24, 19 20, 19 15.5 C 19 10.5, 24 7, 33 7 Z" class="grp-shape-palette" />
+                <circle cx="48" cy="18" r="2.2" class="grp-shape-hole" />
+                <circle cx="27" cy="12" r="2" class="grp-shape-swatch1" />
+                <circle cx="35" cy="10.5" r="2" class="grp-shape-swatch2" />
+                <circle cx="43" cy="12" r="2" class="grp-shape-swatch3" />
+                <circle cx="26" cy="17.5" r="2" class="grp-shape-sun" />
+                <line x1="77" y1="8" x2="64" y2="19" class="grp-shape-brush-handle" />
+                <path d="M 64 19 L 60.5 22.5 C 59 24, 57.5 24, 57.5 23 C 58 22, 60 20.5, 62 19 Z" class="grp-shape-brush-tip" />
+            </svg>
+        </div>
+        <div class="graphic-header-actions graphic-preview-actions">
+            <button type="button" class="graphic-btn-inline" title="Expand illustration inline" aria-label="Expand Inline">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="graphic-btn-collapse" title="Collapse illustration" aria-label="Collapse illustration">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="graphic-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ```
+    [ Normal Sideroblast ]            [ Pathologic Ring Sideroblast ]
          .--------.                            .--------.
         /          \                          / *  *  *  \
-       |  (Nucleus) |                        | * (Nucleus)*|  &lt;- &gt;= 5 Iron granules
-        \    *     /                          \ *  *  *  /      encircling &gt;= 1/3
+       |  (Nucleus) |                        | * (Nucleus)*|  <- >= 5 Iron granules
+        \    *     /                          \ *  *  *  /      encircling >= 1/3
          '--------'                            '--------'       of nucleus
-      (Scattered iron)                      (Prussian Blue Stain)</code></pre>
+      (Scattered iron)                      (Prussian Blue Stain)
+``` -->
+
 <h4 id="2-dysgranulopoiesis-disordered-white-blood-cell-maturation">2. Dysgranulopoiesis (Disordered White Blood Cell Maturation)</h4>
 <ul>
-<li><strong>Peripheral Blood Smear (PBS)</strong>:<ul>
+<li><strong>Peripheral Blood Smear (PBS)</strong>:</li>
 <li><strong>Hypogranulation / Agranularity</strong>: The cytoplasm of maturing neutrophils fails to synthesize secondary (specific) granules, appearing completely pale, clear, or exhibiting an irregular washed-out blue hue rather than the normal neutral pink/salmon coloration.</li>
 <li><strong>Pseudo-Pelger-Huët Anomaly</strong>: Neutrophil hyposegmentation characterized by bi-lobed nuclei connected by a thin chromatin thread ("pince-nez" spectacles) or unlobed (round/oval) "peanut-shaped" nuclei. Chromatin is densely clumped, coarse, and mature, confirming the cell is a mature segmented neutrophil and not a band or metamyelocyte.</li>
 <li><strong>Hypersegmentation</strong>: Occasional neutrophils displaying $\ge 6$ distinct lobes.</li>
 <li><strong>Döhle Body-like Inclusions</strong>: Residual ribosomal RNA patches seen without concurrent systemic bacterial infection.</li>
-</ul>
-</li>
-<li><strong>Bone Marrow Aspirate</strong>:<ul>
+<li><strong>Bone Marrow Aspirate</strong>:</li>
 <li>Persistent cytoplasmic basophilia in late myeloid stages.</li>
 <li>Abnormal primary granule coalescence and clumping within promyelocytes.</li>
 <li>Left shift with atypical maturation and variable myeloblast expansion ($< 20\text{%}$).</li>
 </ul>
-</li>
-</ul>
 <h4 id="3-dysmegakaryopoiesis-disordered-platelet-maturation">3. Dysmegakaryopoiesis (Disordered Platelet Maturation)</h4>
 <ul>
-<li><strong>Peripheral Blood Smear (PBS)</strong>:<ul>
+<li><strong>Peripheral Blood Smear (PBS)</strong>:</li>
 <li><strong>Giant Platelets</strong>: Platelets exceeding the diameter of a normal erythrocyte ($> 7\text{ }\mu\text{m}$), frequently displaying abnormal granularity, vacuolization, or agranular ("gray") cytoplasm.</li>
 <li><strong>Circulating Micromegakaryocytes</strong>: Small, dwarf megakaryocytic fragments that approximate the size of a large monocyte or blast. Characterized by a mature, condensed nuclear chromatin structure and cytoplasmic blebbing (pseudopod formation) shedding defective platelets directly into the peripheral blood.</li>
-</ul>
-</li>
-<li><strong>Bone Marrow Aspirate &amp; Biopsy</strong>:<ul>
+<li><strong>Bone Marrow Aspirate &amp; Biopsy</strong>:</li>
 <li><strong>Micromegakaryocytes</strong>: Dwarf megakaryocytes displaying single or bi-lobed nuclei.</li>
 <li><strong>Hypolobulated / Mononucleated Megakaryocytes</strong>: Abnormally large, round, non-lobulated nuclei (pawn-ball appearance), characteristic of specific chromosomal deletions.</li>
 <li><strong>Widely Separated Nuclei</strong>: Disconnected, multi-nucleated megakaryocytes with multiple small nuclei scattered throughout abundant cytoplasm.</li>
-</ul>
-</li>
 </ul>
 <h3 id="microscopic-differentials-at-the-bench">Microscopic Differentials at the Bench</h3>
 <h4 id="congenital-pelger-huet-vs-pseudo-pelger-huet">Congenital Pelger-Huët vs. Pseudo-Pelger-Huët</h4>
@@ -4154,27 +4242,21 @@ graph TD
 <ul>
 <li><strong>Diagnostic Definition</strong>: Bone marrow aspirate reveals <strong>$\ge 15\text{%}$ ring sideroblasts</strong> among total nucleated erythroid precursors on Prussian blue stain.</li>
 <li><strong>Molecular Exception</strong>: If the somatic mutation <strong><em>SF3B1</em></strong> (a spliceosome gene mutation) is identified by molecular diagnostics, the diagnostic threshold drops to <strong>$\ge 5\text{%}$ ring sideroblasts</strong>.</li>
-<li><strong>Sub-stratification</strong>:<ul>
+<li><strong>Sub-stratification</strong>:</li>
 <li><em>MDS-RS-SLD</em>: Ring sideroblasts present with dysplasia confined exclusively to the erythroid line.</li>
 <li><em>MDS-RS-MLD</em>: Ring sideroblasts present alongside multi-lineage dysplasia ($\ge 10\text{%}$ dysplasia in myeloid and/or megakaryocytic lineages). Marrow blasts remain $< 5\text{%}$; peripheral blood blasts $< 1\text{%}$.</li>
-</ul>
-</li>
 </ul>
 <h5 id="4-mds-with-excess-blasts-mds-eb">4. MDS with Excess Blasts (MDS-EB)</h5>
 <p>Subdivided into two distinct prognostic tiers based on myeloblast thresholds:</p>
 <ul>
-<li><strong>MDS-EB-1</strong>:<ul>
+<li><strong>MDS-EB-1</strong>:</li>
 <li>Peripheral Blood Blasts: <strong>$2\text{ to }4\text{%}$</strong>.</li>
 <li>Bone Marrow Blasts: <strong>$5\text{ to }9\text{%}$</strong>.</li>
 <li>No Auer rods.</li>
-</ul>
-</li>
-<li><strong>MDS-EB-2</strong>:<ul>
+<li><strong>MDS-EB-2</strong>:</li>
 <li>Peripheral Blood Blasts: <strong>$5\text{ to }19\text{%}$</strong>.</li>
 <li>Bone Marrow Blasts: <strong>$10\text{ to }19\text{%}$</strong>.</li>
 <li><strong>Auer Rod Rule</strong>: The presence of <strong>Auer rods</strong> on peripheral blood or bone marrow smears automatically classifies the condition as <strong>MDS-EB-2</strong>, even if the blast percentage falls below $10\text{%}$.</li>
-</ul>
-</li>
 </ul>
 <h5 id="5-mds-with-isolated-del5q">5. MDS with Isolated del(5q)</h5>
 <ul>
@@ -4402,7 +4484,55 @@ flowchart TD
 </ul>
 <h3 id="flow-cytometric-immunophenotyping-panels">Flow Cytometric Immunophenotyping Panels</h3>
 <p>Flow cytometry evaluates hydrodynamic single-cell suspensions using laser fluorochrome-conjugated monoclonal antibodies, plotting Side Scatter (granularity/complexity) against CD45 expression:</p>
-<pre class="highlight"><code>  Side Scatter
+
+
+<div class="graphic-wrapper is-collapsed" data-graphic-type="graph" data-graphic-index="2">
+    <div class="graphic-expanded-view">
+        <div class="graphic-expanded-inner">
+            <figure class="graphic-figure">
+                <img src="graphics/flow_normal_graph.png" alt="Normal population event patterns for flow cytometric CD45 staining intensity vs. side-scatter (internal complexity) gating analysis" loading="lazy" class="graphic-image" />
+                <figcaption class="graphic-caption">Normal population event patterns for flow cytometric CD45 staining intensity vs. side-scatter (internal complexity) gating analysis</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="graphic-header-card graphic-preview-card" title="Click to expand graph inline" aria-label="Expand graph" tabindex="0">
+        <div class="graphic-mini-graphic" title="Graph preview">
+            <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
+                <line x1="14" y1="24" x2="84" y2="24" class="grp-shape-axis" />
+                <line x1="14" y1="8" x2="14" y2="24" class="grp-shape-axis" />
+                <path d="M14 22 C 30 20, 42 10, 56 15 C 68 19, 74 10, 84 8" class="grp-shape-curve" />
+                <circle cx="36" cy="18" r="2.5" class="grp-shape-dot" />
+                <circle cx="56" cy="15" r="2.5" class="grp-shape-dot" />
+                <circle cx="74" cy="10" r="2.5" class="grp-shape-dot" />
+            </svg>
+        </div>
+        <div class="graphic-header-actions graphic-preview-actions">
+            <button type="button" class="graphic-btn-inline" title="Expand graph inline" aria-label="Expand Inline">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 8zm0 4.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"/>
+                </svg>
+                <span>Inline</span>
+            </button>
+            <button type="button" class="graphic-btn-collapse" title="Collapse graph" aria-label="Collapse graph">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10.5 4.5v-4a.5.5 0 0 1 .5-.5zm-5 16a.5.5 0 0 1-.5-.5v-4A1.5 1.5 0 0 1 4.5 10h-4a.5.5 0 0 1 0-1h4a1.5 1.5 0 0 1 1.5 1.5v4a.5.5 0 0 1-.5.5zm5 0a.5.5 0 0 1-.5-.5v-4a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-.5.5z"/>
+                </svg>
+                <span>Collapse</span>
+            </button>
+            <button type="button" class="graphic-btn-full" title="Open in Fullscreen Modal" aria-label="Open Fullscreen Modal">
+                <svg class="grp-btn-icon" width="13" height="13" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 1 0V2h3.5a.5.5 0 0 0 0-1h-4zm13 0h-4a.5.5 0 0 0 0 1H14v3.5a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-.5-.5zm0 13.5a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0V14h-3.5a.5.5 0 0 0 0 1h4zm-13 0h4a.5.5 0 0 0 0-1H2v-3.5a.5.5 0 0 0-1 0v4a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                <span>Full</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ```
+  Side Scatter
      (SSC)
        ^
        |          .---.
@@ -4414,8 +4544,10 @@ flowchart TD
        |   .---.       .---.
    Low |  (Blasts)    (Lymphs)
        |   '---'       '---'
-       +-----------------------------&gt; CD45 Expression
-         Dim CD45    Bright CD45</code></pre>
+       +-----------------------------\> CD45 Expression
+         Dim CD45    Bright CD45
+``` 
+-->
 <p>Key cluster of differentiation (CD) markers pertinent to the evaluation of MPN blast transformation, MDS dyspoiesis, and lineage confirmation include:</p>
 
 
@@ -5060,8 +5192,14 @@ graph TD
             <div class="media-global-graphic graphic-mini-graphic" title="Illustrations">
                 <svg width="48" height="16" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
-                    <circle cx="28" cy="13" r="5" class="grp-shape-sun" />
-                    <path d="M8 25L32 15L52 23L68 12L88 25" class="grp-shape-mountain" />
+                    <path d="M 33 7 C 45 7, 56 10, 56 15.5 C 56 18, 53.5 19, 52 20 C 50.5 21, 51.5 22.5, 49.5 24 C 47.5 25.5, 38 26, 30 25 C 23 24, 19 20, 19 15.5 C 19 10.5, 24 7, 33 7 Z" class="grp-shape-palette" />
+                    <circle cx="48" cy="18" r="2.2" class="grp-shape-hole" />
+                    <circle cx="27" cy="12" r="2" class="grp-shape-swatch1" />
+                    <circle cx="35" cy="10.5" r="2" class="grp-shape-swatch2" />
+                    <circle cx="43" cy="12" r="2" class="grp-shape-swatch3" />
+                    <circle cx="26" cy="17.5" r="2" class="grp-shape-sun" />
+                    <line x1="77" y1="8" x2="64" y2="19" class="grp-shape-brush-handle" />
+                    <path d="M 64 19 L 60.5 22.5 C 59 24, 57.5 24, 57.5 23 C 58 22, 60 20.5, 62 19 Z" class="grp-shape-brush-tip" />
                 </svg>
             </div>
             <button type="button" class="media-global-btn" id="btn-global-illustration" title="Toggle Illustrations Inline" aria-label="Toggle Illustrations Inline">
@@ -5205,8 +5343,14 @@ graph TD
                 <div class="graphic-mini-graphic" title="Graphic preview">
                     <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
-                        <circle cx="28" cy="13" r="5" class="grp-shape-sun" />
-                        <path d="M8 25L32 15L52 23L68 12L88 25" class="grp-shape-mountain" />
+                        <path d="M 33 7 C 45 7, 56 10, 56 15.5 C 56 18, 53.5 19, 52 20 C 50.5 21, 51.5 22.5, 49.5 24 C 47.5 25.5, 38 26, 30 25 C 23 24, 19 20, 19 15.5 C 19 10.5, 24 7, 33 7 Z" class="grp-shape-palette" />
+                        <circle cx="48" cy="18" r="2.2" class="grp-shape-hole" />
+                        <circle cx="27" cy="12" r="2" class="grp-shape-swatch1" />
+                        <circle cx="35" cy="10.5" r="2" class="grp-shape-swatch2" />
+                        <circle cx="43" cy="12" r="2" class="grp-shape-swatch3" />
+                        <circle cx="26" cy="17.5" r="2" class="grp-shape-sun" />
+                        <line x1="77" y1="8" x2="64" y2="19" class="grp-shape-brush-handle" />
+                        <path d="M 64 19 L 60.5 22.5 C 59 24, 57.5 24, 57.5 23 C 58 22, 60 20.5, 62 19 Z" class="grp-shape-brush-tip" />
                     </svg>
                 </div>
                 <div class="graphic-modal-actions">
@@ -6202,6 +6346,13 @@ graph TD
                 if (!img) return;
 
                 currentGraphicModalWrapper = graphicContainer.closest('.graphic-wrapper');
+                if (currentGraphicModalWrapper) {
+                    const srcMini = currentGraphicModalWrapper.querySelector('.graphic-mini-graphic');
+                    const modalMini = graphicModal.querySelector('.graphic-modal-bottom-card .graphic-mini-graphic');
+                    if (srcMini && modalMini) {
+                        modalMini.innerHTML = srcMini.innerHTML;
+                    }
+                }
 
                 graphicModalBody.innerHTML = '';
                 const contentWrapper = document.createElement('div');
