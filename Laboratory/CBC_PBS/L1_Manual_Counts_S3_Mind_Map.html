@@ -381,7 +381,7 @@
       letter-spacing: 0.03em;
     }
 
-    .badge-type.lecture {
+                .badge-type.lecture {
       background: #e0f2fe;
       color: #0369a1;
     }
@@ -391,9 +391,24 @@
       color: #b45309;
     }
 
+    .badge-type.bf {
+      background: #fef08a;
+      color: #78350f;
+    }
+
+    .badge-type.h-lecture {
+      background: #ede9fe;
+      color: #4338ca;
+    }
+
+    .badge-type.h-lab {
+      background: #ede9fe;
+      color: #701a75;
+    }
+
     .badge-type.other {
-      background: #f1f5f9;
-      color: #475569;
+      background: #fef08a;
+      color: #78350f;
     }
 
     .sidebar-empty-state {
@@ -828,7 +843,7 @@
 <body>
 
   <!-- Top Floating Element 1: Title Card / Sidebar Toggle Button -->
-  <button class="floating-panel top-title-card" id="btn-open-sidebar" title="Click to view all course mind maps">
+  <button class="floating-panel top-title-card" id="btn-open-sidebar" title="Click to view all mind maps">
     <div class="menu-icon">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -844,7 +859,7 @@
   <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
   <!-- Slide-out Sidebar Drawer -->
-  <aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Course Mind Maps Navigation">
+  <aside class="sidebar-drawer" id="sidebar-drawer" aria-label="Mind Maps Navigation">
     <div class="sidebar-header">
       <div class="sidebar-header-left">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -853,7 +868,7 @@
           <rect x="14" y="14" width="7" height="7"></rect>
           <rect x="3" y="14" width="7" height="7"></rect>
         </svg>
-        <h2>Course Mind Maps</h2>
+        <h2>Mind Maps</h2>
       </div>
       <button class="sidebar-close-btn" id="btn-close-sidebar" title="Close Sidebar (Esc)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -864,11 +879,12 @@
     </div>
 
     <div class="sidebar-controls">
-      <!-- Tier 1: Type Filter Buttons -->
+                  <!-- Tier 1: Type Filter Buttons -->
       <div class="filter-type-group" id="filter-type-group">
         <button class="filter-type-btn active" data-type="all">All (<span id="count-all">0</span>)</button>
-        <button class="filter-type-btn" data-type="lecture">Lectures (<span id="count-lecture">0</span>)</button>
-        <button class="filter-type-btn" data-type="lab">Labs (<span id="count-lab">0</span>)</button>
+        <button class="filter-type-btn" data-type="lecture">LEC (<span id="count-lecture">0</span>)</button>
+        <button class="filter-type-btn" data-type="lab">LAB (<span id="count-lab">0</span>)</button>
+        <button class="filter-type-btn" data-type="bf">BF (<span id="count-bf">0</span>)</button>
       </div>
 
       <!-- Tier 2: Subfolder / Module Dropdown -->
@@ -876,21 +892,15 @@
         <option value="all">All Subfolders & Modules</option>
       </select>
 
-      <!-- Quick Search Bar & A-Z Sort Toggle -->
+      <!-- Quick Search Bar -->
       <div class="sidebar-search-row">
-        <div class="sidebar-search-box">
+        <div class="sidebar-search-box" style="flex: 1;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <input type="text" id="sidebar-search-input" placeholder="Search mind maps by title...">
         </div>
-        <button class="sidebar-sort-btn" id="sidebar-sort-toggle" title="Toggle Lesson Order vs Alphabetical (A-Z)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15 18H9M19 12H5M21 6H3"/>
-          </svg>
-          <span id="sidebar-sort-label">A-Z</span>
-        </button>
       </div>
     </div>
 
@@ -2883,12 +2893,9 @@
     const sidebarSearchInput = document.getElementById('sidebar-search-input');
     const filterTypeGroup = document.getElementById('filter-type-group');
 
-    let currentTypeFilter = 'all';
+        let currentTypeFilter = 'all';
     let currentSubfolderFilter = 'all';
     let currentSearchQuery = '';
-    let currentSortMode = 'lesson'; // 'lesson' (L# alternating lec/lab) or 'alpha' (A-Z)
-    const sidebarSortToggle = document.getElementById('sidebar-sort-toggle');
-    const sidebarSortLabel = document.getElementById('sidebar-sort-label');
 
     function openSidebar() {
       if (sidebarDrawer && sidebarBackdrop) {
@@ -2949,6 +2956,7 @@
       const allCount = maps.length;
       const lectureCount = maps.filter(m => m.type === 'lecture').length;
       const labCount = maps.filter(m => m.type === 'lab').length;
+      const bfCount = maps.filter(m => m.type === 'bf' || m.type === 'other' || (m.subfolder && m.subfolder.toLowerCase().includes('body fluid'))).length;
 
       const elAll = document.getElementById('count-all');
       const elLec = document.getElementById('count-lecture');
@@ -2957,9 +2965,11 @@
       if (elAll) elAll.textContent = allCount;
       if (elLec) elLec.textContent = lectureCount;
       if (elLab) elLab.textContent = labCount;
+      const elBf = document.getElementById('count-bf');
+      if (elBf) elBf.textContent = bfCount;
     }
 
-    function renderSidebarList() {
+                function renderSidebarList() {
       if (!sidebarListContainer) return;
       updateCounts();
 
@@ -2969,8 +2979,14 @@
 
       let filtered = maps.filter(item => {
         // Type filter
-        if (currentTypeFilter !== 'all' && item.type !== currentTypeFilter) {
-          return false;
+        if (currentTypeFilter !== 'all') {
+          if (currentTypeFilter === 'bf') {
+            if (item.type !== 'bf' && item.type !== 'other' && !(item.subfolder && item.subfolder.toLowerCase().includes('body fluid'))) {
+              return false;
+            }
+          } else if (item.type !== currentTypeFilter) {
+            return false;
+          }
         }
         // Subfolder filter
         if (currentSubfolderFilter !== 'all' && item.subfolder !== currentSubfolderFilter) {
@@ -2986,20 +3002,9 @@
         return true;
       });
 
-      // Sort filtered items based on currentSortMode
+      // Always sort filtered items in alphabetical order (A-Z)
       filtered.sort((a, b) => {
-        if (currentSortMode === 'alpha') {
-          return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
-        } else {
-          // Default: Lesson / L# alternating lecture then lab
-          const numA = (typeof a.number === 'number') ? a.number : 9999;
-          const numB = (typeof b.number === 'number') ? b.number : 9999;
-          if (numA !== numB) return numA - numB;
-          const typeOrderA = a.type === 'lecture' ? 0 : (a.type === 'lab' ? 1 : 2);
-          const typeOrderB = b.type === 'lecture' ? 0 : (b.type === 'lab' ? 1 : 2);
-          if (typeOrderA !== typeOrderB) return typeOrderA - typeOrderB;
-          return a.title.localeCompare(b.title);
-        }
+        return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
       });
 
       sidebarListContainer.innerHTML = '';
@@ -3032,37 +3037,34 @@
           card.classList.add('current');
         }
 
-        const typeClass = item.type === 'lecture' ? 'lecture' : (item.type === 'lab' ? 'lab' : 'other');
-        const typeLabel = item.type === 'lecture' ? 'Lecture' : (item.type === 'lab' ? 'Lab' : 'General');
-        const numLabel = (item.number && item.number < 9000) ? `L${item.number}` : '';
+        const isMlsAscp = (window.COURSE_MINDMAPS || []).some(m => m.rel_path_from_shared && m.rel_path_from_shared.includes('/Hematology/')) ||
+                          window.location.pathname.toLowerCase().includes('mlsascp');
+        const isBf = item.type === 'bf' || item.type === 'other' || (item.subfolder && item.subfolder.toLowerCase().includes('body fluid'));
+
+        let typeClass = '';
+        let typeLabel = '';
+        if (item.type === 'lecture') {
+          typeClass = isMlsAscp ? 'h-lecture' : 'lecture';
+          typeLabel = isMlsAscp ? 'H | Lecture' : 'Lecture';
+        } else if (item.type === 'lab') {
+          typeClass = isMlsAscp ? 'h-lab' : 'lab';
+          typeLabel = isMlsAscp ? 'H | Laboratory' : 'Laboratory';
+        } else {
+          typeClass = 'bf';
+          typeLabel = isMlsAscp ? 'BF | Body Fluid' : 'Body Fluid';
+        }
+
+        const subfolderHtml = isBf ? '' : `<span>${item.subfolder || 'General'}</span>`;
 
         card.innerHTML = `
           <div class="mindmap-item-title">${item.title} ${isCurrent ? ' (Current)' : ''}</div>
           <div class="mindmap-item-meta">
-            ${numLabel ? `<span class="badge-type ${typeClass}">${numLabel}</span>` : ''}
             <span class="badge-type ${typeClass}">${typeLabel}</span>
-            <span>${item.subfolder || 'General'}</span>
+            ${subfolderHtml}
           </div>
         `;
 
         sidebarListContainer.appendChild(card);
-      });
-    }
-
-    if (sidebarSortToggle) {
-      sidebarSortToggle.addEventListener('click', () => {
-        if (currentSortMode === 'lesson') {
-          currentSortMode = 'alpha';
-          sidebarSortToggle.classList.add('active');
-          if (sidebarSortLabel) sidebarSortLabel.textContent = 'L#';
-          sidebarSortToggle.title = 'Switch to Lesson Order (L# alternating Lec/Lab)';
-        } else {
-          currentSortMode = 'lesson';
-          sidebarSortToggle.classList.remove('active');
-          if (sidebarSortLabel) sidebarSortLabel.textContent = 'A-Z';
-          sidebarSortToggle.title = 'Switch to Alphabetical (A-Z)';
-        }
-        renderSidebarList();
       });
     }
 

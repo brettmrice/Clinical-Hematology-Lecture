@@ -8,9 +8,9 @@
     <!-- GitHub Flavored Markdown CSS Baseline -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
     <!-- Portable Discussion Mind Map Overlay -->
-    <link rel="stylesheet" href="../../shared/discussion_mindmap.css?v=20261007">
+    <link rel="stylesheet" href="../../shared/discussion_mindmap.css?v=20261018">
     <!-- Portable Discussion Quiz Overlay -->
-    <link rel="stylesheet" href="../../shared/discussion_quiz.css?v=20261007">
+    <link rel="stylesheet" href="../../shared/discussion_quiz.css?v=20261018">
     
     <!-- MathJax 3 for LaTeX rendering -->
     <script>
@@ -1258,6 +1258,13 @@
         .grp-shape-axis { stroke: #94a3b8; stroke-width: 1.5; stroke-linecap: round; }
         .grp-shape-curve { stroke: #2563eb; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
         .grp-shape-dot { fill: #0969da; }
+        .grp-shape-palette { fill: #fef3c7; stroke: #d97706; stroke-width: 1.5; }
+        .grp-shape-hole { fill: #ffffff; stroke: #d97706; stroke-width: 1; }
+        .grp-shape-swatch1 { fill: #ef4444; }
+        .grp-shape-swatch2 { fill: #3b82f6; }
+        .grp-shape-swatch3 { fill: #10b981; }
+        .grp-shape-brush-handle { stroke: #363945; stroke-width: 2.5; stroke-linecap: round; }
+        .grp-shape-brush-tip { fill: #4f46e5; }
 
         .media-global-btn {
             display: inline-flex;
@@ -1478,6 +1485,13 @@
             .grp-shape-axis { stroke: #6e7681; }
             .grp-shape-curve { stroke: #58a6ff; fill: none; }
             .grp-shape-dot { fill: #58a6ff; }
+            .grp-shape-palette { fill: #78350f; stroke: #fbbf24; stroke-width: 1.5; }
+            .grp-shape-hole { fill: #161b22; stroke: #fbbf24; stroke-width: 1; }
+            .grp-shape-swatch1 { fill: #f87171; }
+            .grp-shape-swatch2 { fill: #60a5fa; }
+            .grp-shape-swatch3 { fill: #34d399; }
+            .grp-shape-brush-handle { stroke: #efe1ce; stroke-width: 2.5; stroke-linecap: round; }
+            .grp-shape-brush-tip { fill: #818cf8; }
 
             .media-global-btn {
                 background: #161b22;
@@ -2189,13 +2203,21 @@
         }
 
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
-        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-palette,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-hole,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch1,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch2,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch3,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-tip {
             fill: var(--color-border-default, #D0D7DE) !important;
+            stroke: var(--color-border-default, #D0D7DE) !important;
         }
 
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
         .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
-        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve,
+        .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-handle {
             stroke: var(--color-border-default, #D0D7DE) !important;
             fill: none !important;
         }
@@ -2222,6 +2244,13 @@
         .grp-shape-axis    { stroke: #94A3B8 !important; stroke-width: 1.5; }
         .grp-shape-curve   { stroke: #363945 !important; stroke-width: 2; fill: none; }
         .grp-shape-dot     { fill: #D97706 !important; }
+        .grp-shape-palette { fill: #FEF3C7 !important; stroke: #D97706 !important; stroke-width: 1.5; }
+        .grp-shape-hole    { fill: #FFFFFF !important; stroke: #D97706 !important; stroke-width: 1; }
+        .grp-shape-swatch1 { fill: #EF4444 !important; }
+        .grp-shape-swatch2 { fill: #3B82F6 !important; }
+        .grp-shape-swatch3 { fill: #10B981 !important; }
+        .grp-shape-brush-handle { stroke: #363945 !important; stroke-width: 2.5; stroke-linecap: round; }
+        .grp-shape-brush-tip    { fill: #4F46E5 !important; }
 
         /* 5. Action Buttons (Base Pill Style) */
         .flowchart-btn-inline,
@@ -2428,14 +2457,22 @@
             .table-wrapper.is-collapsed .table-header-card:not(:hover) .tbl-line,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-mountain,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-axis,
-            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve {
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-curve,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-handle {
                 stroke: #484F58 !important;
             }
 
             .flowchart-wrapper.is-collapsed .flowchart-header-card:not(:hover) .fc-arrow,
             .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-sun,
-            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot {
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-dot,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-palette,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-hole,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch1,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch2,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-swatch3,
+            .graphic-wrapper.is-collapsed .graphic-header-card:not(:hover) .grp-shape-brush-tip {
                 fill: #484F58 !important;
+                stroke: #484F58 !important;
             }
 
             .formula-wrapper.is-collapsed .formula-header-card:not(:hover) .fml-text {
@@ -2503,6 +2540,13 @@
             .grp-shape-axis    { stroke: #6E7681 !important; }
             .grp-shape-curve   { stroke: #EFE1CE !important; }
             .grp-shape-dot     { fill: #FBBF24 !important; }
+            .grp-shape-palette { fill: #78350F !important; stroke: #FBBF24 !important; stroke-width: 1.5; }
+            .grp-shape-hole    { fill: #161B22 !important; stroke: #FBBF24 !important; stroke-width: 1; }
+            .grp-shape-swatch1 { fill: #F87171 !important; }
+            .grp-shape-swatch2 { fill: #60A5FA !important; }
+            .grp-shape-swatch3 { fill: #34D399 !important; }
+            .grp-shape-brush-handle { stroke: #EFE1CE !important; stroke-width: 2.5; stroke-linecap: round; }
+            .grp-shape-brush-tip    { fill: #818CF8 !important; }
 
             .flowchart-btn-inline,
             .flowchart-btn-full,
@@ -2623,7 +2667,7 @@
     </div>
 
     <article class="markdown-body">
-<h1 id="hemoglobinopathy-complete-discussion">Hemoglobinopathy | Complete Discussion</h1>
+<h1 id="hemoglobinopathy---complete-discussion">Hemoglobinopathy | Complete Discussion</h1>
 <h1 id="navigation">Navigation</h1>
 <ul>
 <li><a href="#qualitative-variants-hemoglobin-diagnostics">Qualitative Variants &amp; Hemoglobin Diagnostics</a><ul>
@@ -2657,7 +2701,7 @@
 </ul>
 <hr />
 <h2 id="globin-gene-architecture-developmental-ontogeny-structural-principles">Globin Gene Architecture, Developmental Ontogeny &amp; Structural Principles</h2>
-<h3 id="core-concepts-detailed-slide-analysis">Core Concepts &amp; Detailed Slide Analysis</h3>
+<h3 id="core-concepts-detailed-procedure-concept-analysis">Core Concepts &amp; Detailed Procedure / Concept Analysis</h3>
 <p>Hemoglobin production requires coordinated synthesis of two distinct components: heme (iron protoporphyrin IX) and globin polypeptide chains. Disorders of globin production fall into two fundamental pathophysiologic categories:</p>
 <ul>
 <li><strong>Qualitative Defects (Hemoglobinopathies):</strong> Gene alterations (predominantly single base-pair missense mutations) that alter the primary amino acid sequence of a globin chain. These structural modifications disrupt surface charge, spatial conformation, secondary/tertiary folding, solubility, or oxygen affinity.</li>
@@ -3615,14 +3659,16 @@ flowchart TD
 </li>
 <li><strong>Peripheral Smear Morphology:</strong> Abundant <strong>target cells (codocytes)</strong>, often comprising $30\text{%}–90\text{%}$ of circulating erythrocytes. Interspersed microspherocytes and folded red cells are common. In homozygous $\text{HbCC}$, pathognomonic intra- and extra-erythrocytic <strong>hexagonal "bars of gold" crystals</strong> are visible, typically surrounded by a clear cytoplasmic halo.</li>
 </ul>
-<pre class="highlight"><code>       HbC Hexagonal "Bar of Gold" Crystal
+<pre class="codehilite"><code>       HbC Hexagonal &quot;Bar of Gold&quot; Crystal
                ┌───────────────┐
               /                 \
              |   Dense Dark HbC  |
              |      Crystal      |
               \                 /
                └───────────────┘
-          (Surrounded by Clear Zone)</code></pre>
+          (Surrounded by Clear Zone)
+</code></pre>
+
 <ul>
 <li><strong>Laboratory Profile:</strong><ul>
 <li><em>Trait ($\text{HbAC}$):</em> Asymptomatic; normal indices (MCV $76–100\text{ fL}$, HGB $12.0–18.0\text{ g/dL}$ [$120–180\text{ g/L}$]); target cells; electrophoresis shows $\text{HbA } \approx 60\text{%}$, $\text{HbC } \approx 40\text{%}$.</li>
@@ -3815,7 +3861,7 @@ flowchart TD
 </ul>
 <hr />
 <h2 id="pathophysiologic-mechanisms-of-globin-synthesis-imbalance">Pathophysiologic Mechanisms of Globin Synthesis Imbalance</h2>
-<h3 id="core-concepts-detailed-slide-analysis_1">Core Concepts &amp; Detailed Slide Analysis</h3>
+<h3 id="core-concepts-detailed-procedure-concept-analysis_1">Core Concepts &amp; Detailed Procedure / Concept Analysis</h3>
 <p>Thalassemias are hereditary, quantitative anemias caused by mutations or deletions that reduce or abolish the transcription or translation of globin chains. The underlying globin chains are structurally normal, but their unbalanced production disrupts normal hemoglobin stoichiometry.</p>
 <p>In a normal individual, alpha and non-alpha globin synthesis maintains a strict $1:1$ stoichiometric ratio. When production of a specific globin chain is suppressed, the unaffected reciprocal chain continues to synthesize at normal rates, generating an intracellular pool of orphan, unpaired chains. <strong>The clinical severity of any thalassemic syndrome is directly proportional to the magnitude of this chain imbalance.</strong></p>
 <div class="flowchart-wrapper is-collapsed" data-flowchart-index="11">
@@ -4143,14 +4189,16 @@ graph TD
 <li><strong>Electrophoresis/HPLC:</strong> Adult red cells show $5\text{%}–30\text{%}\ \text{HbH}$, with the remainder composed of $\text{HbA}$, low $\text{HbA}_2$, and trace $\text{Hb Bart's}$.</li>
 <li><strong>Supravital Staining (Golf-Ball Morphology):</strong> Incubation of fresh whole blood with redox dyes (such as $1\text{%}$ brilliant cresyl blue or new methylene blue) precipitates $\text{HbH}$ into fine, greenish-blue, evenly distributed inclusions across the erythrocyte cytoplasm, creating a classic <strong>"golf-ball"</strong> or <strong>"raspberry"</strong> appearance. This helps distinguish $\text{HbH}$ from Heinz bodies (larger, eccentric, membrane-bound inclusions) and basophilic stippling (visible with standard Wright-Giemsa stains).</li>
 </ul>
-<pre class="highlight"><code>        HbH Inclusions                     Heinz Bodies
+<pre class="codehilite"><code>        HbH Inclusions                     Heinz Bodies
    ┌───────────────────────┐         ┌───────────────────────┐
    │  •  •   •   •   •  •  │         │                       │
    │ •   •   •   •   •   • │         │  (•) Membrane-Bound   │
    │  •  •   •   •   •  •  │         │      Single/Paired    │
    │ •   •   •   •   •   • │         │      Inclusions       │
    └───────────────────────┘         └───────────────────────┘
-     "Golf-Ball" Stippling</code></pre>
+     &quot;Golf-Ball&quot; Stippling
+</code></pre>
+
 <h3 id="4-hydrops-fetalis-with-hemoglobin-barts-mathinlinex407x">4. Hydrops Fetalis with Hemoglobin Bart's ($--/--$)</h3>
 <ul>
 <li><strong>Genetic Architecture:</strong> Deletion of all four functional $\alpha$-globin genes. No functional $\alpha$-chains can be produced.</li>
@@ -5475,8 +5523,14 @@ flowchart TD
             <div class="media-global-graphic graphic-mini-graphic" title="Illustrations">
                 <svg width="48" height="16" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
-                    <circle cx="28" cy="13" r="5" class="grp-shape-sun" />
-                    <path d="M8 25L32 15L52 23L68 12L88 25" class="grp-shape-mountain" />
+                    <path d="M 33 7 C 45 7, 56 10, 56 15.5 C 56 18, 53.5 19, 52 20 C 50.5 21, 51.5 22.5, 49.5 24 C 47.5 25.5, 38 26, 30 25 C 23 24, 19 20, 19 15.5 C 19 10.5, 24 7, 33 7 Z" class="grp-shape-palette" />
+                    <circle cx="48" cy="18" r="2.2" class="grp-shape-hole" />
+                    <circle cx="27" cy="12" r="2" class="grp-shape-swatch1" />
+                    <circle cx="35" cy="10.5" r="2" class="grp-shape-swatch2" />
+                    <circle cx="43" cy="12" r="2" class="grp-shape-swatch3" />
+                    <circle cx="26" cy="17.5" r="2" class="grp-shape-sun" />
+                    <line x1="77" y1="8" x2="64" y2="19" class="grp-shape-brush-handle" />
+                    <path d="M 64 19 L 60.5 22.5 C 59 24, 57.5 24, 57.5 23 C 58 22, 60 20.5, 62 19 Z" class="grp-shape-brush-tip" />
                 </svg>
             </div>
             <button type="button" class="media-global-btn" id="btn-global-illustration" title="Toggle Illustrations Inline" aria-label="Toggle Illustrations Inline">
@@ -5620,8 +5674,14 @@ flowchart TD
                 <div class="graphic-mini-graphic" title="Graphic preview">
                     <svg width="96" height="32" viewBox="0 0 96 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <rect x="2" y="3" width="92" height="26" rx="3.5" class="grp-shape-outer" />
-                        <circle cx="28" cy="13" r="5" class="grp-shape-sun" />
-                        <path d="M8 25L32 15L52 23L68 12L88 25" class="grp-shape-mountain" />
+                        <path d="M 33 7 C 45 7, 56 10, 56 15.5 C 56 18, 53.5 19, 52 20 C 50.5 21, 51.5 22.5, 49.5 24 C 47.5 25.5, 38 26, 30 25 C 23 24, 19 20, 19 15.5 C 19 10.5, 24 7, 33 7 Z" class="grp-shape-palette" />
+                        <circle cx="48" cy="18" r="2.2" class="grp-shape-hole" />
+                        <circle cx="27" cy="12" r="2" class="grp-shape-swatch1" />
+                        <circle cx="35" cy="10.5" r="2" class="grp-shape-swatch2" />
+                        <circle cx="43" cy="12" r="2" class="grp-shape-swatch3" />
+                        <circle cx="26" cy="17.5" r="2" class="grp-shape-sun" />
+                        <line x1="77" y1="8" x2="64" y2="19" class="grp-shape-brush-handle" />
+                        <path d="M 64 19 L 60.5 22.5 C 59 24, 57.5 24, 57.5 23 C 58 22, 60 20.5, 62 19 Z" class="grp-shape-brush-tip" />
                     </svg>
                 </div>
                 <div class="graphic-modal-actions">
@@ -6617,6 +6677,13 @@ flowchart TD
                 if (!img) return;
 
                 currentGraphicModalWrapper = graphicContainer.closest('.graphic-wrapper');
+                if (currentGraphicModalWrapper) {
+                    const srcMini = currentGraphicModalWrapper.querySelector('.graphic-mini-graphic');
+                    const modalMini = graphicModal.querySelector('.graphic-modal-bottom-card .graphic-mini-graphic');
+                    if (srcMini && modalMini) {
+                        modalMini.innerHTML = srcMini.innerHTML;
+                    }
+                }
 
                 graphicModalBody.innerHTML = '';
                 const contentWrapper = document.createElement('div');
@@ -6946,8 +7013,9 @@ flowchart TD
             updateGlobalDockStates();
         });
     </script>
-    <script src="../../shared/mindmaps_manifest.js?v=20261007"></script>
-    <script src="../../shared/discussion_mindmap.js?v=20261007"></script>
-    <script src="../../shared/discussion_quiz.js?v=20261007"></script>
+        <script src="../../shared/mindmaps_manifest.js?v=20261018"></script>
+    <script src="../../shared/discussions_manifest.js?v=20261018"></script>
+    <script src="../../shared/discussion_mindmap.js?v=20261018"></script>
+    <script src="../../shared/discussion_quiz.js?v=20261018"></script>
 </body>
 </html>

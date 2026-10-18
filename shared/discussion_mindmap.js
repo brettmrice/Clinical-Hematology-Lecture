@@ -45,9 +45,9 @@
 
         for (let i = 0; i < parts.length; i++) {
             const p = parts[i].toLowerCase();
-            if (p === 'lecture' || p === 'laboratory') {
+            if (p === 'lecture' || p === 'laboratory' || p === 'body_fluids') {
                 folder = p;
-                if (i + 1 < parts.length) {
+                if (i + 1 < parts.length && p !== 'body_fluids') {
                     subfolder = parts[i + 1].toLowerCase();
                 }
                 break;
@@ -57,12 +57,27 @@
         // Clean lesson key: strip _Discussion, __Discussion, _S0_, etc.
         const cleaned = rawName.replace(/_{1,2}Discussion/i, '').replace(/_S\d+$/i, '').toLowerCase();
         const match = rawName.match(/^(L\d+_[^_]+(?:_[^_]+)*?)(?:_S\d+)?(?:_{1,2}Discussion|_Mind_Map)?$/i);
-        const lessonKey = match ? match[1].toLowerCase() : cleaned;
+        const bfMatch = rawName.match(/^(?:BF)?0?(\d+)[_-]([A-Za-z0-9-]+?)(?:_S\d+)?(?:_Complete)?(?:_{1,2}Discussion|_Mind_Map)?$/i);
+
+        let lessonKey = '';
+        if (match) {
+            lessonKey = match[1].toLowerCase();
+        } else if (bfMatch) {
+            const num = bfMatch[1].padStart(2, '0');
+            const name = bfMatch[2].toLowerCase();
+            lessonKey = `${num}_${name}`;
+        } else {
+            lessonKey = cleaned;
+        }
 
         const candidates = [];
         if (folder && subfolder) candidates.push(`${folder}/${subfolder}/${lessonKey}`);
         if (folder) candidates.push(`${folder}/${lessonKey}`);
         candidates.push(lessonKey);
+        if (bfMatch) {
+            candidates.push(`${bfMatch[1].padStart(2, '0')}_${bfMatch[2].toLowerCase()}`);
+            candidates.push(bfMatch[2].toLowerCase());
+        }
         candidates.push(cleaned);
         candidates.push(rawName.toLowerCase());
 
@@ -74,16 +89,41 @@
         const scripts = document.querySelectorAll('script[src]');
         for (const s of scripts) {
             const src = s.getAttribute('src') || '';
-            if (src.includes('discussion_mindmap.js') || src.includes('mindmaps_manifest.js') || src.includes('discussion_quiz.js')) {
+            if (src.includes('discussion_mindmap.js') || src.includes('mindmaps_manifest.js') || src.includes('discussions_manifest.js') || src.includes('discussion_quiz.js')) {
                 const idx = src.lastIndexOf('/');
                 if (idx !== -1) return src.substring(0, idx);
             }
         }
+        const links = document.querySelectorAll('link[href]');
+        for (const l of links) {
+            const href = l.getAttribute('href') || '';
+            if (href.includes('discussion_mindmap.css') || href.includes('discussion_quiz.css')) {
+                const idx = href.lastIndexOf('/');
+                if (idx !== -1) return href.substring(0, idx);
+            }
+        }
         const path = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').toLowerCase();
+        if (path.includes('/hematology/lec/') || path.includes('/hematology/lab/')) {
+            return '../../../shared';
+        }
         if (path.includes('/lecture/') || path.includes('/laboratory/')) {
             return '../../shared';
         }
-        return './shared';
+        if (path.includes('/body_fluids/')) {
+            return '../shared';
+        }
+        return '../shared';
+    }
+
+    function getRootIndexPath() {
+        const shared = getSharedPath();
+        if (shared.endsWith('/shared')) {
+            return shared.substring(0, shared.length - 7) + '/index.html';
+        }
+        if (shared === 'shared') {
+            return './index.html';
+        }
+        return `${shared}/../index.html`;
     }
 
     // Auto-inject CSS stylesheet and dynamic card offset styles if not present
@@ -92,7 +132,7 @@
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261007b`;
+            link.href = `${getSharedPath()}/discussion_mindmap.css?v=20261018`;
             document.head.appendChild(link);
         }
 
@@ -138,9 +178,27 @@
         }
 
         const script = document.createElement('script');
-        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=20261007`;
+        script.src = `${getSharedPath()}/mindmaps_manifest.js?v=20261018`;
         script.onload = () => {
             callback(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || []);
+        };
+        script.onerror = () => {
+            callback([]);
+        };
+        document.head.appendChild(script);
+    }
+
+    // Ensure discussions manifest data is loaded if needed
+    function ensureDiscussionData(callback) {
+        if (window.COURSE_DISCUSSIONS && Array.isArray(window.COURSE_DISCUSSIONS)) {
+            callback(window.COURSE_DISCUSSIONS);
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `${getSharedPath()}/discussions_manifest.js?v=20261018`;
+        script.onload = () => {
+            callback(window.COURSE_DISCUSSIONS || []);
         };
         script.onerror = () => {
             callback([]);
@@ -190,9 +248,15 @@
         }
 
         // 4. Clean filename fallback
+        const currentPath = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').toLowerCase();
         const currentFile = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').split('/').pop() || '';
-        const base = currentFile.replace(/_S\d+_{1,2}Discussion\.html|_Discussion\.html/i, '');
+        const isBF = currentPath.includes('/body_fluids/') || /^(?:bf)?0?\d+[_-]/i.test(currentFile);
+        const base = currentFile.replace(/_(?:S\d+_)?(?:Complete_)?Discussion\.html$/i, '');
         if (base) {
+            if (isBF) {
+                // If the workspace uses _S1_Mind_Map naming (like CHGH), use _S1_Mind_Map; otherwise _Mind_Map
+                return currentFile.includes('_S0_') ? `${base}_S1_Mind_Map.html` : `${base}_Mind_Map.html`;
+            }
             return `${base}_S1_Mind_Map.html`;
         }
 
@@ -426,6 +490,308 @@
         }
     }
 
+    // State for Discussion Navigation Sidebar Drawer
+    let currentTypeFilter = 'all';
+    let currentSubfolderFilter = 'all';
+    let currentSearchQuery = '';
+
+    function openDiscussionSidebar() {
+        const drawer = document.getElementById('discussion-sidebar-drawer');
+        const backdrop = document.getElementById('discussion-sidebar-backdrop');
+        if (drawer && backdrop) {
+            drawer.classList.add('active');
+            backdrop.classList.add('active');
+            ensureDiscussionData((discussions) => {
+                populateSubfoldersDropdown(discussions);
+                renderDiscussionList(discussions);
+                setTimeout(() => {
+                    const searchInput = document.getElementById('discussion-sidebar-search-input');
+                    if (searchInput) searchInput.focus();
+                }, 150);
+            });
+        }
+    }
+
+    function closeDiscussionSidebar() {
+        const drawer = document.getElementById('discussion-sidebar-drawer');
+        const backdrop = document.getElementById('discussion-sidebar-backdrop');
+        if (drawer && backdrop) {
+            drawer.classList.remove('active');
+            backdrop.classList.remove('active');
+        }
+    }
+
+    function toggleDiscussionSidebar() {
+        const drawer = document.getElementById('discussion-sidebar-drawer');
+        if (drawer && drawer.classList.contains('active')) {
+            closeDiscussionSidebar();
+        } else {
+            openDiscussionSidebar();
+        }
+    }
+
+    function populateSubfoldersDropdown(discussions) {
+        const select = document.getElementById('discussion-sidebar-subfolder-select');
+        if (!select) return;
+        const subfolders = new Set();
+        (discussions || []).forEach(d => {
+            if (d.subfolder) subfolders.add(d.subfolder);
+        });
+
+        const currentVal = select.value;
+        select.innerHTML = '<option value="all">All Subfolders & Modules</option>';
+        Array.from(subfolders).sort().forEach(sf => {
+            const opt = document.createElement('option');
+            opt.value = sf;
+            opt.textContent = sf;
+            select.appendChild(opt);
+        });
+        if (subfolders.has(currentVal)) {
+            select.value = currentVal;
+        }
+    }
+
+    function updateDiscussionCounts(discussions) {
+        const list = discussions || [];
+        const allCount = list.length;
+        const lectureCount = list.filter(d => d.type === 'lecture').length;
+        const labCount = list.filter(d => d.type === 'lab').length;
+        const bfCount = list.filter(d => d.type === 'bf' || (d.subfolder && d.subfolder.toLowerCase().includes('body fluid'))).length;
+
+        const elAll = document.getElementById('disc-count-all');
+        const elLec = document.getElementById('disc-count-lecture');
+        const elLab = document.getElementById('disc-count-lab');
+        const elBf = document.getElementById('disc-count-bf');
+
+        if (elAll) elAll.textContent = allCount;
+        if (elLec) elLec.textContent = lectureCount;
+        if (elLab) elLab.textContent = labCount;
+        if (elBf) elBf.textContent = bfCount;
+    }
+
+    function renderDiscussionList(discussions) {
+        const container = document.getElementById('discussion-sidebar-list-container');
+        if (!container) return;
+        updateDiscussionCounts(discussions);
+
+        const list = discussions || [];
+        const currentPath = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').toLowerCase();
+        const currentFilename = currentPath.split('/').pop() || '';
+        const currentClean = currentFilename.replace(/\.html$/i, '');
+
+        let filtered = list.filter(item => {
+            // Type filter
+            if (currentTypeFilter !== 'all') {
+                if (currentTypeFilter === 'bf') {
+                    if (item.type !== 'bf' && !(item.subfolder && item.subfolder.toLowerCase().includes('body fluid'))) {
+                        return false;
+                    }
+                } else if (item.type !== currentTypeFilter) {
+                    return false;
+                }
+            }
+            // Subfolder filter
+            if (currentSubfolderFilter !== 'all' && item.subfolder !== currentSubfolderFilter) {
+                return false;
+            }
+            // Search filter
+            if (currentSearchQuery) {
+                const textToSearch = `${item.title} ${item.subfolder} ${item.filename}`.toLowerCase();
+                if (!textToSearch.includes(currentSearchQuery)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        // Always sort filtered items in alphabetical order (A-Z)
+        filtered.sort((a, b) => {
+            return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+        });
+
+        container.innerHTML = '';
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="sidebar-empty-state">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 8px; display: block; opacity: 0.6;">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    ${list.length === 0 ? 'No discussion manifest found.' : 'No matching discussions found.'}
+                </div>
+            `;
+            return;
+        }
+
+        const sharedPath = getSharedPath();
+        const isMlsAscp = currentPath.includes('mlsascp') || (list.some(d => d.rel_path_from_shared && d.rel_path_from_shared.includes('/Hematology/')));
+
+        filtered.forEach(item => {
+            const card = document.createElement('a');
+            card.className = 'discussion-item-card';
+
+            const targetHref = `${sharedPath}/${item.rel_path_from_shared}`;
+            card.href = targetHref;
+
+            const isCurrent = item.filename && (
+                item.filename.toLowerCase() === currentFilename ||
+                currentClean === item.filename.replace(/\.html$/i, '').toLowerCase()
+            );
+
+            if (isCurrent) {
+                card.classList.add('current');
+            }
+
+            let typeClass = '';
+            let typeLabel = '';
+            if (item.type === 'lecture') {
+                typeClass = isMlsAscp ? 'h-lecture' : 'lecture';
+                typeLabel = isMlsAscp ? 'H | Lecture' : 'Lecture';
+            } else if (item.type === 'lab') {
+                typeClass = isMlsAscp ? 'h-lab' : 'lab';
+                typeLabel = isMlsAscp ? 'H | Laboratory' : 'Laboratory';
+            } else {
+                typeClass = 'bf';
+                typeLabel = isMlsAscp ? 'BF | Body Fluid' : 'Body Fluid';
+            }
+
+            const isBf = item.type === 'bf' || (item.subfolder && item.subfolder.toLowerCase().includes('body fluid'));
+            const subfolderHtml = isBf ? '' : `<span>${escapeHtml(item.subfolder || 'General')}</span>`;
+
+            card.innerHTML = `
+                <div class="item-title">${escapeHtml(item.title)}${isCurrent ? ' (Current)' : ''}</div>
+                <div class="item-meta">
+                    <span class="badge-type ${typeClass}">${typeLabel}</span>
+                    ${subfolderHtml}
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+
+        // Scroll current into view if found
+        const currentCard = container.querySelector('.discussion-item-card.current');
+        if (currentCard) {
+            setTimeout(() => {
+                currentCard.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 100);
+        }
+    }
+
+    function injectDiscussionSidebarDOM() {
+        const isIframe = window.self !== window.top;
+        if (isIframe) return;
+
+        if (document.getElementById('discussion-sidebar-drawer')) return;
+        if (!document.body) {
+            window.addEventListener('DOMContentLoaded', injectDiscussionSidebarDOM);
+            return;
+        }
+
+        // 1. Backdrop
+        const backdrop = document.createElement('div');
+        backdrop.id = 'discussion-sidebar-backdrop';
+        backdrop.className = 'sidebar-backdrop';
+        document.body.appendChild(backdrop);
+
+        // 2. Drawer
+        const drawer = document.createElement('aside');
+        drawer.id = 'discussion-sidebar-drawer';
+        drawer.className = 'sidebar-drawer';
+        drawer.setAttribute('aria-label', 'Discussions Navigation');
+        drawer.innerHTML = `
+            <div class="sidebar-header">
+                <div class="sidebar-header-left">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <h2>Discussions</h2>
+                </div>
+                <button class="sidebar-close-btn" id="discussion-btn-close-sidebar" title="Close Sidebar (Esc)" aria-label="Close Sidebar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="sidebar-controls">
+                <div class="filter-type-group" id="discussion-filter-type-group">
+                    <button class="filter-type-btn active" data-type="all">All (<span id="disc-count-all">0</span>)</button>
+                    <button class="filter-type-btn" data-type="lecture">LEC (<span id="disc-count-lecture">0</span>)</button>
+                    <button class="filter-type-btn" data-type="lab">LAB (<span id="disc-count-lab">0</span>)</button>
+                    <button class="filter-type-btn" data-type="bf">BF (<span id="disc-count-bf">0</span>)</button>
+                </div>
+
+                <select class="subfolder-select" id="discussion-sidebar-subfolder-select">
+                    <option value="all">All Subfolders & Modules</option>
+                </select>
+
+                <div class="sidebar-search-row">
+                    <div class="sidebar-search-box" style="flex: 1;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="discussion-sidebar-search-input" placeholder="Search discussions by title...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-list-container" id="discussion-sidebar-list-container">
+            </div>
+        `;
+        document.body.appendChild(drawer);
+
+        // Event listeners
+        const closeBtn = drawer.querySelector('#discussion-btn-close-sidebar');
+        if (closeBtn) closeBtn.addEventListener('click', closeDiscussionSidebar);
+        backdrop.addEventListener('click', closeDiscussionSidebar);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && drawer.classList.contains('active')) {
+                closeDiscussionSidebar();
+            }
+        });
+
+        const filterGroup = drawer.querySelector('#discussion-filter-type-group');
+        if (filterGroup) {
+            filterGroup.addEventListener('click', (e) => {
+                const btn = e.target.closest('.filter-type-btn');
+                if (!btn) return;
+                filterGroup.querySelectorAll('.filter-type-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTypeFilter = btn.dataset.type || 'all';
+                ensureDiscussionData((discussions) => renderDiscussionList(discussions));
+            });
+        }
+
+        const subfolderSelect = drawer.querySelector('#discussion-sidebar-subfolder-select');
+        if (subfolderSelect) {
+            subfolderSelect.addEventListener('change', (e) => {
+                currentSubfolderFilter = e.target.value;
+                ensureDiscussionData((discussions) => renderDiscussionList(discussions));
+            });
+        }
+
+        const searchInput = drawer.querySelector('#discussion-sidebar-search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                currentSearchQuery = e.target.value.toLowerCase().trim();
+                ensureDiscussionData((discussions) => renderDiscussionList(discussions));
+            });
+        }
+
+        // Pre-populate if data is already available
+        if (window.COURSE_DISCUSSIONS && Array.isArray(window.COURSE_DISCUSSIONS)) {
+            populateSubfoldersDropdown(window.COURSE_DISCUSSIONS);
+            updateDiscussionCounts(window.COURSE_DISCUSSIONS);
+        }
+    }
+
     // Inject portable discussion header (solo / non-preview mode only)
     function injectDiscussionHeader() {
         const isIframe = window.self !== window.top;
@@ -446,24 +812,31 @@
         }
 
         const { title, subtitle } = getDiscussionTitleInfo();
-        const indexPath = 'https://www.brettmrice.com/Clinical-Hematology-Lecture/';
+        const indexPath = getRootIndexPath();
 
         const header = document.createElement('header');
         header.id = 'discussionMainHeader';
         header.innerHTML = `
             <div class="discussion-header-container">
-                <a href="${indexPath}" class="discussion-brand" title="Return to Index Explorer">
-                    <div class="discussion-brand-icon">
+                <div class="discussion-header-left">
+                    <a href="${indexPath}" class="discussion-nav-btn discussion-explorer-btn" id="discussionExplorerBtn" title="Return to Resource Explorer" aria-label="Return to Resource Explorer">
                         <svg class="discussion-brand-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 14 4 9 9 4"></polyline>
                             <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
                         </svg>
-                    </div>
+                    </a>
+                    <button class="discussion-nav-btn discussion-menu-btn" id="discussionNavMenuBtn" title="Browse Discussions" aria-label="Browse Discussions">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
                     <div class="discussion-brand-text">
                         <div class="discussion-brand-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
                         <div class="discussion-brand-subtitle">${escapeHtml(subtitle)}</div>
                     </div>
-                </a>
+                </div>
 
                 <div class="discussion-header-actions">
                     <button class="discussion-header-top-btn" id="discussionHeaderTopBtn" aria-label="Back to top" title="Back to top">
@@ -476,6 +849,34 @@
                 </div>
             </div>
         `;
+
+        const explorerLink = header.querySelector('#discussionExplorerBtn');
+        if (explorerLink) {
+            explorerLink.addEventListener('click', (e) => {
+                if (window.self !== window.top) {
+                    e.preventDefault();
+                    try {
+                        if (window.parent && typeof window.parent.closeModal === 'function') {
+                            window.parent.closeModal();
+                            return;
+                        }
+                    } catch (err) {}
+                    try {
+                        window.top.location.href = indexPath;
+                        return;
+                    } catch (err) {}
+                }
+            });
+        }
+
+        const navMenuBtn = header.querySelector('#discussionNavMenuBtn');
+        if (navMenuBtn) {
+            navMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleDiscussionSidebar();
+            });
+        }
 
         document.body.insertBefore(header, document.body.firstChild);
 
@@ -532,6 +933,7 @@
         companionMindMapFilename = resolveCompanionFilename(window.COURSE_MINDMAPS || window.COURSE_MINDMAPS_DATA || null);
 
         injectDiscussionHeader();
+        injectDiscussionSidebarDOM();
         injectOverlayDOM();
         initVisibilityObserver();
 
@@ -544,6 +946,9 @@
                 if (fab) fab.href = companionMindMapFilename;
             }
         });
+
+        // Preload discussions manifest
+        ensureDiscussionData(() => {});
     }
 
     if (document.readyState === 'loading') {

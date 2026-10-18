@@ -2407,6 +2407,50 @@
     }
   }
 
+  function getRootIndexPath() {
+    let shared = '';
+    if (typeof relSharedPath !== 'undefined' && relSharedPath) {
+      shared = relSharedPath;
+    } else {
+      const scripts = document.querySelectorAll('script[src]');
+      for (const s of scripts) {
+        const src = s.getAttribute('src') || '';
+        if (src.includes('mindmap_quiz.js') || src.includes('mindmaps_manifest.js')) {
+          const idx = src.lastIndexOf('/');
+          if (idx !== -1) { shared = src.substring(0, idx); break; }
+        }
+      }
+      if (!shared) {
+        const links = document.querySelectorAll('link[href]');
+        for (const l of links) {
+          const href = l.getAttribute('href') || '';
+          if (href.includes('mindmap_quiz.css')) {
+            const idx = href.lastIndexOf('/');
+            if (idx !== -1) { shared = href.substring(0, idx); break; }
+          }
+        }
+      }
+    }
+    if (!shared) {
+      const path = decodeURIComponent(window.location.pathname).replace(/\\/g, '/').toLowerCase();
+      if (path.includes('/hematology/lec/') || path.includes('/hematology/lab/')) {
+        shared = '../../../shared';
+      } else if (path.includes('/lecture/') || path.includes('/laboratory/')) {
+        shared = '../../shared';
+      } else {
+        shared = '../shared';
+      }
+    }
+
+    if (shared.endsWith('/shared')) {
+      return shared.substring(0, shared.length - 7) + '/index.html';
+    }
+    if (shared === 'shared') {
+      return './index.html';
+    }
+    return `${shared}/../index.html`;
+  }
+
   function injectBrandHomeButton() {
     if (document.getElementById('mindmap-brand-home-btn')) return;
     if (!document.body) {
@@ -2414,20 +2458,36 @@
       return;
     }
 
-    const indexPath = 'https://www.brettmrice.com/Clinical-Hematology-Lecture/';
+    const indexPath = getRootIndexPath();
 
     const brandBtn = document.createElement('a');
     brandBtn.id = 'mindmap-brand-home-btn';
     brandBtn.className = 'mindmap-brand-home-btn discussion-brand-icon';
     brandBtn.href = indexPath;
-    brandBtn.title = 'Return to Index Explorer';
-    brandBtn.setAttribute('aria-label', 'Return to Index Explorer');
+    brandBtn.title = 'Return to Resource Explorer';
+    brandBtn.setAttribute('aria-label', 'Return to Resource Explorer');
     brandBtn.innerHTML = `
       <svg class="discussion-brand-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="9 14 4 9 9 4"></polyline>
         <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
       </svg>
     `;
+
+    brandBtn.addEventListener('click', (e) => {
+      if (window.self !== window.top) {
+        e.preventDefault();
+        try {
+          if (window.parent && typeof window.parent.closeModal === 'function') {
+            window.parent.closeModal();
+            return;
+          }
+        } catch (err) {}
+        try {
+          window.top.location.href = indexPath;
+          return;
+        } catch (err) {}
+      }
+    });
 
     const titleCard = document.getElementById('btn-open-sidebar') || document.querySelector('.top-title-card');
     if (titleCard && titleCard.parentNode) {
@@ -2462,9 +2522,9 @@
     const titleBtn = document.getElementById('btn-open-sidebar');
     if (titleBtn) {
       const topicEl = document.getElementById('topic-title');
-      const topicText = topicEl ? topicEl.textContent.trim() : 'Course Mind Maps';
-      titleBtn.setAttribute('title', `${topicText} - Open Course Mind Maps`);
-      titleBtn.setAttribute('aria-label', `${topicText} - Open Course Mind Maps`);
+      const topicText = topicEl ? topicEl.textContent.trim() : 'Mind Maps';
+      titleBtn.setAttribute('title', `${topicText} - Open Mind Maps`);
+      titleBtn.setAttribute('aria-label', `${topicText} - Open Mind Maps`);
     }
   }
 

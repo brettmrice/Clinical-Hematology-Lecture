@@ -3,12 +3,12 @@ window.FILES_DATA = [
     "name": "L1_Manual_Counts_S0__Discussion.html",
     "title": "Hemocytometer",
     "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S0__Discussion.html",
-    "size": 364716,
+    "size": 364797,
     "sizeFormatted": "356.2 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791413530.348865
+    "mtime": 1792332515.9140913
   },
   {
     "name": "L1_Manual_Counts_S1_Hemocytometer.pdf",
@@ -36,23 +36,23 @@ window.FILES_DATA = [
     "name": "L1_Manual_Counts_S3_Mind_Map.html",
     "title": "Manual Counts",
     "path": "Laboratory/CBC_PBS/L1_Manual_Counts_S3_Mind_Map.html",
-    "size": 101061,
-    "sizeFormatted": "98.7 KB",
+    "size": 100577,
+    "sizeFormatted": "98.2 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1790713507.0
+    "mtime": 1792330767.6574156
   },
   {
     "name": "L2_Slide_Preparation_S0_Discussion.html",
     "title": "Slide Prep",
     "path": "Laboratory/CBC_PBS/L2_Slide_Preparation_S0_Discussion.html",
-    "size": 293476,
-    "sizeFormatted": "286.6 KB",
+    "size": 293557,
+    "sizeFormatted": "286.7 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791413530.3793447
+    "mtime": 1792332515.9170935
   },
   {
     "name": "L2_Slide_Preparation_S1_PBS_Preparation.pdf",
@@ -69,23 +69,23 @@ window.FILES_DATA = [
     "name": "L2_Slide_Preparation_S2_Mind_Map.html",
     "title": "Slide Preparation",
     "path": "Laboratory/CBC_PBS/L2_Slide_Preparation_S2_Mind_Map.html",
-    "size": 106384,
-    "sizeFormatted": "103.9 KB",
+    "size": 105900,
+    "sizeFormatted": "103.4 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1790713244.0
+    "mtime": 1792330767.6591258
   },
   {
     "name": "L3_Slide_Evaluation_S0_Discussion.html",
     "title": "Slide Eval",
     "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S0_Discussion.html",
-    "size": 439618,
-    "sizeFormatted": "429.3 KB",
+    "size": 439699,
+    "sizeFormatted": "429.4 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791413530.4532464
+    "mtime": 1792332515.9222555
   },
   {
     "name": "L3_Slide_Evaluation_S1_PBS_Evaluation.pdf",
@@ -113,23 +113,23 @@ window.FILES_DATA = [
     "name": "L3_Slide_Evaluation_S3_Mind_Map.html",
     "title": "Slide Evaluation",
     "path": "Laboratory/CBC_PBS/L3_Slide_Evaluation_S3_Mind_Map.html",
-    "size": 94414,
-    "sizeFormatted": "92.2 KB",
+    "size": 93930,
+    "sizeFormatted": "91.7 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1790713494.0
+    "mtime": 1792330767.6601317
   },
   {
     "name": "L4_CBC_Analysis_S0_Discussion.html",
     "title": "CBC Analysis",
     "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S0_Discussion.html",
-    "size": 301720,
-    "sizeFormatted": "294.6 KB",
+    "size": 301801,
+    "sizeFormatted": "294.7 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1791413530.4897401
+    "mtime": 1792332515.9252558
   },
   {
     "name": "L4_CBC_Analysis_S1_Principles.pdf",
@@ -157,254 +157,254 @@ window.FILES_DATA = [
     "name": "L4_CBC_Analysis_S3_Mind_Map.html",
     "title": "CBC Analysis",
     "path": "Laboratory/CBC_PBS/L4_CBC_Analysis_S3_Mind_Map.html",
-    "size": 113665,
-    "sizeFormatted": "111.0 KB",
+    "size": 113181,
+    "sizeFormatted": "110.5 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / CBC_PBS",
-    "mtime": 1790452709.0
+    "mtime": 1792330767.6611311
   },
   {
     "name": "L5_Microcytic_S0_Discussion.html",
     "title": "Microcytic",
     "path": "Laboratory/Erythrocytes/L5_Microcytic_S0_Discussion.html",
-    "size": 355141,
-    "sizeFormatted": "346.8 KB",
+    "size": 355222,
+    "sizeFormatted": "346.9 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791413530.548201
+    "mtime": 1792332515.9284444
   },
   {
     "name": "L5_Microcytic_S1_Mind_Map.html",
     "title": "Microcytic",
     "path": "Laboratory/Erythrocytes/L5_Microcytic_S1_Mind_Map.html",
-    "size": 111255,
-    "sizeFormatted": "108.6 KB",
+    "size": 110771,
+    "sizeFormatted": "108.2 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1790713529.0
+    "mtime": 1792330767.6621325
   },
   {
     "name": "L6_Hemoglobinopathy_S0_Discussion.html",
     "title": "Hemoglobinopathy",
     "path": "Laboratory/Erythrocytes/L6_Hemoglobinopathy_S0_Discussion.html",
-    "size": 360361,
-    "sizeFormatted": "351.9 KB",
+    "size": 360442,
+    "sizeFormatted": "352.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791413530.6135867
+    "mtime": 1792332515.9314365
   },
   {
     "name": "L6_Hemoglobinopathy_S1_Mind_Map.html",
     "title": "Hemoglobinopathy",
     "path": "Laboratory/Erythrocytes/L6_Hemoglobinopathy_S1_Mind_Map.html",
-    "size": 125649,
-    "sizeFormatted": "122.7 KB",
+    "size": 125165,
+    "sizeFormatted": "122.2 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1790713543.0
+    "mtime": 1792330767.6641307
   },
   {
     "name": "L7_Macrocytic_S0_Discussion.html",
     "title": "Macrocytic &amp; Hypoproliferative",
     "path": "Laboratory/Erythrocytes/L7_Macrocytic_S0_Discussion.html",
-    "size": 341764,
+    "size": 341845,
     "sizeFormatted": "333.8 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791413530.6591487
+    "mtime": 1792332515.9354444
   },
   {
     "name": "L7_Macrocytic_S1_Mind_Map.html",
     "title": "Macrocytic & Hypoproliferative",
     "path": "Laboratory/Erythrocytes/L7_Macrocytic_S1_Mind_Map.html",
-    "size": 120981,
-    "sizeFormatted": "118.1 KB",
+    "size": 120497,
+    "sizeFormatted": "117.7 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1790713576.0
+    "mtime": 1792330767.6651325
   },
   {
     "name": "L8_Normocytic_S0_Discussion.html",
     "title": "Normocytic",
     "path": "Laboratory/Erythrocytes/L8_Normocytic_S0_Discussion.html",
-    "size": 372484,
+    "size": 372565,
     "sizeFormatted": "363.8 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1791413530.7115378
+    "mtime": 1792332515.9386144
   },
   {
     "name": "L8_Normocytic_S1_Mind_Map.html",
     "title": "Normocytic",
     "path": "Laboratory/Erythrocytes/L8_Normocytic_S1_Mind_Map.html",
-    "size": 135637,
-    "sizeFormatted": "132.5 KB",
+    "size": 135153,
+    "sizeFormatted": "132.0 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Erythrocytes",
-    "mtime": 1790713588.0
+    "mtime": 1792330767.6671324
   },
   {
     "name": "L10_AML_S0_Discussion.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Laboratory/Leukocytes/L10_AML_S0_Discussion.html",
-    "size": 333899,
-    "sizeFormatted": "326.1 KB",
+    "size": 333980,
+    "sizeFormatted": "326.2 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791413530.1390834
+    "mtime": 1792332515.9411385
   },
   {
     "name": "L10_AML_S1_Mind_Map.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Laboratory/Leukocytes/L10_AML_S1_Mind_Map.html",
-    "size": 125175,
-    "sizeFormatted": "122.2 KB",
+    "size": 124691,
+    "sizeFormatted": "121.8 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1790975735.8750365
+    "mtime": 1792330767.669237
   },
   {
     "name": "L11_MPN_MDS_S0_Discussion.html",
     "title": "Chronic Myeloid Neoplasms",
     "path": "Laboratory/Leukocytes/L11_MPN_MDS_S0_Discussion.html",
-    "size": 328347,
+    "size": 328428,
     "sizeFormatted": "320.7 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791413530.1838048
+    "mtime": 1792332515.9441278
   },
   {
     "name": "L11_MPN_MDS_S1_Mind_Map.html",
     "title": "Chronic Myeloid Neoplasms",
     "path": "Laboratory/Leukocytes/L11_MPN_MDS_S1_Mind_Map.html",
-    "size": 127581,
-    "sizeFormatted": "124.6 KB",
+    "size": 127097,
+    "sizeFormatted": "124.1 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1790975745.7903006
+    "mtime": 1792330767.6702373
   },
   {
     "name": "L12_LACLN_S0_Discussion.html",
     "title": "Lymphoid Neoplasms",
     "path": "Laboratory/Leukocytes/L12_LACLN_S0_Discussion.html",
-    "size": 391907,
-    "sizeFormatted": "382.7 KB",
+    "size": 391988,
+    "sizeFormatted": "382.8 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791413530.2401848
+    "mtime": 1792332515.9476318
   },
   {
     "name": "L12_LACLN_S1_Mind_Map.html",
     "title": "Lymphoid Neoplasms",
     "path": "Laboratory/Leukocytes/L12_LACLN_S1_Mind_Map.html",
-    "size": 142434,
-    "sizeFormatted": "139.1 KB",
+    "size": 141950,
+    "sizeFormatted": "138.6 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1790975754.4351206
+    "mtime": 1792330767.672237
   },
   {
     "name": "L13_BM_Flow_S0_Discussion.html",
     "title": "Bone Marrow &amp; Flow Cytometry",
     "path": "Laboratory/Leukocytes/L13_BM_Flow_S0_Discussion.html",
-    "size": 377452,
-    "sizeFormatted": "368.6 KB",
+    "size": 377533,
+    "sizeFormatted": "368.7 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791413530.2946048
+    "mtime": 1792332515.9507728
   },
   {
     "name": "L13_BM_Flow_S1_Mind_Map.html",
     "title": "Bone Marrow & Flow Cytometry",
     "path": "Laboratory/Leukocytes/L13_BM_Flow_S1_Mind_Map.html",
-    "size": 138277,
-    "sizeFormatted": "135.0 KB",
+    "size": 137793,
+    "sizeFormatted": "134.6 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791046986.7288303
+    "mtime": 1792330767.673237
   },
   {
     "name": "L9_Benign_S0_Discussion.html",
     "title": "Benign Disorders",
     "path": "Laboratory/Leukocytes/L9_Benign_S0_Discussion.html",
-    "size": 352025,
-    "sizeFormatted": "343.8 KB",
+    "size": 352106,
+    "sizeFormatted": "343.9 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1791413530.0938528
+    "mtime": 1792332515.9537725
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
     "title": "Benign Disorders",
     "path": "Laboratory/Leukocytes/L9_Benign_S1_Mind_Map.html",
-    "size": 130970,
-    "sizeFormatted": "127.9 KB",
+    "size": 130486,
+    "sizeFormatted": "127.4 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Laboratory / Leukocytes",
-    "mtime": 1790975718.382233
+    "mtime": 1792330767.6742363
   },
   {
     "name": "L5_Iron_Heme_S0_Discussion.html",
-    "title": "Iron &amp; Heme",
+    "title": "Iron & Heme",
     "path": "Lecture/Erythrocytes/L5_Iron_Heme_S0_Discussion.html",
-    "size": 404350,
+    "size": 404427,
     "sizeFormatted": "394.9 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791413529.7494545
+    "mtime": 1792332515.9579282
   },
   {
     "name": "L5_Iron_Heme_S1_Mind_Map.html",
     "title": "Iron & Heme",
     "path": "Lecture/Erythrocytes/L5_Iron_Heme_S1_Mind_Map.html",
-    "size": 147302,
-    "sizeFormatted": "143.8 KB",
+    "size": 146818,
+    "sizeFormatted": "143.4 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1790713941.0
+    "mtime": 1792330767.6762376
   },
   {
     "name": "L6_Hemoglobinopathy_S0_Discussion.html",
     "title": "Hemoglobinopathy",
     "path": "Lecture/Erythrocytes/L6_Hemoglobinopathy_S0_Discussion.html",
-    "size": 415803,
-    "sizeFormatted": "406.1 KB",
+    "size": 421268,
+    "sizeFormatted": "411.4 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791413529.896207
+    "mtime": 1792332515.9619296
   },
   {
     "name": "L6_Hemoglobinopathy_S1_Mind_Map.html",
     "title": "Hemoglobinopathy",
     "path": "Lecture/Erythrocytes/L6_Hemoglobinopathy_S1_Mind_Map.html",
-    "size": 131819,
-    "sizeFormatted": "128.7 KB",
+    "size": 131335,
+    "sizeFormatted": "128.3 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1790713941.0
+    "mtime": 1792330767.6772375
   },
   {
     "name": "L6_Hemoglobinopathy_S2_Flow_Chart_Qualitative.pdf",
@@ -441,146 +441,146 @@ window.FILES_DATA = [
   },
   {
     "name": "L7_Macros_Hypos_S0_Discussion.html",
-    "title": "Macrocytic &amp; Hypoproliferative",
+    "title": "Macrocytic & Hypoproliferative",
     "path": "Lecture/Erythrocytes/L7_Macros_Hypos_S0_Discussion.html",
-    "size": 380705,
-    "sizeFormatted": "371.8 KB",
+    "size": 380782,
+    "sizeFormatted": "371.9 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791413529.9576893
+    "mtime": 1792332515.9659219
   },
   {
     "name": "L7_Macros_Hypos_S4_Mind_Map.html",
     "title": "Macrocytic & Hypoproliferative",
     "path": "Lecture/Erythrocytes/L7_Macros_Hypos_S4_Mind_Map.html",
-    "size": 130579,
-    "sizeFormatted": "127.5 KB",
+    "size": 130095,
+    "sizeFormatted": "127.0 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1790713941.0
+    "mtime": 1792330767.679389
   },
   {
     "name": "L8_Hemolytic_S0_Discussion.html",
     "title": "Hemolytic",
     "path": "Lecture/Erythrocytes/L8_Hemolytic_S0_Discussion.html",
-    "size": 490036,
+    "size": 490119,
     "sizeFormatted": "478.6 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1791413530.0433521
+    "mtime": 1792332515.9710834
   },
   {
     "name": "L8_Hemolytic_S1_Mind_Map.html",
     "title": "Hemolytic",
     "path": "Lecture/Erythrocytes/L8_Hemolytic_S1_Mind_Map.html",
-    "size": 148494,
-    "sizeFormatted": "145.0 KB",
+    "size": 148010,
+    "sizeFormatted": "144.5 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Erythrocytes",
-    "mtime": 1790713942.0
+    "mtime": 1792330767.6813893
   },
   {
     "name": "L10_AML_S0_Discussion.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L10_AML_S0_Discussion.html",
-    "size": 345243,
+    "size": 345326,
     "sizeFormatted": "337.2 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791413529.3463137
+    "mtime": 1792332515.975084
   },
   {
     "name": "L10_AML_S1_Mind_Map.html",
     "title": "Acute Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L10_AML_S1_Mind_Map.html",
-    "size": 123914,
-    "sizeFormatted": "121.0 KB",
+    "size": 123430,
+    "sizeFormatted": "120.5 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790975645.651699
+    "mtime": 1792330767.682391
   },
   {
     "name": "L11_MPN_MDS_S0_Discussion.html",
     "title": "Chronic Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L11_MPN_MDS_S0_Discussion.html",
-    "size": 393788,
+    "size": 393871,
     "sizeFormatted": "384.6 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791723311.5226078
+    "mtime": 1792332515.9792469
   },
   {
     "name": "L11_MPN_MDS_S1_Mind_Map.html",
     "title": "Chronic Myeloid Neoplasms",
     "path": "Lecture/Leukocytes/L11_MPN_MDS_S1_Mind_Map.html",
-    "size": 128491,
-    "sizeFormatted": "125.5 KB",
+    "size": 128007,
+    "sizeFormatted": "125.0 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790975667.8418365
+    "mtime": 1792330767.6843896
   },
   {
     "name": "L12_ALL_S0_Discussion.html",
     "title": "Lymphoid Neoplasms",
     "path": "Lecture/Leukocytes/L12_ALL_S0_Discussion.html",
-    "size": 327642,
+    "size": 327725,
     "sizeFormatted": "320.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791413529.467075
+    "mtime": 1792332515.9822562
   },
   {
     "name": "L12_ALL_S1_Mind_Map.html",
     "title": "Lymphoid Neoplasms",
     "path": "Lecture/Leukocytes/L12_ALL_S1_Mind_Map.html",
-    "size": 125132,
-    "sizeFormatted": "122.2 KB",
+    "size": 124648,
+    "sizeFormatted": "121.7 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790975677.4982216
+    "mtime": 1792330767.685388
   },
   {
     "name": "L9_Benign_S0_Discussion.html",
     "title": "Benign Disorders",
     "path": "Lecture/Leukocytes/L9_Benign_S0_Discussion.html",
-    "size": 377988,
-    "sizeFormatted": "369.1 KB",
+    "size": 383391,
+    "sizeFormatted": "374.4 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Leukocytes",
-    "mtime": 1791413529.2933445
+    "mtime": 1792332515.9872591
   },
   {
     "name": "L9_Benign_S1_Mind_Map.html",
     "title": "Benign Disorders",
     "path": "Lecture/Leukocytes/L9_Benign_S1_Mind_Map.html",
-    "size": 123943,
-    "sizeFormatted": "121.0 KB",
+    "size": 123459,
+    "sizeFormatted": "120.6 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Leukocytes",
-    "mtime": 1790975631.1665695
+    "mtime": 1792330767.6863892
   },
   {
     "name": "L1_Hematopoiesis_S0_Discussion.html",
     "title": "Hematopoiesis",
     "path": "Lecture/Physiology/L1_Hematopoiesis_S0_Discussion.html",
-    "size": 400700,
-    "sizeFormatted": "391.3 KB",
+    "size": 399571,
+    "sizeFormatted": "390.2 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791413529.5291212
+    "mtime": 1792332515.991426
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition.pdf",
@@ -619,23 +619,23 @@ window.FILES_DATA = [
     "name": "L1_Hematopoiesis_S4_Mind_Map.html",
     "title": "Hematopoiesis",
     "path": "Lecture/Physiology/L1_Hematopoiesis_S4_Mind_Map.html",
-    "size": 114117,
-    "sizeFormatted": "111.4 KB",
+    "size": 113633,
+    "sizeFormatted": "111.0 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1790713940.0
+    "mtime": 1792330767.6885247
   },
   {
     "name": "L2_BCE_RBC-HGB_S0_Discussion.html",
-    "title": "Leukocytes &amp; Thrombocytes",
+    "title": "Erythrocytes & Hemoglobin",
     "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S0_Discussion.html",
-    "size": 345733,
-    "sizeFormatted": "337.6 KB",
+    "size": 344598,
+    "sizeFormatted": "336.5 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791413529.591348
+    "mtime": 1792332515.9954257
   },
   {
     "name": "L2_BCE_RBC-HGB_S1_Erythrocyte.pdf",
@@ -663,23 +663,23 @@ window.FILES_DATA = [
     "name": "L2_BCE_RBC-HGB_S3_Mind_Map.html",
     "title": "Erythrocytes & Hemoglobin",
     "path": "Lecture/Physiology/L2_BCE_RBC-HGB_S3_Mind_Map.html",
-    "size": 100084,
-    "sizeFormatted": "97.7 KB",
+    "size": 99600,
+    "sizeFormatted": "97.3 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1790713971.0
+    "mtime": 1792330767.689525
   },
   {
     "name": "L3_BCE_WBC-PLT_S0_Discussion.html",
-    "title": "Leukocytes &amp; Thrombocytes",
+    "title": "Leukocytes & Thrombocytes",
     "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S0_Discussion.html",
-    "size": 362632,
-    "sizeFormatted": "354.1 KB",
+    "size": 361497,
+    "sizeFormatted": "353.0 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791413529.6404128
+    "mtime": 1792332515.999581
   },
   {
     "name": "L3_BCE_WBC-PLT_S1_Granulocytes.pdf",
@@ -718,23 +718,23 @@ window.FILES_DATA = [
     "name": "L3_BCE_WBC-PLT_S4_Mind_Map.html",
     "title": "Leukocytes & Thrombocytes",
     "path": "Lecture/Physiology/L3_BCE_WBC-PLT_S4_Mind_Map.html",
-    "size": 94783,
-    "sizeFormatted": "92.6 KB",
+    "size": 94299,
+    "sizeFormatted": "92.1 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1790713940.0
+    "mtime": 1792330767.6905253
   },
   {
     "name": "L4_RBC_Analysis_S0_Discussion.html",
     "title": "RBC Analysis",
     "path": "Lecture/Physiology/L4_RBC_Analysis_S0_Discussion.html",
-    "size": 294839,
-    "sizeFormatted": "287.9 KB",
+    "size": 293710,
+    "sizeFormatted": "286.8 KB",
     "extension": "html",
     "type": "Discussion",
     "category": "Lecture / Physiology",
-    "mtime": 1791413529.6743371
+    "mtime": 1792332516.0025797
   },
   {
     "name": "L4_RBC_Analysis_S1_RBC_Indices.pdf",
@@ -773,12 +773,188 @@ window.FILES_DATA = [
     "name": "L4_RBC_Analysis_S4_Mind_Map.html",
     "title": "RBC Analysis",
     "path": "Lecture/Physiology/L4_RBC_Analysis_S4_Mind_Map.html",
-    "size": 96801,
-    "sizeFormatted": "94.5 KB",
+    "size": 96317,
+    "sizeFormatted": "94.1 KB",
     "extension": "html",
     "type": "Mind Map",
     "category": "Lecture / Physiology",
-    "mtime": 1790713941.0
+    "mtime": 1792330767.6915233
+  },
+  {
+    "name": "01_CSF_S0_Complete_Discussion.html",
+    "title": "CSF",
+    "path": "Body_Fluids/01_CSF_S0_Complete_Discussion.html",
+    "size": 282681,
+    "sizeFormatted": "276.1 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.0045686
+  },
+  {
+    "name": "01_CSF_S1_Mind_Map.html",
+    "title": "CSF",
+    "path": "Body_Fluids/01_CSF_S1_Mind_Map.html",
+    "size": 105930,
+    "sizeFormatted": "103.4 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.645257
+  },
+  {
+    "name": "02_Serous_S0_Complete_Discussion.html",
+    "title": "Serous",
+    "path": "Body_Fluids/02_Serous_S0_Complete_Discussion.html",
+    "size": 303864,
+    "sizeFormatted": "296.7 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.0076485
+  },
+  {
+    "name": "02_Serous_S1_Mind_Map.html",
+    "title": "Serous",
+    "path": "Body_Fluids/02_Serous_S1_Mind_Map.html",
+    "size": 121248,
+    "sizeFormatted": "118.4 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.6472588
+  },
+  {
+    "name": "03_Synovial_S0_Complete_Discussion.html",
+    "title": "Synovial",
+    "path": "Body_Fluids/03_Synovial_S0_Complete_Discussion.html",
+    "size": 285311,
+    "sizeFormatted": "278.6 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.0106492
+  },
+  {
+    "name": "03_Synovial_S1_Mind_Map.html",
+    "title": "Synovial",
+    "path": "Body_Fluids/03_Synovial_S1_Mind_Map.html",
+    "size": 104670,
+    "sizeFormatted": "102.2 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.648894
+  },
+  {
+    "name": "04_BAL_S0_Complete_Discussion.html",
+    "title": "BAL",
+    "path": "Body_Fluids/04_BAL_S0_Complete_Discussion.html",
+    "size": 251527,
+    "sizeFormatted": "245.6 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.012658
+  },
+  {
+    "name": "04_BAL_S1_Mind_Map.html",
+    "title": "BAL",
+    "path": "Body_Fluids/04_BAL_S1_Mind_Map.html",
+    "size": 105543,
+    "sizeFormatted": "103.1 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.6504097
+  },
+  {
+    "name": "05_Semen_S0_Complete_Discussion.html",
+    "title": "Semen",
+    "path": "Body_Fluids/05_Semen_S0_Complete_Discussion.html",
+    "size": 282868,
+    "sizeFormatted": "276.2 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.01565
+  },
+  {
+    "name": "05_Semen_S1_Mind_Map.html",
+    "title": "Semen",
+    "path": "Body_Fluids/05_Semen_S1_Mind_Map.html",
+    "size": 125333,
+    "sizeFormatted": "122.4 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.652414
+  },
+  {
+    "name": "06_Amniotic_S0_Complete_Discussion.html",
+    "title": "Amniotic",
+    "path": "Body_Fluids/06_Amniotic_S0_Complete_Discussion.html",
+    "size": 300126,
+    "sizeFormatted": "293.1 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.018803
+  },
+  {
+    "name": "06_Amniotic_S1_Mind_Map.html",
+    "title": "Amniotic",
+    "path": "Body_Fluids/06_Amniotic_S1_Mind_Map.html",
+    "size": 96196,
+    "sizeFormatted": "93.9 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.6534145
+  },
+  {
+    "name": "07_Feces_S0_Complete_Discussion.html",
+    "title": "Feces",
+    "path": "Body_Fluids/07_Feces_S0_Complete_Discussion.html",
+    "size": 271143,
+    "sizeFormatted": "264.8 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.0217853
+  },
+  {
+    "name": "07_Feces_S1_Mind_Map.html",
+    "title": "Feces",
+    "path": "Body_Fluids/07_Feces_S1_Mind_Map.html",
+    "size": 111385,
+    "sizeFormatted": "108.8 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.6544147
+  },
+  {
+    "name": "08_Vaginal-Secretions_S0_Complete_Discussion.html",
+    "title": "Vaginal Secretions",
+    "path": "Body_Fluids/08_Vaginal-Secretions_S0_Complete_Discussion.html",
+    "size": 257634,
+    "sizeFormatted": "251.6 KB",
+    "extension": "html",
+    "type": "Discussion",
+    "category": "Body_Fluids",
+    "mtime": 1792332516.0237923
+  },
+  {
+    "name": "08_Vaginal-Secretions_S1_Mind_Map.html",
+    "title": "Vaginal Secretions",
+    "path": "Body_Fluids/08_Vaginal-Secretions_S1_Mind_Map.html",
+    "size": 88844,
+    "sizeFormatted": "86.8 KB",
+    "extension": "html",
+    "type": "Mind Map",
+    "category": "Body_Fluids",
+    "mtime": 1792330767.656414
   },
   {
     "name": "L1_Hematopoiesis_S1_Blood_Composition_Video",

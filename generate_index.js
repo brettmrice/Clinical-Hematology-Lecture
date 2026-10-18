@@ -49,7 +49,16 @@ const TOPIC_TITLE_MAP = {
     'L4_CBC_Analysis': 'CBC Analysis',
     'L5_Microcytic': 'Microcytic Anemias',
     'L7_Macrocytic': 'Macrocytic',
-    'L8_Normocytic': 'Normocytic'
+    'L8_Normocytic': 'Normocytic',
+    '01_CSF': 'CSF',
+    '02_Serous': 'Serous',
+    '03_Synovial': 'Synovial',
+    '04_BAL': 'BAL',
+    '05_Semen': 'Semen',
+    '06_Amniotic': 'Amniotic',
+    '07_Feces': 'Feces',
+    '08_Vaginal-Secretions': 'Vaginal Secretions',
+    '08_Vaginal': 'Vaginal Secretions'
 };
 
 function getFileType(filename) {
@@ -315,7 +324,7 @@ function scanDir() {
         }
     }
 
-    const targetDirs = ['Laboratory', 'Lecture'];
+    const targetDirs = ['Laboratory', 'Lecture', 'Body_Fluids'];
     for (const target of targetDirs) {
         const targetPath = path.join(rootDir, target);
         if (fs.existsSync(targetPath)) {

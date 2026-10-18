@@ -3,7 +3,11 @@ import json
 import math
 import re
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+import sys
+import argparse
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = SCRIPT_DIR
 JSON_FILE = os.path.join(ROOT_DIR, "files_index.json")
 JS_FILE = os.path.join(ROOT_DIR, "files_data.js")
 VIDEO_CONFIG_FILE = os.path.join(ROOT_DIR, "video_links.json")
@@ -50,7 +54,16 @@ TOPIC_TITLE_MAP = {
     "L4_CBC_Analysis": "CBC Analysis",
     "L5_Microcytic": "Microcytic Anemias",
     "L7_Macrocytic": "Macrocytic",
-    "L8_Normocytic": "Normocytic"
+    "L8_Normocytic": "Normocytic",
+    "01_CSF": "CSF",
+    "02_Serous": "Serous",
+    "03_Synovial": "Synovial",
+    "04_BAL": "BAL",
+    "05_Semen": "Semen",
+    "06_Amniotic": "Amniotic",
+    "07_Feces": "Feces",
+    "08_Vaginal-Secretions": "Vaginal Secretions",
+    "08_Vaginal": "Vaginal Secretions"
 }
 
 def get_file_type(filename):
@@ -117,24 +130,36 @@ def format_bytes(size):
     s = round(size / p, 1)
     return f"{s} {size_name[i]}"
 
-def load_video_config():
-    if os.path.exists(VIDEO_CONFIG_FILE):
+def load_video_config(config_file=None):
+    if not config_file:
+        config_file = VIDEO_CONFIG_FILE
+    if os.path.exists(config_file):
+        try:
+            with open(config_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    return data
+        except Exception as e:
+            print(f"Error loading {config_file}:", e)
+    if config_file != VIDEO_CONFIG_FILE and os.path.exists(VIDEO_CONFIG_FILE):
         try:
             with open(VIDEO_CONFIG_FILE, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 if isinstance(data, list):
                     return data
-        except Exception as e:
-            print("Error loading video_links.json:", e)
+        except Exception:
+            pass
     return []
 
-def sync_video_configs(scanned_slide_decks):
+def sync_video_configs(scanned_slide_decks, config_file=None):
     """
     Ensures 1:1 mapping between slide decks and video entries in video_links.json.
     Preserves all existing entries (including manual demonstrations) in their authored order,
     and appends any newly discovered slide decks.
     """
-    existing_configs = load_video_config()
+    if not config_file:
+        config_file = VIDEO_CONFIG_FILE
+    existing_configs = load_video_config(config_file)
     existing_by_deck = {item["slide_deck_file"]: item for item in existing_configs if item.get("slide_deck_file")}
     
     missing_decks = [deck for deck in scanned_slide_decks if deck["name"] not in existing_by_deck]
@@ -157,18 +182,20 @@ def sync_video_configs(scanned_slide_decks):
             })
 
     try:
-        with open(VIDEO_CONFIG_FILE, "w", encoding="utf-8") as f:
+        with open(config_file, "w", encoding="utf-8") as f:
             json.dump(updated_configs, f, indent=2)
     except Exception as e:
-        print("Error saving updated video_links.json:", e)
+        print(f"Error saving updated {config_file}:", e)
 
     return updated_configs
 
-def ensure_discussion_assets(full_path):
+def ensure_discussion_assets(full_path, target_root=None):
     """
     Checks and injects shared discussion CSS/JS assets (portable header, mind map overlay, quiz)
     into discussion HTML files if missing, dynamically calculating relative paths to shared/.
     """
+    if not target_root:
+        target_root = ROOT_DIR
     try:
         with open(full_path, "r", encoding="utf-8") as f:
             content = f.read()
@@ -177,20 +204,29 @@ def ensure_discussion_assets(full_path):
         return False
 
     original = content
+    if ('discussions_manifest.js?v=20261018' in content and
+        'mindmaps_manifest.js?v=20261018' in content and
+        'discussion_mindmap.js?v=20261018' in content and
+        'discussion_quiz.js?v=20261018' in content and
+        'discussion_mindmap.css?v=20261018' in content and
+        'discussion_quiz.css?v=20261018' in content):
+        return False
+
     file_dir = os.path.dirname(full_path)
-    rel_to_shared = os.path.relpath(os.path.join(ROOT_DIR, "shared"), file_dir).replace("\\", "/")
+    rel_to_shared = os.path.relpath(os.path.join(target_root, "shared"), file_dir).replace("\\", "/")
 
-    css_mindmap = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261007">'
-    css_quiz = f'    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261007">'
+    css_mindmap = f'    <!-- Portable Discussion Mind Map Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261018">'
+    css_quiz = f'    <!-- Portable Discussion Quiz Overlay -->\n    <link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261018">'
 
-    # Clean and standardize CSS/JS tags with ?v=20261007
-    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261007">', content)
-    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261007">', content)
+    # Clean and standardize CSS/JS tags with ?v=20261018
+    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_mindmap\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_mindmap.css?v=20261018">', content)
+    content = re.sub(r'<link\s+rel="stylesheet"\s+href="[^"]*discussion_quiz\.css(?:\?[^"]*)?">', f'<link rel="stylesheet" href="{rel_to_shared}/discussion_quiz.css?v=20261018">', content)
 
-    content = re.sub(r'<script\s+src="[^"]*course_mindmaps_data\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>', content)
-    content = re.sub(r'<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>', content)
-    content = re.sub(r'<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>', content)
-    content = re.sub(r'<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"></script>', f'<script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>', content)
+    content = re.sub(r'<script\s+src="[^"]*course_mindmaps_data\.js(?:\?[^"]*)?"></script>\s*', '', content)
+    content = re.sub(r'<script\s+src="[^"]*mindmaps_manifest\.js(?:\?[^"]*)?"></script>\s*', '', content)
+    content = re.sub(r'<script\s+src="[^"]*discussions_manifest\.js(?:\?[^"]*)?"></script>\s*', '', content)
+    content = re.sub(r'<script\s+src="[^"]*discussion_mindmap\.js(?:\?[^"]*)?"></script>\s*', '', content)
+    content = re.sub(r'<script\s+src="[^"]*discussion_quiz\.js(?:\?[^"]*)?"></script>\s*', '', content)
 
     # Ensure CSS tags exist
     if 'discussion_mindmap.css' not in content:
@@ -213,32 +249,14 @@ def ensure_discussion_assets(full_path):
             content = content.replace('</head>', css_quiz + '\n</head>')
 
     # Ensure JS tags exist
-    if 'mindmaps_manifest.js' not in content:
-        manifest_tag = f'    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261007"></script>'
-        if 'discussion_mindmap.js' in content:
-            content = re.sub(
-                r'([ \t]*<script\s+src="[^"]*discussion_mindmap\.js[^"]*"></script>)',
-                manifest_tag + r'\n\1',
-                content
-            )
-        elif '</body>' in content:
-            content = content.replace('</body>', manifest_tag + '\n</body>')
-
-    if 'discussion_mindmap.js' not in content:
-        mindmap_tag = f'    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261007"></script>'
-        if '</body>' in content:
-            content = content.replace('</body>', mindmap_tag + '\n</body>')
-
-    if 'discussion_quiz.js' not in content:
-        quiz_tag = f'    <script src="{rel_to_shared}/discussion_quiz.js?v=20261007"></script>'
-        if 'discussion_mindmap.js' in content:
-            content = re.sub(
-                r'(<script\s+src="[^"]*discussion_mindmap\.js[^"]*"></script>)',
-                r'\1\n' + quiz_tag,
-                content
-            )
-        elif '</body>' in content:
-            content = content.replace('</body>', quiz_tag + '\n</body>')
+    js_stack = (
+        f'    <script src="{rel_to_shared}/mindmaps_manifest.js?v=20261018"></script>\n'
+        f'    <script src="{rel_to_shared}/discussions_manifest.js?v=20261018"></script>\n'
+        f'    <script src="{rel_to_shared}/discussion_mindmap.js?v=20261018"></script>\n'
+        f'    <script src="{rel_to_shared}/discussion_quiz.js?v=20261018"></script>'
+    )
+    if '</body>' in content:
+        content = content.replace('</body>', js_stack + '\n</body>')
 
     if content != original:
         try:
@@ -249,17 +267,22 @@ def ensure_discussion_assets(full_path):
             print(f"Error writing discussion file {full_path}: {e}")
     return False
 
-def scan_dir():
+def scan_dir(target_root=None):
+    if not target_root:
+        target_root = ROOT_DIR
     raw_files = []
     scanned_slide_decks = []
     deck_category_map = {}
     discussion_checked = 0
     discussion_updated = 0
 
-    target_dirs = ["Laboratory", "Lecture"]
+    if os.path.exists(os.path.join(target_root, "Hematology")):
+        target_dirs = ["Hematology/LAB", "Hematology/LEC", "Body_Fluids"]
+    else:
+        target_dirs = ["Laboratory", "Lecture", "Body_Fluids"]
 
     for target in target_dirs:
-        target_path = os.path.join(ROOT_DIR, target)
+        target_path = os.path.join(target_root, target)
         if not os.path.exists(target_path):
             continue
 
@@ -275,7 +298,7 @@ def scan_dir():
                     continue
                 
                 full_path = os.path.join(root, file)
-                rel_path = os.path.relpath(full_path, ROOT_DIR)
+                rel_path = os.path.relpath(full_path, target_root)
                 
                 if rel_path in EXCLUDED_FILES:
                     continue
@@ -287,7 +310,7 @@ def scan_dir():
                 
                 if file_type == "Discussion" or file.endswith(("_Discussion.html", "_Discussion.htm")):
                     discussion_checked += 1
-                    if ensure_discussion_assets(full_path):
+                    if ensure_discussion_assets(full_path, target_root):
                         discussion_updated += 1
                         stat = os.stat(full_path)
 
@@ -312,7 +335,8 @@ def scan_dir():
     scanned_slide_decks.sort(key=lambda x: x["name"])
 
     # Update and sync video_links.json
-    video_configs = sync_video_configs(scanned_slide_decks)
+    video_config_file = os.path.join(target_root, "video_links.json")
+    video_configs = sync_video_configs(scanned_slide_decks, video_config_file)
 
     results = list(raw_files)
     
@@ -357,7 +381,7 @@ def scan_dir():
             cat = item.get("category")
             if not cat:
                 is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
-                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
+                cat = "Hematology / LAB / CBC_PBS" if (is_lab and "Hematology" in target_dirs[0]) else ("Laboratory / CBC_PBS" if is_lab else current_cat)
 
             results.append({
                 "name": tool_name,
@@ -383,7 +407,7 @@ def scan_dir():
             cat = item.get("category")
             if not cat:
                 is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
-                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
+                cat = "Hematology / LAB / CBC_PBS" if (is_lab and "Hematology" in target_dirs[0]) else ("Laboratory / CBC_PBS" if is_lab else current_cat)
 
             results.append({
                 "name": trainer_name,
@@ -409,7 +433,7 @@ def scan_dir():
             cat = item.get("category")
             if not cat:
                 is_lab = prefix.startswith("L") and any(k in prefix for k in ["Manual_Counts", "Slide_Prep", "Slide_Eval"])
-                cat = "Laboratory / CBC_PBS" if is_lab else current_cat
+                cat = "Hematology / LAB / CBC_PBS" if (is_lab and "Hematology" in target_dirs[0]) else ("Laboratory / CBC_PBS" if is_lab else current_cat)
 
             results.append({
                 "name": demo_name,
@@ -426,19 +450,32 @@ def scan_dir():
 
     return results, video_configs, discussion_checked, discussion_updated
 
-if __name__ == "__main__":
-    files_data, video_configs, disc_checked, disc_updated = scan_dir()
+def generate_index_for_dir(target_root=None):
+    if not target_root:
+        target_root = ROOT_DIR
+    target_root = os.path.abspath(target_root)
+    files_data, video_configs, disc_checked, disc_updated = scan_dir(target_root)
     
-    with open(JSON_FILE, "w", encoding="utf-8") as f:
+    json_file = os.path.join(target_root, "files_index.json")
+    js_file = os.path.join(target_root, "files_data.js")
+    video_js_file = os.path.join(target_root, "video_links.js")
+
+    with open(json_file, "w", encoding="utf-8") as f:
         json.dump(files_data, f, indent=2)
         
-    with open(JS_FILE, "w", encoding="utf-8") as f:
+    with open(js_file, "w", encoding="utf-8") as f:
         f.write("window.FILES_DATA = " + json.dumps(files_data, indent=2) + ";\n")
 
-    video_js_file = os.path.join(ROOT_DIR, "video_links.js")
     with open(video_js_file, "w", encoding="utf-8") as f:
         f.write("window.VIDEO_LINKS = " + json.dumps(video_configs, indent=2) + ";\n")
         
-    print(f"Successfully synced video_links.json ({len(video_configs)} entries) and indexed {len(files_data)} files.")
-    print(f"Discussion assets verified: {disc_checked} checked, {disc_updated} updated.")
+    print(f"[{os.path.basename(target_root)}] Synced video_links.json ({len(video_configs)} entries) and indexed {len(files_data)} files.")
+    print(f"[{os.path.basename(target_root)}] Discussion assets verified: {disc_checked} checked, {disc_updated} updated.")
+    return files_data
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate files_index.json and files_data.js")
+    parser.add_argument("root", nargs="?", default=ROOT_DIR, help="Root directory of the course portal (default: current directory)")
+    args = parser.parse_args()
+    generate_index_for_dir(args.root)
 

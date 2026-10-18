@@ -7,8 +7,8 @@ let currentView = 'grid';   // 'grid' or 'tree'
 let isPreviewModalOpen = false;
 let savedIndexScrollY = 0;
 
-const DOMAIN_KEYS = ['lecture', 'laboratory'];
-const MODULE_KEYS = ['Physiology', 'CBC_PBS', 'Erythrocyte', 'Leukocyte'];
+const DOMAIN_KEYS = ['lecture', 'laboratory', 'body_fluids'];
+const MODULE_KEYS = ['Physiology', 'CBC_PBS', 'Erythrocyte', 'Leukocyte', 'Body_Fluids'];
 const TYPE_KEYS = ['discussion', 'flowchart', 'pdf', 'video', 'demonstration', 'tool', 'trainer', 'mindmap'];
 
 const TYPE_KEY_TO_NAME = {
@@ -63,6 +63,17 @@ const TOPIC_CONFIG = {
         'L11_MPN_MDS': 'Chronic Myeloid Neoplasms',
         'L12_LACLN': 'Lymphoid Neoplasms',
         'L13_BM_Flow': 'Bone Marrow & Flow Cytometry'
+    },
+    body_fluids: {
+        '01_CSF': 'CSF',
+        '02_Serous': 'Serous',
+        '03_Synovial': 'Synovial',
+        '04_BAL': 'BAL',
+        '05_Semen': 'Semen',
+        '06_Amniotic': 'Amniotic',
+        '07_Feces': 'Feces',
+        '08_Vaginal-Secretions': 'Vaginal Secretions',
+        '08_Vaginal': 'Vaginal Secretions'
     }
 };
 
@@ -155,9 +166,10 @@ function getTopicInfo(file) {
         }
     }
 
-    const match = file.name.match(/^(L0?\d+)_([A-Za-z0-9_-]+?)(?:_S\d+|_Demo_\d+|_Tool_\d+|_Demo_|_Tool_|$)/i);
+    const match = file.name.match(/^(?:L0?|BF0?|0?)(\d+)_([A-Za-z0-9_-]+?)(?:_S\d+|_Demo_\d+|_Tool_\d+|_Demo_|_Tool_|_Complete_Discussion|_Mind_Map|$)/i);
     if (match) {
-        const unitNum = match[1].toUpperCase().replace(/^L0/, 'L');
+        const isBF = domain === 'body_fluids' || file.name.startsWith('0') || file.name.toLowerCase().startsWith('bf');
+        const unitNum = isBF ? `BF${parseInt(match[1])}` : match[1].toUpperCase().replace(/^L0/, 'L');
         const topicRaw = match[2].replace(/_/g, ' ').replace(/-/g, ' & ');
         return {
             key: `${unitNum}_${match[2]}`,
@@ -173,13 +185,16 @@ function formatCategory(cat) {
     if (!cat) return 'General';
     return cat
         .replace(/CBC_PBS/gi, 'CBC & PBS')
+        .replace(/Body_Fluids/gi, 'Body Fluids')
         .replace(/\s*\/\s*/g, ' · ')
         .trim();
 }
 
 function getDomainKey(file) {
     const cat = (file.category || '').toLowerCase();
-    if (cat.includes('laboratory') || cat.includes('lab')) return 'laboratory';
+    const path = (file.path || '').toLowerCase();
+    if (cat.includes('laboratory') || cat.includes('lab') || path.startsWith('laboratory/')) return 'laboratory';
+    if (cat.includes('body_fluids') || cat.includes('body fluids') || path.startsWith('body_fluids/')) return 'body_fluids';
     return 'lecture';
 }
 
@@ -190,6 +205,7 @@ function getModuleKey(file) {
     if (cat.includes('cbc_pbs') || cat.includes('cbc & pbs') || path.includes('/cbc_pbs/')) return 'CBC_PBS';
     if (cat.includes('erythrocyte') || path.includes('/erythrocytes/') || path.includes('/erythrocyte/')) return 'Erythrocyte';
     if (cat.includes('leukocyte') || path.includes('/leukocytes/') || path.includes('/leukocyte/')) return 'Leukocyte';
+    if (cat.includes('body_fluids') || cat.includes('body fluids') || path.startsWith('body_fluids/')) return 'Body_Fluids';
     return 'Other';
 }
 
@@ -485,19 +501,25 @@ function updateCategoryCounts() {
     const countDomainAll = domainCandidateFiles.length;
     const countDomainLecture = domainCandidateFiles.filter(f => getDomainKey(f) === 'lecture').length;
     const countDomainLab = domainCandidateFiles.filter(f => getDomainKey(f) === 'laboratory').length;
+    const countDomainBF = domainCandidateFiles.filter(f => getDomainKey(f) === 'body_fluids').length;
 
     const chipDomAll = document.getElementById('tabDomainAll');
     const chipDomLec = document.getElementById('tabDomainLecture');
     const chipDomLab = document.getElementById('tabDomainLab');
+    const chipDomBF = document.getElementById('tabDomainBodyFluids');
 
     updateChipState(chipDomAll, document.getElementById('countDomainAll'), countDomainAll);
     updateChipState(chipDomLec, document.getElementById('countDomainLecture'), countDomainLecture);
     updateChipState(chipDomLab, document.getElementById('countDomainLab'), countDomainLab);
+    if (chipDomBF) {
+        updateChipState(chipDomBF, document.getElementById('countDomainBodyFluids'), countDomainBF);
+    }
 
     // Auto-trigger 'all' if all available (count > 0) domain filters are selected
     const availableDomainKeys = DOMAIN_KEYS.filter(k => {
         if (k === 'lecture') return countDomainLecture > 0;
         if (k === 'laboratory') return countDomainLab > 0;
+        if (k === 'body_fluids') return countDomainBF > 0;
         return false;
     });
     if (!selectedDomains.has('all') || selectedDomains.size > 1) {
@@ -518,25 +540,31 @@ function updateCategoryCounts() {
     const countModCBC = moduleCandidateFiles.filter(f => getModuleKey(f) === 'CBC_PBS').length;
     const countModEryth = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Erythrocyte').length;
     const countModLeuk = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Leukocyte').length;
+    const countModBF = moduleCandidateFiles.filter(f => getModuleKey(f) === 'Body_Fluids').length;
 
     const chipModAll = document.getElementById('tabModuleAll');
     const chipModPhys = document.getElementById('tabModulePhysiology');
     const chipModCBC = document.getElementById('tabModuleCBC');
     const chipModEryth = document.getElementById('tabModuleErythrocyte');
     const chipModLeuk = document.getElementById('tabModuleLeukocyte');
+    const chipModBF = document.getElementById('tabModuleBodyFluids');
 
     updateChipState(chipModAll, document.getElementById('countModuleAll'), countModAll);
     updateChipState(chipModPhys, document.getElementById('countModulePhysiology'), countModPhys);
     updateChipState(chipModCBC, document.getElementById('countModuleCBC'), countModCBC);
     updateChipState(chipModEryth, document.getElementById('countModuleErythrocyte'), countModEryth);
     updateChipState(chipModLeuk, document.getElementById('countModuleLeukocyte'), countModLeuk);
+    if (chipModBF) {
+        updateChipState(chipModBF, document.getElementById('countModuleBodyFluids'), countModBF);
+    }
 
     // Auto-trigger 'all' if all available (count > 0) module filters are selected
     const modCountMap = {
         'Physiology': countModPhys,
         'CBC_PBS': countModCBC,
         'Erythrocyte': countModEryth,
-        'Leukocyte': countModLeuk
+        'Leukocyte': countModLeuk,
+        'Body_Fluids': countModBF
     };
     const availableModuleKeys = MODULE_KEYS.filter(k => (modCountMap[k] || 0) > 0);
     if (!selectedModules.has('all') || selectedModules.size > 1) {
@@ -661,7 +689,8 @@ function render() {
 function buildHierarchy(files) {
     const domains = {
         'lecture': { title: 'Lecture Modules', badge: 'Lecture', icon: 'lecture', categories: {} },
-        'laboratory': { title: 'Laboratory Modules', badge: 'Laboratory', icon: 'lab', categories: {} }
+        'laboratory': { title: 'Laboratory Modules', badge: 'Laboratory', icon: 'lab', categories: {} },
+        'body_fluids': { title: 'Body Fluids Modules', badge: 'Body Fluids', icon: 'doc', categories: {} }
     };
 
     files.forEach(file => {
@@ -725,7 +754,7 @@ function renderCardGrid(container, files) {
     const hierarchy = buildHierarchy(files);
     let html = '';
 
-    const domainKeys = ['lecture', 'laboratory'];
+    const domainKeys = DOMAIN_KEYS;
 
     domainKeys.forEach(dKey => {
         const domain = hierarchy[dKey];
@@ -745,15 +774,26 @@ function renderCardGrid(container, files) {
 
         if (domainFileCount === 0) return;
 
-        const domainIconSvg = dKey === 'laboratory' ? `
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-            </svg>
-        ` : `
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
-        `;
+        let domainIconSvg = '';
+        if (dKey === 'laboratory') {
+            domainIconSvg = `
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                </svg>
+            `;
+        } else if (dKey === 'body_fluids') {
+            domainIconSvg = `
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+                </svg>
+            `;
+        } else {
+            domainIconSvg = `
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+            `;
+        }
 
         html += `
             <div class="domain-section">
@@ -901,7 +941,7 @@ function renderTree(container, files) {
     const hierarchy = buildHierarchy(files);
     let html = `<div class="tree-view">`;
 
-    const domainKeys = ['lecture', 'laboratory'];
+    const domainKeys = DOMAIN_KEYS;
 
     domainKeys.forEach(dKey => {
         const domain = hierarchy[dKey];
