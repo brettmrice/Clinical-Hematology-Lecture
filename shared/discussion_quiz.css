@@ -170,6 +170,8 @@
     height: 18px !important;
     margin: 0 !important;
   }
+}
+
 @media (max-width: 768px) {
   .discussion-fab-dock {
     left: 50% !important;
